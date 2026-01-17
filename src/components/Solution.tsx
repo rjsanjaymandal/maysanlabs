@@ -6,7 +6,9 @@ export default function Solution() {
       <div className="container">
         <div className={styles.header}>
           <span className={styles.label}>Our Solution</span>
-          <h2 className={styles.title}>The "One-Person Empire" Stack</h2>
+          <h2 className={styles.title}>
+            The &quot;One-Person Empire&quot; Stack
+          </h2>
           <p style={{ color: "var(--muted)" }}>
             Everything you need to run a massive brand, alone.
           </p>

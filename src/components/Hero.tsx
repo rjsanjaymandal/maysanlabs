@@ -8,7 +8,7 @@ export default function Hero() {
         <span className={styles.badge}>One-Person Empire E-commerce Stack</span>
 
         <h1 className={styles.headline}>
-          Don't Just Build a Store.
+          Don&apos;t Just Build a Store.
           <br />
           <span className="text-gradient">Build an Automated Business.</span>
         </h1>

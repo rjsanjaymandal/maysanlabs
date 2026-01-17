@@ -33,10 +33,8 @@ export default function ContactFooter() {
             fontSize: "0.9rem",
           }}
         >
-          <p>
-            © {new Date().getFullYear()} CB Web Solution. All rights reserved.
-          </p>
-          <p>Location: India | Email: contact@cbwebsolution.com</p>
+          <p>© {new Date().getFullYear()} Maysan Labs. All rights reserved.</p>
+          <p>Location: India | Email: contact@maysanlabs.com</p>
         </div>
       </div>
     </footer>

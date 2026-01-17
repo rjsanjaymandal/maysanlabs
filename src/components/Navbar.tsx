@@ -6,7 +6,7 @@ export default function Navbar() {
     <nav className={styles.navbar}>
       <div className={`container ${styles.container}`}>
         <Link href="/" className={styles.logo}>
-          CB Web Solution
+          Maysan Labs
         </Link>
 
         <div className={styles.navLinks}>

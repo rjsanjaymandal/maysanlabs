@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CB Web Solution | One-Person Empire E-commerce Stack",
+  title: "Maysan Labs | One-Person Empire E-commerce Stack",
   description:
     "Launch a powerful e-commerce brand alone with our MERN stack platform and AI automation tools.",
 };
