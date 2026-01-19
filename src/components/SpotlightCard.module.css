@@ -1,0 +1,28 @@
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid hsla(var(--foreground), 0.05);
+  background: hsla(var(--card), 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  height: 100%;
+  transition: border-color 0.3s ease;
+}
+
+.card:hover {
+  border-color: hsla(var(--primary), 0.3);
+}
+
+.featured {
+  background: hsla(var(--primary), 0.05);
+  border-color: hsla(var(--primary), 0.3);
+}
+
+.spotlight {
+  pointer-events: none;
+  position: absolute;
+  inset: 0px;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}

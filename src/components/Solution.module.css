@@ -36,10 +36,15 @@
   gap: 2rem;
 }
 
-.featureBlock {
+.featureInner {
   padding: 3rem;
-  border-radius: 1.5rem;
-  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.featureBlock {
+  height: 100%;
 }
 
 .featureBlock:hover {

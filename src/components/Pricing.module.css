@@ -38,23 +38,23 @@
   gap: 2rem;
 }
 
-.card {
+.pricingInner {
   padding: 3rem;
-  border-radius: 2rem;
   display: flex;
   flex-direction: column;
+  height: 100%;
+}
+
+.featuredWrapper {
   position: relative;
-  transition: all 0.3s ease;
+  z-index: 2;
+  transform: scale(1.05);
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  border-color: hsl(var(--primary) / 0.3);
-}
-
-.featured {
-  border: 2px solid hsl(var(--primary) / 0.5);
-  box-shadow: 0 20px 40px -15px hsla(var(--primary), 0.15);
+@media (max-width: 768px) {
+  .featuredWrapper {
+    transform: none;
+  }
 }
 
 .iconWrapper {

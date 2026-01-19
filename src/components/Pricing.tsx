@@ -67,6 +67,8 @@ const itemVariants = {
   },
 };
 
+import SpotlightCard from "./SpotlightCard";
+
 export default function Pricing() {
   return (
     <section id="pricing" className={styles.section}>
@@ -96,34 +98,41 @@ export default function Pricing() {
           {plans.map((plan, index) => (
             <motion.div
               key={index}
-              className={`${styles.card} glass ${plan.featured ? styles.featured : ""}`}
+              className={`${plan.featured ? styles.featuredWrapper : ""}`}
               variants={itemVariants}
             >
-              <div className={styles.iconWrapper} style={{ color: plan.color }}>
-                {plan.icon}
-              </div>
-              <h3 className={styles.planName}>{plan.name}</h3>
-              <div className={styles.priceWrapper}>
-                <span className={styles.currency}>₹</span>
-                <span className={styles.price}>{plan.price}</span>
-                <span className={styles.period}>/project</span>
-              </div>
-              <p className={styles.planDesc}>{plan.description}</p>
+              <SpotlightCard featured={plan.featured}>
+                <div className={styles.pricingInner}>
+                  <div
+                    className={styles.iconWrapper}
+                    style={{ color: plan.color }}
+                  >
+                    {plan.icon}
+                  </div>
+                  <h3 className={styles.planName}>{plan.name}</h3>
+                  <div className={styles.priceWrapper}>
+                    <span className={styles.currency}>₹</span>
+                    <span className={styles.price}>{plan.price}</span>
+                    <span className={styles.period}>/project</span>
+                  </div>
+                  <p className={styles.planDesc}>{plan.description}</p>
 
-              <ul className={styles.featureList}>
-                {plan.features.map((feature, fIndex) => (
-                  <li key={fIndex} className={styles.featureItem}>
-                    <Check size={16} className={styles.checkIcon} />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
+                  <ul className={styles.featureList}>
+                    {plan.features.map((feature, fIndex) => (
+                      <li key={fIndex} className={styles.featureItem}>
+                        <Check size={16} className={styles.checkIcon} />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-              <button
-                className={`btn ${plan.featured ? "btn-primary" : "btn-secondary"} ${styles.cta}`}
-              >
-                Select This Plan
-              </button>
+                  <button
+                    className={`btn ${plan.featured ? "btn-primary" : "btn-secondary"} ${styles.cta}`}
+                  >
+                    Select This Plan
+                  </button>
+                </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </motion.div>
