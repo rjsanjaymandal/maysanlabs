@@ -13,19 +13,19 @@ import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
 
   const height = useTransform(scrollY, [0, 100], [80, 64]);
-  const background = useTransform(
-    scrollY,
-    [0, 100],
-    ["rgba(10, 12, 16, 0)", "rgba(10, 12, 16, 0.85)"],
-  );
-  const border = useTransform(
-    scrollY,
-    [0, 100],
-    ["1px solid rgba(255, 255, 255, 0)", "1px solid rgba(255, 255, 255, 0.1)"],
-  );
+
+  useEffect(() => {
+    const updateScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", updateScroll);
+    updateScroll();
+    return () => window.removeEventListener("scroll", updateScroll);
+  }, []);
 
   // Close mobile menu on resize
   useEffect(() => {
@@ -54,8 +54,10 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
-        style={{ height, background, borderBottom: border }}
-        className={`${styles.navbar} glass`}
+        style={{ height }}
+        className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""} ${
+          isOpen ? styles.menuOpen : ""
+        }`}
       >
         <div className={`container ${styles.container}`}>
           <Link

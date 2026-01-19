@@ -1,39 +1,53 @@
 .section {
-  padding: 6rem 0;
-  background-color: var(--secondary);
-  text-align: center;
+  padding: 8rem 0;
+  background-color: hsla(var(--primary), 0.03);
+  border-top: 1px solid hsla(var(--foreground), 0.05);
+  border-bottom: 1px solid hsla(var(--foreground), 0.05);
 }
 
 .title {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
-.brand {
-  font-size: 3rem;
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  opacity: 0.5;
-  margin-bottom: 4rem;
-  display: block;
+  text-align: center;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 5rem;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+  flex-wrap: wrap;
 }
 
 .item {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 1rem;
+  text-align: center;
 }
 
 .stat {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 0.5rem;
   display: block;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: hsl(var(--foreground));
+  letter-spacing: -0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  color: hsl(var(--muted-foreground));
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    gap: 3rem;
+  }
+  .stat {
+    font-size: 2.5rem;
+  }
 }

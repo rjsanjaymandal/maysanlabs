@@ -8,6 +8,8 @@ import ContactFooter from "@/components/ContactFooter";
 
 import Pricing from "@/components/Pricing";
 
+import FAQ from "@/components/FAQ";
+
 export default function Home() {
   return (
     <main>
@@ -16,6 +18,7 @@ export default function Home() {
       <Problem />
       <Solution />
       <Pricing />
+      <FAQ />
       <SocialProof />
       <TechnicalSpecs />
       <ContactFooter />

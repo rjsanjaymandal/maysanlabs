@@ -7,7 +7,7 @@ import styles from "./Pricing.module.css";
 const plans = [
   {
     name: "Starter",
-    price: "499",
+    price: "49,999",
     description: "Perfect for small projects and solo entrepreneurs.",
     features: [
       "Custom Web Development",
@@ -20,7 +20,7 @@ const plans = [
   },
   {
     name: "Enterprise",
-    price: "1,999",
+    price: "1,49,999",
     description: "Full-scale solutions for growing businesses.",
     features: [
       "Custom CRM/ERP",
@@ -35,7 +35,7 @@ const plans = [
   },
   {
     name: "Secure Cloud",
-    price: "299",
+    price: "24,999",
     description: "Specialized for CA and Legal firms.",
     features: [
       "Bank-level Encryption",
@@ -104,7 +104,7 @@ export default function Pricing() {
               </div>
               <h3 className={styles.planName}>{plan.name}</h3>
               <div className={styles.priceWrapper}>
-                <span className={styles.currency}>$</span>
+                <span className={styles.currency}>₹</span>
                 <span className={styles.price}>{plan.price}</span>
                 <span className={styles.period}>/project</span>
               </div>

@@ -3,106 +3,64 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
+import styles from "./ContactFooter.module.css";
 
 export default function ContactFooter() {
   return (
-    <footer
-      id="contact"
-      className="glass-dark"
-      style={{
-        padding: "8rem 0 4rem",
-        marginTop: "4rem",
-        color: "white",
-      }}
-    >
+    <footer id="contact" className={styles.footer}>
       <div className="container">
-        <div
-          style={{ textAlign: "center", maxWidth: "800px", margin: "0 auto" }}
-        >
+        <div className={styles.header}>
           <motion.h2
-            style={{
-              fontSize: "3.5rem",
-              marginBottom: "1.5rem",
-              letterSpacing: "-0.04em",
-            }}
+            className={styles.title}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Stop renting your technology.
+            Engineering the next
             <br />
-            <span className="text-gradient">Start owning it.</span>
+            <span className="text-gradient">high-tech empire.</span>
           </motion.h2>
 
           <motion.p
-            style={{
-              color: "rgba(255,255,255,0.7)",
-              fontSize: "1.25rem",
-              marginBottom: "3.5rem",
-            }}
+            className={styles.subtitle}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            We build it, set it up, and hand you the keys. The empire is yours.
+            We build the infrastructure, you lead the growth.
           </motion.p>
 
           <motion.div
+            className={styles.ctaWrapper}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <Link
-              href="tel:+919660641530"
-              className="btn btn-primary"
-              style={{ padding: "1.25rem 2.5rem", fontSize: "1.125rem" }}
-            >
+            <Link href="tel:+919660641530" className="btn btn-primary">
               <Phone size={20} />
-              <span>Book a Consulting Call</span>
+              <span>Book Infrastructure Consultation</span>
               <ArrowUpRight size={20} />
             </Link>
           </motion.div>
         </div>
 
-        <div
-          style={{
-            marginTop: "6rem",
-            paddingTop: "3rem",
-            borderTop: "1px solid rgba(255,255,255,0.1)",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "2rem",
-            color: "rgba(255,255,255,0.5)",
-            fontSize: "0.95rem",
-          }}
-        >
+        <div className={styles.bottomGrid}>
           <div>
-            <h4 style={{ color: "white", marginBottom: "1rem" }}>
-              Maysan Labs
-            </h4>
-            <p>Building the next generation of solo-run e-commerce empires.</p>
+            <h4 className={styles.columnHeader}>Maysan Labs</h4>
+            <p>The architects behind modern, automated enterprise systems.</p>
           </div>
 
           <div>
-            <h4 style={{ color: "white", marginBottom: "1rem" }}>Contact</h4>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.5rem",
-              }}
-            >
-              <Link
-                href="tel:+919660641530"
-                style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
-              >
+            <h4 className={styles.columnHeader}>Contact</h4>
+            <div className={styles.linkGroup}>
+              <Link href="tel:+919660641530" className={styles.contactLink}>
                 <Phone size={14} /> +91 9660641530
               </Link>
               <Link
                 href="mailto:contact@maysanlabs.com"
-                style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}
+                className={styles.contactLink}
               >
                 <Mail size={14} /> contact@maysanlabs.com
               </Link>
@@ -110,15 +68,15 @@ export default function ContactFooter() {
           </div>
 
           <div>
-            <h4 style={{ color: "white", marginBottom: "1rem" }}>Location</h4>
-            <p style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <h4 className={styles.columnHeader}>Location</h4>
+            <p className={styles.contactLink}>
               <MapPin size={14} /> Rajasthan, India
             </p>
           </div>
 
-          <div style={{ textAlign: "right" }}>
+          <div className={styles.copyright}>
             <p>© {new Date().getFullYear()} Maysan Labs.</p>
-            <p>Designed for Performance.</p>
+            <p>Built for the Future.</p>
           </div>
         </div>
       </div>
