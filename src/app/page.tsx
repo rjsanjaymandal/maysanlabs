@@ -6,6 +6,8 @@ import SocialProof from "@/components/SocialProof";
 import TechnicalSpecs from "@/components/TechnicalSpecs";
 import ContactFooter from "@/components/ContactFooter";
 
+import Pricing from "@/components/Pricing";
+
 export default function Home() {
   return (
     <main>
@@ -13,6 +15,7 @@ export default function Home() {
       <Hero />
       <Problem />
       <Solution />
+      <Pricing />
       <SocialProof />
       <TechnicalSpecs />
       <ContactFooter />
