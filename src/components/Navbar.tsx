@@ -8,7 +8,7 @@ import {
   useTransform,
   AnimatePresence,
 } from "framer-motion";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, ChevronRight } from "lucide-react";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
@@ -16,7 +16,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
 
-  const height = useTransform(scrollY, [0, 100], [80, 64]);
+  const [activeLink, setActiveLink] = useState("");
 
   useEffect(() => {
     const updateScroll = () => {
@@ -25,6 +25,23 @@ export default function Navbar() {
     window.addEventListener("scroll", updateScroll);
     updateScroll();
     return () => window.removeEventListener("scroll", updateScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["solution", "pricing", "contact"];
+      const current = sections.find((section) => {
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          return rect.top <= 150 && rect.bottom >= 150;
+        }
+        return false;
+      });
+      setActiveLink(current || "");
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Close mobile menu on resize
@@ -54,44 +71,54 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
-        style={{ height }}
         className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""} ${
           isOpen ? styles.menuOpen : ""
         }`}
       >
-        <div className={`container ${styles.container}`}>
-          <Link
-            href="/"
-            className={styles.logo}
-            onClick={() => setIsOpen(false)}
-          >
-            Maysan<span className="text-gradient">Labs</span>
-          </Link>
+        <div className={styles.container}>
+          <div className={styles.logoArea}>
+            <Link
+              href="/"
+              className={styles.logo}
+              onClick={() => setIsOpen(false)}
+            >
+              Maysan<span className="text-gradient">Labs</span>
+            </Link>
+          </div>
 
           {/* Desktop Links */}
           <div className={styles.navLinks}>
             {navLinks.map((link) => (
-              <Link key={link.name} href={link.href} className={styles.link}>
-                {link.name}
-              </Link>
+              <div key={link.name} className={styles.linkWrapper}>
+                <a
+                  href={link.href}
+                  className={`${styles.link} ${activeLink === link.href.replace("#", "") ? styles.activeLink : ""}`}
+                >
+                  {link.name}
+                </a>
+              </div>
             ))}
           </div>
 
           <div className={styles.actions}>
-            <Link
-              href="tel:+919660641530"
-              className={`btn btn-primary ${styles.cta}`}
-            >
-              <Phone size={16} />
-              <span>Call Us</span>
-            </Link>
+            <div className={styles.ctaWrapper}>
+              <Link href="tel:+919660641530" className={styles.cta}>
+                <span>Contact Experts</span>
+              </Link>
+            </div>
 
             <button
               className={styles.mobileToggle}
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle Menu"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              <motion.div
+                initial={false}
+                animate={{ rotate: isOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {isOpen ? <X size={20} /> : <Menu size={20} />}
+              </motion.div>
             </button>
           </div>
         </div>
@@ -101,31 +128,59 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className={`${styles.mobileMenu} glass`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className={styles.mobileMenuWrapper}
+            onClick={() => setIsOpen(false)}
           >
-            <div className={styles.mobileLinks}>
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={styles.mobileLink}
-                  onClick={() => setIsOpen(false)}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className={styles.mobileMenu}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className={styles.mobileLinks}>
+                {navLinks.map((link, i) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + i * 0.1 }}
+                    className={styles.mobileLink}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.name}
+                    <ChevronRight size={18} />
+                  </motion.a>
+                ))}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  style={{ marginTop: "1.5rem" }}
                 >
-                  {link.name}
-                </Link>
-              ))}
-              <Link
-                href="tel:+919660641530"
-                className="btn btn-primary"
-                onClick={() => setIsOpen(false)}
-              >
-                <Phone size={18} />
-                <span>9660641530</span>
-              </Link>
-            </div>
+                  <Link
+                    href="tel:+919660641530"
+                    className="btn btn-primary"
+                    style={{
+                      width: "100%",
+                      borderRadius: "0",
+                      fontFamily: "var(--font-geist-mono)",
+                      fontSize: "0.8rem",
+                      letterSpacing: "0.1em",
+                    }}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Phone size={18} />
+                    <span>9660 641 530</span>
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, MouseEvent } from "react";
+import { motion, useSpring, useTransform, useMotionValue } from "framer-motion";
 import styles from "./SpotlightCard.module.css";
 
 interface SpotlightCardProps {
@@ -15,17 +16,39 @@ export default function SpotlightCard({
   featured = false,
 }: SpotlightCardProps) {
   const divRef = useRef<HTMLDivElement>(null);
-  const [isFocused, setIsFocused] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState(0);
 
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const springConfig = { damping: 25, stiffness: 150 };
+  const rotateX = useSpring(
+    useTransform(y, [-300, 300], [10, -10]),
+    springConfig,
+  );
+  const rotateY = useSpring(
+    useTransform(x, [-300, 300], [-10, 10]),
+    springConfig,
+  );
+
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!divRef.current || isFocused) return;
+    if (!divRef.current) return;
 
     const div = divRef.current;
     const rect = div.getBoundingClientRect();
 
-    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    setPosition({ x: mouseX, y: mouseY });
+
+    // Center-based coordinates for rotation
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    x.set(mouseX - centerX);
+    y.set(mouseY - centerY);
   };
 
   const handleMouseEnter = () => {
@@ -34,15 +57,22 @@ export default function SpotlightCard({
 
   const handleMouseLeave = () => {
     setOpacity(0);
+    x.set(0);
+    y.set(0);
   };
 
   return (
-    <div
+    <motion.div
       ref={divRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={`${styles.card} ${featured ? styles.featured : ""} ${className}`}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+      }}
     >
       <div
         className={styles.spotlight}
@@ -51,7 +81,7 @@ export default function SpotlightCard({
           background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, hsla(var(--primary), 0.15), transparent 40%)`,
         }}
       />
-      {children}
-    </div>
+      <div style={{ transform: "translateZ(50px)" }}>{children}</div>
+    </motion.div>
   );
 }

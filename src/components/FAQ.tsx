@@ -33,15 +33,28 @@ export default function FAQ() {
 
   return (
     <section id="faq" className={styles.section}>
-      <div className="container">
+      <div className={`container ${styles.container}`}>
         <div className={styles.header}>
-          <span className={styles.label}>Support</span>
-          <h2 className={styles.title}>Common Questions</h2>
+          <div className={styles.titleWrapper}>
+            <div className="system-pulse" />
+            <span className={styles.label}>SUPPORT DATABASE</span>
+          </div>
+          <h2 className={styles.title}>System Intelligence</h2>
+          <p className={styles.subtitle}>
+            Frequently asked questions about our infrastructure and process.
+          </p>
         </div>
 
-        <div className={styles.faqList}>
+        <div className={styles.bentoGrid}>
           {faqs.map((faq, index) => (
-            <div key={index} className={`${styles.faqItem} glass`}>
+            <motion.div
+              key={index}
+              className={`${styles.faqItem}`}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
               <button
                 className={styles.question}
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
@@ -51,11 +64,11 @@ export default function FAQ() {
                   animate={{ rotate: openIndex === index ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <ChevronDown size={20} />
+                  <ChevronDown size={20} className={styles.chevron} />
                 </motion.div>
               </button>
 
-              <AnimatePresence>
+              <AnimatePresence mode="wait">
                 {openIndex === index && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
@@ -64,11 +77,12 @@ export default function FAQ() {
                     transition={{ duration: 0.3 }}
                     className={styles.answerWrapper}
                   >
+                    <div className={styles.divider} />
                     <p className={styles.answer}>{faq.answer}</p>
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

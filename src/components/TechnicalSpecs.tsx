@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Cpu, Zap, Shield, Smartphone } from "lucide-react";
 import styles from "./TechnicalSpecs.module.css";
+import SpotlightCard from "./SpotlightCard";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -26,24 +27,29 @@ const itemVariants = {
 export default function TechnicalSpecs() {
   const specs = [
     {
-      title: "MERN Stack",
-      text: "React, Node.js, Express, MongoDB. Industry standard for performance.",
+      title: "Core Stack",
+      text: "MERN Framework (React, Node.js) for ultra-low latency operations.",
       icon: <Cpu size={24} />,
+      size: "col-span-12 md:col-span-4",
     },
     {
-      title: "Next.js 15",
-      text: "Server-side rendering for elite SEO and instant load times.",
+      title: "Next.js 15 Engine",
+      text: "Cutting-edge SSR and partial pre-rendering for unmatched speed and SEO dominance.",
       icon: <Zap size={24} />,
+      size: "col-span-12 md:col-span-8",
+      variant: "featured",
     },
     {
-      title: "Secure Architecture",
-      text: "Enterprise-grade security protocols for all data transactions.",
+      title: "Encrypted Protocol",
+      text: "Bank-level security layers integrated at the core of every transaction.",
       icon: <Shield size={24} />,
+      size: "col-span-12 md:col-span-6",
     },
     {
-      title: "Cloud Native",
-      text: "Optimized for high-availability cloud environments.",
+      title: "Cloud Distribution",
+      text: "High-availability edge network ensuring your tools are always online.",
       icon: <Smartphone size={24} />,
+      size: "col-span-12 md:col-span-6",
     },
   ];
 
@@ -56,15 +62,16 @@ export default function TechnicalSpecs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className={styles.label}>Hardware & Infrastructure</span>
-          <h2 className={styles.title}>Under the Hood</h2>
+          <span className={styles.label}>System Architecture</span>
+          <h2 className={styles.title}>The Engineering Standard</h2>
           <p className={styles.subtitle}>
-            Built for scale. Engineered for absolute control.
+            We don&apos;t just build apps. We engineer robust, enterprise-grade
+            digital foundations.
           </p>
         </motion.div>
 
         <motion.div
-          className={styles.grid}
+          className="bento-grid"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -73,12 +80,16 @@ export default function TechnicalSpecs() {
           {specs.map((spec, index) => (
             <motion.div
               key={index}
-              className={`${styles.card} glass`}
+              className={`${spec.size} bento-item`}
               variants={itemVariants}
             >
-              <div className={styles.iconWrapper}>{spec.icon}</div>
-              <h3 className={styles.cardTitle}>{spec.title}</h3>
-              <p className={styles.cardText}>{spec.text}</p>
+              <SpotlightCard featured={spec.variant === "featured"}>
+                <div className={styles.cardInner}>
+                  <div className={styles.iconWrapper}>{spec.icon}</div>
+                  <h3 className={styles.cardTitle}>{spec.title}</h3>
+                  <p className={styles.cardText}>{spec.text}</p>
+                </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </motion.div>

@@ -14,16 +14,17 @@ import {
   Layout,
 } from "lucide-react";
 import styles from "./Solution.module.css";
+import SpotlightCard from "./SpotlightCard";
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.1,
     },
   },
-};
+} as any;
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -32,11 +33,48 @@ const itemVariants = {
     y: 0,
     transition: { duration: 0.5 },
   },
-};
-
-import SpotlightCard from "./SpotlightCard";
+} as any;
 
 export default function Solution() {
+  const solutions = [
+    {
+      title: "CRM Systems",
+      desc: "Custom relationship management tools built for your specific workflow.",
+      icon: <TrendingUp size={32} />,
+      features: ["Lead Tracking", "Client Portals", "Automated Follow-ups"],
+      size: "col-span-12 md:col-span-8",
+      variant: "featured",
+    },
+    {
+      title: "ERP Solutions",
+      desc: "Centralized enterprise resource planning.",
+      icon: <Layout size={32} />,
+      features: ["Inventory Control", "Mobile Management", "Analytics"],
+      size: "col-span-12 md:col-span-4",
+    },
+    {
+      title: "Web Development",
+      desc: "High-performance, modern websites.",
+      icon: <Store size={32} />,
+      features: ["Next.js Speed", "SEO Optimization", "Responsive"],
+      size: "col-span-12 md:col-span-4",
+    },
+    {
+      title: "Customised AI Tools",
+      desc: "Tailor-made automation and LLM utilities.",
+      icon: <Cpu size={32} />,
+      features: ["LLM Integration", "Workflows", "Data Extraction"],
+      size: "col-span-12 md:col-span-4",
+    },
+    {
+      title: "Cloud Space for CA",
+      desc: "Secure storage for CA & Legal firms.",
+      icon: <ShieldCheck size={32} />,
+      features: ["Encryption", "Document Management", "Client Sharing"],
+      size: "col-span-12 md:col-span-4",
+    },
+  ];
+
   return (
     <section id="solution" className={styles.section}>
       <div className="container">
@@ -47,7 +85,7 @@ export default function Solution() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className={styles.label}>Our Solution</span>
+          <span className={styles.label}>Our Solutions</span>
           <h2 className={styles.title}>The Engineering Excellence</h2>
           <p className={styles.subtitle}>
             Scalable architectures designed for modern digital dominance.
@@ -55,164 +93,34 @@ export default function Solution() {
         </motion.div>
 
         <motion.div
-          className={styles.grid}
+          className="bento-grid"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {/* CRM Systems */}
-          <motion.div variants={itemVariants}>
-            <SpotlightCard>
-              <div className={styles.featureInner}>
-                <div className={styles.iconWrapper}>
-                  <TrendingUp className={styles.mainIcon} size={32} />
+          {solutions.map((sol, index) => (
+            <motion.div
+              key={index}
+              className={`${sol.size} bento-item`}
+              variants={itemVariants}
+            >
+              <SpotlightCard featured={sol.variant === "featured"}>
+                <div className={styles.featureInner}>
+                  <div className={styles.iconWrapper}>{sol.icon}</div>
+                  <h3 className={styles.featureTitle}>{sol.title}</h3>
+                  <p className={styles.featureDesc}>{sol.desc}</p>
+                  <ul className={styles.featureList}>
+                    {sol.features.map((feature, fIndex) => (
+                      <li key={fIndex} className={styles.featureItem}>
+                        <Zap size={14} /> <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className={styles.featureTitle}>CRM Systems</h3>
-                <p className={styles.featureDesc}>
-                  Custom relationship management tools built for your specific
-                  workflow.
-                </p>
-                <ul className={styles.featureList}>
-                  <li className={styles.featureItem}>
-                    <BarChart3 size={18} /> <span>Lead Tracking</span>
-                  </li>
-                  <li className={styles.featureItem}>
-                    <MessageSquareQuote size={18} /> <span>Client Portals</span>
-                  </li>
-                  <li className={styles.featureItem}>
-                    <Zap size={18} /> <span>Automated Follow-ups</span>
-                  </li>
-                </ul>
-              </div>
-            </SpotlightCard>
-          </motion.div>
-
-          {/* ERP Solutions */}
-          <motion.div variants={itemVariants}>
-            <SpotlightCard>
-              <div className={styles.featureInner}>
-                <div
-                  className={styles.iconWrapper}
-                  style={{ background: "hsl(var(--primary) / 0.15)" }}
-                >
-                  <Layout className={styles.mainIcon} size={32} />
-                </div>
-                <h3 className={styles.featureTitle}>ERP Solutions</h3>
-                <p className={styles.featureDesc}>
-                  Centralized enterprise resource planning for seamless
-                  operations.
-                </p>
-                <ul className={styles.featureList}>
-                  <li className={styles.featureItem}>
-                    <ShieldCheck size={18} /> <span>Inventory Control</span>
-                  </li>
-                  <li className={styles.featureItem}>
-                    <Smartphone size={18} /> <span>Mobile Management</span>
-                  </li>
-                  <li className={styles.featureItem}>
-                    <BarChart3 size={18} /> <span>Financial Analytics</span>
-                  </li>
-                </ul>
-              </div>
-            </SpotlightCard>
-          </motion.div>
-
-          {/* Web Development */}
-          <motion.div variants={itemVariants}>
-            <SpotlightCard>
-              <div className={styles.featureInner}>
-                <div
-                  className={styles.iconWrapper}
-                  style={{ background: "hsl(var(--accent) / 0.1)" }}
-                >
-                  <Store className={styles.mainIcon} size={32} />
-                </div>
-                <h3 className={styles.featureTitle}>Web Development</h3>
-                <p className={styles.featureDesc}>
-                  High-performance, modern websites that convert visitors into
-                  customers.
-                </p>
-                <ul className={styles.featureList}>
-                  <li className={styles.featureItem}>
-                    <Zap size={18} /> <span>Next.js Speed</span>
-                  </li>
-                  <li className={styles.featureItem}>
-                    <Search size={18} /> <span>SEO Optimization</span>
-                  </li>
-                  <li className={styles.featureItem}>
-                    <Smartphone size={18} /> <span>Responsive Design</span>
-                  </li>
-                </ul>
-              </div>
-            </SpotlightCard>
-          </motion.div>
-
-          {/* Custom AI Tools */}
-          <motion.div variants={itemVariants}>
-            <SpotlightCard>
-              <div className={styles.featureInner}>
-                <div
-                  className={styles.iconWrapper}
-                  style={{
-                    background: "hsl(var(--accent) / 0.1)",
-                    color: "hsl(var(--accent))",
-                  }}
-                >
-                  <Cpu className={styles.mainIcon} size={32} />
-                </div>
-                <h3 className={styles.featureTitle}>Customised AI Tools</h3>
-                <p className={styles.featureDesc}>
-                  Tailor-made automation scripts and AI-driven internal
-                  utilities.
-                </p>
-                <ul className={styles.featureList}>
-                  <li className={styles.featureItem}>
-                    <Cpu size={18} /> <span>LLM Integration</span>
-                  </li>
-                  <li className={styles.featureItem}>
-                    <Zap size={18} /> <span>Workflow Automation</span>
-                  </li>
-                  <li className={styles.featureItem}>
-                    <Search size={18} /> <span>Data Extraction</span>
-                  </li>
-                </ul>
-              </div>
-            </SpotlightCard>
-          </motion.div>
-
-          {/* CA Cloud Space */}
-          <motion.div variants={itemVariants}>
-            <SpotlightCard>
-              <div className={styles.featureInner}>
-                <div
-                  className={styles.iconWrapper}
-                  style={{
-                    background: "hsl(var(--primary) / 0.1)",
-                    color: "hsl(var(--primary))",
-                  }}
-                >
-                  <ShieldCheck className={styles.mainIcon} size={32} />
-                </div>
-                <h3 className={styles.featureTitle}>Cloud Space for CA</h3>
-                <p className={styles.featureDesc}>
-                  Secure, encrypted cloud storage designed specifically for CA
-                  firms.
-                </p>
-                <ul className={styles.featureList}>
-                  <li className={styles.featureItem}>
-                    <ShieldCheck size={18} /> <span>Bank-level Encryption</span>
-                  </li>
-                  <li className={styles.featureItem}>
-                    <Layout size={18} /> <span>Document Management</span>
-                  </li>
-                  <li className={styles.featureItem}>
-                    <Smartphone size={18} /> <span>Easy Client Sharing</span>
-                  </li>
-                </ul>
-              </div>
-            </SpotlightCard>
-          </motion.div>
+              </SpotlightCard>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

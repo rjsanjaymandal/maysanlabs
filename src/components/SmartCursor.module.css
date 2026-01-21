@@ -1,0 +1,32 @@
+.cursor {
+  position: fixed;
+  top: -10px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  background: hsla(var(--primary), 0.3);
+  border: 1px solid hsla(var(--primary), 0.5);
+  border-radius: 0;
+  pointer-events: none;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: screen;
+  backdrop-filter: blur(2px);
+  transition: background 0.3s ease, border 0.3s ease;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  background: hsl(var(--primary));
+  border-radius: 0;
+  box-shadow: 0 0 10px hsl(var(--primary));
+}
+
+@media (max-width: 1024px) {
+  .cursor {
+    display: none;
+  }
+}

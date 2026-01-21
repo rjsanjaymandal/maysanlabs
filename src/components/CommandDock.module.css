@@ -1,0 +1,140 @@
+.dockWrapper {
+  position: fixed;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.dock {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  border-radius: 0;
+  box-shadow: 
+    0 10px 40px -10px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(204, 255, 0, 0.05);
+  pointer-events: auto;
+}
+
+.dockContent {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+.dockLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  background: hsl(var(--primary));
+  border-radius: 0;
+  box-shadow: 0 0 10px hsl(var(--primary));
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.statusText {
+  font-family: var(--font-geist-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: hsl(var(--primary));
+  letter-spacing: 0.05em;
+}
+
+.navGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dockItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dockItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: hsl(var(--primary));
+  transform: translateY(-2px);
+}
+
+.itemLabel {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dockRight {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 0.5rem;
+}
+
+.terminalBtn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0;
+  transition: all 0.2s ease;
+}
+
+.terminalBtn:hover {
+  color: hsl(var(--primary));
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+@media (max-width: 768px) {
+  .dockWrapper {
+    bottom: 1rem;
+  }
+  .dock {
+    padding: 0.25rem;
+    border-radius: 0;
+    width: auto;
+    max-width: calc(100vw - 2rem);
+    background: rgba(10, 10, 10, 0.95);
+  }
+  .dockContent {
+    gap: 0.25rem;
+    padding: 0;
+  }
+  .dockLeft, .dockRight, .itemLabel {
+    display: none;
+  }
+  .navGroup {
+    gap: 0.125rem;
+  }
+  .dockItem {
+    padding: 0.875rem 1.125rem;
+    border-radius: 0;
+  }
+  .dockItem svg {
+    width: 18px;
+    height: 18px;
+  }
+}

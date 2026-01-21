@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Check, Zap, Rocket, Shield } from "lucide-react";
 import styles from "./Pricing.module.css";
+import SpotlightCard from "./SpotlightCard";
 
 const plans = [
   {
@@ -56,7 +57,7 @@ const containerVariants = {
       staggerChildren: 0.1,
     },
   },
-};
+} as any;
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -65,9 +66,7 @@ const itemVariants = {
     y: 0,
     transition: { duration: 0.5 },
   },
-};
-
-import SpotlightCard from "./SpotlightCard";
+} as any;
 
 export default function Pricing() {
   return (
@@ -89,52 +88,111 @@ export default function Pricing() {
         </motion.div>
 
         <motion.div
-          className={styles.grid}
+          className={styles.bentoGrid}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {plans.map((plan, index) => (
-            <motion.div
-              key={index}
-              className={`${plan.featured ? styles.featuredWrapper : ""}`}
-              variants={itemVariants}
-            >
-              <SpotlightCard featured={plan.featured}>
-                <div className={styles.pricingInner}>
-                  <div
-                    className={styles.iconWrapper}
-                    style={{ color: plan.color }}
-                  >
-                    {plan.icon}
-                  </div>
-                  <h3 className={styles.planName}>{plan.name}</h3>
-                  <div className={styles.priceWrapper}>
-                    <span className={styles.currency}>₹</span>
-                    <span className={styles.price}>{plan.price}</span>
-                    <span className={styles.period}>/project</span>
-                  </div>
-                  <p className={styles.planDesc}>{plan.description}</p>
-
-                  <ul className={styles.featureList}>
-                    {plan.features.map((feature, fIndex) => (
-                      <li key={fIndex} className={styles.featureItem}>
-                        <Check size={16} className={styles.checkIcon} />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <button
-                    className={`btn ${plan.featured ? "btn-primary" : "btn-secondary"} ${styles.cta}`}
-                  >
-                    Select This Plan
-                  </button>
+          {/* Starter Plan */}
+          <motion.div className={styles.bentoItemSmall} variants={itemVariants}>
+            <SpotlightCard>
+              <div className={styles.pricingInner}>
+                <div
+                  className={styles.iconWrapper}
+                  style={{ color: plans[0].color }}
+                >
+                  {plans[0].icon}
                 </div>
-              </SpotlightCard>
-            </motion.div>
-          ))}
+                <h3 className={styles.planName}>{plans[0].name}</h3>
+                <div className={styles.priceWrapper}>
+                  <span className={styles.currency}>₹</span>
+                  <span className={styles.price}>{plans[0].price}</span>
+                </div>
+                <ul className={styles.featureList}>
+                  {plans[0].features.map((f, i) => (
+                    <li key={i} className={styles.featureItem}>
+                      <Check size={14} className={styles.checkIcon} />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <button className="btn btn-secondary w-full">
+                  Select Plan
+                </button>
+              </div>
+            </SpotlightCard>
+          </motion.div>
+
+          {/* Enterprise Plan (Featured - Large) */}
+          <motion.div className={styles.bentoItemLarge} variants={itemVariants}>
+            <SpotlightCard featured>
+              <div className={`${styles.pricingInner} ${styles.innerLarge}`}>
+                <div className={styles.featuredBadge}>
+                  MOST POPULAR ARCHITECTURE
+                </div>
+                <div className={styles.largeContent}>
+                  <div className={styles.largeLeft}>
+                    <div
+                      className={styles.iconWrapper}
+                      style={{ color: plans[1].color }}
+                    >
+                      {plans[1].icon}
+                    </div>
+                    <h3 className={styles.planName}>{plans[1].name}</h3>
+                    <div className={styles.priceWrapper}>
+                      <span className={styles.currency}>₹</span>
+                      <span className={styles.price}>{plans[1].price}</span>
+                    </div>
+                    <p className={styles.planDesc}>{plans[1].description}</p>
+                    <button className="btn btn-primary">
+                      Implement This Stack
+                    </button>
+                  </div>
+                  <div className={styles.largeRight}>
+                    <ul className={styles.featureListGrid}>
+                      {plans[1].features.map((f, i) => (
+                        <li key={i} className={styles.featureItemBold}>
+                          <Zap size={16} className={styles.zapIcon} />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </SpotlightCard>
+          </motion.div>
+
+          {/* Secure Cloud Plan */}
+          <motion.div className={styles.bentoItemSmall} variants={itemVariants}>
+            <SpotlightCard>
+              <div className={styles.pricingInner}>
+                <div
+                  className={styles.iconWrapper}
+                  style={{ color: plans[2].color }}
+                >
+                  {plans[2].icon}
+                </div>
+                <h3 className={styles.planName}>{plans[2].name}</h3>
+                <div className={styles.priceWrapper}>
+                  <span className={styles.currency}>₹</span>
+                  <span className={styles.price}>{plans[2].price}</span>
+                </div>
+                <ul className={styles.featureList}>
+                  {plans[2].features.map((f, i) => (
+                    <li key={i} className={styles.featureItem}>
+                      <Check size={14} className={styles.checkIcon} />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <button className="btn btn-secondary w-full">
+                  Select Plan
+                </button>
+              </div>
+            </SpotlightCard>
+          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -18,15 +18,27 @@ export const metadata: Metadata = {
     "Launch a powerful e-commerce brand alone with our MERN stack platform and AI automation tools.",
 };
 
+import CommandDock from "@/components/CommandDock";
+
+import SmartCursor from "@/components/SmartCursor";
+import SmoothScroll from "@/components/SmoothScroll";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable}`}
+        suppressHydrationWarning
+      >
+        <div className="noise-overlay" />
+        <SmartCursor />
+
+        <SmoothScroll>{children}</SmoothScroll>
+        <CommandDock />
       </body>
     </html>
   );
