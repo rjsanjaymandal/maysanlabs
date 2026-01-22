@@ -21,14 +21,15 @@
 }
 
 .title {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(2.25rem, 10vw, 6rem);
   font-weight: 950;
-  line-height: 0.9;
-  letter-spacing: -0.06em;
+  line-height: 1;
+  letter-spacing: -0.04em;
   text-transform: uppercase;
   color: hsl(var(--foreground));
   margin-bottom: 3rem;
   font-family: var(--font-geist-mono);
+  overflow-wrap: break-word;
 }
 
 .subtitle {

@@ -199,18 +199,14 @@
 
 .headline {
   font-size: var(--font-size-hero);
-  font-weight: 900;
-  line-height: 1;
-  margin-bottom: 2rem;
+  font-weight: 950;
+  line-height: 1.1;
+  margin-bottom: 2.5rem;
   letter-spacing: -0.06em;
   color: hsl(var(--foreground));
-  font-family: var(--font-geist-mono), var(--font-mono), monospace;
+  font-family: var(--font-geist-mono);
   text-transform: uppercase;
-  overflow-wrap: normal;
-  word-break: normal;
-  white-space: normal;
-  width: 100%;
-  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .subheadline {

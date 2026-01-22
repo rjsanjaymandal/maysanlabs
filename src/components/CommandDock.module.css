@@ -208,11 +208,11 @@
     gap: 0.125rem;
   }
   .dockItem {
-    padding: 0.875rem 1.125rem;
+    padding: 1rem 1.25rem;
     border-radius: 0;
   }
   .dockItem svg {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
   }
 }
