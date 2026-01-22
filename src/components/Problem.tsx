@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { AlertTriangle, Users, Database } from "lucide-react";
 import styles from "./Problem.module.css";
 import SpotlightCard from "./SpotlightCard";
+import DataMarker from "./DataMarker";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -57,7 +58,9 @@ export default function Problem() {
           viewport={{ once: true }}
         >
           <span className={styles.label}>The Diagnostic</span>
-          <h2 className={styles.title}>Systemic Infrastructure Failures</h2>
+          <h2 className={`${styles.title} hollow-text`}>
+            Systemic Infrastructure Failures
+          </h2>
           <p className={styles.description}>
             We identify the hidden fractures in your digital foundation before
             they become critical failures.
@@ -79,6 +82,7 @@ export default function Problem() {
             >
               <SpotlightCard featured={prob.variant === "featured"}>
                 <div className={styles.cardInner}>
+                  <DataMarker label={`PRB_0${index + 1}`} position="tr" />
                   <div className={styles.iconWrapper}>{prob.icon}</div>
                   <h3 className={styles.cardTitle}>{prob.title}</h3>
                   <p className={styles.cardText}>{prob.text}</p>

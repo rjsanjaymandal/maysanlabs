@@ -11,12 +11,15 @@ import {
 import { Phone, Menu, X, ChevronRight } from "lucide-react";
 import styles from "./Navbar.module.css";
 
+import { usePathname } from "next/navigation";
+
+const MotionLink = motion(Link);
+
 export default function Navbar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { scrollY } = useScroll();
-
-  const [activeLink, setActiveLink] = useState("");
 
   useEffect(() => {
     const updateScroll = () => {
@@ -27,22 +30,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", updateScroll);
   }, []);
 
+  // Close mobile menu on route change
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["solution", "pricing", "contact"];
-      const current = sections.find((section) => {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          return rect.top <= 150 && rect.bottom >= 150;
-        }
-        return false;
-      });
-      setActiveLink(current || "");
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    setIsOpen(false);
+  }, [pathname]);
 
   // Close mobile menu on resize
   useEffect(() => {
@@ -63,10 +54,16 @@ export default function Navbar() {
   }, [isOpen]);
 
   const navLinks = [
-    { name: "Services", href: "#solution" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Contact", href: "#contact" },
+    { name: "Services", href: "/solutions" },
+    { name: "About", href: "/about" },
+    { name: "Insights", href: "/insights" },
+    { name: "Pricing", href: "/#pricing" },
   ];
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   return (
     <>
@@ -90,12 +87,12 @@ export default function Navbar() {
           <div className={styles.navLinks}>
             {navLinks.map((link) => (
               <div key={link.name} className={styles.linkWrapper}>
-                <a
+                <Link
                   href={link.href}
-                  className={`${styles.link} ${activeLink === link.href.replace("#", "") ? styles.activeLink : ""}`}
+                  className={`${styles.link} ${isActive(link.href) ? styles.activeLink : ""}`}
                 >
                   {link.name}
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -144,7 +141,7 @@ export default function Navbar() {
             >
               <div className={styles.mobileLinks}>
                 {navLinks.map((link, i) => (
-                  <motion.a
+                  <MotionLink
                     key={link.name}
                     href={link.href}
                     initial={{ opacity: 0, x: -20 }}
@@ -155,7 +152,7 @@ export default function Navbar() {
                   >
                     {link.name}
                     <ChevronRight size={18} />
-                  </motion.a>
+                  </MotionLink>
                 ))}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}

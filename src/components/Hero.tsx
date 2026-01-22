@@ -4,6 +4,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import styles from "./Hero.module.css";
+import GlitchText from "./GlitchText";
+import DataMarker from "./DataMarker";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -35,7 +37,7 @@ export default function Hero() {
     <section className={styles.hero}>
       {/* Neo-Monolith Background Layer */}
       <motion.div
-        className={styles.dataGrid}
+        className={styles.gridOverlay}
         style={{ y: yParallax, opacity: 0.15 }}
       />
 
@@ -52,10 +54,19 @@ export default function Hero() {
           animate="visible"
           variants={containerVariants}
         >
+          <motion.div className={styles.objective} variants={itemVariants}>
+            <span className={styles.objLabel}>MISSION_OBJ:</span>
+            <span className={styles.objValue}>EMPIRE_EXPANSION_v4.0</span>
+          </motion.div>
+
+          <DataMarker label="SYS_BOOT_01" position="tr" />
+
           <motion.h1 className={styles.headline} variants={itemVariants}>
-            MODULAR_SYSTEMS
+            <GlitchText text="MODULAR_SYSTEMS" />
             <br />
-            <span className={styles.accentText}>INDUSTRIAL_SCALE</span>
+            <span className={`${styles.accentText} hollow-text`}>
+              <GlitchText text="INDUSTRIAL_SCALE" glitchInterval={5000} />
+            </span>
           </motion.h1>
 
           <motion.p className={styles.subheadline} variants={itemVariants}>

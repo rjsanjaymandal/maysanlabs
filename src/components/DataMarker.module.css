@@ -1,0 +1,23 @@
+.marker {
+  position: absolute;
+  padding: 0.25rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: hsla(var(--foreground), 0.3);
+  background: hsla(var(--background), 0.8);
+  border: 1px solid hsla(var(--foreground), 0.1);
+  pointer-events: none;
+  z-index: 10;
+  text-transform: uppercase;
+}
+
+.tl { top: 0; left: 0; border-top: none; border-left: none; }
+.tr { top: 0; right: 0; border-top: none; border-right: none; }
+.bl { bottom: 0; left: 0; border-bottom: none; border-left: none; }
+.br { bottom: 0; right: 0; border-bottom: none; border-right: none; }
+
+[class*="marker"]:hover .label {
+  color: hsl(var(--primary));
+}

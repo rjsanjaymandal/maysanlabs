@@ -1,0 +1,95 @@
+.overlayWrapper {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.1) 50%
+  );
+  background-size: 100% 4px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.crtFlicker {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 16, 16, 0.05);
+  opacity: 0;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.05; }
+  5% { opacity: 0.02; }
+  10% { opacity: 0.1; }
+  15% { opacity: 0.05; }
+  25% { opacity: 0.02; }
+  35% { opacity: 0.1; }
+}
+
+.cornerInfo {
+  position: absolute;
+  top: 100px;
+  right: 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid hsla(var(--primary), 0.2);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  pointer-events: none;
+}
+
+.infoLine {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.label {
+  color: hsla(var(--foreground), 0.4);
+}
+
+.value {
+  color: hsl(var(--foreground));
+  font-weight: 700;
+}
+
+.statusLine {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid hsla(var(--foreground), 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.statusDot {
+  width: 5px;
+  height: 5px;
+  background: hsl(var(--primary));
+  box-shadow: 0 0 8px hsl(var(--primary));
+}
+
+.statusText {
+  color: hsl(var(--primary));
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .cornerInfo {
+    display: none;
+  }
+}

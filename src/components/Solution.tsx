@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import styles from "./Solution.module.css";
 import SpotlightCard from "./SpotlightCard";
+import DataMarker from "./DataMarker";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -86,7 +87,9 @@ export default function Solution() {
           transition={{ duration: 0.5 }}
         >
           <span className={styles.label}>Our Solutions</span>
-          <h2 className={styles.title}>The Engineering Excellence</h2>
+          <h2 className={`${styles.title} hollow-text`}>
+            The Engineering Excellence
+          </h2>
           <p className={styles.subtitle}>
             Scalable architectures designed for modern digital dominance.
           </p>
@@ -107,6 +110,7 @@ export default function Solution() {
             >
               <SpotlightCard featured={sol.variant === "featured"}>
                 <div className={styles.featureInner}>
+                  <DataMarker label={`SOL_0${index + 1}`} position="br" />
                   <div className={styles.iconWrapper}>{sol.icon}</div>
                   <h3 className={styles.featureTitle}>{sol.title}</h3>
                   <p className={styles.featureDesc}>{sol.desc}</p>

@@ -2,22 +2,23 @@
   position: relative;
   overflow: hidden;
   border-radius: 0;
-  border: 1px solid hsla(var(--foreground), 0.05);
-  background: hsla(var(--card), 0.5);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid hsla(var(--foreground), 0.08);
+  background: hsla(var(--card), 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   height: 100%;
-  transition: border-color 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card:hover {
-  border-color: hsla(var(--primary), 0.4);
+  border-color: hsla(var(--primary), 0.3);
+  transform: translateY(-2px);
+  background: hsla(var(--card), 0.5);
 }
 
 .featured {
-  background: hsla(var(--primary), 0.08);
-  border-color: hsla(var(--primary), 0.4);
-  box-shadow: 0 0 20px -5px hsla(var(--primary), 0.2);
+  background: hsla(var(--primary), 0.05);
+  border-color: hsla(var(--primary), 0.3);
 }
 
 .spotlight {

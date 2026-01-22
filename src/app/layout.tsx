@@ -16,12 +16,25 @@ export const metadata: Metadata = {
   title: "Maysan Labs | One-Person Empire E-commerce Stack",
   description:
     "Launch a powerful e-commerce brand alone with our MERN stack platform and AI automation tools.",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Maysan Labs",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+};
+
+export const viewport = {
+  themeColor: "#ccff00",
 };
 
 import CommandDock from "@/components/CommandDock";
 
 import SmartCursor from "@/components/SmartCursor";
 import SmoothScroll from "@/components/SmoothScroll";
+import TacticalOverlay from "@/components/TacticalOverlay";
 
 export default function RootLayout({
   children,
@@ -35,6 +48,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <div className="noise-overlay" />
+        <TacticalOverlay />
         <SmartCursor />
 
         <SmoothScroll>{children}</SmoothScroll>

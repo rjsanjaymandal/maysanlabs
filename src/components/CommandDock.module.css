@@ -103,12 +103,90 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
+.activeBtn {
+  color: hsl(var(--primary)) !important;
+  background: rgba(var(--primary), 0.1) !important;
+  box-shadow: inset 0 0 10px hsla(var(--primary), 0.1);
+}
+
+.statusPanel {
+  position: absolute;
+  bottom: calc(100% + 1rem);
+  right: 0;
+  width: 300px;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid hsla(var(--primary), 0.3);
+  padding: 1.25rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px hsla(var(--primary), 0.1);
+  font-family: var(--font-mono);
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.panelTitle {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: hsla(var(--foreground), 0.4);
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: hsla(var(--foreground), 0.3);
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.closeBtn:hover {
+  color: hsl(var(--primary));
+}
+
+.panelGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.panelItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemTag {
+  font-size: 0.65rem;
+  color: hsla(var(--foreground), 0.4);
+}
+
+.itemValue {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+}
+
 @keyframes pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.5; transform: scale(1.2); }
 }
 
 @media (max-width: 768px) {
+  .statusPanel {
+    width: 250px;
+    right: 50%;
+    transform: translateX(50%);
+    bottom: calc(100% + 0.5rem);
+  }
+
   .dockWrapper {
     bottom: 1rem;
   }

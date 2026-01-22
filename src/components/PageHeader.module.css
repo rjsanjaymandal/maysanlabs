@@ -1,0 +1,60 @@
+.headerSection {
+  padding: 12rem 0 8rem;
+  background: hsl(var(--background));
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  max-width: 800px;
+}
+
+.label {
+  display: block;
+  font-family: var(--font-mono);
+  color: hsl(var(--primary));
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  font-weight: 800;
+}
+
+.title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 950;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  color: hsl(var(--foreground));
+  margin-bottom: 3rem;
+  font-family: var(--font-geist-mono);
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: hsla(var(--foreground), 0.5);
+  line-height: 1.6;
+  max-width: 600px;
+  font-family: var(--font-mono);
+}
+
+.bottomBorder {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    hsla(var(--foreground), 0.1) 10%, 
+    hsla(var(--foreground), 0.1) 90%, 
+    transparent
+  );
+}
+
+@media (max-width: 768px) {
+  .headerSection {
+    padding: 8rem 0 4rem;
+  }
+}

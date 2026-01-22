@@ -16,6 +16,7 @@ import styles from "./CommandDock.module.css";
 export default function CommandDock() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [showStatus, setShowStatus] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,10 +34,10 @@ export default function CommandDock() {
   }, [lastScrollY]);
 
   const dockItems = [
-    { icon: <LayoutGrid size={20} />, label: "Grid", href: "#solution" },
-    { icon: <Cpu size={20} />, label: "Specs", href: "#specs" },
-    { icon: <CreditCard size={20} />, label: "Rates", href: "#pricing" },
-    { icon: <MessageSquare size={20} />, label: "Comms", href: "#contact" },
+    { icon: <LayoutGrid size={20} />, label: "Grid", href: "/solutions" },
+    { icon: <Cpu size={20} />, label: "Intel", href: "/about" },
+    { icon: <MessageSquare size={20} />, label: "Feed", href: "/insights" },
+    { icon: <CreditCard size={20} />, label: "Rates", href: "/#pricing" },
   ];
 
   return (
@@ -70,11 +71,52 @@ export default function CommandDock() {
               </div>
 
               <div className={styles.dockRight}>
-                <button className={styles.terminalBtn}>
+                <button
+                  className={`${styles.terminalBtn} ${showStatus ? styles.activeBtn : ""}`}
+                  onClick={() => setShowStatus(!showStatus)}
+                >
                   <TerminalIcon size={18} />
                 </button>
               </div>
             </div>
+
+            {/* Status Panel Overlay */}
+            <AnimatePresence>
+              {showStatus && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  className={styles.statusPanel}
+                >
+                  <div className={styles.panelHeader}>
+                    <span className={styles.panelTitle}>
+                      CORE_PROCESS_STATUS
+                    </span>
+                    <button
+                      onClick={() => setShowStatus(false)}
+                      className={styles.closeBtn}
+                    >
+                      <ChevronUp size={14} />
+                    </button>
+                  </div>
+                  <div className={styles.panelGrid}>
+                    <div className={styles.panelItem}>
+                      <span className={styles.itemTag}>LOAD</span>
+                      <span className={styles.itemValue}>0.42_ms</span>
+                    </div>
+                    <div className={styles.panelItem}>
+                      <span className={styles.itemTag}>UPTIME</span>
+                      <span className={styles.itemValue}>99.98%</span>
+                    </div>
+                    <div className={styles.panelItem}>
+                      <span className={styles.itemTag}>CLIENT_ID</span>
+                      <span className={styles.itemValue}>ALPHA_V1</span>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         )}
       </AnimatePresence>
