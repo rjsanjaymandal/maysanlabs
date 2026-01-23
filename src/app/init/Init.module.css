@@ -162,4 +162,7 @@
     height: 350px;
     padding: 1rem;
   }
+  .input {
+    font-size: 16px !important;
+  }
 }

@@ -229,6 +229,10 @@
   .terminalContent {
     padding: 1.5rem;
   }
+  .entryHeader {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
 }
 
 @media (max-width: 768px) {

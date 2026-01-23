@@ -239,6 +239,9 @@
 }
 
 @media (max-width: 768px) {
+  .headline {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
   .hero { 
     padding: 6rem 0 calc(var(--dock-height) + 2rem); 
     text-align: left; 
@@ -257,6 +260,9 @@
     margin-bottom: 2rem;
     font-size: 0.7rem;
     padding: 0.5rem 1rem;
+  }
+  .input {
+    font-size: 16px !important;
   }
   .scrollIndicator, .deploymentLogs {
     display: none;

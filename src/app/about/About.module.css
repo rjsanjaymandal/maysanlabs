@@ -91,3 +91,9 @@
     gap: 2rem;
   }
 }
+
+@media (max-width: 768px) {
+  .manifestoTitle {
+    font-size: 1.75rem;
+  }
+}

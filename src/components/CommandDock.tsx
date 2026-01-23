@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   LayoutGrid,
   Shield,
@@ -15,11 +16,19 @@ import {
 import styles from "./CommandDock.module.css";
 
 export default function CommandDock() {
+  const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showStatus, setShowStatus] = useState(false);
 
+  // Hide dock on terminal/init page
+  const isTerminalPage = pathname === "/init";
+
   useEffect(() => {
+    if (isTerminalPage) {
+      setIsVisible(false);
+      return;
+    }
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       if (currentScrollY > lastScrollY && currentScrollY > 100) {

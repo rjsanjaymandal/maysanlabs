@@ -93,6 +93,42 @@ export default function RootLayout({
         <TacticalOverlay />
         <SmartCursor />
 
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Maysan Labs",
+              url: "https://maysanlabs.com",
+              logo: "https://maysanlabs.com/logo.png",
+              description:
+                "Architecting the future of global commerce with scalable SaaS infrastructure and autonomous operational tools.",
+              sameAs: [
+                "https://twitter.com/maysanlabs",
+                "https://github.com/maysanlabs",
+              ],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Maysan Labs",
+              url: "https://maysanlabs.com",
+              potentialAction: {
+                "@type": "SearchAction",
+                target:
+                  "https://maysanlabs.com/insights?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
+
         <SmoothScroll>{children}</SmoothScroll>
         <CommandDock />
       </body>
