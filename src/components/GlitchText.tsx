@@ -34,13 +34,13 @@ export default function GlitchText({
           .join(""),
       );
 
-      iterations += 1;
+      iterations += text.length > 20 ? 2 : 1; // Faster for long strings
       if (iterations > text.length) {
         clearInterval(interval);
         setDisplayText(text);
         setIsGlitching(false);
       }
-    }, 50);
+    }, 40);
 
     return () => clearInterval(interval);
   }, [text]);

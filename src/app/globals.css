@@ -1,48 +1,48 @@
 :root {
-  /* Neo-Monolith: Industrial Precision */
+  /* Neo-Monolith: Industrial Precision (Enterprise Refinement) */
   --background: 0 0% 0%;          /* Pitch Black */
   --foreground: 0 0% 100%;        /* Pure White */
 
-  /* Hyper-Accent */
-  --primary: 72 100% 50%;         /* Electric Lime */
+  /* Tactical Polish Palette */
+  --primary: 82 85% 55%;          /* Tactical Lime: More sophisticated, better contrast */
   --primary-foreground: 0 0% 0%;
 
-  --secondary: 0 0% 7%;           /* Deep Charcoal */
+  --secondary: 0 0% 5%;           /* Even deeper charcoal */
   --secondary-foreground: 0 0% 90%;
 
-  --accent: 72 100% 50%;
+  --accent: 82 85% 55%;
   --accent-foreground: 0 0% 0%;
 
   --highlight: 0 0% 100%;
 
-  --muted: 0 0% 12%;
-  --muted-foreground: 0 0% 60%;
+  --muted: 0 0% 8%;
+  --muted-foreground: 0 0% 50%;   /* Lower visibility for secondary data */
 
-  --border: 0 0% 15%;
-  --input: 0 0% 10%;
-  --ring: 72 100% 50%;
+  --border: 0 0% 12%;
+  --input: 0 0% 8%;
+  --ring: 82 85% 55%;
 
-  --card: 0 0% 3%;
+  --card: 0 0% 4%;
   --card-foreground: 0 0% 95%;
 
-  --radius: 0;               /* Hard corners for Neo-Monolith feel */
+  --radius: 0;               /* Maintain industrial hard corners */
 
   /* Tactical Textures */
-  --scanline-opacity: 0.05;
-  --grid-size: 40px;
+  --scanline-opacity: 0.03;  /* Subtle refinement */
+  --grid-size: 60px;         /* Larger, cleaner grid */
 
-  /* Fluid Typography Scale - Refined for Long Industrial Strings */
-  --font-size-hero: clamp(2.5rem, 12vw, 7.5rem);
-  --font-size-h1: clamp(2rem, 10vw, 4.5rem);
-  --font-size-h2: clamp(1.75rem, 8vw, 3rem);
-  --font-size-body: clamp(0.875rem, 2vw, 1.125rem);
+  /* Fluid Typography Scale - Tier 1 Enterprise Standards */
+  --font-size-hero: clamp(2.5rem, 10vw, 6.5rem); /* Slightly more controlled */
+  --font-size-h1: clamp(2rem, 8vw, 4rem);
+  --font-size-h2: clamp(1.5rem, 6vw, 2.5rem);
+  --font-size-body: clamp(0.875rem, 1.5vw, 1.05rem);
   
   /* Responsive Spacing */
-  --section-padding-y: clamp(2.5rem, 10vh, 10rem);
-  --container-padding-x: clamp(1rem, 5vw, 2rem);
+  --section-padding-y: clamp(4rem, 12vh, 12rem);
+  --container-padding-x: clamp(1.5rem, 5vw, 3rem);
   
-  /* Safe Areas for Tactical Overlays */
-  --dock-height: 80px;
+  /* Safe Areas */
+  --dock-height: 84px;
 }
 
 @media (max-width: 768px) {
@@ -155,15 +155,22 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: 1.1;
+  line-height: 1.05;
   font-weight: 900;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: hsl(var(--foreground));
   font-family: var(--font-geist-mono), var(--font-mono), monospace;
   text-transform: uppercase;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  hyphens: auto;
+}
+
+h1 {
+  letter-spacing: -0.04em;
+}
+
+h2 {
+  letter-spacing: -0.02em;
 }
 
 .text-gradient {

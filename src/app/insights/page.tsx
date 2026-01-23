@@ -119,7 +119,7 @@ export default function InsightsPage() {
                     <div className={styles.dot} />
                   </div>
                   <div className={styles.headerText}>
-                    STREAM_PROTOCOL_v4.2 // VIEW: TERMINAL_READER
+                    STREAM_PROTOCOL // VIEW: TERMINAL_READER
                   </div>
                 </div>
                 <div className={styles.terminalContent}>

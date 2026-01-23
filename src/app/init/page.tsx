@@ -109,7 +109,7 @@ export default function InitPage() {
               <div className={styles.control} />
             </div>
             <div className={styles.terminalTitle}>
-              <Terminal size={14} /> <span>PROJECT_INITIALIZATION_v4.2</span>
+              <Terminal size={14} /> <span>PROJECT_INITIALIZATION</span>
             </div>
           </div>
 

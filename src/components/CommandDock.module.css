@@ -10,15 +10,30 @@
 }
 
 .dock {
-  background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(20px) saturate(150%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.5rem;
+  background: hsla(var(--background), 0.8);
+  backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid hsla(var(--primary), 0.15);
+  padding: 0.35rem;
   border-radius: 0;
   box-shadow: 
-    0 10px 40px -10px rgba(0, 0, 0, 0.8),
-    0 0 20px rgba(204, 255, 0, 0.05);
+    0 15px 50px -12px rgba(0, 0, 0, 0.9),
+    0 0 30px hsla(var(--primary), 0.05),
+    inset 0 1px 1px hsla(var(--foreground), 0.05);
   pointer-events: auto;
+  position: relative;
+}
+
+.dock::before {
+  content: "UPLINK_SECURE";
+  position: absolute;
+  top: -10px;
+  right: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  color: hsla(var(--primary), 0.4);
+  background: black;
+  padding: 0 0.5rem;
+  letter-spacing: 0.1em;
 }
 
 .dockContent {

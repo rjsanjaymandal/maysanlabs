@@ -57,10 +57,10 @@ export default function Hero() {
           <DataMarker label="SYS_BOOT_01" position="tr" />
 
           <motion.h1 className={styles.headline} variants={itemVariants}>
-            <GlitchText text="MODULAR_SYSTEMS" />
+            <GlitchText text="CORE_OPERATING_SYSTEMS" glitchInterval={8000} />
             <br />
             <span className={`${styles.accentText} hollow-text`}>
-              <GlitchText text="INDUSTRIAL_SCALE" glitchInterval={5000} />
+              <GlitchText text="ENTERPRISE_COMMAND" glitchInterval={12000} />
             </span>
           </motion.h1>
 
@@ -73,7 +73,7 @@ export default function Hero() {
           <motion.div className={styles.ctaWrapper} variants={itemVariants}>
             <Link href="/init" className="btn btn-primary">
               <Zap size={20} />
-              <span>INITIALIZE_PROJECT_v4</span>
+              <span>INITIALIZE_PROJECT</span>
               <ArrowRight size={20} />
             </Link>
             <Link href="#pricing" className={styles.secondaryCta}>
