@@ -55,6 +55,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Services", href: "/solutions" },
+    { name: "Architecture", href: "/architecture" },
     { name: "About", href: "/about" },
     { name: "Insights", href: "/insights" },
     { name: "Pricing", href: "/#pricing" },
@@ -128,53 +129,55 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className={styles.mobileMenuWrapper}
+            className={styles.mobileMenuCover}
             onClick={() => setIsOpen(false)}
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className={styles.mobileMenu}
+              initial={{ y: "100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "100%" }}
+              transition={{ type: "spring", damping: 30, stiffness: 300 }}
+              className={styles.mobileSheet}
               onClick={(e) => e.stopPropagation()}
             >
+              <div className={styles.sheetHandle} />
+
               <div className={styles.mobileLinks}>
                 {navLinks.map((link, i) => (
                   <MotionLink
                     key={link.name}
                     href={link.href}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.1 + i * 0.1 }}
-                    className={styles.mobileLink}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 + i * 0.05 }}
+                    className={`${styles.mobileSheetLink} ${isActive(link.href) ? styles.activeSheetLink : ""}`}
                     onClick={() => setIsOpen(false)}
                   >
-                    {link.name}
-                    <ChevronRight size={18} />
+                    <span className={styles.linkIndex}>0{i + 1}</span>
+                    <span className={styles.linkName}>{link.name}</span>
+                    <ChevronRight size={18} className={styles.linkArrow} />
                   </MotionLink>
                 ))}
+
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  style={{ marginTop: "1.5rem" }}
+                  className={styles.sheetAction}
                 >
                   <Link
                     href="/init"
-                    className="btn btn-primary"
-                    style={{
-                      width: "100%",
-                      borderRadius: "0",
-                      fontFamily: "var(--font-geist-mono)",
-                      fontSize: "0.8rem",
-                      letterSpacing: "0.1em",
-                    }}
+                    className="btn btn-primary btn-block"
                     onClick={() => setIsOpen(false)}
                   >
-                    INITIALIZE_PROJECT
+                    INITIALIZE_SYSTEM
                   </Link>
                 </motion.div>
+              </div>
+
+              <div className={styles.sheetFooter}>
+                <span className={styles.footerTag}>SECURE_UPLINK_v1.0.4</span>
+                <span className={styles.footerStatus}>// READY</span>
               </div>
             </motion.div>
           </motion.div>

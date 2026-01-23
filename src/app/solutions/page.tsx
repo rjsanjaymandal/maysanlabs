@@ -5,6 +5,7 @@ import PageHeader from "@/components/PageHeader";
 import ContactFooter from "@/components/ContactFooter";
 import TechnicalSpecs from "@/components/TechnicalSpecs";
 import OperationsRoadmap from "@/components/OperationsRoadmap";
+import BlueprintGrid from "@/components/BlueprintGrid";
 import styles from "./Solutions.module.css";
 import { Layers, Database, Code, Zap } from "lucide-react";
 
@@ -56,6 +57,16 @@ export default function SolutionsPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className={styles.blueprintSection}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <span className={styles.label}>CORE_MAPPING</span>
+            <h2 className={styles.sectionTitle}>Technical Infrastructure</h2>
+          </div>
+          <BlueprintGrid />
         </div>
       </section>
 

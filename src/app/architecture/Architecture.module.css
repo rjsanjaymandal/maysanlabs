@@ -1,0 +1,50 @@
+.main {
+  background: hsl(var(--background));
+}
+
+.section {
+  padding: 8rem 0;
+}
+
+.blueprintWrapper {
+  margin-bottom: 6rem;
+}
+
+.techMeta {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: hsla(var(--primary), 0.4);
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  padding-top: 4rem;
+  border-top: 1px solid hsla(var(--foreground), 0.05);
+}
+
+.detailTitle {
+  font-size: 1.25rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  color: hsl(var(--primary));
+  font-family: var(--font-geist-mono);
+}
+
+.detailText {
+  font-size: 0.95rem;
+  color: hsla(var(--foreground), 0.5);
+  line-height: 1.7;
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 1024px) {
+  .detailsGrid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}

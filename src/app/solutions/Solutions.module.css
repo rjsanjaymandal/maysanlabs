@@ -73,3 +73,20 @@
     padding: 2rem;
   }
 }
+
+.blueprintSection {
+  padding: 8rem 0;
+  background: black;
+  border-top: 1px solid hsla(var(--primary), 0.1);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: hsla(var(--primary), 0.5);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+

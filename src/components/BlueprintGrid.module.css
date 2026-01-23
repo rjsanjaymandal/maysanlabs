@@ -1,0 +1,107 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  background: #020202;
+  border: 1px solid hsla(var(--primary), 0.1);
+  overflow: hidden;
+  margin: 4rem 0;
+}
+
+.grid {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  background: hsla(var(--background), 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsla(var(--primary), 0.2);
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.node:hover {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 20px hsla(var(--primary), 0.15);
+  transform: translateY(-2px);
+}
+
+.iconBox {
+  width: 42px;
+  height: 42px;
+  background: hsla(var(--primary), 0.1);
+  color: hsl(var(--primary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid hsla(var(--primary), 0.2);
+}
+
+.nodeMeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: hsla(var(--primary), 0.5);
+  letter-spacing: 0.1em;
+}
+
+.title {
+  font-family: var(--font-geist-mono);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: hsl(var(--foreground));
+  margin: 0;
+}
+
+.lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.line {
+  stroke: hsla(var(--primary), 0.1);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+
+.pulseLine {
+  stroke: hsl(var(--primary));
+  stroke-width: 1.5;
+  stroke-dasharray: 5 15;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .container {
+    height: auto;
+    padding: 2rem 0;
+  }
+  .grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+  }
+  .node {
+    position: static !important;
+    width: 100%;
+  }
+  .lines {
+    display: none;
+  }
+}

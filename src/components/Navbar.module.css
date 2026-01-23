@@ -136,49 +136,96 @@
   cursor: pointer;
 }
 
-/* Mobile Menu Styles */
-.mobileMenuWrapper {
+/* Mobile Sheet Styles */
+.mobileMenuCover {
   position: fixed;
   inset: 0;
-  top: 72px;
-  z-index: 990;
-  background-color: hsla(var(--background), 0.95);
-  backdrop-filter: blur(10px);
+  z-index: 2000;
+  background-color: hsla(var(--background), 0.8);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: flex-end;
 }
 
-.mobileMenu {
+.mobileSheet {
   width: 100%;
-  border-bottom: 1px solid hsla(var(--primary), 0.2);
   background: hsl(var(--background));
+  border-top: 1px solid hsla(var(--primary), 0.3);
+  padding: 1.5rem 1.5rem 3rem 1.5rem;
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.sheetHandle {
+  width: 40px;
+  height: 4px;
+  background: hsla(var(--foreground), 0.1);
+  border-radius: 2px;
+  margin: 0 auto 2rem auto;
 }
 
 .mobileLinks {
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
 }
 
-.mobileLink {
-  font-family: var(--font-geist-mono);
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: hsl(var(--foreground));
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid hsla(var(--foreground), 0.05);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+.mobileSheetLink {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: hsla(var(--foreground), 0.03);
+  border: 1px solid hsla(var(--foreground), 0.05);
+  transition: all 0.2s ease;
 }
 
-.mobileLink:hover {
+.linkIndex {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: hsla(var(--primary), 0.5);
+  margin-right: 1.5rem;
+}
+
+.linkName {
+  flex: 1;
+  font-family: var(--font-geist-mono);
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.linkArrow {
+  opacity: 0.3;
+}
+
+.activeSheetLink {
   background: hsla(var(--primary), 0.1);
+  border-color: hsla(var(--primary), 0.3);
   color: hsl(var(--primary));
+}
+
+.activeSheetLink .linkArrow {
+  opacity: 1;
+  color: hsl(var(--primary));
+}
+
+.sheetAction {
+  margin-top: 1.5rem;
+}
+
+.sheetFooter {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: hsla(var(--foreground), 0.3);
+  letter-spacing: 0.1em;
 }
 
 @media (max-width: 1024px) {
   .link {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
   }
 }
 
@@ -200,4 +247,5 @@
     display: none;
   }
 }
+
 

@@ -300,6 +300,84 @@ h2 {
     grid-template-columns: repeat(6, 1fr);
   }
 }
+/* Blueprint Architecture Utilities */
+.blueprint-bg {
+  background-color: hsla(220, 100%, 2%, 1);
+  background-image: 
+    linear-gradient(hsla(var(--primary), 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, hsla(var(--primary), 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.blueprint-line {
+  border: 1px dashed hsla(var(--primary), 0.3);
+  position: relative;
+}
+
+.blueprint-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: hsla(var(--primary), 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: absolute;
+  background: black;
+  padding: 0 0.25rem;
+}
+
+.data-flow-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary)), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.data-flow-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, white, transparent);
+  animation: data-pulse 3s infinite linear;
+}
+
+@keyframes data-pulse {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* Mobile Touch & Spacing Utilities */
+.touch-target {
+  min-height: 48px;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  section {
+    padding: 4rem 0 !important;
+  }
+  
+  h1 { font-size: 2.5rem !important; }
+  h2 { font-size: 1.8rem !important; }
+}
+
+/* Scroll Smoothing for Mobile */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 80px;
+  }
+}
+
 
 @media (max-width: 768px) {
   .bento-grid {

@@ -51,6 +51,12 @@ export default function CommandDock() {
     { icon: <Terminal size={20} />, label: "INIT", href: "/init" },
   ];
 
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    if (href.startsWith("/#")) return false; // Fragments
+    return pathname.startsWith(href);
+  };
+
   return (
     <div className={styles.dockWrapper}>
       <AnimatePresence>
@@ -73,7 +79,7 @@ export default function CommandDock() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={styles.dockItem}
+                    className={`${styles.dockItem} ${isActive(item.href) ? styles.activeItem : ""}`}
                   >
                     {item.icon}
                     <span className={styles.itemLabel}>{item.label}</span>
