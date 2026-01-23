@@ -1,0 +1,129 @@
+.roadmapContainer {
+  position: relative;
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 4rem 0;
+}
+
+.line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    hsla(var(--primary), 0.3) 10%,
+    hsla(var(--primary), 0.3) 90%,
+    transparent
+  );
+  transform: translateX(-50%);
+}
+
+.stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6rem;
+  width: 100%;
+  position: relative;
+}
+
+.marker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: hsl(var(--primary));
+  border-radius: 0;
+  box-shadow: 0 0 15px hsl(var(--primary));
+  margin-bottom: 1rem;
+}
+
+.iconBox {
+  width: 50px;
+  height: 50px;
+  background: var(--background);
+  border: 1px solid hsla(var(--primary), 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(var(--primary));
+  backdrop-filter: blur(10px);
+}
+
+.content {
+  width: 40%;
+  padding: 2rem;
+  background: hsla(var(--foreground), 0.02);
+  border: 1px solid hsla(var(--foreground), 0.05);
+  position: relative;
+}
+
+.stage:nth-child(even) .content {
+  margin-right: auto;
+  margin-left: 0;
+  text-align: right;
+  left: -55%;
+}
+
+.stage:nth-child(odd) .content {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: left;
+  right: -55%;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: hsl(var(--primary));
+  letter-spacing: 0.1em;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.title {
+  font-family: var(--font-geist-mono);
+  font-size: 1.25rem;
+  font-weight: 900;
+  margin-bottom: 0.75rem;
+  color: hsl(var(--foreground));
+}
+
+.desc {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: hsla(var(--foreground), 0.5);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .line {
+    left: 20px;
+  }
+  .stage {
+    justify-content: flex-start;
+    padding-left: 50px;
+    margin-bottom: 4rem;
+  }
+  .marker {
+    left: 20px;
+  }
+  .content {
+    width: 100% !important;
+    text-align: left !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+}

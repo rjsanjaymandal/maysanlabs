@@ -155,25 +155,7 @@
   max-width: 900px;
 }
 
-.objective {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-}
 
-.objLabel {
-  color: hsla(var(--foreground), 0.4);
-}
-
-.objValue {
-  color: hsl(var(--primary));
-  font-weight: 800;
-  text-shadow: 0 0 10px hsla(var(--primary), 0.3);
-}
 
 .labelWrapper {
   display: flex;
@@ -216,6 +198,13 @@
   max-width: 650px;
   line-height: 1.6;
   font-weight: 400;
+}
+
+.ctaWrapper {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .ctaGroup {

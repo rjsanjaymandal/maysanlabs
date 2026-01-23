@@ -1,7 +1,10 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import PageHeader from "@/components/PageHeader";
 import ContactFooter from "@/components/ContactFooter";
 import TechnicalSpecs from "@/components/TechnicalSpecs";
+import OperationsRoadmap from "@/components/OperationsRoadmap";
 import styles from "./Solutions.module.css";
 import { Layers, Database, Code, Zap } from "lucide-react";
 
@@ -39,7 +42,7 @@ export default function SolutionsPage() {
       <PageHeader
         label="OPS_READY"
         title="DEPLOYMENT_SOLUTIONS"
-        subtitle="Scalable digital infrastructure engineered for the one-person empire. We build the systems, you run the world."
+        subtitle="Scalable digital infrastructure engineered for the modern SaaS enterprise. We build the infrastructure, you dominate the market."
       />
 
       <section className={styles.section}>
@@ -53,6 +56,20 @@ export default function SolutionsPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* The instruction mentioned "after Solution component", but there is no Solution component.
+          Assuming it meant after the main solutions section, and incorporating the provided code snippet.
+          The snippet also included a <Solution /> component which is not defined, so it's omitted.
+          The closing tags </main> and </section> in the snippet were misplaced and have been corrected. */}
+      <section className={styles.roadmapSection}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <span className={styles.label}>Execution Protocol</span>
+            <h2 className={styles.sectionTitle}>The Operations Roadmap</h2>
+          </div>
+          <OperationsRoadmap />
         </div>
       </section>
 

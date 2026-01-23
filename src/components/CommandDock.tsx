@@ -5,10 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
   LayoutGrid,
-  Cpu,
-  CreditCard,
-  MessageSquare,
-  Terminal as TerminalIcon,
+  Shield,
+  Rss,
+  DollarSign,
+  Terminal,
+  Terminal as TerminalIcon, // Keep TerminalIcon for the button
   ChevronUp,
 } from "lucide-react";
 import styles from "./CommandDock.module.css";
@@ -35,9 +36,10 @@ export default function CommandDock() {
 
   const dockItems = [
     { icon: <LayoutGrid size={20} />, label: "Grid", href: "/solutions" },
-    { icon: <Cpu size={20} />, label: "Intel", href: "/about" },
-    { icon: <MessageSquare size={20} />, label: "Feed", href: "/insights" },
-    { icon: <CreditCard size={20} />, label: "Rates", href: "/#pricing" },
+    { icon: <Shield size={20} />, label: "Intel", href: "/about" },
+    { icon: <Rss size={20} />, label: "Feed", href: "/insights" },
+    { icon: <DollarSign size={20} />, label: "Rates", href: "/#pricing" },
+    { icon: <Terminal size={20} />, label: "INIT", href: "/init" },
   ];
 
   return (

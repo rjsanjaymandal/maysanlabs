@@ -46,6 +46,25 @@
   font-family: var(--font-mono);
 }
 
+.roadmapSection {
+  padding: var(--section-padding-y) 0;
+  background: hsla(var(--foreground), 0.01);
+  border-top: 1px solid hsla(var(--foreground), 0.05);
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  font-size: var(--font-size-h2);
+  font-family: var(--font-geist-mono);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: hsl(var(--foreground));
+}
+
 @media (max-width: 768px) {
   .serviceGrid {
     grid-template-columns: 1fr;

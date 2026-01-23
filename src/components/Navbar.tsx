@@ -98,9 +98,9 @@ export default function Navbar() {
           </div>
 
           <div className={styles.actions}>
-            <div className={styles.ctaWrapper}>
-              <Link href="tel:+919660641530" className={styles.cta}>
-                <span>Contact Experts</span>
+            <div className={styles.navRight}>
+              <Link href="/init" className="btn btn-primary">
+                INITIALIZE_PROJECT
               </Link>
             </div>
 
@@ -161,7 +161,7 @@ export default function Navbar() {
                   style={{ marginTop: "1.5rem" }}
                 >
                   <Link
-                    href="tel:+919660641530"
+                    href="/init"
                     className="btn btn-primary"
                     style={{
                       width: "100%",
@@ -172,8 +172,7 @@ export default function Navbar() {
                     }}
                     onClick={() => setIsOpen(false)}
                   >
-                    <Phone size={18} />
-                    <span>9660 641 530</span>
+                    INITIALIZE_PROJECT
                   </Link>
                 </motion.div>
               </div>

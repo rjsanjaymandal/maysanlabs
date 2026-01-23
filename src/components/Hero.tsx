@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Zap } from "lucide-react";
 import Link from "next/link";
 import styles from "./Hero.module.css";
 import GlitchText from "./GlitchText";
@@ -54,11 +54,6 @@ export default function Hero() {
           animate="visible"
           variants={containerVariants}
         >
-          <motion.div className={styles.objective} variants={itemVariants}>
-            <span className={styles.objLabel}>MISSION_OBJ:</span>
-            <span className={styles.objValue}>EMPIRE_EXPANSION_v4.0</span>
-          </motion.div>
-
           <DataMarker label="SYS_BOOT_01" position="tr" />
 
           <motion.h1 className={styles.headline} variants={itemVariants}>
@@ -70,14 +65,15 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p className={styles.subheadline} variants={itemVariants}>
-            Constructing high-performance digital infrastructure for the
-            one-person empire. Precision-engineered MERN stacks and autonomous
-            agents.
+            Architecting high-performance digital infrastructure for the modern
+            enterprise. Modular SaaS ecosystems and autonomous operational
+            layers.
           </motion.p>
 
-          <motion.div className={styles.ctaGroup} variants={itemVariants}>
-            <Link href="#solution" className={styles.primaryCta}>
-              <span>INITIALIZE_STACK</span>
+          <motion.div className={styles.ctaWrapper} variants={itemVariants}>
+            <Link href="/init" className="btn btn-primary">
+              <Zap size={20} />
+              <span>INITIALIZE_PROJECT_v4</span>
               <ArrowRight size={20} />
             </Link>
             <Link href="#pricing" className={styles.secondaryCta}>

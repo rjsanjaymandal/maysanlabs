@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Maysan Labs",
     short_name: "Maysan",
-    description: "Launch a powerful e-commerce brand alone with our MERN stack platform and AI automation tools.",
+    description: "Architecting the future of global commerce. Scalable SaaS infrastructure, precision MERN stacks, and autonomous operational tools for modern enterprises.",
     start_url: "/",
     display: "standalone",
     background_color: "#000000",

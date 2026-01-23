@@ -9,7 +9,7 @@ const plans = [
   {
     name: "Starter",
     price: "49,999",
-    description: "Perfect for small projects and solo entrepreneurs.",
+    description: "Perfect for agile startups and department-level pilots.",
     features: [
       "Custom Web Development",
       "Basic SEO Setup",
