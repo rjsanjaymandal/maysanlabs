@@ -13,7 +13,7 @@ export default function SolutionsPage() {
   const offerings = [
     {
       icon: <Store size={24} />,
-      title: "E-commerce Platform Generation",
+      title: "Enterprise Commerce Architecture",
       description:
         "End-to-end e-commerce solutions including design, development, and deployment of secure, scalable platforms with integrated payment systems.",
     },

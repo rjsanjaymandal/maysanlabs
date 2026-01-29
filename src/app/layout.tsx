@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "Enterprise SaaS",
     "Digital Infrastructure",
     "MERN Stack Development",
-    "E-commerce Platform Generation",
+    "Enterprise Commerce Architecture",
     "CRM Module",
     "Cloud Solutions",
     "Maysan Labs Gurgaon",

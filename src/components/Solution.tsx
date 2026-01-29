@@ -35,7 +35,7 @@ const itemVariants: Variants = {
 export default function Solution() {
   const solutions = [
     {
-      title: "E-commerce Platform Generation",
+      title: "Enterprise Commerce Architecture",
       desc: "End-to-end e-commerce solutions to establish, manage, and scale your online presence.",
       icon: <Store size={32} />,
       features: [
