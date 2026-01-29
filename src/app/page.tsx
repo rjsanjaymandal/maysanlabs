@@ -6,7 +6,6 @@ import SocialProof from "@/components/SocialProof";
 import TechnicalSpecs from "@/components/TechnicalSpecs";
 import ContactFooter from "@/components/ContactFooter";
 
-import Pricing from "@/components/Pricing";
 
 import FAQ from "@/components/FAQ";
 
@@ -27,10 +26,6 @@ export default function Home() {
       <div style={{ position: "relative" }}>
         <div className="blueprint-line-h" style={{ top: "0" }} />
         <Solution />
-      </div>
-      <div style={{ position: "relative" }}>
-        <div className="blueprint-line-h" style={{ top: "0" }} />
-        <Pricing />
       </div>
       <div style={{ position: "relative" }}>
         <div className="blueprint-line-h" style={{ top: "0" }} />

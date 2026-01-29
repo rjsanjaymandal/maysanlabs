@@ -8,7 +8,7 @@ import {
   useTransform,
   AnimatePresence,
 } from "framer-motion";
-import { Phone, Menu, X, ChevronRight } from "lucide-react";
+import { Menu, X, ChevronRight } from "lucide-react";
 import styles from "./Navbar.module.css";
 
 import { usePathname } from "next/navigation";
@@ -58,7 +58,6 @@ export default function Navbar() {
     { name: "Architecture", href: "/architecture" },
     { name: "About", href: "/about" },
     { name: "Insights", href: "/insights" },
-    { name: "Pricing", href: "/#pricing" },
   ];
 
   const isActive = (href: string) => {

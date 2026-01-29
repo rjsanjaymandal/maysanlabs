@@ -11,14 +11,6 @@ export default function TacticalOverlay() {
       <div className={styles.crtFlicker} />
 
       <div className={styles.cornerInfo}>
-        <div className={styles.infoLine}>
-          <span className={styles.label}>SYS_SEC_V:</span>
-          <span className={styles.value}>ENCRYPTED</span>
-        </div>
-        <div className={styles.infoLine}>
-          <span className={styles.label}>LOC_NODE:</span>
-          <span className={styles.value}>EDGE_01</span>
-        </div>
         <div className={styles.statusLine}>
           <motion.div
             animate={{ opacity: [1, 0.4, 1] }}

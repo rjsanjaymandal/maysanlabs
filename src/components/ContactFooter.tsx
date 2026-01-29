@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { Mail, MapPin, ArrowUpRight } from "lucide-react";
 import styles from "./ContactFooter.module.css";
 
 export default function ContactFooter() {
@@ -38,9 +38,12 @@ export default function ContactFooter() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <Link href="tel:+919660641530" className="btn btn-primary">
-              <Phone size={20} />
-              <span>Book Infrastructure Consultation</span>
+            <Link
+              href="mailto:business@maysanlabs.com"
+              className="btn btn-primary"
+            >
+              <Mail size={20} />
+              <span>Request Infrastructure Audit</span>
               <ArrowUpRight size={20} />
             </Link>
           </motion.div>
@@ -55,14 +58,11 @@ export default function ContactFooter() {
           <div>
             <h4 className={styles.columnHeader}>Contact</h4>
             <div className={styles.linkGroup}>
-              <Link href="tel:+919660641530" className={styles.contactLink}>
-                <Phone size={14} /> +91 9660641530
-              </Link>
               <Link
-                href="mailto:contact@maysanlabs.com"
+                href="mailto:business@maysanlabs.com"
                 className={styles.contactLink}
               >
-                <Mail size={14} /> contact@maysanlabs.com
+                <Mail size={14} /> business@maysanlabs.com
               </Link>
             </div>
           </div>
@@ -70,7 +70,7 @@ export default function ContactFooter() {
           <div>
             <h4 className={styles.columnHeader}>Location</h4>
             <p className={styles.contactLink}>
-              <MapPin size={14} /> Rajasthan, India
+              <MapPin size={14} /> Gurgaon, India
             </p>
           </div>
 

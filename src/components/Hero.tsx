@@ -76,9 +76,6 @@ export default function Hero() {
               <span>INITIALIZE_PROJECT</span>
               <ArrowRight size={20} />
             </Link>
-            <Link href="#pricing" className={styles.secondaryCta}>
-              DEPLOYMENT_LOGS
-            </Link>
           </motion.div>
         </motion.div>
       </motion.div>

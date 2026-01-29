@@ -47,7 +47,6 @@ export default function CommandDock() {
     { icon: <LayoutGrid size={20} />, label: "Grid", href: "/solutions" },
     { icon: <Shield size={20} />, label: "Intel", href: "/about" },
     { icon: <Rss size={20} />, label: "Feed", href: "/insights" },
-    { icon: <DollarSign size={20} />, label: "Rates", href: "/#pricing" },
     { icon: <Terminal size={20} />, label: "INIT", href: "/init" },
   ];
 
