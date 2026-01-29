@@ -126,7 +126,8 @@ export default function Navbar() {
           <div className={styles.actions}>
             <div className={styles.ctaWrapper}>
               <Link href="/init" className="btn btn-primary">
-                INITIALIZE_PROJECT
+                <span className={styles.desktopOnly}>INITIALIZE_PROJECT</span>
+                <span className={styles.mobileOnly}>INITIALIZE</span>
               </Link>
             </div>
 

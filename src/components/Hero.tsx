@@ -73,7 +73,8 @@ export default function Hero() {
           <motion.div className={styles.ctaWrapper} variants={itemVariants}>
             <Link href="/init" className="btn btn-primary">
               <Zap size={20} />
-              <span>INITIALIZE_PROJECT</span>
+              <span className={styles.desktopText}>INITIALIZE_PROJECT</span>
+              <span className={styles.mobileText}>INITIALIZE</span>
               <ArrowRight size={20} />
             </Link>
           </motion.div>

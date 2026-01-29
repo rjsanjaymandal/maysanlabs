@@ -241,6 +241,8 @@
 @media (max-width: 768px) {
   .headline {
     font-size: clamp(2rem, 10vw, 3rem);
+    word-break: break-all;
+    overflow-wrap: anywhere;
   }
   .hero { 
     padding: 4rem 0 calc(var(--dock-height) + 1.5rem); 
@@ -257,6 +259,9 @@
     align-items: stretch;
     gap: 1rem;
   }
+  .mobileText { display: block !important; }
+  .desktopText { display: none !important; }
+
   .statusBox { 
     margin-bottom: 1.5rem;
     font-size: 0.65rem;
@@ -269,3 +274,6 @@
     display: none;
   }
 }
+
+.mobileText { display: none; }
+.desktopText { display: block; }

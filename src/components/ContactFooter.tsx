@@ -43,7 +43,8 @@ export default function ContactFooter() {
               className="btn btn-primary"
             >
               <Mail size={20} />
-              <span>Request Infrastructure Audit</span>
+              <span className="desktop-only">Request Infrastructure Audit</span>
+              <span className="mobile-only">Request Audit</span>
               <ArrowUpRight size={20} />
             </Link>
           </motion.div>
