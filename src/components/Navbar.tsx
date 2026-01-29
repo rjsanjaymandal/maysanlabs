@@ -1,13 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  AnimatePresence,
-} from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useLenis } from "lenis/react";
 import { Menu, X, ChevronRight } from "lucide-react";
 import styles from "./Navbar.module.css";
 
@@ -19,7 +15,6 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { scrollY } = useScroll();
 
   useEffect(() => {
     const updateScroll = () => {
@@ -32,7 +27,10 @@ export default function Navbar() {
 
   // Close mobile menu on route change
   useEffect(() => {
-    setIsOpen(false);
+    if (isOpen) {
+      setIsOpen(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   // Close mobile menu on resize
@@ -54,16 +52,43 @@ export default function Navbar() {
   }, [isOpen]);
 
   const navLinks = [
-    { name: "Services", href: "/solutions" },
+    { name: "Solutions", href: "/#solution" },
+    { name: "Process", href: "/#process" },
+    { name: "Engineering", href: "/#tech-specs" },
     { name: "Architecture", href: "/architecture" },
-    { name: "About", href: "/about" },
     { name: "Insights", href: "/insights" },
+    { name: "About", href: "/about" },
   ];
 
+  const lenis = useLenis();
+
   const isActive = (href: string) => {
+    if (href.startsWith("/#")) {
+      // Simple check to avoid hydration mismatch and complex state
+      return (
+        pathname === "/" &&
+        typeof window !== "undefined" &&
+        window.location.hash === href.replace("/", "")
+      );
+    }
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
+
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      if (href.startsWith("/#") && pathname === "/") {
+        e.preventDefault();
+        const targetId = href.replace("/#", "");
+        const element = document.getElementById(targetId);
+        if (element && lenis) {
+          lenis.scrollTo(element, { offset: -80 });
+          setIsOpen(false);
+        }
+      }
+    },
+    [pathname, lenis],
+  );
 
   return (
     <>
@@ -89,6 +114,7 @@ export default function Navbar() {
               <div key={link.name} className={styles.linkWrapper}>
                 <Link
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className={`${styles.link} ${isActive(link.href) ? styles.activeLink : ""}`}
                 >
                   {link.name}
@@ -150,7 +176,10 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 + i * 0.05 }}
                     className={`${styles.mobileSheetLink} ${isActive(link.href) ? styles.activeSheetLink : ""}`}
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                      handleNavClick(e, link.href);
+                      setIsOpen(false);
+                    }}
                   >
                     <span className={styles.linkIndex}>0{i + 1}</span>
                     <span className={styles.linkName}>{link.name}</span>
@@ -172,11 +201,6 @@ export default function Navbar() {
                     INITIALIZE_SYSTEM
                   </Link>
                 </motion.div>
-              </div>
-
-              <div className={styles.sheetFooter}>
-                <span className={styles.footerTag}>SECURE_UPLINK_v1.0.4</span>
-                <span className={styles.footerStatus}>// READY</span>
               </div>
             </motion.div>
           </motion.div>

@@ -12,9 +12,10 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     <ReactLenis
       root
       options={{
-        lerp: 0.1,
-        duration: 1.5,
+        lerp: 0.12,
+        duration: 1.2,
         smoothWheel: true,
+        anchors: true, // Enable anchor support
       }}
     >
       {children}

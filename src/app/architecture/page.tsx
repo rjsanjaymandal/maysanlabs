@@ -31,9 +31,9 @@ export default function ArchitecturePage() {
         <div className="container">
           <div className={styles.blueprintWrapper}>
             <div className={styles.techMeta}>
-              <span className={styles.metaTag}>// ARCH_v1.0.4</span>
-              <span className={styles.metaTag}>// TYPE: NEO_MONOLITH</span>
-              <span className={styles.metaTag}>// UPTIME: 99.99%</span>
+              <span className={styles.metaTag}>{"// ARCH_v1.0.4"}</span>
+              <span className={styles.metaTag}>{"// TYPE: NEO_MONOLITH"}</span>
+              <span className={styles.metaTag}>{"// UPTIME: 99.99%"}</span>
             </div>
             <BlueprintGrid />
           </div>

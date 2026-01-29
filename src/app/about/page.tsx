@@ -33,9 +33,9 @@ export default function AboutPage() {
               </div>
               <h3 className={styles.cardTitle}>Precision Stacks</h3>
               <p className={styles.cardText}>
-                We don't do 'bloat'. Every line of code is a structural
-                necessity. Our stacks are optimized for speed, security, and
-                scalability.
+                We don&apos;t do &apos;bloat&apos;. Every line of code is a
+                structural necessity. Our stacks are optimized for speed,
+                security, and scalability.
               </p>
             </div>
             <div className={styles.card}>
@@ -65,7 +65,7 @@ export default function AboutPage() {
       <section className={styles.manifesto}>
         <div className="container">
           <div className={styles.manifestoContent}>
-            <span className={styles.tag}>// THE_MANIFESTO</span>
+            <span className={styles.tag}>{"// THE_MANIFESTO"}</span>
             <h2 className={styles.manifestoTitle}>
               CONSTRUCTING_THE_FUTURE_OF_OPERATIONS
             </h2>

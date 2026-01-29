@@ -106,9 +106,9 @@
 
 @media (max-width: 768px) {
   .header {
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
   .featureInner {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 }

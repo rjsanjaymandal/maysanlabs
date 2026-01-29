@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLenis } from "lenis/react";
 import {
   LayoutGrid,
   Shield,
   Rss,
-  DollarSign,
   Terminal,
-  Terminal as TerminalIcon, // Keep TerminalIcon for the button
+  Terminal as TerminalIcon,
   ChevronUp,
 } from "lucide-react";
 import styles from "./CommandDock.module.css";
@@ -26,6 +26,7 @@ export default function CommandDock() {
 
   useEffect(() => {
     if (isTerminalPage) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsVisible(false);
       return;
     }
@@ -41,12 +42,28 @@ export default function CommandDock() {
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, [isTerminalPage, lastScrollY]);
+
+  const lenis = useLenis();
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (href.startsWith("/#") && pathname === "/") {
+      e.preventDefault();
+      const targetId = href.replace("/#", "");
+      const element = document.getElementById(targetId);
+      if (element && lenis) {
+        lenis.scrollTo(element, { offset: -80 });
+      }
+    }
+  };
 
   const dockItems = [
-    { icon: <LayoutGrid size={20} />, label: "Grid", href: "/solutions" },
-    { icon: <Shield size={20} />, label: "Intel", href: "/about" },
-    { icon: <Rss size={20} />, label: "Feed", href: "/insights" },
+    { icon: <LayoutGrid size={20} />, label: "Process", href: "/#process" },
+    { icon: <Shield size={20} />, label: "Philosophy", href: "/about" },
+    { icon: <Rss size={20} />, label: "Insights", href: "/insights" },
     { icon: <Terminal size={20} />, label: "INIT", href: "/init" },
   ];
 
@@ -68,16 +85,14 @@ export default function CommandDock() {
             className={styles.dock}
           >
             <div className={styles.dockContent}>
-              <div className={styles.dockLeft}>
-                <div className={styles.statusDot} />
-                <span className={styles.statusText}>SYS_ACTIVE</span>
-              </div>
+              <div className={styles.dockLeft}></div>
 
               <div className={styles.navGroup}>
                 {dockItems.map((item) => (
                   <Link
                     key={item.label}
                     href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
                     className={`${styles.dockItem} ${isActive(item.href) ? styles.activeItem : ""}`}
                   >
                     {item.icon}

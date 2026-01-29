@@ -16,18 +16,24 @@ export default function SmartCursor() {
   const cursorY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
+    let lastElement: HTMLElement | null = null;
+
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
 
       const target = e.target as HTMLElement;
-      setIsPointer(
-        window.getComputedStyle(target).cursor === "pointer" ||
-          target.tagName === "BUTTON" ||
-          target.tagName === "A" ||
-          target.closest("button") !== null ||
-          target.closest("a") !== null,
-      );
+      if (target === lastElement) return;
+      lastElement = target;
+
+      const isInteractable =
+        target.tagName === "BUTTON" ||
+        target.tagName === "A" ||
+        target.tagName === "INPUT" ||
+        target.tagName === "TEXTAREA" ||
+        target.getAttribute("role") === "button";
+
+      setIsPointer(isInteractable);
     };
 
     window.addEventListener("mousemove", handleMouseMove);

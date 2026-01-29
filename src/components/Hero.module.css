@@ -243,23 +243,24 @@
     font-size: clamp(2rem, 10vw, 3rem);
   }
   .hero { 
-    padding: 6rem 0 calc(var(--dock-height) + 2rem); 
+    padding: 4rem 0 calc(var(--dock-height) + 1.5rem); 
     text-align: left; 
     min-height: auto;
   }
   .container { align-items: flex-start; }
   .labelWrapper { justify-content: flex-start; width: 100%; }
   .labelLine { display: none; }
-  .subheadline { margin-left: 0; margin-right: 0; }
+  .subheadline { margin-left: 0; margin-right: 0; margin-bottom: 2.5rem; }
   .ctaGroup { 
     flex-direction: column; 
     width: 100%; 
     align-items: stretch;
+    gap: 1rem;
   }
   .statusBox { 
-    margin-bottom: 2rem;
-    font-size: 0.7rem;
-    padding: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.65rem;
+    padding: 0.5rem 0.875rem;
   }
   .input {
     font-size: 16px !important;

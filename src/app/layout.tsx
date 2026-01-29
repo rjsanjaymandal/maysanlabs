@@ -15,18 +15,21 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://maysanlabs.com"),
   title: {
-    default: "Maysan Labs | Enterprise SaaS & Operations Infrastructure",
+    default: "Maysan Labs | Enterprise SaaS Architecture & Digital Operations",
     template: "%s | Maysan Labs",
   },
   description:
-    "Architecting the future of global commerce. Scalable SaaS infrastructure, precision MERN stacks, and autonomous operational tools for modern enterprises.",
+    "Maysan Labs specializes in engineering high-performance enterprise SaaS infrastructure, MERN stack ecosystems, and autonomous operational tools for global businesses. Headquartered in Gurgaon.",
   keywords: [
-    "SaaS Infrastructure",
-    "Enterprise Software",
-    "MERN Stack",
-    "Autonomous Operations",
-    "Digital Architecture",
-    "Maysan Labs",
+    "Enterprise SaaS",
+    "Digital Infrastructure",
+    "MERN Stack Development",
+    "E-commerce Platform Generation",
+    "CRM Module",
+    "Cloud Solutions",
+    "Maysan Labs Gurgaon",
+    "Business Automation",
+    "Scalable Architecture",
   ],
   authors: [{ name: "Maysan Labs Team" }],
   creator: "Maysan Labs",
@@ -65,6 +68,10 @@ export const metadata: Metadata = {
   },
   formatDetection: {
     telephone: false,
+  },
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
   },
 };
 

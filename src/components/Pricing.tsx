@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Check, Zap, Rocket, Shield } from "lucide-react";
 import styles from "./Pricing.module.css";
 import SpotlightCard from "./SpotlightCard";
@@ -49,7 +49,7 @@ const plans = [
   },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -57,16 +57,16 @@ const containerVariants = {
       staggerChildren: 0.1,
     },
   },
-} as any;
+};
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: { duration: 0.5 },
   },
-} as any;
+};
 
 export default function Pricing() {
   return (

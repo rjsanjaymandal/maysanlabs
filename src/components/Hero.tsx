@@ -1,31 +1,33 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import Link from "next/link";
 import styles from "./Hero.module.css";
 import GlitchText from "./GlitchText";
-import DataMarker from "./DataMarker";
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
+      staggerChildren: 0.05,
+      delayChildren: 0.1,
     },
   },
-} as any;
+};
 
-const itemVariants = {
-  hidden: { opacity: 0, x: -30 },
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 15 },
   visible: {
     opacity: 1,
-    x: 0,
-    transition: { type: "spring", stiffness: 100, damping: 20 },
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.16, 1, 0.3, 1],
+    },
   },
-} as any;
+};
 
 export default function Hero() {
   const { scrollY } = useScroll();
@@ -54,8 +56,6 @@ export default function Hero() {
           animate="visible"
           variants={containerVariants}
         >
-          <DataMarker label="SYS_BOOT_01" position="tr" />
-
           <motion.h1 className={styles.headline} variants={itemVariants}>
             <GlitchText text="CORE_OPERATING_SYSTEMS" glitchInterval={8000} />
             <br />

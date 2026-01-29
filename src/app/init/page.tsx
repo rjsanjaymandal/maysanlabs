@@ -1,14 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  Terminal,
-  Send,
-  ChevronRight,
-  CheckCircle2,
-  AlertCircle,
-} from "lucide-react";
+import { Send, ChevronRight, Terminal } from "lucide-react";
 import styles from "./Init.module.css";
 import Navbar from "@/components/Navbar";
 import TacticalOverlay from "@/components/TacticalOverlay";
@@ -30,7 +23,7 @@ const steps = [
   {
     id: "DEFINE_TIMELINE",
     label: "SYNC_TIMELINE",
-    prompt: "Specify delivery window (e.g. 4_WEEKS, 3_MONTHS):",
+    prompt: "Specify deployment window (e.g. 4_WEEKS, 3_MONTHS):",
     placeholder: "Specify weeks/months",
   },
   {
@@ -43,7 +36,7 @@ const steps = [
 
 export default function InitPage() {
   const [currentStep, setCurrentStep] = useState(0);
-  const [formData, setFormData] = useState<Record<string, string>>({});
+  const [, setFormData] = useState<Record<string, string>>({});
   const [inputValue, setInputValue] = useState("");
   const [logs, setLogs] = useState<string[]>([
     "[SYS]: BOOT_SEQUENCE_COMPLETE",
@@ -150,14 +143,7 @@ export default function InitPage() {
             )}
           </div>
 
-          <div className={styles.terminalFooter}>
-            <div className={styles.status}>
-              <div className={styles.pulse} /> <span>UPLINK_STABLE</span>
-            </div>
-            <div className={styles.meta}>
-              MODE: SECURE_INTAKE // ENV: PRODUCTION
-            </div>
-          </div>
+          <div className={styles.terminalFooter}></div>
         </div>
       </div>
     </main>

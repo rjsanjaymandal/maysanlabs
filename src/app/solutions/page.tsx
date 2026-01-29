@@ -7,33 +7,45 @@ import TechnicalSpecs from "@/components/TechnicalSpecs";
 import OperationsRoadmap from "@/components/OperationsRoadmap";
 import BlueprintGrid from "@/components/BlueprintGrid";
 import styles from "./Solutions.module.css";
-import { Layers, Database, Code, Zap } from "lucide-react";
+import { Layers, Code, Zap, Store, TrendingUp, BarChart3 } from "lucide-react";
 
 export default function SolutionsPage() {
   const offerings = [
     {
-      icon: <Layers size={24} />,
-      title: "Core Infrastructure",
+      icon: <Store size={24} />,
+      title: "E-commerce Platform Generation",
       description:
-        "High-performance MERN stack architecture designed for heavy load and 99.99% uptime.",
+        "End-to-end e-commerce solutions including design, development, and deployment of secure, scalable platforms with integrated payment systems.",
     },
     {
-      icon: <Database size={24} />,
-      title: "Data Operations",
+      icon: <TrendingUp size={24} />,
+      title: "Customer Relationship Module",
       description:
-        "Encrypted, high-redundancy database management with real-time replication.",
+        "Comprehensive CRM designed to manage customer interactions, centralized data, and automation to improve satisfaction and retention.",
     },
     {
       icon: <Code size={24} />,
-      title: "API Protocols",
+      title: "Customized Software Solutions",
       description:
-        "Modular API development with advanced security layers and lightning-fast responses.",
+        "Tailor-made applications designed to align with organizational workflows and enhance operational performance and long-term growth.",
+    },
+    {
+      icon: <Layers size={24} />,
+      title: "Cloud Solutions",
+      description:
+        "Secure storage and high-redundancy processing on scalable cloud infrastructure, including migration and ongoing management.",
     },
     {
       icon: <Zap size={24} />,
-      title: "AI Integration",
+      title: "Employee Management Module",
       description:
-        "Autonomous agents and LLM-powered workflows integrated directly into your stack.",
+        "Streamlined human resource operations including attendance, performance tracking, payroll integration, and reporting.",
+    },
+    {
+      icon: <BarChart3 size={24} />,
+      title: "Digital & Performance Marketing",
+      description:
+        "Measurable brand visibility and audience engagement across digital channels. *Marketing shoots conducted in Jaipur and Chandigarh.*",
     },
   ];
 

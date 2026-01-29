@@ -7,9 +7,9 @@ import styles from "./FAQ.module.css";
 
 const faqs = [
   {
-    question: "Do I own the code after the project?",
+    question: "How is the infrastructure managed post-deployment?",
     answer:
-      "Yes, $100%. We hand over the full source code and rights. No vendor lock-in, ever.",
+      "Maysan Labs provides continuous technical oversight. You maintain total operational sovereignty while we ensure the system's structural integrity and performance.",
   },
   {
     question: "How long does a typical implementation take?",
@@ -22,9 +22,9 @@ const faqs = [
       "Absolutely. We use bank-level encryption (AES-256) and secure key management to ensure your firm's data is bulletproof.",
   },
   {
-    question: "Do you provide ongoing support?",
+    question: "Do you provide long-term engineering support?",
     answer:
-      "We offer dedicated maintenance plans, though our goal is to build self-sustaining systems that you can manage yourself.",
+      "We act as your elite technical division. Our management plans include real-time telemetry, proactive scaling, and continuous refinement of your digital foundations.",
   },
 ];
 

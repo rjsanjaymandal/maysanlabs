@@ -1,10 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Server, Database, Globe, Shield, Cpu, Zap } from "lucide-react";
+import { Server, Database, Shield, Cpu, Globe } from "lucide-react";
 import styles from "./BlueprintGrid.module.css";
 
-const ArchitectureNode = ({ icon, title, label, x, y }: any) => (
+interface ArchitectureNodeProps {
+  icon: React.ReactNode;
+  title: string;
+  label: string;
+  x: string;
+  y: string;
+}
+
+const ArchitectureNode = ({
+  icon,
+  title,
+  label,
+  x,
+  y,
+}: ArchitectureNodeProps) => (
   <motion.div
     className={styles.node}
     initial={{ opacity: 0, scale: 0.8 }}

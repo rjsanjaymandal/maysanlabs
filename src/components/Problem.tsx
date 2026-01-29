@@ -4,23 +4,22 @@ import { motion } from "framer-motion";
 import { AlertTriangle, Users, Database } from "lucide-react";
 import styles from "./Problem.module.css";
 import SpotlightCard from "./SpotlightCard";
-import DataMarker from "./DataMarker";
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.05,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
+  hidden: { opacity: 0, y: 15 },
   visible: {
     opacity: 1,
-    scale: 1,
+    y: 0,
     transition: { duration: 0.5 },
   },
 };
@@ -82,7 +81,6 @@ export default function Problem() {
             >
               <SpotlightCard featured={prob.variant === "featured"}>
                 <div className={styles.cardInner}>
-                  <DataMarker label={`PRB_0${index + 1}`} position="tr" />
                   <div className={styles.iconWrapper}>{prob.icon}</div>
                   <h3 className={styles.cardTitle}>{prob.title}</h3>
                   <p className={styles.cardText}>{prob.text}</p>

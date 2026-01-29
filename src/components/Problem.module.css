@@ -79,10 +79,10 @@
 @media (max-width: 768px) {
   .header {
     text-align: left;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
   .cardInner {
-    padding: 1.5rem;
+    padding: 1.25rem;
     overflow: hidden;
   }
 }

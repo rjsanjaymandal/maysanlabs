@@ -39,7 +39,7 @@
   
   /* Responsive Spacing */
   --section-padding-y: clamp(4rem, 12vh, 12rem);
-  --container-padding-x: clamp(1.5rem, 5vw, 3rem);
+  --container-padding-x: clamp(1rem, 5vw, 3rem);
   
   /* Safe Areas */
   --dock-height: 84px;
@@ -47,8 +47,14 @@
 
 @media (max-width: 768px) {
   :root {
-    --section-padding-y: 5rem;
-    --dock-height: 60px;
+    --section-padding-y: 4rem;
+    --dock-height: 56px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .blueprint-line-v {
+    display: none;
   }
 }
 
@@ -283,6 +289,14 @@ h2 {
   grid-template-columns: repeat(12, 1fr);
 }
 
+@media (max-width: 768px) {
+  .bento-grid {
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .bento-item {
   position: relative;
   overflow: hidden;
@@ -359,29 +373,21 @@ h2 {
 
 @media (max-width: 480px) {
   .container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
   
   section {
-    padding: 4rem 0 !important;
+    padding: 3.5rem 0 !important;
   }
   
-  h1 { font-size: 2.5rem !important; }
-  h2 { font-size: 1.8rem !important; }
+  h1 { font-size: 2.25rem !important; }
+  h2 { font-size: 1.85rem !important; }
 }
 
 /* Scroll Smoothing for Mobile */
 @media (max-width: 768px) {
   html {
     scroll-padding-top: 80px;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .bento-grid {
-    display: flex;
-    flex-direction: column;
   }
 }

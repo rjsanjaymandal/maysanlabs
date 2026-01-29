@@ -5,14 +5,7 @@ import PageHeader from "@/components/PageHeader";
 import ContactFooter from "@/components/ContactFooter";
 import styles from "./Insights.module.css";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Calendar,
-  User,
-  Tag,
-  Terminal as TerminalIcon,
-  LayoutGrid,
-} from "lucide-react";
+import { ArrowRight, Terminal as TerminalIcon, LayoutGrid } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import TacticalOverlay from "@/components/TacticalOverlay";
 import { useState } from "react";
@@ -24,7 +17,7 @@ export default function InsightsPage() {
     {
       id: "1",
       category: "TECH_DEEP_DIVE",
-      title: "The Architecture of a One-Person Empire",
+      title: "The Architecture of a Scalable Enterprise",
       date: "2026.01.20",
       excerpt:
         "Exploring the technical stack required to scale a global brand without a corporate team.",
@@ -54,7 +47,7 @@ export default function InsightsPage() {
       <PageHeader
         label="DATA_STREAM"
         title="TECHNICAL_INSIGHTS"
-        subtitle="Deep-dives into modular architecture, tactical automation, and the future of digital empires."
+        subtitle="Deep-dives into modular architecture, tactical automation, and the future of digital platforms."
       />
 
       <section className={styles.section}>

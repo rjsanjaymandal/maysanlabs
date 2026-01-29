@@ -1,78 +1,101 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import {
   Store,
   Cpu,
   Zap,
   ShieldCheck,
-  Smartphone,
-  Search,
-  BarChart3,
-  MessageSquareQuote,
   TrendingUp,
   Layout,
+  BarChart3,
 } from "lucide-react";
 import styles from "./Solution.module.css";
 import SpotlightCard from "./SpotlightCard";
-import DataMarker from "./DataMarker";
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.05,
     },
   },
-} as any;
+};
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 15 },
   visible: {
     opacity: 1,
     y: 0,
     transition: { duration: 0.5 },
   },
-} as any;
+};
 
 export default function Solution() {
   const solutions = [
     {
-      title: "CRM Systems",
-      desc: "Custom relationship management tools built for your specific workflow.",
-      icon: <TrendingUp size={32} />,
-      features: ["Lead Tracking", "Client Portals", "Automated Follow-ups"],
+      title: "E-commerce Platform Generation",
+      desc: "End-to-end e-commerce solutions to establish, manage, and scale your online presence.",
+      icon: <Store size={32} />,
+      features: [
+        "Integrated Payment Gateways",
+        "Inventory Management",
+        "User-friendly Experience",
+      ],
       size: "col-span-12 md:col-span-8",
       variant: "featured",
     },
     {
-      title: "ERP Solutions",
-      desc: "Centralized enterprise resource planning.",
-      icon: <Layout size={32} />,
-      features: ["Inventory Control", "Mobile Management", "Analytics"],
+      title: "CRM Module",
+      desc: "Manage and enhance customer interactions with centralized data and automation.",
+      icon: <TrendingUp size={32} />,
+      features: [
+        "Engagement Tracking",
+        "Communication Automation",
+        "Relationship Building",
+      ],
       size: "col-span-12 md:col-span-4",
     },
     {
-      title: "Web Development",
-      desc: "High-performance, modern websites.",
-      icon: <Store size={32} />,
-      features: ["Next.js Speed", "SEO Optimization", "Responsive"],
-      size: "col-span-12 md:col-span-4",
-    },
-    {
-      title: "Customised AI Tools",
-      desc: "Tailor-made automation and LLM utilities.",
+      title: "Customized Software",
+      desc: "Tailored applications that align with your organizational workflows and growth.",
       icon: <Cpu size={32} />,
-      features: ["LLM Integration", "Workflows", "Data Extraction"],
+      features: [
+        "Scalable Architecture",
+        "Secure Development",
+        "Operational Performance",
+      ],
       size: "col-span-12 md:col-span-4",
     },
     {
-      title: "Cloud Space for CA",
-      desc: "Secure storage for CA & Legal firms.",
+      title: "Cloud Solutions",
+      desc: "Securely store and process data on high-performance, scalable cloud infrastructure.",
       icon: <ShieldCheck size={32} />,
-      features: ["Encryption", "Document Management", "Client Sharing"],
+      features: ["Cloud Migration", "Optimization", "High Availability"],
       size: "col-span-12 md:col-span-4",
+    },
+    {
+      title: "Employee Management",
+      desc: "Streamline human resource operations and improve team productivity.",
+      icon: <Layout size={32} />,
+      features: [
+        "Attendance & Records",
+        "Performance Tracking",
+        "Payroll Integration",
+      ],
+      size: "col-span-12 md:col-span-4",
+    },
+    {
+      title: "Digital & Performance Marketing",
+      desc: "Enhance brand visibility and audience engagement with measurable business growth. Note: Marketing shoots conducted exclusively in Jaipur and Chandigarh.",
+      icon: <BarChart3 size={32} />,
+      features: [
+        "Campaign Strategy",
+        "Content Creation",
+        "Performance Analytics",
+      ],
+      size: "col-span-12 md:col-span-12",
     },
   ];
 
@@ -110,7 +133,6 @@ export default function Solution() {
             >
               <SpotlightCard featured={sol.variant === "featured"}>
                 <div className={styles.featureInner}>
-                  <DataMarker label={`SOL_0${index + 1}`} position="br" />
                   <div className={styles.iconWrapper}>{sol.icon}</div>
                   <h3 className={styles.featureTitle}>{sol.title}</h3>
                   <p className={styles.featureDesc}>{sol.desc}</p>

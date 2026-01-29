@@ -21,7 +21,6 @@ export default function GlitchText({
   const triggerGlitch = useCallback(() => {
     setIsGlitching(true);
     let iterations = 0;
-    const maxIterations = 3;
 
     const interval = setInterval(() => {
       setDisplayText((prev) =>

@@ -33,7 +33,7 @@ const stages = [
   {
     tag: "STG_05",
     title: "ELITE_MAINTENANCE",
-    desc: "Ongoing optimization and scaling for sustained empire growth.",
+    desc: "Ongoing optimization and scaling for sustained enterprise growth.",
     icon: <ShieldCheck size={24} />,
   },
 ];

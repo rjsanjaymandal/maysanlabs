@@ -18,7 +18,7 @@ export default function ContactFooter() {
           >
             Engineering the next
             <br />
-            <span className="text-gradient">high-tech empire.</span>
+            <span className="text-gradient">high-tech enterprise.</span>
           </motion.h2>
 
           <motion.p

@@ -36,8 +36,8 @@ export default function SocialProof() {
           >
             <h2 className={styles.title}>Engineered for World-Class Teams</h2>
             <p className={styles.subtitle}>
-              Our infrastructure powers the next generation of digital empires
-              with uncompromising speed and reliability.
+              Our infrastructure powers the next generation of digital
+              enterprises with uncompromising speed and reliability.
             </p>
           </motion.div>
 

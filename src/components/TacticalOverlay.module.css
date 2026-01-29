@@ -23,7 +23,8 @@
   background: rgba(18, 16, 16, 0.05);
   opacity: 0;
   pointer-events: none;
-  animation: flicker 0.15s infinite;
+  animation: flicker 0.2s infinite;
+  will-change: opacity;
 }
 
 @keyframes flicker {
