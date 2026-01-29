@@ -251,7 +251,7 @@
   .labelWrapper { justify-content: flex-start; width: 100%; }
   .labelLine { display: none; }
   .subheadline { margin-left: 0; margin-right: 0; margin-bottom: 2.5rem; }
-  .ctaGroup { 
+  .ctaWrapper { 
     flex-direction: column; 
     width: 100%; 
     align-items: stretch;

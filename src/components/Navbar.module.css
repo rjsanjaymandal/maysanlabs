@@ -10,6 +10,7 @@
   background-color: hsl(var(--background));
   border-bottom: 1px solid hsla(var(--foreground), 0.1);
   height: 72px;
+  overflow: hidden;
 }
 
 .scrolled {
@@ -94,6 +95,7 @@
   display: flex;
   align-items: center;
   height: 100%;
+  flex-shrink: 0;
 }
 
 .ctaWrapper {

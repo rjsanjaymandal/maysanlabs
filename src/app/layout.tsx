@@ -81,7 +81,6 @@ export const viewport: Viewport = {
   themeColor: "#ccff00",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
 };
 
 import CommandDock from "@/components/CommandDock";

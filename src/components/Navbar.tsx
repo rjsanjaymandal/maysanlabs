@@ -124,7 +124,7 @@ export default function Navbar() {
           </div>
 
           <div className={styles.actions}>
-            <div className={styles.navRight}>
+            <div className={styles.ctaWrapper}>
               <Link href="/init" className="btn btn-primary">
                 INITIALIZE_PROJECT
               </Link>
