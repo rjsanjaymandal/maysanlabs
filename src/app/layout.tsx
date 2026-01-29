@@ -89,6 +89,8 @@ import SmartCursor from "@/components/SmartCursor";
 import SmoothScroll from "@/components/SmoothScroll";
 import TacticalOverlay from "@/components/TacticalOverlay";
 
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -100,6 +102,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable}`}
         suppressHydrationWarning
       >
+        <GoogleAnalytics />
         <div className="noise-overlay" />
         <TacticalOverlay />
         <SmartCursor />
