@@ -36,10 +36,10 @@ export default function InitPage() {
             <>
               <div className="mb-8">
                 <h1 className="text-3xl font-bold tracking-tight mb-2">
-                  Initialize Project
+                  Get in Touch
                 </h1>
                 <p className="text-muted-foreground">
-                  Provide your organization details to establish a protocol.
+                  Connect with us to start your next enterprise project.
                 </p>
               </div>
 
@@ -133,7 +133,7 @@ export default function InitPage() {
                     type="submit"
                     className="w-full bg-primary text-primary-foreground font-bold py-4 rounded-lg hover:opacity-90 transition-opacity uppercase tracking-widest text-sm shadow-lg shadow-primary/20"
                   >
-                    Initialize Protocol
+                    Send Message
                   </button>
                 </div>
               </form>
@@ -143,14 +143,13 @@ export default function InitPage() {
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
                 <CheckCircle size={32} className="text-primary" />
               </div>
-              <h2 className="text-2xl font-bold mb-2">Protocol Established</h2>
+              <h2 className="text-2xl font-bold mb-2">Message Sent</h2>
               <p className="text-muted-foreground max-w-md mb-8">
-                Initialization request for{" "}
+                Thank you,{" "}
                 <span className="text-foreground font-bold">
                   {formData.companyName}
                 </span>{" "}
-                has been securely logged. Our engineering team will analyze the
-                parameters and establish contact at{" "}
+                . We have received your details and will contact you shortly at{" "}
                 <span className="text-foreground font-mono">
                   {formData.email}
                 </span>
@@ -160,7 +159,7 @@ export default function InitPage() {
                 onClick={() => setIsSubmitted(false)} // Optional: Reset for demo
                 className="text-sm text-primary hover:underline underline-offset-4"
               >
-                Initialize another project
+                Send another message
               </button>
             </div>
           )}

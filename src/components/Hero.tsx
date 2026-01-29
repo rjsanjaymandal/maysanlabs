@@ -25,7 +25,7 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Link href="/init" className="btn btn-primary text-lg px-8 py-4">
               <Zap size={20} className="mr-2" />
-              Initialize Project
+              Get in Touch
               <ArrowRight size={20} className="ml-2" />
             </Link>
             <Link

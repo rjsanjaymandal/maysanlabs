@@ -69,7 +69,7 @@ export default function Navbar() {
             href="/init"
             className="btn btn-primary btn-sm text-sm px-5 py-2"
           >
-            Initialize
+            Get in Touch
           </Link>
         </div>
 
@@ -102,7 +102,7 @@ export default function Navbar() {
                 href="/init"
                 className="btn btn-primary w-full text-center py-4"
               >
-                Initialize Project
+                Get in Touch
               </Link>
             </div>
           </div>
