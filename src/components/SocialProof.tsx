@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import styles from "./SocialProof.module.css";
 
 const technologies = [
   "Next.js",
@@ -24,61 +23,63 @@ export default function SocialProof() {
   ];
 
   return (
-    <section className={styles.section}>
-      <div className={`container ${styles.container}`}>
-        <div className={styles.bentoGrid}>
+    <section className="py-24 bg-card border-y border-border overflow-hidden">
+      <div className="container">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Header Block */}
-          <motion.div
-            className={`${styles.bentoItem} ${styles.headerBlock}`}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className={styles.title}>Engineered for World-Class Teams</h2>
-            <p className={styles.subtitle}>
+          <div className="md:col-span-2 lg:col-span-2">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground mb-4">
+              Engineered for World-Class Teams
+            </h2>
+            <p className="text-muted-foreground text-lg leading-relaxed">
               Our infrastructure powers the next generation of digital
               enterprises with uncompromising speed and reliability.
             </p>
-          </motion.div>
+          </div>
 
           {/* Stats Blocks */}
           {stats.map((stat, index) => (
-            <motion.div
+            <div
               key={index}
-              className={`${styles.bentoItem} ${styles.statBlock}`}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              className="p-8 bg-background border border-border rounded-lg flex flex-col justify-center items-center text-center"
             >
-              <div className="system-pulse" style={{ marginBottom: "1rem" }} />
-              <span className={styles.stat}>{stat.value}</span>
-              <p className={styles.label}>{stat.label}</p>
-            </motion.div>
-          ))}
-
-          {/* Marquee Block */}
-          <motion.div
-            className={`${styles.bentoItem} ${styles.marqueeBlock}`}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <div className={styles.marqueeContainer}>
-              <motion.div
-                className={styles.marquee}
-                animate={{ x: [0, -1000] }}
-                transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
-              >
-                {[...technologies, ...technologies].map((tech, i) => (
-                  <span key={i} className={styles.techItem}>
-                    <div className={styles.dot} />
-                    {tech}
-                  </span>
-                ))}
-              </motion.div>
+              <span className="text-4xl font-bold text-primary mb-2 display-block">
+                {stat.value}
+              </span>
+              <p className="text-sm text-muted-foreground uppercase tracking-wider font-mono">
+                {stat.label}
+              </p>
             </div>
-          </motion.div>
+          ))}
+        </div>
+
+        {/* Marquee Block */}
+        <div className="mt-16 relative">
+          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-card to-transparent z-10" />
+          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-card to-transparent z-10" />
+
+          <div className="flex overflow-hidden">
+            <motion.div
+              className="flex gap-16 items-center whitespace-nowrap"
+              animate={{ x: "-50%" }}
+              transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
+            >
+              {[
+                ...technologies,
+                ...technologies,
+                ...technologies,
+                ...technologies,
+              ].map((tech, i) => (
+                <span
+                  key={i}
+                  className="text-xl font-medium text-muted-foreground/60 flex items-center gap-2"
+                >
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary/40" />
+                  {tech}
+                </span>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

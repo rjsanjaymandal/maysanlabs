@@ -1,84 +1,66 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Mail, MapPin, ArrowUpRight } from "lucide-react";
-import styles from "./ContactFooter.module.css";
 
 export default function ContactFooter() {
   return (
-    <footer id="contact" className={styles.footer}>
+    <footer id="contact" className="py-24 bg-muted/10 border-t border-border">
       <div className="container">
-        <div className={styles.header}>
-          <motion.h2
-            className={styles.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+        <div className="mb-24 text-center max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8 text-foreground">
             Engineering the next
             <br />
-            <span className="text-gradient">high-tech enterprise.</span>
-          </motion.h2>
+            <span className="text-primary">high-tech enterprise.</span>
+          </h2>
 
-          <motion.p
-            className={styles.subtitle}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
+          <p className="text-xl text-muted-foreground mb-12">
             We build the infrastructure, you lead the growth.
-          </motion.p>
+          </p>
 
-          <motion.div
-            className={styles.ctaWrapper}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
+          <div className="flex justify-center">
             <Link
               href="mailto:business@maysanlabs.com"
-              className="btn btn-primary"
+              className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 rounded-full font-bold text-lg hover:opacity-90 transition-opacity"
             >
               <Mail size={20} />
-              <span className="desktop-only">Request Infrastructure Audit</span>
-              <span className="mobile-only">Request Audit</span>
+              <span>Request Infrastructure Audit</span>
               <ArrowUpRight size={20} />
             </Link>
-          </motion.div>
+          </div>
         </div>
 
-        <div className={styles.bottomGrid}>
-          <div>
-            <h4 className={styles.columnHeader}>Maysan Labs</h4>
-            <p>The architects behind modern, automated enterprise systems.</p>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-t border-border pt-12">
+          <div className="col-span-1 md:col-span-2">
+            <h4 className="font-bold text-foreground mb-4">Maysan Labs</h4>
+            <p className="text-muted-foreground max-w-xs">
+              The architects behind modern, automated enterprise systems.
+            </p>
           </div>
 
           <div>
-            <h4 className={styles.columnHeader}>Contact</h4>
-            <div className={styles.linkGroup}>
+            <h4 className="font-bold text-foreground mb-4">Contact</h4>
+            <div>
               <Link
                 href="mailto:business@maysanlabs.com"
-                className={styles.contactLink}
+                className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2"
               >
-                <Mail size={14} /> business@maysanlabs.com
+                <Mail size={16} /> business@maysanlabs.com
               </Link>
             </div>
           </div>
 
           <div>
-            <h4 className={styles.columnHeader}>Location</h4>
-            <p className={styles.contactLink}>
-              <MapPin size={14} /> Gurgaon, India
+            <h4 className="font-bold text-foreground mb-4">Location</h4>
+            <p className="text-muted-foreground flex items-center gap-2">
+              <MapPin size={16} /> Gurgaon, India
             </p>
           </div>
+        </div>
 
-          <div className={styles.copyright}>
-            <p>© {new Date().getFullYear()} Maysan Labs.</p>
-            <p>Built for the Future.</p>
-          </div>
+        <div className="mt-12 text-center text-sm text-muted-foreground/50 flex flex-col md:flex-row justify-between items-center">
+          <p>© {new Date().getFullYear()} Maysan Labs.</p>
+          <p>Built for the Future.</p>
         </div>
       </div>
     </footer>

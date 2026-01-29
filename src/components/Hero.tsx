@@ -1,89 +1,41 @@
 "use client";
 
-import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { ArrowRight, Zap } from "lucide-react";
 import Link from "next/link";
-import styles from "./Hero.module.css";
-import GlitchText from "./GlitchText";
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 15 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
 
 export default function Hero() {
-  const { scrollY } = useScroll();
-  const yParallax = useTransform(scrollY, [0, 800], [0, 400]);
-  const scale = useTransform(scrollY, [0, 400], [1, 0.95]);
-  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
-
   return (
-    <section className={styles.hero}>
-      {/* Neo-Monolith Background Layer */}
-      <motion.div
-        className={styles.gridOverlay}
-        style={{ y: yParallax, opacity: 0.15 }}
-      />
+    <section className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-16 overflow-hidden">
+      {/* Background Gradient - Subtle & Professional */}
+      <div className="absolute inset-0 bg-gradient-radial from-secondary/20 to-background pointer-events-none" />
 
-      <div className={styles.cornerBorderBR} />
-      <div className={styles.cornerBorderTL} />
+      <div className="container relative z-10 text-center">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground">
+            Core Operating Systems <br />
+            <span className="text-gradient">Enterprise Command</span>
+          </h1>
 
-      <motion.div
-        className={`container ${styles.container}`}
-        style={{ scale, opacity }}
-      >
-        <motion.div
-          className={styles.content}
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-        >
-          <motion.h1 className={styles.headline} variants={itemVariants}>
-            <GlitchText text="CORE_OPERATING_SYSTEMS" glitchInterval={8000} />
-            <br />
-            <span className={`${styles.accentText} hollow-text`}>
-              <GlitchText text="ENTERPRISE_COMMAND" glitchInterval={12000} />
-            </span>
-          </motion.h1>
-
-          <motion.p className={styles.subheadline} variants={itemVariants}>
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Architecting high-performance digital infrastructure for the modern
             enterprise. Modular SaaS ecosystems and autonomous operational
             layers.
-          </motion.p>
+          </p>
 
-          <motion.div className={styles.ctaWrapper} variants={itemVariants}>
-            <Link href="/init" className="btn btn-primary">
-              <Zap size={20} />
-              <span className={styles.desktopText}>INITIALIZE_PROJECT</span>
-              <span className={styles.mobileText}>INITIALIZE</span>
-              <ArrowRight size={20} />
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <Link href="/init" className="btn btn-primary text-lg px-8 py-4">
+              <Zap size={20} className="mr-2" />
+              Initialize Project
+              <ArrowRight size={20} className="ml-2" />
             </Link>
-          </motion.div>
-        </motion.div>
-      </motion.div>
-
-      <div className={styles.scrollIndicator}>
-        <div className={styles.indicatorLine} />
-        <span className={styles.indicatorText}>SCROLL_TO_INITIALIZE</span>
+            <Link
+              href="#solution"
+              className="btn btn-secondary text-lg px-8 py-4"
+            >
+              Explore Solutions
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

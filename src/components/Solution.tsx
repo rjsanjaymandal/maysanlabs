@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
 import {
   Store,
   Cpu,
@@ -10,27 +9,6 @@ import {
   Layout,
   BarChart3,
 } from "lucide-react";
-import styles from "./Solution.module.css";
-import SpotlightCard from "./SpotlightCard";
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 15 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 },
-  },
-};
 
 export default function Solution() {
   const solutions = [
@@ -43,8 +21,6 @@ export default function Solution() {
         "Inventory Management",
         "User-friendly Experience",
       ],
-      size: "col-span-12 md:col-span-8",
-      variant: "featured",
     },
     {
       title: "CRM Module",
@@ -55,7 +31,6 @@ export default function Solution() {
         "Communication Automation",
         "Relationship Building",
       ],
-      size: "col-span-12 md:col-span-4",
     },
     {
       title: "Customized Software",
@@ -66,14 +41,12 @@ export default function Solution() {
         "Secure Development",
         "Operational Performance",
       ],
-      size: "col-span-12 md:col-span-4",
     },
     {
       title: "Cloud Solutions",
       desc: "Securely store and process data on high-performance, scalable cloud infrastructure.",
       icon: <ShieldCheck size={32} />,
       features: ["Cloud Migration", "Optimization", "High Availability"],
-      size: "col-span-12 md:col-span-4",
     },
     {
       title: "Employee Management",
@@ -84,7 +57,6 @@ export default function Solution() {
         "Performance Tracking",
         "Payroll Integration",
       ],
-      size: "col-span-12 md:col-span-4",
     },
     {
       title: "Digital & Performance Marketing",
@@ -95,59 +67,54 @@ export default function Solution() {
         "Content Creation",
         "Performance Analytics",
       ],
-      size: "col-span-12 md:col-span-12",
     },
   ];
 
   return (
-    <section id="solution" className={styles.section}>
+    <section
+      id="solution"
+      className="py-24 bg-background border-t border-border"
+    >
       <div className="container">
-        <motion.div
-          className={styles.header}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className={styles.label}>Our Solutions</span>
-          <h2 className={`${styles.title} hollow-text`}>
+        <div className="mb-16 text-center max-w-3xl mx-auto">
+          <span className="text-primary font-mono text-sm uppercase tracking-widest mb-2 block">
+            Our Solutions
+          </span>
+          <h2 className="text-4xl font-bold tracking-tight text-foreground mb-4">
             The Engineering Excellence
           </h2>
-          <p className={styles.subtitle}>
+          <p className="text-xl text-muted-foreground">
             Scalable architectures designed for modern digital dominance.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="bento-grid"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {solutions.map((sol, index) => (
-            <motion.div
+            <div
               key={index}
-              className={`${sol.size} bento-item`}
-              variants={itemVariants}
+              className="p-8 bg-card rounded-lg border border-border hover:shadow-xl transition-shadow group"
             >
-              <SpotlightCard featured={sol.variant === "featured"}>
-                <div className={styles.featureInner}>
-                  <div className={styles.iconWrapper}>{sol.icon}</div>
-                  <h3 className={styles.featureTitle}>{sol.title}</h3>
-                  <p className={styles.featureDesc}>{sol.desc}</p>
-                  <ul className={styles.featureList}>
-                    {sol.features.map((feature, fIndex) => (
-                      <li key={fIndex} className={styles.featureItem}>
-                        <Zap size={14} /> <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </SpotlightCard>
-            </motion.div>
+              <div className="w-14 h-14 bg-primary/10 text-primary flex items-center justify-center rounded-lg mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                {sol.icon}
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-foreground">
+                {sol.title}
+              </h3>
+              <p className="text-muted-foreground mb-6 h-20">{sol.desc}</p>
+              <ul className="space-y-2">
+                {sol.features.map((feature, fIndex) => (
+                  <li
+                    key={fIndex}
+                    className="flex items-center text-sm text-foreground/80"
+                  >
+                    <Zap size={14} className="text-primary mr-2" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

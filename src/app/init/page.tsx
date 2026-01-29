@@ -2,9 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { Send, ChevronRight, Terminal } from "lucide-react";
-import styles from "./Init.module.css";
 import Navbar from "@/components/Navbar";
-import TacticalOverlay from "@/components/TacticalOverlay";
 
 const steps = [
   {
@@ -31,6 +29,13 @@ const steps = [
     label: "SYSTEM_INIT",
     prompt: "Final verification. Proceed with initialization?",
     placeholder: "Type 'Y' to confirm",
+  },
+  {
+    id: "CONTACT_INFO",
+    label: "CONTACT_POINT",
+    prompt: "Enter email for protocol transmission:",
+    placeholder: "your@email.com",
+    final: true,
   },
 ];
 
@@ -72,6 +77,7 @@ export default function InitPage() {
 
   const handleFinalize = () => {
     setIsInitializing(true);
+    setInputValue("");
     setLogs((prev) => [
       ...prev,
       "[SYS]: INITIALIZING_PROTOCOL_THETA...",
@@ -90,60 +96,69 @@ export default function InitPage() {
   };
 
   return (
-    <main className={styles.main}>
+    <main className="min-h-screen bg-background flex flex-col pt-20">
       <Navbar />
-      <TacticalOverlay />
-      <div className="container">
-        <div className={styles.terminalContainer}>
-          <div className={styles.terminalHeader}>
-            <div className={styles.controls}>
-              <div className={styles.control} />
-              <div className={styles.control} />
-              <div className={styles.control} />
+      <div className="container max-w-3xl flex-1 flex flex-col justify-center py-12">
+        <div className="border border-border rounded-lg bg-card shadow-2xl overflow-hidden flex flex-col h-[600px]">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-muted/30">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-destructive/50" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+              <div className="w-3 h-3 rounded-full bg-green-500/50" />
             </div>
-            <div className={styles.terminalTitle}>
-              <Terminal size={14} /> <span>PROJECT_INITIALIZATION</span>
+            <div className="flex items-center gap-2 text-muted-foreground text-xs font-mono">
+              <Terminal size={12} /> <span>PROJECT_INITIALIZATION</span>
             </div>
+            <div className="w-12" /> {/* Spacer */}
           </div>
 
-          <div className={styles.terminalBody} ref={scrollRef}>
+          <div
+            className="flex-1 overflow-y-auto p-6 font-mono text-sm space-y-2 scrollbar-hide text-foreground/80"
+            ref={scrollRef}
+          >
             {logs.map((log, i) => (
               <div
                 key={i}
                 className={
-                  log.startsWith(">") ? styles.userInput : styles.sysLog
+                  log.startsWith(">")
+                    ? "text-primary font-bold mt-4 mb-2"
+                    : "text-muted-foreground"
                 }
               >
                 {log}
               </div>
             ))}
+
             {!isInitializing && currentStep < steps.length && (
-              <div className={styles.activePrompt}>
-                <span className={styles.stepCursor}>
-                  [STEP_0{currentStep + 1}]:
-                </span>
-                <span className={styles.promptText}>
-                  {steps[currentStep].prompt}
-                </span>
-                <div className={styles.inputArea}>
-                  <ChevronRight size={18} className={styles.chevron} />
+              <div className="mt-6 border-t border-border/50 pt-4 animate-in fade-in duration-300">
+                <div className="flex items-center gap-2 text-primary mb-2">
+                  <span className="opacity-50">[STEP_0{currentStep + 1}]:</span>
+                  <span className="font-bold">{steps[currentStep].prompt}</span>
+                </div>
+
+                <div className="flex items-center gap-2 bg-background/50 border border-border rounded px-3 py-2 focus-within:ring-1 focus-within:ring-primary/50 transition-all">
+                  <ChevronRight
+                    size={16}
+                    className="text-primary animate-pulse"
+                  />
                   <input
                     autoFocus
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && handleNext()}
                     placeholder={steps[currentStep].placeholder}
-                    className={styles.input}
+                    className="flex-1 bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground/30 h-full py-1"
                   />
-                  <button onClick={handleNext} className={styles.sendBtn}>
+                  <button
+                    onClick={handleNext}
+                    className="text-primary hover:text-primary/80 transition-colors p-1"
+                  >
                     <Send size={16} />
                   </button>
                 </div>
               </div>
             )}
           </div>
-
-          <div className={styles.terminalFooter}></div>
         </div>
       </div>
     </main>

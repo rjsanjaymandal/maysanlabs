@@ -1,9 +1,7 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { Check, Zap, Rocket, Shield } from "lucide-react";
-import styles from "./Pricing.module.css";
-import SpotlightCard from "./SpotlightCard";
 
 const plans = [
   {
@@ -49,151 +47,127 @@ const plans = [
   },
 ];
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5 },
-  },
-};
-
 export default function Pricing() {
   return (
-    <section id="pricing" className={styles.section}>
+    <section id="pricing" className="py-24 bg-background">
       <div className="container">
-        <motion.div
-          className={styles.header}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className={styles.label}>Pricing Plans</span>
-          <h2 className={styles.title}>Scalable Solutions for Every Goal</h2>
-          <p className={styles.subtitle}>
+        <div className="mb-16 text-center">
+          <span className="text-primary font-mono text-sm uppercase tracking-widest mb-2 block">
+            Pricing Plans
+          </span>
+          <h2 className="text-4xl font-bold tracking-tight text-foreground mb-4">
+            Scalable Solutions for Every Goal
+          </h2>
+          <p className="text-xl text-muted-foreground">
             Choose the package that fits your business needs. Transparent
             pricing, no hidden fees.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className={styles.bentoGrid}
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {/* Starter Plan */}
-          <motion.div className={styles.bentoItemSmall} variants={itemVariants}>
-            <SpotlightCard>
-              <div className={styles.pricingInner}>
-                <div
-                  className={styles.iconWrapper}
-                  style={{ color: plans[0].color }}
-                >
-                  {plans[0].icon}
-                </div>
-                <h3 className={styles.planName}>{plans[0].name}</h3>
-                <div className={styles.priceWrapper}>
-                  <span className={styles.currency}>₹</span>
-                  <span className={styles.price}>{plans[0].price}</span>
-                </div>
-                <ul className={styles.featureList}>
-                  {plans[0].features.map((f, i) => (
-                    <li key={i} className={styles.featureItem}>
-                      <Check size={14} className={styles.checkIcon} />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <button className="btn btn-secondary w-full">
-                  Select Plan
-                </button>
+          <div className="p-8 border border-border rounded-lg bg-card hover:border-primary/30 transition-colors">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-3 bg-muted rounded text-muted-foreground">
+                {plans[0].icon}
               </div>
-            </SpotlightCard>
-          </motion.div>
+              <h3 className="text-2xl font-bold">{plans[0].name}</h3>
+            </div>
 
-          {/* Enterprise Plan (Featured - Large) */}
-          <motion.div className={styles.bentoItemLarge} variants={itemVariants}>
-            <SpotlightCard featured>
-              <div className={`${styles.pricingInner} ${styles.innerLarge}`}>
-                <div className={styles.featuredBadge}>
-                  MOST POPULAR ARCHITECTURE
-                </div>
-                <div className={styles.largeContent}>
-                  <div className={styles.largeLeft}>
-                    <div
-                      className={styles.iconWrapper}
-                      style={{ color: plans[1].color }}
-                    >
-                      {plans[1].icon}
-                    </div>
-                    <h3 className={styles.planName}>{plans[1].name}</h3>
-                    <div className={styles.priceWrapper}>
-                      <span className={styles.currency}>₹</span>
-                      <span className={styles.price}>{plans[1].price}</span>
-                    </div>
-                    <p className={styles.planDesc}>{plans[1].description}</p>
-                    <button className="btn btn-primary">
-                      Implement This Stack
-                    </button>
+            <div className="flex items-baseline gap-1 mb-6">
+              <span className="text-lg text-muted-foreground">₹</span>
+              <span className="text-4xl font-bold">{plans[0].price}</span>
+            </div>
+
+            <ul className="space-y-4 mb-8">
+              {plans[0].features.map((f, i) => (
+                <li
+                  key={i}
+                  className="flex items-center gap-3 text-muted-foreground"
+                >
+                  <div className="p-0.5 rounded-full bg-muted-foreground/20 text-muted-foreground">
+                    <Check size={12} />
                   </div>
-                  <div className={styles.largeRight}>
-                    <ul className={styles.featureListGrid}>
-                      {plans[1].features.map((f, i) => (
-                        <li key={i} className={styles.featureItemBold}>
-                          <Zap size={16} className={styles.zapIcon} />
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <button className="w-full py-3 border border-border rounded font-semibold hover:bg-muted transition-colors">
+              Select Plan
+            </button>
+          </div>
+
+          {/* Enterprise Plan (Featured) */}
+          <div className="p-8 border-2 border-primary rounded-lg bg-card relative shadow-2xl lg:-mt-8 lg:z-10 bg-gradient-to-b from-card to-primary/5">
+            <div className="absolute top-0 right-0 left-0 -mt-4 flex justify-center">
+              <span className="bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full tracking-widest uppercase">
+                Most Popular
+              </span>
+            </div>
+            <div className="flex items-center gap-4 mb-6 mt-4">
+              <div className="p-3 bg-primary rounded text-primary-foreground">
+                {plans[1].icon}
               </div>
-            </SpotlightCard>
-          </motion.div>
+              <h3 className="text-2xl font-bold">{plans[1].name}</h3>
+            </div>
+
+            <div className="flex items-baseline gap-1 mb-2">
+              <span className="text-lg text-muted-foreground">₹</span>
+              <span className="text-5xl font-bold text-primary">
+                {plans[1].price}
+              </span>
+            </div>
+            <p className="text-sm text-muted-foreground mb-8">
+              {plans[1].description}
+            </p>
+
+            <ul className="space-y-4 mb-8">
+              {plans[1].features.map((f, i) => (
+                <li key={i} className="flex items-center gap-3 font-medium">
+                  <div className="p-0.5 rounded-full bg-primary text-primary-foreground">
+                    <Check size={12} />
+                  </div>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <button className="w-full py-4 bg-primary text-primary-foreground rounded font-bold hover:opacity-90 transition-opacity shadow-lg shadow-primary/20">
+              Implement This Stack
+            </button>
+          </div>
 
           {/* Secure Cloud Plan */}
-          <motion.div className={styles.bentoItemSmall} variants={itemVariants}>
-            <SpotlightCard>
-              <div className={styles.pricingInner}>
-                <div
-                  className={styles.iconWrapper}
-                  style={{ color: plans[2].color }}
-                >
-                  {plans[2].icon}
-                </div>
-                <h3 className={styles.planName}>{plans[2].name}</h3>
-                <div className={styles.priceWrapper}>
-                  <span className={styles.currency}>₹</span>
-                  <span className={styles.price}>{plans[2].price}</span>
-                </div>
-                <ul className={styles.featureList}>
-                  {plans[2].features.map((f, i) => (
-                    <li key={i} className={styles.featureItem}>
-                      <Check size={14} className={styles.checkIcon} />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <button className="btn btn-secondary w-full">
-                  Select Plan
-                </button>
+          <div className="p-8 border border-border rounded-lg bg-card hover:border-primary/30 transition-colors">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="p-3 bg-muted rounded text-muted-foreground">
+                {plans[2].icon}
               </div>
-            </SpotlightCard>
-          </motion.div>
-        </motion.div>
+              <h3 className="text-2xl font-bold">{plans[2].name}</h3>
+            </div>
+
+            <div className="flex items-baseline gap-1 mb-6">
+              <span className="text-lg text-muted-foreground">₹</span>
+              <span className="text-4xl font-bold">{plans[2].price}</span>
+            </div>
+
+            <ul className="space-y-4 mb-8">
+              {plans[2].features.map((f, i) => (
+                <li
+                  key={i}
+                  className="flex items-center gap-3 text-muted-foreground"
+                >
+                  <div className="p-0.5 rounded-full bg-muted-foreground/20 text-muted-foreground">
+                    <Check size={12} />
+                  </div>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <button className="w-full py-3 border border-border rounded font-semibold hover:bg-muted transition-colors">
+              Select Plan
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );

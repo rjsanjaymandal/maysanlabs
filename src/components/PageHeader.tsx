@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import styles from "./PageHeader.module.css";
-import GlitchText from "./GlitchText";
 
 interface PageHeaderProps {
   title: string;
@@ -16,24 +14,25 @@ export default function PageHeader({
   label,
 }: PageHeaderProps) {
   return (
-    <section className={styles.headerSection}>
-      <div className="blueprint-line-v" style={{ left: "10%", opacity: 0.1 }} />
-      <div className="blueprint-line-v" style={{ left: "90%", opacity: 0.1 }} />
-
+    <section className="pt-32 pb-16 bg-muted/10 border-b border-border">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className={styles.content}
+          transition={{ duration: 0.4 }}
+          className="max-w-4xl"
         >
-          <span className={styles.label}>{label}</span>
-          <h1 className={styles.title}>
-            <GlitchText text={title} />
+          <span className="text-sm font-mono text-primary uppercase tracking-widest mb-4 block">
+            {label}
+          </span>
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-foreground">
+            {title.replace(/_/g, " ")}
           </h1>
-          <p className={styles.subtitle}>{subtitle}</p>
+          <p className="text-xl text-muted-foreground leading-relaxed">
+            {subtitle}
+          </p>
         </motion.div>
       </div>
-      <div className={styles.bottomBorder} />
     </section>
   );
 }

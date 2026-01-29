@@ -5,8 +5,6 @@ import PageHeader from "@/components/PageHeader";
 import ContactFooter from "@/components/ContactFooter";
 import TechnicalSpecs from "@/components/TechnicalSpecs";
 import OperationsRoadmap from "@/components/OperationsRoadmap";
-import BlueprintGrid from "@/components/BlueprintGrid";
-import styles from "./Solutions.module.css";
 import { Layers, Code, Zap, Store, TrendingUp, BarChart3 } from "lucide-react";
 
 export default function SolutionsPage() {
@@ -50,47 +48,68 @@ export default function SolutionsPage() {
   ];
 
   return (
-    <main className={styles.main}>
+    <main className="min-h-screen bg-background">
       <Navbar />
       <PageHeader
-        label="OPS_READY"
-        title="DEPLOYMENT_SOLUTIONS"
+        label="OPS READY"
+        title="DEPLOYMENT SOLUTIONS"
         subtitle="Scalable digital infrastructure engineered for the modern SaaS enterprise. We build the infrastructure, you dominate the market."
       />
 
-      <section className={styles.section}>
+      <section className="py-24">
         <div className="container">
-          <div className={styles.serviceGrid}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {offerings.map((offering, i) => (
-              <div key={i} className={styles.serviceCard}>
-                <div className={styles.iconWrapper}>{offering.icon}</div>
-                <h3 className={styles.serviceTitle}>{offering.title}</h3>
-                <p className={styles.serviceText}>{offering.description}</p>
+              <div
+                key={i}
+                className="p-8 border border-border rounded-lg bg-card hover:border-primary/50 transition-colors group"
+              >
+                <div className="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center rounded mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  {offering.icon}
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-foreground">
+                  {offering.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {offering.description}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.blueprintSection}>
+      <section className="py-24 border-t border-border bg-muted/5">
         <div className="container">
-          <div className={styles.sectionHeader}>
-            <span className={styles.label}>CORE_MAPPING</span>
-            <h2 className={styles.sectionTitle}>Technical Infrastructure</h2>
+          <div className="mb-16 text-center">
+            <span className="text-primary font-mono text-sm uppercase tracking-widest mb-2 block">
+              Core Mapping
+            </span>
+            <h2 className="text-3xl font-bold tracking-tight">
+              Technical Infrastructure
+            </h2>
           </div>
-          <BlueprintGrid />
+          {/* BlueprintGrid simplified text placeholder */}
+          <div className="p-12 border border-border border-dashed rounded-lg text-center bg-card/50">
+            <p className="text-muted-foreground">
+              Infrastructure Blueprint Visualization
+            </p>
+            <p className="text-xs text-muted-foreground mt-2 font-mono">
+              Rendered via Edge Compute
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* The instruction mentioned "after Solution component", but there is no Solution component.
-          Assuming it meant after the main solutions section, and incorporating the provided code snippet.
-          The snippet also included a <Solution /> component which is not defined, so it's omitted.
-          The closing tags </main> and </section> in the snippet were misplaced and have been corrected. */}
-      <section className={styles.roadmapSection}>
+      <section className="py-24">
         <div className="container">
-          <div className={styles.sectionHeader}>
-            <span className={styles.label}>Execution Protocol</span>
-            <h2 className={styles.sectionTitle}>The Operations Roadmap</h2>
+          <div className="mb-16 text-center">
+            <span className="text-primary font-mono text-sm uppercase tracking-widest mb-2 block">
+              Execution Protocol
+            </span>
+            <h2 className="text-3xl font-bold tracking-tight">
+              The Operations Roadmap
+            </h2>
           </div>
           <OperationsRoadmap />
         </div>

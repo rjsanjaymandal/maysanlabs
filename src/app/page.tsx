@@ -10,73 +10,32 @@ import OperationsRoadmap from "@/components/OperationsRoadmap";
 
 export default function Home() {
   return (
-    <main style={{ position: "relative" }}>
-      {/* Global Blueprint Lines */}
-      <div className="blueprint-line-v" style={{ left: "10%" }} />
-      <div className="blueprint-line-v" style={{ left: "90%" }} />
-      <div className="blueprint-line-h" style={{ top: "0" }} />
-
+    <main className="relative">
       <Navbar />
       <Hero />
+      <Problem />
 
-      <div style={{ position: "relative" }}>
-        <div className="blueprint-line-h" style={{ top: "0" }} />
-        <Problem />
-      </div>
-
-      <div id="solution" style={{ position: "relative" }}>
-        <div className="blueprint-line-h" style={{ top: "0" }} />
+      <div id="solution">
         <Solution />
       </div>
 
-      <div style={{ position: "relative" }}>
-        <div className="blueprint-line-h" style={{ top: "0" }} />
-        <TechnicalSpecs />
-      </div>
+      <TechnicalSpecs />
 
-      <div
-        id="process"
-        style={{
-          position: "relative",
-          padding: "100px 0",
-          background: "rgba(0,0,0,0.1)",
-        }}
-      >
-        <div className="blueprint-line-h" style={{ top: "0" }} />
+      <div id="process" className="py-24 bg-secondary/30">
         <div className="container">
-          <div style={{ marginBottom: "60px", textAlign: "center" }}>
-            <span
-              style={{
-                color: "var(--primary)",
-                fontFamily: "monospace",
-                fontSize: "0.9rem",
-                letterSpacing: "2px",
-              }}
-            >
-              EXECUTION_PROTOCOL
+          <div className="mb-16 text-center">
+            <span className="text-primary font-mono text-sm tracking-widest uppercase">
+              Execution Protocol
             </span>
-            <h2
-              style={{
-                fontSize: "2.5rem",
-                fontWeight: "bold",
-                marginTop: "10px",
-              }}
-              className="hollow-text"
-            >
-              THE_OPERATIONS_ROADMAP
-            </h2>
+            <h2 className="text-4xl font-bold mt-4">Operations Roadmap</h2>
           </div>
           <OperationsRoadmap />
         </div>
       </div>
 
-      <div style={{ position: "relative" }}>
-        <div className="blueprint-line-h" style={{ top: "0" }} />
-        <SocialProof />
-      </div>
+      <SocialProof />
 
-      <div id="faq" style={{ position: "relative" }}>
-        <div className="blueprint-line-h" style={{ top: "0" }} />
+      <div id="faq">
         <FAQ />
       </div>
 
