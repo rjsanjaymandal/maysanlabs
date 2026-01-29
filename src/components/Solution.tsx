@@ -100,7 +100,9 @@ export default function Solution() {
               <h3 className="text-xl font-bold mb-3 text-foreground">
                 {sol.title}
               </h3>
-              <p className="text-muted-foreground mb-6 h-20">{sol.desc}</p>
+              <p className="text-muted-foreground mb-6 min-h-[5rem]">
+                {sol.desc}
+              </p>
               <ul className="space-y-2">
                 {sol.features.map((feature, fIndex) => (
                   <li
