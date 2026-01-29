@@ -14,8 +14,18 @@ export default function SmartCursor() {
   const springConfig = { damping: 25, stiffness: 250 };
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    if (isTouch) {
+      setIsVisible(false);
+      return;
+    }
+
+    setIsVisible(true);
     let lastElement: HTMLElement | null = null;
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -39,6 +49,8 @@ export default function SmartCursor() {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [mouseX, mouseY]);
+
+  if (!isVisible) return null;
 
   return (
     <motion.div
