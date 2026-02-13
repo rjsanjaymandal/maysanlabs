@@ -82,6 +82,47 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable}`}
         suppressHydrationWarning
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Maysan Labs",
+              url: "https://maysanlabs.com",
+              logo: "https://maysanlabs.com/icon-512x512.png",
+              description:
+                "Architecting high-performance enterprise SaaS infrastructure and autonomous operational tools for modern enterprises.",
+              contactPoint: {
+                "@type": "ContactPoint",
+                email: "business@maysanlabs.com",
+                contactType: "sales",
+              },
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Gurgaon",
+                addressCountry: "IN",
+              },
+              sameAs: [],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Maysan Labs",
+              url: "https://maysanlabs.com",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://maysanlabs.com/?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
         <GoogleAnalytics />
         {children}
       </body>

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Project Initialization",
+  title: "Get in Touch",
   description:
-    "Secure terminal for project onboarding. Secure your architecture and define your operational sync timeline.",
+    "Connect with Maysan Labs to start your next enterprise project. Share your requirements and our engineering team will get back to you.",
   alternates: {
     canonical: "/init",
   },

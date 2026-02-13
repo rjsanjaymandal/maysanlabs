@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import { Briefcase, Mail, Phone, FileText, CheckCircle } from "lucide-react";
 
+import { sendEmail } from "@/app/actions/sendEmail";
+
 export default function InitPage() {
   const [formData, setFormData] = useState({
     companyName: "",
@@ -13,11 +15,30 @@ export default function InitPage() {
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.companyName || !formData.email) return;
-    setIsSubmitted(true);
+
+    setIsSubmitting(true);
+
+    // Create FormData for the server action
+    const data = new FormData();
+    data.append("companyName", formData.companyName);
+    data.append("requirements", formData.requirements);
+    data.append("email", formData.email);
+    data.append("contact", formData.contact);
+
+    const result = await sendEmail(data);
+
+    setIsSubmitting(false);
+
+    if (result.success) {
+      setIsSubmitted(true);
+    } else {
+      alert("Failed to send message. Please try again.");
+    }
   };
 
   const handleChange = (
@@ -132,8 +153,9 @@ export default function InitPage() {
                   <button
                     type="submit"
                     className="w-full bg-primary text-primary-foreground font-bold py-4 rounded-lg hover:opacity-90 transition-opacity uppercase tracking-widest text-sm shadow-lg shadow-primary/20"
+                    disabled={isSubmitting}
                   >
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </button>
                 </div>
               </form>

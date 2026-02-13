@@ -14,5 +14,6 @@ export default function robots(): MetadataRoute.Robots {
       }
     ],
     sitemap: 'https://maysanlabs.com/sitemap.xml',
+    host: 'https://maysanlabs.com',
   }
 }
