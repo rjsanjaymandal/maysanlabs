@@ -2,13 +2,18 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     let ticking = false;
@@ -38,13 +43,17 @@ export default function Navbar() {
     { name: "About", href: "/about" },
   ];
 
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
         isOpen
-          ? "bg-black border-b border-white/5"
+          ? "bg-background border-b border-border"
           : isScrolled
-            ? "bg-background/80 backdrop-blur-md border-b border-white/5"
+            ? "bg-background/80 backdrop-blur-md border-b border-border/50"
             : "bg-transparent border-transparent"
       }`}
     >
@@ -65,6 +74,18 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
+
+          {/* Theme Toggle */}
+          {mounted && (
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+          )}
+
           <Link
             href="/init"
             className="btn btn-primary btn-sm text-sm px-5 py-2"
@@ -73,21 +94,30 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden z-[70] p-2 text-foreground"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Controls */}
+        <div className="md:hidden flex items-center gap-2 z-[70]">
+          {/* Theme Toggle Mobile */}
+          {mounted && (
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+          )}
+          <button
+            className="p-2 text-foreground"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div
-            className="fixed top-20 left-0 right-0 h-auto pb-8 px-6 md:hidden flex flex-col space-y-6 z-[60] shadow-2xl border-b border-white/10"
-            style={{ backgroundColor: "#000000" }}
-          >
+          <div className="fixed top-20 left-0 right-0 h-auto pb-8 px-6 md:hidden flex flex-col space-y-6 z-[60] shadow-2xl border-b border-border bg-background">
             {navLinks.map((link) => (
               <Link
                 key={link.name}

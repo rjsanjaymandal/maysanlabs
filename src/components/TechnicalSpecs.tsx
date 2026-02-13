@@ -1,6 +1,7 @@
 "use client";
 
 import { Cpu, Zap, Shield, Smartphone } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function TechnicalSpecs() {
   const specs = [
@@ -27,40 +28,51 @@ export default function TechnicalSpecs() {
   ];
 
   return (
-    <section
-      id="tech-specs"
-      className="py-24 bg-secondary/20 border-t border-border"
-    >
-      <div className="container">
+    <section id="tech-specs" className="py-24 relative noise-bg">
+      {/* Top border gradient */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+
+      <div className="container relative z-10">
         <div className="mb-16">
-          <span className="text-primary font-mono text-xs uppercase tracking-widest mb-2 block">
-            System Architecture
-          </span>
-          <h2 className="text-4xl font-bold tracking-tight text-foreground mb-4">
+          <span className="section-label">System Architecture</span>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
             The Engineering Standard
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl">
+          <p className="text-lg text-muted-foreground max-w-2xl">
             We don&apos;t just build apps. We engineer robust, enterprise-grade
             digital foundations.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Bento Grid: 2 large + 2 small */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {specs.map((spec, index) => (
-            <div
+            <motion.div
               key={index}
-              className="p-8 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className={`glass-card gradient-border p-8 glow-hover group ${
+                index < 2 ? "md:p-10" : ""
+              }`}
             >
-              <div className="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center rounded mb-6">
-                {spec.icon}
+              <div className="relative z-10">
+                <div className="flex items-start gap-5">
+                  <div className="w-12 h-12 shrink-0 bg-gradient-to-br from-primary/20 to-primary/5 text-primary flex items-center justify-center rounded-lg group-hover:from-primary group-hover:to-primary/80 group-hover:text-primary-foreground transition-all duration-300">
+                    {spec.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2 text-foreground">
+                      {spec.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {spec.text}
+                    </p>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-3 text-foreground">
-                {spec.title}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {spec.text}
-              </p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

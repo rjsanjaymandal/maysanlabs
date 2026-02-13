@@ -2,20 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Dark Theme (Default) ─── */
 :root {
-  /* Simple, Professional Palette */
-  --background: 0 0% 0%;          /* Pitch Black for OLED depth */
-  --foreground: 0 0% 98%;        /* Soft White for readability */
+  --background: 0 0% 2%;
+  --foreground: 0 0% 98%;
 
-  /* Brand Colors - Professional Lime Accent */
   --primary: 82 85% 55%;
   --primary-foreground: 0 0% 0%;
 
-  --secondary: 0 0% 9%;
+  --secondary: 0 0% 7%;
   --secondary-foreground: 0 0% 98%;
 
-  --muted: 0 0% 15%;
-  --muted-foreground: 0 0% 65%;
+  --muted: 0 0% 12%;
+  --muted-foreground: 0 0% 60%;
 
   --accent: 82 85% 55%;
   --accent-foreground: 0 0% 0%;
@@ -23,25 +22,55 @@
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 0 0% 15%;
-  --input: 0 0% 15%;
+  --border: 0 0% 12%;
+  --input: 0 0% 12%;
   --ring: 82 85% 55%;
 
-  --card: 0 0% 5%;
+  --card: 0 0% 4%;
   --card-foreground: 0 0% 98%;
- 
-  --popover: 0 0% 5%;
+
+  --popover: 0 0% 4%;
   --popover-foreground: 0 0% 98%;
 
-  --radius: 0.5rem; /* Standard rounded corners, not too sharp, not too round */
+  --radius: 0.75rem;
 
-  /* Typography Scale */
   --font-size-hero: clamp(2.5rem, 6vw, 4.5rem);
   --font-size-h1: clamp(2rem, 5vw, 3rem);
   --font-size-h2: clamp(1.5rem, 4vw, 2.25rem);
-  
+
   --section-padding-y: 6rem;
   --container-padding-x: 2rem;
+}
+
+/* ─── Light Theme (Stripe/Linear-inspired) ─── */
+.light {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 6%;
+
+  --primary: 82 70% 40%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 10%;
+
+  --muted: 0 0% 94%;
+  --muted-foreground: 0 0% 40%;
+
+  --accent: 82 70% 40%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 82 70% 40%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 6%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 6%;
 }
 
 @layer base {
@@ -54,8 +83,7 @@
   }
 }
 
-html,
-body {
+html, body {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -63,15 +91,11 @@ body {
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   @apply font-bold tracking-tight;
-  line-height: 1.2;
+  line-height: 1.15;
 }
-
 h1 { font-size: var(--font-size-h1); }
 h2 { font-size: var(--font-size-h2); }
-
-p {
-  @apply leading-relaxed text-muted-foreground;
-}
+p { @apply leading-relaxed text-muted-foreground; }
 
 /* Layout */
 .container {
@@ -81,34 +105,191 @@ p {
   width: 100%;
 }
 
-/* Buttons - Professional & Clean */
+section {
+  padding: var(--section-padding-y) 0;
+  position: relative;
+}
+
+/* ─── Premium Buttons ─── */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius);
-  font-weight: 500;
-  transition: all 0.2s ease-in-out;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   gap: 0.5rem;
   font-size: 0.95rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary {
-  @apply bg-primary text-primary-foreground hover:opacity-90;
+  @apply bg-primary text-primary-foreground;
+  box-shadow: 0 0 20px hsla(var(--primary), 0.15),
+              0 0 60px hsla(var(--primary), 0.05);
+}
+.btn-primary:hover {
+  box-shadow: 0 0 30px hsla(var(--primary), 0.3),
+              0 0 80px hsla(var(--primary), 0.1);
+  transform: translateY(-1px);
+}
+
+/* Light mode: use softer shadow instead of glow */
+.light .btn-primary {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+}
+.light .btn-primary:hover {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.06);
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
-  @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  @apply bg-secondary text-secondary-foreground;
+  border: 1px solid hsl(var(--border));
+}
+.btn-secondary:hover {
+  border-color: hsla(var(--primary), 0.3);
+  background: hsla(var(--primary), 0.05);
 }
 
-/* Utilities */
-.text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-white;
+/* ─── Glass Card ─── */
+.glass-card {
+  background: hsla(var(--card), 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid hsla(var(--foreground), 0.06);
+  border-radius: var(--radius);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card:hover {
+  border-color: hsla(var(--primary), 0.2);
+  box-shadow: 0 0 40px hsla(var(--primary), 0.05),
+              0 8px 32px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
 }
 
-section {
-  padding: var(--section-padding-y) 0;
+/* Light mode: subtle shadow instead of glow */
+.light .glass-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.light .glass-card:hover {
+  border-color: hsla(var(--primary), 0.3);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06),
+              0 1px 3px rgba(0,0,0,0.04);
+  transform: translateY(-2px);
+}
+
+/* ─── Gradient Border Card ─── */
+.gradient-border {
   position: relative;
+  background: hsl(var(--card));
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    hsla(var(--primary), 0.3),
+    transparent 40%,
+    transparent 60%,
+    hsla(var(--primary), 0.1)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 0.4s;
+  opacity: 0.5;
+}
+.gradient-border:hover::before {
+  opacity: 1;
+}
+.light .gradient-border::before {
+  opacity: 0.3;
+}
+.light .gradient-border:hover::before {
+  opacity: 0.6;
 }
 
+/* ─── Glow Effect ─── */
+.glow-hover {
+  transition: box-shadow 0.4s ease;
+}
+.glow-hover:hover {
+  box-shadow: 0 0 40px hsla(var(--primary), 0.08),
+              0 0 80px hsla(var(--primary), 0.04);
+}
+.light .glow-hover:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+/* ─── Noise Texture Overlay ─── */
+.noise-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+.light .noise-bg::after {
+  opacity: 0.015;
+}
+
+/* ─── Section Label ─── */
+.section-label {
+  @apply text-primary font-mono text-xs uppercase tracking-[0.25em] mb-4 block;
+  font-weight: 600;
+}
+
+/* ─── Gradient text ─── */
+.text-gradient {
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(82 60% 80%));
+}
+.light .text-gradient {
+  background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(82 50% 30%));
+}
+
+/* ─── Grid Background ─── */
+.grid-bg {
+  background-image:
+    linear-gradient(hsla(var(--foreground), 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, hsla(var(--foreground), 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ─── Floating Orbs ─── */
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  animation: float 20s ease-in-out infinite;
+}
+.light .orb {
+  filter: blur(120px);
+  opacity: 0.5;
+}
+
+/* ─── Fade In Animation ─── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
