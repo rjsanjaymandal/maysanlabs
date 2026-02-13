@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import { Mail, MapPin, ArrowUpRight, ArrowRight } from "lucide-react";
+import TextReveal from "./TextReveal";
+import MagneticButton from "./MagneticButton";
+import { motion } from "framer-motion";
 
 export default function ContactFooter() {
   return (
@@ -23,30 +26,48 @@ export default function ContactFooter() {
 
         <div className="container relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-8 text-foreground leading-[0.95]">
-              Engineering the next
-              <br />
-              <span className="text-gradient">high-tech enterprise.</span>
-            </h2>
+            <div className="mb-8">
+              <TextReveal
+                as="h2"
+                className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-foreground leading-[0.95]"
+              >
+                Engineering the next high-tech enterprise.
+              </TextReveal>
+            </div>
 
-            <p className="text-xl text-muted-foreground mb-12 max-w-xl mx-auto">
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-xl text-muted-foreground mb-12 max-w-xl mx-auto"
+            >
               We build the infrastructure, you lead the growth.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="/init" className="btn btn-primary text-lg px-8 py-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="flex flex-col sm:flex-row justify-center gap-4"
+            >
+              <MagneticButton
+                href="/init"
+                className="btn btn-primary text-lg px-8 py-4"
+              >
                 <Mail size={20} className="mr-1" />
                 Get in Touch
                 <ArrowRight size={20} className="ml-1" />
-              </Link>
-              <Link
+              </MagneticButton>
+              <MagneticButton
                 href="mailto:business@maysanlabs.com"
                 className="btn btn-secondary text-lg px-8 py-4"
               >
                 <span>business@maysanlabs.com</span>
                 <ArrowUpRight size={18} />
-              </Link>
-            </div>
+              </MagneticButton>
+            </motion.div>
           </div>
         </div>
       </div>

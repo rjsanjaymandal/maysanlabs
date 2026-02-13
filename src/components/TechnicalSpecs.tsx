@@ -2,6 +2,7 @@
 
 import { Cpu, Zap, Shield, Smartphone } from "lucide-react";
 import { motion } from "framer-motion";
+import SpotlightCard from "./SpotlightCard";
 
 export default function TechnicalSpecs() {
   const specs = [
@@ -29,7 +30,6 @@ export default function TechnicalSpecs() {
 
   return (
     <section id="tech-specs" className="py-24 relative noise-bg">
-      {/* Top border gradient */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
 
       <div className="container relative z-10">
@@ -44,7 +44,6 @@ export default function TechnicalSpecs() {
           </p>
         </div>
 
-        {/* Bento Grid: 2 large + 2 small */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {specs.map((spec, index) => (
             <motion.div
@@ -53,25 +52,28 @@ export default function TechnicalSpecs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className={`glass-card gradient-border p-8 glow-hover group ${
-                index < 2 ? "md:p-10" : ""
-              }`}
             >
-              <div className="relative z-10">
-                <div className="flex items-start gap-5">
-                  <div className="w-12 h-12 shrink-0 bg-gradient-to-br from-primary/20 to-primary/5 text-primary flex items-center justify-center rounded-lg group-hover:from-primary group-hover:to-primary/80 group-hover:text-primary-foreground transition-all duration-300">
-                    {spec.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2 text-foreground">
-                      {spec.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {spec.text}
-                    </p>
+              <SpotlightCard
+                className={`glass-card gradient-border p-8 glow-hover group ${
+                  index < 2 ? "md:p-10" : ""
+                }`}
+              >
+                <div className="relative z-10">
+                  <div className="flex items-start gap-5">
+                    <div className="w-12 h-12 shrink-0 bg-gradient-to-br from-primary/20 to-primary/5 text-primary flex items-center justify-center rounded-lg group-hover:from-primary group-hover:to-primary/80 group-hover:text-primary-foreground transition-all duration-300">
+                      {spec.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-2 text-foreground">
+                        {spec.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed">
+                        {spec.text}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>
