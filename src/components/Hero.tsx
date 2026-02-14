@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowRight, Zap, CheckCircle } from "lucide-react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import TextReveal from "./TextReveal";
 import MagneticButton from "./MagneticButton";

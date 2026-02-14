@@ -3,7 +3,6 @@
 import {
   Store,
   Cpu,
-  Zap,
   ShieldCheck,
   TrendingUp,
   Layout,

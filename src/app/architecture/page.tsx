@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Server, Shield, Globe, Cpu, Layers, Workflow } from "lucide-react";
+import { Server, Shield, Globe, Cpu } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 
@@ -53,9 +53,9 @@ export default function ArchitecturePage() {
       <div className="flex-1 py-16">
         <div className="container">
           <div className="mb-8 font-mono text-xs text-muted-foreground flex gap-4 uppercase tracking-widest border-b border-border pb-4">
-            <span>// ARCH_v1.0.4</span>
-            <span>// TYPE: NEO_MONOLITH</span>
-            <span>// UPTIME: 99.99%</span>
+            <span>{"// ARCH_v1.0.4"}</span>
+            <span>{"// TYPE: NEO_MONOLITH"}</span>
+            <span>{"// UPTIME: 99.99%"}</span>
           </div>
 
           <div className="relative border-l border-border pl-8 md:pl-16 space-y-16">

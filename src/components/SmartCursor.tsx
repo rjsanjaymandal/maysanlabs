@@ -20,12 +20,13 @@ export default function SmartCursor() {
     if (typeof window === "undefined") return;
 
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
-    if (isTouch) {
-      setIsVisible(false);
-      return;
-    }
-
-    setIsVisible(true);
+    window.requestAnimationFrame(() => {
+      if (isTouch) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+    });
     let lastElement: HTMLElement | null = null;
 
     const handleMouseMove = (e: MouseEvent) => {

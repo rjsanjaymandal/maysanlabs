@@ -1,0 +1,59 @@
+﻿
+> maysan-labs@0.1.0 lint
+> eslint
+
+
+G:\maysanlabs\src\components\Navbar.tsx
+  19:5   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+G:\maysanlabs\src\components\Navbar.tsx:19:5
+  17 |
+  18 |   useEffect(() => {
+> 19 |     setMounted(true);
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  20 |   }, []);
+  21 |
+  22 |   if (pathname !== prevPathname) {                                                        react-hooks/set-state-in-effect
+  44:19  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+G:\maysanlabs\src\components\Navbar.tsx:44:19
+  42 |   }, []);
+  43 |
+> 44 |   useEffect(() => setIsOpen(false), [pathname]);
+     |                   ^^^^^^^^^ Avoid calling setState() directly within an effect
+  45 |
+  46 |   const navLinks = [
+  47 |     { name: "Solutions", href: "/#solution" },  react-hooks/set-state-in-effect
+
+G:\maysanlabs\src\components\SmartCursor.tsx
+  24:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+G:\maysanlabs\src\components\SmartCursor.tsx:24:7
+  22 |     const isTouch = window.matchMedia("(pointer: coarse)").matches;
+  23 |     if (isTouch) {
+> 24 |       setIsVisible(false);
+     |       ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  25 |     } else {
+  26 |       setIsVisible(true);
+  27 |     }  react-hooks/set-state-in-effect
+
+Γ£û 3 problems (3 errors, 0 warnings)
+

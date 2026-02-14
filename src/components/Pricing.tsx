@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Check, Zap, Rocket, Shield } from "lucide-react";
 
 const plans = [

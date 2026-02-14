@@ -13,7 +13,16 @@ export default function Navbar() {
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
 
-  useEffect(() => setMounted(true), []);
+  const [prevPathname, setPrevPathname] = useState(pathname);
+
+  useEffect(() => {
+    window.requestAnimationFrame(() => setMounted(true));
+  }, []);
+
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    setIsOpen(false);
+  }
 
   useEffect(() => {
     let ticking = false;
@@ -31,8 +40,6 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => setIsOpen(false), [pathname]);
 
   const navLinks = [
     { name: "Solutions", href: "/#solution" },

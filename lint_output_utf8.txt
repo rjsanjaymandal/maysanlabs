@@ -1,0 +1,87 @@
+﻿
+> maysan-labs@0.1.0 lint
+> eslint
+
+
+G:\maysanlabs\next.config.ts
+  3:7  warning  'nextConfig' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+G:\maysanlabs\postcss.config.mjs
+  1:1  warning  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+
+G:\maysanlabs\src\app\about\page.tsx
+  65:89  error  Comments inside children section of tag should be placed inside braces  react/jsx-no-comment-textnodes
+
+G:\maysanlabs\src\app\architecture\page.tsx
+   4:38  warning  'Layers' is defined but never used                                      @typescript-eslint/no-unused-vars
+   4:46  warning  'Workflow' is defined but never used                                    @typescript-eslint/no-unused-vars
+  56:19  error    Comments inside children section of tag should be placed inside braces  react/jsx-no-comment-textnodes
+  57:19  error    Comments inside children section of tag should be placed inside braces  react/jsx-no-comment-textnodes
+  58:19  error    Comments inside children section of tag should be placed inside braces  react/jsx-no-comment-textnodes
+
+G:\maysanlabs\src\components\Hero.tsx
+  4:8  warning  'Link' is defined but never used  @typescript-eslint/no-unused-vars
+
+G:\maysanlabs\src\components\MagneticButton.tsx
+  4:45  warning  'useTransform' is defined but never used  @typescript-eslint/no-unused-vars
+
+G:\maysanlabs\src\components\Navbar.tsx
+  16:19  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+G:\maysanlabs\src\components\Navbar.tsx:16:19
+  14 |   const { theme, setTheme } = useTheme();
+  15 |
+> 16 |   useEffect(() => setMounted(true), []);
+     |                   ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  17 |
+  18 |   useEffect(() => {
+  19 |     let ticking = false;  react-hooks/set-state-in-effect
+  35:19  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+G:\maysanlabs\src\components\Navbar.tsx:35:19
+  33 |   }, []);
+  34 |
+> 35 |   useEffect(() => setIsOpen(false), [pathname]);
+     |                   ^^^^^^^^^ Avoid calling setState() directly within an effect
+  36 |
+  37 |   const navLinks = [
+  38 |     { name: "Solutions", href: "/#solution" },    react-hooks/set-state-in-effect
+
+G:\maysanlabs\src\components\Pricing.tsx
+  3:10  warning  'motion' is defined but never used  @typescript-eslint/no-unused-vars
+
+G:\maysanlabs\src\components\SmartCursor.tsx
+  24:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+G:\maysanlabs\src\components\SmartCursor.tsx:24:7
+  22 |     const isTouch = window.matchMedia("(pointer: coarse)").matches;
+  23 |     if (isTouch) {
+> 24 |       setIsVisible(false);
+     |       ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  25 |       return;
+  26 |     }
+  27 |  react-hooks/set-state-in-effect
+
+G:\maysanlabs\src\components\Solution.tsx
+  6:3  warning  'Zap' is defined but never used  @typescript-eslint/no-unused-vars
+
+Γ£û 15 problems (7 errors, 8 warnings)
+

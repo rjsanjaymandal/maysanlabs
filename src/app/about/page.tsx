@@ -63,7 +63,7 @@ export default function AboutPage() {
         <div className="container">
           <div className="max-w-3xl">
             <span className="font-mono text-xs text-primary tracking-widest mb-8 block">
-              // THE_MANIFESTO
+              {"// THE_MANIFESTO"}
             </span>
             <h2 className="text-5xl md:text-6xl font-black uppercase leading-none mb-12 text-foreground">
               CONSTRUCTING THE FUTURE OF OPERATIONS
