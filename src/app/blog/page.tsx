@@ -4,9 +4,16 @@ import BlogCard from "@/components/BlogCard";
 import { blogPosts } from "@/lib/blog-data";
 
 export const metadata = {
-  title: "Blog & Insights | Maysan Labs",
+  title: "Blog & Intelligence Stream",
   description:
-    "Deep-dives into modular architecture, tactical automation, and the future of digital platforms.",
+    "Deep-dives into modular architecture, tactical automation, and the future of digital SaaS platforms. Research and logs from Maysan Labs.",
+  keywords: [
+    "SaaS Blog",
+    "Technical Insights",
+    "Modular Architecture",
+    "Tactical Automation",
+    "Digital Infrastructure research",
+  ],
 };
 
 export default function BlogListingPage() {

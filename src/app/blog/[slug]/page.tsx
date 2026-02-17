@@ -4,9 +4,36 @@ import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 import { Calendar, User, Clock, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { Metadata } from "next";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
+
+  if (!post) return { title: "Post Not Found" };
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      publishedTime: post.date,
+      authors: [post.author],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+    },
+  };
 }
 
 export async function generateStaticParams() {
@@ -141,6 +168,35 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="blog-content">{formattedContent}</div>
         </div>
       </article>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: post.title,
+            description: post.excerpt,
+            author: {
+              "@type": "Person",
+              name: post.author,
+            },
+            datePublished: post.date,
+            publisher: {
+              "@type": "Organization",
+              name: "Maysan Labs",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://maysanlabs.com/favicon.png",
+              },
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://maysanlabs.com/blog/${post.slug}`,
+            },
+          }),
+        }}
+      />
 
       <div className="bg-muted/5 border-t border-border">
         <ContactFooter />

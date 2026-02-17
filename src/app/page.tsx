@@ -7,6 +7,13 @@ import TechnicalSpecs from "@/components/TechnicalSpecs";
 import ContactFooter from "@/components/ContactFooter";
 import FAQ from "@/components/FAQ";
 import OperationsRoadmap from "@/components/OperationsRoadmap";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Engineering Enterprise Velocity",
+  description:
+    "Maysan Labs builds high-performance SaaS infrastructure, modular architecture, and autonomous operational tools for global enterprises.",
+};
 
 export default function Home() {
   return (

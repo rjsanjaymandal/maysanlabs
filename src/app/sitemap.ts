@@ -75,10 +75,26 @@ function discoverRoutes(dir: string, basePath: string = ''): MetadataRoute.Sitem
   return entries
 }
 
+import { blogPosts } from '@/lib/blog-data'
+import { jobPositions } from '@/lib/careers-data'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const appDir = path.join(process.cwd(), 'src', 'app')
   const routes = discoverRoutes(appDir)
 
+  // Add dynamic blog routes
+  blogPosts.forEach(post => {
+    routes.push({
+      url: `${BASE_URL}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    })
+  })
+
+  // Add career routes (though careers/page.tsx is already discovered, 
+  // we could add detail pages if they existed, but for now just the main careers page is enough)
+  
   // Sort by priority descending for cleaner output
   routes.sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0))
 

@@ -10,59 +10,18 @@ export interface JobPosition {
 
 export const jobPositions: JobPosition[] = [
   {
-    id: "sr-frontend-engineer",
-    title: "Senior Frontend Engineer",
+    id: "full-stack-genai-developer",
+    title: "Full Stack Generative AI (GenAI) Developer",
     category: "Engineering",
-    location: "Gurgaon / Remote",
+    location: "Remote / Hybrid",
     type: "Full-time",
-    description: "Lead the development of our high-performance SaaS interfaces using Next.js and Framer Motion.",
+    description: "Design and implement production-ready GenAI workflows, integrating LLMs with modern web architectures.",
     requirements: [
-      "5+ years of experience with React/Next.js",
-      "Expertise in CSS/Tailwind and motion design",
-      "Deep understanding of web performance optimization",
-      "Experience with TypeScript and modern state management"
-    ]
-  },
-  {
-    id: "backend-architect",
-    title: "Backend Infrastructure Architect",
-    category: "Engineering",
-    location: "Remote",
-    type: "Full-time",
-    description: "Design and scale autonomous operational tools and serverless infrastructure.",
-    requirements: [
-      "7+ years in backend engineering",
-      "Expertise in Node.js, Go, or Rust",
-      "Strong experience with AWS/GCP and IaC (Terraform)",
-      "Background in distributed systems and micro-architectures"
-    ]
-  },
-  {
-    id: "product-designer",
-    title: "Product Designer (Industrial UI)",
-    category: "Design",
-    location: "Gurgaon",
-    type: "Full-time",
-    description: "Help us define the 'Cinema Noir' industrial aesthetic for our enterprise suite.",
-    requirements: [
-      "Strong portfolio of SaaS/B2B product design",
-      "Expertise in Figma and design systems",
-      "Understanding of frontend development constraints",
-      "Aeye for typography and minimal, high-impact aesthetics"
-    ]
-  },
-  {
-    id: "ai-engineer",
-    title: "AI Implementation Engineer",
-    category: "Engineering",
-    location: "Remote",
-    type: "Contract / Full-time",
-    description: "Integrate large language models and predictive engines into core SaaS operations.",
-    requirements: [
-      "Experience with OpenAI/Anthropic APIs and RAG architectures",
-      "Proficiency in Python and TypeScript",
-      "Background in data engineering or machine learning",
-      "Ability to ship production-ready AI features fast"
+      "Mastery of TypeScript, Node.js, and React",
+      "Proven experience with LLM orchestration (LangChain, LlamaIndex, or custom pipelines)",
+      "Expertise in vector databases (Pinecone, Weaviate, or pgvector)",
+      "Strong understanding of RAG (Retrieval-Augmented Generation) and prompt engineering",
+      "Experience with multimodal AI and fine-tuning is a plus"
     ]
   },
   {

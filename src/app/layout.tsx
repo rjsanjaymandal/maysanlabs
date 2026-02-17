@@ -22,37 +22,42 @@ export const metadata: Metadata = {
     template: "%s | Maysan Labs",
   },
   description:
-    "Maysan Labs specializes in engineering high-performance enterprise SaaS infrastructure and autonomous operational tools.",
+    "Maysan Labs architects high-performance enterprise SaaS infrastructure and autonomous operational tools for modern global commerce.",
   keywords: [
-    "Enterprise SaaS",
-    "Digital Infrastructure",
-    "MERN Stack Development",
-    "Cloud Solutions",
-    "Scalable Architecture",
+    "Enterprise SaaS Architecture",
+    "Autonomous Operational Tools",
+    "Custom SaaS Development",
+    "Digital Infrastructure Engineering",
+    "MERN Stack Experts",
+    "Cloud Native Solutions",
+    "Scalable Enterprise Software",
+    "Industrial UI Design",
+    "Strategic Automation",
   ],
-  authors: [{ name: "Maysan Labs Team" }],
+  authors: [{ name: "Sanjay Mandal", url: "https://maysanlabs.com" }],
   creator: "Maysan Labs",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://maysanlabs.com",
     siteName: "Maysan Labs",
-    title: "Maysan Labs | Enterprise SaaS",
+    title: "Maysan Labs | Enterprise SaaS Architecture",
     description:
-      "Architecting the future of global commerce. Scalable SaaS infrastructure.",
+      "Architecting the future of global commerce with scalable, autonomous SaaS infrastructure.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Maysan Labs",
+        alt: "Maysan Labs - Enterprise SaaS Infrastructure",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Maysan Labs | Enterprise SaaS",
-    description: "Architecting the future of global commerce.",
+    title: "Maysan Labs | Enterprise SaaS Architecture",
+    description:
+      "Architecting the future of global commerce with autonomous SaaS infrastructure.",
     images: ["/og-image.png"],
     creator: "@maysanlabs",
   },
@@ -106,6 +111,35 @@ export default function RootLayout({
                 addressCountry: "IN",
               },
               sameAs: [],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://maysanlabs.com",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Blog",
+                  item: "https://maysanlabs.com/blog",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 3,
+                  name: "Careers",
+                  item: "https://maysanlabs.com/careers",
+                },
+              ],
             }),
           }}
         />

@@ -133,7 +133,7 @@ export default function CareersPage() {
                     </div>
                   </div>
                   <Link
-                    href="/init"
+                    href={`/careers/apply?role=${job.id}`}
                     className="inline-flex items-center gap-2 text-sm font-bold text-primary group-hover:gap-3 transition-all"
                   >
                     APPLY NOW <ArrowRight size={16} />
@@ -150,7 +150,10 @@ export default function CareersPage() {
                 We're always looking for exceptional talent. If you're building
                 something cool or want to join our mission, say hello anyway.
               </p>
-              <Link href="/init" className="btn btn-primary px-8 py-3">
+              <Link
+                href="/careers/apply"
+                className="inline-block bg-primary text-primary-foreground font-bold px-8 py-3 rounded-lg hover:opacity-90 transition-opacity uppercase tracking-widest text-sm shadow-lg shadow-primary/20"
+              >
                 Opportunistic Hire
               </Link>
             </div>
