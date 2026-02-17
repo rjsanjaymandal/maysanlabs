@@ -47,6 +47,7 @@ export default function Navbar() {
     { name: "Engineering", href: "/#tech-specs" },
     { name: "Architecture", href: "/architecture" },
     { name: "Insights", href: "/insights" },
+    { name: "Blog", href: "/blog" },
     { name: "About", href: "/about" },
   ];
 
