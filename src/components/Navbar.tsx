@@ -48,6 +48,7 @@ export default function Navbar() {
     { name: "Architecture", href: "/architecture" },
     { name: "Insights", href: "/insights" },
     { name: "Blog", href: "/blog" },
+    { name: "Careers", href: "/careers" },
     { name: "About", href: "/about" },
   ];
 
