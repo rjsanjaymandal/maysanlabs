@@ -8,7 +8,6 @@ import MagneticButton from "./MagneticButton";
 const stats = [
   { value: "99.9%", label: "Uptime SLA" },
   { value: "<50ms", label: "Response Time" },
-  { value: "50+", label: "Projects Delivered" },
 ];
 
 export default function Hero() {
