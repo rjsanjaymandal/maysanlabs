@@ -25,7 +25,7 @@ export async function sendEmail(formData: FormData) {
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT) || 587,
-    secure: false, // true for 465, false for other ports
+    secure: false, 
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
@@ -33,7 +33,8 @@ export async function sendEmail(formData: FormData) {
   });
 
   try {
-    await transporter.sendMail({
+    // 1. Send Email Notification
+    const mailPromise = transporter.sendMail({
       from: `"Maysan Labs System" <${process.env.SMTP_USER}>`,
       to: "business@maysanlabs.com",
       subject: `New Project Inquiry: ${companyName}`,
@@ -57,9 +58,38 @@ export async function sendEmail(formData: FormData) {
       `,
     });
 
-    return { success: true, message: "Email sent successfully" };
+    // 2. Send Discord Notification (if configured)
+    if (process.env.DISCORD_WEBHOOK_URL) {
+      const discordPromise = fetch(process.env.DISCORD_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          content: "🚀 **New Project Inquiry Received!**",
+          embeds: [
+            {
+              title: `Inquiry: ${companyName}`,
+              color: 0x5865f2,
+              fields: [
+                { name: "Email", value: email, inline: true },
+                { name: "Contact", value: contact || "N/A", inline: true },
+                { name: "Requirements", value: requirements.slice(0, 1024) },
+              ],
+              footer: { text: "Maysan Labs System" },
+              timestamp: new Date().toISOString(),
+            },
+          ],
+        }),
+      });
+      // We don't await discord here to avoid blocking mail if discord fails, 
+      // but let's await both for reliability since it's a server action.
+      await Promise.allSettled([mailPromise, discordPromise]);
+    } else {
+      await mailPromise;
+    }
+
+    return { success: true, message: "Inquiry received successfully" };
   } catch (error) {
-    console.error("Email Error:", error);
-    return { success: false, message: "Failed to send email" };
+    console.error("Notification Error:", error);
+    return { success: false, message: "Failed to process inquiry" };
   }
 }
