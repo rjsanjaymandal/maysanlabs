@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, Suspense } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 import {
@@ -22,7 +22,6 @@ import { jobPositions } from "@/lib/careers-data";
 
 function ApplyForm() {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const jobId = searchParams.get("role");
   const job = jobPositions.find((j) => j.id === jobId);
 
@@ -101,7 +100,7 @@ function ApplyForm() {
               Apply for {job?.title || "Role"}
             </h1>
             <p className="text-muted-foreground">
-              Please share your details and we'll be in touch soon.
+              Please share your details and we&apos;ll be in touch soon.
             </p>
           </div>
 
@@ -272,7 +271,7 @@ function ApplyForm() {
           <p className="text-muted-foreground max-w-md mb-8">
             Thank you,{" "}
             <span className="text-foreground font-bold">{formData.name}</span>.
-            We've received your application for the{" "}
+            We&apos;ve received your application for the{" "}
             <span className="text-foreground font-bold">{job?.title}</span>{" "}
             position. Our team will review your profile and get back to you
             shortly.

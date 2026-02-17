@@ -1,14 +1,13 @@
 import Link from "next/link";
 import SpotlightCard from "./SpotlightCard";
 import { BlogPost } from "@/lib/blog-data";
-import { ArrowRight, Calendar, User } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
 
 interface BlogCardProps {
   post: BlogPost;
-  index: number;
 }
 
-export default function BlogCard({ post, index }: BlogCardProps) {
+export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link href={`/blog/${post.slug}`} className="block h-full group">
       <SpotlightCard className="h-full bg-card/30 border border-border/50 rounded-2xl overflow-hidden hover:border-primary/30 transition-all duration-300 flex flex-col">

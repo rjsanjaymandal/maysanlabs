@@ -5,15 +5,7 @@ import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 import SpotlightCard from "@/components/SpotlightCard";
 import { jobPositions } from "@/lib/careers-data";
-import {
-  Briefcase,
-  MapPin,
-  Clock,
-  ArrowRight,
-  Zap,
-  Globe,
-  Shield,
-} from "lucide-react";
+import { Users, Target, Rocket, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function CareersPage() {
@@ -46,8 +38,8 @@ export default function CareersPage() {
             transition={{ delay: 0.2 }}
             className="text-xl text-muted-foreground max-w-2xl leading-relaxed"
           >
-            We're looking for radical thinkers and elite engineers to build the
-            infrastructure of the modern enterprise.
+            We&apos;re looking for radical thinkers and elite engineers to build
+            the infrastructure of the modern enterprise.
           </motion.p>
         </div>
       </div>
@@ -58,7 +50,7 @@ export default function CareersPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div>
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 border border-primary/20">
-                <Zap size={24} />
+                <Rocket size={24} />
               </div>
               <h3 className="text-xl font-bold mb-4">Velocity First</h3>
               <p className="text-muted-foreground leading-relaxed">
@@ -68,7 +60,7 @@ export default function CareersPage() {
             </div>
             <div>
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 border border-primary/20">
-                <Globe size={24} />
+                <Users size={24} />
               </div>
               <h3 className="text-xl font-bold mb-4">Remote Excellence</h3>
               <p className="text-muted-foreground leading-relaxed">
@@ -78,7 +70,7 @@ export default function CareersPage() {
             </div>
             <div>
               <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 border border-primary/20">
-                <Shield size={24} />
+                <Target size={24} />
               </div>
               <h3 className="text-xl font-bold mb-4">Radical Integrity</h3>
               <p className="text-muted-foreground leading-relaxed">
@@ -98,7 +90,8 @@ export default function CareersPage() {
               Open Positions
             </h2>
             <p className="text-muted-foreground">
-              Explore opportunities to make a dent in the SaaS universe.
+              Be part of a team engineering the world&apos;s most resilient SaaS
+              infrastructure.
             </p>
           </div>
 
@@ -145,10 +138,11 @@ export default function CareersPage() {
 
           <div className="mt-20 p-12 border border-border rounded-2xl bg-card text-center relative overflow-hidden">
             <div className="relative z-10">
-              <h3 className="text-2xl font-bold mb-4">Don't see a fit?</h3>
+              <h3 className="text-2xl font-bold mb-4">Don&apos;t see a fit?</h3>
               <p className="text-muted-foreground max-w-xl mx-auto mb-8">
-                We're always looking for exceptional talent. If you're building
-                something cool or want to join our mission, say hello anyway.
+                We&apos;re always looking for exceptional talent. If you&apos;re
+                building something cool or want to join our mission, say hello
+                anyway.
               </p>
               <Link
                 href="/careers/apply"

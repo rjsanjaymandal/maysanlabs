@@ -76,7 +76,6 @@ function discoverRoutes(dir: string, basePath: string = ''): MetadataRoute.Sitem
 }
 
 import { blogPosts } from '@/lib/blog-data'
-import { jobPositions } from '@/lib/careers-data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const appDir = path.join(process.cwd(), 'src', 'app')
