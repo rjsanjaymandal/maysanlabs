@@ -12,6 +12,16 @@ export async function sendEmail(formData: FormData) {
     return { success: false, message: "Missing required fields" };
   }
 
+  // Check for missing SMTP configuration
+  if (
+    !process.env.SMTP_HOST ||
+    !process.env.SMTP_USER ||
+    !process.env.SMTP_PASS
+  ) {
+    console.error("Missing SMTP Configuration. Please set SMTP_HOST, SMTP_USER, and SMTP_PASS in .env.local");
+    return { success: false, message: "Server configuration error" };
+  }
+
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT) || 587,
