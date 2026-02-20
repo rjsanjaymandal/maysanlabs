@@ -30,10 +30,14 @@ export default function SpotlightCard({
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative overflow-hidden ${className}`}
+      className={`relative overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        isHovered
+          ? "scale-[1.02] shadow-2xl z-20"
+          : "scale-100 shadow-none z-10"
+      } ${className}`}
       style={{
         background: isHovered
-          ? `radial-gradient(600px circle at ${position.x}px ${position.y}px, hsla(var(--primary), 0.06), transparent 40%)`
+          ? `radial-gradient(600px circle at ${position.x}px ${position.y}px, hsla(var(--primary), 0.08), transparent 45%)`
           : undefined,
       }}
     >

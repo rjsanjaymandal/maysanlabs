@@ -56,40 +56,23 @@ export default function Hero() {
       {/* Animated Beams */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute h-[1px] w-[200px] bg-gradient-to-r from-transparent via-primary/30 to-transparent"
-          style={{ top: "30%", left: "-200px" }}
-          animate={{ left: ["0%", "100%"] }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "linear",
-            repeatDelay: 3,
-          }}
+          className="absolute h-[1px] w-[500px] bg-gradient-to-r from-transparent via-primary/40 to-transparent"
+          style={{ top: "20%", left: "-500px" }}
+          animate={{ left: ["-20%", "120%"] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
         />
         <motion.div
-          className="absolute h-[1px] w-[300px] bg-gradient-to-r from-transparent via-primary/20 to-transparent"
-          style={{ top: "60%", left: "-300px" }}
+          className="absolute h-[1px] w-[400px] bg-gradient-to-r from-transparent via-primary/20 to-transparent blur-sm"
+          style={{ top: "45%", left: "-400px" }}
           animate={{ left: ["-10%", "110%"] }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "linear",
-            repeatDelay: 5,
-            delay: 2,
-          }}
-        />
-        <motion.div
-          className="absolute w-[1px] h-[200px] bg-gradient-to-b from-transparent via-primary/20 to-transparent"
-          style={{ left: "70%", top: "-200px" }}
-          animate={{ top: ["-10%", "110%"] }}
           transition={{
             duration: 12,
             repeat: Infinity,
             ease: "linear",
-            repeatDelay: 4,
-            delay: 1,
+            delay: 2,
           }}
         />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(var(--primary),0.1),transparent_50%)]" />
       </div>
 
       {/* Radial Gradient Overlay */}
@@ -112,9 +95,9 @@ export default function Hero() {
           <div className="mb-8">
             <TextReveal
               as="h1"
-              className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-foreground leading-[0.95]"
+              className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-foreground leading-[0.85] mb-6"
             >
-              Build Systems That Scale Globally
+              Engineering Enterprise Velocity
             </TextReveal>
           </div>
 
@@ -123,11 +106,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-10"
+            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-12 font-medium"
           >
-            Enterprise-grade SaaS infrastructure, modular architectures, and
-            autonomous operational layers — engineered for the modern digital
-            enterprise.
+            SaaS infrastructure, modular architectures, and autonomous
+            operational layers — engineered for the
+            <span className="text-foreground"> modern digital empire</span>.
           </motion.p>
 
           {/* CTA Buttons with Magnetic Effect */}
