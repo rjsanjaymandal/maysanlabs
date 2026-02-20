@@ -2,15 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Shield,
-  Cpu,
-  Database,
-  Network,
-  Server,
-  Code2,
-  Globe,
-} from "lucide-react";
+import { Shield, Cpu, Database, Globe } from "lucide-react";
 
 const layers = [
   {

@@ -3,7 +3,7 @@ import PageHeader from "@/components/PageHeader";
 import ContactFooter from "@/components/ContactFooter";
 import SpotlightCard from "@/components/SpotlightCard";
 import { caseStudies } from "@/lib/case-studies-data";
-import { ArrowRight, BarChart, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
 

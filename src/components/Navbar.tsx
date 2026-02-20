@@ -6,6 +6,7 @@ import { Menu, X, Sun, Moon } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,10 +78,13 @@ export default function Navbar() {
           className="hover:opacity-100 transition-all flex items-center gap-1.5 sm:gap-4 group shrink-0"
         >
           <div className="relative w-8 h-8 sm:w-11 sm:h-11 overflow-hidden rounded-lg sm:rounded-xl border border-white/10 bg-black shadow-2xl flex items-center justify-center p-0.5 group-hover:border-primary/50 transition-colors">
-            <img
+            <Image
               src="/logo.png"
               alt="Maysan Labs Logo"
+              width={44}
+              height={44}
               className="object-contain w-full h-full transform transition-transform duration-700 group-hover:scale-110"
+              priority
             />
           </div>
           <div className="flex flex-col leading-none">
