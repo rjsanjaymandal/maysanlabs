@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.png",
-    apple: "/favicon.png",
+    apple: "/apple-icon.png",
   },
 };
 
@@ -98,7 +98,7 @@ export default function RootLayout({
               additionalType: "https://schema.org/SoftwareApplication",
               name: "Maysan Labs",
               url: "https://maysanlabs.com",
-              logo: "https://maysanlabs.com/icon-512x512.png",
+              logo: "https://maysanlabs.com/logo.png",
               image: "https://maysanlabs.com/og-image.png",
               description:
                 "Architecting high-performance enterprise SaaS infrastructure and autonomous operational tools for modern enterprises.",
