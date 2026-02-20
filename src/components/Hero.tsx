@@ -15,6 +15,7 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center pt-24 pb-20 overflow-hidden noise-bg">
       {/* Animated Gradient Orbs */}
       <div
+        aria-hidden="true"
         className="orb"
         style={{
           width: 600,
@@ -25,6 +26,7 @@ export default function Hero() {
         }}
       />
       <div
+        aria-hidden="true"
         className="orb"
         style={{
           width: 500,
@@ -36,6 +38,7 @@ export default function Hero() {
         }}
       />
       <div
+        aria-hidden="true"
         className="orb"
         style={{
           width: 300,
@@ -48,7 +51,7 @@ export default function Hero() {
       />
 
       {/* Grid Background with beams */}
-      <div className="absolute inset-0 grid-bg opacity-40" />
+      <div aria-hidden="true" className="absolute inset-0 grid-bg opacity-40" />
 
       {/* Animated Beams */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

@@ -94,23 +94,34 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "ProfessionalService",
+              additionalType: "https://schema.org/SoftwareApplication",
               name: "Maysan Labs",
               url: "https://maysanlabs.com",
               logo: "https://maysanlabs.com/icon-512x512.png",
+              image: "https://maysanlabs.com/og-image.png",
               description:
                 "Architecting high-performance enterprise SaaS infrastructure and autonomous operational tools for modern enterprises.",
+              priceRange: "$$$",
+              telephone: "+91-XXXXXXXXXX",
               contactPoint: {
                 "@type": "ContactPoint",
                 email: "business@maysanlabs.com",
                 contactType: "sales",
+                availableLanguage: ["English", "Hindi"],
               },
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Gurgaon",
+                addressRegion: "Haryana",
+                postalCode: "122001",
                 addressCountry: "IN",
               },
-              sameAs: [],
+              areaServed: "Global",
+              sameAs: [
+                "https://linkedin.com/company/maysanlabs",
+                "https://twitter.com/maysanlabs",
+              ],
             }),
           }}
         />
@@ -138,6 +149,54 @@ export default function RootLayout({
                   position: 3,
                   name: "Careers",
                   item: "https://maysanlabs.com/careers",
+                },
+              ],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              name: "Main Navigation",
+              itemListElement: [
+                {
+                  "@type": "SiteNavigationElement",
+                  position: 1,
+                  name: "Home",
+                  url: "https://maysanlabs.com",
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  position: 2,
+                  name: "Solutions",
+                  url: "https://maysanlabs.com/#solution",
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  position: 3,
+                  name: "Architecture",
+                  url: "https://maysanlabs.com/architecture",
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  position: 4,
+                  name: "Intelligence Stream",
+                  url: "https://maysanlabs.com/blog",
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  position: 5,
+                  name: "Careers",
+                  url: "https://maysanlabs.com/careers",
+                },
+                {
+                  "@type": "SiteNavigationElement",
+                  position: 6,
+                  name: "About",
+                  url: "https://maysanlabs.com/about",
                 },
               ],
             }),

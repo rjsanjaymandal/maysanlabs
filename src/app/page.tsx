@@ -46,6 +46,49 @@ export default function Home() {
         <FAQ />
       </div>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "How is the infrastructure managed post-deployment?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Maysan Labs provides continuous technical oversight. You maintain total operational sovereignty while we ensure the system's structural integrity and performance.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How long does a typical implementation take?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Most CRM and ERP systems are deployed within 4-6 weeks, while custom tools can take as little as 2 weeks.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Is the Cloud Space secure for legal documents?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Absolutely. We use bank-level encryption (AES-256) and secure key management to ensure your firm's data is bulletproof.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Do you provide long-term engineering support?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We act as your elite technical division. Our management plans include real-time telemetry, proactive scaling, and continuous refinement of your digital foundations.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
       <ContactFooter />
     </main>
   );

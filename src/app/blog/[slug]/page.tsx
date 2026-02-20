@@ -177,11 +177,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             "@type": "Article",
             headline: post.title,
             description: post.excerpt,
+            image: `https://maysanlabs.com/og-image.png`, // Generic default for now, could be post-specific
             author: {
               "@type": "Person",
               name: post.author,
+              url: "https://maysanlabs.com",
             },
             datePublished: post.date,
+            dateModified: post.date,
             publisher: {
               "@type": "Organization",
               name: "Maysan Labs",
