@@ -5,6 +5,7 @@ import PageHeader from "@/components/PageHeader";
 import ContactFooter from "@/components/ContactFooter";
 import TechnicalSpecs from "@/components/TechnicalSpecs";
 import OperationsRoadmap from "@/components/OperationsRoadmap";
+import ArchitectureVisualizer from "@/components/ArchitectureVisualizer";
 import { Layers, Code, Zap, Store, TrendingUp, BarChart3 } from "lucide-react";
 
 export default function SolutionsPage() {
@@ -89,14 +90,8 @@ export default function SolutionsPage() {
               Technical Infrastructure
             </h2>
           </div>
-          {/* BlueprintGrid simplified text placeholder */}
-          <div className="p-12 border border-border border-dashed rounded-lg text-center bg-card/50">
-            <p className="text-muted-foreground">
-              Infrastructure Blueprint Visualization
-            </p>
-            <p className="text-xs text-muted-foreground mt-2 font-mono">
-              Rendered via Edge Compute
-            </p>
+          <div className="mt-16">
+            <ArchitectureVisualizer />
           </div>
         </div>
       </section>
