@@ -2,11 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Terminal } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,15 +43,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Solutions", href: "/#solution" },
-    { name: "Process", href: "/#process" },
-    { name: "Engineering", href: "/#tech-specs" },
-    { name: "Architecture", href: "/architecture" },
-    { name: "Case Studies", href: "/case-studies" },
-    { name: "Insights", href: "/insights" },
-    { name: "Blog", href: "/blog" },
-    { name: "Careers", href: "/careers" },
-    { name: "About", href: "/about" },
+    { name: "SOLUTIONS", href: "/#solution" },
+    { name: "ENGINEERING", href: "/#tech-specs" },
+    { name: "ARCHITECTURE", href: "/architecture" },
+    { name: "INSIGHTS", href: "/insights" },
+    { name: "BLOG", href: "/blog" },
   ];
 
   const toggleTheme = () => {
@@ -61,144 +56,130 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-4 sm:top-6 left-0 right-0 z-[9999] px-2 sm:px-4 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]`}
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : "bg-transparent"
+      }`}
     >
-      <div
-        className={`container mx-auto max-w-5xl h-14 sm:h-16 flex items-center justify-between transition-all duration-500 rounded-full px-4 sm:px-6 ${
-          isOpen
-            ? "bg-background border border-border rounded-2xl"
-            : isScrolled
-              ? "bg-background/70 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-              : "bg-transparent border border-transparent"
-        }`}
-      >
-        {/* Logo */}
+      <div className="container mx-auto flex items-center justify-between h-20 px-8">
+        {/* Logo Block (Tactical Branding) */}
         <Link
           href="/"
-          className="hover:opacity-100 transition-all flex items-center gap-1.5 sm:gap-4 group shrink-0"
+          className="flex items-center gap-4 group shrink-0"
         >
-          <div className="relative w-8 h-8 sm:w-11 sm:h-11 overflow-hidden rounded-lg sm:rounded-xl border border-white/10 bg-black shadow-2xl flex items-center justify-center p-0.5 group-hover:border-primary/50 transition-colors">
-            <Image
-              src="/logo.png"
-              alt="Maysan Labs Logo"
-              width={44}
-              height={44}
-              className="object-contain w-full h-full transform transition-transform duration-700 group-hover:scale-110"
-              priority
-            />
+          <div className="relative w-10 h-10 bg-primary flex items-center justify-center border border-primary overflow-hidden">
+            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <span className="font-mono font-black text-white text-xl">M</span>
           </div>
           <div className="flex flex-col leading-none">
-            <span className="font-black tracking-tighter text-base sm:text-xl text-foreground">
-              MAYSAN<span className="text-primary">LABS</span>
+            <span className="font-black tracking-tighter text-xl text-foreground uppercase">
+              MAYSAN_LABS
             </span>
-            <span className="hidden sm:inline text-[9px] uppercase tracking-[0.3em] text-muted-foreground font-medium mt-0.5">
-              Enterprise Engineering
+            <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-primary font-bold mt-1">
+              SYS_LEVEL_ENG
             </span>
           </div>
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-1">
+        {/* Desktop Nav (Monospaced Integrity) */}
+        <div className="hidden lg:flex items-center border-x border-border/50 px-8 h-full space-x-8">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className={`text-xs font-medium px-4 py-2 rounded-full transition-all duration-300 ${
+              className={`font-mono text-[10px] tracking-[0.2em] transition-all duration-300 relative py-2 group ${
                 pathname === link.href
-                  ? "bg-primary/10 text-primary border border-primary/20"
-                  : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               {link.name}
+              <span className={`absolute bottom-0 left-0 w-full h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left ${pathname === link.href ? "scale-x-100" : ""}`} />
             </Link>
           ))}
         </div>
 
-        <div className="flex items-center gap-1 sm:gap-4">
+        <div className="flex items-center gap-6">
+          {/* Status Marker (Unique Element) */}
+          <div className="hidden xl:flex items-center gap-3 px-4 border-l border-border h-8 font-mono text-[9px] text-muted-foreground">
+             <div className="w-1.5 h-1.5 bg-primary animate-pulse" />
+             NODE_01_ACTIVE
+          </div>
+
           {/* Theme Toggle */}
           {mounted && (
             <button
               onClick={toggleTheme}
-              className="p-1.5 sm:p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
+              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Toggle theme"
             >
-              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+              {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
             </button>
           )}
 
-          {/* Desktop Get in Touch - Hidden on Mobile/Tablet */}
-          <div className="hidden md:block">
-            <Link
-              href="/init"
-              className="btn btn-primary px-5 py-2 text-xs rounded-full shrink-0"
-            >
-              Get in Touch
-            </Link>
-          </div>
+          {/* Brutalist Call to Action */}
+          <Link
+            href="/init"
+            className="hidden md:flex items-center gap-2 px-6 py-2 bg-foreground text-background font-bold text-[10px] tracking-widest uppercase hover:bg-primary hover:text-white transition-all transform hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_rgba(255,69,0,0.3)]"
+          >
+            INITIALIZE
+            <Terminal size={14} />
+          </Link>
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden p-1.5 sm:p-2 text-foreground rounded-full hover:bg-white/5 transition-colors"
+            className="lg:hidden p-2 text-foreground"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <AnimatePresence mode="wait">
+      {/* Mobile Menu (Brutalist Overlay) */}
+      <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.95 }}
-            transition={{
-              type: "spring",
-              damping: 25,
-              stiffness: 300,
-              mass: 0.8,
-            }}
-            className="md:hidden fixed top-20 sm:top-24 left-2 right-2 z-[9998]"
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "tween", duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:hidden fixed inset-0 z-[10000] bg-background grain-overlay"
           >
-            <div className="bg-background/40 dark:bg-black/40 backdrop-blur-[32px] border border-white/5 dark:border-white/10 p-4 sm:p-6 flex flex-col space-y-3 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] rounded-[2.5rem] overflow-hidden max-h-[75vh] relative">
-              {/* Subtle Glow Header */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+            <div className="p-8 h-full flex flex-col justify-between">
+              <div className="flex justify-between items-center mb-20">
+                 <span className="font-mono text-xs text-primary">[ MENU_SYS ]</span>
+                 <button onClick={() => setIsOpen(false)} className="p-2">
+                   <X size={32} />
+                 </button>
+              </div>
 
-              <div className="flex flex-col space-y-1 overflow-y-auto pr-2 custom-scrollbar">
+              <div className="flex flex-col gap-8">
                 {navLinks.map((link, idx) => (
                   <motion.div
                     key={link.name}
-                    initial={{ opacity: 0, x: -10 }}
+                    initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.03, duration: 0.3 }}
+                    transition={{ delay: idx * 0.1 }}
                   >
                     <Link
                       href={link.href}
-                      className={`text-xl font-black tracking-tighter px-4 py-3 rounded-2xl transition-all duration-300 block ${
-                        pathname === link.href
-                          ? "bg-primary/10 text-primary"
-                          : "text-foreground/80 hover:text-primary hover:bg-white/5"
-                      }`}
+                      className="text-5xl font-black tracking-tighter uppercase hover:text-primary transition-colors block"
                     >
                       {link.name}
                     </Link>
                   </motion.div>
                 ))}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: navLinks.length * 0.03 + 0.1 }}
-                  className="pt-4 border-t border-border mt-2"
-                >
+              </div>
+
+              <div className="pt-8 border-t border-border">
                   <Link
                     href="/init"
-                    className="btn btn-primary w-full text-center py-3 sm:py-4 rounded-xl text-sm"
+                    className="w-full bg-primary text-white py-6 flex items-center justify-center font-black text-xl gap-4"
                   >
-                    Get in Touch
+                    INITIALIZE_PROTOCOL
+                    <Terminal size={24} />
                   </Link>
-                </motion.div>
               </div>
             </div>
           </motion.div>

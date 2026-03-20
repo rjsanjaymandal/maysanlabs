@@ -2,75 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Dark Theme (Default) ─── */
+/* ─── Swiss-Brutalist Foundation ─── */
 :root {
   --background: 0 0% 2%;
-  --foreground: 0 0% 98%;
+  --foreground: 0 0% 95%;
 
-  --primary: 82 85% 60%;
-  --primary-foreground: 0 0% 0%;
+  --primary: 16 100% 50%; /* Signal Orange */
+  --primary-foreground: 0 0% 100%;
 
-  --secondary: 0 0% 7%;
-  --secondary-foreground: 0 0% 98%;
+  --secondary: 0 0% 8%;
+  --secondary-foreground: 0 0% 90%;
 
   --muted: 0 0% 12%;
-  --muted-foreground: 0 0% 60%;
+  --muted-foreground: 0 0% 50%;
 
-  --accent: 82 85% 55%;
-  --accent-foreground: 0 0% 0%;
-
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-
-  --border: 0 0% 12%;
-  --input: 0 0% 12%;
-  --ring: 82 85% 55%;
-
-  --card: 0 0% 4%;
-  --card-foreground: 0 0% 98%;
-
-  --popover: 0 0% 4%;
-  --popover-foreground: 0 0% 98%;
-
-  --radius: 1rem;
-
-  --font-size-hero: clamp(3rem, 8vw, 6rem);
-  --font-size-h1: clamp(2.5rem, 6vw, 3.5rem);
-  --font-size-h2: clamp(1.75rem, 4vw, 2.5rem);
-
-  --section-padding-y: 8rem;
-  --container-padding-x: 1.5rem;
-}
-
-/* ─── Light Mode (Premium Executive) ─── */
-.light {
-  --background: 40 20% 98%; /* Warm Porcelain */
-  --foreground: 0 0% 10%;
- 
-  --primary: 82 85% 45%; 
-  --primary-foreground: 0 0% 100%;
- 
-  --secondary: 40 10% 94%;
-  --secondary-foreground: 0 0% 10%;
- 
-  --muted: 40 10% 92%;
-  --muted-foreground: 0 0% 40%;
- 
-  --accent: 82 85% 45%;
+  --accent: 16 100% 55%;
   --accent-foreground: 0 0% 100%;
- 
+
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
- 
-  --border: 0 0% 88%;
-  --input: 0 0% 88%;
-  --ring: 82 85% 45%;
- 
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 10%;
- 
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 10%;
+
+  --border: 0 0% 10%;
+  --input: 0 0% 10%;
+  --ring: 16 100% 50%;
+
+  --card: 0 0% 3%;
+  --card-foreground: 0 0% 95%;
+
+  --popover: 0 0% 3%;
+  --popover-foreground: 0 0% 95%;
+
+  --radius: 2px; /* Sharp Brutalist Radius */
+
+  --font-size-hero: clamp(4rem, 12vw, 10rem);
+  --font-size-h1: clamp(3rem, 8vw, 5rem);
+  --font-size-h2: clamp(2rem, 6vw, 3.5rem);
+
+  --section-padding-y: 10rem;
+  --container-padding-x: 2rem;
 }
 
 @layer base {
@@ -78,10 +47,8 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings:
-      "rlig" 1,
-      "calt" 1;
+    @apply bg-background text-foreground antialiased selection:bg-primary selection:text-white;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
   }
 }
 
@@ -89,293 +56,86 @@ html,
 body {
   scroll-behavior: smooth;
   overflow-x: hidden;
-  /* Custom Minimalist Scrollbar */
-  scrollbar-width: thin;
-  scrollbar-color: hsla(var(--primary), 0.3) transparent;
+  background-color: hsl(var(--background));
 }
 
-::-webkit-scrollbar {
-  width: 6px;
+/* ─── Tactical UI Elements ─── */
+
+/* Grid Overlay (Subtle context) */
+.tactical-grid {
+  background-image: 
+    linear-gradient(to right, hsla(var(--foreground), 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, hsla(var(--foreground), 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
+/* Grainy Texture (Depth) */
+.grain-overlay {
+  position: relative;
 }
-
-::-webkit-scrollbar-thumb {
-  background: hsla(var(--primary), 0.2);
-  border-radius: 10px;
-  border: 2px solid transparent;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsla(var(--primary), 0.4);
-}
-
-/* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply font-bold tracking-tight;
-  line-height: 1.15;
-}
-h1 {
-  font-size: var(--font-size-h1);
-}
-h2 {
-  font-size: var(--font-size-h2);
-}
-p {
-  @apply leading-relaxed text-muted-foreground;
-}
-
-/* Layout */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--container-padding-x);
+.grain-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   width: 100%;
-}
-
-section {
-  padding: var(--section-padding-y) 0;
-  position: relative;
-}
-
-/* ─── Premium Buttons ─── */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius);
-  font-weight: 600;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  gap: 0.5rem;
-  font-size: 0.95rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-primary {
-  @apply bg-primary text-primary-foreground;
-  box-shadow:
-    0 0 20px hsla(var(--primary), 0.15),
-    0 0 60px hsla(var(--primary), 0.05);
-}
-.btn-primary:hover {
-  box-shadow:
-    0 0 30px hsla(var(--primary), 0.3),
-    0 0 80px hsla(var(--primary), 0.1);
-  transform: translateY(-1px);
-}
-
-/* Light mode: use softer shadow instead of glow */
-.light .btn-primary {
-  box-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.1),
-    0 1px 2px rgba(0, 0, 0, 0.06);
-}
-.light .btn-primary:hover {
-  box-shadow:
-    0 4px 14px rgba(0, 0, 0, 0.1),
-    0 2px 6px rgba(0, 0, 0, 0.06);
-  transform: translateY(-1px);
-}
-
-.btn-secondary {
-  @apply bg-secondary text-secondary-foreground;
-  border: 1px solid hsl(var(--border));
-}
-.btn-secondary:hover {
-  border-color: hsla(var(--primary), 0.3);
-  background: hsla(var(--primary), 0.05);
-}
-
-/* ─── Premium Glass Card ─── */
-.glass-card {
-  background: hsla(var(--card), 0.4);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid hsla(var(--foreground), 0.08);
-  border-radius: var(--radius);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-}
-.glass-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    hsla(var(--primary), 0.05),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.glass-card:hover {
-  border-color: hsla(var(--primary), 0.4);
-  box-shadow:
-    0 20px 40px -20px rgba(0, 0, 0, 0.5),
-    0 0 40px hsla(var(--primary), 0.05);
-  transform: translateY(-4px) scale(1.01);
-}
-.glass-card:hover::after {
-  opacity: 1;
-}
-
-/* Light mode: Premium depth vs. glow */
-.light .glass-card {
-  background: hsla(0, 0%, 100%, 0.8);
-  border: 1px solid hsla(0, 0%, 0%, 0.08);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.02),
-              0 8px 16px rgba(0,0,0,0.04);
-}
-.light .glass-card:hover {
-  border-color: hsla(var(--primary), 0.4);
-  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.1),
-              0 8px 32px rgba(0,0,0,0.05);
-}
-.light .glass-card::after {
-  background: linear-gradient(135deg, hsla(var(--primary), 0.1), transparent 60%);
-}
-
-/* ─── Gradient Border Card ─── */
-.gradient-border {
-  position: relative;
-  background: hsl(var(--card));
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-.gradient-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    hsla(var(--primary), 0.3),
-    transparent 40%,
-    transparent 60%,
-    hsla(var(--primary), 0.1)
-  );
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  height: 100%;
+  opacity: 0.15;
   pointer-events: none;
-  transition: opacity 0.4s;
-  opacity: 0.5;
-}
-.gradient-border:hover::before {
-  opacity: 1;
-}
-.light .gradient-border::before {
-  opacity: 0.3;
-}
-.light .gradient-border:hover::before {
-  opacity: 0.6;
+  z-index: 10;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* ─── Glow Effect ─── */
-.glow-hover {
-  transition: box-shadow 0.4s ease;
-}
-.glow-hover:hover {
-  box-shadow:
-    0 0 40px hsla(var(--primary), 0.08),
-    0 0 80px hsla(var(--primary), 0.04);
-}
-.light .glow-hover:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+/* ─── Typography Scales ─── */
+h1, h2, h3 {
+  @apply font-bold tracking-tight uppercase;
+  line-height: 0.9;
 }
 
-/* ─── Noise Texture Overlay ─── */
-.noise-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.02;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-}
-.light .noise-bg::after {
-  opacity: 0.015;
+.text-massive {
+  font-size: var(--font-size-hero);
+  @apply font-black tracking-tighter;
 }
 
-/* ─── Section Label ─── */
-.section-label {
-  @apply text-primary font-mono text-xs uppercase tracking-[0.25em] mb-4 block;
-  font-weight: 600;
+/* ─── Brutalist Components ─── */
+
+.btn-brutalist {
+  @apply px-6 py-3 bg-primary text-white font-bold uppercase tracking-widest transition-all duration-200;
+  border: 1px solid transparent;
+  clip-path: polygon(0 0, 100% 0, 95% 100%, 0 100%); /* Slight angle for speed */
 }
 
-/* ─── Gradient text ─── */
-.text-gradient {
-  @apply bg-clip-text text-transparent;
-  background-image: linear-gradient(
-    135deg,
-    hsl(var(--primary)),
-    hsl(82 60% 80%)
-  );
-}
-.light .text-gradient {
-  background-image: linear-gradient(
-    135deg,
-    hsl(var(--primary)),
-    hsl(82 50% 30%)
-  );
+.btn-brutalist:hover {
+  @apply bg-white text-black;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px hsla(var(--primary), 0.4);
 }
 
-/* ─── Grid Background ─── */
-.grid-bg {
-  background-image:
-    linear-gradient(hsla(var(--foreground), 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, hsla(var(--foreground), 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+.card-brutalist {
+  @apply p-8 bg-card border border-border relative overflow-hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ─── Floating Orbs ─── */
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(30px, -30px) scale(1.05);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.95);
-  }
+.card-brutalist:hover {
+  @apply border-primary/40;
+  transform: translateY(-2px);
 }
 
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  pointer-events: none;
-  animation: float 20s ease-in-out infinite;
-}
-.light .orb {
-  filter: blur(120px);
-  opacity: 0.5;
+.card-brutalist::before {
+  content: "DATA_NODE";
+  @apply absolute top-2 right-2 font-mono text-[10px] text-muted-foreground opacity-30;
 }
 
-/* ─── Fade In Animation ─── */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ─── Animations ─── */
+@keyframes reveal-up {
+  from { clip-path: inset(100% 0 0 0); transform: translateY(20px); }
+  to { clip-path: inset(0 0 0 0); transform: translateY(0); }
 }
+
+.animate-reveal {
+  animation: reveal-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: hsl(var(--primary)); }

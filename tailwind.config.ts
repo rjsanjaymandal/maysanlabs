@@ -51,9 +51,17 @@ const config: Config = {
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        none: "0px",
+        sm: "2px",
+        DEFAULT: "4px",
+        md: "8px",
+        lg: "12px",
+      },
+      letterSpacing: {
+        tighter: "-0.05em",
+        tight: "-0.02em",
+        wide: "0.1em",
+        widest: "0.25em",
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "sans-serif"],

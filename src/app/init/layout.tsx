@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Get in Touch",
-  description:
-    "Connect with Maysan Labs to start your next enterprise project. Share your requirements and our engineering team will get back to you.",
-  alternates: {
-    canonical: "/init",
-  },
+  title: "Initialize Project | Maysan Labs",
+  description: "Establish a high-performance communication uplink with Maysan Labs industrial compute core. State your objectives to begin the modular SaaS architecture protocol.",
+  openGraph: {
+    title: "Initialize Project | Maysan Labs",
+    description: "Launch your enterprise SaaS transformation with Maysan Labs.",
+  }
 };
 
 export default function InitLayout({

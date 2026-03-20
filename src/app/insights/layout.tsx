@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Technical Insights",
-  description:
-    "Deep-dives into modular architecture, tactical automation, and the future of digital SaaS platforms. Access our technical logs and research.",
-  alternates: {
-    canonical: "/insights",
-  },
+  title: "Technical Insights | Maysan Labs",
+  description: "Deep-dives into modular architecture, tactical automation, and the future of digital SaaS platforms. Quantified engineering excellence from Maysan Labs.",
+  openGraph: {
+    title: "Technical Insights | Maysan Labs",
+    description: "Discover the industrial data and research driving Maysan Labs' innovation.",
+  }
 };
 
 export default function InsightsLayout({
@@ -14,26 +14,5 @@ export default function InsightsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            name: "Technical Insights — Maysan Labs Intelligence Stream",
-            description:
-              "Deep-dives into modular architecture, tactical automation, and the future of digital SaaS platforms.",
-            url: "https://maysanlabs.com/blog",
-            publisher: {
-              "@type": "Organization",
-              name: "Maysan Labs",
-            },
-          }),
-        }}
-      />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

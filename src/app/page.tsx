@@ -10,40 +10,51 @@ import OperationsRoadmap from "@/components/OperationsRoadmap";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Engineering Enterprise Velocity",
+  title: "Engineering Enterprise Velocity | Maysan Labs",
   description:
     "Maysan Labs builds high-performance SaaS infrastructure, modular architecture, and autonomous operational tools for global enterprises.",
 };
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main className="relative bg-background min-h-screen selection:bg-primary selection:text-white">
+      {/* Global Architectural Grid Overlay */}
+      <div aria-hidden="true" className="fixed inset-0 tactical-grid opacity-[0.03] pointer-events-none z-50" />
+      
       <Navbar />
-      <Hero />
-      <Problem />
+      
+      <div className="space-y-0">
+        <Hero />
+        <hr className="border-border opacity-20" />
+        
+        <div id="problem">
+          <Problem />
+        </div>
+        <hr className="border-border opacity-20" />
 
-      <div id="solution">
-        <Solution />
-      </div>
+        <div id="solution">
+          <Solution />
+        </div>
+        <hr className="border-border opacity-20" />
 
-      <TechnicalSpecs />
+        <div id="tech">
+          <TechnicalSpecs />
+        </div>
+        <hr className="border-border opacity-20" />
 
-      <div id="process" className="py-24 bg-secondary/30">
-        <div className="container">
-          <div className="mb-16 text-center">
-            <span className="text-primary font-mono text-sm tracking-widest uppercase">
-              Execution Protocol
-            </span>
-            <h2 className="text-4xl font-bold mt-4">Operations Roadmap</h2>
-          </div>
+        <div id="process" className="bg-card/30 border-t border-b border-border">
           <OperationsRoadmap />
         </div>
-      </div>
+        <hr className="border-border opacity-20" />
 
-      <SocialProof />
+        <div id="proof">
+          <SocialProof />
+        </div>
+        <hr className="border-border opacity-20" />
 
-      <div id="faq">
-        <FAQ />
+        <div id="faq">
+          <FAQ />
+        </div>
       </div>
 
       <script

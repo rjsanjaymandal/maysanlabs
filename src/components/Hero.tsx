@@ -1,160 +1,166 @@
 "use client";
 
-import { ArrowRight, Zap, CheckCircle } from "lucide-react";
-import { motion } from "framer-motion";
-import TextReveal from "./TextReveal";
-import MagneticButton from "./MagneticButton";
+import { motion, Variants, Transition } from "framer-motion";
+import { Terminal, Activity, Zap, ArrowRight, Shield, Globe, Box } from "lucide-react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 
-const stats = [
-  { value: "99.9%", label: "Uptime SLA" },
-  { value: "<50ms", label: "Response Time" },
-];
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { y: 40, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 20,
+    } as Transition,
+  },
+};
 
 export default function Hero() {
+  const [bootStatus, setBootStatus] = useState("INIT_SYSTEM");
+  const [timestamp, setTimestamp] = useState("");
+
+  useEffect(() => {
+    const statuses = ["ALLOCATING_RESOURCES", "ESTABLISHING_UPLINK", "CALIBRATING_ENGINE", "SYSTEM_READY"];
+    let i = 0;
+    const interval = setInterval(() => {
+       if (i < statuses.length) {
+          setBootStatus(statuses[i]);
+          i++;
+       } else {
+          clearInterval(interval);
+       }
+    }, 800);
+    
+    setTimestamp(new Date().toISOString().split('T')[1].split('.')[0]);
+    
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-20 overflow-hidden noise-bg">
-      {/* Animated Gradient Orbs */}
-      <div
-        aria-hidden="true"
-        className="orb"
-        style={{
-          width: 600,
-          height: 600,
-          background: "hsla(82, 85%, 55%, 0.08)",
-          top: "-10%",
-          right: "-10%",
-        }}
+    <section className="relative min-h-screen flex flex-col justify-center pt-32 pb-20 overflow-hidden bg-background">
+      {/* Background Architectural Elements */}
+      <div aria-hidden="true" className="absolute inset-0 tactical-grid opacity-10 pointer-events-none" />
+      <motion.div 
+        initial={{ y: "-100%" }}
+        animate={{ y: "100%" }}
+        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        className="absolute inset-0 w-full h-[2px] bg-primary/20 pointer-events-none z-10" 
       />
-      <div
-        aria-hidden="true"
-        className="orb"
-        style={{
-          width: 500,
-          height: 500,
-          background: "hsla(82, 85%, 55%, 0.05)",
-          bottom: "-15%",
-          left: "-10%",
-          animationDelay: "-7s",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="orb"
-        style={{
-          width: 300,
-          height: 300,
-          background: "hsla(220, 70%, 50%, 0.06)",
-          top: "40%",
-          left: "30%",
-          animationDelay: "-14s",
-        }}
-      />
-
-      {/* Grid Background with beams */}
-      <div aria-hidden="true" className="absolute inset-0 grid-bg opacity-40" />
-
-      {/* Animated Beams */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute h-[1px] w-[500px] bg-gradient-to-r from-transparent via-primary/40 to-transparent"
-          style={{ top: "20%", left: "-500px" }}
-          animate={{ left: ["-20%", "120%"] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div
-          className="absolute h-[1px] w-[400px] bg-gradient-to-r from-transparent via-primary/20 to-transparent blur-sm"
-          style={{ top: "45%", left: "-400px" }}
-          animate={{ left: ["-10%", "110%"] }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "linear",
-            delay: 2,
-          }}
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(var(--primary),0.1),transparent_50%)]" />
-      </div>
-
-      {/* Radial Gradient Overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,hsl(var(--background))_75%)]" />
-
-      <div className="container relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Trust Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 10, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm text-sm text-muted-foreground mb-8"
+      
+      <div className="container relative z-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+          
+          {/* Main Typographic Core */}
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="lg:col-span-9"
           >
-            <CheckCircle size={14} className="text-primary" />
-            <span>Trusted by enterprise teams across India</span>
+            <motion.div variants={itemVariants} className="flex items-center gap-4 mb-10">
+               <div className="w-12 h-[2px] bg-primary" />
+               <span className="font-mono text-[10px] sm:text-xs tracking-[0.5em] text-primary font-bold uppercase">
+                 [ STATUS_{bootStatus} ]
+               </span>
+            </motion.div>
+
+            <motion.h1 variants={itemVariants} className="text-massive leading-[0.8] mb-12 tracking-tighter">
+              WE_BUILD<br />
+              MODULAR<br />
+              <span className="text-primary italic">EMPIRES</span>
+            </motion.h1>
+
+            <motion.p variants={itemVariants} className="font-mono text-sm sm:text-lg uppercase tracking-widest text-muted-foreground mb-16 max-w-2xl leading-relaxed">
+               high-performance infrastructure for global enterprises. engineering digital architecture that scales beyond the tactical limit.
+            </motion.p>
+
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-6">
+              <Link
+                href="/init"
+                className="btn-brutalist bg-primary text-white py-6 px-12 text-center uppercase font-mono font-black tracking-widest flex items-center justify-center gap-3 group"
+              >
+                <Terminal size={18} />
+                <span>INIT_PROJECT</span>
+                <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+              </Link>
+              <Link
+                href="/#solution"
+                className="btn-brutalist border-2 border-border py-6 px-12 text-center uppercase font-mono font-black tracking-widest flex items-center justify-center gap-3 group hover:border-primary transition-colors"
+              >
+                <span>VIEW_SPECIFICATIONS</span>
+                <Activity size={18} className="group-hover:animate-pulse" />
+              </Link>
+            </motion.div>
           </motion.div>
 
-          {/* Headline with TextReveal */}
-          <div className="mb-8">
-            <TextReveal
-              as="h1"
-              className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-foreground leading-[0.85] mb-6"
-            >
-              Engineering Enterprise Velocity
-            </TextReveal>
-          </div>
-
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-12 font-medium"
+          {/* Asymmetric Side Sidebar (90/10 Tension) */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="lg:col-span-3 border-l-2 border-border pl-8 pt-8 lg:pt-0 hidden lg:block"
           >
-            SaaS infrastructure, modular architectures, and autonomous
-            operational layers — engineered for the
-            <span className="text-foreground"> modern digital empire</span>.
-          </motion.p>
-
-          {/* CTA Buttons with Magnetic Effect */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
-          >
-            <MagneticButton
-              href="/init"
-              className="btn btn-primary text-lg px-8 py-4"
-            >
-              <Zap size={20} className="mr-1" />
-              Get in Touch
-              <ArrowRight size={20} className="ml-1" />
-            </MagneticButton>
-            <MagneticButton
-              href="#solution"
-              className="btn btn-secondary text-lg px-8 py-4"
-            >
-              Explore Solutions
-            </MagneticButton>
-          </motion.div>
-
-          {/* Stats Row */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16"
-          >
-            {stats.map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground font-mono">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+            <div className="space-y-12">
+               {[
+                 { label: "NODE_01", status: "ACTIVE", icon: <Globe size={14} /> },
+                 { label: "LATENCY", status: "14ms", icon: <Zap size={14} /> },
+                 { label: "ENCRYPT", status: "SSL_V3", icon: <Shield size={14} /> },
+                 { label: "TIME", status: timestamp, icon: <Activity size={14} /> }
+               ].map((node, i) => (
+                 <div key={i} className="group cursor-default">
+                    <div className="flex items-center gap-3 mb-2 font-mono text-[9px] text-primary/40 group-hover:text-primary transition-colors">
+                       {node.icon}
+                       <span>{node.label}</span>
+                    </div>
+                    <div className="font-mono text-lg font-black tracking-tighter uppercase group-hover:text-primary transition-colors">
+                       {node.status}
+                    </div>
+                 </div>
+               ))}
+               
+               <div className="pt-12 mt-12 border-t border-border/50">
+                  <div className="font-mono text-[8px] uppercase tracking-widest text-muted-foreground/30 leading-loose">
+                    [ SYSTEM_METADATA ]<br />
+                    MYSAN_LABS_CORE_V8.4<br />
+                    GURGAON_UPLINK_STABLE<br />
+                    ALL_MODULES_NOMINAL
+                  </div>
+               </div>
+            </div>
           </motion.div>
         </div>
+      </div>
+
+      {/* Technical Floor Markers */}
+      <div className="absolute bottom-10 left-0 w-full px-12 hidden sm:flex justify-between items-end pointer-events-none">
+          <div className="flex gap-16 font-mono text-[9px] text-muted-foreground opacity-30">
+             <div className="space-y-1">
+                <p>COORD_X: 28.4595° N</p>
+                <p>COORD_Y: 77.0266° E</p>
+             </div>
+             <div className="space-y-1">
+                <p>OS: MAY_KERNEL_PRO</p>
+                <p>ENV: PRODUCTION</p>
+             </div>
+          </div>
+          <div className="font-mono text-[10px] text-primary flex items-center gap-4">
+             <span className="font-bold tracking-[0.4em]">DEPLOYMENT_READY</span>
+             <Box size={14} />
+          </div>
       </div>
     </section>
   );

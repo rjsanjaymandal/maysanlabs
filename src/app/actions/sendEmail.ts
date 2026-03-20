@@ -88,7 +88,7 @@ export async function sendEmail(formData: FormData) {
     }
 
     return { success: true, message: "Inquiry received successfully" };
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Notification Error:", error);
     return { success: false, message: "Failed to process inquiry" };
   }

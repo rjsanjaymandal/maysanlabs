@@ -1,121 +1,176 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, MapPin, ArrowUpRight, ArrowRight } from "lucide-react";
-import TextReveal from "./TextReveal";
-import MagneticButton from "./MagneticButton";
-import { motion } from "framer-motion";
+import { ArrowUpRight, ArrowRight, Terminal, Globe, Command } from "lucide-react";
+import { motion, Variants, Transition } from "framer-motion";
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.98, y: 20 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 20,
+    } as Transition,
+  },
+};
+
+const footerVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
 
 export default function ContactFooter() {
   return (
-    <footer id="contact" className="relative overflow-hidden">
-      {/* CTA Section */}
-      <div className="py-32 relative noise-bg">
-        {/* Gradient orb behind CTA */}
-        <div
-          className="orb"
-          style={{
-            width: 500,
-            height: 500,
-            background: "hsla(82, 85%, 55%, 0.06)",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-        />
+    <footer id="contact" className="relative overflow-hidden bg-background">
+      {/* Massive CTA Section */}
+      <div className="py-40 relative border-t border-border">
+        <div aria-hidden="true" className="absolute inset-0 tactical-grid opacity-5" />
+        
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="container relative z-10"
+        >
+          <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
+            <motion.div variants={itemVariants} className="mb-12">
+               <span className="font-mono text-[10px] tracking-[0.6em] uppercase text-primary font-bold block mb-8">
+                 [ INITIALIZE_CONNECTION ]
+               </span>
+               <h2 className="text-massive leading-[0.8] mb-0">
+                 ENGINEERING<br />
+                 THE NEXT<br />
+                 <span className="text-primary italic">EMPIRE</span>
+               </h2>
+            </motion.div>
 
-        <div className="container relative z-10">
-          <div className="text-center max-w-3xl mx-auto">
-            <div className="mb-8">
-              <TextReveal
-                as="h2"
-                className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-foreground leading-[0.95]"
-              >
-                Engineering the next high-tech enterprise.
-              </TextReveal>
-            </div>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="text-xl text-muted-foreground mb-12 max-w-xl mx-auto"
-            >
-              We build the infrastructure, you lead the growth.
+            <motion.p 
+              variants={itemVariants}
+              className="font-mono text-xs sm:text-lg uppercase tracking-widest text-muted-foreground mb-16 max-w-2xl leading-relaxed">
+              we build the infrastructure. you lead the global expansion. no compromise on velocity.
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="flex flex-col sm:flex-row justify-center gap-4"
+            <motion.div 
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-md"
             >
-              <MagneticButton
+              <Link
                 href="/init"
-                className="btn btn-primary text-lg px-8 py-4"
+                className="btn-brutalist bg-primary text-white py-6 px-12 text-center uppercase font-mono font-black tracking-widest flex items-center justify-center gap-3 group"
               >
-                <Mail size={20} className="mr-1" />
-                Get in Touch
-                <ArrowRight size={20} className="ml-1" />
-              </MagneticButton>
-              <MagneticButton
-                href="mailto:business@maysanlabs.com"
-                className="btn btn-secondary text-lg px-8 py-4"
-              >
-                <span>business@maysanlabs.com</span>
-                <ArrowUpRight size={18} />
-              </MagneticButton>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-
-      {/* Footer Grid */}
-      <div className="border-t border-border bg-card/30 backdrop-blur-sm py-12">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div className="col-span-1 md:col-span-2">
-              <h4 className="font-bold text-foreground text-lg mb-3">
-                Maysan Labs
-              </h4>
-              <p className="text-muted-foreground max-w-xs text-sm leading-relaxed">
-                The architects behind modern, automated enterprise systems.
-                Building digital infrastructure that scales.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-bold text-foreground mb-4 text-sm uppercase tracking-wider">
-                Contact
-              </h4>
+                <Terminal size={18} />
+                <span>INIT_PROTOCOL</span>
+                <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+              </Link>
               <Link
                 href="mailto:business@maysanlabs.com"
-                className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 text-sm"
+                className="btn-brutalist border-2 border-border py-6 px-12 text-center uppercase font-mono font-black tracking-widest flex items-center justify-center gap-3 group hover:border-primary transition-colors"
               >
-                <Mail size={14} /> business@maysanlabs.com
+                <span>SEND_COMMAND</span>
+                <ArrowUpRight size={18} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
               </Link>
-            </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
 
-            <div>
-              <h4 className="font-bold text-foreground mb-4 text-sm uppercase tracking-wider">
-                Location
-              </h4>
-              <p className="text-muted-foreground flex items-center gap-2 text-sm">
-                <MapPin size={14} /> Gurgaon, India
+      {/* Industrial Footer Grid */}
+      <motion.div 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={footerVariants}
+        className="border-t-4 border-primary bg-card/50 py-24 relative overflow-hidden"
+      >
+        <div className="container relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
+            
+            <div className="md:col-span-6 space-y-8">
+              <div className="flex items-center gap-4">
+                 <div className="w-10 h-10 bg-primary flex items-center justify-center text-white">
+                    <Command size={20} />
+                 </div>
+                 <h4 className="font-mono text-3xl font-black uppercase tracking-tighter">
+                   MAYSAN_LABS
+                 </h4>
+              </div>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground max-w-sm leading-relaxed">
+                architects of modern, high-concurrency enterprise ecosystems. engineering digital infrastructure that scales at the speed of thought.
               </p>
             </div>
+
+            <div className="md:col-span-3 space-y-6">
+              <h4 className="font-mono text-[10px] font-bold text-primary uppercase tracking-[0.4em]">
+                CHANNELS
+              </h4>
+              <div className="flex flex-col gap-4">
+                <Link
+                  href="mailto:business@maysanlabs.com"
+                  className="font-mono text-xs uppercase tracking-tight text-muted-foreground hover:text-primary transition-colors flex items-center gap-3 group"
+                >
+                  <div className="w-6 h-[1px] bg-border group-hover:bg-primary transition-colors" />
+                  BUSINESS@MAY_LABS
+                </Link>
+                <Link
+                  href="#"
+                  className="font-mono text-xs uppercase tracking-tight text-muted-foreground hover:text-primary transition-colors flex items-center gap-3 group"
+                >
+                  <div className="w-6 h-[1px] bg-border group-hover:bg-primary transition-colors" />
+                  X_TERMINAL
+                </Link>
+              </div>
+            </div>
+
+            <div className="md:col-span-3 space-y-6">
+              <h4 className="font-mono text-[10px] font-bold text-primary uppercase tracking-[0.4em]">
+                LOCATION_ID
+              </h4>
+              <div className="flex items-center gap-3 text-muted-foreground">
+                 <Globe size={14} className="text-primary" />
+                 <p className="font-mono text-xs uppercase tracking-tight">
+                    GURGAON_SEC_44 / INDIA
+                 </p>
+              </div>
+            </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-border/50 text-center text-xs text-muted-foreground/40 flex flex-col md:flex-row justify-between items-center gap-2">
-            <p>
-              © {new Date().getFullYear()} Maysan Labs. All rights reserved.
-            </p>
-            <p className="font-mono tracking-wider">Built for the Future.</p>
+          <div className="mt-32 pt-12 border-t border-border flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex items-center gap-6 font-mono text-[8px] uppercase tracking-widest text-muted-foreground/30">
+               <p>© {new Date().getFullYear()} MAYSAN_LABS_ENGINEERING</p>
+               <div className="w-1 h-1 bg-border rounded-full" />
+               <p>STATUS: OPERATIONAL</p>
+            </div>
+            
+            <div className="flex items-center gap-3 font-mono text-[8px] uppercase tracking-[0.3em] text-primary/40">
+               <span className="italic">BUILT_FOR_THE_FUTURE_VELOCITY</span>
+               <div className="w-8 h-[2px] bg-primary/20" />
+            </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 }

@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
-import { Briefcase, Mail, Phone, FileText, CheckCircle } from "lucide-react";
-
+import { Terminal, Cpu, Shield, Activity, Globe, Command, ArrowRight, CheckCircle, Mail } from "lucide-react";
 import { sendEmail } from "@/app/actions/sendEmail";
 
 export default function InitPage() {
@@ -16,28 +15,36 @@ export default function InitPage() {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [sessionId, setSessionId] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  useEffect(() => {
+    setSessionId(`UL-${Math.random().toString(36).substring(2, 9).toUpperCase()}`);
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.companyName || !formData.email) return;
 
     setIsSubmitting(true);
 
-    // Create FormData for the server action
     const data = new FormData();
     data.append("companyName", formData.companyName);
     data.append("requirements", formData.requirements);
     data.append("email", formData.email);
     data.append("contact", formData.contact);
 
-    const result = await sendEmail(data);
-
-    setIsSubmitting(false);
-
-    if (result.success) {
-      setIsSubmitted(true);
-    } else {
-      alert("Failed to send message. Please try again.");
+    try {
+      const result = await sendEmail(data);
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        alert("CRITICAL_ERROR: FAIL_TO_INIT_UPLINK. ATTEMPT_RECONNECT.");
+      }
+    } catch (error: unknown) {
+      console.error("UPLINK_FAILURE:", error);
+      alert("FATAL_ERROR: SYSTEM_OFFLINE.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -49,30 +56,58 @@ export default function InitPage() {
   };
 
   return (
-    <main className="min-h-screen bg-background flex flex-col pt-20">
+    <main className="min-h-screen bg-background flex flex-col pt-32 relative overflow-hidden">
+      <div aria-hidden="true" className="fixed inset-0 tactical-grid opacity-5 pointer-events-none" />
+      
       <Navbar />
-      <div className="container max-w-2xl flex-1 flex flex-col justify-center py-12 px-4">
-        <div className="bg-card border border-border/50 rounded-xl shadow-2xl p-8 backdrop-blur-sm">
-          {!isSubmitted ? (
-            <>
-              <div className="mb-8">
-                <h1 className="text-3xl font-bold tracking-tight mb-2">
-                  Get in Touch
-                </h1>
-                <p className="text-muted-foreground">
-                  Connect with us to start your next enterprise project.
-                </p>
-              </div>
+      
+      <div className="container max-w-4xl flex-1 flex flex-col justify-center py-20 px-4 relative z-10">
+        {!isSubmitted ? (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            
+            {/* Sidebar Context */}
+            <div className="lg:col-span-4 space-y-12">
+               <div>
+                  <span className="font-mono text-[10px] tracking-[0.5em] uppercase text-primary font-bold block mb-4">
+                    [ SESSION_ID: {sessionId} ]
+                  </span>
+                  <h1 className="text-massive leading-[0.8] mb-0">
+                    INIT<br />
+                    PROT<br />
+                    OCOL
+                  </h1>
+               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Company Name */}
-                <div className="space-y-2">
-                  <label
-                    htmlFor="companyName"
-                    className="text-sm font-medium flex items-center gap-2"
-                  >
-                    <Briefcase size={16} className="text-primary" />
-                    Company / Organization Name
+               <div className="space-y-6">
+                  <div className="flex items-center gap-3 font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
+                     <Cpu size={14} className="text-primary" />
+                     <span>UPLINK: ACTIVE</span>
+                  </div>
+                  <div className="flex items-center gap-3 font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
+                     <Shield size={14} className="text-primary" />
+                     <span>ENCRYPTION: AES_256</span>
+                  </div>
+                  <div className="flex items-center gap-3 font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
+                     <Globe size={14} className="text-primary" />
+                     <span>ORIGIN: GURGAON_SEC_44</span>
+                  </div>
+               </div>
+
+               <p className="font-mono text-[10px] uppercase leading-relaxed text-muted-foreground/60 tracking-tight">
+                 establishing a high-performance communication tunnel to maysan labs industrial compute core. state your objectives.
+               </p>
+            </div>
+
+            {/* Form Interface */}
+            <div className="lg:col-span-8 border-2 border-border bg-card/30 p-8 md:p-12 relative overflow-hidden group hover:border-primary/30 transition-colors">
+              <div className="absolute top-0 right-0 p-4 font-mono text-[8px] text-muted-foreground opacity-20">
+                 SYS_V2.0_CONTACT_GATE
+              </div>
+              
+              <form onSubmit={handleSubmit} className="space-y-10">
+                <div className="space-y-4">
+                  <label htmlFor="companyName" className="font-mono text-[10px] font-bold text-primary uppercase tracking-[0.4em] flex items-center gap-2">
+                    <Command size={14} /> 01_IDENTIFIER
                   </label>
                   <input
                     id="companyName"
@@ -80,19 +115,14 @@ export default function InitPage() {
                     required
                     value={formData.companyName}
                     onChange={handleChange}
-                    placeholder="e.g. Acme Corp"
-                    className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-muted-foreground/30"
+                    placeholder="ENTER_ORG_NAME..."
+                    className="w-full bg-background border-b-2 border-border focus:border-primary px-0 py-4 font-mono text-sm uppercase tracking-widest outline-none transition-all placeholder:text-muted-foreground/20"
                   />
                 </div>
 
-                {/* Requirements */}
-                <div className="space-y-2">
-                  <label
-                    htmlFor="requirements"
-                    className="text-sm font-medium flex items-center gap-2"
-                  >
-                    <FileText size={16} className="text-primary" />
-                    Project Requirements
+                <div className="space-y-4">
+                  <label htmlFor="requirements" className="font-mono text-[10px] font-bold text-primary uppercase tracking-[0.4em] flex items-center gap-2">
+                    <Terminal size={14} /> 02_OBJECTIVES
                   </label>
                   <textarea
                     id="requirements"
@@ -100,21 +130,16 @@ export default function InitPage() {
                     required
                     value={formData.requirements}
                     onChange={handleChange}
-                    placeholder="Describe your core objectives, tech stack preference, or timeline..."
+                    placeholder="DESCRIBE_SYSTEM_REQUIREMENTS..."
                     rows={4}
-                    className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-muted-foreground/30 resize-none"
+                    className="w-full bg-background border-b-2 border-border focus:border-primary px-0 py-4 font-mono text-sm uppercase tracking-widest outline-none transition-all placeholder:text-muted-foreground/20 resize-none"
                   />
                 </div>
 
-                {/* Email */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="email"
-                      className="text-sm font-medium flex items-center gap-2"
-                    >
-                      <Mail size={16} className="text-primary" />
-                      Email Address
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                  <div className="space-y-4">
+                    <label htmlFor="email" className="font-mono text-[10px] font-bold text-primary uppercase tracking-[0.4em] flex items-center gap-2">
+                      <Mail size={14} /> 03_REPLY_UPLINK
                     </label>
                     <input
                       id="email"
@@ -123,19 +148,14 @@ export default function InitPage() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="contact@company.com"
-                      className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-muted-foreground/30"
+                      placeholder="CONTACT_EMAIL..."
+                      className="w-full bg-background border-b-2 border-border focus:border-primary px-0 py-4 font-mono text-sm uppercase tracking-widest outline-none transition-all placeholder:text-muted-foreground/20"
                     />
                   </div>
 
-                  {/* Contact */}
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="contact"
-                      className="text-sm font-medium flex items-center gap-2"
-                    >
-                      <Phone size={16} className="text-primary" />
-                      Contact Number
+                  <div className="space-y-4">
+                    <label htmlFor="contact" className="font-mono text-[10px] font-bold text-primary uppercase tracking-[0.4em] flex items-center gap-2">
+                      <Activity size={14} /> 04_CHRONO_REF
                     </label>
                     <input
                       id="contact"
@@ -143,49 +163,53 @@ export default function InitPage() {
                       type="tel"
                       value={formData.contact}
                       onChange={handleChange}
-                      placeholder="+1 (555) 000-0000"
-                      className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-muted-foreground/30"
+                      placeholder="CONTACT_NUMBER..."
+                      className="w-full bg-background border-b-2 border-border focus:border-primary px-0 py-4 font-mono text-sm uppercase tracking-widest outline-none transition-all placeholder:text-muted-foreground/20"
                     />
                   </div>
                 </div>
 
-                <div className="pt-4">
+                <div className="pt-8">
                   <button
                     type="submit"
-                    className="w-full bg-primary text-primary-foreground font-bold py-4 rounded-lg hover:opacity-90 transition-opacity uppercase tracking-widest text-sm shadow-lg shadow-primary/20"
+                    className="btn-brutalist w-full bg-primary text-white py-8 font-mono font-black text-xl uppercase tracking-[0.3em] flex items-center justify-center gap-4 group"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {isSubmitting ? (
+                      <>
+                        <Activity className="animate-spin" size={24} />
+                        <span>SENDING_COMMAND...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>EXECUTE_INITIALIZE</span>
+                        <ArrowRight className="group-hover:translate-x-2 transition-transform" size={24} />
+                      </>
+                    )}
                   </button>
                 </div>
               </form>
-            </>
-          ) : (
-            <div className="flex flex-col items-center justify-center text-center py-12 animate-in fade-in zoom-in duration-500">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                <CheckCircle size={32} className="text-primary" />
-              </div>
-              <h2 className="text-2xl font-bold mb-2">Message Sent</h2>
-              <p className="text-muted-foreground max-w-md mb-8">
-                Thank you,{" "}
-                <span className="text-foreground font-bold">
-                  {formData.companyName}
-                </span>{" "}
-                . We have received your details and will contact you shortly at{" "}
-                <span className="text-foreground font-mono">
-                  {formData.email}
-                </span>
-                .
-              </p>
-              <button
-                onClick={() => setIsSubmitted(false)} // Optional: Reset for demo
-                className="text-sm text-primary hover:underline underline-offset-4"
-              >
-                Send another message
-              </button>
             </div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="border-2 border-primary bg-primary/5 p-16 text-center animate-in fade-in zoom-in duration-700">
+            <div className="w-20 h-20 bg-primary flex items-center justify-center text-white mx-auto mb-10">
+              <CheckCircle size={40} />
+            </div>
+            <h2 className="font-mono text-4xl font-black uppercase tracking-tighter mb-6">
+              UPLINK_ESTABLISHED
+            </h2>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground max-w-md mx-auto leading-loose mb-12">
+              transmission received by maysan labs core. we have identified <span className="text-primary font-bold">{formData.companyName}</span> and queued mission-critical analysis. check <span className="text-foreground font-bold">{formData.email}</span> for response.
+            </p>
+            <button
+              onClick={() => setIsSubmitted(false)}
+              className="font-mono text-[10px] text-primary hover:underline uppercase tracking-widest"
+            >
+              [ OPEN_NEW_TUNNEL ]
+            </button>
+          </div>
+        )}
       </div>
     </main>
   );
