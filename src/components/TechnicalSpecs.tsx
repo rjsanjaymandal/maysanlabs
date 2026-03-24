@@ -30,47 +30,61 @@ const itemVariants: Variants = {
 export default function TechnicalSpecs() {
   const specs = [
     {
-      id: "CORE_MERN_V8",
-      title: "MERN_ULTRA_LOW_LATENCY",
+      id: "MERN_V8",
+      title: "Ultra-Low Latency",
       text: "Industrial-grade React & Node.js kernels for high-concurrency enterprise workloads.",
-      icon: <Cpu size={20} />,
+      icon: <Cpu size={22} />,
     },
     {
-      id: "NEXT_ENGINE_15",
-      title: "NEXT_PRO_MAX_ENGINE",
-      text: "Cutting-edge SSR and partial pre-rendering. Non-stop SEO performance and zero-TBT interfaces.",
-      icon: <Zap size={20} />,
+      id: "NEXT_ENGINE",
+      title: "Optimized Engine",
+      text: "Cutting-edge SSR and partial pre-rendering. Non-stop performance and zero-TBT interfaces.",
+      icon: <Zap size={22} />,
     },
     {
-      id: "ENCRYPT_AES_256",
-      title: "HARDENED_PROTOCOL",
-      text: "Bank-level AES-256 encryption layers integrated at the system BIOS level.",
-      icon: <Shield size={20} />,
+      id: "AES_256",
+      title: "Hardened Protocol",
+      text: "Bank-level AES-256 encryption layers integrated at the system level for military-grade security.",
+      icon: <Shield size={22} />,
     },
     {
-      id: "EDGE_DIST_NODE",
-      title: "GLOBAL_RESILIENCE",
-      text: "High-availability edge networks ensuring 99.99% operational sovereignty. Zero downtime.",
-      icon: <Smartphone size={20} />,
+      id: "EDGE_NODE",
+      title: "Global Resilience",
+      text: "High-availability edge networks ensuring 99.99% operational sovereignty and zero downtime.",
+      icon: <Layers size={22} />,
     },
   ];
 
   return (
-    <section id="tech-specs" className="py-32 relative overflow-hidden bg-background">
-      <div aria-hidden="true" className="absolute inset-0 tactical-grid opacity-10" />
-      
+    <section id="tech-specs" className="py-40 relative overflow-hidden bg-background">
       <div className="container relative z-10">
-        <div className="border-l-4 border-primary pl-10 mb-20">
-          <span className="font-mono text-[10px] tracking-[0.5em] uppercase text-primary font-bold block mb-4">
-            [ SYSTEM_ARCHITECTURE_V3 ]
-          </span>
-          <h2 className="text-massive leading-[0.8] mb-8">
-            ENGINEERING<br />
-            <span className="italic">STANDARDS</span>
-          </h2>
-          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground max-w-xl leading-relaxed">
-            we do not build applications. we engineer robust, sovereign digital foundations that withstand the velocity of modern global enterprise.
-          </p>
+        <div className="flex flex-col lg:flex-row items-baseline justify-between mb-32 space-y-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl"
+          >
+            <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary block mb-6 px-4 py-1.5 bg-primary/10 rounded-full w-fit">
+              Engineering Standards
+            </span>
+            <h2 className="text-massive leading-[1.1] font-bold">
+               Sovereign <span className="font-accent lowercase text-primary italic">standards</span> for<br />
+               Digital Scale.
+            </h2>
+          </motion.div>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="lg:max-w-sm"
+          >
+            <p className="text-sm font-medium text-foreground/50 leading-loose border-l border-border/50 pl-8">
+              We do not build applications. We engineer robust, sovereign digital foundations that withstand the velocity of modern global enterprise.
+            </p>
+          </motion.div>
         </div>
 
         <motion.div 
@@ -78,42 +92,41 @@ export default function TechnicalSpecs() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border/40 border border-border"
+          className="grid grid-cols-1 md:grid-cols-2 gap-12"
         >
           {specs.map((spec, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="card-brutalist bg-card p-12 group transition-all shadow-[8px_8px_0px_rgba(255,69,0,0.05)] hover:shadow-[12px_12px_0px_rgba(255,69,0,0.1)]"
+              className="group p-12 bg-secondary/30 rounded-[2.5rem] border border-transparent hover:border-primary/10 transition-all duration-500 hover:bg-secondary/50"
             >
-              <div className="flex flex-col gap-8 h-full">
+              <div className="flex flex-col gap-10 h-full">
                 <div className="flex justify-between items-start">
-                  <div className="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center border border-primary/20 group-hover:bg-primary group-hover:text-white transition-all">
+                  <div className="w-14 h-14 bg-white text-primary rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">
                     {spec.icon}
                   </div>
                   <div className="text-right">
-                    <span className="font-mono text-[8px] opacity-30 block">HARDWARE_SPEC</span>
-                    <span className="font-mono text-[10px] text-primary">{spec.id}</span>
+                    <span className="text-[10px] font-bold text-primary/30 uppercase tracking-widest">{spec.id}</span>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                   <h3 className="font-mono text-xl font-black uppercase tracking-tighter group-hover:text-primary transition-colors">
+                   <h3 className="text-2xl font-bold tracking-tight group-hover:text-primary transition-colors">
                      {spec.title}
                    </h3>
-                   <p className="font-mono text-[10px] uppercase leading-relaxed text-muted-foreground tracking-tight">
+                   <p className="text-sm font-medium leading-relaxed text-foreground/50 group-hover:text-foreground/70 transition-colors">
                      {spec.text}
                    </p>
                 </div>
 
-                <div className="mt-auto pt-8 border-t border-border opacity-0 group-hover:opacity-100 transition-opacity flex gap-4">
-                   <div className="flex items-center gap-1">
-                      <Layers size={10} className="text-primary" />
-                      <span className="font-mono text-[8px]">LAYER_SYNCED</span>
+                <div className="mt-8 pt-10 border-t border-border/50 flex gap-8">
+                   <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary/20 group-hover:bg-primary transition-colors duration-500" />
+                      <span className="text-[9px] font-bold uppercase tracking-widest text-foreground/40">Synced</span>
                    </div>
-                   <div className="flex items-center gap-1">
-                      <Box size={10} className="text-primary" />
-                      <span className="font-mono text-[8px]">PACKAGE_READY</span>
+                   <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary/20 group-hover:bg-primary transition-colors duration-500" />
+                      <span className="text-[9px] font-bold uppercase tracking-widest text-foreground/40">Authenticated</span>
                    </div>
                 </div>
               </div>

@@ -38,11 +38,11 @@ export default function InitPage() {
       if (result.success) {
         setIsSubmitted(true);
       } else {
-        alert("CRITICAL_ERROR: FAIL_TO_INIT_UPLINK. ATTEMPT_RECONNECT.");
+        alert("Unable to establish uplink. Please try again.");
       }
     } catch (error: unknown) {
-      console.error("UPLINK_FAILURE:", error);
-      alert("FATAL_ERROR: SYSTEM_OFFLINE.");
+      console.error("Communication failure:", error);
+      alert("System offline. Please check your connection.");
     } finally {
       setIsSubmitting(false);
     }
@@ -57,57 +57,53 @@ export default function InitPage() {
 
   return (
     <main className="min-h-screen bg-background flex flex-col pt-32 relative overflow-hidden">
-      <div aria-hidden="true" className="fixed inset-0 tactical-grid opacity-5 pointer-events-none" />
-      
       <Navbar />
       
-      <div className="container max-w-4xl flex-1 flex flex-col justify-center py-20 px-4 relative z-10">
+      <div className="container max-w-6xl flex-1 flex flex-col justify-center py-20 px-4 relative z-10">
         {!isSubmitted ? (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
             
             {/* Sidebar Context */}
-            <div className="lg:col-span-4 space-y-12">
+            <div className="lg:col-span-5 space-y-16">
                <div>
-                  <span className="font-mono text-[10px] tracking-[0.5em] uppercase text-primary font-bold block mb-4">
-                    [ SESSION_ID: {sessionId} ]
+                  <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-8 inline-block">
+                    Session ID: {sessionId}
                   </span>
-                  <h1 className="text-massive leading-[0.8] mb-0">
-                    INIT<br />
-                    PROT<br />
-                    OCOL
+                  <h1 className="text-massive leading-[1.1] font-bold mb-10">
+                    Start Your <span className="font-accent lowercase text-primary italic">project</span><br />
+                    With Us.
                   </h1>
+                  <p className="text-lg font-medium text-foreground/50 leading-loose border-l border-border/50 pl-10 max-w-md">
+                    Tell us about your project and we will help you build the fast, secure software you need.
+                  </p>
                </div>
 
-               <div className="space-y-6">
-                  <div className="flex items-center gap-3 font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
-                     <Cpu size={14} className="text-primary" />
-                     <span>UPLINK: ACTIVE</span>
+               <div className="space-y-8">
+                  <div className="flex items-center gap-4 text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em]">
+                     <div className="p-2 bg-secondary/50 rounded-lg text-primary"><Cpu size={14} /></div>
+                     <span>Status: Online</span>
                   </div>
-                  <div className="flex items-center gap-3 font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
-                     <Shield size={14} className="text-primary" />
-                     <span>ENCRYPTION: AES_256</span>
+                  <div className="flex items-center gap-4 text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em]">
+                     <div className="p-2 bg-secondary/50 rounded-lg text-primary"><Shield size={14} /></div>
+                     <span>Security: Active</span>
                   </div>
-                  <div className="flex items-center gap-3 font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
-                     <Globe size={14} className="text-primary" />
-                     <span>ORIGIN: GURGAON_SEC_44</span>
+                  <div className="flex items-center gap-4 text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em]">
+                     <div className="p-2 bg-secondary/50 rounded-lg text-primary"><Globe size={14} /></div>
+                     <span>Location: Sector 44</span>
                   </div>
                </div>
-
-               <p className="font-mono text-[10px] uppercase leading-relaxed text-muted-foreground/60 tracking-tight">
-                 establishing a high-performance communication tunnel to maysan labs industrial compute core. state your objectives.
-               </p>
             </div>
 
             {/* Form Interface */}
-            <div className="lg:col-span-8 border-2 border-border bg-card/30 p-8 md:p-12 relative overflow-hidden group hover:border-primary/30 transition-colors">
-              <div className="absolute top-0 right-0 p-4 font-mono text-[8px] text-muted-foreground opacity-20">
-                 SYS_V2.0_CONTACT_GATE
+            <div className="lg:col-span-7 bg-secondary/20 rounded-[3rem] p-12 md:p-16 border border-primary/5 relative overflow-hidden group hover:border-primary/10 transition-all duration-700 shadow-2xl shadow-primary/5">
+              <div className="absolute top-0 right-0 p-8 text-[10px] font-bold text-primary/20 uppercase tracking-widest">
+                 Contact Us
               </div>
               
-              <form onSubmit={handleSubmit} className="space-y-10">
-                <div className="space-y-4">
-                  <label htmlFor="companyName" className="font-mono text-[10px] font-bold text-primary uppercase tracking-[0.4em] flex items-center gap-2">
-                    <Command size={14} /> 01_IDENTIFIER
+              <form onSubmit={handleSubmit} className="space-y-12">
+                <div className="space-y-6">
+                  <label htmlFor="companyName" className="text-[10px] font-bold text-primary uppercase tracking-[0.3em] flex items-center gap-3">
+                    <Command size={14} className="text-primary/40" /> 01 Your Company
                   </label>
                   <input
                     id="companyName"
@@ -115,14 +111,14 @@ export default function InitPage() {
                     required
                     value={formData.companyName}
                     onChange={handleChange}
-                    placeholder="ENTER_ORG_NAME..."
-                    className="w-full bg-background border-b-2 border-border focus:border-primary px-0 py-4 font-mono text-sm uppercase tracking-widest outline-none transition-all placeholder:text-muted-foreground/20"
+                    placeholder="Enter your company name"
+                    className="w-full bg-transparent border-b border-border/50 focus:border-primary px-0 py-4 text-base font-medium tracking-tight outline-none transition-all placeholder:text-foreground/20"
                   />
                 </div>
 
-                <div className="space-y-4">
-                  <label htmlFor="requirements" className="font-mono text-[10px] font-bold text-primary uppercase tracking-[0.4em] flex items-center gap-2">
-                    <Terminal size={14} /> 02_OBJECTIVES
+                <div className="space-y-6">
+                  <label htmlFor="requirements" className="text-[10px] font-bold text-primary uppercase tracking-[0.3em] flex items-center gap-3">
+                    <Terminal size={14} className="text-primary/40" /> 02 Your Goals
                   </label>
                   <textarea
                     id="requirements"
@@ -130,16 +126,16 @@ export default function InitPage() {
                     required
                     value={formData.requirements}
                     onChange={handleChange}
-                    placeholder="DESCRIBE_SYSTEM_REQUIREMENTS..."
+                    placeholder="Describe what you want to build"
                     rows={4}
-                    className="w-full bg-background border-b-2 border-border focus:border-primary px-0 py-4 font-mono text-sm uppercase tracking-widest outline-none transition-all placeholder:text-muted-foreground/20 resize-none"
+                    className="w-full bg-transparent border-b border-border/50 focus:border-primary px-0 py-4 text-base font-medium tracking-tight outline-none transition-all placeholder:text-foreground/20 resize-none"
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                  <div className="space-y-4">
-                    <label htmlFor="email" className="font-mono text-[10px] font-bold text-primary uppercase tracking-[0.4em] flex items-center gap-2">
-                      <Mail size={14} /> 03_REPLY_UPLINK
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                  <div className="space-y-6">
+                    <label htmlFor="email" className="text-[10px] font-bold text-primary uppercase tracking-[0.3em] flex items-center gap-3">
+                      <Mail size={14} className="text-primary/40" /> 03 Your Email
                     </label>
                     <input
                       id="email"
@@ -148,14 +144,14 @@ export default function InitPage() {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="CONTACT_EMAIL..."
-                      className="w-full bg-background border-b-2 border-border focus:border-primary px-0 py-4 font-mono text-sm uppercase tracking-widest outline-none transition-all placeholder:text-muted-foreground/20"
+                      placeholder="email@example.com"
+                      className="w-full bg-transparent border-b border-border/50 focus:border-primary px-0 py-4 text-base font-medium tracking-tight outline-none transition-all placeholder:text-foreground/20"
                     />
                   </div>
 
-                  <div className="space-y-4">
-                    <label htmlFor="contact" className="font-mono text-[10px] font-bold text-primary uppercase tracking-[0.4em] flex items-center gap-2">
-                      <Activity size={14} /> 04_CHRONO_REF
+                  <div className="space-y-6">
+                    <label htmlFor="contact" className="text-[10px] font-bold text-primary uppercase tracking-[0.3em] flex items-center gap-3">
+                      <Activity size={14} className="text-primary/40" /> 04 Phone Number
                     </label>
                     <input
                       id="contact"
@@ -163,27 +159,27 @@ export default function InitPage() {
                       type="tel"
                       value={formData.contact}
                       onChange={handleChange}
-                      placeholder="CONTACT_NUMBER..."
-                      className="w-full bg-background border-b-2 border-border focus:border-primary px-0 py-4 font-mono text-sm uppercase tracking-widest outline-none transition-all placeholder:text-muted-foreground/20"
+                      placeholder="+X XXX XXX XXXX"
+                      className="w-full bg-transparent border-b border-border/50 focus:border-primary px-0 py-4 text-base font-medium tracking-tight outline-none transition-all placeholder:text-foreground/20"
                     />
                   </div>
                 </div>
 
-                <div className="pt-8">
+                <div className="pt-10">
                   <button
                     type="submit"
-                    className="btn-brutalist w-full bg-primary text-white py-8 font-mono font-black text-xl uppercase tracking-[0.3em] flex items-center justify-center gap-4 group"
+                    className="btn-surgical w-full flex items-center justify-center gap-6 group py-6"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
                       <>
-                        <Activity className="animate-spin" size={24} />
-                        <span>SENDING_COMMAND...</span>
+                        <Activity className="animate-spin" size={20} />
+                        <span>Sending...</span>
                       </>
                     ) : (
                       <>
-                        <span>EXECUTE_INITIALIZE</span>
-                        <ArrowRight className="group-hover:translate-x-2 transition-transform" size={24} />
+                        <span>SEND REQUEST</span>
+                        <ArrowRight className="group-hover:translate-x-2 transition-transform duration-500" size={20} />
                       </>
                     )}
                   </button>
@@ -192,21 +188,21 @@ export default function InitPage() {
             </div>
           </div>
         ) : (
-          <div className="border-2 border-primary bg-primary/5 p-16 text-center animate-in fade-in zoom-in duration-700">
-            <div className="w-20 h-20 bg-primary flex items-center justify-center text-white mx-auto mb-10">
-              <CheckCircle size={40} />
+          <div className="bg-secondary/20 rounded-[3rem] p-24 text-center border border-primary/20 animate-in fade-in zoom-in duration-1000 max-w-2xl mx-auto py-32">
+            <div className="w-24 h-24 bg-primary text-white flex items-center justify-center rounded-[2rem] mx-auto mb-12 shadow-2xl shadow-primary/20">
+              <CheckCircle size={48} />
             </div>
-            <h2 className="font-mono text-4xl font-black uppercase tracking-tighter mb-6">
-              UPLINK_ESTABLISHED
+            <h2 className="text-4xl font-bold mb-8 tracking-tight">
+              Uplink Established
             </h2>
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground max-w-md mx-auto leading-loose mb-12">
-              transmission received by maysan labs core. we have identified <span className="text-primary font-bold">{formData.companyName}</span> and queued mission-critical analysis. check <span className="text-foreground font-bold">{formData.email}</span> for response.
+            <p className="text-base font-medium text-foreground/50 leading-loose mb-16 max-w-md mx-auto">
+              Transmission received by Maysan Labs core. We have identified <span className="text-primary font-bold">{formData.companyName}</span> and queued mission-critical analysis. Check <span className="text-foreground font-bold">{formData.email}</span> for response.
             </p>
             <button
               onClick={() => setIsSubmitted(false)}
-              className="font-mono text-[10px] text-primary hover:underline uppercase tracking-widest"
+              className="text-[10px] font-bold text-primary hover:text-foreground uppercase tracking-[0.3em] transition-colors duration-500"
             >
-              [ OPEN_NEW_TUNNEL ]
+              [ Open New Tunnel ]
             </button>
           </div>
         )}

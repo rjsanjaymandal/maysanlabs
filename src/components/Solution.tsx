@@ -40,100 +40,95 @@ export default function Solution() {
   const solutions = [
     {
       id: "COMMERCE_ARCH",
-      title: "ENTERPRISE_COMMERCE",
-      desc: "End-to-end architecture to establish and scale digital commerce systems.",
+      title: "Enterprise Commerce",
+      desc: "End-to-end architecture to establish and scale digital commerce systems with high-concurrency handling.",
       icon: <Store size={20} />,
       features: [
-        "L1_PAYMENT_GATEWAYS",
-        "INVENTORY_SYNC_V4",
-        "UX_FRICTION_OFFLOAD",
+        "L1 Payment Gateways",
+        "Inventory Sync V4",
+        "Conversion Optimization",
       ],
     },
     {
       id: "CRM_CORE",
-      title: "CRM_MODULAR_CORE",
-      desc: "Centralized relationship management with automated operational layers.",
+      title: "Modular CRM Core",
+      desc: "Centralized relationship management with automated operational layers and predictive analytics.",
       icon: <TrendingUp size={20} />,
       features: [
-        "DATA_CENTRALIZATION",
-        "AUTO_COMMS_PROTOCOL",
-        "RETENTION_LOGIC",
+        "Data Centralization",
+        "Automated Workflows",
+        "Retention Logic",
       ],
     },
     {
       id: "CUSTOM_ENGINE",
-      title: "ENGINEERED_SOFTWARE",
-      desc: "Tailored applications aligned with complex organizational workflows.",
+      title: "Engineered Software",
+      desc: "Tailored applications aligned with complex organizational workflows and system-level performance.",
       icon: <Cpu size={20} />,
       features: [
-        "SCALABLE_KERNELS",
-        "SECURE_DEV_OPS",
-        "PERF_OPTIMIZATION",
+        "Scalable Kernels",
+        "Secure DevOps",
+        "Performance Tuning",
       ],
     },
     {
       id: "CLOUD_INFRA",
-      title: "CLOUD_SOLUTIONS",
-      desc: "High-performance processing on sovereign cloud infrastructure.",
+      title: "Cloud Infrastructure",
+      desc: "High-performance processing on sovereign cloud infrastructure with near-instant scalability.",
       icon: <ShieldCheck size={20} />,
-      features: ["CLOUD_MIGRATION", "LOAD_BALANCING", "HIGH_AVAILABILITY"],
+      features: ["Cloud Migration", "Load Balancing", "High Availability"],
     },
     {
       id: "HR_MGMT",
-      title: "SYSTEM_LEVEL_HR",
-      desc: "Streamlined human resource operations for high-output engineering teams.",
+      title: "Operational Tooling",
+      desc: "Streamlined resource operations and internal tools for high-output engineering teams.",
       icon: <Layout size={20} />,
       features: [
-        "ATTENDANCE_V3",
-        "PERF_TELEMETRY",
-        "PAYROLL_TRANSIT",
+        "Resource Allocation",
+        "Performance Telemetry",
+        "Automated Payroll",
       ],
     },
     {
       id: "PERF_MARKETING",
-      title: "GROWTH_ALGORITHMS",
-      desc: "Measurable business growth through data-driven visibility campaigns.",
+      title: "Growth Engineering",
+      desc: "Measurable business growth through data-driven visibility campaigns and technical SEO.",
       icon: <BarChart3 size={20} />,
       features: [
-        "CAMPAIGN_STRATEGY",
-        "CONTENT_ENGINE",
-        "AUDIENCE_VECTORS",
+        "Campaign Strategy",
+        "Content Engineering",
+        "Audience Mapping",
       ],
     },
   ];
 
   return (
-    <section id="solution" className="py-32 relative overflow-hidden bg-background">
-      <div aria-hidden="true" className="absolute inset-0 tactical-grid opacity-5 pointer-events-none" />
-      
-      {/* Structural Accent */}
-      <div className="absolute top-0 right-0 w-1/3 h-px bg-primary opacity-30 pointer-events-none" />
-
+    <section id="solution" className="py-40 relative overflow-hidden bg-background">
       <div className="container relative z-10">
         <div className="flex flex-col lg:flex-row items-baseline justify-between mb-24 space-y-8">
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="max-w-3xl"
           >
-            <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-primary font-bold block mb-6">
-              [ SOLUTIONS_CATALOG_V2.0 ]
+            <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary block mb-6">
+              Solutions Catalog
             </span>
-            <h2 className="text-massive leading-[0.8] mb-0">
-               ENGINEERED<br />
-               <span className="text-primary italic">MODULES</span>
+            <h2 className="text-massive leading-[1.1] mb-0 font-bold">
+               Engineered <span className="font-accent lowercase text-primary italic">modules</span> for<br />
+               Systemic Growth.
             </h2>
           </motion.div>
           <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="lg:max-w-sm"
           >
-             <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground leading-relaxed border-b border-border pb-6">
-                industrial-grade architectural layers designed for the expansion of the modern digital empire. no safe harbor layouts.
+             <p className="text-sm font-medium text-foreground/50 leading-loose border-l border-border/50 pl-8">
+                Industrial-grade architectural layers designed for the expansion of the modern digital empire. We build the foundations for your scale.
              </p>
           </motion.div>
         </div>
@@ -143,41 +138,40 @@ export default function Solution() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 bg-border/20 border border-border p-1"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
         >
           {solutions.map((sol, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="card-brutalist group p-10 flex flex-col h-full bg-card relative overflow-hidden transition-all shadow-[8px_8px_0px_rgba(255,69,0,0.05)] hover:shadow-[12px_12px_0px_rgba(255,69,0,0.1)]"
+              className="group p-10 flex flex-col h-full bg-secondary/30 rounded-3xl relative overflow-hidden transition-all duration-500 hover:bg-secondary/50 border border-transparent hover:border-primary/10"
             >
               {/* Module Header */}
               <div className="flex justify-between items-start mb-12">
-                <div className="w-10 h-10 bg-primary/10 text-primary border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+                <div className="w-12 h-12 bg-white text-primary rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-sm">
                   {sol.icon}
                 </div>
                 <div className="flex flex-col items-end">
-                   <span className="font-mono text-[8px] opacity-30">TYPE: MODULE</span>
-                   <span className="font-mono text-[10px] text-primary font-bold">0{index + 1}</span>
+                   <span className="text-[10px] text-primary font-bold opacity-40">0{index + 1}</span>
                 </div>
               </div>
 
               {/* Module Info */}
               <div className="flex-1">
-                <h3 className="font-mono text-xl font-black mb-4 tracking-tighter uppercase group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-bold mb-4 tracking-tight group-hover:text-primary transition-colors">
                   {sol.title}
                 </h3>
-                <p className="font-mono text-[10px] uppercase leading-relaxed text-muted-foreground tracking-tight mb-8">
+                <p className="text-sm leading-relaxed text-foreground/50 font-medium mb-8">
                   {sol.desc}
                 </p>
 
-                <div className="space-y-3 pt-6 border-t border-border">
+                <div className="space-y-4 pt-8 border-t border-border/50">
                   {sol.features.map((feature, fIndex) => (
                     <div
                       key={fIndex}
-                      className="flex items-center gap-3 font-mono text-[9px] tracking-widest text-foreground/70 group-hover:text-foreground transition-colors"
+                      className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-wider text-foreground/40 group-hover:text-foreground/70 transition-colors"
                     >
-                      <div className="w-1 h-1 bg-primary/40 group-hover:bg-primary transition-colors" />
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary/20 group-hover:bg-primary transition-colors duration-500" />
                       {feature}
                     </div>
                   ))}
@@ -185,9 +179,8 @@ export default function Solution() {
               </div>
 
               {/* Module Action Decorator */}
-              <div className="mt-12 flex justify-between items-center opacity-30 group-hover:opacity-100 transition-opacity">
-                 <span className="font-mono text-[8px] uppercase">STATUS: AVAILABLE</span>
-                 <ArrowUpRight size={14} className="text-primary" />
+              <div className="mt-12 flex justify-end items-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                 <ArrowUpRight size={18} className="text-primary" />
               </div>
             </motion.div>
           ))}

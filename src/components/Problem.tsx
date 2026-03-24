@@ -30,57 +30,60 @@ const itemVariants: Variants = {
 export default function Problem() {
   const problems = [
     {
-      id: "DEP_FRAGILITY",
-      title: "DEPENDENCY_FRAGILITY",
-      text: "Modern systems rely on brittle plugin chains. When one node fails, the entire enterprise stalls.",
+      id: "BROKEN",
+      title: "Broken Connections",
+      text: "Modern systems often rely on too many separate pieces. When one fails, the whole thing stops. We build solid, unified software.",
       icon: <AlertTriangle size={20} />,
     },
     {
-      id: "SILO_OPS",
-      title: "SILOED_OPERATIONS",
-      text: "Fragmented tools for CRM and ERP creating massive bottlenecks and data blind spots.",
+      id: "DISCONNECTED",
+      title: "Disconnected Tools",
+      text: "Using too many different tools creates bottlenecks and missing information. We bring everything together into one simple system.",
       icon: <Users size={20} />,
     },
     {
-      id: "DATA_SOVEREIGNTY",
-      title: "DATA_OWNERSHIP",
-      text: "Stop leasing intelligence. Own your infrastructure. Absolute sovereignty over every byte.",
+      id: "OWNERSHIP",
+      title: "Own Your Data",
+      text: "Stop renting your software and started owning it. We give you full control over your business information and infrastructure.",
       icon: <Database size={20} />,
     },
   ];
 
   return (
-    <section id="problem" className="py-32 bg-background relative overflow-hidden">
-      <div aria-hidden="true" className="absolute inset-0 tactical-grid opacity-10" />
-      
+    <section id="problem" className="py-40 bg-background relative overflow-hidden">
+      {/* Premium Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="grid-overlay opacity-20" />
+        <div className="radial-glow top-1/4 -left-48 opacity-40" />
+      </div>
+
       <div className="container relative z-10">
-        <div className="flex flex-col lg:flex-row items-end justify-between mb-24 gap-8">
+        <div className="flex flex-col lg:flex-row items-baseline justify-between mb-24 gap-8">
           <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-2xl"
+            className="max-w-3xl"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-2 h-2 bg-primary animate-pulse" />
-              <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-primary font-bold">
-                SYSTEM_DIAGNOSTIC_V2
+            <div className="flex items-center gap-3 mb-8">
+              <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary">
+                Technical Diagnostics
               </span>
             </div>
-            <h2 className="text-massive leading-[0.85] mb-8">
-              CRITICAL<br />
-              <span className="text-primary">FRACTURES</span>
+            <h2 className="text-massive leading-[1.1] mb-8 font-bold">
+              Fixing the <span className="font-accent lowercase text-primary italic">problems</span> in<br />
+              Legacy Systems.
             </h2>
           </motion.div>
           <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="lg:max-w-md pb-4"
+            className="lg:max-w-xs border-l border-primary/20 pl-8"
           >
-            <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground leading-relaxed border-l-2 border-border pl-6">
-              identifying hidden infra failures before they become mission-critical catastrophes. we audit the foundation, not just the surface.
+            <p className="text-sm font-medium text-foreground/50 leading-loose">
+              We find the issues in your software before they cause big problems for your business. We check everything, not just how it looks.
             </p>
           </motion.div>
         </div>
@@ -90,36 +93,32 @@ export default function Problem() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-1 bg-border/20 border border-border p-1"
+          className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-foreground/5 rounded-[3rem] overflow-hidden bg-white/30 backdrop-blur-sm"
         >
           {problems.map((prob, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="card-brutalist group h-full flex flex-col justify-between aspect-square md:aspect-[4/5] lg:aspect-square"
+              className={`group p-16 hover:bg-white/50 transition-all duration-700 ${
+                index !== problems.length - 1 ? "md:border-r border-foreground/5" : ""
+              }`}
             >
-              <div className="flex justify-between items-start">
-                <div className="p-3 bg-primary/10 text-primary border border-primary/20 group-hover:bg-primary group-hover:text-white transition-all">
-                  {prob.icon}
-                </div>
-                <span className="font-mono text-[8px] opacity-30 text-right uppercase">
-                  STATUS: DETECTED<br />
-                  ID: {prob.id}
-                </span>
+              <div className="mb-10 w-14 h-14 bg-white shadow-sm border border-foreground/5 rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-all duration-500">
+                {prob.icon}
               </div>
               
               <div>
-                <h3 className="font-mono text-lg font-black mb-4 tracking-tighter uppercase group-hover:text-primary transition-colors">
+                <h3 className="text-2xl font-bold mb-6 tracking-tight text-foreground">
                   {prob.title}
                 </h3>
-                <p className="font-mono text-[10px] leading-relaxed text-muted-foreground uppercase tracking-tight">
+                <p className="text-sm leading-relaxed text-foreground/60 font-medium">
                   {prob.text}
                 </p>
               </div>
 
-              <div className="mt-8 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                 <Activity size={10} className="text-primary" />
-                 <span className="font-mono text-[8px] text-primary">SCANNING_FOR_SOLUTIONS...</span>
+              <div className="mt-12 pt-8 border-t border-primary/10 flex items-center justify-between opacity-40 group-hover:opacity-100 transition-all duration-700">
+                 <span className="text-[10px] font-bold tracking-widest text-primary uppercase">{prob.id}</span>
+                 <Activity size={14} className="text-primary animate-pulse" />
               </div>
             </motion.div>
           ))}

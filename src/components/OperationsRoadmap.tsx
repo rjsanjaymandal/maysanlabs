@@ -6,34 +6,34 @@ import { motion, Variants, Transition } from "framer-motion";
 
 const stages = [
   {
-    tag: "STG_01",
-    title: "AUDIT_&_EXTRACT",
-    desc: "Comprehensive diagnostic of existing digital clusters and infrastructure friction points.",
-    icon: <Search size={18} />,
+    tag: "01",
+    title: "Deep Dive",
+    desc: "We check your current systems to find out what needs to change and where we can help you most.",
+    icon: <Search size={22} />,
   },
   {
-    tag: "STG_02",
-    title: "BLUEPRINT_ARCH",
-    desc: "Architecting modular solutions tailored for technical dominance and scale.",
-    icon: <FileText size={18} />,
+    tag: "02",
+    title: "Planning the Core",
+    desc: "We design a plan for your new software that is built to be fast, secure, and last for a long time.",
+    icon: <FileText size={22} />,
   },
   {
-    tag: "STG_03",
-    title: "CORE_CONSTRUCTION",
-    desc: "Agile build cycles with deep-tech integration and real-time system telemetry.",
-    icon: <Cpu size={18} />,
+    tag: "03",
+    title: "Building & Testing",
+    desc: "We build your software in small steps and test it as we go to make sure it works perfectly.",
+    icon: <Cpu size={22} />,
   },
   {
-    tag: "STG_04",
-    title: "DEPLOY_ORBIT",
-    desc: "Seamless transition to live environments with 24/7 autonomous monitoring.",
-    icon: <Rocket size={18} />,
+    tag: "04",
+    title: "Going Live",
+    desc: "We move your software to the real world and keep a close eye on it 24/7 to make sure it stays online.",
+    icon: <Rocket size={22} />,
   },
   {
-    tag: "STG_05",
-    title: "ELITE_MAINTENANCE",
-    desc: "Ongoing optimization and scaling for sustained enterprise growth vectors.",
-    icon: <ShieldCheck size={18} />,
+    tag: "05",
+    title: "Staying Modern",
+    desc: "We keep your software updated and help it grow as your business gets bigger.",
+    icon: <ShieldCheck size={22} />,
   },
 ];
 
@@ -49,10 +49,10 @@ const containerVariants: Variants = {
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, x: -20 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
-    x: 0,
+    y: 0,
     transition: {
       type: "spring",
       stiffness: 100,
@@ -62,10 +62,10 @@ const itemVariants: Variants = {
 };
 
 const itemVariantsReverse: Variants = {
-  hidden: { opacity: 0, x: 20 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
-    x: 0,
+    y: 0,
     transition: {
       type: "spring",
       stiffness: 100,
@@ -76,74 +76,84 @@ const itemVariantsReverse: Variants = {
 
 export default function OperationsRoadmap() {
   return (
-    <div className="relative py-20 px-4">
-      {/* Tactical Pipeline Bar */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-border/30 hidden md:block">
-         <motion.div 
-           className="w-full bg-primary origin-top"
-           initial={{ scaleY: 0 }}
-           whileInView={{ scaleY: 1 }}
-           viewport={{ once: true }}
-           transition={{ duration: 2, ease: "easeInOut" }}
-         />
+    <div className="relative py-40 px-4 bg-background overflow-hidden font-sans">
+      {/* Premium Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="grid-overlay opacity-20" />
+        <div className="radial-glow top-0 right-0 opacity-30" />
       </div>
 
-      <motion.div 
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="space-y-24 relative z-10"
-      >
-        {stages.map((stage, index) => (
-          <motion.div
-            key={index}
-            variants={index % 2 === 0 ? itemVariantsReverse : itemVariants}
-            className={`flex flex-col md:flex-row items-center gap-12 ${
-              index % 2 === 0 ? "md:flex-row-reverse" : ""
-            }`}
-          >
-            {/* Stage Gate (Marker) */}
-            <div className="relative shrink-0">
-               <div className="w-16 h-16 bg-card border-2 border-border flex items-center justify-center group hover:border-primary transition-colors transform rotate-45">
-                  <div className="-rotate-45 text-primary group-hover:scale-110 transition-transform">
-                    {stage.icon}
-                  </div>
-               </div>
-               <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 font-mono text-[8px] text-muted-foreground whitespace-nowrap">
-                 SYNC_POINT_0{index + 1}
-               </div>
-            </div>
+      {/* Structural Accent Line */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-40 bottom-40 w-px bg-gradient-to-b from-transparent via-primary/40 to-transparent hidden md:block" />
 
-            {/* Content Spacer for standard layout */}
-            <div className="hidden md:block w-1/2" />
+      <div className="container relative z-10 max-w-6xl mx-auto">
+        <div className="text-center mb-32">
+          <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-8 inline-block">
+            Engineering Lifecycle
+          </span>
+          <h2 className="text-massive leading-[1.1] font-bold">
+            The <span className="font-accent lowercase text-primary italic">roadmap</span> to<br />
+            Your Success.
+          </h2>
+        </div>
 
-            {/* Content Box (Brutalist Data Block) */}
-            <div className={`w-full md:w-1/2 p-10 bg-card border border-border relative overflow-hidden group hover:border-primary/40 transition-all ${index % 2 === 0 ? "text-right" : "text-left"}`}>
-              {/* Corner Accent */}
-              <div className={`absolute top-0 w-8 h-8 border-t-2 border-primary/20 group-hover:border-primary transition-colors ${index % 2 === 0 ? "right-0 border-r-2" : "left-0 border-l-2"}`} />
-              
-              <div className={`flex items-center gap-4 mb-4 ${index % 2 === 0 ? "justify-end" : "justify-start"}`}>
-                <span className="font-mono text-xs text-primary font-bold tracking-widest">{stage.tag}</span>
-                <div className="w-8 h-[1px] bg-border" />
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="space-y-40"
+        >
+          {stages.map((stage, index) => (
+            <motion.div
+              key={index}
+              variants={index % 2 === 0 ? itemVariantsReverse : itemVariants}
+              className={`flex flex-col md:flex-row items-center gap-16 md:gap-24 relative group ${
+                index % 2 === 0 ? "md:flex-row-reverse" : ""
+              }`}
+            >
+              {/* Horizontal Connecting Line */}
+              <div className={`hidden md:block absolute top-[5.25rem] w-12 h-px bg-primary/40 ${
+                index % 2 === 0 ? "right-[46.5%]" : "left-[46.5%]"
+              }`} />
+
+              {/* Stage Marker */}
+              <div className="relative shrink-0 z-20">
+                 <div className="w-20 h-20 bg-white border border-foreground/5 flex items-center justify-center rounded-3xl shadow-2xl shadow-primary/10 group-hover:border-primary/40 group-hover:scale-110 transition-all duration-700">
+                    <div className="text-primary group-hover:scale-110 transition-transform duration-700">
+                      {stage.icon}
+                    </div>
+                 </div>
+                 <div className="absolute -top-10 left-1/2 -translate-x-1/2 font-accent text-5xl italic text-primary/5 select-none transition-colors duration-700 group-hover:text-primary/10">
+                   {stage.tag}
+                 </div>
               </div>
 
-              <h3 className="font-mono text-2xl font-black mb-4 tracking-tighter uppercase group-hover:text-primary transition-colors">
-                {stage.title}
-              </h3>
-              
-              <p className="font-mono text-[10px] uppercase leading-relaxed text-muted-foreground tracking-tight max-w-md inline-block">
-                {stage.desc}
-              </p>
+              {/* Content Box */}
+              <div className={`w-full md:w-1/2 flex flex-col ${index % 2 === 0 ? "md:items-end text-center md:text-right" : "md:items-start text-center md:text-left"}`}>
+                <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-primary/40 mb-4 group-hover:text-primary transition-colors duration-700">
+                  Mission {stage.tag}
+                </span>
+                <h3 className="text-3xl font-bold mb-6 tracking-tight group-hover:text-primary transition-colors duration-700">
+                  {stage.title}
+                </h3>
+                
+                <p className="text-base font-medium leading-relaxed text-foreground/50 max-w-md inline-block">
+                  {stage.desc}
+                </p>
 
-              <div className={`mt-8 flex items-center gap-4 opacity-30 group-hover:opacity-100 transition-opacity ${index % 2 === 0 ? "justify-end" : "justify-start"}`}>
-                 <Activity size={12} className="text-primary" />
-                 <span className="font-mono text-[8px]">ACTIVE_PROTOCOL_PENDING</span>
+                <div className={`mt-10 flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-700 ${index % 2 === 0 ? "justify-end translate-x-4 group-hover:translate-x-0" : "justify-start -translate-x-4 group-hover:translate-x-0"}`}>
+                   <span className="text-[9px] font-bold tracking-widest text-primary uppercase">Ready for Deployment</span>
+                   <div className="w-12 h-px bg-primary/40" />
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+
+              {/* Empty Space for alignment */}
+              <div className="hidden md:block w-1/2" />
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 }

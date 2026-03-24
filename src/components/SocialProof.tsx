@@ -93,61 +93,58 @@ const itemVariants: Variants = {
 
 export default function SocialProof() {
   const stats = [
-    { value: "100", suffix: "%", label: "DATA_OWNERSHIP", icon: <Shield size={14} /> },
-    { value: "500", suffix: "ms", label: "AVG_LATENCY", icon: <Activity size={14} /> },
-    { value: "24/7", suffix: "", label: "SYSTEM_UPTIME", icon: <Zap size={14} /> },
+    { value: "100", suffix: "%", label: "Full Control", icon: <Shield size={16} /> },
+    { value: "500", suffix: "ms", label: "Loading Speed", icon: <Activity size={16} /> },
+    { value: "24/7", suffix: "", label: "Always Online", icon: <Zap size={16} /> },
   ];
 
   return (
-    <section className="py-32 relative overflow-hidden bg-background">
-      <div aria-hidden="true" className="absolute inset-0 tactical-grid opacity-5" />
-      
+    <section className="py-40 relative overflow-hidden bg-background">
       <div className="container relative z-10">
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-1 bg-border/20 border border-border p-1"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12"
         >
           {/* Header Block */}
           <motion.div 
             variants={itemVariants}
-            className="lg:col-span-6 p-12 flex flex-col justify-center bg-card relative overflow-hidden group"
+            className="lg:col-span-6 flex flex-col justify-center"
           >
-            <div className="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary transition-colors" />
-            <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-primary font-bold block mb-6">
-              [ PERFORMANCE_TELEMETRY ]
+            <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary block mb-6 px-4 py-1.5 bg-primary/10 rounded-full w-fit">
+              Our Performance
             </span>
-            <h2 className="text-massive leading-[0.8] mb-8">
-              WORLD_CLASS<br />
-              <span className="text-primary italic">VELOCITY</span>
+            <h2 className="text-massive leading-[1.1] font-bold mb-8">
+              Fast <span className="font-accent lowercase text-primary italic">software</span> for<br />
+              Growing Brands.
             </h2>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground leading-relaxed max-w-sm">
-              uncompromising speed and data sovereignty for the next generation of global digital empires.
+            <p className="text-sm font-medium text-foreground/50 leading-loose border-l border-border/50 pl-8 max-w-sm">
+              We build software that stays fast and keeps your information secure. We measure our success in how well your business grows.
             </p>
           </motion.div>
 
           {/* Stats Blocks */}
-          <div className="lg:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-1">
+          <div className="lg:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-8">
              {stats.map((stat, index) => (
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="card-brutalist p-10 flex flex-col justify-between bg-card group"
+                  className="p-10 flex flex-col justify-between bg-secondary/30 rounded-[2.5rem] border border-transparent hover:border-primary/10 transition-all duration-500 hover:bg-secondary/50 group"
                 >
                   <div className="flex justify-between items-start mb-12">
-                     <div className="text-primary opacity-30 group-hover:opacity-100 transition-opacity">
+                     <div className="text-primary bg-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">
                         {stat.icon}
                      </div>
-                     <span className="font-mono text-[8px] opacity-30 uppercase tracking-tighter">TELEMETRY_NODE_0{index+1}</span>
+                     <span className="text-[10px] font-bold text-primary/30 uppercase tracking-widest">Node 0{index+1}</span>
                   </div>
                   
                   <div>
-                    <div className="text-5xl font-mono font-black text-foreground mb-4 tracking-tighter group-hover:text-primary transition-colors">
+                    <div className="text-5xl font-bold text-foreground mb-4 tracking-tighter group-hover:text-primary transition-colors duration-500">
                       {stat.value === "24/7" ? "24/7" : <AnimatedCounter target={stat.value} suffix={stat.suffix} />}
                     </div>
-                    <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
+                    <p className="text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em]">
                       {stat.label}
                     </p>
                   </div>
@@ -157,19 +154,21 @@ export default function SocialProof() {
              {/* Filler Node */}
              <motion.div 
                 variants={itemVariants}
-                className="card-brutalist p-10 bg-primary/5 border border-primary/10 flex flex-col justify-center items-center group"
+                className="p-10 bg-primary/5 rounded-[2.5rem] border border-primary/10 flex flex-col justify-center items-center group hover:bg-primary/10 transition-all duration-500"
              >
-                <Globe size={32} className="text-primary/20 group-hover:text-primary group-hover:rotate-90 transition-all duration-700" />
-                <span className="font-mono text-[8px] mt-4 opacity-30">GLOBAL_SYNC_ACTIVE</span>
+                <div className="p-6 bg-white rounded-3xl shadow-xl shadow-primary/5 group-hover:scale-110 transition-transform duration-700">
+                  <Globe size={32} className="text-primary group-hover:rotate-90 transition-all duration-1000" />
+                </div>
+                <span className="text-[10px] font-bold mt-6 text-primary tracking-[0.2em] uppercase">Global Sync Active</span>
              </motion.div>
           </div>
         </motion.div>
 
         {/* Technical Marquee (Data Stream) */}
-        <div className="mt-24 border-t border-b border-border py-8 relative overflow-hidden" aria-label="System library status">
+        <div className="mt-40 border-t border-border/50 py-12 relative overflow-hidden" aria-label="System library status">
           <div className="flex overflow-hidden">
             <motion.div
-              className="flex gap-20 items-center whitespace-nowrap"
+              className="flex gap-24 items-center whitespace-nowrap"
               animate={{ x: "-50%" }}
               transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
             >
@@ -179,11 +178,11 @@ export default function SocialProof() {
               ].map((tech, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-4 font-mono text-[10px] tracking-[0.2em] text-muted-foreground/40"
+                  className="flex items-center gap-6 text-[10px] font-bold tracking-[0.3em] text-foreground/30 uppercase"
                 >
-                  <span className="text-primary font-bold">[ OK ]</span>
+                  <span className="text-primary/40 font-black">●</span>
                   <span>{tech}</span>
-                  <div className="w-1 h-1 bg-primary/20" />
+                  <div className="w-1.5 h-px bg-border group-hover:bg-primary/20 transition-colors" />
                 </div>
               ))}
             </motion.div>

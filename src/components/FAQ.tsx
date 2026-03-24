@@ -7,27 +7,27 @@ import { Database, Terminal, Plus, Minus } from "lucide-react";
 const faqs = [
   {
     id: "Q_ARCH_01",
-    question: "How is the infrastructure managed post-deployment?",
+    question: "Do you help after the site is live?",
     answer:
-      "Maysan Labs provides continuous technical oversight. You maintain total operational sovereignty while we ensure the system's structural integrity and performance.",
+      "Yes. We provide ongoing technical support to make sure your systems stay fast and secure. You own everything, but we are here to help whenever you need us.",
   },
   {
     id: "Q_TIME_01",
-    question: "How long does a typical implementation take?",
+    question: "How long does it take to build?",
     answer:
-      "Most CRM and ERP systems are deployed within 4-6 weeks, while custom tools can take as little as 2 weeks.",
+      "Most online stores and customer management systems are ready in 4-6 weeks. Custom tools can often be built in as little as 2 weeks.",
   },
   {
     id: "Q_SEC_01",
-    question: "Is the Cloud Space secure for legal documents?",
+    question: "Is my data secure?",
     answer:
-      "Absolutely. We use bank-level encryption (AES-256) and secure key management to ensure your firm's data is bulletproof.",
+      "Yes. We use high-level encryption (the same kind used by banks) to keep your business information safe and private.",
   },
   {
     id: "Q_SUPPORT_01",
-    question: "Do you provide long-term engineering support?",
+    question: "Do you offer ongoing support?",
     answer:
-      "We act as your elite technical division. Our management plans include real-time telemetry, proactive scaling, and continuous refinement of your digital foundations.",
+      "Yes. We can act as your technical partner, keeping your software updated and helping you grow as your needs change.",
   },
 ];
 
@@ -59,23 +59,18 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-32 relative overflow-hidden bg-background">
-      <div aria-hidden="true" className="absolute inset-0 tactical-grid opacity-5" />
-      
+    <section id="faq" className="py-40 relative overflow-hidden bg-background">
       <div className="container max-w-4xl relative z-10">
-        <div className="mb-24 flex flex-col items-center text-center">
-          <div className="flex items-center gap-3 mb-6">
-             <Database size={16} className="text-primary" />
-             <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-primary font-bold block">
-               [ KNOWLEDGE_BASE_V1 ]
-             </span>
-          </div>
-          <h2 className="text-massive leading-[0.8] mb-8">
-            SYSTEM<br />
-            <span className="italic">INTELLIGENCE</span>
+        <div className="mb-32 flex flex-col items-center text-center">
+          <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-8 inline-block">
+            Common Questions
+          </span>
+          <h2 className="text-massive leading-[1.1] font-bold mb-8">
+            Frequently <span className="font-accent lowercase text-primary italic">asked</span><br />
+            Questions.
           </h2>
-          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground leading-relaxed">
-            frequently requested diagnostic inquiries regarding our architectural protocols and deployment pipelines.
+          <p className="text-sm font-medium text-foreground/50 leading-loose max-w-lg">
+            Answers to common questions about how we work, our security, and how we help your business.
           </p>
         </div>
 
@@ -84,7 +79,7 @@ export default function FAQ() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="space-y-4"
+          className="space-y-6"
         >
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
@@ -92,24 +87,23 @@ export default function FAQ() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className={`card-brutalist bg-card overflow-hidden group transition-all duration-300 ${
-                  isOpen ? "border-primary ring-1 ring-primary/20" : ""
+                className={`bg-secondary/30 rounded-3xl overflow-hidden transition-all duration-500 border border-transparent hover:border-primary/10 ${
+                  isOpen ? "bg-secondary/50 border-primary/20" : ""
                 }`}
               >
                 <button
-                  className="w-full flex items-center justify-between p-8 text-left group-hover:bg-primary/5 transition-colors"
+                  className="w-full flex items-center justify-between p-10 text-left transition-colors"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                 >
-                  <div className="flex items-baseline gap-6">
-                    <span className="font-mono text-[10px] text-primary/40 font-bold hidden sm:block">{faq.id}</span>
-                    <span className="font-mono text-sm sm:text-lg font-black uppercase text-foreground pr-4 tracking-tighter">
+                  <div className="flex items-center gap-8">
+                    <span className="font-accent text-2xl italic text-primary/20 hidden sm:block">0{index+1}</span>
+                    <span className="text-lg font-bold text-foreground pr-4 tracking-tight">
                       {faq.question}
                     </span>
                   </div>
-                  <div className="shrink-0 flex items-center gap-4">
-                     <span className="font-mono text-[8px] opacity-0 group-hover:opacity-30 hidden sm:block uppercase">DECRYPT_ACTION</span>
-                     <div className={`w-8 h-8 flex items-center justify-center border border-border group-hover:border-primary transition-colors ${isOpen ? "bg-primary text-white" : ""}`}>
-                        {isOpen ? <Minus size={14} /> : <Plus size={14} />}
+                  <div className="shrink-0">
+                     <div className={`w-10 h-10 rounded-2xl flex items-center justify-center border border-border group-hover:border-primary transition-all duration-300 ${isOpen ? "bg-primary text-white scale-110" : "bg-white"}`}>
+                        {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                      </div>
                   </div>
                 </button>
@@ -120,18 +114,18 @@ export default function FAQ() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      <div className="px-8 pb-10 pt-0 flex gap-6">
+                      <div className="px-10 pb-12 pt-2 flex gap-10">
                          <div className="w-px bg-primary/20 shrink-0" />
-                         <div className="space-y-4">
-                            <div className="flex items-center gap-2">
-                               <Terminal size={10} className="text-primary" />
-                               <span className="font-mono text-[8px] uppercase tracking-widest text-primary/60">ACCESS_GRANTED: RAW_DATA</span>
-                            </div>
-                            <p className="font-mono text-xs sm:text-sm uppercase leading-[1.6] text-muted-foreground tracking-tight">
+                         <div className="space-y-6">
+                            <p className="text-sm sm:text-base font-medium leading-relaxed text-foreground/60">
                               {faq.answer}
                             </p>
+                            <div className="flex items-center gap-3">
+                               <Terminal size={12} className="text-primary/40" />
+                               <span className="text-[9px] font-bold uppercase tracking-widest text-primary/40">Verified Protocol</span>
+                            </div>
                          </div>
                       </div>
                     </motion.div>

@@ -45,9 +45,7 @@ export default function ContactFooter() {
   return (
     <footer id="contact" className="relative overflow-hidden bg-background">
       {/* Massive CTA Section */}
-      <div className="py-40 relative border-t border-border">
-        <div aria-hidden="true" className="absolute inset-0 tactical-grid opacity-5" />
-        
+      <div className="py-40 relative border-t border-border/50">
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -57,20 +55,19 @@ export default function ContactFooter() {
         >
           <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
             <motion.div variants={itemVariants} className="mb-12">
-               <span className="font-mono text-[10px] tracking-[0.6em] uppercase text-primary font-bold block mb-8">
-                 [ INITIALIZE_CONNECTION ]
+               <span className="font-bold text-[10px] tracking-[0.5em] uppercase text-primary block mb-8">
+                 Strategic Partnership
                </span>
-               <h2 className="text-massive leading-[0.8] mb-0">
-                 ENGINEERING<br />
-                 THE NEXT<br />
-                 <span className="text-primary italic">EMPIRE</span>
+               <h2 className="text-massive leading-[1.1] mb-0 font-bold">
+                 Engineering the future<br />
+                 of digital <span className="font-accent lowercase text-primary italic">sovereignty.</span>
                </h2>
             </motion.div>
 
             <motion.p 
               variants={itemVariants}
-              className="font-mono text-xs sm:text-lg uppercase tracking-widest text-muted-foreground mb-16 max-w-2xl leading-relaxed">
-              we build the infrastructure. you lead the global expansion. no compromise on velocity.
+              className="text-lg sm:text-xl text-foreground/60 mb-16 max-w-2xl leading-relaxed font-medium">
+              We build the infrastructure for enterprises ready to scale. No compromise on velocity, security, or <span className="text-foreground">deterministic architecture.</span>
             </motion.p>
 
             <motion.div 
@@ -79,18 +76,17 @@ export default function ContactFooter() {
             >
               <Link
                 href="/init"
-                className="btn-brutalist bg-primary text-white py-6 px-12 text-center uppercase font-mono font-black tracking-widest flex items-center justify-center gap-3 group"
+                className="px-10 py-5 bg-foreground text-background font-bold text-xs tracking-widest uppercase hover:bg-primary transition-all rounded-full flex items-center justify-center gap-3 group"
               >
-                <Terminal size={18} />
-                <span>INIT_PROTOCOL</span>
-                <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+                INITIALIZE PROJECT
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="mailto:business@maysanlabs.com"
-                className="btn-brutalist border-2 border-border py-6 px-12 text-center uppercase font-mono font-black tracking-widest flex items-center justify-center gap-3 group hover:border-primary transition-colors"
+                className="px-10 py-5 border border-foreground/10 text-foreground font-bold text-xs tracking-widest uppercase hover:bg-foreground hover:text-background transition-all rounded-full flex items-center justify-center gap-3"
               >
-                <span>SEND_COMMAND</span>
-                <ArrowUpRight size={18} className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+                SEND INQUIRY
+                <ArrowUpRight size={18} />
               </Link>
             </motion.div>
           </div>
@@ -103,71 +99,75 @@ export default function ContactFooter() {
         whileInView="visible"
         viewport={{ once: true }}
         variants={footerVariants}
-        className="border-t-4 border-primary bg-card/50 py-24 relative overflow-hidden"
+        className="border-t border-border/50 bg-secondary/30 py-24 relative overflow-hidden"
       >
         <div className="container relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
             
             <div className="md:col-span-6 space-y-8">
-              <div className="flex items-center gap-4">
-                 <div className="w-10 h-10 bg-primary flex items-center justify-center text-white">
-                    <Command size={20} />
+              <div className="flex items-center gap-3">
+                 <div className="w-8 h-8 bg-primary flex items-center justify-center text-white rounded-sm font-bold">
+                    M
                  </div>
-                 <h4 className="font-mono text-3xl font-black uppercase tracking-tighter">
-                   MAYSAN_LABS
+                 <h4 className="text-2xl font-bold uppercase tracking-tight">
+                   MAYSAN<span className="font-accent lowercase ml-1">labs</span>
                  </h4>
               </div>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground max-w-sm leading-relaxed">
+              <p className="text-xs uppercase tracking-widest text-foreground/50 max-w-sm leading-loose font-medium">
                 architects of modern, high-concurrency enterprise ecosystems. engineering digital infrastructure that scales at the speed of thought.
               </p>
             </div>
 
             <div className="md:col-span-3 space-y-6">
-              <h4 className="font-mono text-[10px] font-bold text-primary uppercase tracking-[0.4em]">
-                CHANNELS
+              <h4 className="text-[10px] font-bold text-primary uppercase tracking-[0.4em]">
+                DIRECTORY
               </h4>
               <div className="flex flex-col gap-4">
-                <Link
-                  href="mailto:business@maysanlabs.com"
-                  className="font-mono text-xs uppercase tracking-tight text-muted-foreground hover:text-primary transition-colors flex items-center gap-3 group"
-                >
-                  <div className="w-6 h-[1px] bg-border group-hover:bg-primary transition-colors" />
-                  BUSINESS@MAY_LABS
-                </Link>
-                <Link
-                  href="#"
-                  className="font-mono text-xs uppercase tracking-tight text-muted-foreground hover:text-primary transition-colors flex items-center gap-3 group"
-                >
-                  <div className="w-6 h-[1px] bg-border group-hover:bg-primary transition-colors" />
-                  X_TERMINAL
-                </Link>
+                {["Solutions", "Engineering", "Architecture", "Insights", "Blog"].map((item) => (
+                  <Link
+                    key={item}
+                    href="#"
+                    className="text-[11px] font-bold uppercase tracking-wider text-foreground/40 hover:text-primary transition-colors"
+                  >
+                    {item}
+                  </Link>
+                ))}
               </div>
             </div>
 
             <div className="md:col-span-3 space-y-6">
-              <h4 className="font-mono text-[10px] font-bold text-primary uppercase tracking-[0.4em]">
-                LOCATION_ID
+              <h4 className="text-[10px] font-bold text-primary uppercase tracking-[0.4em]">
+                GLOBAL_ACCESS
               </h4>
-              <div className="flex items-center gap-3 text-muted-foreground">
+              <div className="flex items-center gap-3 text-foreground/60 font-medium">
                  <Globe size={14} className="text-primary" />
-                 <p className="font-mono text-xs uppercase tracking-tight">
-                    GURGAON_SEC_44 / INDIA
+                 <p className="text-[11px] uppercase tracking-wider">
+                    GURGAON / HARYANA / INDIA
                  </p>
               </div>
+              <Link
+                href="mailto:business@maysanlabs.com"
+                className="block text-[11px] font-bold uppercase tracking-wider text-foreground/40 hover:text-primary transition-colors"
+              >
+                business@maysanlabs.com
+              </Link>
             </div>
           </div>
 
-          <div className="mt-32 pt-12 border-t border-border flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex items-center gap-6 font-mono text-[8px] uppercase tracking-widest text-muted-foreground/30">
-               <p>© {new Date().getFullYear()} MAYSAN_LABS_ENGINEERING</p>
+          <div className="mt-32 pt-12 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex items-center gap-6 text-[9px] uppercase tracking-[0.3em] font-bold text-foreground/20">
+               <p>© {new Date().getFullYear()} MAYSAN LABS</p>
                <div className="w-1 h-1 bg-border rounded-full" />
                <p>STATUS: OPERATIONAL</p>
             </div>
             
-            <div className="flex items-center gap-3 font-mono text-[8px] uppercase tracking-[0.3em] text-primary/40">
-               <span className="italic">BUILT_FOR_THE_FUTURE_VELOCITY</span>
-               <div className="w-8 h-[2px] bg-primary/20" />
-            </div>
+            <Link 
+              href="https://sanjaymandal.me"
+              target="_blank"
+              className="text-[9px] uppercase tracking-[0.3em] font-bold text-foreground/20 hover:text-primary transition-colors"
+            >
+               DESIGN BY SANJAY MANDAL
+            </Link>
           </div>
         </div>
       </motion.div>

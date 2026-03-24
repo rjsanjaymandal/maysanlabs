@@ -1,12 +1,11 @@
 import Navbar from "@/components/Navbar";
 import Hero from "../components/Hero";
 import Problem from "@/components/Problem";
-import Solution from "@/components/Solution";
 import SocialProof from "@/components/SocialProof";
-import TechnicalSpecs from "@/components/TechnicalSpecs";
 import ContactFooter from "@/components/ContactFooter";
 import FAQ from "@/components/FAQ";
 import OperationsRoadmap from "@/components/OperationsRoadmap";
+import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,8 +17,6 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="relative bg-background min-h-screen selection:bg-primary selection:text-white">
-      {/* Global Architectural Grid Overlay */}
-      <div aria-hidden="true" className="fixed inset-0 tactical-grid opacity-[0.03] pointer-events-none z-50" />
       
       <Navbar />
       
@@ -32,14 +29,43 @@ export default function Home() {
         </div>
         <hr className="border-border opacity-20" />
 
-        <div id="solution">
-          <Solution />
+        <div id="problem">
+          <Problem />
         </div>
         <hr className="border-border opacity-20" />
 
-        <div id="tech">
-          <TechnicalSpecs />
-        </div>
+        <section className="py-24 bg-secondary/10">
+          <div className="container text-center">
+            <h2 className="text-4xl font-bold mb-6">What we offer</h2>
+            <p className="text-foreground/60 mb-10 max-w-2xl mx-auto">
+              We build custom software and online stores that help your business grow.
+            </p>
+            <Link 
+              href="/solutions" 
+              className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-full font-bold text-xs tracking-widest uppercase hover:bg-foreground transition-all"
+            >
+              See our solutions
+            </Link>
+          </div>
+        </section>
+
+        <hr className="border-border opacity-20" />
+
+        <section className="py-24">
+          <div className="container text-center">
+            <h2 className="text-4xl font-bold mb-6">How we build</h2>
+            <p className="text-foreground/60 mb-10 max-w-2xl mx-auto">
+              We use the latest tech to make sure your site is fast, secure, and always online.
+            </p>
+            <Link 
+              href="/engineering" 
+              className="inline-flex items-center gap-2 px-8 py-4 bg-foreground text-background rounded-full font-bold text-xs tracking-widest uppercase hover:bg-primary transition-all"
+            >
+              Learn about our tech
+            </Link>
+          </div>
+        </section>
+
         <hr className="border-border opacity-20" />
 
         <div id="process" className="bg-card/30 border-t border-b border-border">

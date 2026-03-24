@@ -7,31 +7,31 @@ import ContactFooter from "@/components/ContactFooter";
 
 const insights = [
   {
-    id: "DATA_01",
-    title: "MARKET_VELOCITY",
+    id: "GROWTH",
+    title: "Market Growth",
     value: "+14.5%",
-    desc: "Year-over-year growth in digital adoption across target sectors.",
+    desc: "Growth in digital adoption across the sectors we serve.",
     icon: <TrendingUp size={20} />,
   },
   {
-    id: "DATA_02",
-    title: "SYSTEM_LATENCY",
+    id: "SPEED",
+    title: "System Speed",
     value: "45ms",
-    desc: "Average response time for edge-hosted application logic.",
+    desc: "Average loading speed for our software systems.",
     icon: <Activity size={20} />,
   },
   {
-    id: "DATA_03",
-    title: "USER_ENGAGEMENT",
+    id: "USERS",
+    title: "Active Users",
     value: "8.2m",
-    desc: "Active sessions processed daily on client infrastructure.",
+    desc: "Users active on our systems every single day.",
     icon: <BarChart2 size={20} />,
   },
   {
-    id: "DATA_04",
-    title: "RETENTION_RATE",
+    id: "LOYALTY",
+    title: "Customer Loyalty",
     value: "92%",
-    desc: "Customer loyalty metrics exceeding industry standards.",
+    desc: "Customer retention rates that lead the industry.",
     icon: <PieChart size={20} />,
   },
 ];
@@ -39,55 +39,56 @@ const insights = [
 export default function InsightsPage() {
   return (
     <main className="min-h-screen bg-background text-foreground flex flex-col relative overflow-hidden">
-      <div aria-hidden="true" className="fixed inset-0 tactical-grid opacity-5 pointer-events-none" />
-      
       <Navbar />
 
       {/* Hero Header */}
-      <div className="pt-48 pb-24 border-b border-border relative bg-card/30">
+      <div className="pt-64 pb-32 relative overflow-hidden">
+        <div className="grid-overlay opacity-30" />
+        <div className="radial-glow -top-40 -left-40 opacity-20" />
+        
         <div className="container relative z-10">
           <div className="max-w-4xl">
-            <span className="font-mono text-[10px] tracking-[0.5em] uppercase text-primary font-bold block mb-6">
-              [ ANALYTIC_TELEMETRY_V2 ]
+            <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-10 inline-block">
+              Business Data
             </span>
-            <h1 className="text-massive leading-[0.8] mb-12">
-              TECHNICAL<br />
-              <span className="italic">INSIGHTS</span>
+            <h1 className="text-massive leading-[1.1] font-bold mb-12">
+              Data & <span className="font-accent lowercase text-primary italic">insights</span> for<br />
+              Your Business.
             </h1>
-            <p className="font-mono text-xs sm:text-lg uppercase tracking-widest text-muted-foreground max-w-2xl leading-relaxed">
-              deep-dives into modular architecture, tactical automation, and the future of digital platforms. quantified engineering excellence.
+            <p className="text-lg font-medium text-foreground/50 max-w-2xl leading-relaxed border-l border-border/50 pl-10">
+              We provide clear data and insights to help you make better decisions for your company and grow your business.
             </p>
           </div>
         </div>
       </div>
 
-      <div className="flex-1 py-32 container relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1 bg-border/20 border border-border">
+      <div className="flex-1 py-40 container relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {insights.map((item, index) => (
             <motion.div
               key={index}
-              className="card-brutalist bg-card p-12 group"
+              className="card-surgical p-12 group !bg-secondary/30 !rounded-[2.5rem]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="flex flex-col gap-8 text-center sm:text-left">
+              <div className="flex flex-col gap-10">
                 <div className="flex justify-between items-start">
-                  <div className="w-10 h-10 bg-primary/10 text-primary flex items-center justify-center border border-primary/20 group-hover:bg-primary group-hover:text-white transition-all">
+                  <div className="w-12 h-12 bg-white text-primary flex items-center justify-center rounded-2xl shadow-sm group-hover:scale-110 transition-all duration-500">
                     {item.icon}
                   </div>
-                  <span className="font-mono text-[8px] text-primary/40 font-bold tracking-tighter">{item.id}</span>
+                  <span className="text-[10px] text-primary/30 font-bold uppercase tracking-widest">{item.id}</span>
                 </div>
 
                 <div>
-                   <h3 className="font-mono text-5xl font-black text-foreground mb-4 tracking-tighter group-hover:text-primary transition-colors">
+                   <h3 className="text-5xl font-bold text-foreground mb-4 tracking-tighter group-hover:text-primary transition-colors duration-500">
                      {item.value}
                    </h3>
-                   <h4 className="font-mono text-[10px] font-bold text-muted-foreground mb-6 uppercase tracking-[0.3em]">
+                   <h4 className="text-[10px] font-bold text-foreground/40 mb-6 uppercase tracking-[0.3em]">
                      {item.title}
                    </h4>
-                   <p className="font-mono text-[10px] uppercase leading-relaxed text-muted-foreground/60 tracking-tight">
+                   <p className="text-[10px] font-bold uppercase leading-relaxed text-foreground/30 tracking-tight">
                      {item.desc}
                    </p>
                 </div>
@@ -96,30 +97,34 @@ export default function InsightsPage() {
           ))}
         </div>
 
-        <div className="mt-32 p-16 border-2 border-primary bg-card relative overflow-hidden text-center max-w-4xl mx-auto">
-          <div className="absolute top-0 right-0 p-4">
-             <div className="flex items-center gap-2 font-mono text-[8px] text-primary uppercase animate-pulse">
-                <Activity size={10} />
-                LIVE_FEED_PENDING
+        <div className="mt-40 p-20 bg-secondary/20 rounded-[3rem] border border-primary/5 relative overflow-hidden text-center max-w-4xl mx-auto group hover:border-primary/20 transition-all duration-700">
+          <div className="absolute top-0 right-0 p-8">
+             <div className="flex items-center gap-3 font-bold text-[10px] text-primary uppercase tracking-[0.2em] bg-white px-4 py-2 rounded-full shadow-sm">
+                <Activity size={12} className="animate-pulse" />
+                Coming Soon
              </div>
           </div>
 
-          <h3 className="font-mono text-3xl font-black mb-6 uppercase tracking-tighter">
-            LIVE_TELEMETRY_PENDING
+          <h3 className="text-3xl font-bold mb-8 tracking-tight">
+            Your Business Dashboard
           </h3>
-          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground leading-loose mb-10">
-            we are integrating a real-time command dashboard for client-accessible mission metrics. structural synchronization in progress.
+          <p className="text-sm font-medium text-foreground/50 leading-loose mb-12 max-w-2xl mx-auto">
+            We are building a simple dashboard so you can see how your software is performing and track your growth in real-time.
           </p>
           
-          <div className="flex items-center justify-center gap-12 font-mono text-[10px] text-muted-foreground/30 uppercase tracking-[0.5em]">
-             <div className="flex items-center gap-2"><Zap size={12} /> SYNCING</div>
-             <div className="flex items-center gap-2"><Target size={12} /> CALIBRATING</div>
-             <div className="flex items-center gap-2"><Box size={12} /> CACHING</div>
+          <div className="flex items-center justify-center gap-16 text-[10px] font-bold text-foreground/20 uppercase tracking-[0.4em]">
+             <div className="flex items-center gap-3 group-hover:text-primary/40 transition-colors"><Zap size={14} /> Syncing</div>
+             <div className="flex items-center gap-3 group-hover:text-primary/40 transition-colors"><Target size={14} /> Calibrating</div>
+             <div className="flex items-center gap-3 group-hover:text-primary/40 transition-colors"><Box size={14} /> Caching</div>
           </div>
         </div>
       </div>
       
       <ContactFooter />
+
+      {/* Decorative Asset */}
+      <img src="/assets/wireframe-grid.png" alt="" className="absolute top-1/2 -right-40 w-full opacity-10 pointer-events-none mix-blend-screen mask-radial-fade scale-110" />
+      <div className="radial-glow bottom-0 left-0 opacity-15" />
     </main>
   );
 }
