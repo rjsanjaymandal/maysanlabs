@@ -56,8 +56,8 @@ export default function TechnicalSpecs() {
   ];
 
   return (
-    <section id="tech-specs" className="py-40 relative overflow-hidden bg-background">
-      <div className="container relative z-10">
+    <section id="tech-specs" className="section-xl relative overflow-hidden bg-background">
+      <div className="section-container">
         <div className="flex flex-col lg:flex-row items-baseline justify-between mb-32 space-y-12">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -65,10 +65,8 @@ export default function TechnicalSpecs() {
             viewport={{ once: true }}
             className="max-w-3xl"
           >
-            <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary block mb-6 px-4 py-1.5 bg-primary/10 rounded-full w-fit">
-              Engineering Standards
-            </span>
-            <h2 className="text-massive leading-[1.1] font-bold">
+            <span className="badge mb-6">Engineering Standards</span>
+            <h2 className="heading-xl">
                Sovereign <span className="font-accent lowercase text-primary italic">standards</span> for<br />
                Digital Scale.
             </h2>
@@ -92,13 +90,13 @@ export default function TechnicalSpecs() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-xl"
         >
           {specs.map((spec, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group p-12 bg-secondary/30 rounded-[2.5rem] border border-transparent hover:border-primary/10 transition-all duration-500 hover:bg-secondary/50"
+              className="group card-base card-xl"
             >
               <div className="flex flex-col gap-10 h-full">
                 <div className="flex justify-between items-start">

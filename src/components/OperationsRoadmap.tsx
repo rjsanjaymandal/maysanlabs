@@ -76,7 +76,7 @@ const itemVariantsReverse: Variants = {
 
 export default function OperationsRoadmap() {
   return (
-    <div className="relative py-40 px-4 bg-background overflow-hidden font-sans">
+    <div className="relative section-xl px-4 bg-background overflow-hidden font-sans">
       {/* Premium Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="grid-overlay opacity-20" />
@@ -86,12 +86,10 @@ export default function OperationsRoadmap() {
       {/* Structural Accent Line */}
       <div className="absolute left-1/2 -translate-x-1/2 top-40 bottom-40 w-px bg-gradient-to-b from-transparent via-primary/40 to-transparent hidden md:block" />
 
-      <div className="container relative z-10 max-w-6xl mx-auto">
+      <div className="section-container max-w-6xl mx-auto">
         <div className="text-center mb-32">
-          <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-8 inline-block">
-            Engineering Lifecycle
-          </span>
-          <h2 className="text-massive leading-[1.1] font-bold">
+          <span className="badge mb-8">Engineering Lifecycle</span>
+          <h2 className="heading-xl">
             The <span className="font-accent lowercase text-primary italic">roadmap</span> to<br />
             Your Success.
           </h2>

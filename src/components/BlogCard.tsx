@@ -9,8 +9,8 @@ interface BlogCardProps {
 export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link href={`/blog/${post.slug}`} className="block h-full group">
-      <div className="card-surgical h-full bg-secondary/30 border border-transparent flex flex-col group-hover:bg-secondary/50 group-hover:border-primary/10 transition-all duration-500 relative overflow-hidden rounded-[2.5rem]">
-        <div className="p-10 flex flex-col h-full relative z-10">
+      <div className="card-base card-lg flex flex-col h-full group-hover:border-primary/10 relative overflow-hidden rounded-[2.5rem]">
+        <div className="flex flex-col h-full relative z-10">
           <div className="flex items-center gap-6 mb-8 text-[10px] font-bold tracking-[0.2em] uppercase text-foreground/40">
             <div className="flex items-center gap-2 text-primary/60">
               <Tag size={12} />

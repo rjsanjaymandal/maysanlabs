@@ -99,24 +99,22 @@ export default function SocialProof() {
   ];
 
   return (
-    <section className="py-40 relative overflow-hidden bg-background">
-      <div className="container relative z-10">
+    <section className="section-xl relative overflow-hidden bg-background">
+      <div className="section-container">
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-xl"
         >
           {/* Header Block */}
           <motion.div 
             variants={itemVariants}
             className="lg:col-span-6 flex flex-col justify-center"
           >
-            <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary block mb-6 px-4 py-1.5 bg-primary/10 rounded-full w-fit">
-              Our Performance
-            </span>
-            <h2 className="text-massive leading-[1.1] font-bold mb-8">
+            <span className="badge mb-6">Our Performance</span>
+            <h2 className="heading-xl mb-8">
               Fast <span className="font-accent lowercase text-primary italic">software</span> for<br />
               Growing Brands.
             </h2>
@@ -126,12 +124,12 @@ export default function SocialProof() {
           </motion.div>
 
           {/* Stats Blocks */}
-          <div className="lg:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="lg:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-lg">
              {stats.map((stat, index) => (
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="p-10 flex flex-col justify-between bg-secondary/30 rounded-[2.5rem] border border-transparent hover:border-primary/10 transition-all duration-500 hover:bg-secondary/50 group"
+                  className="card-base card-lg flex flex-col justify-between group"
                 >
                   <div className="flex justify-between items-start mb-12">
                      <div className="text-primary bg-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">

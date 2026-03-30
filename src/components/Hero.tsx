@@ -31,7 +31,7 @@ const itemVariants: Variants = {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-start lg:justify-center items-center pt-48 lg:pt-32 pb-20 overflow-hidden bg-background font-sans">
+    <section className="relative min-h-screen flex flex-col justify-center items-center pt-24 md:pt-32 lg:pt-40 pb-16 md:pb-20 overflow-hidden bg-background font-sans">
       {/* Premium Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="grid-overlay opacity-40" />

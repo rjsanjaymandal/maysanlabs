@@ -48,13 +48,13 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-24 bg-background">
-      <div className="container">
+    <section id="pricing" className="section-lg bg-background">
+      <div className="section-container">
         <div className="mb-16 text-center">
           <span className="text-primary font-mono text-sm uppercase tracking-widest mb-2 block">
             Pricing Plans
           </span>
-          <h2 className="text-4xl font-bold tracking-tight text-foreground mb-4">
+          <h2 className="heading-lg mb-4">
             Scalable Solutions for Every Goal
           </h2>
           <p className="text-xl text-muted-foreground">
@@ -63,9 +63,9 @@ export default function Pricing() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-lg items-start">
           {/* Starter Plan */}
-          <div className="p-8 border border-border rounded-lg bg-card hover:border-primary/30 transition-colors">
+          <div className="card-md border border-border rounded-lg bg-card hover:border-primary/30 transition-colors">
             <div className="flex items-center gap-4 mb-6">
               <div className="p-3 bg-muted rounded text-muted-foreground">
                 {plans[0].icon}
