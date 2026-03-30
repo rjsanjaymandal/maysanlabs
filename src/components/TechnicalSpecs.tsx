@@ -1,6 +1,6 @@
 "use client";
 
-import { Cpu, Zap, Shield, Smartphone, Box, Layers } from "lucide-react";
+import { Cpu, Zap, Shield, Layers } from "lucide-react";
 import { motion, Variants, Transition } from "framer-motion";
 
 const containerVariants: Variants = {

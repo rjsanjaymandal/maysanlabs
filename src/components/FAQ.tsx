@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence, Variants, Transition } from "framer-motion";
-import { Database, Terminal, Plus, Minus } from "lucide-react";
+import { Terminal, Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
@@ -59,13 +59,11 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-40 relative overflow-hidden bg-background">
-      <div className="container max-w-4xl relative z-10">
+    <section id="faq" className="section-xl relative overflow-hidden bg-background">
+      <div className="section-container max-w-4xl mx-auto">
         <div className="mb-32 flex flex-col items-center text-center">
-          <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-8 inline-block">
-            Common Questions
-          </span>
-          <h2 className="text-massive leading-[1.1] font-bold mb-8">
+          <span className="badge mb-8">Common Questions</span>
+          <h2 className="heading-xl mb-8">
             Frequently <span className="font-accent lowercase text-primary italic">asked</span><br />
             Questions.
           </h2>

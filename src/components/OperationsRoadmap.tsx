@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Search, FileText, Cpu, Rocket, ShieldCheck, Activity } from "lucide-react";
+import { Search, FileText, Cpu, Rocket, ShieldCheck } from "lucide-react";
 import { motion, Variants, Transition } from "framer-motion";
 
 const stages = [

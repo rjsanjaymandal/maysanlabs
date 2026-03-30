@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { 
-  Building2, 
   Users, 
   CreditCard, 
   GraduationCap, 
@@ -11,9 +10,6 @@ import {
   ShieldCheck, 
   ArrowRight,
   Database,
-  Calendar,
-  ClipboardCheck,
-  Zap
 } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";

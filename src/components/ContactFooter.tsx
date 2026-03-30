@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, ArrowRight, Terminal, Globe, Command } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Globe } from "lucide-react";
 import { motion, Variants, Transition } from "framer-motion";
 
 const containerVariants: Variants = {
@@ -55,9 +55,7 @@ export default function ContactFooter() {
         >
           <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
             <motion.div variants={itemVariants} className="mb-12">
-               <span className="font-bold text-[10px] tracking-[0.5em] uppercase text-primary block mb-8">
-                 Strategic Partnership
-               </span>
+               <span className="badge mb-8">Strategic Partnership</span>
                <h2 className="text-massive leading-[1.1] mb-0 font-bold">
                  Engineering the future<br />
                  of digital <span className="font-accent lowercase text-primary italic">sovereignty.</span>

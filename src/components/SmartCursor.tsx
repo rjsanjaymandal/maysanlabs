@@ -1,8 +1,31 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useSyncExternalStore } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 import styles from "./SmartCursor.module.css";
+
+function subscribeReducedMotion(callback: () => void) {
+  const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mediaQuery.addEventListener("change", callback);
+  return () => mediaQuery.removeEventListener("change", callback);
+}
+
+function getReducedMotionSnapshot() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function getReducedMotionServerSnapshot() {
+  return false;
+}
+
+function usePrefersReducedMotionStore() {
+  return useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot
+  );
+}
 
 export default function SmartCursor() {
   const [isPointer, setIsPointer] = useState(false);
@@ -15,13 +38,14 @@ export default function SmartCursor() {
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
   const [isVisible, setIsVisible] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotionStore();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
     window.requestAnimationFrame(() => {
-      if (isTouch) {
+      if (isTouch || prefersReducedMotion) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
@@ -49,14 +73,15 @@ export default function SmartCursor() {
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, prefersReducedMotion]);
 
-  if (!isVisible) return null;
+  if (!isVisible || prefersReducedMotion) return null;
 
   return (
     <motion.div
       ref={cursorRef}
       className={styles.cursor}
+      aria-hidden="true"
       style={{
         translateX: cursorX,
         translateY: cursorY,

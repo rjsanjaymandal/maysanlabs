@@ -4,6 +4,11 @@ import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import ThemeProvider from "@/components/ThemeProvider";
 import SmoothScroll from "@/components/SmoothScroll";
+import {
+  organizationSchema,
+  websiteSchema,
+  getNavigationSchema,
+} from "@/lib/seo/schema";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -91,139 +96,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getNavigationSchema()),
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable}`}
         suppressHydrationWarning
       >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              additionalType: "https://schema.org/SoftwareApplication",
-              name: "Maysan Labs",
-              url: "https://maysanlabs.com",
-              logo: "https://maysanlabs.com/logo.png",
-              image: "https://maysanlabs.com/og-image.png",
-              description:
-                "Architecting high-performance enterprise SaaS infrastructure and autonomous operational tools for modern enterprises.",
-              priceRange: "$$$",
-              telephone: "+91-XXXXXXXXXX",
-              contactPoint: {
-                "@type": "ContactPoint",
-                email: "business@maysanlabs.com",
-                contactType: "sales",
-                availableLanguage: ["English", "Hindi"],
-              },
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Gurgaon",
-                addressRegion: "Haryana",
-                postalCode: "122001",
-                addressCountry: "IN",
-              },
-              areaServed: "Global",
-              sameAs: [
-                "https://linkedin.com/company/maysanlabs",
-                "https://twitter.com/maysanlabs",
-              ],
-            }),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "Home",
-                  item: "https://maysanlabs.com",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 2,
-                  name: "Blog",
-                  item: "https://maysanlabs.com/blog",
-                },
-                {
-                  "@type": "ListItem",
-                  position: 3,
-                  name: "Careers",
-                  item: "https://maysanlabs.com/careers",
-                },
-              ],
-            }),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "ItemList",
-              name: "Main Navigation",
-              itemListElement: [
-                {
-                  "@type": "SiteNavigationElement",
-                  position: 1,
-                  name: "Home",
-                  url: "https://maysanlabs.com",
-                },
-                {
-                  "@type": "SiteNavigationElement",
-                  position: 2,
-                  name: "Solutions",
-                  url: "https://maysanlabs.com/#solution",
-                },
-                {
-                  "@type": "SiteNavigationElement",
-                  position: 3,
-                  name: "Architecture",
-                  url: "https://maysanlabs.com/architecture",
-                },
-                {
-                  "@type": "SiteNavigationElement",
-                  position: 4,
-                  name: "Intelligence Stream",
-                  url: "https://maysanlabs.com/blog",
-                },
-                {
-                  "@type": "SiteNavigationElement",
-                  position: 5,
-                  name: "Careers",
-                  url: "https://maysanlabs.com/careers",
-                },
-                {
-                  "@type": "SiteNavigationElement",
-                  position: 6,
-                  name: "About",
-                  url: "https://maysanlabs.com/about",
-                },
-              ],
-            }),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "Maysan Labs",
-              url: "https://maysanlabs.com",
-              potentialAction: {
-                "@type": "SearchAction",
-                target: "https://maysanlabs.com/?q={search_term_string}",
-                "query-input": "required name=search_term_string",
-              },
-            }),
-          }}
-        />
         <ThemeProvider>
           <SmoothScroll>
             <GoogleAnalytics />

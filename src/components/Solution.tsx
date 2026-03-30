@@ -103,8 +103,8 @@ export default function Solution() {
   ];
 
   return (
-    <section id="solution" className="py-40 relative overflow-hidden bg-background">
-      <div className="container relative z-10">
+    <section id="solution" className="section-xl relative overflow-hidden bg-background">
+      <div className="section-container">
         <div className="flex flex-col lg:flex-row items-baseline justify-between mb-24 space-y-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -112,10 +112,8 @@ export default function Solution() {
             viewport={{ once: true }}
             className="max-w-3xl"
           >
-            <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary block mb-6">
-              Solutions Catalog
-            </span>
-            <h2 className="text-massive leading-[1.1] mb-0 font-bold">
+            <span className="badge mb-6">Solutions Catalog</span>
+            <h2 className="heading-xl mb-0">
                Engineered <span className="font-accent lowercase text-primary italic">modules</span> for<br />
                Systemic Growth.
             </h2>
@@ -138,13 +136,13 @@ export default function Solution() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl"
         >
           {solutions.map((sol, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group p-10 flex flex-col h-full bg-secondary/30 rounded-3xl relative overflow-hidden transition-all duration-500 hover:bg-secondary/50 border border-transparent hover:border-primary/10"
+              className="group card-base card-lg flex flex-col h-full"
             >
               {/* Module Header */}
               <div className="flex justify-between items-start mb-12">

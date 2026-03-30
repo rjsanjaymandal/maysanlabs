@@ -2,7 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
-import { Cpu, Zap, Shield, Layers, ArrowUpRight } from "lucide-react";
+import { Cpu, Zap, Shield, Layers } from "lucide-react";
 import { motion, Variants, Transition } from "framer-motion";
 
 const containerVariants: Variants = {

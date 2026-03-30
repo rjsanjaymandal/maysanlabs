@@ -50,14 +50,14 @@ export default function Problem() {
   ];
 
   return (
-    <section id="problem" className="py-40 bg-background relative overflow-hidden">
+    <section id="problem" className="section-xl bg-background relative overflow-hidden">
       {/* Premium Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="grid-overlay opacity-20" />
         <div className="radial-glow top-1/4 -left-48 opacity-40" />
       </div>
 
-      <div className="container relative z-10">
+      <div className="section-container">
         <div className="flex flex-col lg:flex-row items-baseline justify-between mb-24 gap-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -66,8 +66,7 @@ export default function Problem() {
             className="max-w-3xl"
           >
             <div className="flex items-center gap-3 mb-8">
-              <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary">
-                Technical Diagnostics
+              <span className="badge">Technical Diagnostics
               </span>
             </div>
             <h2 className="text-massive leading-[1.1] mb-8 font-bold">

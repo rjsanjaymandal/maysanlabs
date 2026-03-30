@@ -1,9 +1,9 @@
 "use client";
 
 import { motion, Variants, Transition } from "framer-motion";
-import { Terminal, Activity, Zap, ArrowRight, Shield, Globe, Box } from "lucide-react";
-import { useState, useEffect } from "react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -39,7 +39,7 @@ export default function Hero() {
         <div className="radial-glow bottom-0 left-0 translate-y-1/2 -translate-x-1/2 opacity-50" />
       </div>
 
-      <div className="container relative z-20 text-center max-w-5xl">
+      <div className="section-container text-center max-w-5xl mx-auto">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -47,35 +47,28 @@ export default function Hero() {
           className="flex flex-col items-center"
         >
           <motion.div variants={itemVariants} className="mb-8">
-             <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full">
-               Engineering Suite
-             </span>
+             <span className="badge">Engineering Suite</span>
           </motion.div>
 
-          <motion.h1 variants={itemVariants} className="text-massive leading-[1.1] mb-10 text-foreground font-bold">
+          <motion.h1 variants={itemVariants} className="heading-xl mb-10">
             We build <span className="font-accent lowercase text-primary italic">fast</span>, secure software<br />
             for <span className="font-accent lowercase text-primary italic">growing</span> businesses.
           </motion.h1>
 
-          <motion.p variants={itemVariants} className="text-lg sm:text-xl text-foreground/60 mb-14 max-w-2xl leading-relaxed font-medium">
+          <motion.p variants={itemVariants} className="text-muted-lg mb-14 max-w-2xl">
              We help companies build modern online stores and custom tools that are easy to use and stay <span className="text-foreground">reliable as you grow.</span>
           </motion.p>
 
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-6">
-            <Link
-              href="/init"
-              className="btn-surgical group"
-            >
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-md">
+            <Link href="/init" className="btn-surgical group">
               <span className="relative z-10 flex items-center gap-3">
                 GET STARTED
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </span>
             </Link>
-            <Link
-              href="/solutions"
-              className="px-10 py-5 border border-foreground/10 text-foreground font-bold text-xs tracking-widest uppercase hover:bg-foreground hover:text-background transition-all rounded-full flex items-center gap-3"
-            >
+            <Link href="/solutions" className="btn-secondary">
               SEE SOLUTIONS
+              <ArrowRight size={18} />
             </Link>
           </motion.div>
         </motion.div>
@@ -88,10 +81,11 @@ export default function Hero() {
         animate={{ opacity: 0.3, rotate: 0, scale: 1 }}
         transition={{ duration: 2, ease: "easeOut", delay: 1 }}
       >
-        <img 
+        <Image 
           src="/assets/wireframe-sphere.png" 
           alt="Technical Wireframe" 
-          className="w-full h-full object-contain mix-blend-screen animate-pulse-slow mask-radial-fade" 
+          fill
+          className="object-contain mix-blend-screen animate-pulse-slow mask-radial-fade" 
         />
       </motion.div>
 
