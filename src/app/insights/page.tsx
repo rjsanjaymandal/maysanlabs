@@ -1,9 +1,18 @@
-"use client";
-
+import type { Metadata } from "next";
 import { motion } from "framer-motion";
 import { TrendingUp, Activity, BarChart2, PieChart, Zap, Target, Box } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
+
+export const metadata: Metadata = {
+  title: "Insights | Enterprise Technology & SaaS Trends",
+  description: "Stay updated with the latest enterprise technology trends, SaaS development best practices, and digital transformation insights from Maysan Labs.",
+  keywords: ["enterprise technology insights", "SaaS trends", "digital transformation", "tech insights", "enterprise software trends"],
+  openGraph: {
+    title: "Insights | Maysan Labs",
+    description: "Latest enterprise technology and SaaS development insights.",
+  },
+};
 
 const insights = [
   {

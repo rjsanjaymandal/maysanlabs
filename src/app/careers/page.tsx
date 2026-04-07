@@ -1,5 +1,4 @@
-"use client";
-
+import type { Metadata } from "next";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
@@ -7,6 +6,16 @@ import SpotlightCard from "@/components/SpotlightCard";
 import { jobPositions } from "@/lib/careers-data";
 import { Users, Target, Rocket, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Careers | Join Our SaaS Development Team",
+  description: "Join Maysan Labs - a leading SaaS development company. We're hiring talented developers, engineers, and product managers. Explore career opportunities.",
+  keywords: ["careers", "jobs", "hiring", "software development jobs", "SaaS company careers", "tech jobs"],
+  openGraph: {
+    title: "Careers | Join Maysan Labs",
+    description: "Join our team of expert SaaS developers and engineers.",
+  },
+};
 
 export default function CareersPage() {
   return (

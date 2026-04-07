@@ -5,9 +5,13 @@ import { blogPosts } from "@/lib/blog-data";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Intelligence Stream | Blog | Maysan Labs",
-  description:
-    "Deep-dives into modular architecture, tactical automation, and the future of digital SaaS platforms. Research and logs from Maysan Labs.",
+  title: "Blog | Enterprise SaaS Development Insights",
+  description: "Read the latest insights on SaaS development, custom software, cloud infrastructure, and enterprise technology from Maysan Labs experts.",
+  keywords: ["SaaS blog", "software development blog", "cloud computing blog", "enterprise technology insights", "Maysan Labs blog"],
+  openGraph: {
+    title: "Blog | Maysan Labs Insights",
+    description: "Expert insights on enterprise SaaS development, custom software, and cloud infrastructure.",
+  },
 };
 
 export default function BlogListingPage() {

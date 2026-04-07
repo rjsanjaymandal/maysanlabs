@@ -9,9 +9,13 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Engineering Enterprise Velocity | Maysan Labs",
-  description:
-    "Maysan Labs builds high-performance SaaS infrastructure, modular architecture, and autonomous operational tools for global enterprises.",
+  title: "Enterprise SaaS Development Company | Custom Software Solutions",
+  description: "Maysan Labs is a premier enterprise SaaS development company. We build custom software, cloud infrastructure, and scalable web applications using MERN stack, React, and Node.js.",
+  keywords: ["enterprise SaaS development", "custom software development", "SaaS development company", "cloud infrastructure services", "MERN stack developers"],
+  openGraph: {
+    title: "Maysan Labs | Enterprise SaaS Development Company",
+    description: "Build scalable enterprise software with Maysan Labs. Custom SaaS development, cloud infrastructure, and full-stack solutions.",
+  },
 };
 
 export default function Home() {

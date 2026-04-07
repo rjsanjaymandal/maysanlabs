@@ -1,9 +1,18 @@
-"use client";
-
+import type { Metadata } from "next";
 import { motion } from "framer-motion";
 import { Server, Shield, Globe, Cpu, Activity, Zap, Box } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
+
+export const metadata: Metadata = {
+  title: "Enterprise Software Architecture | Cloud Infrastructure",
+  description: "Maysan Labs designs enterprise-grade software architecture with scalable cloud infrastructure. Learn about our technical approach to building resilient systems.",
+  keywords: ["enterprise software architecture", "cloud infrastructure services", "scalable web applications", "system architecture", "cloud-native solutions"],
+  openGraph: {
+    title: "Enterprise Software Architecture | Maysan Labs",
+    description: "Building resilient enterprise systems with scalable cloud infrastructure.",
+  },
+};
 
 const layers = [
   {

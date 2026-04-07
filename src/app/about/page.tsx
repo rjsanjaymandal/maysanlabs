@@ -1,9 +1,18 @@
-"use client";
-
 import Navbar from "@/components/Navbar";
 import PageHeader from "@/components/PageHeader";
 import ContactFooter from "@/components/ContactFooter";
 import { Cpu, Shield, Globe } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us | Enterprise Software Development Company",
+  description: "Learn about Maysan Labs - a leading enterprise SaaS development company. Our engineering philosophy focuses on precision stacks, data sovereignty, and global edge distribution.",
+  keywords: ["about SaaS development company", "enterprise software company", "Maysan Labs about", "custom software development about"],
+  openGraph: {
+    title: "About Maysan Labs | Enterprise SaaS Development",
+    description: "Discover Maysan Labs - your trusted partner for enterprise software development, cloud infrastructure, and scalable web applications.",
+  },
+};
 
 export default function AboutPage() {
   return (
@@ -12,12 +21,12 @@ export default function AboutPage() {
       <PageHeader
         label="CORE INTEL"
         title="ENGINEERING PHILOSOPHY"
-        subtitle="At Maysan Labs, we believe in the Neo-Monolith: digital systems built with industrial precision, designed for maximum resilience and global operational scale."
+        subtitle="At Maysan Labs, we build enterprise-grade digital systems with industrial precision, designed for maximum resilience and global operational scale."
       />
 
-      <section className="py-32 border-b border-border/50">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+      <section className="section-lg border-b border-border/50">
+        <div className="section-container">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-lg">
             <div className="p-8 border border-border rounded-lg hover:border-primary/30 transition-colors">
               <div className="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center rounded mb-8">
                 <Cpu size={24} />
@@ -59,8 +68,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-40 bg-gradient-to-b from-transparent to-primary/5">
-        <div className="container">
+      <section className="section-xl bg-gradient-to-b from-transparent to-primary/5">
+        <div className="section-container">
           <div className="max-w-3xl">
             <span className="font-mono text-xs text-primary tracking-widest mb-8 block">
               {"// THE_MANIFESTO"}

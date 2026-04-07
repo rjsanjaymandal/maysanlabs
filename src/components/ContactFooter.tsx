@@ -45,18 +45,18 @@ export default function ContactFooter() {
   return (
     <footer id="contact" className="relative overflow-hidden bg-background">
       {/* Massive CTA Section */}
-      <div className="py-40 relative border-t border-border/50">
+      <div className="section-xl relative border-t border-border/50">
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="container relative z-10"
+          className="section-container"
         >
           <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
             <motion.div variants={itemVariants} className="mb-12">
                <span className="badge mb-8">Strategic Partnership</span>
-               <h2 className="text-massive leading-[1.1] mb-0 font-bold">
+               <h2 className="heading-xl mb-0">
                  Engineering the future<br />
                  of digital <span className="font-accent lowercase text-primary italic">sovereignty.</span>
                </h2>

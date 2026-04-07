@@ -1,9 +1,18 @@
-"use client";
-
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 import { Cpu, Zap, Shield, Layers } from "lucide-react";
 import { motion, Variants, Transition } from "framer-motion";
+
+export const metadata: Metadata = {
+  title: "Engineering & Technology Stack | MERN Stack Developers",
+  description: "Our engineering team uses cutting-edge technology including MERN stack, React, Node.js, and cloud-native architecture. Learn about our development methodology and technical expertise.",
+  keywords: ["MERN stack developers", "React development company", "Node.js backend development", "API development services", "full-stack development", "cloud-native development"],
+  openGraph: {
+    title: "Engineering & Tech Stack | Maysan Labs",
+    description: "Expert MERN stack, React, and Node.js developers. Cloud-native architecture for scalable enterprise applications.",
+  },
+};
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },

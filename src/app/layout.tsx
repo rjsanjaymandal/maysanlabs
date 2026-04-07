@@ -29,56 +29,78 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   metadataBase: new URL("https://maysanlabs.com"),
   title: {
-    default: "Maysan Labs | Enterprise SaaS Architecture",
+    default: "Maysan Labs | Enterprise SaaS Development Company",
     template: "%s | Maysan Labs",
   },
   description:
-    "Maysan Labs architects high-performance enterprise SaaS infrastructure and autonomous operational tools for modern global commerce.",
+    "Maysan Labs is a leading enterprise SaaS development company offering custom software development, cloud infrastructure services, and scalable web applications. Trusted by global enterprises for MERN stack, React, and Node.js development.",
   keywords: [
-    "Enterprise SaaS Architecture",
-    "Autonomous Operational Tools",
-    "Custom SaaS Development",
-    "Digital Infrastructure Engineering",
-    "MERN Stack Experts",
-    "Cloud Native Solutions",
-    "Scalable Enterprise Software",
-    "Industrial UI Design",
-    "Strategic Automation",
+    "SaaS development company",
+    "custom software development company",
+    "enterprise SaaS development",
+    "cloud infrastructure services",
+    "custom web application development",
+    "MERN stack developers",
+    "React development company",
+    "Node.js backend development",
+    "API development services",
+    "scalable web applications",
+    "full-stack development services",
+    "custom CRM development",
+    "enterprise software consulting",
+    "cloud-native application development",
   ],
-  authors: [{ name: "Sanjay Mandal", url: "https://maysanlabs.com" }],
+  authors: [{ name: "Maysan Labs", url: "https://maysanlabs.com" }],
   creator: "Maysan Labs",
+  publisher: "Maysan Labs",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://maysanlabs.com",
     siteName: "Maysan Labs",
-    title: "Maysan Labs | Enterprise SaaS Architecture",
+    title: "Maysan Labs | Enterprise SaaS Development Company",
     description:
-      "Architecting the future of global commerce with scalable, autonomous SaaS infrastructure.",
+      "Maysan Labs is a leading enterprise SaaS development company offering custom software development, cloud infrastructure services, and scalable web applications.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Maysan Labs - Enterprise SaaS Infrastructure",
+        alt: "Maysan Labs - Enterprise SaaS Development Company",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Maysan Labs | Enterprise SaaS Architecture",
+    title: "Maysan Labs | Enterprise SaaS Development Company",
     description:
-      "Architecting the future of global commerce with autonomous SaaS infrastructure.",
+      "Maysan Labs - Enterprise SaaS development company offering custom software, cloud infrastructure, and scalable web applications.",
     images: ["/og-image.png"],
     creator: "@maysanlabs",
+    site: "@maysanlabs",
+  },
+  facebook: {
+    appId: "",
   },
   alternates: {
-    canonical: "/",
+    canonical: "https://maysanlabs.com",
+    languages: {
+      en: "https://maysanlabs.com",
+    },
   },
-  icons: {
-    icon: "/favicon.png",
-    apple: "/apple-icon.png",
-  },
+  category: "technology",
+  classification: "SaaS Development Company",
 };
 
 import type { Viewport } from "next";

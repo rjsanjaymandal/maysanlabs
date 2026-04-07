@@ -8,9 +8,13 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Case Studies — Industrial Proof",
-  description:
-    "Explore how Maysan Labs engineers high-performance digital systems for global enterprises. Real-world solutions, measurable impact.",
+  title: "Case Studies | Enterprise Software Success Stories",
+  description: "Explore our case studies showcasing successful enterprise software implementations, SaaS solutions, and custom development projects by Maysan Labs.",
+  keywords: ["case studies", "success stories", "enterprise software examples", "SaaS case studies", "custom software portfolio"],
+  openGraph: {
+    title: "Case Studies | Maysan Labs Success Stories",
+    description: "Explore our enterprise software success stories and client implementations.",
+  },
 };
 
 export default function CaseStudiesPage() {

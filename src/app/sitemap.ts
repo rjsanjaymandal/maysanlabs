@@ -5,7 +5,7 @@ import path from 'path'
 const BASE_URL = 'https://maysanlabs.com'
 
 // Pages that should be excluded from the sitemap
-const EXCLUDED_ROUTES = new Set(['/_not-found', '/global-error', '/error'])
+const EXCLUDED_ROUTES = new Set(['/_not-found', '/global-error', '/error', '/init', '/careers/apply'])
 
 // Priority and frequency overrides for specific routes
 const ROUTE_CONFIG: Record<string, { priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }> = {
@@ -13,8 +13,12 @@ const ROUTE_CONFIG: Record<string, { priority: number; changeFrequency: Metadata
   '/solutions':    { priority: 0.9, changeFrequency: 'weekly' },
   '/about':        { priority: 0.8, changeFrequency: 'monthly' },
   '/architecture': { priority: 0.7, changeFrequency: 'monthly' },
-  '/insights':     { priority: 0.7, changeFrequency: 'daily' },
-  '/init':         { priority: 0.5, changeFrequency: 'yearly' },
+  '/engineering':  { priority: 0.7, changeFrequency: 'monthly' },
+  '/blog':        { priority: 0.8, changeFrequency: 'daily' },
+  '/insights':    { priority: 0.7, changeFrequency: 'weekly' },
+  '/case-studies':{ priority: 0.8, changeFrequency: 'weekly' },
+  '/careers':     { priority: 0.6, changeFrequency: 'weekly' },
+  '/products/edu-maysan': { priority: 0.7, changeFrequency: 'monthly' },
 }
 
 const DEFAULT_CONFIG = { priority: 0.6, changeFrequency: 'monthly' as const }

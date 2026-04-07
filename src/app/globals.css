@@ -2,27 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Consistent Design Tokens ─── */
+/* ─── Responsive Design Tokens ─── */
 @layer utilities {
   /* ─── Section Padding ─── */
-  .section-sm { @apply py-16; }
-  .section-md { @apply py-24; }
-  .section-lg { @apply py-32; }
-  .section-xl { @apply py-40; }
-  .section-2xl { @apply py-48; }
+  .section-sm { @apply py-12 md:py-16; }
+  .section-md { @apply py-16 md:py-24; }
+  .section-lg { @apply py-24 md:py-32; }
+  .section-xl { @apply py-32 md:py-40; }
+  .section-2xl { @apply py-40 md:py-48; }
 
   /* ─── Card Padding ─── */
-  .card-sm { @apply p-6; }
-  .card-md { @apply p-8; }
-  .card-lg { @apply p-10; }
-  .card-xl { @apply p-12; }
-  .card-2xl { @apply p-16; }
+  .card-sm { @apply p-4 md:p-6; }
+  .card-md { @apply p-6 md:p-8; }
+  .card-lg { @apply p-8 md:p-10; }
+  .card-xl { @apply p-10 md:p-12; }
+  .card-2xl { @apply p-12 md:p-16; }
 
   /* ─── Gap Spacing ─── */
-  .gap-sm { @apply gap-4; }
-  .gap-md { @apply gap-6; }
-  .gap-lg { @apply gap-8; }
-  .gap-xl { @apply gap-12; }
+  .gap-sm { @apply gap-3 md:gap-4; }
+  .gap-md { @apply gap-4 md:gap-6; }
+  .gap-lg { @apply gap-6 md:gap-8; }
+  .gap-xl { @apply gap-8 md:gap-12; }
 }
 
 /* ─── Heizen Premium Foundation ─── */
@@ -198,11 +198,11 @@ h1, h2, h3 {
 }
 
 .badge-sm {
-  @apply text-[9px] tracking-[0.3em];
+  @apply text-[9px] tracking-[0.3em] px-3 py-1;
 }
 
 .badge-lg {
-  @apply text-xs tracking-[0.2em];
+  @apply text-xs tracking-[0.2em] px-5 py-2;
 }
 
 /* Button Primary */
@@ -273,4 +273,9 @@ h1, h2, h3 {
 
 .text-muted-lg {
   @apply text-lg md:text-xl text-foreground/60 leading-relaxed;
+}
+
+/* Responsive Container */
+.container {
+  @apply mx-auto px-4 md:px-6 lg:px-8 max-w-7xl;
 }
