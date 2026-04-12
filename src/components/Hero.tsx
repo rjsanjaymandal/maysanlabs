@@ -22,9 +22,9 @@ export default function Hero() {
            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
            className="max-w-5xl"
         >
-          <h1 className="hero-title text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-8 leading-[0.9] tracking-tighter uppercase">
-            We build <em className="text-[var(--brand-primary)] not-italic font-medium italic">high-fidelity</em><br />
-            Enterprise Infrastructure.
+          <h1 className="hero-title text-3xl sm:text-6xl md:text-8xl lg:text-9xl font-black mb-8 leading-[0.9] tracking-tighter uppercase break-words">
+            We build <em className="text-[var(--brand-primary)] not-italic font-medium italic">high-fidelity</em> <br />
+            Enterprise<br className="block sm:hidden" /> Infrastructure.
           </h1>
           
           <p className="text-white/70 text-xl md:text-2xl max-w-2xl mx-auto font-medium leading-relaxed mb-12">

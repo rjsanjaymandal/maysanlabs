@@ -38,7 +38,8 @@ export const HolographicGlobe = () => {
     const points: Point[] = [];
     const latLines = 18;
     const lonLines = 24;
-    const radius = Math.min(width, height) * 0.3;
+    const isMobile = width < 768;
+    const radius = Math.min(width, height) * (isMobile ? 0.25 : 0.3);
 
     for (let i = 0; i <= latLines; i++) {
         const lat = (Math.PI * i) / latLines;
@@ -65,8 +66,8 @@ export const HolographicGlobe = () => {
         const scale = perspective / (perspective + zFinal);
         
         return {
-            x: x * scale + width * 0.8, // Offset to bottom right
-            y: yFinal * scale + height * 0.85,
+            x: x * scale + width * (isMobile ? 0.85 : 0.8), // Offset to bottom right
+            y: yFinal * scale + height * (isMobile ? 0.9 : 0.85),
             scale,
             z: zFinal
         };

@@ -95,6 +95,10 @@ export const metadata: Metadata = {
   },
   category: "technology",
   classification: "SaaS Development Company",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
 };
 
 import type { Viewport } from "next";
