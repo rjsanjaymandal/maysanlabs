@@ -165,6 +165,9 @@ export default function RootLayout({
           </svg>
         </div>
 
+        {/* Global Brand Vignette Override */}
+        <div className="brand-vignette" />
+
         <ThemeProvider>
           <SmoothScroll>
             <GoogleAnalytics />

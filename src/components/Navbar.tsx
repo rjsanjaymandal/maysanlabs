@@ -19,6 +19,7 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Services", href: "/services" },
+    { name: "Products", href: "/products" },
     { name: "Engineering", href: "/engineering" },
     { name: "Case Studies", href: "/case-studies" },
     { name: "Blog", href: "/blog" },
@@ -33,12 +34,19 @@ export default function Navbar() {
         <div className="container-main flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-[#007AFF] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500">
-              <span className="font-sans font-black text-white text-xl uppercase tracking-tighter">M</span>
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500 relative overflow-hidden bg-[var(--brand-gradient)]">
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
+              <span className="font-sans font-black text-black text-xl uppercase tracking-tighter relative z-10">M</span>
             </div>
             <div className="flex flex-col">
               <span className="font-sans font-black text-white text-lg leading-none tracking-tight">Maysan Labs</span>
-              <span className="font-mono text-[9px] text-[#007AFF] uppercase tracking-[0.3em] mt-1">Enterprise_AI</span>
+              <div className="flex items-center gap-1.5 mt-1">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--brand-light)] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--brand-primary)]"></span>
+                </span>
+                <span className="font-mono text-[9px] text-[var(--brand-primary)] uppercase tracking-[0.3em]">Enterprise_AI</span>
+              </div>
             </div>
           </Link>
 
@@ -49,11 +57,11 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-all duration-300 relative group ${
-                  pathname === item.href ? "text-[#007AFF]" : "text-white/50 hover:text-white"
+                  pathname === item.href ? "text-[var(--brand-primary)]" : "text-white/70 hover:text-white"
                 }`}
               >
                 {item.name}
-                <span className={`absolute -bottom-1 left-0 w-full h-[1px] bg-[#007AFF] transition-transform duration-500 origin-right scale-x-0 group-hover:scale-x-100 group-hover:origin-left ${pathname === item.href ? "scale-x-100" : ""}`} />
+                <span className={`absolute -bottom-1 left-0 w-full h-[1px] bg-[var(--brand-gradient)] transition-transform duration-500 origin-right scale-x-0 group-hover:scale-x-100 group-hover:origin-left ${pathname === item.href ? "scale-x-100" : ""}`} />
               </Link>
             ))}
           </div>
@@ -61,7 +69,7 @@ export default function Navbar() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-6">
             <Link href="/init" className="pill-btn pill-btn-primary !py-2.5 !px-6 text-xs">
-              Book a Call
+              Book a Strategy Call
             </Link>
           </div>
 
@@ -88,8 +96,8 @@ export default function Navbar() {
             <div className="flex flex-col h-full p-8">
               <div className="flex justify-between items-center mb-16">
                  <Link href="/" className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-[#007AFF] rounded-xl flex items-center justify-center">
-                      <span className="font-black text-white text-xl">M</span>
+                    <div className="w-10 h-10 bg-[var(--brand-primary)] rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(163,230,53,0.3)]">
+                      <span className="font-black text-black text-xl">M</span>
                     </div>
                  </Link>
                  <button onClick={() => setIsOpen(false)} className="p-2 text-white/50 hover:text-white">
@@ -109,7 +117,7 @@ export default function Navbar() {
                       href={item.href}
                       onClick={() => setIsOpen(false)}
                       className={`text-4xl font-black uppercase tracking-tighter ${
-                        pathname === item.href ? "text-[#007AFF]" : "text-white/30 hover:text-white"
+                        pathname === item.href ? "text-[var(--brand-primary)]" : "text-white/30 hover:text-white"
                       }`}
                     >
                       {item.name}
@@ -128,7 +136,7 @@ export default function Navbar() {
                 </Link>
                 <div className="mt-8 pt-8 border-t border-white/5 flex flex-col gap-2">
                    <span className="font-mono text-[10px] text-white/20 uppercase tracking-[0.4em]">Node_Status</span>
-                   <span className="text-xs text-[#007AFF]">Operational // 99.9% Uptime</span>
+                   <span className="text-xs text-[var(--brand-primary)]">Operational // 99.9% Uptime</span>
                 </div>
               </div>
             </div>

@@ -46,18 +46,18 @@ export default function AboutPage() {
             {values.map((value, index) => (
               <div key={index} className="maysan-card group flex flex-col justify-between">
                 <div>
-                  <div className="w-14 h-14 bg-[#007AFF]/10 rounded-2xl flex items-center justify-center mb-10 text-[#007AFF] border border-[#007AFF]/20 group-hover:bg-[#007AFF] group-hover:text-white transition-all duration-500 shadow-lg">
+                  <div className="w-14 h-14 bg-[var(--brand-primary)]/10 rounded-2xl flex items-center justify-center mb-10 text-[var(--brand-primary)] border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-primary)] group-hover:text-black transition-all duration-500 shadow-lg">
                     {value.icon}
                   </div>
-                  <h3 className="text-3xl font-black text-white mb-6 uppercase tracking-tight group-hover:text-[#007AFF] transition-colors">
+                  <h3 className="text-3xl font-black text-white mb-6 uppercase tracking-tight group-hover:text-[var(--brand-primary)] transition-colors">
                     {value.title}
                   </h3>
-                  <p className="text-white/40 text-sm leading-relaxed font-medium">
+                  <p className="text-white/70 text-sm leading-relaxed font-medium">
                     {value.desc}
                   </p>
                 </div>
                 <div className="mt-12 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
-                   <ArrowUpRight size={14} className="text-[#007AFF]" />
+                   <ArrowUpRight size={14} className="text-[var(--brand-primary)]" />
                 </div>
               </div>
             ))}
@@ -72,9 +72,9 @@ export default function AboutPage() {
           <div className="max-w-4xl">
             <span className="announcement-bar !mb-8">Our Story</span>
             <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] uppercase mb-12">
-              Our <br /><span className="text-[#007AFF] italic uppercase">Story.</span>
+              Built <span className="text-[var(--brand-primary)] italic uppercase">Right.</span>
             </h2>
-            <div className="grid md:grid-cols-2 gap-12 text-lg text-white/40 font-medium leading-relaxed">
+            <div className="grid md:grid-cols-2 gap-12 text-lg text-white/70 font-medium leading-relaxed">
               <p>
                 We started Maysan Labs because we saw enterprises struggle with bloated, legacy architectures and fragmented systems. We wanted to anchor engineering in absolute precision.
               </p>

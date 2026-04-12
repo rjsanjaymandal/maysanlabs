@@ -9,10 +9,10 @@ interface BlogCardProps {
 export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link href={`/blog/${post.slug}`} className="block h-full group">
-      <div className="maysan-card h-full flex flex-col group-hover:border-[#007AFF]/40">
+      <div className="maysan-card h-full flex flex-col group-hover:border-[var(--brand-primary)]/40">
         <div className="flex flex-col h-full relative z-10">
           <div className="flex items-center gap-6 mb-10 text-[9px] font-black tracking-[0.3em] uppercase text-white/20">
-            <div className="flex items-center gap-2 text-[#007AFF]">
+            <div className="flex items-center gap-2 text-[var(--brand-primary)]">
               <Tag size={12} />
               <span>{post.category}</span>
             </div>
@@ -22,11 +22,11 @@ export default function BlogCard({ post }: BlogCardProps) {
             </div>
           </div>
 
-          <h3 className="text-2xl font-black mb-6 tracking-tight group-hover:text-[#007AFF] transition-colors duration-500 uppercase leading-[1.1]">
+          <h3 className="text-2xl font-black mb-6 tracking-tight group-hover:text-[var(--brand-primary)] transition-colors duration-500 uppercase leading-[1.1]">
             {post.title}
           </h3>
 
-          <p className="text-sm font-medium leading-relaxed text-white/40 group-hover:text-white/60 transition-colors duration-500 mb-12 line-clamp-3">
+          <p className="text-sm font-medium leading-relaxed text-white/70 group-hover:text-white/90 transition-colors duration-500 mb-12 line-clamp-3">
             {post.excerpt}
           </p>
 
@@ -35,7 +35,7 @@ export default function BlogCard({ post }: BlogCardProps) {
               {post.date}
             </div>
             
-            <div className="flex items-center gap-2 text-xs font-black text-[#007AFF] uppercase tracking-widest group-hover:gap-4 transition-all duration-500">
+            <div className="flex items-center gap-2 text-xs font-black text-[var(--brand-primary)] uppercase tracking-widest group-hover:gap-4 transition-all duration-500">
               READ MORE <ArrowRight size={14} />
             </div>
           </div>

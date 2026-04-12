@@ -66,9 +66,9 @@ export default function InitPage() {
               >
                 <span className="announcement-bar">Get in Touch</span>
                 <h1 className="hero-title text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mt-8 uppercase mb-8">
-                  Book a <span className="text-[#007AFF] italic uppercase">Call.</span>
+                  Book a <span className="text-[var(--brand-primary)] italic uppercase">Call.</span>
                 </h1>
-                <p className="text-white/40 max-w-xl mx-auto mt-6 text-xl font-medium leading-relaxed">
+                <p className="text-white/70 max-w-xl mx-auto mt-6 text-xl font-medium leading-relaxed">
                   Tell us about your project details and we will schedule a conversation to discuss the next steps.
                 </p>
               </motion.div>
@@ -79,11 +79,11 @@ export default function InitPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
                 onSubmit={handleSubmit} 
-                className="maysan-card border-[#007AFF]/10 bg-black/20 backdrop-blur-3xl p-10 md:p-16"
+                className="maysan-card border-[var(--brand-primary)]/10 bg-black/20 backdrop-blur-3xl p-10 md:p-16"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                   <div className="md:col-span-2">
-                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#007AFF] mb-4">
+                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[var(--brand-primary)] mb-4">
                       Your Name / Company *
                     </label>
                     <input
@@ -93,12 +93,12 @@ export default function InitPage() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="John Doe / Acme Corp"
-                      className="w-full bg-[#0d1117]/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-[#007AFF]/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10"
+                      className="w-full bg-[#0d1117]/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-[var(--brand-primary)]/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#007AFF] mb-4">
+                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[var(--brand-primary)] mb-4">
                       Email Address *
                     </label>
                     <input
@@ -108,12 +108,12 @@ export default function InitPage() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="john@example.com"
-                      className="w-full bg-[#0d1117]/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-[#007AFF]/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10"
+                      className="w-full bg-[#0d1117]/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-[var(--brand-primary)]/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#007AFF] mb-4">
+                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[var(--brand-primary)] mb-4">
                       Phone Number
                     </label>
                     <input
@@ -122,12 +122,12 @@ export default function InitPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+1 234 567 890"
-                      className="w-full bg-[#0d1117]/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-[#007AFF]/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10"
+                      className="w-full bg-[#0d1117]/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-[var(--brand-primary)]/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10"
                     />
                   </div>
 
                   <div className="md:col-span-2">
-                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#007AFF] mb-4">
+                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[var(--brand-primary)] mb-4">
                       Project Details / Requirements
                     </label>
                     <textarea
@@ -136,7 +136,7 @@ export default function InitPage() {
                       onChange={handleChange}
                       placeholder="Tell us about what you're building..."
                       rows={5}
-                      className="w-full bg-[#0d1117]/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-[#007AFF]/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10 resize-none"
+                      className="w-full bg-[#0d1117]/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-[var(--brand-primary)]/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10 resize-none"
                     />
                   </div>
                 </div>
@@ -163,11 +163,11 @@ export default function InitPage() {
                animate={{ opacity: 1, scale: 1 }}
                className="max-w-2xl mx-auto text-center"
             >
-              <div className="w-24 h-24 bg-[#007AFF] rounded-[2rem] flex items-center justify-center mx-auto mb-12 shadow-[0_0_40px_rgba(0,122,255,0.4)]">
-                <CheckCircle size={48} className="text-white" />
+              <div className="w-24 h-24 bg-[var(--brand-primary)] rounded-[2rem] flex items-center justify-center mx-auto mb-12 shadow-[0_0_40px_rgba(163,230,53,0.4)] glow-brand">
+                <CheckCircle size={48} className="text-black" />
               </div>
-              <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-6 leading-none">Message <br /><span className="text-[#007AFF] italic uppercase">Sent.</span></h2>
-              <p className="text-white/40 mb-16 text-xl font-medium max-w-md mx-auto">
+              <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-6 leading-none">Message <br /><span className="text-[var(--brand-primary)] italic uppercase">Sent.</span></h2>
+              <p className="text-white/70 mb-16 text-xl font-medium max-w-md mx-auto">
                 We've received your request. Our team will get back to you shortly to schedule your call.
               </p>
               <button

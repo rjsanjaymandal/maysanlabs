@@ -25,9 +25,9 @@ export default function ContactFooter() {
           >
             <span className="announcement-bar">Work With Us</span>
             <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-white mt-10 mb-8 leading-[0.9]">
-              Schedule a <br /><span className="text-[#007AFF]">Strategy Call.</span>
+              Schedule a <br /><span className="text-[var(--brand-primary)] italic">Strategy Call.</span>
             </h2>
-            <p className="text-white/40 mb-12 max-w-xl mx-auto font-medium text-lg">
+            <p className="text-white/70 mb-12 max-w-xl mx-auto font-medium text-lg">
               We operate at the intersection of complex engineering and mission-critical deployment.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
@@ -49,15 +49,15 @@ export default function ContactFooter() {
             {/* Brand Column */}
             <div className="md:col-span-2">
               <Link href="/" className="flex items-center gap-3 mb-8 group">
-                <div className="w-10 h-10 bg-[#007AFF] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-500">
-                  <span className="font-black text-white text-xl">M</span>
+                <div className="w-10 h-10 bg-[var(--brand-gradient)] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-500">
+                  <span className="font-black text-black text-xl">M</span>
                 </div>
                 <div className="flex flex-col">
                    <span className="font-black text-white text-xl tracking-tighter uppercase">Maysan Labs</span>
-                   <span className="font-mono text-[8px] text-[#007AFF] uppercase tracking-[0.4em]">Enterprise_Eng</span>
+                   <span className="font-mono text-[8px] text-[var(--brand-primary)] uppercase tracking-[0.4em]">Enterprise_Eng</span>
                 </div>
               </Link>
-              <p className="text-white/30 text-sm leading-relaxed max-w-sm">
+              <p className="text-white/70 text-sm leading-relaxed max-w-sm">
                 Engineering high-performance enterprise SaaS infrastructure and autonomous operational tools with mathematical precision.
               </p>
             </div>
@@ -70,7 +70,7 @@ export default function ContactFooter() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="text-white/30 hover:text-[#007AFF] text-[11px] font-bold uppercase tracking-widest transition-colors duration-300"
+                    className="text-white/70 hover:text-[var(--brand-primary)] text-[11px] font-bold uppercase tracking-widest transition-colors duration-300"
                   >
                     {link.name}
                   </Link>
@@ -83,7 +83,7 @@ export default function ContactFooter() {
               <h4 className="text-white font-bold text-xs uppercase tracking-[0.3em] mb-8">Connectivity</h4>
               <div className="flex flex-col gap-4 text-white/30 text-xs">
                 <p className="font-medium">Gurgaon, Haryana, India</p>
-                <Link href="mailto:business@maysanlabs.com" className="hover:text-[#007AFF] transition-colors duration-300 font-bold">
+                <Link href="mailto:business@maysanlabs.com" className="hover:text-[var(--brand-primary)] transition-colors duration-300 font-bold">
                   business@maysanlabs.com
                 </Link>
               </div>
@@ -97,8 +97,8 @@ export default function ContactFooter() {
             </p>
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
-                 <div className="w-1.5 h-1.5 rounded-full bg-[#007AFF] animate-pulse" />
-                 <span className="text-[10px] font-mono text-[#007AFF] uppercase tracking-widest">Bridge_Operational</span>
+                 <div className="w-1.5 h-1.5 rounded-full bg-[var(--brand-light)] animate-pulse" />
+                 <span className="text-[10px] font-mono text-[var(--brand-light)] uppercase tracking-widest">Bridge_Operational</span>
               </div>
               <div className="h-4 w-px bg-white/5" />
               <span className="text-[10px] font-mono text-white/20 uppercase tracking-widest">ISO_27001_COMPLIANT</span>

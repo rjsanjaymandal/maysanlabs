@@ -6,6 +6,8 @@ import { caseStudies } from "@/lib/case-studies-data";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { BackgroundBeams } from "@/components/ui/background-beams";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 export const metadata: Metadata = {
   title: "Case Studies | Enterprise Software Success Stories",
@@ -18,36 +20,36 @@ export default function CaseStudiesPage() {
     <main className="min-h-screen bg-[#0d1117] relative overflow-hidden">
       <Navbar />
       
-      {/* Background Decor */}
-      <div className="radial-blur -top-40 -left-20 opacity-10" />
-
+      {/* Background Beams for consistent depth already handled in PageHeader but keeping section clean */}
+      
       <PageHeader
         label="REAL-WORLD IMPACT"
         title="CASE_STUDIES"
         subtitle="Meticulously engineered services for complex enterprise challenges. Explore our portfolio of industrial-grade transformations."
       />
 
-      <section className="sec-xl">
-        <div className="container-main">
+      <section className="sec-xl relative">
+        {/* Local Beams for the grid section */}
+        <div className="container-main relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {caseStudies.map((study) => (
               <Link key={study.slug} href={`/case-studies/${study.slug}`} className="group">
-                <SpotlightCard className="maysan-card !p-10 h-full flex flex-col group-hover:border-[#007AFF]/40 transition-colors">
+                <SpotlightCard className="maysan-card !p-10 h-full flex flex-col group-hover:border-[var(--brand-primary)]/40 transition-colors">
                   <div className="flex justify-between items-start mb-10">
                     <div>
-                      <span className="text-[#007AFF] font-mono text-[10px] tracking-[0.4em] uppercase mb-4 block">
+                      <span className="text-[var(--brand-primary)] font-mono text-[10px] tracking-[0.4em] uppercase mb-4 block font-bold">
                         {study.category}
                       </span>
-                      <h3 className="text-3xl font-black text-white group-hover:text-[#007AFF] transition-colors uppercase tracking-tight">
+                      <h3 className="text-3xl font-black text-white group-hover:text-[var(--brand-primary)] transition-colors uppercase tracking-tight">
                         {study.title}
                       </h3>
                     </div>
-                    <div className="w-12 h-12 rounded-xl bg-[#007AFF]/10 flex items-center justify-center border border-[#007AFF]/20 text-[#007AFF] group-hover:bg-[#007AFF] group-hover:text-white transition-all duration-500 shadow-lg">
+                    <div className="w-12 h-12 rounded-xl bg-[var(--brand-primary)]/10 flex items-center justify-center border border-[var(--brand-primary)]/20 text-[var(--brand-primary)] group-hover:bg-[var(--brand-primary)] group-hover:text-black transition-all duration-500 shadow-lg">
                       <ArrowRight size={20} />
                     </div>
                   </div>
 
-                  <p className="text-white/40 mb-12 leading-relaxed text-sm font-medium flex-1">
+                  <p className="text-white/70 mb-12 leading-relaxed text-sm font-medium flex-1">
                     {study.challenge}
                   </p>
 
@@ -55,9 +57,9 @@ export default function CaseStudiesPage() {
                     {study.metrics.map((metric, idx) => (
                       <div
                         key={idx}
-                        className="bg-white/5 rounded-2xl p-6 border border-white/5 group-hover:border-[#007AFF]/10 transition-colors"
+                        className="bg-white/5 rounded-2xl p-6 border border-white/5 group-hover:border-[var(--brand-primary)]/10 transition-colors"
                       >
-                        <div className="text-2xl font-black text-[#007AFF] mb-2 tracking-tighter">
+                        <div className="text-2xl font-black text-[var(--brand-primary)] mb-2 tracking-tighter">
                           {metric.value}
                         </div>
                         <div className="text-[9px] uppercase tracking-[0.2em] text-white/20 font-mono font-bold">
@@ -87,12 +89,18 @@ export default function CaseStudiesPage() {
             ))}
           </div>
 
-          {/* Bottom CTA */}
-          <div className="mt-32 text-center py-20 border-t border-white/5">
-            <h3 className="text-3xl font-black mb-12 uppercase tracking-tighter">Ready for your transformation?</h3>
-            <Link href="/init" className="pill-btn pill-btn-primary mx-auto min-w-[280px]">
-              Initialize Architecture Review
-              <ArrowUpRight size={18} />
+          {/* Bottom CTA with new consistent button style */}
+          <div className="mt-32 text-center py-24 border-t border-white/5 relative overflow-hidden rounded-[40px] bg-black/20">
+            <h3 className="text-3xl md:text-5xl font-black mb-12 uppercase tracking-tighter">Ready for your transformation?</h3>
+            <Link href="/init">
+              <HoverBorderGradient
+                containerClassName="rounded-full mx-auto w-fit"
+                as="div"
+                className="bg-[var(--brand-primary)] text-black font-bold flex items-center gap-2"
+              >
+                <span>BOOK A STRATEGY CALL</span>
+                <ArrowUpRight size={18} />
+              </HoverBorderGradient>
             </Link>
           </div>
         </div>
