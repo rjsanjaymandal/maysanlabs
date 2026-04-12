@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function ContactFooter() {
@@ -49,12 +50,11 @@ export default function ContactFooter() {
             {/* Brand Column */}
             <div className="md:col-span-2">
               <Link href="/" className="flex items-center gap-3 mb-8 group">
-                <div className="w-10 h-10 bg-[var(--brand-gradient)] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-500">
-                  <span className="font-black text-black text-xl">M</span>
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-500 overflow-hidden border border-white/10 bg-black">
+                   <Image src="/logo.png" alt="Maysan Labs Logo" width={40} height={40} className="object-cover scale-110" />
                 </div>
                 <div className="flex flex-col">
                    <span className="font-black text-white text-xl tracking-tighter uppercase">Maysan Labs</span>
-                   <span className="font-mono text-[8px] text-[var(--brand-primary)] uppercase tracking-[0.4em]">Enterprise_Eng</span>
                 </div>
               </Link>
               <p className="text-white/70 text-sm leading-relaxed max-w-sm">
@@ -95,14 +95,6 @@ export default function ContactFooter() {
             <p className="text-[10px] font-mono text-white/20 uppercase tracking-widest">
               © {new Date().getFullYear()} Maysan Labs // SYSTEM_ACTIVE
             </p>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                 <div className="w-1.5 h-1.5 rounded-full bg-[var(--brand-light)] animate-pulse" />
-                 <span className="text-[10px] font-mono text-[var(--brand-light)] uppercase tracking-widest">Bridge_Operational</span>
-              </div>
-              <div className="h-4 w-px bg-white/5" />
-              <span className="text-[10px] font-mono text-white/20 uppercase tracking-widest">ISO_27001_COMPLIANT</span>
-            </div>
           </div>
         </div>
       </section>

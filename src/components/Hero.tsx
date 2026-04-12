@@ -5,29 +5,16 @@ import Link from "next/link";
 import { ArrowRight, Play, Cpu } from "lucide-react";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import { HolographicGlobe } from "@/components/HolographicGlobe";
 
 export default function Hero() {
   return (
     <section className="relative min-h-[95vh] flex flex-col items-center justify-center pt-32 pb-20 px-4 overflow-hidden bg-[#0d1117]">
       {/* Background Beams Effect (Aceternity) */}
       <BackgroundBeams />
+      <HolographicGlobe />
 
       <div className="container-main relative z-10 flex flex-col items-center text-center">
-        {/* Announcement Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <div className="announcement-bar backdrop-blur-2xl border-white/5 bg-white/5 flex items-center gap-3">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--brand-light)] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--brand-primary)]"></span>
-            </span>
-            <span className="text-[var(--brand-light)] font-mono tracking-[0.2em]">Maysan Labs : Enterprise Engineering 2026</span>
-          </div>
-        </motion.div>
-
         {/* Scaled Headlines */}
         <motion.div
            initial={{ opacity: 0, y: 30 }}
@@ -69,24 +56,7 @@ export default function Hero() {
           </Link>
         </motion.div>
 
-        {/* Hero Footer / Trust Metrics */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="mt-32 flex flex-wrap justify-center gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-700"
-        >
-           <div className="flex items-center gap-3">
-              <Cpu size={20} />
-              <span className="font-mono text-[10px] uppercase tracking-[0.4em]">99.9%_Uptime</span>
-           </div>
-           <div className="flex items-center gap-3">
-              <span className="font-mono text-[10px] uppercase tracking-[0.4em]">Zero_Debt_Engineering</span>
-           </div>
-           <div className="flex items-center gap-3">
-              <span className="font-mono text-[10px] uppercase tracking-[0.4em]">ISO_SaaS_Patterns</span>
-           </div>
-        </motion.div>
+
       </div>
 
       {/* Background Visual Asset (Surgical Frame) */}

@@ -46,7 +46,7 @@ export default function AboutPage() {
             {values.map((value, index) => (
               <div key={index} className="maysan-card group flex flex-col justify-between">
                 <div>
-                  <div className="w-14 h-14 bg-[var(--brand-primary)]/10 rounded-2xl flex items-center justify-center mb-10 text-[var(--brand-primary)] border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-primary)] group-hover:text-black transition-all duration-500 shadow-lg">
+                  <div className="w-14 h-14 bg-[var(--brand-primary)]/10 rounded-2xl flex items-center justify-center mb-10 text-[var(--brand-primary)] border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-primary)] group-hover:text-[var(--brand-dark-text)] transition-all duration-500 shadow-lg">
                     {value.icon}
                   </div>
                   <h3 className="text-3xl font-black text-white mb-6 uppercase tracking-tight group-hover:text-[var(--brand-primary)] transition-colors">

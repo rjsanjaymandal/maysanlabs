@@ -131,7 +131,7 @@ export default function CareersClient() {
                 <HoverBorderGradient
                   containerClassName="rounded-full mx-auto w-fit"
                   as="div"
-                  className="bg-[var(--brand-gradient)] text-black font-bold flex items-center gap-2"
+                  className="bg-[var(--brand-gradient)] text-[var(--brand-dark-text)] font-black flex items-center gap-2"
                 >
                   <span>OPERATIONAL HIRE</span>
                   <ArrowUpRight size={18} />

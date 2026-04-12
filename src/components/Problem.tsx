@@ -77,7 +77,7 @@ export default function Problem() {
             >
               <div>
                 <div className="flex justify-between items-start mb-12">
-                  <div className="w-14 h-14 bg-[var(--brand-primary)]/10 rounded-2xl flex items-center justify-center text-[var(--brand-primary)] border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-gradient)] group-hover:text-black transition-all duration-500 shadow-lg">
+                    <div className="w-14 h-14 bg-[var(--brand-primary)]/10 rounded-2xl flex items-center justify-center text-[var(--brand-primary)] border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-gradient)] group-hover:text-[var(--brand-dark-text)] transition-all duration-500 shadow-lg">
                     {arch.icon}
                   </div>
                   <span className="font-mono text-[9px] font-bold tracking-[0.3em] text-[var(--brand-primary)]/40 group-hover:text-[var(--brand-primary)] transition-colors">{arch.label}</span>

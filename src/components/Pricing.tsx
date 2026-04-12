@@ -81,7 +81,7 @@ export default function Pricing() {
                 <>
                   <BorderBeam size={250} duration={12} delay={9} />
                   <div className="absolute top-0 right-0 left-0 -mt-3.5 flex justify-center">
-                    <span className="bg-[var(--brand-gradient)] text-black text-[10px] font-black px-4 py-1 rounded-full tracking-widest uppercase shadow-lg z-10">
+                    <span className="bg-[var(--brand-gradient)] text-[var(--brand-dark-text)] text-[10px] font-black px-4 py-1 rounded-full tracking-widest uppercase shadow-lg z-10">
                       Highest_Priority
                     </span>
                   </div>
@@ -91,8 +91,8 @@ export default function Pricing() {
               <div className="flex items-center gap-4 mb-8">
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center border transition-all duration-500 ${
                   plan.featured 
-                  ? "bg-[var(--brand-gradient)] text-black border-[var(--brand-primary)]/20 shadow-[0_0_20px_rgba(163,230,53,0.4)]" 
-                  : "bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-primary)] group-hover:text-black"
+                  ? "bg-[var(--brand-gradient)] text-[var(--brand-dark-text)] border-[var(--brand-primary)]/20 shadow-[0_0_20px_rgba(163,230,53,0.4)]" 
+                  : "bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-primary)] group-hover:text-[var(--brand-dark-text)]"
                 }`}>
                   {plan.icon}
                 </div>
@@ -124,7 +124,7 @@ export default function Pricing() {
                 <HoverBorderGradient
                   containerClassName="rounded-full w-full"
                   as="div"
-                  className={`flex items-center justify-center gap-2 ${plan.featured ? "bg-[var(--brand-gradient)] text-black font-bold" : "bg-black text-white"}`}
+                  className={`flex items-center justify-center gap-2 ${plan.featured ? "bg-[var(--brand-gradient)] text-[var(--brand-dark-text)] font-black" : "bg-black text-white"}`}
                 >
                   <span>Book a Strategy Call</span>
                   <ArrowUpRight size={16} />

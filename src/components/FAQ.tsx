@@ -100,7 +100,7 @@ export default function FAQ() {
                     </span>
                   </div>
                   <div className="shrink-0">
-                     <div className={`w-10 h-10 rounded-2xl flex items-center justify-center border border-border group-hover:border-primary transition-all duration-300 ${isOpen ? "bg-primary text-white scale-110" : "bg-white"}`}>
+                     <div className={`w-10 h-10 rounded-2xl flex items-center justify-center border border-border group-hover:border-primary transition-all duration-300 ${isOpen ? "bg-primary text-[var(--brand-dark-text)] scale-110 font-bold" : "bg-black/5"}`}>
                         {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                      </div>
                   </div>

@@ -97,7 +97,7 @@ export default function ServicesClient() {
                 className="maysan-card border-[var(--brand-primary)]/10 bg-black/20 backdrop-blur-3xl p-10 md:p-16 group flex flex-col justify-between"
               >
                 <div>
-                   <div className="w-14 h-14 bg-[var(--brand-primary)]/10 rounded-2xl flex items-center justify-center mb-10 text-[var(--brand-primary)] border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-gradient)] group-hover:text-black transition-all duration-500">
+                   <div className="w-14 h-14 bg-[var(--brand-primary)]/10 rounded-2xl flex items-center justify-center mb-10 text-[var(--brand-primary)] border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-gradient)] group-hover:text-[var(--brand-dark-text)] transition-all duration-500">
                      {service.icon}
                    </div>
                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[var(--brand-primary)] mb-4">

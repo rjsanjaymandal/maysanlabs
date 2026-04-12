@@ -52,8 +52,8 @@ export default function OperationsRoadmap() {
             </div>
 
             <div className="relative z-10">
-              <div className="w-12 h-12 bg-[var(--brand-primary)]/10 rounded-xl flex items-center justify-center mb-10 border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-gradient)] group-hover:text-black transition-all duration-500">
-                <div className="group-hover:text-black">
+              <div className="w-14 h-14 bg-[var(--brand-primary)]/10 rounded-2xl flex items-center justify-center text-[var(--brand-primary)] border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-gradient)] group-hover:text-[var(--brand-dark-text)] transition-all duration-500 shadow-lg">
+                <div className="group-hover:text-[var(--brand-dark-text)] text-[var(--brand-primary)] transition-colors">
                   {step.icon}
                 </div>
               </div>

@@ -44,7 +44,7 @@ export default function CaseStudiesPage() {
                         {study.title}
                       </h3>
                     </div>
-                    <div className="w-12 h-12 rounded-xl bg-[var(--brand-primary)]/10 flex items-center justify-center border border-[var(--brand-primary)]/20 text-[var(--brand-primary)] group-hover:bg-[var(--brand-primary)] group-hover:text-black transition-all duration-500 shadow-lg">
+                    <div className="w-12 h-12 rounded-xl bg-[var(--brand-primary)]/10 flex items-center justify-center border border-[var(--brand-primary)]/20 text-[var(--brand-primary)] group-hover:bg-[var(--brand-primary)] group-hover:text-[var(--brand-dark-text)] transition-all duration-500 shadow-lg">
                       <ArrowRight size={20} />
                     </div>
                   </div>
@@ -96,7 +96,7 @@ export default function CaseStudiesPage() {
               <HoverBorderGradient
                 containerClassName="rounded-full mx-auto w-fit"
                 as="div"
-                className="bg-[var(--brand-primary)] text-black font-bold flex items-center gap-2"
+                className="bg-[var(--brand-primary)] text-[var(--brand-dark-text)] font-black flex items-center gap-2"
               >
                 <span>BOOK A STRATEGY CALL</span>
                 <ArrowUpRight size={18} />

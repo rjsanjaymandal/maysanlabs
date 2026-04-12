@@ -164,7 +164,7 @@ export default function InitPage() {
                className="max-w-2xl mx-auto text-center"
             >
               <div className="w-24 h-24 bg-[var(--brand-primary)] rounded-[2rem] flex items-center justify-center mx-auto mb-12 shadow-[0_0_40px_rgba(163,230,53,0.4)] glow-brand">
-                <CheckCircle size={48} className="text-black" />
+                <CheckCircle size={48} className="text-white" />
               </div>
               <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-6 leading-none">Message <br /><span className="text-[var(--brand-primary)] italic uppercase">Sent.</span></h2>
               <p className="text-white/70 mb-16 text-xl font-medium max-w-md mx-auto">
