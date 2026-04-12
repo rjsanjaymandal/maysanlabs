@@ -21,8 +21,8 @@ export const HolographicGlobe = () => {
 
     let width = containerRef.current.clientWidth;
     let height = containerRef.current.clientHeight;
-    let rotationY = 0;
-    let rotationX = 0;
+    const rotationY = 0;
+    const rotationX = 0;
 
     const setCanvasSize = () => {
       width = containerRef.current!.clientWidth;
@@ -38,7 +38,7 @@ export const HolographicGlobe = () => {
     const points: Point[] = [];
     const latLines = 18;
     const lonLines = 24;
-    const radius = Math.min(width, height) * 0.4;
+    const radius = Math.min(width, height) * 0.3;
 
     for (let i = 0; i <= latLines; i++) {
         const lat = (Math.PI * i) / latLines;
@@ -53,20 +53,20 @@ export const HolographicGlobe = () => {
 
     const project = (p: Point, rotY: number, rotX: number) => {
         // Rotate around Y axis
-        let x = p.x * Math.cos(rotY) - p.z * Math.sin(rotY);
-        let z = p.x * Math.sin(rotY) + p.z * Math.cos(rotY);
-        let y = p.y;
+        const x = p.x * Math.cos(rotY) - p.z * Math.sin(rotY);
+        const z = p.x * Math.sin(rotY) + p.z * Math.cos(rotY);
+        const y = p.y;
 
         // Rotate around X axis
-        let yFinal = y * Math.cos(rotX) - z * Math.sin(rotX);
-        let zFinal = y * Math.sin(rotX) + z * Math.cos(rotX);
+        const yFinal = y * Math.cos(rotX) - z * Math.sin(rotX);
+        const zFinal = y * Math.sin(rotX) + z * Math.cos(rotX);
 
         const perspective = 600;
         const scale = perspective / (perspective + zFinal);
         
         return {
-            x: x * scale + width / 1.5, // Offset to right
-            y: yFinal * scale + height / 2,
+            x: x * scale + width * 0.8, // Offset to bottom right
+            y: yFinal * scale + height * 0.85,
             scale,
             z: zFinal
         };
@@ -75,7 +75,7 @@ export const HolographicGlobe = () => {
     let mouseX = 0;
     let mouseY = 0;
     let targetRotationY = 0;
-    let targetRotationX = 0;
+    const targetRotationX = 0;
 
     const handleMouseMove = (e: MouseEvent) => {
         mouseX = (e.clientX / window.innerWidth) - 0.5;
