@@ -66,6 +66,7 @@ export default function Pricing() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
               initial={{ opacity: 0, y: 30 }}
@@ -125,7 +126,7 @@ export default function Pricing() {
                   as="div"
                   className={`flex items-center justify-center gap-2 ${plan.featured ? "bg-[var(--brand-gradient)] text-black font-bold" : "bg-black text-white"}`}
                 >
-                  <span>Book a Call</span>
+                  <span>Book a Strategy Call</span>
                   <ArrowUpRight size={16} />
                 </HoverBorderGradient>
               </Link>
