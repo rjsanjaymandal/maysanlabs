@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Deployment Solutions",
+  title: "Deployment Services",
   description:
     "Scalable digital infrastructure engineered for modern SaaS enterprises. Explore our core infrastructure, data operations, and AI integration services.",
   alternates: {
-    canonical: "/solutions",
+    canonical: "/services",
   },
 };
 
-export default function SolutionsLayout({
+export default function ServicesLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -31,7 +31,7 @@ export default function SolutionsLayout({
               "High-performance MERN stack architecture and autonomous operational layers for modern enterprises.",
             hasOfferCatalog: {
               "@type": "OfferCatalog",
-              name: "Enterprise Solutions",
+              name: "Enterprise Services",
               itemListElement: [
                 {
                   "@type": "Offer",

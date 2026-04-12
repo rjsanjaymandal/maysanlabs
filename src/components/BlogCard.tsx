@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BlogPost } from "@/lib/blog-data";
-import { ArrowRight, Calendar, Clock, Tag } from "lucide-react";
+import { ArrowRight, Clock, Tag, ArrowUpRight } from "lucide-react";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -9,10 +9,10 @@ interface BlogCardProps {
 export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link href={`/blog/${post.slug}`} className="block h-full group">
-      <div className="card-base card-lg flex flex-col h-full group-hover:border-primary/10 relative overflow-hidden rounded-[2.5rem]">
+      <div className="maysan-card h-full flex flex-col group-hover:border-[#007AFF]/40">
         <div className="flex flex-col h-full relative z-10">
-          <div className="flex items-center gap-6 mb-8 text-[10px] font-bold tracking-[0.2em] uppercase text-foreground/40">
-            <div className="flex items-center gap-2 text-primary/60">
+          <div className="flex items-center gap-6 mb-10 text-[9px] font-black tracking-[0.3em] uppercase text-white/20">
+            <div className="flex items-center gap-2 text-[#007AFF]">
               <Tag size={12} />
               <span>{post.category}</span>
             </div>
@@ -22,22 +22,21 @@ export default function BlogCard({ post }: BlogCardProps) {
             </div>
           </div>
 
-          <h3 className="text-xl font-bold mb-4 tracking-tight group-hover:text-primary transition-colors duration-500 leading-tight">
+          <h3 className="text-2xl font-black mb-6 tracking-tight group-hover:text-[#007AFF] transition-colors duration-500 uppercase leading-[1.1]">
             {post.title}
           </h3>
 
-          <p className="text-sm font-medium leading-relaxed text-foreground/50 group-hover:text-foreground/70 transition-colors duration-500 mb-10 line-clamp-3">
+          <p className="text-sm font-medium leading-relaxed text-white/40 group-hover:text-white/60 transition-colors duration-500 mb-12 line-clamp-3">
             {post.excerpt}
           </p>
 
-          <div className="mt-auto pt-8 border-t border-border/50 flex items-center justify-between">
-            <div className="flex items-center gap-3 text-[10px] font-bold text-foreground/30 uppercase tracking-[0.15em]">
-              <Calendar size={12} className="text-primary/20" />
+          <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between">
+            <div className="font-mono text-[9px] font-bold text-white/10 uppercase tracking-[0.4em]">
               {post.date}
             </div>
             
-            <div className="flex items-center gap-2 text-[10px] font-bold text-primary uppercase tracking-[0.2em] group-hover:gap-4 transition-all duration-500">
-              Read <ArrowRight size={14} />
+            <div className="flex items-center gap-2 text-xs font-black text-[#007AFF] uppercase tracking-widest group-hover:gap-4 transition-all duration-500">
+              READ MORE <ArrowRight size={14} />
             </div>
           </div>
         </div>

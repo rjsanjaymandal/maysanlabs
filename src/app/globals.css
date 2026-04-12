@@ -1,281 +1,221 @@
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Responsive Design Tokens ─── */
-@layer utilities {
-  /* ─── Section Padding ─── */
-  .section-sm { @apply py-12 md:py-16; }
-  .section-md { @apply py-16 md:py-24; }
-  .section-lg { @apply py-24 md:py-32; }
-  .section-xl { @apply py-32 md:py-40; }
-  .section-2xl { @apply py-40 md:py-48; }
-
-  /* ─── Card Padding ─── */
-  .card-sm { @apply p-4 md:p-6; }
-  .card-md { @apply p-6 md:p-8; }
-  .card-lg { @apply p-8 md:p-10; }
-  .card-xl { @apply p-10 md:p-12; }
-  .card-2xl { @apply p-12 md:p-16; }
-
-  /* ─── Gap Spacing ─── */
-  .gap-sm { @apply gap-3 md:gap-4; }
-  .gap-md { @apply gap-4 md:gap-6; }
-  .gap-lg { @apply gap-6 md:gap-8; }
-  .gap-xl { @apply gap-8 md:gap-12; }
-}
-
-/* ─── Heizen Premium Foundation ─── */
+/* ─── Maysan Enterprise Design Tokens ─── */
 :root {
-  --background: 210 20% 98%; /* Surgical White #F8F9FA */
-  --foreground: 222 47% 11%;    /* Deep Navy */
-
-  --primary: 176 100% 35%;     /* Heizen Teal */
-  --primary-foreground: 0 0% 100%;
-
-  --secondary: 210 20% 90%;
-  --secondary-foreground: 222 47% 15%;
-
-  --muted: 210 20% 94%;
-  --muted-foreground: 215 16% 47%;
-
-  --accent: 176 100% 40%;
-  --accent-foreground: 0 0% 100%;
-
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
-
-  --border: 214 32% 91%;
-  --input: 214 32% 91%;
-  --ring: 176 100% 35%;
-
-  --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
-
-  --popover: 0 0% 100%;
-  --popover-foreground: 222 47% 11%;
-
-  --radius: 6px; /* Softer, Premium Radius */
-
-  --font-size-hero: clamp(3rem, 10vw, 8rem);
-  --font-size-h1: clamp(2.5rem, 7vw, 4.5rem);
-  --font-size-h2: clamp(1.8rem, 5vw, 3rem);
-
-  --section-padding-y: 12rem; /* Increased breathability */
-  --container-padding-x: 2rem;
+  --primary: #007AFF; /* Maysan Brand Blue */
+  --primary-glow: rgba(0, 122, 255, 0.4);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-radius: 24px;
 }
 
+@layer utilities {
+  /* Section Padding */
+  .sec-sm { @apply py-12 md:py-16; }
+  .sec-md { @apply py-16 md:py-24; }
+  .sec-lg { @apply py-20 md:py-28; }
+  .sec-xl { @apply py-24 md:py-32; }
+
+  /* Container */
+  .container-main {
+    @apply w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8;
+  }
+
+  /* Bento Grid Utilities */
+  .bento-grid {
+    @apply grid grid-cols-1 md:grid-cols-12 gap-6;
+  }
+
+  .bento-item {
+    @apply col-span-1;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-black/40 backdrop-blur-xl border border-white/10;
+  }
+}
+
+/* ─── Base Styles ─── */
 @layer base {
-  * {
-    @apply border-border;
-  }
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary selection:text-white;
-    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    @apply antialiased selection:bg-[#007AFF]/30 bg-background text-foreground;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv11";
   }
-  .mask-radial-fade {
-    -webkit-mask-image: radial-gradient(circle, black 30%, transparent 70%);
-    mask-image: radial-gradient(circle, black 30%, transparent 70%);
+  .theme {
+    --font-heading: var(--font-sans);
+    --font-sans: var(--font-sans);
+  }
+  :root {
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --radius: 0.625rem;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+  }
+  .dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+  }
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
   }
 }
 
-html,
-body {
+html, body {
   scroll-behavior: smooth;
-  overflow-x: hidden;
-  background-color: hsl(var(--background));
 }
 
-/* ─── Premium UI Elements ─── */
+/* ─── Typography Overrides ─── */
+.hero-title {
+  background: linear-gradient(180deg, #FFFFFF 0%, #A0A0A0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  @apply tracking-tighter;
+}
 
-/* Grain Texture */
-body::before {
+.weight-contrast {
+  @apply font-extrabold;
+}
+
+.weight-contrast em {
+  @apply font-normal italic text-[#007AFF] not-italic;
+}
+
+/* ─── Heizen Card Look ─── */
+.maysan-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--card-radius);
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.maysan-card::before {
   content: "";
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.05;
-  pointer-events: none;
-  z-index: 50;
-  filter: contrast(150%) brightness(100%);
-}
-
-/* Grid Overlay Utility */
-.grid-overlay {
   position: absolute;
   inset: 0;
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, hsla(var(--foreground), 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, hsla(var(--foreground), 0.03) 1px, transparent 1px);
-  mask-image: radial-gradient(ellipse at center, black, transparent 80%);
+  background: radial-gradient(circle at top right, var(--primary-glow), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
   pointer-events: none;
 }
 
-/* Radial Glow Utilities */
-.radial-glow {
+.maysan-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 122, 255, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.maysan-card:hover::before {
+  opacity: 0.1;
+}
+
+/* ─── Pill Buttons ─── */
+.pill-btn {
+  @apply px-8 py-4 rounded-full font-bold text-sm transition-all duration-300 flex items-center justify-center gap-2;
+}
+
+.pill-btn-primary {
+  @apply bg-[#007AFF] text-white hover:shadow-[0_0_30px_rgba(0,122,255,0.4)] hover:scale-105 active:scale-95;
+}
+
+.pill-btn-secondary {
+  @apply bg-white/5 border border-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-black;
+}
+
+/* ─── Announcement Bar ─── */
+.announcement-bar {
+  @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] font-bold uppercase tracking-widest text-[#007AFF] backdrop-blur-md mb-8;
+}
+
+/* ─── Background Visual Asset (Surgical Frame) ─── */
+.absolute-center {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  display: flex;
+}
+
+.radial-blur {
   position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, hsla(var(--primary), 0.15) 0%, transparent 70%);
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
   filter: blur(80px);
   pointer-events: none;
   z-index: -1;
-}
-
-/* ─── Typography Scales ─── */
-h1, h2, h3 {
-  @apply font-bold tracking-tight text-foreground;
-  line-height: 1.1;
-}
-
-.text-massive {
-  font-size: var(--font-size-hero);
-  @apply font-bold tracking-tighter;
-}
-
-/* Serif Accent Utility */
-.font-accent {
-  font-family: var(--font-serif);
-  @apply italic font-medium;
-}
-
-/* ─── Surgical UI Components ─── */
-
-.btn-surgical {
-  @apply px-8 py-4 bg-primary text-white font-bold uppercase tracking-[0.2em] transition-all duration-500 rounded-full text-[10px] relative overflow-hidden;
-  border: 1px solid transparent;
-}
-
-.btn-surgical::after {
-  content: "";
-  @apply absolute inset-0 bg-white/20 translate-y-full transition-transform duration-500;
-}
-
-.btn-surgical:hover::after {
-  @apply translate-y-0;
-}
-
-.btn-surgical:hover {
-  @apply bg-foreground text-background;
-  transform: translateY(-2px);
-  box-shadow: 0 20px 40px -10px hsla(var(--primary), 0.3);
-}
-
-.card-surgical {
-  @apply p-10 bg-white/70 backdrop-blur-sm border border-foreground/5 rounded-[2.5rem] relative overflow-hidden;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.card-surgical:hover {
-  @apply bg-white border-primary/20;
-  transform: translateY(-4px);
-  box-shadow: 0 30px 60px -12px hsla(var(--foreground), 0.05);
-}
-
-/* ─── Animations ─── */
-@keyframes reveal-up {
-  from { clip-path: inset(100% 0 0 0); transform: translateY(20px); }
-  to { clip-path: inset(0 0 0 0); transform: translateY(0); }
-}
-
-.animate-reveal {
-  animation: reveal-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* ─── Scrollbar ─── */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: hsl(var(--primary)); }
-
-/* ─── Consistent Component Patterns ─── */
-
-/* Badge/Label */
-.badge {
-  @apply font-bold text-[10px] tracking-[0.4em] uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full inline-block;
-}
-
-.badge-sm {
-  @apply text-[9px] tracking-[0.3em] px-3 py-1;
-}
-
-.badge-lg {
-  @apply text-xs tracking-[0.2em] px-5 py-2;
-}
-
-/* Button Primary */
-.btn-primary {
-  @apply px-8 py-4 bg-primary text-white font-bold uppercase tracking-[0.15em] text-xs transition-all duration-300 rounded-full inline-flex items-center justify-center gap-3;
-}
-
-.btn-primary:hover {
-  @apply bg-foreground text-background -translate-y-0.5;
-  box-shadow: 0 20px 40px -10px hsla(var(--primary), 0.3);
-}
-
-/* Button Secondary */
-.btn-secondary {
-  @apply px-8 py-4 border border-foreground/10 text-foreground font-bold uppercase tracking-[0.15em] text-xs transition-all duration-300 rounded-full inline-flex items-center justify-center gap-3;
-}
-
-.btn-secondary:hover {
-  @apply bg-foreground text-background -translate-y-0.5;
-}
-
-/* Button Ghost */
-.btn-ghost {
-  @apply px-6 py-3 text-foreground/60 font-medium text-sm transition-colors duration-200 hover:text-foreground;
-}
-
-/* Card Base */
-.card-base {
-  @apply bg-secondary/30 rounded-[2.5rem] border border-transparent transition-all duration-500;
-}
-
-.card-base:hover {
-  @apply bg-secondary/50 border-primary/10;
-}
-
-/* Card Interactive */
-.card-interactive {
-  @apply bg-white/70 backdrop-blur-sm border border-foreground/5 rounded-[2.5rem] relative overflow-hidden transition-all duration-500;
-}
-
-.card-interactive:hover {
-  @apply bg-white border-primary/20 -translate-y-1;
-  box-shadow: 0 30px 60px -12px hsla(var(--foreground), 0.08);
-}
-
-/* Section Container */
-.section-container {
-  @apply container relative z-10;
-}
-
-/* Headings */
-.heading-xl {
-  @apply text-massive font-bold leading-[1.1];
-}
-
-.heading-lg {
-  @apply text-4xl md:text-5xl font-bold leading-tight;
-}
-
-.heading-md {
-  @apply text-2xl md:text-3xl font-bold leading-tight;
-}
-
-/* Text Muted */
-.text-muted {
-  @apply text-foreground/50;
-}
-
-.text-muted-lg {
-  @apply text-lg md:text-xl text-foreground/60 leading-relaxed;
-}
-
-/* Responsive Container */
-.container {
-  @apply mx-auto px-4 md:px-6 lg:px-8 max-w-7xl;
+  opacity: 0.3;
 }

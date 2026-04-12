@@ -1,6 +1,7 @@
 "use client";
 
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { Suspense } from "react";
 
 export default function ThemeProvider({
   children,
@@ -8,12 +9,15 @@ export default function ThemeProvider({
   children: React.ReactNode;
 }) {
   return (
-    <NextThemesProvider
-      attribute="class"
-      defaultTheme="light"
-      enableSystem={false}
-    >
-      {children}
-    </NextThemesProvider>
+    <Suspense fallback={<div style={{ visibility: "hidden" }} />}>
+      <NextThemesProvider
+        attribute="class"
+        defaultTheme="dark"
+        enableSystem={false}
+        disableTransitionOnChange
+      >
+        {children}
+      </NextThemesProvider>
+    </Suspense>
   );
 }

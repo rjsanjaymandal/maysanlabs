@@ -1,0 +1,54 @@
+
+> maysan-labs@0.1.0 lint
+> eslint
+
+
+D:\maysanlabs\maysanlabs\src\app\architecture\ArchitectureClient.tsx
+    3:15  warning  'Metadata' is defined but never used                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+    5:10  warning  'Server' is defined but never used                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+    5:26  warning  'Globe' is defined but never used                                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+    5:33  warning  'Cpu' is defined but never used                                                                                                                                                                                                                                                          @typescript-eslint/no-unused-vars
+  107:7   warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\maysanlabs\maysanlabs\src\app\architecture\page.tsx
+  14:7   warning  'layers' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  19:12  error    'Globe' is not defined                       react/jsx-no-undef
+  25:12  error    'Shield' is not defined                      react/jsx-no-undef
+  31:12  error    'Cpu' is not defined                         react/jsx-no-undef
+  37:12  error    'Server' is not defined                      react/jsx-no-undef
+
+D:\maysanlabs\maysanlabs\src\app\blog\page.tsx
+  54:7  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\maysanlabs\maysanlabs\src\app\careers\CareersClient.tsx
+  3:15  warning  'Metadata' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\maysanlabs\maysanlabs\src\app\engineering\EngineeringClient.tsx
+    3:15  warning  'Metadata' is defined but never used                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+    7:18  warning  'Variants' is defined but never used                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+    7:28  warning  'Transition' is defined but never used                                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+  126:7   warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\maysanlabs\maysanlabs\src\app\engineering\page.tsx
+  14:7  warning  'containerVariants' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  25:7  warning  'itemVariants' is assigned a value but never used       @typescript-eslint/no-unused-vars
+
+D:\maysanlabs\maysanlabs\src\app\insights\InsightsClient.tsx
+   3:15  warning  'Metadata' is defined but never used                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+   5:10  warning  'TrendingUp' is defined but never used                                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+   5:32  warning  'BarChart2' is defined but never used                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+   5:43  warning  'PieChart' is defined but never used                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+  96:7   warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+D:\maysanlabs\maysanlabs\src\app\insights\page.tsx
+  14:7   warning  'insights' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  20:12  error    'TrendingUp' is not defined                    react/jsx-no-undef
+  27:12  error    'Activity' is not defined                      react/jsx-no-undef
+  34:12  error    'BarChart2' is not defined                     react/jsx-no-undef
+  41:12  error    'PieChart' is not defined                      react/jsx-no-undef
+
+D:\maysanlabs\maysanlabs\src\app\solutions\SolutionsClient.tsx
+  203:7  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+Γ£û 29 problems (8 errors, 21 warnings)
+

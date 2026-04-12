@@ -1,127 +1,100 @@
 "use client";
 
-import { AlertTriangle, Users, Database, Activity } from "lucide-react";
-import { motion, Variants, Transition } from "framer-motion";
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 20,
-    } as Transition,
-  },
-};
+import { TerminalSquare, Cpu, ShieldAlert, Activity, ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Problem() {
-  const problems = [
+  const architectures = [
     {
-      id: "BROKEN",
-      title: "Broken Connections",
-      text: "Modern systems often rely on too many separate pieces. When one fails, the whole thing stops. We build solid, unified software.",
-      icon: <AlertTriangle size={20} />,
+      id: "RUNTIME_ZERO",
+      label: "NODE_RUNTIME",
+      title: "Deterministic AI",
+      text: "Eliminate runtime hallucinations. We deploy absolute, deterministic AI models strictly governed by enterprise-grade policies.",
+      icon: <Cpu size={24} />,
     },
     {
-      id: "DISCONNECTED",
-      title: "Disconnected Tools",
-      text: "Using too many different tools creates bottlenecks and missing information. We bring everything together into one simple system.",
-      icon: <Users size={20} />,
+      id: "SECURITY_MESH",
+      label: "SYSTEM_STABLE",
+      title: "Digital Sovereignty",
+      text: "Absolute isolation of your data. We construct zero-trust networks that grant you 100% ownership and control.",
+      icon: <ShieldAlert size={24} />,
     },
     {
-      id: "OWNERSHIP",
-      title: "Own Your Data",
-      text: "Stop renting your software and started owning it. We give you full control over your business information and infrastructure.",
-      icon: <Database size={20} />,
+      id: "THROUGHPUT_MAX",
+      label: "CLUSTER_ACTIVE",
+      title: "10x Velocity",
+      text: "Stop wasting cycles on technical debt. Our high-concurrency microservices mesh get you to market 10x faster.",
+      icon: <Activity size={24} />,
     },
   ];
 
   return (
-    <section id="problem" className="section-xl bg-background relative overflow-hidden">
-      {/* Premium Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="grid-overlay opacity-20" />
-        <div className="radial-glow top-1/4 -left-48 opacity-40" />
-      </div>
-
-      <div className="section-container">
-        <div className="flex flex-col lg:flex-row items-baseline justify-between mb-24 gap-8">
+    <section id="architecture" className="sec-xl relative overflow-hidden">
+      {/* Background Decorative Asset */}
+      <div className="radial-blur -top-40 -left-20 opacity-10" />
+      
+      <div className="container-main">
+        <div className="flex flex-col lg:flex-row items-baseline justify-between mb-32 gap-12">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl"
+            className="max-w-4xl"
           >
-            <div className="flex items-center gap-3 mb-8">
-              <span className="badge">Technical Diagnostics
-              </span>
+            <div className="announcement-bar !mb-8">
+               Architecture Overlay
             </div>
-            <h2 className="text-massive leading-[1.1] mb-8 font-bold">
-              Fixing the <span className="font-accent lowercase text-primary italic">problems</span> in<br />
-              Legacy Systems.
+            <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] uppercase">
+              Execute <br />
+              <span className="text-[#007AFF] italic">Without Fail.</span>
             </h2>
           </motion.div>
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="lg:max-w-xs border-l border-primary/20 pl-8"
+            className="lg:max-w-xs border-l-2 border-[#007AFF]/30 pl-8"
           >
-            <p className="text-sm font-medium text-foreground/50 leading-loose">
-              We find the issues in your software before they cause big problems for your business. We check everything, not just how it looks.
+            <p className="text-sm font-medium text-white/40 leading-loose">
+              We bypass legacy monolithic bottlenecks by building directly on modern, distributed clusters designed for global scale.
             </p>
           </motion.div>
         </div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-foreground/5 rounded-[3rem] overflow-hidden bg-white/30 backdrop-blur-sm"
-        >
-          {problems.map((prob, index) => (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {architectures.map((arch, index) => (
             <motion.div
               key={index}
-              variants={itemVariants}
-              className={`group p-16 hover:bg-white/50 transition-all duration-700 ${
-                index !== problems.length - 1 ? "md:border-r border-foreground/5" : ""
-              }`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.8 }}
+              className="maysan-card group flex flex-col justify-between"
             >
-              <div className="mb-10 w-14 h-14 bg-white shadow-sm border border-foreground/5 rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-all duration-500">
-                {prob.icon}
-              </div>
-              
               <div>
-                <h3 className="text-2xl font-bold mb-6 tracking-tight text-foreground">
-                  {prob.title}
+                <div className="flex justify-between items-start mb-12">
+                  <div className="w-14 h-14 bg-[#007AFF]/10 rounded-2xl flex items-center justify-center text-[#007AFF] border border-[#007AFF]/20 group-hover:bg-[#007AFF] group-hover:text-white transition-all duration-500 shadow-lg">
+                    {arch.icon}
+                  </div>
+                  <span className="font-mono text-[9px] font-bold tracking-[0.3em] text-[#007AFF]/40 group-hover:text-[#007AFF] transition-colors">{arch.label}</span>
+                </div>
+                
+                <h3 className="text-3xl font-black mb-6 tracking-tight uppercase group-hover:text-[#007AFF] transition-colors duration-500">
+                  {arch.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-foreground/60 font-medium">
-                  {prob.text}
+                <p className="text-white/40 text-sm leading-relaxed font-medium">
+                  {arch.text}
                 </p>
               </div>
 
-              <div className="mt-12 pt-8 border-t border-primary/10 flex items-center justify-between opacity-40 group-hover:opacity-100 transition-all duration-700">
-                 <span className="text-[10px] font-bold tracking-widest text-primary uppercase">{prob.id}</span>
-                 <Activity size={14} className="text-primary animate-pulse" />
+              <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between">
+                 <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-white/20 uppercase">{arch.id}</span>
+                 <ArrowUpRight size={14} className="text-[#007AFF] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-[-10px] group-hover:translate-x-0" />
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

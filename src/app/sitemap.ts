@@ -10,7 +10,7 @@ const EXCLUDED_ROUTES = new Set(['/_not-found', '/global-error', '/error', '/ini
 // Priority and frequency overrides for specific routes
 const ROUTE_CONFIG: Record<string, { priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }> = {
   '/':             { priority: 1.0, changeFrequency: 'weekly' },
-  '/solutions':    { priority: 0.9, changeFrequency: 'weekly' },
+  '/services':     { priority: 0.9, changeFrequency: 'weekly' },
   '/about':        { priority: 0.8, changeFrequency: 'monthly' },
   '/architecture': { priority: 0.7, changeFrequency: 'monthly' },
   '/engineering':  { priority: 0.7, changeFrequency: 'monthly' },

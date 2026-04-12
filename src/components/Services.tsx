@@ -36,8 +36,8 @@ const itemVariants: Variants = {
   },
 };
 
-export default function Solution() {
-  const solutions = [
+export default function Services() {
+  const services = [
     {
       id: "COMMERCE_ARCH",
       title: "Enterprise Commerce",
@@ -103,7 +103,7 @@ export default function Solution() {
   ];
 
   return (
-    <section id="solution" className="section-xl relative overflow-hidden bg-background">
+    <section id="services" className="section-xl relative overflow-hidden bg-background">
       <div className="section-container">
         <div className="flex flex-col lg:flex-row items-baseline justify-between mb-24 space-y-8">
           <motion.div 
@@ -112,10 +112,10 @@ export default function Solution() {
             viewport={{ once: true }}
             className="max-w-3xl"
           >
-            <span className="badge mb-6">Solutions Catalog</span>
-            <h2 className="heading-xl mb-0">
-               Engineered <span className="font-accent lowercase text-primary italic">modules</span> for<br />
-               Systemic Growth.
+            <span className="label-mono mb-4 block">SYSTEM_MODULES</span>
+            <h2 className="heading-xl mb-0 text-foreground">
+               Deterministic <span className="text-primary">AI</span> Services<br />
+               for Enterprise Scale.
             </h2>
           </motion.div>
           <motion.div 
@@ -125,8 +125,8 @@ export default function Solution() {
             transition={{ delay: 0.2 }}
             className="lg:max-w-sm"
           >
-             <p className="text-sm font-medium text-foreground/50 leading-loose border-l border-border/50 pl-8">
-                Industrial-grade architectural layers designed for the expansion of the modern digital empire. We build the foundations for your scale.
+             <p className="text-sm font-medium text-foreground/60 leading-loose border-l border-primary/20 pl-6">
+                AI-native engineering delivering 10x production speed with digital sovereignty and full operational control.
              </p>
           </motion.div>
         </div>
@@ -136,21 +136,29 @@ export default function Solution() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {solutions.map((sol, index) => (
+          {services.map((sol, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group card-base card-lg flex flex-col h-full"
+              className="group card-bento flex flex-col h-full relative overflow-hidden"
             >
+              {/* Glowing border effect */}
+              <div className="absolute inset-0 border border-transparent group-hover:border-primary/30 transition-colors duration-300 rounded-xl" />
+              
+              {/* Technical label */}
+              <div className="absolute top-4 left-4">
+                <span className="label-system">SYSTEM_STABLE</span>
+              </div>
+
               {/* Module Header */}
-              <div className="flex justify-between items-start mb-12">
-                <div className="w-12 h-12 bg-white text-primary rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-sm">
+              <div className="flex justify-between items-start pt-12 mb-8">
+                <div className="w-12 h-12 bg-primary/10 border border-primary/20 text-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                   {sol.icon}
                 </div>
                 <div className="flex flex-col items-end">
-                   <span className="text-[10px] text-primary font-bold opacity-40">0{index + 1}</span>
+                   <span className="text-[10px] text-primary font-mono opacity-60">NODE_0{index + 1}</span>
                 </div>
               </div>
 
@@ -159,17 +167,17 @@ export default function Solution() {
                 <h3 className="text-xl font-bold mb-4 tracking-tight group-hover:text-primary transition-colors">
                   {sol.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-foreground/50 font-medium mb-8">
+                <p className="text-sm leading-relaxed text-foreground/60 font-medium mb-6">
                   {sol.desc}
                 </p>
 
-                <div className="space-y-4 pt-8 border-t border-border/50">
+                <div className="space-y-3 pt-6 border-t border-white/5">
                   {sol.features.map((feature, fIndex) => (
                     <div
                       key={fIndex}
-                      className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-wider text-foreground/40 group-hover:text-foreground/70 transition-colors"
+                      className="flex items-center gap-3 text-[11px] font-mono uppercase tracking-wider text-foreground/50 group-hover:text-primary/80 transition-colors"
                     >
-                      <div className="w-1.5 h-1.5 rounded-full bg-primary/20 group-hover:bg-primary transition-colors duration-500" />
+                      <div className="w-1.5 h-1.5 rounded-sm bg-primary/40 group-hover:bg-primary transition-colors duration-500" />
                       {feature}
                     </div>
                   ))}

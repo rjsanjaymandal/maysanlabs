@@ -107,7 +107,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               <div>
                 <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
                   <Cpu className="text-primary" />
-                  Technical Solution
+                  Technical Implementation
                 </h2>
                 <div className="prose prose-invert max-w-none">
                   <p className="text-muted-foreground text-lg leading-relaxed">

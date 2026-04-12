@@ -64,9 +64,8 @@ const config: Config = {
         widest: "0.25em",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "monospace"],
-        serif: ["var(--font-serif)", "serif"],
+        sans: ["var(--font-inter-tight)", "sans-serif"],
+        mono: ["var(--font-jetbrains-mono)", "monospace"],
       },
     },
   },

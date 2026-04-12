@@ -1,212 +1,185 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
-import { Terminal, Cpu, Shield, Activity, Globe, Command, ArrowRight, CheckCircle, Mail } from "lucide-react";
+import { Send, CheckCircle, ArrowRight } from "lucide-react";
 import { sendEmail } from "@/app/actions/sendEmail";
+import { motion } from "framer-motion";
 
 export default function InitPage() {
   const [formData, setFormData] = useState({
-    companyName: "",
-    requirements: "",
+    name: "",
     email: "",
-    contact: "",
+    phone: "",
+    message: "",
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [sessionId, setSessionId] = useState("");
 
-  useEffect(() => {
-    setSessionId(`UL-${Math.random().toString(36).substring(2, 9).toUpperCase()}`);
-  }, []);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.companyName || !formData.email) return;
+    if (!formData.name || !formData.email) return;
 
     setIsSubmitting(true);
 
     const data = new FormData();
-    data.append("companyName", formData.companyName);
-    data.append("requirements", formData.requirements);
+    data.append("companyName", formData.name);
     data.append("email", formData.email);
-    data.append("contact", formData.contact);
+    data.append("contact", formData.phone);
+    data.append("requirements", formData.message);
 
     try {
       const result = await sendEmail(data);
       if (result.success) {
         setIsSubmitted(true);
-      } else {
-        alert("Unable to establish uplink. Please try again.");
       }
-    } catch (error: unknown) {
-      console.error("Communication failure:", error);
-      alert("System offline. Please check your connection.");
+    } catch (error) {
+      console.error(error);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
-    <main className="min-h-screen bg-background flex flex-col pt-32 relative overflow-hidden">
+    <main className="bg-[#0d1117] min-h-screen relative overflow-hidden">
       <Navbar />
       
-      <div className="container max-w-6xl flex-1 flex flex-col justify-center py-20 px-4 relative z-10">
-        {!isSubmitted ? (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
-            
-            {/* Sidebar Context */}
-            <div className="lg:col-span-5 space-y-16">
-               <div>
-                  <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-8 inline-block">
-                    Session ID: {sessionId}
-                  </span>
-                  <h1 className="text-massive leading-[1.1] font-bold mb-10">
-                    Start Your <span className="font-accent lowercase text-primary italic">project</span><br />
-                    With Us.
-                  </h1>
-                  <p className="text-lg font-medium text-foreground/50 leading-loose border-l border-border/50 pl-10 max-w-md">
-                    Tell us about your project and we will help you build the fast, secure software you need.
-                  </p>
-               </div>
+      {/* Background Decor */}
+      <div className="radial-blur -top-40 -left-40 opacity-10" />
 
-               <div className="space-y-8">
-                  <div className="flex items-center gap-4 text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em]">
-                     <div className="p-2 bg-secondary/50 rounded-lg text-primary"><Cpu size={14} /></div>
-                     <span>Status: Online</span>
-                  </div>
-                  <div className="flex items-center gap-4 text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em]">
-                     <div className="p-2 bg-secondary/50 rounded-lg text-primary"><Shield size={14} /></div>
-                     <span>Security: Active</span>
-                  </div>
-                  <div className="flex items-center gap-4 text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em]">
-                     <div className="p-2 bg-secondary/50 rounded-lg text-primary"><Globe size={14} /></div>
-                     <span>Location: Sector 44</span>
-                  </div>
-               </div>
-            </div>
+      <section className="pt-44 pb-32">
+        <div className="container-main">
+          {!isSubmitted ? (
+            <div className="max-w-3xl mx-auto">
+              {/* Header */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-center mb-16"
+              >
+                <span className="announcement-bar">Get in Touch</span>
+                <h1 className="hero-title text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mt-8 uppercase mb-8">
+                  Book a <span className="text-[#007AFF] italic uppercase">Call.</span>
+                </h1>
+                <p className="text-white/40 max-w-xl mx-auto mt-6 text-xl font-medium leading-relaxed">
+                  Tell us about your project details and we will schedule a conversation to discuss the next steps.
+                </p>
+              </motion.div>
 
-            {/* Form Interface */}
-            <div className="lg:col-span-7 bg-secondary/20 rounded-[3rem] p-12 md:p-16 border border-primary/5 relative overflow-hidden group hover:border-primary/10 transition-all duration-700 shadow-2xl shadow-primary/5">
-              <div className="absolute top-0 right-0 p-8 text-[10px] font-bold text-primary/20 uppercase tracking-widest">
-                 Contact Us
-              </div>
-              
-              <form onSubmit={handleSubmit} className="space-y-12">
-                <div className="space-y-6">
-                  <label htmlFor="companyName" className="text-[10px] font-bold text-primary uppercase tracking-[0.3em] flex items-center gap-3">
-                    <Command size={14} className="text-primary/40" /> 01 Your Company
-                  </label>
-                  <input
-                    id="companyName"
-                    name="companyName"
-                    required
-                    value={formData.companyName}
-                    onChange={handleChange}
-                    placeholder="Enter your company name"
-                    className="w-full bg-transparent border-b border-border/50 focus:border-primary px-0 py-4 text-base font-medium tracking-tight outline-none transition-all placeholder:text-foreground/20"
-                  />
-                </div>
-
-                <div className="space-y-6">
-                  <label htmlFor="requirements" className="text-[10px] font-bold text-primary uppercase tracking-[0.3em] flex items-center gap-3">
-                    <Terminal size={14} className="text-primary/40" /> 02 Your Goals
-                  </label>
-                  <textarea
-                    id="requirements"
-                    name="requirements"
-                    required
-                    value={formData.requirements}
-                    onChange={handleChange}
-                    placeholder="Describe what you want to build"
-                    rows={4}
-                    className="w-full bg-transparent border-b border-border/50 focus:border-primary px-0 py-4 text-base font-medium tracking-tight outline-none transition-all placeholder:text-foreground/20 resize-none"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                  <div className="space-y-6">
-                    <label htmlFor="email" className="text-[10px] font-bold text-primary uppercase tracking-[0.3em] flex items-center gap-3">
-                      <Mail size={14} className="text-primary/40" /> 03 Your Email
+              {/* Form */}
+              <motion.form 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.1 }}
+                onSubmit={handleSubmit} 
+                className="maysan-card border-[#007AFF]/10 bg-black/20 backdrop-blur-3xl p-10 md:p-16"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                  <div className="md:col-span-2">
+                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#007AFF] mb-4">
+                      Your Name / Company *
                     </label>
                     <input
-                      id="email"
-                      name="email"
+                      type="text"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="John Doe / Acme Corp"
+                      className="w-full bg-[#0d1117]/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-[#007AFF]/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#007AFF] mb-4">
+                      Email Address *
+                    </label>
+                    <input
                       type="email"
+                      name="email"
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="email@example.com"
-                      className="w-full bg-transparent border-b border-border/50 focus:border-primary px-0 py-4 text-base font-medium tracking-tight outline-none transition-all placeholder:text-foreground/20"
+                      placeholder="john@example.com"
+                      className="w-full bg-[#0d1117]/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-[#007AFF]/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10"
                     />
                   </div>
 
-                  <div className="space-y-6">
-                    <label htmlFor="contact" className="text-[10px] font-bold text-primary uppercase tracking-[0.3em] flex items-center gap-3">
-                      <Activity size={14} className="text-primary/40" /> 04 Phone Number
+                  <div>
+                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#007AFF] mb-4">
+                      Phone Number
                     </label>
                     <input
-                      id="contact"
-                      name="contact"
                       type="tel"
-                      value={formData.contact}
+                      name="phone"
+                      value={formData.phone}
                       onChange={handleChange}
-                      placeholder="+X XXX XXX XXXX"
-                      className="w-full bg-transparent border-b border-border/50 focus:border-primary px-0 py-4 text-base font-medium tracking-tight outline-none transition-all placeholder:text-foreground/20"
+                      placeholder="+1 234 567 890"
+                      className="w-full bg-[#0d1117]/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-[#007AFF]/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10"
+                    />
+                  </div>
+
+                  <div className="md:col-span-2">
+                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[#007AFF] mb-4">
+                      Project Details / Requirements
+                    </label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Tell us about what you're building..."
+                      rows={5}
+                      className="w-full bg-[#0d1117]/50 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-[#007AFF]/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10 resize-none"
                     />
                   </div>
                 </div>
 
-                <div className="pt-10">
-                  <button
-                    type="submit"
-                    className="btn-surgical w-full flex items-center justify-center gap-6 group py-6"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Activity className="animate-spin" size={20} />
-                        <span>Sending...</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>SEND REQUEST</span>
-                        <ArrowRight className="group-hover:translate-x-2 transition-transform duration-500" size={20} />
-                      </>
-                    )}
-                  </button>
-                </div>
-              </form>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="pill-btn pill-btn-primary w-full"
+                >
+                  {isSubmitting ? (
+                    <>SENDING...</>
+                  ) : (
+                    <>
+                      SEND MESSAGE <Send size={18} />
+                    </>
+                  )}
+                </button>
+              </motion.form>
             </div>
-          </div>
-        ) : (
-          <div className="bg-secondary/20 rounded-[3rem] p-24 text-center border border-primary/20 animate-in fade-in zoom-in duration-1000 max-w-2xl mx-auto py-32">
-            <div className="w-24 h-24 bg-primary text-white flex items-center justify-center rounded-[2rem] mx-auto mb-12 shadow-2xl shadow-primary/20">
-              <CheckCircle size={48} />
-            </div>
-            <h2 className="text-4xl font-bold mb-8 tracking-tight">
-              Uplink Established
-            </h2>
-            <p className="text-base font-medium text-foreground/50 leading-loose mb-16 max-w-md mx-auto">
-              Transmission received by Maysan Labs core. We have identified <span className="text-primary font-bold">{formData.companyName}</span> and queued mission-critical analysis. Check <span className="text-foreground font-bold">{formData.email}</span> for response.
-            </p>
-            <button
-              onClick={() => setIsSubmitted(false)}
-              className="text-[10px] font-bold text-primary hover:text-foreground uppercase tracking-[0.3em] transition-colors duration-500"
+          ) : (
+            /* Success State */
+            <motion.div 
+               initial={{ opacity: 0, scale: 0.9 }}
+               animate={{ opacity: 1, scale: 1 }}
+               className="max-w-2xl mx-auto text-center"
             >
-              [ Open New Tunnel ]
-            </button>
-          </div>
-        )}
-      </div>
+              <div className="w-24 h-24 bg-[#007AFF] rounded-[2rem] flex items-center justify-center mx-auto mb-12 shadow-[0_0_40px_rgba(0,122,255,0.4)]">
+                <CheckCircle size={48} className="text-white" />
+              </div>
+              <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-6 leading-none">Message <br /><span className="text-[#007AFF] italic uppercase">Sent.</span></h2>
+              <p className="text-white/40 mb-16 text-xl font-medium max-w-md mx-auto">
+                We've received your request. Our team will get back to you shortly to schedule your call.
+              </p>
+              <button
+                onClick={() => setIsSubmitted(false)}
+                className="pill-btn pill-btn-secondary mx-auto min-w-[280px]"
+              >
+                Send Another Message <ArrowRight size={18} />
+              </button>
+            </motion.div>
+          )}
+        </div>
+      </section>
     </main>
   );
 }

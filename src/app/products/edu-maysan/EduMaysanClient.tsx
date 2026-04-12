@@ -10,6 +10,9 @@ import {
   ShieldCheck, 
   ArrowRight,
   Database,
+  ArrowUpRight,
+  Lock,
+  Zap
 } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -19,196 +22,189 @@ export default function EduMaysanClient() {
     {
       title: "Financial ERP",
       desc: "Comprehensive fee management, automated invoicing, and real-time financial auditing for institutions.",
-      icon: <CreditCard className="w-5 h-5" />,
-      tag: "CORE_FINANCE"
+      icon: <CreditCard size={24} />,
+      tag: "CORE_FINANCE",
+      span: "md:col-span-8"
     },
     {
       title: "Academic Hub",
-      desc: "Advanced gradebooks, automated exam scheduling, and dynamic timetable generation.",
-      icon: <GraduationCap className="w-5 h-5" />,
-      tag: "LMS_V1"
+      desc: "Advanced gradebooks and exam scheduling.",
+      icon: <GraduationCap size={24} />,
+      tag: "LMS_V1",
+      span: "md:col-span-4"
     },
     {
-      title: "Identity & Attendance",
-      desc: "Biometric integration and smart attendance tracking for students and faculty.",
-      icon: <Users className="w-5 h-5" />,
-      tag: "SECURE_AUTH"
+      title: "Identity & Auth",
+      desc: "Biometric and smart tracking.",
+      icon: <Users size={24} />,
+      tag: "SECURE_AUTH",
+      span: "md:col-span-4"
     },
     {
       title: "Logistics & Fleet",
-      desc: "Real-time transport tracking, route optimization, and inventory control for school assets.",
-      icon: <Bus className="w-5 h-5" />,
-      tag: "OPS_SYNC"
-    },
-    {
-      title: "Digital Library",
-      desc: "Full circulation management, cataloging, and digital resource access for students.",
-      icon: <Library className="w-5 h-5" />,
-      tag: "DATA_NODE"
-    },
-    {
-      title: "Guardian Portal",
-      desc: "Encrypted communication channel between parents, teachers, and administration.",
-      icon: <ShieldCheck className="w-5 h-5" />,
-      tag: "PRIVATE_COMMS"
+      desc: "Real-time transport tracking and route optimization for school assets.",
+      icon: <Bus size={24} />,
+      tag: "OPS_SYNC",
+      span: "md:col-span-8"
     }
   ];
 
   return (
-    <main className="min-h-screen bg-background pt-32 pb-20 overflow-hidden relative">
+    <main className="min-h-screen bg-[#0d1117] relative overflow-hidden">
       <Navbar />
       
-      {/* Premium Background Layers */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(20,184,166,0.03),transparent_70%)]" />
-        <div className="grid-overlay opacity-20" />
-      </div>
+      {/* Background Decor */}
+      <div className="radial-blur -top-40 -left-40 opacity-10" />
+      <div className="radial-blur -bottom-40 -right-40 opacity-5" />
 
-      <div className="container mx-auto px-8 relative z-10">
+      <div className="container-main pt-44 pb-32 relative z-10">
         {/* Header Section */}
-        <div className="mb-20">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="h-[1px] w-12 bg-primary" />
-            <span className="font-mono text-[10px] tracking-[0.3em] text-primary uppercase">[ EDU_MAYSAN_SHOWCASE_V1 ]</span>
-          </div>
-          
-          <h1 className="text-7xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
-            The School <span className="font-accent italic font-light text-primary">Intelligence</span> <br />
-            Operating System.
-          </h1>
-          
-          <p className="max-w-2xl text-xl text-foreground/60 font-medium leading-relaxed mb-12">
-            Built by <span className="text-foreground font-bold italic">Maysan Labs</span>, Edu Maysan is an enterprise-grade ERP designed to unify fragmented school operations into a single, high-performance flow.
-          </p>
+        <div className="mb-32">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="announcement-bar">Our Solutions</span>
+            <h1 className="hero-title text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-12 uppercase">
+              The School <br />
+              <span className="text-[#007AFF] italic">Intelligence.</span>
+            </h1>
+            
+            <p className="max-w-2xl text-xl md:text-2xl text-white/40 font-medium leading-relaxed mb-16">
+              Built on mission-critical architecture, Edu Maysan unifies fragmented operations into a high-performance enterprise flow.
+            </p>
 
-          <div className="flex flex-wrap gap-4">
-            <Link 
-              href="/init"
-              className="px-8 py-4 bg-primary text-white font-bold tracking-widest uppercase text-xs hover:scale-105 transition-transform flex items-center gap-3 rounded-sm"
-            >
-              REQUEST A DEMO
-              <ArrowRight size={16} />
-            </Link>
-            <div className="px-8 py-4 border border-foreground/10 hover:border-primary/30 transition-colors font-mono text-[10px] tracking-[0.2em] flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              STATUS: STABLE_RELEASE_25
+            <div className="flex flex-wrap gap-6 font-mono">
+              <Link 
+                href="/init"
+                className="pill-btn pill-btn-primary min-w-[240px]"
+              >
+                BOOK A STRATEGY CALL
+                <ArrowRight size={18} />
+              </Link>
+              <div className="px-8 py-4 bg-white/5 border border-white/10 rounded-full flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] font-bold text-white/40">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#007AFF] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#007AFF]"></span>
+                </span>
+                STATUS: STABLE_V2.1
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Feature Grid (Surgical Cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-32">
+        {/* Feature Bento Grid */}
+        <div className="bento-grid mb-40">
           {features.map((feature, idx) => (
             <motion.div
               key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: idx * 0.1, duration: 0.8 }}
               viewport={{ once: true }}
-              className="card-surgical group"
+              className={`${feature.span} group`}
             >
-              <div className="flex justify-between items-start mb-8">
-                <div className="p-3 bg-primary/5 text-primary rounded-sm transition-colors group-hover:bg-primary group-hover:text-white">
-                  {feature.icon}
+              <div className="maysan-card h-full flex flex-col justify-between group-hover:border-[#007AFF]/40">
+                <div>
+                  <div className="w-12 h-12 bg-[#007AFF]/10 rounded-xl flex items-center justify-center mb-10 border border-[#007AFF]/20 text-[#007AFF] group-hover:bg-[#007AFF] group-hover:text-white transition-all duration-500">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-3xl font-black mb-6 tracking-tight uppercase">{feature.title}</h3>
+                  <p className="text-white/40 text-sm leading-relaxed font-medium">
+                    {feature.desc}
+                  </p>
                 </div>
-                <span className="font-mono text-[9px] tracking-[0.2em] text-foreground/30">{feature.tag}</span>
+                <div className="mt-12 flex items-center justify-between opacity-30 group-hover:opacity-100 transition-opacity">
+                   <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-[#007AFF]">{feature.tag}</span>
+                   <ArrowUpRight size={14} className="text-[#007AFF]" />
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-4 tracking-tight group-hover:text-primary transition-colors">{feature.title}</h3>
-              <p className="text-foreground/50 text-sm leading-relaxed">
-                {feature.desc}
-              </p>
             </motion.div>
           ))}
         </div>
 
-        {/* Technical Depth Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-32">
-          <div className="relative">
-             <div className="absolute -top-20 -left-20 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
-             <div className="relative z-10 border border-foreground/5 p-1 bg-background/50 backdrop-blur-sm shadow-2xl">
-               <div className="bg-foreground/[0.02] p-12 border border-foreground/5">
-                 <div className="flex items-center gap-4 mb-8">
-                   <Database className="text-primary w-6 h-6" />
-                   <span className="font-mono text-[11px] tracking-widest uppercase">Infrastructure_Report</span>
-                 </div>
-                 <div className="space-y-6">
-                    <div className="flex justify-between items-end border-b border-foreground/5 pb-2">
-                       <span className="text-xs text-foreground/40 font-mono uppercase">Database_Cluster</span>
-                       <span className="text-sm font-bold">SUPABASE_POSTGRES</span>
-                    </div>
-                    <div className="flex justify-between items-end border-b border-foreground/5 pb-2">
-                       <span className="text-xs text-foreground/40 font-mono uppercase">Auth_Layer</span>
-                       <span className="text-sm font-bold">RSA-2048 / JWT</span>
-                    </div>
-                    <div className="flex justify-between items-end border-b border-foreground/5 pb-2">
-                       <span className="text-xs text-foreground/40 font-mono uppercase">Realtime_Flow</span>
-                       <span className="text-sm font-bold">ENABLED</span>
-                    </div>
-                    <div className="flex justify-between items-end border-b border-foreground/5 pb-2">
-                       <span className="text-xs text-foreground/40 font-mono uppercase">System_Uptime</span>
-                       <span className="text-sm font-bold text-primary">99.98%</span>
-                    </div>
-                 </div>
-               </div>
+        {/* Technical Stack Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-32 items-center mb-40">
+          <motion.div 
+             initial={{ opacity: 0, x: -20 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
+             className="relative"
+          >
+             <div className="maysan-card border-[#007AFF]/10 bg-black/20 backdrop-blur-3xl p-12 lg:p-16">
+                <div className="flex items-center gap-4 mb-12">
+                  <div className="w-10 h-10 bg-[#007AFF]/10 border border-[#007AFF]/20 rounded-lg flex items-center justify-center text-[#007AFF]">
+                    <Database size={20} />
+                  </div>
+                  <span className="font-mono text-[10px] tracking-[0.4em] uppercase text-white/50">Technical_Specs</span>
+                </div>
+                
+                <div className="space-y-8">
+                   {[
+                     { l: "Runtime", v: "NODE_STABLE_EXT" },
+                     { l: "Database", v: "POSTGRES_SCALABLE" },
+                     { l: "Auth", v: "OIDC_SECURE" },
+                     { l: "Status", v: "ENCRYPTED", c: "text-[#007AFF]" }
+                   ].map((item, i) => (
+                      <div key={i} className="flex justify-between items-center border-b border-white/5 pb-4">
+                         <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/20">{item.l}</span>
+                         <span className={`text-sm font-black uppercase ${item.c || "text-white/60"}`}>{item.v}</span>
+                      </div>
+                   ))}
+                </div>
              </div>
-          </div>
+          </motion.div>
           
-          <div>
-            <h2 className="text-5xl font-black tracking-tighter leading-none mb-8">
-              Built on a <br />
-              <span className="font-accent italic font-light text-primary">Secure Foundation.</span>
+          <motion.div
+             initial={{ opacity: 0, x: 20 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-none mb-10 uppercase">
+              Secure <br /><span className="text-[#007AFF] italic">Deployment.</span>
             </h2>
-            <div className="space-y-8">
-              <div className="flex gap-6">
-                <div className="shrink-0 w-10 h-10 border border-primary/20 flex items-center justify-center font-mono text-xs text-primary">01</div>
-                <div>
-                  <h4 className="font-bold mb-2">Enterprise Scaling</h4>
-                  <p className="text-sm text-foreground/50">Designed to handle over 100,000 students per school cluster without latency degradation.</p>
+            <div className="space-y-12">
+              {[
+                { i: <Users />, t: "Enterprise Scaling", d: "Built for massive school clusters without throughput degradation." },
+                { i: <Lock />, t: "Data Sovereignty", d: "Zero-trust networks that grant institutions 100% control." }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-8 group">
+                  <div className="shrink-0 w-12 h-12 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center text-white/20 group-hover:text-[#007AFF] group-hover:border-[#007AFF]/30 transition-all duration-500">
+                    {item.i}
+                  </div>
+                  <div>
+                    <h4 className="font-black text-xl mb-4 tracking-tight uppercase">{item.t}</h4>
+                    <p className="text-sm text-white/40 font-medium leading-relaxed">{item.d}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex gap-6">
-                <div className="shrink-0 w-10 h-10 border border-primary/20 flex items-center justify-center font-mono text-xs text-primary">02</div>
-                <div>
-                  <h4 className="font-bold mb-2">Automated Compliance</h4>
-                  <p className="text-sm text-foreground/50">Standardized reporting for educational boards (CBSE, ICSE, International) baked into the core.</p>
-                </div>
-              </div>
-              <div className="flex gap-6">
-                <div className="shrink-0 w-10 h-10 border border-primary/20 flex items-center justify-center font-mono text-xs text-primary">03</div>
-                <div>
-                  <h4 className="font-bold mb-2">Realtime Sync</h4>
-                  <p className="text-sm text-foreground/50">Every attendance scan, fee payment, and grade update syncs across all devices instantly.</p>
-                </div>
-              </div>
+              ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Closing Pitch */}
-        <div className="relative py-32 border-y border-foreground/5 text-center overflow-hidden">
-           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-           <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+        <motion.div 
+           initial={{ opacity: 0, y: 30 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           className="relative py-40 border-y border-white/5 text-center overflow-hidden"
+        >
+           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#007AFF]/20 to-transparent" />
+           <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#007AFF]/20 to-transparent" />
            
-           <h2 className="text-6xl md:text-8xl font-black tracking-tighter mb-12">
-             Pitch <span className="font-accent italic font-light text-primary">The Future</span> <br />
-             of Education.
+           <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-12 leading-[0.9] uppercase">
+             Pitch <span className="text-[#007AFF] italic">The Future</span> <br />
+             of infra.
            </h2>
            <Link 
             href="/init"
-            className="inline-flex items-center gap-4 px-12 py-5 bg-foreground text-background font-bold tracking-[0.2em] uppercase text-xs hover:bg-primary hover:text-white transition-all rounded-full group"
+            className="pill-btn pill-btn-primary mx-auto min-w-[280px]"
           >
             BECOME A PARTNER
-            <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
+            <ArrowRight size={20} />
           </Link>
-
-          {/* Background Asset */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img 
-            src="/wireframe-nodes.png" 
-            alt="Nodes" 
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] w-full max-w-[1200px] pointer-events-none mix-blend-screen mask-radial-fade scale-150"
-          />
-        </div>
+        </motion.div>
       </div>
     </main>
   );

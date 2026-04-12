@@ -2,20 +2,7 @@
 
 import { motion, useInView, Variants, Transition } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { Activity, Shield, Zap, Globe } from "lucide-react";
-
-const technologies = [
-  "NEXT_JS_15",
-  "REACT_LIB",
-  "NODE_RUNTIME",
-  "MONGO_DB_ATLAS",
-  "TAILWIND_V4",
-  "FRAMER_ENGINE",
-  "TYPE_SCRIPT_CORE",
-  "POSTGRE_SQL",
-  "AWS_CLOUD",
-  "DOCKER_CONTAINER",
-];
+import { Activity, Shield, Zap, TerminalSquare } from "lucide-react";
 
 function AnimatedCounter({
   target,
@@ -91,101 +78,105 @@ const itemVariants: Variants = {
   },
 };
 
+const enterprises = [
+  "DHL LOGISTICS",
+  "TITAN CAPITAL",
+  "NEXUS VENTURE",
+  "CYBERSYSTEMS INC.",
+  "QUANTUM DYNAMICS",
+  "AEGIS NETWORKS",
+];
+
 export default function SocialProof() {
   const stats = [
-    { value: "100", suffix: "%", label: "Full Control", icon: <Shield size={16} /> },
-    { value: "500", suffix: "ms", label: "Loading Speed", icon: <Activity size={16} /> },
-    { value: "24/7", suffix: "", label: "Always Online", icon: <Zap size={16} /> },
+    { value: "100", suffix: "%", label: "Sovereignty", icon: <Shield size={16} /> },
+    { value: "50", suffix: "ms", label: "Runtime Latency", icon: <Activity size={16} /> },
+    { value: "99.9", suffix: "%", label: "Uptime SLA", icon: <Zap size={16} /> },
   ];
 
   return (
-    <section className="section-xl relative overflow-hidden bg-background">
-      <div className="section-container">
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-xl"
-        >
-          {/* Header Block */}
-          <motion.div 
-            variants={itemVariants}
-            className="lg:col-span-6 flex flex-col justify-center"
-          >
-            <span className="badge mb-6">Our Performance</span>
-            <h2 className="heading-xl mb-8">
-              Fast <span className="font-accent lowercase text-primary italic">software</span> for<br />
-              Growing Brands.
-            </h2>
-            <p className="text-sm font-medium text-foreground/50 leading-loose border-l border-border/50 pl-8 max-w-sm">
-              We build software that stays fast and keeps your information secure. We measure our success in how well your business grows.
-            </p>
-          </motion.div>
-
-          {/* Stats Blocks */}
-          <div className="lg:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-lg">
-             {stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="card-base card-lg flex flex-col justify-between group"
-                >
-                  <div className="flex justify-between items-start mb-12">
-                     <div className="text-primary bg-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">
-                        {stat.icon}
-                     </div>
-                     <span className="text-[10px] font-bold text-primary/30 uppercase tracking-widest">Node 0{index+1}</span>
-                  </div>
-                  
-                  <div>
-                    <div className="text-5xl font-bold text-foreground mb-4 tracking-tighter group-hover:text-primary transition-colors duration-500">
-                      {stat.value === "24/7" ? "24/7" : <AnimatedCounter target={stat.value} suffix={stat.suffix} />}
-                    </div>
-                    <p className="text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em]">
-                      {stat.label}
-                    </p>
-                  </div>
-                </motion.div>
-             ))}
-             
-             {/* Filler Node */}
-             <motion.div 
-                variants={itemVariants}
-                className="p-10 bg-primary/5 rounded-[2.5rem] border border-primary/10 flex flex-col justify-center items-center group hover:bg-primary/10 transition-all duration-500"
-             >
-                <div className="p-6 bg-white rounded-3xl shadow-xl shadow-primary/5 group-hover:scale-110 transition-transform duration-700">
-                  <Globe size={32} className="text-primary group-hover:rotate-90 transition-all duration-1000" />
-                </div>
-                <span className="text-[10px] font-bold mt-6 text-primary tracking-[0.2em] uppercase">Global Sync Active</span>
-             </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Technical Marquee (Data Stream) */}
-        <div className="mt-40 border-t border-border/50 py-12 relative overflow-hidden" aria-label="System library status">
-          <div className="flex overflow-hidden">
+    <section className="relative overflow-hidden bg-background pt-8 pb-24">
+      <div className="max-w-7xl mx-auto px-4 md:px-8">
+        
+        {/* Trusted By Marquee directly under Hero */}
+        <div className="mb-32 relative overflow-hidden" aria-label="Trusted by enterprises">
+          <div className="flex overflow-hidden relative">
+            {/* Gradient Mask for fading edges */}
+            <div className="absolute inset-0 top-0 w-full h-full bg-gradient-to-r from-background via-transparent to-background z-10 pointer-events-none" />
             <motion.div
               className="flex gap-24 items-center whitespace-nowrap"
               animate={{ x: "-50%" }}
               transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
             >
               {[
-                ...technologies,
-                ...technologies,
-              ].map((tech, i) => (
+                ...enterprises,
+                ...enterprises,
+                ...enterprises,
+              ].map((ent, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-6 text-[10px] font-bold tracking-[0.3em] text-foreground/30 uppercase"
+                  className="flex items-center gap-6 text-[11px] font-mono font-bold tracking-[0.3em] text-foreground/40 uppercase"
                 >
-                  <span className="text-primary/40 font-black">●</span>
-                  <span>{tech}</span>
-                  <div className="w-1.5 h-px bg-border group-hover:bg-primary/20 transition-colors" />
+                  <span className="text-primary/60 font-black">■</span>
+                  <span>{ent}</span>
                 </div>
               ))}
             </motion.div>
           </div>
         </div>
+
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12"
+        >
+          {/* Header Block */}
+          <motion.div 
+            variants={itemVariants}
+            className="lg:col-span-5 flex flex-col justify-center"
+          >
+            <div className="mb-6 flex items-center gap-3 border border-primary/30 bg-primary/5 px-4 py-1.5 w-fit rounded-full">
+               <TerminalSquare size={12} className="text-primary" />
+               <span className="font-mono text-[10px] text-primary tracking-[0.2em] uppercase">Metrics Aggregation</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-sans font-black uppercase tracking-tight mb-8">
+              Deterministic<br />
+              <span className="text-primary">Performance.</span>
+            </h2>
+            <p className="text-sm font-mono text-muted-foreground leading-loose border-l-2 border-primary/30 pl-6 max-w-sm">
+              We monitor throughput, latency, and uptime strictly. Our infrastructure runs on zero-trust principles guaranteeing 10x production speed.
+            </p>
+          </motion.div>
+
+          {/* Stats Bento */}
+          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-6">
+             {stats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="bg-secondary p-8 flex flex-col justify-between group border border-border/50 hover:border-primary/50 transition-all duration-300"
+                >
+                  <div className="flex justify-between items-start mb-12">
+                     <div className="text-background bg-primary w-10 h-10 flex items-center justify-center shadow-[0_0_15px_rgba(162,255,0,0.3)] group-hover:scale-110 transition-transform duration-500">
+                        {stat.icon}
+                     </div>
+                     <span className="font-mono text-[9px] font-bold text-primary/50 uppercase tracking-[0.3em]">TELEMETRY_0{index+1}</span>
+                  </div>
+                  
+                  <div>
+                    <div className="font-sans text-5xl font-black text-foreground mb-4 tracking-tighter shadow-primary drop-shadow-md">
+                       <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                    </div>
+                    <p className="text-[10px] font-mono font-bold text-foreground/50 uppercase tracking-[0.2em]">
+                      {stat.label}
+                    </p>
+                  </div>
+                </motion.div>
+             ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

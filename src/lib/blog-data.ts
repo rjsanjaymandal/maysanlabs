@@ -154,7 +154,7 @@ By processing data at the network edge, we reduce trips to the origin server, re
     content: `
 # The Rise of Vertical SaaS
 
-Generic solutions are being replaced by hyper-specialized tools built for specific industries like construction, healthcare, or logistics.
+Generic services are being replaced by hyper-specialized tools built for specific industries like construction, healthcare, or logistics.
 
 ## The Vertical Advantage
 - **Deep Industry Integration**
@@ -397,7 +397,7 @@ This accessibility allows Maysan Labs to build incredibly powerful, globally dis
     `,
   },
   {
-    title: "Why Custom Solutions Beat Off-the-Shelf for SMEs",
+    title: "Why Custom Services Beat Off-the-Shelf for SMEs",
     slug: "custom-vs-off-the-shelf",
     excerpt:
       "Analyzing the long-term cost and efficiency benefits of custom software for growing businesses.",

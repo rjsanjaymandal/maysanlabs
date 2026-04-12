@@ -1,96 +1,94 @@
 "use client";
 
-import { motion, Variants, Transition } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.3,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { y: 40, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 20,
-    } as Transition,
-  },
-};
+import { ArrowRight, Play, Cpu } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center pt-24 md:pt-32 lg:pt-40 pb-16 md:pb-20 overflow-hidden bg-background font-sans">
-      {/* Premium Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="grid-overlay opacity-40" />
-        <div className="radial-glow top-0 right-0 -translate-y-1/2 translate-x-1/2" />
-        <div className="radial-glow bottom-0 left-0 translate-y-1/2 -translate-x-1/2 opacity-50" />
-      </div>
+    <section className="relative min-h-[95vh] flex flex-col items-center justify-center pt-32 pb-20 px-4 overflow-hidden">
+      {/* Dynamic Background Accents */}
+      <div className="radial-blur -top-20 -left-20" />
+      <div className="radial-blur -bottom-40 -right-20 opacity-20" />
 
-      <div className="section-container text-center max-w-5xl mx-auto">
+      {/* Grid Pattern overlay */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+           style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+
+      <div className="container-main relative z-10 flex flex-col items-center text-center">
+        {/* Announcement Bar */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col items-center"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <motion.div variants={itemVariants} className="mb-8">
-             <span className="badge">Engineering Suite</span>
-          </motion.div>
+          <div className="announcement-bar">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#007AFF] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#007AFF]"></span>
+            </span>
+            <span>Maysan Labs : Enterprise Engineering 2026</span>
+          </div>
+        </motion.div>
 
-          <motion.h1 variants={itemVariants} className="heading-xl mb-10">
-            We build <span className="font-accent lowercase text-primary italic">fast</span>, secure software<br />
-            for <span className="font-accent lowercase text-primary italic">growing</span> businesses.
-          </motion.h1>
+        {/* Scaled Headlines */}
+        <motion.div
+           initial={{ opacity: 0, y: 30 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+           className="max-w-5xl"
+        >
+          <h1 className="hero-title text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-8 leading-[0.9]">
+            We build <em className="text-[#007AFF] not-italic font-medium">high-fidelity</em><br />
+            digital infra.
+          </h1>
+          
+          <p className="text-white/40 text-lg md:text-2xl max-w-2xl mx-auto font-medium leading-relaxed mb-12">
+            Engineering mission-critical SaaS, autonomous operational tools, and custom enterprise software with <span className="text-white">mathematical precision.</span>
+          </p>
+        </motion.div>
 
-          <motion.p variants={itemVariants} className="text-muted-lg mb-14 max-w-2xl">
-             We help companies build modern online stores and custom tools that are easy to use and stay <span className="text-foreground">reliable as you grow.</span>
-          </motion.p>
+        {/* Multi-CTA Pill Buttons */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex flex-col sm:flex-row items-center gap-6"
+        >
+          <Link href="/init" className="pill-btn pill-btn-primary min-w-[200px]">
+             Book a Strategy Call
+             <ArrowRight size={18} />
+          </Link>
+          <Link href="/engineering" className="pill-btn pill-btn-secondary min-w-[200px] hover:shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+             <Play size={16} fill="currentColor" />
+             Watch Breakdown
+          </Link>
+        </motion.div>
 
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-md">
-            <Link href="/init" className="btn-surgical group">
-              <span className="relative z-10 flex items-center gap-3">
-                GET STARTED
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </span>
-            </Link>
-            <Link href="/solutions" className="btn-secondary">
-              SEE SOLUTIONS
-              <ArrowRight size={18} />
-            </Link>
-          </motion.div>
+        {/* Hero Footer / Trust Metrics */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          className="mt-32 flex flex-wrap justify-center gap-12 opacity-30 grayscale hover:grayscale-0 transition-all duration-700"
+        >
+           <div className="flex items-center gap-3">
+              <Cpu size={20} />
+              <span className="font-mono text-[10px] uppercase tracking-[0.4em]">99.9%_Uptime</span>
+           </div>
+           <div className="flex items-center gap-3">
+              <span className="font-mono text-[10px] uppercase tracking-[0.4em]">Zero_Debt_Engineering</span>
+           </div>
+           <div className="flex items-center gap-3">
+              <span className="font-mono text-[10px] uppercase tracking-[0.4em]">ISO_SaaS_Patterns</span>
+           </div>
         </motion.div>
       </div>
 
-      {/* Wireframe Asset */}
-      <motion.div 
-        className="absolute top-1/2 -right-24 -translate-y-1/2 w-96 h-96 opacity-30 pointer-events-none hidden lg:block"
-        initial={{ opacity: 0, rotate: -20, scale: 0.8 }}
-        animate={{ opacity: 0.3, rotate: 0, scale: 1 }}
-        transition={{ duration: 2, ease: "easeOut", delay: 1 }}
-      >
-        <Image 
-          src="/assets/wireframe-sphere.png" 
-          alt="Technical Wireframe" 
-          fill
-          className="object-contain mix-blend-screen animate-pulse-slow mask-radial-fade" 
-        />
-      </motion.div>
-
-      {/* Abstract Architectural Line */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-t from-primary/50 to-transparent opacity-50" />
+      {/* Background Visual Asset (Surgical Frame) */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute top-1/4 -left-40 w-80 h-80 bg-[#007AFF]/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/3 -right-40 w-80 h-80 bg-[#007AFF]/5 rounded-full blur-[80px] pointer-events-none" />
     </section>
   );
 }

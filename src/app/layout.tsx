@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import { Inter_Tight, JetBrains_Mono, Geist } from "next/font/google";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import ThemeProvider from "@/components/ThemeProvider";
@@ -10,20 +10,14 @@ import {
   getNavigationSchema,
 } from "@/lib/seo/schema";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  style: ["italic", "normal"],
 });
 
 export const metadata: Metadata = {
@@ -104,6 +98,9 @@ export const metadata: Metadata = {
 };
 
 import type { Viewport } from "next";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const viewport: Viewport = {
   themeColor: "#000000",
@@ -117,7 +114,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
       <head>
         <script
           type="application/ld+json"
@@ -139,9 +136,35 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable}`}
+        className={`${interTight.variable} ${jetbrainsMono.variable} bg-[#111111] text-foreground`}
         suppressHydrationWarning
       >
+        {/* Global Structural Node Graph Background */}
+        <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden mix-blend-screen opacity-[0.15]">
+          <svg
+            className="absolute right-0 bottom-0 translate-x-1/4 translate-y-1/4 text-white/10"
+            width="1000"
+            height="1000"
+            viewBox="0 0 1000 1000"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Connecting Lines */}
+            <path d="M500 500 L800 200 M500 500 L200 800 M500 500 L800 800 M500 500 L200 200" stroke="currentColor" strokeWidth="80" strokeLinecap="round" />
+            
+            {/* Nodes */}
+            <circle cx="500" cy="500" r="160" stroke="currentColor" strokeWidth="80" fill="#111111" />
+            <circle cx="800" cy="200" r="120" stroke="currentColor" strokeWidth="80" fill="#111111" />
+            <circle cx="200" cy="800" r="120" stroke="currentColor" strokeWidth="80" fill="#111111" />
+            <circle cx="800" cy="800" r="120" stroke="currentColor" strokeWidth="80" fill="#111111" />
+            <circle cx="200" cy="200" r="120" stroke="currentColor" strokeWidth="80" fill="#111111" />
+
+            {/* Center glow box */}
+            <rect x="360" y="360" width="280" height="280" stroke="currentColor" strokeWidth="20" fill="#151515" rx="10" />
+            <rect x="420" y="420" width="160" height="160" fill="currentColor" opacity="0.3" rx="5" />
+          </svg>
+        </div>
+
         <ThemeProvider>
           <SmoothScroll>
             <GoogleAnalytics />

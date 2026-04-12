@@ -1,88 +1,87 @@
 import Navbar from "@/components/Navbar";
-import PageHeader from "@/components/PageHeader";
 import ContactFooter from "@/components/ContactFooter";
-import { Cpu, Shield, Globe } from "lucide-react";
+import PageHeader from "@/components/PageHeader";
+import { Cpu, Shield, Globe, ArrowUpRight } from "lucide-react";
 import { Metadata } from "next";
+import { motion } from "framer-motion";
 
 export const metadata: Metadata = {
-  title: "About Us | Enterprise Software Development Company",
-  description: "Learn about Maysan Labs - a leading enterprise SaaS development company. Our engineering philosophy focuses on precision stacks, data sovereignty, and global edge distribution.",
-  keywords: ["about SaaS development company", "enterprise software company", "Maysan Labs about", "custom software development about"],
-  openGraph: {
-    title: "About Maysan Labs | Enterprise SaaS Development",
-    description: "Discover Maysan Labs - your trusted partner for enterprise software development, cloud infrastructure, and scalable web applications.",
-  },
+  title: "About Us | Maysan Labs",
+  description: "Learn about Maysan Labs - we build websites, apps, and software that help businesses grow.",
 };
+
+const values = [
+  {
+    icon: <Cpu size={24} />,
+    title: "Linear Quality",
+    desc: "We build things right the first time. No technical debt, no performance bottlenecks.",
+  },
+  {
+    icon: <Shield size={24} />,
+    title: "Zero-Trust",
+    desc: "Your data stays safe with us. We use the most advanced enterprise security primitives.",
+  },
+  {
+    icon: <Globe size={24} />,
+    title: "Global Mesh",
+    desc: "We build for globally distributed systems. Your software operates at scale, anywhere.",
+  },
+];
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="bg-[#0d1117] min-h-screen relative overflow-hidden">
       <Navbar />
-      <PageHeader
-        label="CORE INTEL"
-        title="ENGINEERING PHILOSOPHY"
-        subtitle="At Maysan Labs, we build enterprise-grade digital systems with industrial precision, designed for maximum resilience and global operational scale."
+
+      <PageHeader 
+        label="Our Mission"
+        title="WHO_WE_ARE"
+        subtitle="A team of elite engineers and architects building the software that connects complex operations into high-fidelity enterprise logic."
       />
 
-      <section className="section-lg border-b border-border/50">
-        <div className="section-container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-lg">
-            <div className="p-8 border border-border rounded-lg hover:border-primary/30 transition-colors">
-              <div className="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center rounded mb-8">
-                <Cpu size={24} />
+      {/* Values Section */}
+      <section className="sec-xl">
+        <div className="container-main">
+          <div className="grid md:grid-cols-3 gap-8">
+            {values.map((value, index) => (
+              <div key={index} className="maysan-card group flex flex-col justify-between">
+                <div>
+                  <div className="w-14 h-14 bg-[#007AFF]/10 rounded-2xl flex items-center justify-center mb-10 text-[#007AFF] border border-[#007AFF]/20 group-hover:bg-[#007AFF] group-hover:text-white transition-all duration-500 shadow-lg">
+                    {value.icon}
+                  </div>
+                  <h3 className="text-3xl font-black text-white mb-6 uppercase tracking-tight group-hover:text-[#007AFF] transition-colors">
+                    {value.title}
+                  </h3>
+                  <p className="text-white/40 text-sm leading-relaxed font-medium">
+                    {value.desc}
+                  </p>
+                </div>
+                <div className="mt-12 flex justify-end opacity-0 group-hover:opacity-100 transition-opacity">
+                   <ArrowUpRight size={14} className="text-[#007AFF]" />
+                </div>
               </div>
-              <h3 className="text-2xl font-bold uppercase mb-4 text-foreground font-mono">
-                Precision Stacks
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                We don&apos;t do &apos;bloat&apos;. Every line of code is a
-                structural necessity. Our stacks are optimized for speed,
-                security, and scalability.
-              </p>
-            </div>
-            <div className="p-8 border border-border rounded-lg hover:border-primary/30 transition-colors">
-              <div className="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center rounded mb-8">
-                <Shield size={24} />
-              </div>
-              <h3 className="text-2xl font-bold uppercase mb-4 text-foreground font-mono">
-                Data Sovereignty
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Empowering global enterprises. We build tools that provide full
-                control over data, operations, and cross-border relationships.
-              </p>
-            </div>
-            <div className="p-8 border border-border rounded-lg hover:border-primary/30 transition-colors">
-              <div className="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center rounded mb-8">
-                <Globe size={24} />
-              </div>
-              <h3 className="text-2xl font-bold uppercase mb-4 text-foreground font-mono">
-                Edge Distribution
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Global availability is a standard, not a feature. We deploy your
-                infrastructure to the edge for zero-latency operations.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section-xl bg-gradient-to-b from-transparent to-primary/5">
-        <div className="section-container">
-          <div className="max-w-3xl">
-            <span className="font-mono text-xs text-primary tracking-widest mb-8 block">
-              {"// THE_MANIFESTO"}
-            </span>
-            <h2 className="text-5xl md:text-6xl font-black uppercase leading-none mb-12 text-foreground">
-              CONSTRUCTING THE FUTURE OF OPERATIONS
+      {/* Story Section */}
+      <section className="sec-xl relative overflow-hidden bg-black/20 border-y border-white/5">
+        <div className="radial-blur -top-40 -right-40 opacity-10" />
+        <div className="container-main relative z-10">
+          <div className="max-w-4xl">
+            <span className="announcement-bar !mb-8">Our Story</span>
+            <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] uppercase mb-12">
+              Our <br /><span className="text-[#007AFF] italic uppercase">Story.</span>
             </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground/80 leading-relaxed font-light">
-              The era of fragmented SaaS is over. The technology to operate an
-              entire global division from a unified command center is here.
-              Maysan Labs is the architect of this transition. We provide the
-              structural integrity needed to scale without compromise.
-            </p>
+            <div className="grid md:grid-cols-2 gap-12 text-lg text-white/40 font-medium leading-relaxed">
+              <p>
+                We started Maysan Labs because we saw enterprises struggle with bloated, legacy architectures and fragmented systems. We wanted to anchor engineering in absolute precision.
+              </p>
+              <p>
+                Today, we operate at the intersection of mission-critical engineering and operational excellence. We don&apos;t just build code; we deploy digital infrastructure that scales at the speed of growth.
+              </p>
+            </div>
           </div>
         </div>
       </section>

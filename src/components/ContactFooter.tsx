@@ -1,174 +1,111 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, ArrowRight, Globe } from "lucide-react";
-import { motion, Variants, Transition } from "framer-motion";
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.98, y: 20 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 80,
-      damping: 20,
-    } as Transition,
-  },
-};
-
-const footerVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
+import { motion } from "framer-motion";
 
 export default function ContactFooter() {
+  const links = [
+    { name: "Services", href: "/services" },
+    { name: "Engineering", href: "/engineering" },
+    { name: "Case Studies", href: "/case-studies" },
+    { name: "Blog", href: "/blog" },
+    { name: "Careers", href: "/careers" },
+  ];
+
   return (
-    <footer id="contact" className="relative overflow-hidden bg-background">
-      {/* Massive CTA Section */}
-      <div className="section-xl relative border-t border-border/50">
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="section-container"
-        >
-          <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
-            <motion.div variants={itemVariants} className="mb-12">
-               <span className="badge mb-8">Strategic Partnership</span>
-               <h2 className="heading-xl mb-0">
-                 Engineering the future<br />
-                 of digital <span className="font-accent lowercase text-primary italic">sovereignty.</span>
-               </h2>
-            </motion.div>
-
-            <motion.p 
-              variants={itemVariants}
-              className="text-lg sm:text-xl text-foreground/60 mb-16 max-w-2xl leading-relaxed font-medium">
-              We build the infrastructure for enterprises ready to scale. No compromise on velocity, security, or <span className="text-foreground">deterministic architecture.</span>
-            </motion.p>
-
-            <motion.div 
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-md"
-            >
-              <Link
-                href="/init"
-                className="px-10 py-5 bg-foreground text-background font-bold text-xs tracking-widest uppercase hover:bg-primary transition-all rounded-full flex items-center justify-center gap-3 group"
-              >
-                INITIALIZE PROJECT
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+    <footer className="bg-[#0b0e14] border-t border-white/5">
+      {/* Main CTA Section */}
+      <section className="sec-xl overflow-hidden relative">
+        <div className="radial-blur -top-40 -right-40 opacity-10" />
+        <div className="container-main text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="announcement-bar">Work With Us</span>
+            <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-white mt-10 mb-8 leading-[0.9]">
+              Schedule a <br /><span className="text-[#007AFF]">Strategy Call.</span>
+            </h2>
+            <p className="text-white/40 mb-12 max-w-xl mx-auto font-medium text-lg">
+              We operate at the intersection of complex engineering and mission-critical deployment.
+            </p>
+            <div className="flex flex-wrap justify-center gap-6">
+              <Link href="/init" className="pill-btn pill-btn-primary min-w-[240px]">
+                Book a Strategy Call
               </Link>
-              <Link
-                href="mailto:business@maysanlabs.com"
-                className="px-10 py-5 border border-foreground/10 text-foreground font-bold text-xs tracking-widest uppercase hover:bg-foreground hover:text-background transition-all rounded-full flex items-center justify-center gap-3"
-              >
-                SEND INQUIRY
-                <ArrowUpRight size={18} />
+              <Link href="mailto:business@maysanlabs.com" className="pill-btn pill-btn-secondary min-w-[240px]">
+                Send Email
               </Link>
-            </motion.div>
-          </div>
-        </motion.div>
-      </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-      {/* Industrial Footer Grid */}
-      <motion.div 
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={footerVariants}
-        className="border-t border-border/50 bg-secondary/30 py-24 relative overflow-hidden"
-      >
-        <div className="container relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
-            
-            <div className="md:col-span-6 space-y-8">
-              <div className="flex items-center gap-3">
-                 <div className="w-8 h-8 bg-primary flex items-center justify-center text-white rounded-sm font-bold">
-                    M
-                 </div>
-                 <h4 className="text-2xl font-bold uppercase tracking-tight">
-                   MAYSAN<span className="font-accent lowercase ml-1">labs</span>
-                 </h4>
-              </div>
-              <p className="text-xs uppercase tracking-widest text-foreground/50 max-w-sm leading-loose font-medium">
-                architects of modern, high-concurrency enterprise ecosystems. engineering digital infrastructure that scales at the speed of thought.
+      {/* Footer Navigation */}
+      <section className="py-20 border-t border-white/5 bg-black/40">
+        <div className="container-main">
+          <div className="grid md:grid-cols-4 gap-16 lg:gap-32">
+            {/* Brand Column */}
+            <div className="md:col-span-2">
+              <Link href="/" className="flex items-center gap-3 mb-8 group">
+                <div className="w-10 h-10 bg-[#007AFF] rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-500">
+                  <span className="font-black text-white text-xl">M</span>
+                </div>
+                <div className="flex flex-col">
+                   <span className="font-black text-white text-xl tracking-tighter uppercase">Maysan Labs</span>
+                   <span className="font-mono text-[8px] text-[#007AFF] uppercase tracking-[0.4em]">Enterprise_Eng</span>
+                </div>
+              </Link>
+              <p className="text-white/30 text-sm leading-relaxed max-w-sm">
+                Engineering high-performance enterprise SaaS infrastructure and autonomous operational tools with mathematical precision.
               </p>
             </div>
 
-            <div className="md:col-span-3 space-y-6">
-              <h4 className="text-[10px] font-bold text-primary uppercase tracking-[0.4em]">
-                DIRECTORY
-              </h4>
+            {/* Links Column */}
+            <div>
+              <h4 className="text-white font-bold text-xs uppercase tracking-[0.3em] mb-8">Navigation</h4>
               <div className="flex flex-col gap-4">
-                {["Solutions", "Engineering", "Architecture", "Insights", "Blog"].map((item) => (
+                {links.map((link) => (
                   <Link
-                    key={item}
-                    href="#"
-                    className="text-[11px] font-bold uppercase tracking-wider text-foreground/40 hover:text-primary transition-colors"
+                    key={link.name}
+                    href={link.href}
+                    className="text-white/30 hover:text-[#007AFF] text-[11px] font-bold uppercase tracking-widest transition-colors duration-300"
                   >
-                    {item}
+                    {link.name}
                   </Link>
                 ))}
               </div>
             </div>
 
-            <div className="md:col-span-3 space-y-6">
-              <h4 className="text-[10px] font-bold text-primary uppercase tracking-[0.4em]">
-                GLOBAL_ACCESS
-              </h4>
-              <div className="flex items-center gap-3 text-foreground/60 font-medium">
-                 <Globe size={14} className="text-primary" />
-                 <p className="text-[11px] uppercase tracking-wider">
-                    GURGAON / HARYANA / INDIA
-                 </p>
+            {/* Connectivity Column */}
+            <div>
+              <h4 className="text-white font-bold text-xs uppercase tracking-[0.3em] mb-8">Connectivity</h4>
+              <div className="flex flex-col gap-4 text-white/30 text-xs">
+                <p className="font-medium">Gurgaon, Haryana, India</p>
+                <Link href="mailto:business@maysanlabs.com" className="hover:text-[#007AFF] transition-colors duration-300 font-bold">
+                  business@maysanlabs.com
+                </Link>
               </div>
-              <Link
-                href="mailto:business@maysanlabs.com"
-                className="block text-[11px] font-bold uppercase tracking-wider text-foreground/40 hover:text-primary transition-colors"
-              >
-                business@maysanlabs.com
-              </Link>
             </div>
           </div>
 
-          <div className="mt-32 pt-12 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex items-center gap-6 text-[9px] uppercase tracking-[0.3em] font-bold text-foreground/20">
-               <p>© {new Date().getFullYear()} MAYSAN LABS</p>
-               <div className="w-1 h-1 bg-border rounded-full" />
-               <p>STATUS: OPERATIONAL</p>
+          {/* Copyright Bar */}
+          <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+            <p className="text-[10px] font-mono text-white/20 uppercase tracking-widest">
+              © {new Date().getFullYear()} Maysan Labs // SYSTEM_ACTIVE
+            </p>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                 <div className="w-1.5 h-1.5 rounded-full bg-[#007AFF] animate-pulse" />
+                 <span className="text-[10px] font-mono text-[#007AFF] uppercase tracking-widest">Bridge_Operational</span>
+              </div>
+              <div className="h-4 w-px bg-white/5" />
+              <span className="text-[10px] font-mono text-white/20 uppercase tracking-widest">ISO_27001_COMPLIANT</span>
             </div>
-            
-            <Link 
-              href="https://sanjaymandal.me"
-              target="_blank"
-              className="text-[9px] uppercase tracking-[0.3em] font-bold text-foreground/20 hover:text-primary transition-colors"
-            >
-               DESIGN BY SANJAY MANDAL
-            </Link>
           </div>
         </div>
-      </motion.div>
+      </section>
     </footer>
   );
 }

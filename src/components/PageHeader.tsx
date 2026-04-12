@@ -14,25 +14,31 @@ export default function PageHeader({
   label,
 }: PageHeaderProps) {
   return (
-    <section className="pt-32 pb-16 bg-muted/10 border-b border-border">
-      <div className="container">
+    <section className="relative pt-44 pb-20 overflow-hidden bg-[#0d1117]">
+      {/* Background Accents */}
+      <div className="absolute top-1/4 -left-40 w-80 h-80 bg-[#007AFF]/5 rounded-full blur-[100px] pointer-events-none" />
+      
+      <div className="container-main relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="max-w-4xl"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-5xl"
         >
-          <span className="text-sm font-mono text-primary uppercase tracking-widest mb-4 block">
+          <span className="announcement-bar !mb-8">
             {label}
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-foreground">
+          <h1 className="hero-title text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8 uppercase">
             {title.replace(/_/g, " ")}
           </h1>
-          <p className="text-xl text-muted-foreground leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/40 leading-relaxed max-w-2xl font-medium">
             {subtitle}
           </p>
         </motion.div>
       </div>
+
+      {/* Industrial Divider */}
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
     </section>
   );
 }
