@@ -168,7 +168,7 @@ export default function InitPage() {
               </div>
               <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-6 leading-none">Message <br /><span className="text-[var(--brand-primary)] italic uppercase">Sent.</span></h2>
               <p className="text-white/70 mb-16 text-xl font-medium max-w-md mx-auto">
-                We've received your request. Our team will get back to you shortly to schedule your call.
+                We&apos;ve received your request. Our team will get back to you shortly to schedule your call.
               </p>
               <button
                 onClick={() => setIsSubmitted(false)}

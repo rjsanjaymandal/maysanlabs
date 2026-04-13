@@ -8,7 +8,6 @@ import {
   Cpu, 
   Layers, 
   Zap, 
-  Globe, 
   ShieldCheck, 
   Code2,
   ArrowUpRight
@@ -16,6 +15,8 @@ import {
 import Link from "next/link";
 import Marquee from "@/components/ui/marquee";
 import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
+import { GridPattern } from "@/components/ui/grid-pattern";
+import { FloatingParticles } from "@/components/ui/particles";
 
 export const metadata: Metadata = {
   title: "Maysan Labs | Custom Software Development",
@@ -77,7 +78,8 @@ export default function Home() {
       
       {/* ─── Trust Section: Magic UI Marquee ─── */}
       <section className="py-20 border-y border-white/5 bg-black/20 overflow-hidden relative">
-        <div className="container-main mb-10 text-center">
+        <GridPattern className="opacity-50" />
+        <div className="container-main mb-10 text-center relative z-10">
            <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-white/30">Trusted by Leading Enterprises</span>
         </div>
         <Marquee pauseOnHover className="[--duration:20s]">
@@ -90,7 +92,8 @@ export default function Home() {
       </section>
 
       {/* ─── Bento Grid Section: Maysan Engineering Excellence ─── */}
-      <section className="sec-xl container-main">
+      <section className="sec-xl container-main relative">
+        <FloatingParticles count={15} color="var(--brand-primary)" className="opacity-30" />
         <div className="mb-20">
           <span className="announcement-bar !mb-6">Built Right</span>
           <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] uppercase">
@@ -111,8 +114,10 @@ export default function Home() {
 
       {/* ─── Final CTA ─── */}
       <section className="sec-xl relative overflow-hidden">
+        <GridPattern className="opacity-30" />
+        <FloatingParticles count={25} className="opacity-20" />
         <div className="container-main text-center relative z-10">
-          <div className="maysan-card border-[var(--brand-primary)]/30 bg-[#0d1117]/80 backdrop-blur-2xl py-24">
+          <div className="maysan-card border-[var(--brand-primary)]/30 bg-[#0d1117]/80 backdrop-blur-2xl py-24 group hover:border-[var(--brand-primary)]/60 transition-all duration-500">
             <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-none uppercase">
               Build your<br />
               <span className="text-[var(--brand-primary)] italic">next project.</span>
@@ -121,7 +126,7 @@ export default function Home() {
               Join leading businesses building their future with Maysan Labs quality standards.
             </p>
             <div className="flex justify-center flex-wrap gap-6">
-               <Link href="/init" className="pill-btn pill-btn-primary min-w-[280px]">
+               <Link href="/init" className="pill-btn pill-btn-primary min-w-[280px] hover:shadow-[0_0_40px_rgba(163,230,53,0.5)]">
                  Book a Strategy Call
                  <ArrowUpRight size={18} />
                </Link>

@@ -48,9 +48,9 @@ export default function Testimonials() {
                   ))}
                </div>
                <Quote size={32} className="text-[var(--brand-primary)]/20 mb-6" />
-               <p className="text-white/70 mb-10 leading-relaxed font-medium">
-                 "{testimonial.message}"
-               </p>
+                <p className="text-white/70 mb-10 leading-relaxed font-medium">
+                  &ldquo;{testimonial.message}&rdquo;
+                </p>
             </div>
             
             <div className="flex items-center gap-4">

@@ -31,9 +31,13 @@
   .sec-md { @apply py-16 md:py-24; }
   .sec-lg { @apply py-20 md:py-28; }
   .sec-xl { @apply py-24 md:py-32; }
+  .section-xl { @apply py-24 md:py-32; }
 
   /* Container */
   .container-main {
+    @apply w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8;
+  }
+  .section-container {
     @apply w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8;
   }
 
@@ -49,6 +53,25 @@
   /* Glassmorphism */
   .glass {
     @apply bg-black/40 backdrop-blur-xl border border-white/10;
+  }
+
+  /* Typography Utilities */
+  .heading-xl {
+    @apply text-4xl md:text-5xl lg:text-6xl font-black tracking-tight uppercase leading-none;
+  }
+  .label-mono {
+    @apply text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-[var(--brand-primary)];
+  }
+  .label-system {
+    @apply text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-[var(--brand-primary)]/60 px-2 py-1 bg-[var(--brand-primary)]/5 rounded;
+  }
+  .badge {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] font-bold uppercase tracking-widest text-[var(--brand-light)] backdrop-blur-md;
+  }
+
+  /* Card Bento */
+  .card-bento {
+    @apply bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6 transition-all duration-500;
   }
 }
 
@@ -247,4 +270,40 @@ html, body {
   pointer-events: none;
   box-shadow: inset 0 0 150px var(--primary-glow);
   opacity: 0.2;
+}
+
+/* ─── New Animation Keyframes ─── */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0) translateX(0); 
+  }
+  25% { 
+    transform: translateY(-20px) translateX(10px); 
+  }
+  50% { 
+    transform: translateY(-40px) translateX(-5px); 
+  }
+  75% { 
+    transform: translateY(-20px) translateX(15px); 
+  }
+}
+
+@keyframes gradient-rotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmer {
+  0% { transform: skewX(-20deg) translateX(-150%); }
+  100% { transform: skewX(-20deg) translateX(150%); }
+}
+
+/* Glow effects */
+.glow-primary {
+  box-shadow: 0 0 40px rgba(163, 230, 53, 0.4);
+}
+
+.glow-primary-subtle {
+  box-shadow: 0 0 20px rgba(163, 230, 53, 0.2);
 }
