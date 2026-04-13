@@ -105,7 +105,7 @@ export default function CareersClient() {
                   </p>
                   <div className="flex flex-wrap items-center gap-6 mb-10 pt-8 border-t border-white/5">
                     <div className="flex items-center gap-3 text-[10px] font-mono uppercase tracking-widest text-white/30">
-                      <MapPin size={14} className="text-[var(--brand-primary)]/60" />
+                      <MapPin size={14} style={{ color: "rgba(163, 230, 53, 0.6)" }} />
                       {job.location}
                     </div>
                   </div>

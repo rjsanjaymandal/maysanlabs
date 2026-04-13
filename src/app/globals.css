@@ -63,7 +63,9 @@
     @apply text-[10px] font-mono font-bold uppercase tracking-[0.3em] text-[var(--brand-primary)];
   }
   .label-system {
-    @apply text-[9px] font-mono font-bold uppercase tracking-[0.2em] text-[var(--brand-primary)]/60 px-2 py-1 bg-[var(--brand-primary)]/5 rounded;
+    @apply text-[9px] font-mono font-bold uppercase tracking-[0.2em] px-2 py-1 rounded;
+    color: rgba(163, 230, 53, 0.6);
+    background: rgba(163, 230, 53, 0.05);
   }
   .badge {
     @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] font-bold uppercase tracking-widest text-[var(--brand-light)] backdrop-blur-md;
