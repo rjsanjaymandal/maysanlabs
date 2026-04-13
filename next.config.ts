@@ -18,18 +18,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Content-Security-Policy",
-            value: [
-              "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https://www.googletagmanager.com https://*.googletagmanager.com",
-              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-              "font-src 'self' data: https://fonts.gstatic.com",
-              "img-src 'self' blob: data: https:",
-              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.googletagmanager.com",
-              "frame-src 'none'",
-              "object-src 'none'",
-              "base-uri 'self'",
-              "upgrade-insecure-requests",
-            ].join("; "),
+            value: "default-src 'self' 'unsafe-inline' 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https://www.googletagmanager.com https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' blob: data: https:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests;",
           },
           {
             key: "X-Frame-Options",
