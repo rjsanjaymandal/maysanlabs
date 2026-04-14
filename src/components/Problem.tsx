@@ -1,6 +1,6 @@
 "use client";
 
-import { TerminalSquare, Cpu, ShieldAlert, Activity, ArrowUpRight } from "lucide-react";
+import { Cpu, ShieldAlert, Activity, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Problem() {

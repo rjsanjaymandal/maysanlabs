@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BlogPost } from "@/lib/blog-data";
-import { ArrowRight, Clock, Tag, ArrowUpRight } from "lucide-react";
+import { ArrowRight, Clock, Tag } from "lucide-react";
 
 interface BlogCardProps {
   post: BlogPost;

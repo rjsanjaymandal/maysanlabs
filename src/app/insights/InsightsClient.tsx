@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Activity, Zap, Target, Box, Database, TrendingUp, Shield, BarChart3 } from "lucide-react";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 
@@ -123,7 +124,9 @@ export default function InsightsClient() {
       <ContactFooter />
 
       {/* Decorative Asset */}
-      <img src="/assets/wireframe-grid.png" alt="" className="absolute top-1/2 -right-40 w-full opacity-10 pointer-events-none mix-blend-screen mask-radial-fade scale-110" />
+      <div className="absolute top-1/2 -right-40 w-full h-[600px] opacity-10 pointer-events-none mix-blend-screen mask-radial-fade scale-110">
+        <Image src="/assets/wireframe-grid.png" alt="" fill className="object-contain" priority />
+      </div>
       <div className="radial-glow bottom-0 left-0 opacity-15" />
     </main>
   );

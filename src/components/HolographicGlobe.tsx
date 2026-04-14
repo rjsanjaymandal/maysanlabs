@@ -21,8 +21,6 @@ export const HolographicGlobe = () => {
 
     let width = containerRef.current.clientWidth;
     let height = containerRef.current.clientHeight;
-    const rotationY = 0;
-    const rotationX = 0;
 
     const setCanvasSize = () => {
       width = containerRef.current!.clientWidth;

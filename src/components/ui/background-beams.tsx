@@ -2,6 +2,49 @@
 import React, { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
+class Beam {
+  x: number;
+  y: number;
+  length: number;
+  speed: number;
+  opacity: number;
+  width: number;
+  height: number;
+
+  constructor(width: number, height: number) {
+    this.width = width;
+    this.height = height;
+    this.x = Math.random() * width;
+    this.y = Math.random() * height;
+    this.length = Math.random() * 200 + 100;
+    this.speed = Math.random() * 0.5 + 0.1;
+    this.opacity = Math.random() * 0.5;
+  }
+
+  update() {
+    this.y -= this.speed;
+    if (this.y < -this.length) {
+      this.y = this.height + this.length;
+      this.x = Math.random() * this.width;
+    }
+  }
+
+  draw(ctx: CanvasRenderingContext2D) {
+    const gradient = ctx.createLinearGradient(
+      this.x,
+      this.y,
+      this.x,
+      this.y + this.length
+    );
+    gradient.addColorStop(0, "rgba(163, 230, 53, 0)");
+    gradient.addColorStop(0.5, `rgba(163, 230, 53, ${this.opacity})`);
+    gradient.addColorStop(1, "rgba(163, 230, 53, 0)");
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(this.x, this.y, 1, this.length);
+  }
+}
+
 export const BackgroundBeams = ({ className }: { className?: string }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -17,8 +60,9 @@ export const BackgroundBeams = ({ className }: { className?: string }) => {
     let height = containerRef.current.clientHeight;
 
     const setCanvasSize = () => {
-      width = containerRef.current!.clientWidth;
-      height = containerRef.current!.clientHeight;
+      if (!containerRef.current) return;
+      width = containerRef.current.clientWidth;
+      height = containerRef.current.clientHeight;
       canvas.width = width;
       canvas.height = height;
     };
@@ -29,55 +73,15 @@ export const BackgroundBeams = ({ className }: { className?: string }) => {
     const beams: Beam[] = [];
     const beamCount = 30;
 
-    class Beam {
-      x: number;
-      y: number;
-      length: number;
-      speed: number;
-      opacity: number;
-
-      constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.length = Math.random() * 200 + 100;
-        this.speed = Math.random() * 0.5 + 0.1;
-        this.opacity = Math.random() * 0.5;
-      }
-
-      update() {
-        this.y -= this.speed;
-        if (this.y < -this.length) {
-          this.y = height + this.length;
-          this.x = Math.random() * width;
-        }
-      }
-
-      draw() {
-        if (!ctx) return;
-        const gradient = ctx.createLinearGradient(
-          this.x,
-          this.y,
-          this.x,
-          this.y + this.length
-        );
-        gradient.addColorStop(0, "rgba(163, 230, 53, 0)");
-        gradient.addColorStop(0.5, `rgba(163, 230, 53, ${this.opacity})`);
-        gradient.addColorStop(1, "rgba(163, 230, 53, 0)");
-
-        ctx.fillStyle = gradient;
-        ctx.fillRect(this.x, this.y, 1, this.length);
-      }
-    }
-
     for (let i = 0; i < beamCount; i++) {
-      beams.push(new Beam());
+      beams.push(new Beam(width, height));
     }
 
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
       beams.forEach((beam) => {
         beam.update();
-        beam.draw();
+        beam.draw(ctx);
       });
       requestAnimationFrame(animate);
     };

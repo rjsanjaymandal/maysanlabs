@@ -1,6 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { useState, useEffect, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface FloatingParticlesProps {
   className?: string;
@@ -29,26 +31,51 @@ export function FloatingParticles({
   minSize = 2,
   maxSize = 6,
 }: FloatingParticlesProps) {
-  const particles = generateParticles(count, minSize, maxSize);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // Defer state update to avoid cascading render warning in some strict lint environments
+    const raf = requestAnimationFrame(() => {
+      setMounted(true);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  // Generate particles only once on the client to avoid hydration mismatch
+  const particles = useMemo(() => {
+    if (!mounted) return [];
+    return generateParticles(count, minSize, maxSize);
+  }, [mounted, count, minSize, maxSize]);
 
   return (
     <div className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}>
-      {particles.map((particle) => (
-        <div
-          key={particle.id}
-          className="absolute rounded-full"
-          style={{
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-            width: particle.size,
-            height: particle.size,
-            background: color,
-            opacity: particle.opacity,
-            animation: `float ${particle.duration}s ease-in-out infinite`,
-            animationDelay: `${particle.delay}s`,
-          }}
-        />
-      ))}
+      <AnimatePresence>
+        {mounted && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5 }}
+            className="w-full h-full"
+          >
+            {particles.map((particle) => (
+              <div
+                key={particle.id}
+                className="absolute rounded-full"
+                style={{
+                  left: `${particle.x}%`,
+                  top: `${particle.y}%`,
+                  width: particle.size,
+                  height: particle.size,
+                  background: color,
+                  opacity: particle.opacity,
+                  animation: `float ${particle.duration}s ease-in-out infinite`,
+                  animationDelay: `${particle.delay}s`,
+                }}
+              />
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

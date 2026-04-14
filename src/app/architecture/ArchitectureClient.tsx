@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Shield, Globe, Cpu, Activity, Zap, Box } from "lucide-react";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 
@@ -130,7 +131,9 @@ export default function ArchitectureClient() {
       <ContactFooter />
 
       {/* Decorative Asset */}
-      <img src="/assets/wireframe-nodes.png" alt="" className="absolute top-1/2 -left-40 w-[600px] h-[600px] opacity-10 pointer-events-none mix-blend-screen mask-radial-fade scale-125 rotate-12" />
+      <div className="absolute top-1/2 -left-40 w-[600px] h-[600px] opacity-10 pointer-events-none mix-blend-screen mask-radial-fade scale-125 rotate-12">
+        <Image src="/assets/wireframe-nodes.png" alt="" fill className="object-contain" priority />
+      </div>
       <div className="radial-glow bottom-0 right-0 opacity-20" />
     </main>
   );

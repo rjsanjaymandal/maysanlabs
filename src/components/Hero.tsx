@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Play, Cpu } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { HolographicGlobe } from "@/components/HolographicGlobe";

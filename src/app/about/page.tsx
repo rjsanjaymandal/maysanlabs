@@ -3,7 +3,6 @@ import ContactFooter from "@/components/ContactFooter";
 import PageHeader from "@/components/PageHeader";
 import { Cpu, Shield, Globe, ArrowUpRight } from "lucide-react";
 import { Metadata } from "next";
-import { motion } from "framer-motion";
 
 export const metadata: Metadata = {
   title: "About Us | Maysan Labs",

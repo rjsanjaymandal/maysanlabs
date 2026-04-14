@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -23,14 +23,14 @@ export function HoverBorderGradient({
   const [hovered, setHovered] = useState<boolean>(false);
   const [direction, setDirection] = useState<string>("TOP");
 
-  const rotateDirection = (currentDirection: string) => {
+  const rotateDirection = useCallback((currentDirection: string) => {
     const directions = ["TOP", "LEFT", "BOTTOM", "RIGHT"];
     const index = directions.indexOf(currentDirection);
     const nextIndex = clockwise
       ? (index - 1 + directions.length) % directions.length
       : (index + 1) % directions.length;
     return directions[nextIndex];
-  };
+  }, [clockwise]);
 
   const movingBackgroundPath = (direction: string) => {
     const paths: { [key: string]: string } = {
@@ -49,7 +49,7 @@ export function HoverBorderGradient({
       }, duration * 1000);
       return () => clearInterval(interval);
     }
-  }, [hovered, duration, clockwise]);
+  }, [hovered, duration, rotateDirection]);
 
   return (
     <Tag
