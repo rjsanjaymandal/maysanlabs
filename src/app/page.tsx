@@ -1,8 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ContactFooter from "@/components/ContactFooter";
-import Testimonials from "@/components/Testimonials";
-import OperationsRoadmap from "@/components/OperationsRoadmap";
+import dynamic from "next/dynamic";
 import { Metadata } from "next";
 import { 
   Cpu, 
@@ -14,9 +12,24 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Marquee from "@/components/ui/marquee";
-import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
 import { GridPattern } from "@/components/ui/grid-pattern";
 import { FloatingParticles } from "@/components/ui/particles";
+
+// Dynamic Imports for performance hardening
+const BentoGrid = dynamic(() => import("@/components/ui/bento-grid").then(m => m.BentoGrid), {
+  loading: () => <div className="min-h-[600px] animate-pulse bg-white/5 rounded-3xl" />
+});
+const BentoCard = dynamic(() => import("@/components/ui/bento-grid").then(m => m.BentoCard));
+
+const OperationsRoadmap = dynamic(() => import("@/components/OperationsRoadmap"), {
+  loading: () => <div className="min-h-[400px] bg-transparent" />
+});
+
+const Testimonials = dynamic(() => import("@/components/Testimonials"), {
+  loading: () => <div className="min-h-[300px] bg-transparent" />
+});
+
+const ContactFooter = dynamic(() => import("@/components/ContactFooter"));
 
 export const metadata: Metadata = {
   title: "Maysan Labs | Custom Software Development",

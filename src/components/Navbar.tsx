@@ -38,7 +38,7 @@ export default function Navbar() {
             <div className="relative group/logo">
               <div className="absolute inset-0 bg-[var(--brand-primary)] blur-xl opacity-0 group-hover/logo:opacity-20 transition-opacity duration-500" />
               <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg relative z-0 overflow-hidden ring-1 ring-white/10 border border-white/5 bg-black">
-                 <Image src="/logo.png" alt="Maysan Labs Logo" width={40} height={40} className="object-cover scale-110" />
+                 <Image src="/logo.png" alt="Maysan Labs Logo" width={40} height={40} className="object-cover scale-110" priority />
               </div>
             </div>
             <div className="flex flex-col">
@@ -99,7 +99,7 @@ export default function Navbar() {
               <div className="flex justify-between items-center mb-16">
                  <Link href="/" className="flex items-center gap-3">
                      <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(163,230,53,0.3)] overflow-hidden border border-white/10 bg-black">
-                       <Image src="/logo.png" alt="Maysan Labs Logo" width={40} height={40} className="object-cover scale-110" />
+                       <Image src="/logo.png" alt="Maysan Labs Logo" width={40} height={40} className="object-cover scale-110" priority />
                      </div>
                  </Link>
                  <button onClick={() => setIsOpen(false)} className="p-2 text-white/50 hover:text-white">

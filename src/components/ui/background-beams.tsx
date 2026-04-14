@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { cn } from "@/lib/utils";
 
 class Beam {
@@ -48,9 +48,15 @@ class Beam {
 export default function BackgroundBeams({ className }: { className?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isMounted, setIsMounted] = React.useState(false);
 
-  useEffect(() => {
-    if (!canvasRef.current || !containerRef.current) return;
+  React.useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsMounted(true);
+  }, []);
+
+  React.useEffect(() => {
+    if (!isMounted || !canvasRef.current || !containerRef.current) return;
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -58,6 +64,7 @@ export default function BackgroundBeams({ className }: { className?: string }) {
 
     let width = containerRef.current.clientWidth;
     let height = containerRef.current.clientHeight;
+    let rafId: number;
 
     const setCanvasSize = () => {
       if (!containerRef.current) return;
@@ -68,7 +75,7 @@ export default function BackgroundBeams({ className }: { className?: string }) {
     };
 
     setCanvasSize();
-    window.addEventListener("resize", setCanvasSize);
+    window.addEventListener("resize", setCanvasSize, { passive: true });
 
     const beams: Beam[] = [];
     const beamCount = 30;
@@ -83,15 +90,18 @@ export default function BackgroundBeams({ className }: { className?: string }) {
         beam.update();
         beam.draw(ctx);
       });
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
     };
 
     animate();
 
     return () => {
       window.removeEventListener("resize", setCanvasSize);
+      cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, [isMounted]);
+
+  if (!isMounted) return <div className={cn("absolute inset-0 z-0 bg-transparent", className)} />;
 
   return (
     <div
