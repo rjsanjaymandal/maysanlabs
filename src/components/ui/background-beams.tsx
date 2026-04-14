@@ -45,7 +45,7 @@ class Beam {
   }
 }
 
-export const BackgroundBeams = ({ className }: { className?: string }) => {
+export default function BackgroundBeams({ className }: { className?: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -107,4 +107,4 @@ export const BackgroundBeams = ({ className }: { className?: string }) => {
       />
     </div>
   );
-};
+}

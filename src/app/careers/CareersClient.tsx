@@ -7,7 +7,7 @@ import SpotlightCard from "@/components/SpotlightCard";
 import { jobPositions } from "@/lib/careers-data";
 import { Users, Target, Rocket, MapPin, ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+import BackgroundBeams from "@/components/ui/background-beams";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 export default function CareersClient() {

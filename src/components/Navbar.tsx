@@ -30,7 +30,7 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-[#0d1117]/60 backdrop-blur-xl border-b border-white/5 py-2" : "bg-transparent py-4"
+        scrolled ? "bg-[var(--bg-dark)]/60 backdrop-blur-xl border-b border-white/5 py-2" : "bg-transparent py-4"
       }`}>
         <div className="container-main flex items-center justify-between">
           {/* Logo */}
@@ -93,7 +93,7 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed inset-0 z-[60] bg-[#0d1117]/95 backdrop-blur-2xl lg:hidden"
+            className="fixed inset-0 z-[60] bg-[var(--bg-dark)]/95 backdrop-blur-2xl lg:hidden"
           >
             <div className="flex flex-col h-full p-8">
               <div className="flex justify-between items-center mb-16">

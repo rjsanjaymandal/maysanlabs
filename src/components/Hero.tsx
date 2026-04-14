@@ -3,13 +3,13 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Play } from "lucide-react";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+import BackgroundBeams from "@/components/ui/background-beams";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import HolographicGlobe from "@/components/HolographicGlobe";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[95vh] flex flex-col items-center justify-center pt-32 pb-20 px-4 overflow-hidden bg-[#0d1117]">
+    <section className="relative min-h-[95vh] flex flex-col items-center justify-center pt-32 pb-20 px-4 overflow-hidden bg-[var(--bg-dark)]">
       {/* Background Beams Effect (Aceternity) */}
       <BackgroundBeams />
       <HolographicGlobe />

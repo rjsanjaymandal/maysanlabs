@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+import BackgroundBeams from "@/components/ui/background-beams";
 
 interface PageHeaderProps {
   title: string;
@@ -15,7 +15,7 @@ export default function PageHeader({
   label,
 }: PageHeaderProps) {
   return (
-    <section className="relative pt-44 pb-20 overflow-hidden bg-[#0d1117]">
+    <section className="relative pt-44 pb-20 overflow-hidden bg-[var(--bg-dark)]">
       {/* Background Beams for consistent depth */}
       <BackgroundBeams />
       

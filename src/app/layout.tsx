@@ -140,7 +140,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${interTight.variable} ${jetbrainsMono.variable} bg-[#111111] text-foreground`}
+        className={`${interTight.variable} ${jetbrainsMono.variable} bg-[var(--bg-base)] text-foreground`}
         suppressHydrationWarning
       >
         {/* Global Structural Node Graph Background */}

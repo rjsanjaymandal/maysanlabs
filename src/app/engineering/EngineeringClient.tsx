@@ -36,7 +36,7 @@ const features = [
 
 export default function EngineeringClient() {
   return (
-    <main className="bg-[#0d1117] min-h-screen relative overflow-hidden">
+    <main className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden">
       <Navbar />
       
       {/* Background Decor */}

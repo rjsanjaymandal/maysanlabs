@@ -72,7 +72,7 @@ const bentoFeatures = [
 
 export default function Home() {
   return (
-    <main className="bg-[#0d1117] min-h-screen relative overflow-hidden">
+    <main className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden">
       <Navbar />
       <Hero />
       
@@ -117,7 +117,7 @@ export default function Home() {
         <GridPattern className="opacity-30" />
         <FloatingParticles count={25} className="opacity-20" />
         <div className="container-main text-center relative z-10">
-          <div className="maysan-card border-[var(--brand-primary)]/30 bg-[#0d1117]/80 backdrop-blur-2xl py-24 group hover:border-[var(--brand-primary)]/60 transition-all duration-500">
+          <div className="maysan-card border-[var(--brand-primary)]/30 bg-[var(--bg-dark)]/80 backdrop-blur-2xl py-24 group hover:border-[var(--brand-primary)]/60 transition-all duration-500">
             <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-none uppercase">
               Build your<br />
               <span className="text-[var(--brand-primary)] italic">next project.</span>

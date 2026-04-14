@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+import BackgroundBeams from "@/components/ui/background-beams";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
 

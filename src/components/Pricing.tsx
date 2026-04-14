@@ -3,9 +3,9 @@
 import { Check, Zap, Rocket, Shield, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+import BackgroundBeams from "@/components/ui/background-beams";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-import { BorderBeam } from "@/components/ui/border-beam";
+import BorderBeam from "@/components/ui/border-beam";
 
 const plans = [
   {
@@ -50,7 +50,7 @@ const plans = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="sec-xl bg-[#0d1117] relative overflow-hidden">
+    <section id="pricing" className="sec-xl bg-[var(--bg-dark)] relative overflow-hidden">
       {/* Background Beams Effect (Aceternity) */}
       <BackgroundBeams />
       
