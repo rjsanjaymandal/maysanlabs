@@ -8,7 +8,7 @@ interface Point {
   z: number;
 }
 
-export const HolographicGlobe = () => {
+export default function HolographicGlobe() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -163,4 +163,4 @@ export const HolographicGlobe = () => {
       />
     </div>
   );
-};
+}

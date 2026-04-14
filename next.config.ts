@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   compress: true,
   reactStrictMode: true,
   // Used by self-hosted deployments to avoid mixing assets across rolling releases.

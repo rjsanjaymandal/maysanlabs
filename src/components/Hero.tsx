@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Play } from "lucide-react";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-import { HolographicGlobe } from "@/components/HolographicGlobe";
+import HolographicGlobe from "@/components/HolographicGlobe";
 
 export default function Hero() {
   return (
