@@ -4,10 +4,10 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   reactStrictMode: true,
+  generateBuildId: () => `build-${Date.now()}`,
   async headers() {
     return [
       {
-        // Keep HTML uncached so stale documents do not reference deleted chunk files.
         source: "/((?!_next/static|_next/image|.*\\..*).*)",
         headers: [
           {
