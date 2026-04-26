@@ -124,8 +124,6 @@ export default function Home() {
 
       {/* ─── Final CTA ─── */}
       <section className="sec-xl relative overflow-hidden">
-        <GridPattern className="opacity-30" />
-        <FloatingParticles count={25} className="opacity-20" />
         <div className="container-main text-center relative z-10">
           <div className="maysan-card border-[var(--brand-primary)]/30 bg-[var(--bg-dark)]/80 backdrop-blur-2xl py-24 group hover:border-[var(--brand-primary)]/60 transition-all duration-500">
             <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-none uppercase">

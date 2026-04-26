@@ -141,35 +141,6 @@ export default function RootLayout({
         className="bg-[var(--bg-base)] text-foreground font-sans"
         suppressHydrationWarning
       >
-        {/* Global Structural Node Graph Background */}
-        <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden mix-blend-screen opacity-[0.15]">
-          <svg
-            className="absolute right-0 bottom-0 translate-x-1/4 translate-y-1/4 text-white/10"
-            width="1000"
-            height="1000"
-            viewBox="0 0 1000 1000"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            {/* Connecting Lines */}
-            <path d="M500 500 L800 200 M500 500 L200 800 M500 500 L800 800 M500 500 L200 200" stroke="currentColor" strokeWidth="80" strokeLinecap="round" />
-            
-            {/* Nodes */}
-            <circle cx="500" cy="500" r="160" stroke="currentColor" strokeWidth="80" fill="#111111" />
-            <circle cx="800" cy="200" r="120" stroke="currentColor" strokeWidth="80" fill="#111111" />
-            <circle cx="200" cy="800" r="120" stroke="currentColor" strokeWidth="80" fill="#111111" />
-            <circle cx="800" cy="800" r="120" stroke="currentColor" strokeWidth="80" fill="#111111" />
-            <circle cx="200" cy="200" r="120" stroke="currentColor" strokeWidth="80" fill="#111111" />
-
-            {/* Center glow box */}
-            <rect x="360" y="360" width="280" height="280" stroke="currentColor" strokeWidth="20" fill="#151515" rx="10" />
-            <rect x="420" y="420" width="160" height="160" fill="currentColor" opacity="0.3" rx="5" />
-          </svg>
-        </div>
-
-        {/* Global Brand Vignette Override */}
-        <div className="brand-vignette" />
-
         <ThemeProvider>
           <SmoothScroll>
             <GoogleAnalytics />
