@@ -89,22 +89,25 @@ const enterprises = [
 
 export default function SocialProof() {
   const stats = [
-    { value: "100", suffix: "%", label: "Sovereignty", icon: <Shield size={16} /> },
-    { value: "50", suffix: "ms", label: "Runtime Latency", icon: <Activity size={16} /> },
-    { value: "99.9", suffix: "%", label: "Uptime SLA", icon: <Zap size={16} /> },
+    { value: "100", suffix: "%", label: "Security", icon: <Shield size={16} /> },
+    { value: "50", suffix: "ms", label: "Speed", icon: <Activity size={16} /> },
+    { value: "99.9", suffix: "%", label: "Reliability", icon: <Zap size={16} /> },
   ];
 
   return (
-    <section className="sec-lg bg-black">
-      <div className="container-main">
+    <section className="sec-xl bg-background overflow-hidden relative">
+      {/* Decorative Glows */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-brand-primary/5 blur-[120px] rounded-full pointer-events-none -z-10" />
+
+      <div className="container-main relative z-10">
         
-        {/* Trusted By Marquee directly under Hero */}
-        <div className="mb-32 relative overflow-hidden" aria-label="Trusted by enterprises">
-          <div className="flex overflow-hidden relative">
-            {/* Gradient Mask for fading edges */}
-            <div className="absolute inset-0 top-0 w-full h-full bg-gradient-to-r from-black via-transparent to-black z-10 pointer-events-none" />
+        {/* Trusted By Marquee */}
+        <div className="mb-48 relative overflow-hidden" aria-label="Trusted by companies">
+          <div className="flex overflow-hidden relative py-4">
+            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
+            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
             <motion.div
-              className="flex gap-24 items-center whitespace-nowrap"
+              className="flex gap-40 items-center whitespace-nowrap"
               animate={{ x: "-50%" }}
               transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
             >
@@ -115,9 +118,9 @@ export default function SocialProof() {
               ].map((ent, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-6 text-[11px] font-mono font-bold tracking-[0.3em] text-white/30 uppercase"
+                  className="flex items-center gap-6 text-[10px] font-black tracking-[0.3em] text-white/10 uppercase"
                 >
-                  <span className="text-brand-primary/60 font-black">■</span>
+                  <div className="w-1 h-1 bg-brand-primary/30 rounded-full" />
                   <span>{ent}</span>
                 </div>
               ))}
@@ -129,46 +132,46 @@ export default function SocialProof() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-24"
         >
           {/* Header Block */}
           <motion.div 
             variants={itemVariants}
             className="lg:col-span-5 flex flex-col justify-center"
           >
-            <div className="announcement-bar !mb-8">
-               Metrics Aggregation
+            <div className="label-mono !mb-8 inline-flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-brand-primary rounded-full" />
+              Performance
             </div>
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-8 leading-[0.9]">
-              Deterministic<br />
-              <span className="text-brand-primary italic lowercase">performance.</span>
+            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-12 leading-[0.8]">
+              Built for<br />
+              <span className="text-brand-primary italic">speed.</span>
             </h2>
-            <p className="text-sm font-medium text-white/85 leading-loose border-l border-white/10 pl-8 max-w-sm">
-              We monitor throughput, latency, and uptime strictly. Our infrastructure runs on zero-trust principles guaranteeing 10x production speed.
+            <p className="text-2xl font-medium text-white/30 leading-relaxed border-l border-white/5 pl-10 max-w-sm tracking-tight">
+              We test everything to ensure your system is fast, reliable, and ready for launch.
             </p>
           </motion.div>
 
           {/* Stats Bento */}
-          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-8">
              {stats.map((stat, index) => (
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="maysan-card flex flex-col justify-between group"
+                  className="maysan-card flex flex-col justify-between group !p-12 hover:bg-white/[0.04] transition-all duration-700"
                 >
-                  <div className="flex justify-between items-start mb-12">
-                     <div className="text-brand-primary bg-brand-primary/10 rounded-[var(--radius-md)] w-12 h-12 flex items-center justify-center border border-brand-primary/20 shadow-[0_0_15px_rgba(162,255,0,0.1)] group-hover:scale-110 transition-transform duration-500">
+                  <div className="flex justify-between items-start mb-16">
+                     <div className="text-brand-primary bg-white/5 rounded-2xl w-14 h-14 flex items-center justify-center border border-white/5 group-hover:bg-brand-primary group-hover:text-black transition-all duration-700 shadow-2xl">
                         {stat.icon}
                      </div>
-                     <span className="font-mono text-[9px] font-bold text-brand-primary/60 uppercase tracking-[0.3em]">TELEMETRY_0{index+1}</span>
                   </div>
                   
                   <div>
-                    <div className="text-5xl font-black text-white mb-4 tracking-tighter">
+                    <div className="text-6xl font-black text-white mb-6 tracking-tighter italic">
                        <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                     </div>
-                    <p className="text-[10px] font-mono font-bold text-white/60 uppercase tracking-[0.2em]">
+                    <p className="text-xs font-black text-white/20 group-hover:text-white/60 transition-colors uppercase tracking-widest">
                       {stat.label}
                     </p>
                   </div>

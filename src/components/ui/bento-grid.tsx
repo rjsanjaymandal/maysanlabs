@@ -1,6 +1,9 @@
+"use client";
+
 import { ArrowRightIcon } from "lucide-react";
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const BentoGrid = ({
   children,
@@ -12,7 +15,7 @@ const BentoGrid = ({
   return (
     <div
       className={cn(
-        "grid w-full auto-rows-[22rem] grid-cols-3 gap-4",
+        "grid w-full auto-rows-[22rem] grid-cols-1 md:grid-cols-3 gap-8",
         className,
       )}
     >
@@ -38,38 +41,45 @@ const BentoCard = ({
   href: string;
   cta: string;
 }) => (
-  <div
+  <motion.div
     key={name}
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
     className={cn(
-      "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-[var(--card-radius)]",
-      "glass-surface transition-all duration-500 hover:border-brand-primary/50",
+      "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-3xl",
+      "maysan-card !p-0 transition-all duration-700 hover:bg-white/[0.04]",
       className,
     )}
   >
-    <div>{background}</div>
-    <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-10">
-      <Icon className="h-12 w-12 origin-left transform-gpu text-brand-primary transition-all duration-300 ease-in-out group-hover:scale-75" />
-      <h3 className="text-xl font-black tracking-tighter uppercase text-white">
+    <div className="absolute inset-0 z-0">{background}</div>
+    <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-10 transition-all duration-500 group-hover:-translate-y-12">
+      <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-brand-primary border border-white/5 group-hover:bg-brand-primary group-hover:text-black transition-all duration-700 shadow-2xl mb-8">
+        <Icon className="h-8 w-8 origin-left transform-gpu transition-all duration-500 ease-in-out" />
+      </div>
+      <h3 className="text-3xl font-black tracking-tighter uppercase text-white group-hover:text-brand-primary transition-colors duration-700 italic">
         {name}
       </h3>
-      <p className="max-w-lg text-white/80 font-medium text-sm leading-relaxed">{description}</p>
+      <p className="max-w-lg text-white/30 font-medium text-lg leading-relaxed group-hover:text-white/80 transition-colors duration-700">{description}</p>
     </div>
 
     <div
       className={cn(
-        "pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100",
+        "pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-10 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100",
       )}
     >
-      <a
+      <Link
         href={href}
-        className="pointer-events-auto flex items-center gap-1 text-sm font-black uppercase tracking-widest text-brand-primary group-hover:gap-3 transition-all duration-300"
+        className="pointer-events-auto flex items-center gap-2 text-sm font-black uppercase tracking-widest text-brand-primary hover:gap-4 transition-all duration-300"
       >
         {cta}
-        <ArrowRightIcon className="ml-2 h-4 w-4" />
-      </a>
+        <ArrowRightIcon className="h-5 w-5" />
+      </Link>
     </div>
-    <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03] group-hover:dark:bg-neutral-800/10" />
-  </div>
+    <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-500 group-hover:bg-brand-primary/[0.02]" />
+  </motion.div>
 );
 
+import Link from "next/link";
 export { BentoCard, BentoGrid };

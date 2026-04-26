@@ -6,94 +6,89 @@ import { motion } from "framer-motion";
 export default function Problem() {
   const architectures = [
     {
-      id: "RUNTIME_ZERO",
-      label: "NODE_RUNTIME",
-      title: "Deterministic AI",
-      text: "Eliminate runtime hallucinations. We deploy absolute, deterministic AI models strictly governed by enterprise-grade policies.",
+      id: "AI_RELIABLE",
+      title: "Reliable AI",
+      text: "We build AI that works every time, without mistakes, following your specific business rules.",
       icon: <Cpu size={24} />,
     },
     {
-      id: "SECURITY_MESH",
-      label: "SYSTEM_STABLE",
-      title: "Digital Sovereignty",
-      text: "Absolute isolation of your data. We construct zero-trust networks that grant you 100% ownership and control.",
+      id: "DATA_SECURE",
+      title: "Safe Data",
+      text: "You own your data. We keep it safe and private in systems only you control.",
       icon: <ShieldAlert size={24} />,
     },
     {
-      id: "THROUGHPUT_MAX",
-      label: "CLUSTER_ACTIVE",
-      title: "10x Velocity",
-      text: "Stop wasting cycles on technical debt. Our high-concurrency microservices mesh get you to market 10x faster.",
+      id: "SPEED_SCALE",
+      title: "Build Faster",
+      text: "Don't let old code slow you down. We build modern apps that get you results faster.",
       icon: <Activity size={24} />,
     },
   ];
 
   return (
-    <section id="architecture" className="sec-xl relative overflow-hidden">
-      {/* Background Decorative Asset */}
-      <div className="radial-blur -top-40 -left-20 opacity-10" />
-      
-      <div className="container-main">
+    <section id="architecture" className="sec-xl relative overflow-hidden bg-background">
+      <div className="container-main relative z-10">
         <div className="flex flex-col lg:flex-row items-baseline justify-between mb-32 gap-12">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-4xl"
           >
-            <div className="announcement-bar !mb-8">
-               Architecture Overlay
+            <div className="label-mono !mb-8 inline-flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-brand-primary rounded-full" />
+              What we solve
             </div>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-12 uppercase">
-              Execute <br />
-              <span className="text-brand-primary italic">Without Fail.</span>
+            <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.8] mb-12 uppercase">
+              Old software <br />
+              <span className="text-brand-primary italic">holds you back.</span>
             </h2>
-            <p className="text-xl text-white/85 font-medium mb-12">
-              Legacy systems are the silent killer of enterprise velocity. We rebuild the foundation.
+            <p className="text-2xl text-white/40 font-medium mb-12 tracking-tight">
+              Slow systems shouldn't stop your business. <br className="hidden md:block" /> 
+              We build fast, modern apps that help your team do more.
             </p>
           </motion.div>
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="lg:max-w-xs border-l-2 border-brand-primary/30 pl-8"
+            transition={{ duration: 1, delay: 0.2 }}
+            className="lg:max-w-xs border-l border-white/5 pl-8"
           >
-            <p className="text-sm font-medium text-white leading-loose">
-              We bypass legacy monolithic bottlenecks by building directly on modern, distributed clusters designed for global scale.
+            <p className="text-sm font-medium text-white/20 leading-loose uppercase tracking-widest">
+              We help you move faster by building reliable systems that are ready for the future.
             </p>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {architectures.map((arch, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.8 }}
-              className="maysan-card group flex flex-col justify-between"
+              transition={{ delay: index * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="maysan-card group flex flex-col justify-between !p-12 hover:bg-white/[0.04] transition-all duration-700"
             >
               <div>
-                <div className="flex justify-between items-start mb-12">
-                    <div className="w-14 h-14 bg-brand-primary/10 rounded-[var(--radius-md)] flex items-center justify-center text-brand-primary border border-brand-primary/20 group-hover:bg-[var(--brand-gradient)] group-hover:text-[var(--brand-dark-text)] transition-all duration-500 shadow-lg">
+                <div className="flex justify-between items-start mb-16">
+                  <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-brand-primary border border-white/5 group-hover:bg-brand-primary group-hover:text-black transition-all duration-700 shadow-2xl">
                     {arch.icon}
                   </div>
-                  <span className="font-mono text-[9px] font-bold tracking-[0.3em] text-brand-primary/60 group-hover:text-brand-primary transition-colors">{arch.label}</span>
                 </div>
                 
-                <h3 className="text-3xl font-black mb-6 tracking-tighter uppercase group-hover:text-brand-primary transition-colors duration-500">
+                <h3 className="text-4xl font-black mb-8 tracking-tighter uppercase leading-none text-white group-hover:text-brand-primary transition-colors duration-700 italic">
                   {arch.title}
                 </h3>
-                <p className="text-white leading-relaxed font-medium">
+                <p className="text-white/40 text-lg leading-relaxed font-medium group-hover:text-white/80 transition-colors duration-700">
                   {arch.text}
                 </p>
               </div>
 
-              <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between">
-                 <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-white/60 uppercase">{arch.id}</span>
-                 <ArrowUpRight size={14} className="text-brand-primary opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-[-10px] group-hover:translate-x-0" />
+              <div className="mt-16 pt-12 border-t border-white/5 flex items-center justify-between">
+                 <ArrowUpRight size={24} className="text-brand-primary/20 group-hover:text-brand-primary transition-all duration-700" />
               </div>
             </motion.div>
           ))}

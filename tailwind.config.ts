@@ -27,6 +27,12 @@ const config: Config = {
           foreground: "hsl(var(--primary-foreground))",
         },
         "brand-primary": "rgb(var(--brand-primary-rgb) / <alpha-value>)",
+        titanium: {
+          DEFAULT: "#1e293b",
+          light: "#334155",
+          dark: "#0f172a",
+        },
+        "protocol-orange": "#f97316",
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",

@@ -1,7 +1,8 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import dynamic from "next/dynamic";
-import { Metadata } from "next";
 import { 
   Cpu, 
   Layers, 
@@ -31,51 +32,46 @@ const Testimonials = dynamic(() => import("@/components/Testimonials"), {
 
 const ContactFooter = dynamic(() => import("@/components/ContactFooter"));
 
-export const metadata: Metadata = {
-  title: "Maysan Labs | Custom Software Development",
-  description: "We build custom websites, apps, and software that help your business grow.",
-};
-
 const trustLogos = [
   "GlobalBridge", "Apex_Systems", "Fortify_Infra", "Quantix_SaaS", "Nexus_Labs", "Cyber_Sync", "Logic_Flow"
 ];
 
 const bentoFeatures = [
   {
-    name: "Built for Scale",
-    description: "High-concurrency systems that scale to millions of users without sacrificing performance.",
+    name: "Ready to grow",
+    description: "Our apps handle millions of users effortlessly, so you can focus on growing your business.",
     className: "md:col-span-2",
     Icon: Cpu,
-    background: <div className="absolute inset-0 bg-gradient-to-tr from-[var(--brand-primary)]/10 to-transparent" />,
+    background: <div className="absolute inset-0 bg-gradient-to-tr from-brand-primary/5 to-transparent" />,
     href: "/engineering",
     cta: "Learn More",
   },
   {
-    name: "Enterprise Security",
-    description: "Modern security layers and safe data handling for maximum protection.",
+    name: "Secure by design",
+    description: "We use the latest security standards to keep your data safe and sound.",
     className: "md:col-span-1",
     Icon: ShieldCheck,
-    background: <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-primary)]/5 to-transparent" />,
+    background: <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent" />,
     href: "/services",
     cta: "Our Standards",
   },
   {
-    name: "Flexible Apps",
-    description: "Smart architectures that allow your product to grow as your team expands.",
+    name: "Built to last",
+    description: "Our software is easy to update and grows as your team expands.",
     className: "md:col-span-1",
     Icon: Layers,
     background: <div className="absolute inset-0 bg-gradient-to-bl from-white/5 to-transparent" />,
     href: "/services",
-    cta: "Explore Flow",
+    cta: "See How",
   },
   {
-    name: "Outcome Driven",
-    description: "Our process is built for speed. We deliver high-quality work every week.",
+    name: "Results first",
+    description: "We work fast and deliver high-quality features every single week.",
     className: "md:col-span-2",
     Icon: Zap,
     background: (
-      <div className="absolute inset-0 flex items-center justify-center opacity-10">
-        <Code2 size={120} className="text-[var(--brand-primary)]" />
+      <div className="absolute inset-0 flex items-center justify-center opacity-5">
+        <Code2 size={120} className="text-brand-primary" />
       </div>
     ),
     href: "/init",
@@ -85,33 +81,34 @@ const bentoFeatures = [
 
 export default function Home() {
   return (
-    <main className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden">
+    <main className="bg-background min-h-screen relative overflow-hidden text-body">
       <Navbar />
       <Hero />
       
-      {/* ─── Trust Section: Magic UI Marquee ─── */}
-      <section className="py-20 border-y border-white/5 bg-black/20 overflow-hidden relative">
-        <GridPattern className="opacity-50" />
-        <div className="container-main mb-10 text-center relative z-10">
-           <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-white/60">Trusted by Leading Enterprises</span>
+      {/* ─── Trust Section ─── */}
+      <section className="py-24 border-y border-white/5 bg-background overflow-hidden relative">
+        <div className="container-main mb-12 text-center relative z-10">
+           <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/20">Trusted by modern teams</span>
         </div>
-        <Marquee pauseOnHover className="[--duration:20s]">
+        <Marquee pauseOnHover className="[--duration:35s]">
           {trustLogos.map((logo) => (
-            <span key={logo} className="text-2xl font-black tracking-tighter uppercase italic mx-8 opacity-30 hover:opacity-100 transition-opacity cursor-default text-white">
+            <span key={logo} className="text-2xl font-black tracking-tighter uppercase italic mx-12 opacity-10 hover:opacity-50 transition-opacity cursor-default text-white">
               {logo}
             </span>
           ))}
         </Marquee>
       </section>
 
-      {/* ─── Bento Grid Section: Maysan Engineering Excellence ─── */}
+      {/* ─── Bento Grid Section ─── */}
       <section className="sec-xl container-main relative">
-        <FloatingParticles count={15} color="var(--brand-primary)" className="opacity-30" />
-        <div className="mb-20">
-          <span className="announcement-bar !mb-6">Built Right</span>
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] uppercase">
-            Maysan Engineering<br />
-            <span className="text-[var(--brand-primary)] italic">Excellence.</span>
+        <div className="mb-24">
+          <div className="label-mono mb-6 inline-flex items-center gap-2">
+            <span className="w-1.5 h-1.5 bg-brand-primary rounded-full" />
+            What we believe in
+          </div>
+          <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.85] uppercase">
+            Built for <br />
+            <span className="text-brand-primary italic">Success.</span>
           </h2>
         </div>
 
