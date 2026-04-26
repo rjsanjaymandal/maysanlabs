@@ -44,11 +44,11 @@ export default function Problem() {
             <div className="announcement-bar !mb-8">
                Architecture Overlay
             </div>
-            <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-12 uppercase">
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-12 uppercase">
               Execute <br />
-              <span className="text-[var(--brand-primary)] italic">Without Fail.</span>
+              <span className="text-brand-primary italic">Without Fail.</span>
             </h2>
-            <p className="text-xl text-white/70 font-medium mb-12">
+            <p className="text-xl text-white/85 font-medium mb-12">
               Legacy systems are the silent killer of enterprise velocity. We rebuild the foundation.
             </p>
           </motion.div>
@@ -57,9 +57,9 @@ export default function Problem() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="lg:max-w-xs border-l-2 border-[var(--brand-primary)]/30 pl-8"
+            className="lg:max-w-xs border-l-2 border-brand-primary/30 pl-8"
           >
-            <p className="text-sm font-medium text-white/70 leading-loose">
+            <p className="text-sm font-medium text-white leading-loose">
               We bypass legacy monolithic bottlenecks by building directly on modern, distributed clusters designed for global scale.
             </p>
           </motion.div>
@@ -77,23 +77,23 @@ export default function Problem() {
             >
               <div>
                 <div className="flex justify-between items-start mb-12">
-                    <div className="w-14 h-14 bg-[var(--brand-primary)]/10 rounded-2xl flex items-center justify-center text-[var(--brand-primary)] border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-gradient)] group-hover:text-[var(--brand-dark-text)] transition-all duration-500 shadow-lg">
+                    <div className="w-14 h-14 bg-brand-primary/10 rounded-[var(--radius-md)] flex items-center justify-center text-brand-primary border border-brand-primary/20 group-hover:bg-[var(--brand-gradient)] group-hover:text-[var(--brand-dark-text)] transition-all duration-500 shadow-lg">
                     {arch.icon}
                   </div>
-                  <span className="font-mono text-[9px] font-bold tracking-[0.3em] text-[var(--brand-primary)]/40 group-hover:text-[var(--brand-primary)] transition-colors">{arch.label}</span>
+                  <span className="font-mono text-[9px] font-bold tracking-[0.3em] text-brand-primary/60 group-hover:text-brand-primary transition-colors">{arch.label}</span>
                 </div>
                 
-                <h3 className="text-3xl font-black mb-6 tracking-tight uppercase group-hover:text-[var(--brand-primary)] transition-colors duration-500">
+                <h3 className="text-3xl font-black mb-6 tracking-tighter uppercase group-hover:text-brand-primary transition-colors duration-500">
                   {arch.title}
                 </h3>
-                <p className="text-white/70 leading-relaxed font-medium">
+                <p className="text-white leading-relaxed font-medium">
                   {arch.text}
                 </p>
               </div>
 
               <div className="mt-12 pt-8 border-t border-white/5 flex items-center justify-between">
-                 <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-white/20 uppercase">{arch.id}</span>
-                 <ArrowUpRight size={14} className="text-[var(--brand-primary)] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-[-10px] group-hover:translate-x-0" />
+                 <span className="text-[10px] font-mono font-bold tracking-[0.4em] text-white/60 uppercase">{arch.id}</span>
+                 <ArrowUpRight size={14} className="text-brand-primary opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-[-10px] group-hover:translate-x-0" />
               </div>
             </motion.div>
           ))}

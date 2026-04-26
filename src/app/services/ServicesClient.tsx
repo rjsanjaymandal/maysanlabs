@@ -75,7 +75,7 @@ export default function ServicesClient() {
             <h1 className="hero-title text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mt-8 uppercase mb-8">
               Book a <span className="text-[var(--brand-primary)] italic uppercase">Call.</span>
             </h1>
-            <p className="text-white/70 max-w-2xl mx-auto mt-6 text-xl md:text-2xl font-medium leading-relaxed">
+            <p className="text-white/85 max-w-2xl mx-auto mt-6 text-xl md:text-2xl font-medium leading-relaxed">
               We engineer the software that connects your complex operations into a high-fidelity enterprise logic.
             </p>
           </motion.div>
@@ -94,20 +94,21 @@ export default function ServicesClient() {
                   ease: [0.16, 1, 0.3, 1] 
                 }}
                 whileHover={{ y: -5 }}
-                className="maysan-card border-[var(--brand-primary)]/10 bg-black/20 backdrop-blur-3xl p-10 md:p-16 group flex flex-col justify-between"
+                className="maysan-card group flex flex-col justify-between"
               >
                 <div>
-                   <div className="w-14 h-14 bg-[var(--brand-primary)]/10 rounded-2xl flex items-center justify-center mb-10 text-[var(--brand-primary)] border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-gradient)] group-hover:text-[var(--brand-dark-text)] transition-all duration-500">
+                   <div className="w-14 h-14 bg-[var(--brand-primary)]/10 rounded-[var(--radius-md)] flex items-center justify-center mb-10 text-[var(--brand-primary)] border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-gradient)] group-hover:text-[var(--brand-dark-text)] transition-all duration-500">
                      {service.icon}
                    </div>
                    <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[var(--brand-primary)] mb-4">
-                     <h3 className="text-3xl font-black text-white mb-6 uppercase tracking-tight group-hover:text-[var(--brand-primary)] transition-colors"> {service.title}</h3>
+                      Protocol {service.tag}
                    </label>
-                   <p className="text-white/70 text-sm leading-relaxed font-medium">{service.desc}</p>
+                   <h3 className="text-3xl font-black text-white mb-6 uppercase tracking-tighter group-hover:text-[var(--brand-primary)] transition-colors"> {service.title}</h3>
+                   <p className="text-white/85 text-sm leading-relaxed font-medium">{service.desc}</p>
                 </div>
                 
                 <div className="mt-12 flex items-center justify-between border-t border-white/5 pt-8">
-                   <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-white/20">{service.tag}</span>
+                   <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-white/50">{service.tag}</span>
                    <ArrowUpRight size={14} className="text-[var(--brand-primary)] opacity-0 group-hover:opacity-100 transition-all font-black" />
                 </div>
               </motion.div>

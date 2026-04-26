@@ -93,7 +93,7 @@ export default function Home() {
       <section className="py-20 border-y border-white/5 bg-black/20 overflow-hidden relative">
         <GridPattern className="opacity-50" />
         <div className="container-main mb-10 text-center relative z-10">
-           <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-white/30">Trusted by Leading Enterprises</span>
+           <span className="font-mono text-[9px] uppercase tracking-[0.4em] text-white/60">Trusted by Leading Enterprises</span>
         </div>
         <Marquee pauseOnHover className="[--duration:20s]">
           {trustLogos.map((logo) => (
@@ -135,7 +135,7 @@ export default function Home() {
               Build your<br />
               <span className="text-[var(--brand-primary)] italic">next project.</span>
             </h2>
-            <p className="text-white/70 text-xl max-w-xl mx-auto mb-12 font-medium">
+            <p className="text-white/90 text-xl max-w-xl mx-auto mb-12 font-medium">
               Join leading businesses building their future with Maysan Labs quality standards.
             </p>
             <div className="flex justify-center flex-wrap gap-6">

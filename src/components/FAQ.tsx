@@ -59,15 +59,15 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="section-xl relative overflow-hidden bg-background">
-      <div className="section-container max-w-4xl mx-auto">
+    <section id="faq" className="sec-xl relative overflow-hidden bg-black">
+      <div className="container-main max-w-4xl mx-auto">
         <div className="mb-32 flex flex-col items-center text-center">
-          <span className="badge mb-8">Common Questions</span>
-          <h2 className="heading-xl mb-8">
-            Frequently <span className="font-accent lowercase text-primary italic">asked</span><br />
+          <span className="announcement-bar mb-8">Common Questions</span>
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-8">
+            Frequently <span className="text-brand-primary italic lowercase">asked</span><br />
             Questions.
           </h2>
-          <p className="text-sm font-medium text-foreground/50 leading-loose max-w-lg">
+          <p className="text-sm font-medium text-white/85 leading-loose max-w-lg">
             Answers to common questions about how we work, our security, and how we help your business.
           </p>
         </div>
@@ -85,22 +85,22 @@ export default function FAQ() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className={`bg-secondary/30 rounded-3xl overflow-hidden transition-all duration-500 border border-transparent hover:border-primary/10 ${
-                  isOpen ? "bg-secondary/50 border-primary/20" : ""
+                className={`maysan-card !p-0 transition-all duration-500 ${
+                  isOpen ? "border-brand-primary/40 bg-white/[0.08]" : "hover:border-brand-primary/20"
                 }`}
               >
                 <button
-                  className="w-full flex items-center justify-between p-10 text-left transition-colors"
+                  className="w-full flex items-center justify-between p-8 md:p-10 text-left transition-colors"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                 >
                   <div className="flex items-center gap-8">
-                    <span className="font-accent text-2xl italic text-primary/20 hidden sm:block">0{index+1}</span>
-                    <span className="text-lg font-bold text-foreground pr-4 tracking-tight">
+                    <span className="font-mono text-2xl italic text-brand-primary/20 hidden sm:block">0{index+1}</span>
+                    <span className="text-lg md:text-xl font-black text-white pr-4 tracking-tighter uppercase">
                       {faq.question}
                     </span>
                   </div>
                   <div className="shrink-0">
-                     <div className={`w-10 h-10 rounded-2xl flex items-center justify-center border border-border group-hover:border-primary transition-all duration-300 ${isOpen ? "bg-primary text-[var(--brand-dark-text)] scale-110 font-bold" : "bg-black/5"}`}>
+                     <div className={`w-10 h-10 rounded-[var(--radius-md)] flex items-center justify-center border border-white/10 transition-all duration-300 ${isOpen ? "bg-[var(--brand-primary)] text-[var(--brand-dark-text)] scale-110 font-bold" : "bg-white/5"}`}>
                         {isOpen ? <Minus size={16} /> : <Plus size={16} />}
                      </div>
                   </div>
@@ -115,14 +115,14 @@ export default function FAQ() {
                       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     >
                       <div className="px-10 pb-12 pt-2 flex gap-10">
-                         <div className="w-px bg-primary/20 shrink-0" />
+                         <div className="w-px bg-brand-primary/30 shrink-0" />
                          <div className="space-y-6">
-                            <p className="text-sm sm:text-base font-medium leading-relaxed text-foreground/60">
+                            <p className="text-sm sm:text-base font-medium leading-relaxed text-white/85">
                               {faq.answer}
                             </p>
                             <div className="flex items-center gap-3">
-                               <Terminal size={12} className="text-primary/40" />
-                               <span className="text-[9px] font-bold uppercase tracking-widest text-primary/40">Verified Protocol</span>
+                               <Terminal size={12} className="text-brand-primary/60" />
+                               <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-brand-primary/60">Verified Protocol</span>
                             </div>
                          </div>
                       </div>

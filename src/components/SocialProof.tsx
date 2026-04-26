@@ -95,14 +95,14 @@ export default function SocialProof() {
   ];
 
   return (
-    <section className="relative overflow-hidden bg-background pt-8 pb-24">
-      <div className="max-w-7xl mx-auto px-4 md:px-8">
+    <section className="sec-lg bg-black">
+      <div className="container-main">
         
         {/* Trusted By Marquee directly under Hero */}
         <div className="mb-32 relative overflow-hidden" aria-label="Trusted by enterprises">
           <div className="flex overflow-hidden relative">
             {/* Gradient Mask for fading edges */}
-            <div className="absolute inset-0 top-0 w-full h-full bg-gradient-to-r from-background via-transparent to-background z-10 pointer-events-none" />
+            <div className="absolute inset-0 top-0 w-full h-full bg-gradient-to-r from-black via-transparent to-black z-10 pointer-events-none" />
             <motion.div
               className="flex gap-24 items-center whitespace-nowrap"
               animate={{ x: "-50%" }}
@@ -115,9 +115,9 @@ export default function SocialProof() {
               ].map((ent, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-6 text-[11px] font-mono font-bold tracking-[0.3em] text-foreground/40 uppercase"
+                  className="flex items-center gap-6 text-[11px] font-mono font-bold tracking-[0.3em] text-white/30 uppercase"
                 >
-                  <span className="text-primary/60 font-black">■</span>
+                  <span className="text-brand-primary/60 font-black">■</span>
                   <span>{ent}</span>
                 </div>
               ))}
@@ -137,15 +137,14 @@ export default function SocialProof() {
             variants={itemVariants}
             className="lg:col-span-5 flex flex-col justify-center"
           >
-            <div className="mb-6 flex items-center gap-3 border border-primary/30 bg-primary/5 px-4 py-1.5 w-fit rounded-full">
-               <TerminalSquare size={12} className="text-primary" />
-               <span className="font-mono text-[10px] text-primary tracking-[0.2em] uppercase">Metrics Aggregation</span>
+            <div className="announcement-bar !mb-8">
+               Metrics Aggregation
             </div>
-            <h2 className="text-3xl md:text-5xl font-sans font-black uppercase tracking-tight mb-8">
+            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-8 leading-[0.9]">
               Deterministic<br />
-              <span className="text-primary">Performance.</span>
+              <span className="text-brand-primary italic lowercase">performance.</span>
             </h2>
-            <p className="text-sm font-mono text-muted-foreground leading-loose border-l-2 border-primary/30 pl-6 max-w-sm">
+            <p className="text-sm font-medium text-white/85 leading-loose border-l border-white/10 pl-8 max-w-sm">
               We monitor throughput, latency, and uptime strictly. Our infrastructure runs on zero-trust principles guaranteeing 10x production speed.
             </p>
           </motion.div>
@@ -156,20 +155,20 @@ export default function SocialProof() {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="bg-secondary p-8 flex flex-col justify-between group border border-border/50 hover:border-primary/50 transition-all duration-300"
+                  className="maysan-card flex flex-col justify-between group"
                 >
                   <div className="flex justify-between items-start mb-12">
-                     <div className="text-background bg-primary w-10 h-10 flex items-center justify-center shadow-[0_0_15px_rgba(162,255,0,0.3)] group-hover:scale-110 transition-transform duration-500">
+                     <div className="text-brand-primary bg-brand-primary/10 rounded-[var(--radius-md)] w-12 h-12 flex items-center justify-center border border-brand-primary/20 shadow-[0_0_15px_rgba(162,255,0,0.1)] group-hover:scale-110 transition-transform duration-500">
                         {stat.icon}
                      </div>
-                     <span className="font-mono text-[9px] font-bold text-primary/50 uppercase tracking-[0.3em]">TELEMETRY_0{index+1}</span>
+                     <span className="font-mono text-[9px] font-bold text-brand-primary/60 uppercase tracking-[0.3em]">TELEMETRY_0{index+1}</span>
                   </div>
                   
                   <div>
-                    <div className="font-sans text-5xl font-black text-foreground mb-4 tracking-tighter shadow-primary drop-shadow-md">
+                    <div className="text-5xl font-black text-white mb-4 tracking-tighter">
                        <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                     </div>
-                    <p className="text-[10px] font-mono font-bold text-foreground/50 uppercase tracking-[0.2em]">
+                    <p className="text-[10px] font-mono font-bold text-white/60 uppercase tracking-[0.2em]">
                       {stat.label}
                     </p>
                   </div>

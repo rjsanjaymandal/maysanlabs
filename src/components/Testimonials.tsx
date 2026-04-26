@@ -27,7 +27,7 @@ export default function Testimonials() {
       <div className="text-center mb-20">
         <span className="announcement-bar">System Validation</span>
         <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-none mb-6">
-          Client <span className="text-[var(--brand-primary)] italic">Benchmarks.</span>
+          Client <span className="text-brand-primary italic">Benchmarks.</span>
         </h2>
       </div>
 
@@ -44,22 +44,22 @@ export default function Testimonials() {
             <div>
                <div className="flex gap-1 mb-8">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={10} className="fill-[var(--brand-primary)] text-[var(--brand-primary)]" />
+                    <Star key={i} size={10} className="fill-brand-primary text-brand-primary" />
                   ))}
                </div>
-               <Quote size={32} className="text-[var(--brand-primary)]/20 mb-6" />
-                <p className="text-white/70 mb-10 leading-relaxed font-medium">
+               <Quote size={32} className="text-brand-primary/20 mb-6" />
+                <p className="text-white/85 mb-10 leading-relaxed font-medium">
                   &ldquo;{testimonial.message}&rdquo;
                 </p>
             </div>
             
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 bg-white/5 rounded-full border border-white/10 flex items-center justify-center font-bold text-[var(--brand-primary)]">
+              <div className="w-10 h-10 bg-white/5 rounded-full border border-white/10 flex items-center justify-center font-bold text-brand-primary">
                  {testimonial.name.charAt(0)}
               </div>
               <div>
                 <p className="font-bold text-white text-sm tracking-tighter">{testimonial.name}</p>
-                <p className="text-[10px] font-mono uppercase tracking-widest text-white/30">{testimonial.role}</p>
+                <p className="text-[10px] font-mono uppercase tracking-widest text-white/60">{testimonial.role}</p>
               </div>
             </div>
           </motion.div>

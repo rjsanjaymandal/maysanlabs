@@ -26,9 +26,9 @@ export default function ContactFooter() {
           >
             <span className="announcement-bar">Work With Us</span>
             <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-white mt-10 mb-8 leading-[0.9]">
-              Schedule a <br /><span className="text-[var(--brand-primary)] italic">Strategy Call.</span>
+              Schedule a <br /><span className="text-brand-primary italic">Strategy Call.</span>
             </h2>
-            <p className="text-white/70 mb-12 max-w-xl mx-auto font-medium text-lg">
+            <p className="text-white/85 mb-12 max-w-xl mx-auto font-medium text-lg">
               We operate at the intersection of complex engineering and mission-critical deployment.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
@@ -50,14 +50,14 @@ export default function ContactFooter() {
             {/* Brand Column */}
             <div className="md:col-span-2">
               <Link href="/" className="flex items-center gap-3 mb-8 group">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-500 overflow-hidden border border-white/10 bg-black">
+                <div className="w-10 h-10 rounded-[var(--radius-md)] flex items-center justify-center shadow-lg group-hover:scale-110 transition-all duration-500 overflow-hidden border border-white/10 bg-black">
                    <Image src="/logo.png" alt="Maysan Labs Logo" width={40} height={40} className="object-cover scale-110" />
                 </div>
                 <div className="flex flex-col">
                    <span className="font-black text-white text-xl tracking-tighter uppercase">Maysan Labs</span>
                 </div>
               </Link>
-              <p className="text-white/70 text-sm leading-relaxed max-w-sm">
+              <p className="text-white/85 text-sm leading-relaxed max-w-sm">
                 Engineering high-performance enterprise SaaS infrastructure and autonomous operational tools with mathematical precision.
               </p>
             </div>
@@ -70,7 +70,7 @@ export default function ContactFooter() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="text-white/70 hover:text-[var(--brand-primary)] text-[11px] font-bold uppercase tracking-widest transition-colors duration-300"
+                    className="text-white/85 hover:text-brand-primary text-[11px] font-bold uppercase tracking-widest transition-colors duration-300"
                   >
                     {link.name}
                   </Link>
@@ -81,9 +81,9 @@ export default function ContactFooter() {
             {/* Connectivity Column */}
             <div>
               <h4 className="text-white font-bold text-xs uppercase tracking-[0.3em] mb-8">Connectivity</h4>
-              <div className="flex flex-col gap-4 text-white/30 text-xs">
+              <div className="flex flex-col gap-4 text-white/70 text-xs">
                 <p className="font-medium">Gurgaon, Haryana, India</p>
-                <Link href="mailto:business@maysanlabs.com" className="hover:text-[var(--brand-primary)] transition-colors duration-300 font-bold">
+                <Link href="mailto:business@maysanlabs.com" className="hover:text-brand-primary transition-colors duration-300 font-bold">
                   business@maysanlabs.com
                 </Link>
               </div>
@@ -92,7 +92,7 @@ export default function ContactFooter() {
 
           {/* Copyright Bar */}
           <div className="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-            <p className="text-[10px] font-mono text-white/20 uppercase tracking-widest">
+            <p className="text-[10px] font-mono text-white/50 uppercase tracking-widest">
               © {new Date().getFullYear()} Maysan Labs // SYSTEM_ACTIVE
             </p>
           </div>

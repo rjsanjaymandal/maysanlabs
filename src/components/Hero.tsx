@@ -23,11 +23,11 @@ export default function Hero() {
            className="max-w-5xl"
         >
           <h1 className="hero-title text-3xl sm:text-6xl md:text-8xl lg:text-9xl font-black mb-8 leading-[0.9] tracking-tighter uppercase break-words">
-            We build <em className="text-[var(--brand-primary)] not-italic font-medium italic">high-fidelity</em> <br />
+            We build <em className="text-brand-primary not-italic font-medium italic">high-fidelity</em> <br />
             Enterprise<br className="block sm:hidden" /> Infrastructure.
           </h1>
           
-          <p className="text-white/70 text-xl md:text-2xl max-w-2xl mx-auto font-medium leading-relaxed mb-12">
+          <p className="text-white/85 text-xl md:text-2xl max-w-2xl mx-auto font-medium leading-relaxed mb-12">
             Engineered systems for autonomous scale. We resolve complexity through industrial-grade code and surgical precision.
           </p>
         </motion.div>
@@ -60,7 +60,7 @@ export default function Hero() {
       </div>
 
       {/* Background Visual Asset (Surgical Frame) */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-[var(--brand-primary)]/20 to-transparent" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-brand-primary/20 to-transparent" />
     </section>
   );
 }

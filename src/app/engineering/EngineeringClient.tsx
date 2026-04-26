@@ -55,7 +55,7 @@ export default function EngineeringClient() {
             <h1 className="hero-title text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mt-8 uppercase mb-8">
               Built <span className="text-[var(--brand-primary)] italic uppercase">Right.</span>
             </h1>
-            <p className="text-white/70 max-w-2xl mx-auto mt-6 text-xl md:text-2xl font-medium leading-relaxed">
+            <p className="text-white/85 max-w-2xl mx-auto mt-6 text-xl md:text-2xl font-medium leading-relaxed">
               We leverage deterministic engineering and distributed primitives to build software that operates without fail.
             </p>
           </motion.div>
@@ -77,15 +77,15 @@ export default function EngineeringClient() {
                 className="maysan-card group flex flex-col justify-between"
               >
                 <div>
-                   <div className="w-14 h-14 bg-[var(--brand-primary)]/10 rounded-2xl flex items-center justify-center mb-10 text-[var(--brand-primary)] border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-gradient)] group-hover:text-[var(--brand-dark-text)] transition-all duration-500">
+                   <div className="w-14 h-14 bg-[var(--brand-primary)]/10 rounded-[var(--radius-md)] flex items-center justify-center mb-10 text-[var(--brand-primary)] border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-gradient)] group-hover:text-[var(--brand-dark-text)] transition-all duration-500">
                      {feature.icon}
                    </div>
-                   <h3 className="text-4xl font-black text-white mb-6 uppercase tracking-tight group-hover:text-[var(--brand-primary)] transition-colors">{feature.title}</h3>
-                   <p className="text-white/70 text-sm leading-relaxed font-medium">{feature.desc}</p>
+                   <h3 className="text-4xl font-black text-white mb-6 uppercase tracking-tighter group-hover:text-[var(--brand-primary)] transition-colors">{feature.title}</h3>
+                   <p className="text-white/85 text-sm leading-relaxed font-medium">{feature.desc}</p>
                 </div>
                 
                 <div className="mt-12 flex items-center justify-between border-t border-white/5 pt-8">
-                   <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-white/20">{feature.tag}</span>
+                   <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-white/50">{feature.tag}</span>
                    <ArrowUpRight size={14} className="text-[var(--brand-primary)] opacity-0 group-hover:opacity-100 transition-all font-bold" />
                 </div>
               </motion.div>
@@ -93,8 +93,8 @@ export default function EngineeringClient() {
           </div>
 
           {/* Scale Section Placeholder */}
-          <div className="maysan-card border-[var(--brand-primary)]/20 bg-[var(--brand-primary)]/5 text-center py-24 mb-32">
-             <h2 className="text-4xl font-black mb-12 uppercase tracking-tighter italic text-white/70">Performance Metrics</h2>
+          <div className="maysan-card border-[var(--brand-primary)]/20 bg-[var(--brand-primary)]/5 text-center py-24 mb-32 !rounded-[var(--radius-xl)]">
+             <h2 className="text-4xl font-black mb-12 uppercase tracking-tighter italic text-white/80">Performance Metrics</h2>
              <div className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-4xl mx-auto">
                 {[
                   { v: "14ms", l: "Speed" },
@@ -104,7 +104,7 @@ export default function EngineeringClient() {
                 ].map((stat, i) => (
                   <div key={i} className="flex flex-col gap-2">
                     <span className="text-4xl font-black text-[var(--brand-primary)]">{stat.v}</span>
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-white/40">{stat.l}</span>
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-white/60">{stat.l}</span>
                   </div>
                 ))}
              </div>

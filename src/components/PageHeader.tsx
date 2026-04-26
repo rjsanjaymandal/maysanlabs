@@ -33,11 +33,11 @@ export default function PageHeader({
             {title.split("_").map((word, i) => (
               <span key={i}>
                 {i > 0 && " "}
-                {i === 1 ? <span className="text-[var(--brand-primary)] italic uppercase">{word}</span> : word}
+                {i === 1 ? <span className="text-brand-primary italic uppercase">{word}</span> : word}
               </span>
             ))}
           </h1>
-          <p className="text-xl md:text-2xl text-white/70 leading-relaxed max-w-2xl font-medium">
+          <p className="text-xl md:text-2xl text-white/85 leading-relaxed max-w-2xl font-medium">
             {subtitle}
           </p>
         </motion.div>
