@@ -43,12 +43,6 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col">
               <span className="font-sans font-black text-white text-lg leading-none tracking-tight">Maysan Labs</span>
-              <div className="flex items-center gap-1.5 mt-1">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--brand-light)] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--brand-primary)]"></span>
-                </span>
-              </div>
             </div>
           </Link>
 
