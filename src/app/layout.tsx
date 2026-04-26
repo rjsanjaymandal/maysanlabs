@@ -11,12 +11,12 @@ import {
 } from "@/lib/seo/schema";
 
 const interTight = Inter_Tight({
-  variable: "--font-inter-tight",
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
@@ -104,8 +104,6 @@ export const metadata: Metadata = {
 import type { Viewport } from "next";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
 export const viewport: Viewport = {
   themeColor: "#000000",
   width: "device-width",
@@ -118,7 +116,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
+    <html lang="en" suppressHydrationWarning className={cn("antialiased", interTight.variable, jetbrainsMono.variable)}>
       <head>
         <script
           type="application/ld+json"
@@ -140,7 +138,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${interTight.variable} ${jetbrainsMono.variable} bg-[var(--bg-base)] text-foreground`}
+        className="bg-[var(--bg-base)] text-foreground font-sans"
         suppressHydrationWarning
       >
         {/* Global Structural Node Graph Background */}

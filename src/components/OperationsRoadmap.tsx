@@ -58,7 +58,7 @@ export default function OperationsRoadmap() {
                 </div>
               </div>
               
-              <h3 className="text-3xl font-black mb-6 tracking-tight uppercase group-hover:text-[var(--brand-primary)] transition-colors duration-500 italic">
+              <h3 className="text-3xl font-black mb-6 tracking-tighter uppercase group-hover:text-[var(--brand-primary)] transition-colors duration-500 italic">
                 {step.title}
               </h3>
               

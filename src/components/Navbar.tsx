@@ -42,7 +42,7 @@ export default function Navbar() {
               </div>
             </div>
             <div className="flex flex-col">
-              <span className="font-sans font-black text-white text-lg leading-none tracking-tight">Maysan Labs</span>
+              <span className="font-sans font-black text-white text-lg leading-none tracking-tighter">Maysan Labs</span>
             </div>
           </Link>
 

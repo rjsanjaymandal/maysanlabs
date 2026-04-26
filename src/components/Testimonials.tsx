@@ -58,7 +58,7 @@ export default function Testimonials() {
                  {testimonial.name.charAt(0)}
               </div>
               <div>
-                <p className="font-bold text-white text-sm tracking-tight">{testimonial.name}</p>
+                <p className="font-bold text-white text-sm tracking-tighter">{testimonial.name}</p>
                 <p className="text-[10px] font-mono uppercase tracking-widest text-white/30">{testimonial.role}</p>
               </div>
             </div>

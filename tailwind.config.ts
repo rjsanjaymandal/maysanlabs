@@ -65,8 +65,8 @@ const config: Config = {
         widest: "0.25em",
       },
       fontFamily: {
-        sans: ["var(--font-inter-tight)", "sans-serif"],
-        mono: ["var(--font-jetbrains-mono)", "monospace"],
+        sans: ["var(--font-sans)", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
       },
       keyframes: {
         marquee: {
