@@ -32,7 +32,7 @@ export default function Hero() {
           >
             <WordPullUp
               words="Engineering the future of software."
-              className="text-5xl sm:text-7xl md:text-9xl font-black tracking-tighter uppercase leading-[0.85] text-white italic"
+              className="heading-xl text-white italic"
             />
           </motion.div>
           <motion.div
@@ -41,7 +41,7 @@ export default function Hero() {
              transition={{ duration: 1, delay: 0.8 }}
              className="mt-12"
           >
-            <p className="text-white/20 text-xl md:text-3xl max-w-3xl mx-auto font-medium leading-tight tracking-tighter uppercase">
+            <p className="text-body-dim text-xl md:text-3xl max-w-3xl mx-auto font-medium leading-tight tracking-tighter uppercase">
               High-performance systems for <br />
               <span className="text-brand-primary">global scale.</span>
             </p>

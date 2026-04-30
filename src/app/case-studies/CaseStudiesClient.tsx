@@ -20,27 +20,27 @@ export default function CaseStudiesClient() {
         subtitle="Meticulously engineered services for complex enterprise challenges. Explore our portfolio of industrial-grade transformations."
       />
 
-      <section className="sec-xl relative">
+      <section className="sec-lg relative">
         <div className="container-main relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {caseStudies.map((study) => (
               <Link key={study.slug} href={`/case-studies/${study.slug}`} className="group">
-                <SpotlightCard className="maysan-card !p-10 h-full flex flex-col group-hover:border-[var(--brand-primary)]/40 transition-colors">
+                <SpotlightCard className="maysan-card h-full flex flex-col group-hover:border-brand-primary/40 transition-colors">
                   <div className="flex justify-between items-start mb-10">
                     <div>
-                      <span className="text-[var(--brand-primary)] font-mono text-[10px] tracking-[0.4em] uppercase mb-4 block font-bold">
+                      <span className="label-mono mb-4 block">
                         {study.category}
                       </span>
-                      <h3 className="text-3xl font-black text-white group-hover:text-[var(--brand-primary)] transition-colors uppercase tracking-tight">
+                      <h3 className="text-3xl font-black text-white group-hover:text-brand-primary transition-colors uppercase tracking-tight italic">
                         {study.title}
                       </h3>
                     </div>
-                    <div className="w-12 h-12 rounded-xl bg-[var(--brand-primary)]/10 flex items-center justify-center border border-[var(--brand-primary)]/20 text-[var(--brand-primary)] group-hover:bg-[var(--brand-primary)] group-hover:text-[var(--brand-dark-text)] transition-all duration-500 shadow-lg">
+                    <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center border border-brand-primary/20 text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-all duration-500 shadow-lg">
                       <ArrowRight size={20} />
                     </div>
                   </div>
 
-                  <p className="text-white/70 mb-12 leading-relaxed text-sm font-medium flex-1">
+                  <p className="text-body-dim mb-12 leading-relaxed text-sm font-medium flex-1">
                     {study.challenge}
                   </p>
 
@@ -48,9 +48,9 @@ export default function CaseStudiesClient() {
                     {study.metrics.map((metric, idx) => (
                       <div
                         key={idx}
-                        className="bg-white/5 rounded-2xl p-6 border border-white/5 group-hover:border-[var(--brand-primary)]/10 transition-colors"
+                        className="bg-white/5 rounded-2xl p-6 border border-white/5 group-hover:border-brand-primary/10 transition-colors"
                       >
-                        <div className="text-2xl font-black text-[var(--brand-primary)] mb-2 tracking-tighter">
+                        <div className="text-2xl font-black text-brand-primary mb-2 tracking-tighter">
                           {metric.value}
                         </div>
                         <div className="text-[9px] uppercase tracking-[0.2em] text-white/20 font-mono font-bold">
@@ -81,14 +81,14 @@ export default function CaseStudiesClient() {
           </div>
 
           <div className="mt-32 text-center py-24 border-t border-white/5 relative overflow-hidden rounded-[40px] bg-black/20">
-            <h3 className="text-3xl md:text-5xl font-black mb-12 uppercase tracking-tighter">Ready for your transformation?</h3>
+            <h3 className="text-3xl md:text-5xl font-black mb-12 uppercase tracking-tighter italic">Ready for your transformation?</h3>
             <Link href="/init">
               <HoverBorderGradient
                 containerClassName="rounded-full mx-auto w-fit"
                 as="div"
-                className="bg-[var(--brand-primary)] text-[var(--brand-dark-text)] font-black flex items-center gap-2"
+                className="bg-brand-primary text-black font-black flex items-center gap-2"
               >
-                <span>BOOK A STRATEGY CALL</span>
+                <span>BOOK_A_STRATEGY_CALL</span>
                 <ArrowUpRight size={18} />
               </HoverBorderGradient>
             </Link>

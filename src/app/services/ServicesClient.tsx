@@ -63,25 +63,25 @@ export default function ServicesClient() {
       <div className="radial-blur -top-40 -left-20 opacity-10" />
 
       {/* Hero Section */}
-      <section className="pt-44 pb-20 overflow-hidden">
-        <div className="container-main">
+      <section className="sec-xl relative overflow-hidden flex items-center min-h-[60vh]">
+        <div className="container-main relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-32"
           >
-            <span className="announcement-bar">Our Services</span>
-            <h1 className="hero-title text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mt-8 uppercase mb-8">
-              Book a <span className="text-[var(--brand-primary)] italic uppercase">Call.</span>
+            <span className="label-mono mb-8 block">Our Services</span>
+            <h1 className="heading-xl mt-8 mb-12">
+              Book a <span className="text-brand-primary italic">Call.</span>
             </h1>
-            <p className="text-white/85 max-w-2xl mx-auto mt-6 text-xl md:text-2xl font-medium leading-relaxed">
+            <p className="text-body-dim max-w-2xl mx-auto mt-6 text-xl md:text-2xl font-medium leading-relaxed">
               We engineer the software that connects your complex operations into a high-fidelity enterprise logic.
             </p>
           </motion.div>
-
+ 
           {/* Services Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-32">
             {services.map((service, index) => (
               <motion.div
                 key={index}
@@ -93,28 +93,27 @@ export default function ServicesClient() {
                   duration: 0.8,
                   ease: [0.16, 1, 0.3, 1] 
                 }}
-                whileHover={{ y: -5 }}
                 className="maysan-card group flex flex-col justify-between"
               >
                 <div>
-                   <div className="w-14 h-14 bg-[var(--brand-primary)]/10 rounded-[var(--radius-md)] flex items-center justify-center mb-10 text-[var(--brand-primary)] border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-gradient)] group-hover:text-[var(--brand-dark-text)] transition-all duration-500">
+                   <div className="w-14 h-14 bg-brand-primary/10 rounded-[var(--radius-md)] flex items-center justify-center mb-10 text-brand-primary border border-brand-primary/20 group-hover:bg-brand-primary group-hover:text-black transition-all duration-500 shadow-lg">
                      {service.icon}
                    </div>
-                   <label className="block text-[10px] font-black uppercase tracking-[0.3em] text-[var(--brand-primary)] mb-4">
-                      Protocol {service.tag}
+                   <label className="block label-mono mb-4 text-brand-primary/60">
+                      Protocol_{service.tag}
                    </label>
-                   <h3 className="text-3xl font-black text-white mb-6 uppercase tracking-tighter group-hover:text-[var(--brand-primary)] transition-colors"> {service.title}</h3>
-                   <p className="text-white/85 text-sm leading-relaxed font-medium">{service.desc}</p>
+                   <h3 className="text-3xl font-black text-white mb-6 uppercase tracking-tighter group-hover:text-brand-primary transition-colors italic"> {service.title}</h3>
+                   <p className="text-body-dim text-sm leading-relaxed font-medium">{service.desc}</p>
                 </div>
                 
                 <div className="mt-12 flex items-center justify-between border-t border-white/5 pt-8">
-                   <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-white/50">{service.tag}</span>
-                   <ArrowUpRight size={14} className="text-[var(--brand-primary)] opacity-0 group-hover:opacity-100 transition-all font-black" />
+                   <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-white/20">{service.tag}</span>
+                   <ArrowUpRight size={14} className="text-brand-primary opacity-0 group-hover:opacity-100 transition-all font-black" />
                 </div>
               </motion.div>
             ))}
           </div>
-
+ 
           {/* CTA */}
           <motion.div 
             initial={{ opacity: 0 }}
@@ -122,8 +121,9 @@ export default function ServicesClient() {
             viewport={{ once: true }}
             className="text-center py-20 border-t border-white/5"
           >
-            <Link href="/init" className="pill-btn pill-btn-primary min-w-[280px] mx-auto">
-              Book a Strategy Call <ArrowRight size={18} />
+            <Link href="/init" className="pill-btn pill-btn-primary min-w-[280px] mx-auto group">
+              <span>Book a Strategy Call</span>
+              <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
             </Link>
           </motion.div>
         </div>

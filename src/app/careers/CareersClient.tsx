@@ -16,7 +16,7 @@ export default function CareersClient() {
       <Navbar />
 
       {/* Hero Section with Aceternity Beams */}
-      <div className="pt-44 pb-32 relative overflow-hidden">
+      <section className="sec-xl relative overflow-hidden flex items-center min-h-[70vh]">
         <BackgroundBeams />
         
         <div className="container-main relative z-10">
@@ -25,22 +25,22 @@ export default function CareersClient() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="announcement-bar">Join the Lab</span>
-            <h1 className="hero-title text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mt-8 uppercase mb-8">
+            <span className="label-mono mb-8 block">Join the Lab</span>
+            <h1 className="heading-xl mt-8 mb-12">
               Shape the Future of <br />
-              <span className="text-[var(--brand-primary)] italic uppercase">Engineering.</span>
+              <span className="text-brand-primary italic">Engineering.</span>
             </h1>
-            <p className="text-white/70 max-w-2xl text-xl md:text-2xl font-medium leading-relaxed mb-16">
+            <p className="text-body-dim max-w-2xl text-xl md:text-2xl font-medium leading-relaxed mb-16">
               We&apos;re looking for radical thinkers and elite engineers to build the mission-critical infrastructure of the modern enterprise.
             </p>
           </motion.div>
         </div>
-      </div>
+      </section>
 
       {/* Culture/Values Section */}
-      <section className="py-24 border-y border-white/5 bg-black/20 relative">
+      <section className="sec-md border-y border-white/5 bg-black/20 relative">
         <div className="container-main">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
             {[
               { icon: <Rocket size={24} />, title: "Velocity First", desc: "We value speed and decisiveness. We ship early, iterate fast, and maintain absolute quality standards." },
               { icon: <Users size={24} />, title: "Remote Excellence", desc: "Maysan is a globally distributed team. We trust our people to deliver high-fidelity code from anywhere." },
@@ -53,11 +53,11 @@ export default function CareersClient() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.8 }}
               >
-                <div className="w-12 h-12 rounded-xl bg-[var(--brand-primary)]/10 flex items-center justify-center text-[var(--brand-primary)] mb-8 border border-[var(--brand-primary)]/20 shadow-lg glow-brand">
+                <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-8 border border-brand-primary/20 shadow-lg glow-brand">
                   {value.icon}
                 </div>
-                <h3 className="text-2xl font-black mb-4 tracking-tight uppercase">{value.title}</h3>
-                <p className="text-white/70 leading-relaxed font-medium text-sm">
+                <h3 className="text-2xl font-black mb-4 tracking-tight uppercase italic">{value.title}</h3>
+                <p className="text-body-dim leading-relaxed font-medium text-sm">
                   {value.desc}
                 </p>
               </motion.div>
@@ -67,19 +67,19 @@ export default function CareersClient() {
       </section>
 
       {/* Open Positions Section */}
-      <section className="sec-xl relative">
+      <section className="sec-lg relative">
         <div className="container-main">
-          <div className="mb-20">
-            <span className="announcement-bar !mb-6">Opportunities</span>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none mb-4">
-              Open <span className="text-[var(--brand-primary)] italic uppercase">Roles.</span>
+          <div className="mb-24">
+            <span className="label-mono mb-6 block">Opportunities</span>
+            <h2 className="heading-lg mb-6">
+              Open <span className="text-brand-primary italic">Roles.</span>
             </h2>
-            <p className="text-white/70 font-medium">
+            <p className="text-body-dim font-medium text-lg">
               Join a team engineering the world&apos;s most resilient enterprise infrastructure.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {jobPositions.map((job, index) => (
               <motion.div
                 key={job.id}
@@ -88,32 +88,32 @@ export default function CareersClient() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.8 }}
               >
-                <SpotlightCard className="h-full bg-white/5 border border-white/10 p-10 rounded-[24px] flex flex-col group hover:border-[var(--brand-primary)]/40 transition-colors">
+                <SpotlightCard className="maysan-card h-full flex flex-col group">
                   <div className="flex items-center justify-between mb-10">
-                    <span className="px-4 py-1.5 bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] text-[10px] font-black uppercase tracking-widest rounded-full border border-[var(--brand-primary)]/20">
+                    <span className="label-system">
                       {job.category}
                     </span>
                     <span className="text-[10px] text-white/20 font-mono uppercase tracking-[0.2em]">
                       {job.type}
                     </span>
                   </div>
-                  <h3 className="text-3xl font-black mb-6 uppercase tracking-tight group-hover:text-[var(--brand-primary)] transition-colors">
+                  <h3 className="text-3xl font-black mb-6 uppercase tracking-tight group-hover:text-brand-primary transition-colors italic">
                     {job.title}
                   </h3>
-                  <p className="text-white/70 leading-relaxed mb-10 flex-1 font-medium">
+                  <p className="text-body-dim leading-relaxed mb-10 flex-1 font-medium">
                     {job.description}
                   </p>
                   <div className="flex flex-wrap items-center gap-6 mb-10 pt-8 border-t border-white/5">
                     <div className="flex items-center gap-3 text-[10px] font-mono uppercase tracking-widest text-white/30">
-                      <MapPin size={14} style={{ color: "rgba(163, 230, 53, 0.6)" }} />
+                      <MapPin size={14} className="text-brand-primary/60" />
                       {job.location}
                     </div>
                   </div>
                   <Link
                     href={`/careers/apply?role=${job.id}`}
-                    className="inline-flex items-center gap-4 text-xs font-black text-[var(--brand-primary)] group-hover:gap-6 transition-all uppercase tracking-widest font-black"
+                    className="inline-flex items-center gap-4 text-xs font-black text-brand-primary group-hover:gap-6 transition-all uppercase tracking-widest"
                   >
-                    APPLY NOW <ArrowRight size={18} />
+                    APPLY_NOW <ArrowRight size={18} />
                   </Link>
                 </SpotlightCard>
               </motion.div>
@@ -121,19 +121,19 @@ export default function CareersClient() {
           </div>
 
           {/* Opportunistic Hire Section */}
-          <div className="mt-32 maysan-card border-[var(--brand-primary)]/20 bg-[var(--brand-primary)]/5 text-center p-16 lg:p-24 overflow-hidden relative">
-            <div className="relative z-10">
-              <h3 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tighter">Don&apos;t see a perfect fit?</h3>
-              <p className="text-white/70 font-medium max-w-2xl mx-auto mb-12 text-lg">
+          <div className="mt-40 maysan-card border-brand-primary/20 bg-brand-primary/5 text-center relative">
+            <div className="relative z-10 py-10">
+              <h3 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tighter italic">Don&apos;t see a perfect fit?</h3>
+              <p className="text-body-dim font-medium max-w-2xl mx-auto mb-12 text-lg">
                 We&apos;re always looking for exceptional engineers and architects. If you&apos;re building the future, we want to hear from you.
               </p>
               <Link href="/careers/apply">
                 <HoverBorderGradient
                   containerClassName="rounded-full mx-auto w-fit"
                   as="div"
-                  className="bg-[var(--brand-gradient)] text-[var(--brand-dark-text)] font-black flex items-center gap-2"
+                  className="bg-brand-primary text-black font-black flex items-center gap-2"
                 >
-                  <span>OPERATIONAL HIRE</span>
+                  <span>OPERATIONAL_HIRE</span>
                   <ArrowUpRight size={18} />
                 </HoverBorderGradient>
               </Link>
