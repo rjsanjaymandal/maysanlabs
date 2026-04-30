@@ -109,22 +109,42 @@
 }
 
 @media (max-width: 768px) {
+  .roadmapContainer {
+    max-width: 100%;
+    padding: 2rem 1rem;
+    margin: 2rem 0;
+  }
   .line {
-    left: 20px;
+    left: 32px;
   }
   .stage {
     justify-content: flex-start;
-    padding-left: 60px;
-    margin-bottom: 5rem;
+    padding-left: 64px;
+    margin-bottom: 4rem;
+    width: 100%;
+    box-sizing: border-box;
   }
   .marker {
-    left: 20px;
+    left: 32px;
+  }
+  .iconBox {
+    width: 40px;
+    height: 40px;
   }
   .content {
     flex: 1;
-    width: auto !important;
+    width: 100% !important;
+    max-width: 100%;
     text-align: left !important;
     left: 0 !important;
     right: 0 !important;
+    padding: 1.5rem;
+    box-sizing: border-box;
+  }
+  .title {
+    font-size: 1.1rem;
+  }
+  .desc {
+    font-size: 0.8rem;
   }
 }

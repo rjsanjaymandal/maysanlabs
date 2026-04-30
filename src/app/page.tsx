@@ -83,14 +83,14 @@ const bentoFeatures = [
 
 export default function Home() {
   return (
-    <main className="bg-background min-h-screen relative overflow-hidden text-body blueprint-grid">
+    <main className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden text-foreground blueprint-grid">
       <Navbar />
       <Hero />
       
       {/* ─── Trust Section ─── */}
-      <section className="py-24 border-y border-white/5 bg-background/50 backdrop-blur-md overflow-hidden relative">
+      <section className="py-24 border-y border-white/5 bg-black/20 backdrop-blur-md overflow-hidden relative">
         <div className="container-main mb-12 text-center relative z-10">
-           <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">Studio Partners</span>
+           <span className="label-mono !text-[10px] !mb-0">Studio Partners</span>
         </div>
         <Marquee pauseOnHover className="[--duration:40s]">
           {trustLogos.map((logo) => (
@@ -108,12 +108,12 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="label-mono mb-8 inline-flex items-center gap-2"
+            className="label-mono mb-12 inline-flex items-center gap-2"
           >
-            <span className="w-1.5 h-1.5 bg-brand-primary rounded-full" />
+            <span className="w-1.5 h-1.5 bg-brand-primary rounded-full animate-pulse" />
             Our Philosophy
           </motion.div>
-          <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.85] uppercase">
+          <h2 className="heading-xl">
             Engineering <br />
             <span className="text-brand-primary italic">Excellence.</span>
           </h2>

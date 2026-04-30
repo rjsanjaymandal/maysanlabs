@@ -43,7 +43,7 @@ export default function EngineeringClient() {
       <div className="radial-blur -top-40 -left-20 opacity-10" />
 
       {/* Hero */}
-      <section className="pt-44 pb-20 overflow-hidden">
+      <section className="sec-xl overflow-hidden">
         <div className="container-main">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -51,17 +51,17 @@ export default function EngineeringClient() {
             transition={{ duration: 0.8 }}
             className="text-center mb-32"
           >
-            <span className="announcement-bar">How We Build</span>
-            <h1 className="hero-title text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] mt-8 uppercase mb-8">
-              Built <span className="text-[var(--brand-primary)] italic uppercase">Right.</span>
+            <span className="label-mono mb-8 block">How We Build</span>
+            <h1 className="heading-xl mb-12">
+              Built <span className="text-brand-primary italic">Right.</span>
             </h1>
-            <p className="text-white/85 max-w-2xl mx-auto mt-6 text-xl md:text-2xl font-medium leading-relaxed">
+            <p className="text-body-dim max-w-2xl mx-auto mt-6 text-xl md:text-2xl font-medium leading-relaxed">
               We leverage deterministic engineering and distributed primitives to build software that operates without fail.
             </p>
           </motion.div>
 
           {/* Features Grid */}
-          <div className="grid md:grid-cols-2 gap-8 mb-32">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-32">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
@@ -77,23 +77,23 @@ export default function EngineeringClient() {
                 className="maysan-card group flex flex-col justify-between"
               >
                 <div>
-                   <div className="w-14 h-14 bg-[var(--brand-primary)]/10 rounded-[var(--radius-md)] flex items-center justify-center mb-10 text-[var(--brand-primary)] border border-[var(--brand-primary)]/20 group-hover:bg-[var(--brand-gradient)] group-hover:text-[var(--brand-dark-text)] transition-all duration-500">
+                   <div className="w-14 h-14 bg-brand-primary/10 rounded-[var(--radius-md)] flex items-center justify-center mb-10 text-brand-primary border border-brand-primary/20 group-hover:bg-brand-primary group-hover:text-black transition-all duration-500">
                      {feature.icon}
                    </div>
-                   <h3 className="text-4xl font-black text-white mb-6 uppercase tracking-tighter group-hover:text-[var(--brand-primary)] transition-colors">{feature.title}</h3>
-                   <p className="text-white/85 text-sm leading-relaxed font-medium">{feature.desc}</p>
+                   <h3 className="text-4xl font-black text-white mb-6 uppercase tracking-tighter group-hover:text-brand-primary transition-colors italic">{feature.title}</h3>
+                   <p className="text-body-dim text-sm leading-relaxed font-medium">{feature.desc}</p>
                 </div>
                 
                 <div className="mt-12 flex items-center justify-between border-t border-white/5 pt-8">
                    <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-white/50">{feature.tag}</span>
-                   <ArrowUpRight size={14} className="text-[var(--brand-primary)] opacity-0 group-hover:opacity-100 transition-all font-bold" />
+                   <ArrowUpRight size={14} className="text-brand-primary opacity-0 group-hover:opacity-100 transition-all font-bold" />
                 </div>
               </motion.div>
             ))}
           </div>
 
           {/* Scale Section Placeholder */}
-          <div className="maysan-card border-[var(--brand-primary)]/20 bg-[var(--brand-primary)]/5 text-center py-24 mb-32 !rounded-[var(--radius-xl)]">
+          <div className="maysan-card border-brand-primary/20 bg-brand-primary/5 text-center py-24 mb-32 !rounded-[var(--radius-xl)]">
              <h2 className="text-4xl font-black mb-12 uppercase tracking-tighter italic text-white/80">Performance Metrics</h2>
              <div className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-4xl mx-auto">
                 {[
@@ -103,7 +103,7 @@ export default function EngineeringClient() {
                   { v: "24/7", l: "Support" }
                 ].map((stat, i) => (
                   <div key={i} className="flex flex-col gap-2">
-                    <span className="text-4xl font-black text-[var(--brand-primary)]">{stat.v}</span>
+                    <span className="text-4xl font-black text-brand-primary">{stat.v}</span>
                     <span className="font-mono text-[10px] uppercase tracking-widest text-white/60">{stat.l}</span>
                   </div>
                 ))}

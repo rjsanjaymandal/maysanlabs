@@ -54,28 +54,28 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const formattedContent = post.content.split("\n").map((line, i) => {
     if (line.startsWith("# ")) {
       return (
-        <h1 key={i} className="text-3xl md:text-4xl font-bold mt-12 mb-8">
+        <h1 key={i} className="text-3xl md:text-4xl font-black mt-12 mb-8 uppercase tracking-tighter italic text-white">
           {line.replace("# ", "")}
         </h1>
       );
     }
     if (line.startsWith("## ")) {
       return (
-        <h2 key={i} className="text-2xl font-bold mt-10 mb-6">
+        <h2 key={i} className="text-2xl font-black mt-10 mb-6 uppercase tracking-tight italic text-white/90">
           {line.replace("## ", "")}
         </h2>
       );
     }
     if (line.startsWith("### ")) {
       return (
-        <h3 key={i} className="text-xl font-bold mt-8 mb-4">
+        <h3 key={i} className="text-xl font-black mt-8 mb-4 uppercase tracking-tight text-white/80">
           {line.replace("### ", "")}
         </h3>
       );
     }
     if (line.startsWith("- ")) {
       return (
-        <li key={i} className="ml-6 mb-2 text-muted-foreground list-disc">
+        <li key={i} className="ml-6 mb-2 text-body-dim list-disc">
           {line.replace("- ", "")}
         </li>
       );
@@ -87,11 +87,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     // Handle bold text **...**
     const parts = line.split(/(\*\*.*?\*\*)/);
     return (
-      <p key={i} className="text-lg text-muted-foreground leading-relaxed mb-6">
+      <p key={i} className="text-lg text-body-dim leading-relaxed mb-6 font-medium">
         {parts.map((part, j) => {
           if (part.startsWith("**") && part.endsWith("**")) {
             return (
-              <strong key={j} className="text-foreground font-bold">
+              <strong key={j} className="text-white font-bold">
                 {part.slice(2, -2)}
               </strong>
             );
@@ -103,59 +103,59 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   });
 
   return (
-    <main className="min-h-screen bg-background text-foreground flex flex-col">
+    <main className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
       <Navbar />
 
-      <article className="pt-32 pb-20">
-        <div className="container max-w-4xl">
+      <article className="pt-44 pb-32">
+        <div className="container-main max-w-4xl">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-primary font-mono uppercase tracking-widest mb-12 hover:gap-3 transition-all"
+            className="inline-flex items-center gap-2 text-[10px] text-brand-primary font-black uppercase tracking-[0.3em] mb-16 hover:gap-4 transition-all"
           >
-            <ArrowLeft size={16} /> Back to Blog
+            <ArrowLeft size={16} /> BACK_TO_LOG
           </Link>
 
-          <header className="mb-12">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-mono uppercase tracking-widest rounded-full border border-primary/20">
+          <header className="mb-20">
+            <div className="flex items-center gap-6 mb-10">
+              <span className="label-mono !mb-0">
                 {post.category}
               </span>
-              <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono uppercase tracking-wider">
-                <Clock size={14} className="text-primary/70" />
-                {post.readTime} Read
+              <div className="flex items-center gap-2 text-[10px] text-ghost font-black uppercase tracking-widest">
+                <Clock size={14} className="text-brand-primary" />
+                {post.readTime} READ
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-8 leading-[1.1]">
+            <h1 className="text-4xl md:text-7xl font-black tracking-tighter mb-12 leading-[1] uppercase italic text-white">
               {post.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-8 py-8 border-y border-border/50">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+            <div className="flex flex-wrap items-center gap-12 py-12 border-y border-white/5">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20">
                   <User size={20} />
                 </div>
                 <div>
-                  <p className="text-[10px] text-muted-foreground font-mono uppercase tracking-widest">
-                    Authored by
+                  <p className="label-mono !text-[8px] !mb-1">
+                    AUTHORED_BY
                   </p>
-                  <p className="font-bold text-sm tracking-tight">
+                  <p className="font-black text-sm tracking-tight uppercase italic">
                     {post.author}
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20">
                   <Calendar size={20} />
                 </div>
                 <div>
-                  <p className="text-[10px] text-muted-foreground font-mono uppercase tracking-widest">
-                    Published on
+                  <p className="label-mono !text-[8px] !mb-1">
+                    PUBLISHED_ON
                   </p>
-                  <p className="font-bold text-sm tracking-tight">
+                  <p className="font-black text-sm tracking-tight uppercase italic">
                     {new Date(post.date).toLocaleDateString("en-US", {
-                      month: "long",
+                      month: "short",
                       day: "numeric",
                       year: "numeric",
                     })}
@@ -165,7 +165,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </header>
 
-          <div className="blog-content">{formattedContent}</div>
+          <div className="blog-content prose prose-invert prose-brand max-w-none">
+            {formattedContent}
+          </div>
         </div>
       </article>
 

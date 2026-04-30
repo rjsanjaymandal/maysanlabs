@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function BlogListingPage() {
   return (
-    <main className="min-h-screen bg-[#0d1117] text-foreground flex flex-col relative overflow-hidden">
+    <main className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
       <Navbar />
 
       <PageHeader 
@@ -21,8 +21,8 @@ export default function BlogListingPage() {
         subtitle="Engineering high-performance enterprise SaaS infrastructure. Research, benchmarks, and details from our elite lab."
       />
 
-      <div className="flex-1 py-32 container-main relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="flex-1 sec-xl relative z-10">
+        <div className="container-main grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
           {blogPosts.map((post) => (
             <BlogCard key={post.slug} post={post} />
           ))}
