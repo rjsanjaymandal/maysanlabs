@@ -41,7 +41,7 @@ export default function ContactFooter() {
                 </span>
               </Link>
               
-              <Link href="mailto:business@maysanlabs.com" className="text-xs font-black uppercase tracking-[0.3em] text-white/30 hover:text-white transition-all duration-500 flex items-center gap-6 group">
+              <Link href="mailto:business@maysanlabs.com" className="text-xs font-black uppercase tracking-[0.3em] text-white/40 hover:text-white transition-all duration-500 flex items-center gap-6 group">
                  <div className="w-14 h-14 rounded-2xl border border-white/5 flex items-center justify-center group-hover:border-brand-primary group-hover:bg-brand-primary/5 transition-all duration-700">
                    <Mail size={16} className="group-hover:scale-110 transition-transform duration-500" />
                  </div>

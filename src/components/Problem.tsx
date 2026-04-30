@@ -8,19 +8,19 @@ export default function Problem() {
     {
       id: "AI_RELIABLE",
       title: "Reliable AI",
-      text: "We build AI that works every time, without mistakes, following your specific business rules.",
+      text: "AI that follows your rules and delivers every time.",
       icon: <Cpu size={24} />,
     },
     {
       id: "DATA_SECURE",
       title: "Safe Data",
-      text: "You own your data. We keep it safe and private in systems only you control.",
+      text: "Your data. Your control. Fully secure.",
       icon: <ShieldAlert size={24} />,
     },
     {
       id: "SPEED_SCALE",
       title: "Build Faster",
-      text: "Don&apos;t let old code slow you down. We build modern apps that get you results faster.",
+      text: "Modern apps that ship fast and scale bigger.",
       icon: <Activity size={24} />,
     },
   ];
@@ -41,12 +41,11 @@ export default function Problem() {
               What we solve
             </div>
             <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.8] mb-12 uppercase">
-              Old software <br />
-              <span className="text-brand-primary italic">holds you back.</span>
+              Old code <br />
+              <span className="text-brand-primary italic">slows you down.</span>
             </h2>
-            <p className="text-2xl text-white/40 font-medium mb-12 tracking-tight">
-              Slow systems shouldn&apos;t stop your business. <br className="hidden md:block" /> 
-              We build fast, modern apps that help your team do more.
+            <p className="text-2xl text-white/50 font-medium mb-12 tracking-tight">
+              We build fast, modern apps that help your team move faster.
             </p>
           </motion.div>
           <motion.div 
@@ -56,8 +55,8 @@ export default function Problem() {
             transition={{ duration: 1, delay: 0.2 }}
             className="lg:max-w-xs border-l border-white/5 pl-8"
           >
-            <p className="text-sm font-medium text-white/20 leading-loose uppercase tracking-widest">
-              We help you move faster by building reliable systems that are ready for the future.
+            <p className="text-sm font-medium text-white/30 leading-loose uppercase tracking-widest">
+              Reliable systems built for what comes next.
             </p>
           </motion.div>
         </div>
@@ -82,7 +81,7 @@ export default function Problem() {
                 <h3 className="text-4xl font-black mb-8 tracking-tighter uppercase leading-none text-white group-hover:text-brand-primary transition-colors duration-700 italic">
                   {arch.title}
                 </h3>
-                <p className="text-white/40 text-lg leading-relaxed font-medium group-hover:text-white/80 transition-colors duration-700">
+                <p className="text-white/50 text-lg leading-relaxed font-medium group-hover:text-white/80 transition-colors duration-700">
                   {arch.text}
                 </p>
               </div>

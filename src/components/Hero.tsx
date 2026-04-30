@@ -21,6 +21,10 @@ export default function Hero() {
           particleColor="#A3E635"
         />
       </div>
+      
+      {/* Ambient Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-primary/5 blur-[150px] rounded-full pointer-events-none" />
+      
       <div className="container-main relative z-10 flex flex-col items-center text-center">
         {/* Editorial Headline */}
         <div className="mb-12">
@@ -39,12 +43,12 @@ export default function Hero() {
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 1, delay: 0.8 }}
              className="mt-8 sm:mt-12"
-          >
-            <p className="text-white/40 text-lg sm:text-xl md:text-3xl max-w-3xl mx-auto font-medium leading-tight tracking-tighter uppercase px-4">
-              High-performance systems for <br />
-              <span className="text-brand-gradient">global scale.</span>
-            </p>
-          </motion.div>
+           >
+<p className="text-white/50 text-lg sm:text-xl md:text-3xl max-w-3xl mx-auto font-medium leading-tight tracking-tighter uppercase px-4">
+                High-performance systems for <br />
+                <span className="text-brand-gradient">global scale.</span>
+              </p>
+           </motion.div>
         </div>
 
         {/* Studio CTAs */}
@@ -54,7 +58,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 1 }}
           className="flex flex-col sm:flex-row items-center gap-12 mt-12"
         >
-          <Link href="/init" className="group relative px-12 py-5 bg-brand-primary rounded-full overflow-hidden transition-all duration-700 hover:shadow-[0_0_50px_rgba(163,230,53,0.4)]">
+          <Link href="/init" className="group relative px-12 py-5 bg-brand-primary rounded-full overflow-hidden transition-all duration-700 hover:shadow-glow-lg">
             <span className="relative z-10 text-xs font-black uppercase tracking-widest text-black flex items-center gap-3">
               Start Project
               <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform duration-500" />
@@ -62,7 +66,7 @@ export default function Hero() {
           </Link>
           
           <Link href="/engineering" className="text-xs font-black uppercase tracking-[0.3em] text-white/30 hover:text-white transition-all duration-500 flex items-center gap-6 group">
-             <div className="w-14 h-14 rounded-2xl border border-white/5 flex items-center justify-center group-hover:border-brand-primary group-hover:bg-brand-primary/5 transition-all duration-700 shadow-2xl">
+             <div className="w-14 h-14 rounded-xl border border-white/10 flex items-center justify-center group-hover:border-brand-primary group-hover:bg-brand-primary/5 transition-all duration-700 glass">
                <Play size={16} fill="currentColor" className="group-hover:scale-110 transition-transform duration-500" />
              </div>
              Our Studio

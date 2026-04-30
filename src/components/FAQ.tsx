@@ -7,27 +7,23 @@ import { Terminal, Plus, Minus } from "lucide-react";
 const faqs = [
   {
     id: "Q_ARCH_01",
-    question: "Do you help after the site is live?",
-    answer:
-      "Yes. We provide ongoing technical support to make sure your systems stay fast and secure. You own everything, but we are here to help whenever you need us.",
+    question: "Do you help after launch?",
+    answer: "Yes. Ongoing support to keep things fast and secure. You own everything.",
   },
   {
     id: "Q_TIME_01",
-    question: "How long does it take to build?",
-    answer:
-      "Most online stores and customer management systems are ready in 4-6 weeks. Custom tools can often be built in as little as 2 weeks.",
+    question: "How long to build?",
+    answer: "4-6 weeks for most projects. Custom builds in as little as 2 weeks.",
   },
   {
     id: "Q_SEC_01",
     question: "Is my data secure?",
-    answer:
-      "Yes. We use high-level encryption (the same kind used by banks) to keep your business information safe and private.",
+    answer: "Bank-level encryption. Your data stays yours, always.",
   },
   {
     id: "Q_SUPPORT_01",
-    question: "Do you offer ongoing support?",
-    answer:
-      "Yes. We can act as your technical partner, keeping your software updated and helping you grow as your needs change.",
+    question: "Ongoing support?",
+    answer: "Yes. We keep your software updated as your business grows.",
   },
 ];
 
@@ -68,7 +64,7 @@ export default function FAQ() {
             Questions.
           </h2>
           <p className="text-sm font-medium text-white/85 leading-loose max-w-lg">
-            Answers to common questions about how we work, our security, and how we help your business.
+            Quick answers about working with us.
           </p>
         </div>
 

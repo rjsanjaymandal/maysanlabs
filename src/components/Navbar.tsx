@@ -53,7 +53,7 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 relative group px-2 py-1 ${
-                  pathname === item.href ? "text-brand-primary" : "text-white/40 hover:text-white"
+                  pathname === item.href ? "text-brand-primary" : "text-white/50 hover:text-white"
                 }`}
               >
                 {item.name}
@@ -113,7 +113,7 @@ export default function Navbar() {
                       href={item.href}
                       onClick={() => setIsOpen(false)}
                       className={`text-4xl font-black uppercase tracking-tighter ${
-                        pathname === item.href ? "text-brand-primary" : "text-white/30 hover:text-white"
+                        pathname === item.href ? "text-brand-primary" : "text-white/40 hover:text-white"
                       }`}
                     >
                       {item.name}

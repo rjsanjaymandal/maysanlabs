@@ -15,32 +15,32 @@ export default function Services() {
   const services = [
     {
       title: "E-Commerce",
-      desc: "Building online stores that handle massive traffic and convert visitors into customers.",
+      desc: "Online stores that scale with your sales.",
       icon: Store,
     },
     {
       title: "CRM Systems",
-      desc: "Custom software to manage your customer relationships and automate daily tasks.",
+      desc: "Manage customers and automate tasks.",
       icon: TrendingUp,
     },
     {
       title: "Custom Apps",
-      desc: "Tailored software solutions designed to fit your unique business workflows perfectly.",
+      desc: "Built for your specific workflow.",
       icon: Cpu,
     },
     {
       title: "Cloud Infrastructure",
-      desc: "Scalable cloud setups that grow with your business and ensure zero downtime.",
+      desc: "Scalable hosting that never goes down.",
       icon: ShieldCheck,
     },
     {
       title: "Internal Tools",
-      desc: "Streamlined dashboards and tools that help your team work faster and smarter.",
+      desc: "Dashboards that speed up your team.",
       icon: Layout,
     },
     {
       title: "Growth Engineering",
-      desc: "Data-driven strategies and technical SEO to increase your digital visibility.",
+      desc: "SEO and data strategies that work.",
       icon: BarChart3,
     },
   ];
@@ -68,9 +68,9 @@ export default function Services() {
             transition={{ delay: 0.2 }}
             className="max-w-sm"
           >
-             <p className="text-white/30 text-base sm:text-lg font-medium leading-relaxed border-l border-brand-primary/20 pl-8">
-                We deliver high-performance software with the precision of a boutique studio and the scale of a global enterprise.
-             </p>
+<p className="text-white/50 text-base sm:text-lg font-medium leading-relaxed border-l border-brand-primary/20 pl-8">
+                 High-performance software at studio precision with enterprise scale.
+              </p>
           </motion.div>
         </div>
 
@@ -91,13 +91,13 @@ export default function Services() {
                 <h3 className="text-2xl sm:text-3xl font-black tracking-tighter uppercase mb-4 sm:mb-6 italic group-hover:text-brand-primary transition-colors duration-700">
                   {service.title}
                 </h3>
-                <p className="text-white/30 text-lg sm:text-xl font-medium leading-tight tracking-tighter uppercase">
+                <p className="text-white/50 text-lg sm:text-xl font-medium leading-tight tracking-tighter uppercase">
                   {service.desc}
                 </p>
               </div>
 
               <div className="mt-12 flex justify-between items-end">
-                <span className="text-[10px] font-black text-white/10 uppercase tracking-widest">Studio_0{index + 1}</span>
+                <span className="text-[10px] font-black text-white/20 uppercase tracking-widest">Studio_0{index + 1}</span>
                 <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-brand-primary group-hover:bg-brand-primary/5 transition-all duration-700">
                    <ArrowUpRight size={18} className="group-hover:text-brand-primary transition-colors" />
                 </div>

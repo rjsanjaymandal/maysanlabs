@@ -18,37 +18,37 @@ import { ArrowRight } from "lucide-react";
 const services = [
   {
     title: "Web Engineering",
-    desc: "Fast, resilient infrastructures that anchor your business growth.",
+    desc: "Fast, scalable websites that grow with you.",
     icon: <Store size={24} />,
     tag: "SCALE_V1"
   },
   {
     title: "App Development",
-    desc: "Mission-critical mobile apps that work smoothly across all clusters.",
+    desc: "Mobile apps that work seamlessly everywhere.",
     icon: <Cpu size={24} />,
     tag: "CROSS_PLATFORM"
   },
   {
     title: "E-Commerce",
-    desc: "High-concurrency online stores with automated order flows.",
+    desc: "Online stores with automated order management.",
     icon: <TrendingUp size={24} />,
     tag: "RETAIL_STACK"
   },
   {
     title: "Cloud Services",
-    desc: "Zero-trust hosting that keeps your data secure and globally available.",
+    desc: "Secure hosting that keeps your data safe.",
     icon: <ShieldCheck size={24} />,
     tag: "SECURE_INFRA"
   },
   {
     title: "Custom Software",
-    desc: "Architecture specifically engineered for your unique business logic.",
+    desc: "Built for your unique business needs.",
     icon: <Layout size={24} />,
     tag: "ENTERPRISE_ERP"
   },
   {
-    title: "Gen Intelligence",
-    desc: "Deterministic AI models governed by enterprise-grade safety policies.",
+    title: "AI Solutions",
+    desc: "Smart AI that follows your rules.",
     icon: <BarChart3 size={24} />,
     tag: "AI_MODELS"
   },
@@ -76,7 +76,7 @@ export default function ServicesClient() {
               Book a <span className="text-brand-primary italic">Call.</span>
             </h1>
             <p className="text-body-dim max-w-2xl mx-auto mt-6 text-xl md:text-2xl font-medium leading-relaxed">
-              We engineer the software that connects your complex operations into a high-fidelity enterprise logic.
+              Software that connects your operations and scales with your business.
             </p>
           </motion.div>
  

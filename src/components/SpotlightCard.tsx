@@ -36,7 +36,7 @@ export default function SpotlightCard({
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative overflow-hidden transition-all duration-700 ease-[var(--ease-expo)] ${
+      className={`relative overflow-hidden transition-all duration-700 ease-expo ${
         isHovered
           ? "scale-[1.01] shadow-2xl z-20"
           : "scale-100 shadow-none z-10"
