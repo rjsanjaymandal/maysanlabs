@@ -54,17 +54,17 @@ export default function Pricing() {
       <BackgroundBeams />
       
       <div className="container-main relative z-10">
-        <div className="mb-24 text-center">
+        <div className="mb-16 sm:mb-24 text-center">
           <span className="label-mono mb-6 block">Transparent Pricing</span>
           <h2 className="heading-lg mt-6">
             Scalable <span className="text-brand-primary italic">Solutions.</span>
           </h2>
-          <p className="text-xl text-body-dim max-w-2xl mx-auto mt-6 font-medium">
+          <p className="text-lg sm:text-xl text-body-dim max-w-2xl mx-auto mt-6 font-medium">
             Transparent pricing models designed for enterprise precision and long-term stability.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-start lg:gap-12">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}

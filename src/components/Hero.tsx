@@ -21,27 +21,26 @@ export default function Hero() {
           particleColor="#A3E635"
         />
       </div>
-
       <div className="container-main relative z-10 flex flex-col items-center text-center">
         {/* Editorial Headline */}
         <div className="mb-12">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           >
             <WordPullUp
               words="Engineering the future of software."
-              className="heading-xl text-white italic"
+              className="heading-xl hero-title italic"
             />
           </motion.div>
           <motion.div
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 1, delay: 0.8 }}
-             className="mt-12"
+             className="mt-8 sm:mt-12"
           >
-            <p className="text-body-dim text-xl md:text-3xl max-w-3xl mx-auto font-medium leading-tight tracking-tighter uppercase">
+            <p className="text-body-dim text-lg sm:text-xl md:text-3xl max-w-3xl mx-auto font-medium leading-tight tracking-tighter uppercase px-4">
               High-performance systems for <br />
               <span className="text-brand-primary">global scale.</span>
             </p>

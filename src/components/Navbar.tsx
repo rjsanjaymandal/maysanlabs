@@ -47,13 +47,13 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center gap-12">
+          <div className="hidden lg:flex items-center gap-10">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-[11px] font-bold uppercase tracking-[0.15em] transition-all duration-300 relative group px-2 py-1 ${
-                  pathname === item.href ? "text-brand-primary" : "text-white/50 hover:text-white"
+                className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 relative group px-2 py-1 ${
+                  pathname === item.href ? "text-brand-primary" : "text-white/40 hover:text-white"
                 }`}
               >
                 {item.name}
@@ -130,10 +130,6 @@ export default function Navbar() {
                 >
                   Book a Strategy Call
                 </Link>
-                <div className="mt-8 pt-8 border-t border-white/5 flex flex-col gap-2">
-                   <span className="font-mono text-[10px] text-white/50 uppercase tracking-[0.4em]">Node_Status</span>
-                   <span className="text-xs text-brand-primary">Operational // 99.9% Uptime</span>
-                </div>
               </div>
             </div>
           </motion.div>

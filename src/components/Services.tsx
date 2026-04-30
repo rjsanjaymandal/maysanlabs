@@ -48,7 +48,7 @@ export default function Services() {
   return (
     <section id="services" className="sec-xl relative overflow-hidden bg-background blueprint-grid">
       <div className="container-main">
-        <div className="flex flex-col md:flex-row items-baseline justify-between mb-32 gap-12">
+        <div className="flex flex-col md:flex-row items-baseline justify-between mb-16 sm:mb-32 gap-12">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ export default function Services() {
             className="max-w-4xl"
           >
             <span className="label-mono mb-6 block">Capabilities</span>
-            <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
+            <h2 className="heading-lg sm:heading-xl">
                Precision <span className="text-brand-primary italic">Engineering</span> <br />
                for Modern Business.
             </h2>
@@ -68,13 +68,13 @@ export default function Services() {
             transition={{ delay: 0.2 }}
             className="max-w-sm"
           >
-             <p className="text-white/30 text-lg font-medium leading-relaxed border-l border-brand-primary/20 pl-8">
+             <p className="text-white/30 text-base sm:text-lg font-medium leading-relaxed border-l border-brand-primary/20 pl-8">
                 We deliver high-performance software with the precision of a boutique studio and the scale of a global enterprise.
              </p>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -82,16 +82,16 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="maysan-card group flex flex-col justify-between min-h-[400px]"
+              className="maysan-card group flex flex-col justify-between min-h-[350px] sm:min-h-[400px]"
             >
               <div>
-                <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-brand-primary border border-white/5 group-hover:bg-brand-primary group-hover:text-black transition-all duration-700 shadow-2xl mb-12">
-                  <service.icon size={28} />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/5 rounded-xl sm:rounded-2xl flex items-center justify-center text-brand-primary border border-white/5 group-hover:bg-brand-primary group-hover:text-black transition-all duration-700 shadow-2xl mb-8 sm:mb-12">
+                  <service.icon size={24} className="sm:w-7 sm:h-7" />
                 </div>
-                <h3 className="text-3xl font-black tracking-tighter uppercase mb-6 italic group-hover:text-brand-primary transition-colors duration-700">
+                <h3 className="text-2xl sm:text-3xl font-black tracking-tighter uppercase mb-4 sm:mb-6 italic group-hover:text-brand-primary transition-colors duration-700">
                   {service.title}
                 </h3>
-                <p className="text-white/30 text-xl font-medium leading-tight tracking-tighter uppercase">
+                <p className="text-white/30 text-lg sm:text-xl font-medium leading-tight tracking-tighter uppercase">
                   {service.desc}
                 </p>
               </div>

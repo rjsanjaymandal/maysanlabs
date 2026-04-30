@@ -38,7 +38,7 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.85] uppercase"
+          className="heading-lg sm:heading-xl"
         >
           What clients <br />
           <span className="text-brand-primary italic">say.</span>

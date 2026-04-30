@@ -61,7 +61,7 @@ const BentoCard = ({
       onMouseMove={handleMouseMove}
       className={cn(
         "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-3xl",
-        "bg-background border border-white/5 transition-all duration-700",
+        "bg-card border border-white/5 transition-all duration-700",
         className,
       )}
     >
