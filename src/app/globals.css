@@ -114,10 +114,10 @@
     --input: oklch(1 0 0 / 15%);
     --ring: var(--brand-primary);
     /* ─── Color Palette (Refined Soft Industrial) ─── */
-    --background: 250 0.02 0.15; /* Deeper, more cinematic slate */
+    --background: 250 0.01 0.48; /* Bright mid-tone industrial slate */
     --foreground: 0 0 1;
     
-    --card: 260 0.02 0.20;
+    --card: 260 0.01 0.55; /* High-visibility card surface */
     --card-foreground: 0 0 1;
     
     --brand-primary: #A3E635;
@@ -125,9 +125,9 @@
     
     /* Premium Gradients */
     --brand-gradient: linear-gradient(135deg, #A3E635 0%, #65A30D 100%);
-    --surface-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
-    --glass-gradient: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent);
-    --bg-aurora: radial-gradient(circle at 50% -20%, rgba(163, 230, 53, 0.05), transparent 70%);
+    --surface-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+    --glass-gradient: radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent);
+    --bg-aurora: radial-gradient(circle at 50% -20%, rgba(163, 230, 53, 0.03), transparent 70%);
 
     --radius-sm: 0.5rem;
     --radius-md: 1rem;
