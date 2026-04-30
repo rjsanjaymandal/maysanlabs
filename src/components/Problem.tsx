@@ -20,7 +20,7 @@ export default function Problem() {
     {
       id: "SPEED_SCALE",
       title: "Build Faster",
-      text: "Don't let old code slow you down. We build modern apps that get you results faster.",
+      text: "Don&apos;t let old code slow you down. We build modern apps that get you results faster.",
       icon: <Activity size={24} />,
     },
   ];
@@ -45,7 +45,7 @@ export default function Problem() {
               <span className="text-brand-primary italic">holds you back.</span>
             </h2>
             <p className="text-2xl text-white/40 font-medium mb-12 tracking-tight">
-              Slow systems shouldn't stop your business. <br className="hidden md:block" /> 
+              Slow systems shouldn&apos;t stop your business. <br className="hidden md:block" /> 
               We build fast, modern apps that help your team do more.
             </p>
           </motion.div>

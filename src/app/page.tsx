@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { 
   Cpu, 
@@ -31,6 +32,7 @@ const Testimonials = dynamic(() => import("@/components/Testimonials"), {
 });
 
 const ContactFooter = dynamic(() => import("@/components/ContactFooter"));
+const Services = dynamic(() => import("@/components/Services"));
 
 const trustLogos = [
   "GlobalBridge", "Apex_Systems", "Fortify_Infra", "Quantix_SaaS", "Nexus_Labs", "Cyber_Sync", "Logic_Flow"
@@ -81,18 +83,18 @@ const bentoFeatures = [
 
 export default function Home() {
   return (
-    <main className="bg-background min-h-screen relative overflow-hidden text-body">
+    <main className="bg-background min-h-screen relative overflow-hidden text-body blueprint-grid">
       <Navbar />
       <Hero />
       
       {/* ─── Trust Section ─── */}
-      <section className="py-24 border-y border-white/5 bg-background overflow-hidden relative">
+      <section className="py-24 border-y border-white/5 bg-background/50 backdrop-blur-md overflow-hidden relative">
         <div className="container-main mb-12 text-center relative z-10">
-           <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/20">Trusted by modern teams</span>
+           <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/20">Studio Partners</span>
         </div>
-        <Marquee pauseOnHover className="[--duration:35s]">
+        <Marquee pauseOnHover className="[--duration:40s]">
           {trustLogos.map((logo) => (
-            <span key={logo} className="text-2xl font-black tracking-tighter uppercase italic mx-12 opacity-10 hover:opacity-50 transition-opacity cursor-default text-white">
+            <span key={logo} className="text-3xl font-black tracking-tighter uppercase italic mx-16 opacity-10 hover:opacity-50 transition-opacity cursor-default text-white">
               {logo}
             </span>
           ))}
@@ -101,14 +103,19 @@ export default function Home() {
 
       {/* ─── Bento Grid Section ─── */}
       <section className="sec-xl container-main relative">
-        <div className="mb-24">
-          <div className="label-mono mb-6 inline-flex items-center gap-2">
+        <div className="mb-32">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="label-mono mb-8 inline-flex items-center gap-2"
+          >
             <span className="w-1.5 h-1.5 bg-brand-primary rounded-full" />
-            What we believe in
-          </div>
+            Our Philosophy
+          </motion.div>
           <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.85] uppercase">
-            Built for <br />
-            <span className="text-brand-primary italic">Success.</span>
+            Engineering <br />
+            <span className="text-brand-primary italic">Excellence.</span>
           </h2>
         </div>
 
@@ -119,30 +126,13 @@ export default function Home() {
         </BentoGrid>
       </section>
 
-      {/* ─── Process Flow Redesign ─── */}
+      {/* ─── Process Flow ─── */}
       <OperationsRoadmap />
 
-      {/* ─── Final CTA ─── */}
-      <section className="sec-xl relative overflow-hidden">
-        <div className="container-main text-center relative z-10">
-          <div className="maysan-card border-[var(--brand-primary)]/30 bg-[var(--bg-dark)]/80 backdrop-blur-2xl py-24 group hover:border-[var(--brand-primary)]/60 transition-all duration-500">
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-none uppercase">
-              Build your<br />
-              <span className="text-[var(--brand-primary)] italic">next project.</span>
-            </h2>
-            <p className="text-white/90 text-xl max-w-xl mx-auto mb-12 font-medium">
-              Join leading businesses building their future with Maysan Labs quality standards.
-            </p>
-            <div className="flex justify-center flex-wrap gap-6">
-               <Link href="/init" className="pill-btn pill-btn-primary min-w-[280px] hover:shadow-[0_0_40px_rgba(163,230,53,0.5)]">
-                 Book a Strategy Call
-                 <ArrowUpRight size={18} />
-               </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ─── Services ─── */}
+      <Services />
 
+      {/* ─── Voices ─── */}
       <Testimonials />
 
       <ContactFooter />

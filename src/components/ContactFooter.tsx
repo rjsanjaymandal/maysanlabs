@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ArrowRight, Mail } from "lucide-react";
 
 export default function ContactFooter() {
   const links = [
@@ -17,7 +18,6 @@ export default function ContactFooter() {
     <footer className="bg-background border-t border-white/5">
       {/* Main CTA Section */}
       <section className="sec-xl overflow-hidden relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-primary/5 blur-[120px] rounded-full pointer-events-none -z-10" />
         <div className="container-main text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -25,22 +25,27 @@ export default function ContactFooter() {
             viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="label-mono mb-10 inline-flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-brand-primary rounded-full" />
-              Let's build together
-            </div>
-            <h2 className="text-4xl md:text-8xl font-black tracking-tighter text-white mb-10 leading-[0.9] uppercase">
-              Start your <br /><span className="text-brand-primary italic">next project.</span>
+            <span className="label-mono mb-12 block">Final thought</span>
+            <h2 className="text-5xl md:text-[10rem] font-black tracking-tighter text-white mb-16 leading-[0.8] uppercase italic">
+              Ready to <br /><span className="text-brand-primary">Build?</span>
             </h2>
-            <p className="text-white/30 mb-16 max-w-xl mx-auto font-medium text-xl leading-relaxed tracking-tight">
-              We help you build fast, reliable apps that your users will love.
+            <p className="text-white/20 mb-20 max-w-2xl mx-auto font-medium text-xl md:text-3xl leading-tight tracking-tighter uppercase">
+              Join leading businesses engineering their future <br className="hidden md:block" /> 
+              with Maysan Labs quality standards.
             </p>
-            <div className="flex flex-wrap justify-center gap-8">
-              <Link href="/init" className="bg-brand-primary px-12 py-5 rounded-full text-xs font-black uppercase tracking-widest text-black hover:shadow-[0_0_40px_rgba(163,230,53,0.5)] transition-all duration-700">
-                Book a Free Call
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-12">
+              <Link href="/init" className="group relative px-12 py-5 bg-brand-primary rounded-full overflow-hidden transition-all duration-700 hover:shadow-[0_0_50px_rgba(163,230,53,0.4)]">
+                <span className="relative z-10 text-xs font-black uppercase tracking-widest text-black flex items-center gap-3">
+                  Start Project
+                  <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform duration-500" />
+                </span>
               </Link>
-              <Link href="mailto:business@maysanlabs.com" className="bg-white/5 border border-white/10 px-12 py-5 rounded-full text-xs font-black uppercase tracking-widest text-white hover:bg-white/10 transition-all duration-700">
-                Send us an Email
+              
+              <Link href="mailto:business@maysanlabs.com" className="text-xs font-black uppercase tracking-[0.3em] text-white/30 hover:text-white transition-all duration-500 flex items-center gap-6 group">
+                 <div className="w-14 h-14 rounded-2xl border border-white/5 flex items-center justify-center group-hover:border-brand-primary group-hover:bg-brand-primary/5 transition-all duration-700">
+                   <Mail size={16} className="group-hover:scale-110 transition-transform duration-500" />
+                 </div>
+                 Direct Email
               </Link>
             </div>
           </motion.div>
@@ -54,19 +59,19 @@ export default function ContactFooter() {
             {/* Brand Column */}
             <div className="md:col-span-2">
               <Link href="/" className="flex items-center gap-4 mb-10 group">
-                <div className="w-10 h-10 rounded-2xl flex items-center justify-center relative z-10 overflow-hidden ring-1 ring-white/10 bg-black/40 backdrop-blur-md group-hover:ring-brand-primary/50 transition-all duration-700">
-                   <Image src="/logo.png" alt="Maysan Labs Logo" width={40} height={40} className="object-cover scale-110" />
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center relative z-10 overflow-hidden ring-1 ring-white/10 bg-black/40 backdrop-blur-md group-hover:ring-brand-primary/50 transition-all duration-700">
+                   <Image src="/logo.png" alt="Maysan Labs Logo" width={48} height={48} className="object-cover scale-110" />
                 </div>
-                <span className="font-black text-white text-2xl tracking-tighter uppercase">Maysan Labs</span>
+                <span className="font-black text-white text-3xl tracking-tighter uppercase italic">Maysan Labs</span>
               </Link>
-              <p className="text-white/20 text-lg leading-relaxed max-w-sm font-medium tracking-tight">
-                Reliable software engineering for companies that value speed, quality, and results.
+              <p className="text-white/10 text-xl leading-tight max-w-sm font-medium tracking-tighter uppercase">
+                Software engineering for companies that value speed, quality, and results.
               </p>
             </div>
 
             {/* Links Column */}
             <div>
-              <h4 className="text-white font-black text-xs uppercase tracking-[0.3em] mb-12">Navigation</h4>
+              <h4 className="text-white/30 font-black text-[10px] uppercase tracking-[0.4em] mb-12">Narrative</h4>
               <div className="flex flex-col gap-6">
                 {links.map((link) => (
                   <Link
@@ -82,9 +87,9 @@ export default function ContactFooter() {
 
             {/* Contact Column */}
             <div>
-              <h4 className="text-white font-black text-xs uppercase tracking-[0.3em] mb-12">Contact</h4>
-              <div className="flex flex-col gap-6">
-                <p className="text-white/20 text-xs font-black uppercase tracking-widest leading-loose">
+              <h4 className="text-white/30 font-black text-[10px] uppercase tracking-[0.4em] mb-12">Contact</h4>
+              <div className="flex flex-col gap-8">
+                <p className="text-white/10 text-xs font-black uppercase tracking-widest leading-loose">
                   Gurgaon, HR, India
                 </p>
                 <Link href="mailto:business@maysanlabs.com" className="text-brand-primary hover:text-white transition-all duration-500 font-black uppercase tracking-widest text-xs">
@@ -96,8 +101,8 @@ export default function ContactFooter() {
 
           {/* Copyright Bar */}
           <div className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-            <p className="text-[10px] font-black text-white/10 uppercase tracking-[0.4em]">
-              © {new Date().getFullYear()} Maysan Labs Studios
+            <p className="text-[10px] font-black text-white/5 uppercase tracking-[0.6em]">
+              © {new Date().getFullYear()} Maysan Labs Studios — Precision Engineering
             </p>
           </div>
         </div>

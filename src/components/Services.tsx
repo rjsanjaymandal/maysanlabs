@@ -9,188 +9,102 @@ import {
   BarChart3,
   ArrowUpRight,
 } from "lucide-react";
-import { motion, Variants, Transition } from "framer-motion";
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.95, y: 20 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 20,
-    } as Transition,
-  },
-};
+import { motion } from "framer-motion";
 
 export default function Services() {
   const services = [
     {
-      id: "COMMERCE_ARCH",
-      title: "Enterprise Commerce",
-      desc: "End-to-end architecture to establish and scale digital commerce systems with high-concurrency handling.",
-      icon: <Store size={20} />,
-      features: [
-        "L1 Payment Gateways",
-        "Inventory Sync V4",
-        "Conversion Optimization",
-      ],
+      title: "E-Commerce",
+      desc: "Building online stores that handle massive traffic and convert visitors into customers.",
+      icon: Store,
     },
     {
-      id: "CRM_CORE",
-      title: "Modular CRM Core",
-      desc: "Centralized relationship management with automated operational layers and predictive analytics.",
-      icon: <TrendingUp size={20} />,
-      features: [
-        "Data Centralization",
-        "Automated Workflows",
-        "Retention Logic",
-      ],
+      title: "CRM Systems",
+      desc: "Custom software to manage your customer relationships and automate daily tasks.",
+      icon: TrendingUp,
     },
     {
-      id: "CUSTOM_ENGINE",
-      title: "Engineered Software",
-      desc: "Tailored applications aligned with complex organizational workflows and system-level performance.",
-      icon: <Cpu size={20} />,
-      features: [
-        "Scalable Kernels",
-        "Secure DevOps",
-        "Performance Tuning",
-      ],
+      title: "Custom Apps",
+      desc: "Tailored software solutions designed to fit your unique business workflows perfectly.",
+      icon: Cpu,
     },
     {
-      id: "CLOUD_INFRA",
       title: "Cloud Infrastructure",
-      desc: "High-performance processing on sovereign cloud infrastructure with near-instant scalability.",
-      icon: <ShieldCheck size={20} />,
-      features: ["Cloud Migration", "Load Balancing", "High Availability"],
+      desc: "Scalable cloud setups that grow with your business and ensure zero downtime.",
+      icon: ShieldCheck,
     },
     {
-      id: "HR_MGMT",
-      title: "Operational Tooling",
-      desc: "Streamlined resource operations and internal tools for high-output engineering teams.",
-      icon: <Layout size={20} />,
-      features: [
-        "Resource Allocation",
-        "Performance Telemetry",
-        "Automated Payroll",
-      ],
+      title: "Internal Tools",
+      desc: "Streamlined dashboards and tools that help your team work faster and smarter.",
+      icon: Layout,
     },
     {
-      id: "PERF_MARKETING",
       title: "Growth Engineering",
-      desc: "Measurable business growth through data-driven visibility campaigns and technical SEO.",
-      icon: <BarChart3 size={20} />,
-      features: [
-        "Campaign Strategy",
-        "Content Engineering",
-        "Audience Mapping",
-      ],
+      desc: "Data-driven strategies and technical SEO to increase your digital visibility.",
+      icon: BarChart3,
     },
   ];
 
   return (
-    <section id="services" className="section-xl relative overflow-hidden bg-background">
-      <div className="section-container">
-        <div className="flex flex-col lg:flex-row items-baseline justify-between mb-24 space-y-8">
+    <section id="services" className="sec-xl relative overflow-hidden bg-background blueprint-grid">
+      <div className="container-main">
+        <div className="flex flex-col md:flex-row items-baseline justify-between mb-32 gap-12">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl"
+            className="max-w-4xl"
           >
-            <span className="label-mono mb-4 block">SYSTEM_MODULES</span>
-            <h2 className="heading-xl mb-0 text-foreground">
-               Deterministic <span className="text-primary">AI</span> Services<br />
-               for Enterprise Scale.
+            <span className="label-mono mb-6 block">Capabilities</span>
+            <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
+               Precision <span className="text-brand-primary italic">Engineering</span> <br />
+               for Modern Business.
             </h2>
           </motion.div>
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="lg:max-w-sm"
+            className="max-w-sm"
           >
-             <p className="text-sm font-medium text-foreground/60 leading-loose border-l border-primary/20 pl-6">
-                AI-native engineering delivering 10x production speed with digital sovereignty and full operational control.
+             <p className="text-white/30 text-lg font-medium leading-relaxed border-l border-brand-primary/20 pl-8">
+                We deliver high-performance software with the precision of a boutique studio and the scale of a global enterprise.
              </p>
           </motion.div>
         </div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {services.map((sol, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
             <motion.div
               key={index}
-              variants={itemVariants}
-              className="group card-bento flex flex-col h-full relative overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="maysan-card group flex flex-col justify-between min-h-[400px]"
             >
-              {/* Glowing border effect */}
-              <div className="absolute inset-0 border border-transparent group-hover:border-primary/30 transition-colors duration-300 rounded-xl" />
-              
-              {/* Technical label */}
-              <div className="absolute top-4 left-4">
-                <span className="label-system">SYSTEM_STABLE</span>
-              </div>
-
-              {/* Module Header */}
-              <div className="flex justify-between items-start pt-12 mb-8">
-                <div className="w-12 h-12 bg-primary/10 border border-primary/20 text-primary rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                  {sol.icon}
+              <div>
+                <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-brand-primary border border-white/5 group-hover:bg-brand-primary group-hover:text-black transition-all duration-700 shadow-2xl mb-12">
+                  <service.icon size={28} />
                 </div>
-                <div className="flex flex-col items-end">
-                   <span className="text-[10px] text-primary font-mono opacity-60">NODE_0{index + 1}</span>
-                </div>
-              </div>
-
-              {/* Module Info */}
-              <div className="flex-1">
-                <h3 className="text-xl font-bold mb-4 tracking-tight group-hover:text-primary transition-colors">
-                  {sol.title}
+                <h3 className="text-3xl font-black tracking-tighter uppercase mb-6 italic group-hover:text-brand-primary transition-colors duration-700">
+                  {service.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-foreground/60 font-medium mb-6">
-                  {sol.desc}
+                <p className="text-white/30 text-xl font-medium leading-tight tracking-tighter uppercase">
+                  {service.desc}
                 </p>
-
-                <div className="space-y-3 pt-6 border-t border-white/5">
-                  {sol.features.map((feature, fIndex) => (
-                    <div
-                      key={fIndex}
-                      className="flex items-center gap-3 text-[11px] font-mono uppercase tracking-wider text-foreground/50 group-hover:text-primary/80 transition-colors"
-                    >
-                      <div className="w-1.5 h-1.5 rounded-sm bg-primary/40 group-hover:bg-primary transition-colors duration-500" />
-                      {feature}
-                    </div>
-                  ))}
-                </div>
               </div>
 
-              {/* Module Action Decorator */}
-              <div className="mt-12 flex justify-end items-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                 <ArrowUpRight size={18} className="text-primary" />
+              <div className="mt-12 flex justify-between items-end">
+                <span className="text-[10px] font-black text-white/10 uppercase tracking-widest">Studio_0{index + 1}</span>
+                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-brand-primary group-hover:bg-brand-primary/5 transition-all duration-700">
+                   <ArrowUpRight size={18} className="group-hover:text-brand-primary transition-colors" />
+                </div>
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
