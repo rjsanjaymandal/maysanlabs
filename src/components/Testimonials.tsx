@@ -38,10 +38,10 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="heading-lg sm:heading-xl"
+          className="heading-lg sm:heading-xl text-silver-gradient"
         >
           What clients <br />
-          <span className="text-brand-primary italic">say.</span>
+          <span className="text-brand-gradient italic">say.</span>
         </motion.h2>
       </div>
 

@@ -56,8 +56,8 @@ export default function Services() {
             className="max-w-4xl"
           >
             <span className="label-mono mb-6 block">Capabilities</span>
-            <h2 className="heading-lg sm:heading-xl">
-               Precision <span className="text-brand-primary italic">Engineering</span> <br />
+            <h2 className="heading-lg sm:heading-xl text-silver-gradient">
+               Precision <span className="text-brand-gradient italic">Engineering</span> <br />
                for Modern Business.
             </h2>
           </motion.div>
