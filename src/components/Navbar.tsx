@@ -28,49 +28,39 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-background/80 backdrop-blur-2xl py-4 shadow-xl" : "bg-transparent py-8"
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-background/80 backdrop-blur-xl py-3 border-b border-white/5" : "bg-transparent py-5"
       }`}>
         <div className="container-main flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-4 group">
-            <div className="relative group/logo">
-              <div className="absolute inset-0 bg-brand-primary blur-2xl opacity-0 group-hover/logo:opacity-20 transition-opacity duration-500" />
-              <div className="w-10 h-10 rounded-sm flex items-center justify-center relative z-10 overflow-hidden ring-1 ring-white/10 bg-black/40 backdrop-blur-md">
-                 <Image src="/logo.png" alt="Maysan Labs Logo" width={40} height={40} className="object-cover scale-110" priority />
-              </div>
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="w-9 h-9 rounded-lg flex items-center justify-center relative z-10 overflow-hidden bg-white/5 border border-white/10">
+               <Image src="/logo.png" alt="Maysan Labs" width={24} height={24} className="object-cover" priority />
             </div>
-            <div className="flex flex-col">
-              <span className="font-sans font-black text-white text-2xl leading-none tracking-tighter uppercase">Maysan Labs</span>
-            </div>
+            <span className="font-semibold text-white text-lg">Maysan Labs</span>
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-300 relative group px-2 py-1 ${
+                className={`text-sm font-medium transition-all duration-200 relative ${
                   pathname === item.href ? "text-brand-primary" : "text-white/50 hover:text-white"
                 }`}
               >
                 {item.name}
-                <span className={`absolute -bottom-1 left-0 w-full h-[1px] bg-brand-primary transition-transform duration-500 origin-right scale-x-0 group-hover:scale-x-100 group-hover:origin-left ${pathname === item.href ? "scale-x-100" : ""}`} />
               </Link>
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="hidden md:flex items-center gap-6">
-            <Link href="/init" className="relative group overflow-hidden bg-brand-primary px-8 py-3 rounded-sm text-[11px] font-black uppercase tracking-widest text-black hover:shadow-[0_0_30px_rgba(var(--brand-primary-rgb),0.3)] transition-all duration-500">
-              <span className="relative z-10">Start Project</span>
+          <div className="hidden md:flex items-center gap-4">
+            <Link href="/init" className="px-5 py-2 bg-brand-primary rounded-full font-medium text-sm text-black hover:shadow-[0_0_20px_rgba(163,230,53,0.3)] transition-all duration-200">
+              Start Project
             </Link>
           </div>
 
-          {/* Mobile Toggle */}
           <button 
-            className="lg:hidden p-2 text-white/50 hover:text-white transition-colors border border-white/5 bg-white/5 rounded-sm"
+            className="lg:hidden p-2 text-white/50 hover:text-white transition-colors"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -78,41 +68,41 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed inset-0 z-[60] bg-[var(--bg-dark)]/95 backdrop-blur-2xl lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-xl lg:hidden"
           >
-            <div className="flex flex-col h-full p-8">
-              <div className="flex justify-between items-center mb-16">
-                 <Link href="/" className="flex items-center gap-3">
-                     <div className="w-10 h-10 rounded-[var(--radius-md)] flex items-center justify-center shadow-[0_0_20px_rgba(163,230,53,0.3)] overflow-hidden border border-white/10 bg-black">
-                       <Image src="/logo.png" alt="Maysan Labs Logo" width={40} height={40} className="object-cover scale-110" priority />
+            <div className="flex flex-col h-full p-6">
+              <div className="flex justify-between items-center mb-12">
+                 <Link href="/" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
+                     <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-white/5 border border-white/10">
+                       <Image src="/logo.png" alt="Maysan Labs" width={24} height={24} className="object-cover" />
                      </div>
+                     <span className="font-semibold text-white text-lg">Maysan Labs</span>
                  </Link>
                  <button onClick={() => setIsOpen(false)} className="p-2 text-white/50 hover:text-white">
-                    <X size={32} />
+                    <X size={24} />
                  </button>
               </div>
 
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-4">
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.name}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
                   >
                     <Link
                       href={item.href}
                       onClick={() => setIsOpen(false)}
-                      className={`text-4xl font-black uppercase tracking-tighter ${
-                        pathname === item.href ? "text-brand-primary" : "text-white/40 hover:text-white"
+                      className={`text-2xl font-semibold ${
+                        pathname === item.href ? "text-brand-primary" : "text-white/70"
                       }`}
                     >
                       {item.name}
@@ -125,9 +115,9 @@ export default function Navbar() {
                 <Link 
                   href="/init" 
                   onClick={() => setIsOpen(false)}
-                  className="pill-btn pill-btn-primary w-full text-center py-6 text-lg"
+                  className="block w-full py-4 bg-brand-primary rounded-full font-semibold text-center text-black"
                 >
-                  Book a Strategy Call
+                  Start Project
                 </Link>
               </div>
             </div>

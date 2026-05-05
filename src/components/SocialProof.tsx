@@ -2,7 +2,7 @@
 
 import { motion, useInView, Variants, Transition } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { Activity, Shield, Zap, TerminalSquare } from "lucide-react";
+import { Activity, Shield, Zap } from "lucide-react";
 
 function AnimatedCounter({
   target,

@@ -30,22 +30,22 @@
     --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
     --brand-dark-text: #030712;
-    --bg-dark: #0f172a;
-    --bg-base: #1e293b;
+    --bg-dark: #0a0a0f;
+    --bg-base: #0f0f14;
     
     /* ─── Extended Color Palette ─── */
-    --surface-elevated: #0f172a;
-    --surface-base: #1e293b;
-    --surface-subtle: #334155;
+    --surface-elevated: #0a0a0f;
+    --surface-base: #0f0f14;
+    --surface-subtle: #1a1a24;
     
     --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.7);
-    --text-muted: rgba(255, 255, 255, 0.4);
-    --text-disabled: rgba(255, 255, 255, 0.2);
+    --text-secondary: rgba(255, 255, 255, 0.75);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --text-disabled: rgba(255, 255, 255, 0.25);
     
-    --border-subtle: rgba(255, 255, 255, 0.06);
-    --border-default: rgba(255, 255, 255, 0.1);
-    --border-strong: rgba(255, 255, 255, 0.15);
+    --border-subtle: rgba(255, 255, 255, 0.04);
+    --border-default: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.12);
 }
 
 @layer utilities {
@@ -62,13 +62,13 @@
 
   /* Typography Utilities - Fluid & Responsive */
   .heading-xl {
-    @apply text-5xl sm:text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter uppercase leading-[0.85];
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.95];
   }
   .heading-lg {
-    @apply text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter uppercase leading-[0.9];
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[0.95];
   }
   .heading-md {
-    @apply text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter uppercase leading-tight;
+    @apply text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight leading-tight;
   }
 
   /* Standardized text contrast levels */

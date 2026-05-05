@@ -1,9 +1,9 @@
 "use client";
 
 import { ArrowRightIcon } from "lucide-react";
-import { ReactNode, useState, useRef } from "react";
+import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { motion, useMotionValue, useSpring, useMotionTemplate } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 import Link from "next/link";
 
 const BentoGrid = ({
@@ -16,7 +16,7 @@ const BentoGrid = ({
   return (
     <div
       className={cn(
-        "grid w-full auto-rows-[22rem] grid-cols-1 md:grid-cols-3 gap-8",
+        "grid w-full auto-rows-fr grid-cols-1 md:grid-cols-3 gap-4",
         className,
       )}
     >
@@ -54,54 +54,51 @@ const BentoCard = ({
   return (
     <motion.div
       key={name}
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.5 }}
       onMouseMove={handleMouseMove}
       className={cn(
-        "group relative col-span-3 flex flex-col justify-between overflow-hidden rounded-3xl",
-        "bg-card border border-white/5 transition-all duration-700",
+        "group relative col-span-3 md:col-span-1 flex flex-col justify-between overflow-hidden rounded-xl",
+        "bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all duration-300",
         className,
       )}
     >
-      {/* Spotlight Effect */}
       <motion.div
-        className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
             radial-gradient(
-              600px circle at ${mouseX}px ${mouseY}px,
-              rgba(163, 230, 53, 0.1),
+              400px circle at ${mouseX}px ${mouseY}px,
+              rgba(163, 230, 53, 0.08),
               transparent 80%
             )
           `,
         }}
       />
 
-      <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700">{background}</div>
+      <div className="absolute inset-0 z-0 opacity-30 group-hover:opacity-50 transition-opacity duration-300">{background}</div>
       
-      <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-10 transition-all duration-500 group-hover:-translate-y-12">
-        <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-brand-primary border border-white/5 group-hover:bg-brand-primary group-hover:text-black transition-all duration-700 shadow-2xl mb-8">
-          <Icon className="h-8 w-8 origin-left transform-gpu transition-all duration-500 ease-in-out" />
+      <div className="relative z-10 p-6">
+        <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-white/60 mb-4 group-hover:bg-brand-primary/20 group-hover:text-brand-primary transition-all duration-200">
+          <Icon className="h-5 w-5" />
         </div>
-        <h3 className="text-3xl font-black tracking-tighter uppercase text-white group-hover:text-brand-primary transition-colors duration-700 italic">
+        <h3 className="text-lg font-semibold text-white mb-2">
           {name}
         </h3>
-        <p className="max-w-lg text-white/30 font-medium text-lg leading-relaxed group-hover:text-white/80 transition-colors duration-700">{description}</p>
+        <p className="text-white/45 text-sm leading-relaxed">
+          {description}
+        </p>
       </div>
 
-      <div
-        className={cn(
-          "pointer-events-none absolute bottom-0 flex w-full translate-y-10 transform-gpu flex-row items-center p-10 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100",
-        )}
-      >
+      <div className="relative z-10 px-6 pb-6">
         <Link
           href={href}
-          className="pointer-events-auto flex items-center gap-2 text-sm font-black uppercase tracking-widest text-brand-primary hover:gap-4 transition-all duration-300"
+          className="inline-flex items-center gap-1.5 text-brand-primary text-xs font-medium hover:gap-2 transition-all duration-200"
         >
           {cta}
-          <ArrowRightIcon className="h-5 w-5" />
+          <ArrowRightIcon className="h-3 w-3" />
         </Link>
       </div>
     </motion.div>

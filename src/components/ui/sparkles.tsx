@@ -1,6 +1,5 @@
 "use client";
-import React, { useId, useEffect, useState, useRef } from "react";
-import { motion, useAnimation } from "framer-motion";
+import React, { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 type ParticlesProps = {

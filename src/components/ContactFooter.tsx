@@ -3,80 +3,93 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Github, Twitter, Linkedin, Send } from "lucide-react";
+
+const links = [
+  { name: "Services", href: "/services" },
+  { name: "Case Studies", href: "/case-studies" },
+  { name: "Blog", href: "/blog" },
+  { name: "Careers", href: "/careers" },
+];
+
+const socialLinks = [
+  { name: "GitHub", icon: Github, href: "#" },
+  { name: "Twitter", icon: Twitter, href: "#" },
+  { name: "LinkedIn", icon: Linkedin, href: "#" },
+];
 
 export default function ContactFooter() {
-  const links = [
-    { name: "Services", href: "/services" },
-    { name: "Case Studies", href: "/case-studies" },
-    { name: "Blog", href: "/blog" },
-    { name: "Careers", href: "/careers" },
-  ];
-
   return (
     <footer className="bg-[var(--bg-dark)] border-t border-white/5">
-      {/* Main CTA Section */}
-      <section className="sec-xl overflow-hidden relative">
-        <div className="container-main text-center relative z-10">
+      <section className="py-20 relative bg-gradient-to-b from-brand-primary/5/10 to-transparent">
+        <div className="container-main">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
           >
-            <span className="label-mono mb-12 block">Final thought</span>
-            <h2 className="heading-xl text-white mb-16 italic">
-              Ready to <br /><span className="text-brand-primary">Build?</span>
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 text-white/70 text-xs font-medium mb-6">
+              <Send size={12} />
+              Get Started
+            </span>
+            <h2 className="heading-md text-white mb-4">
+              Ready to <span className="text-brand-primary">scale</span>?
             </h2>
-            <p className="text-body-dim mb-20 max-w-2xl mx-auto font-medium text-xl md:text-3xl leading-tight tracking-tighter uppercase">
-              Join leading businesses building their future <br className="hidden md:block" /> 
-              with Maysan Labs quality standards.
+            <p className="text-white/45 text-base mb-8 max-w-lg mx-auto">
+              Let&apos;s build something great together. Our team is ready to help.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-12">
-              <Link href="/init" className="group relative px-12 py-5 bg-brand-primary rounded-full overflow-hidden transition-all duration-700 hover:shadow-[0_0_50px_rgba(163,230,53,0.4)]">
-                <span className="relative z-10 text-xs font-black uppercase tracking-widest text-black flex items-center gap-3">
-                  Start Project
-                  <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform duration-500" />
-                </span>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href="/init" className="group px-6 py-2.5 bg-brand-primary rounded-full font-medium text-sm text-black transition-all duration-300 hover:shadow-[0_0_20px_rgba(163,230,53,0.3)] flex items-center gap-2">
+                Start Project
+                <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
               </Link>
               
-              <Link href="mailto:business@maysanlabs.com" className="text-xs font-black uppercase tracking-[0.3em] text-white/40 hover:text-white transition-all duration-500 flex items-center gap-6 group">
-                 <div className="w-14 h-14 rounded-2xl border border-white/5 flex items-center justify-center group-hover:border-brand-primary group-hover:bg-brand-primary/5 transition-all duration-700">
-                   <Mail size={16} className="group-hover:scale-110 transition-transform duration-500" />
-                 </div>
-                 Direct Email
+              <Link href="mailto:business@maysanlabs.com" className="px-6 py-2.5 rounded-full border border-white/10 text-white/60 font-medium text-sm transition-all duration-300 hover:bg-white/5 hover:text-white flex items-center gap-2">
+                 <Mail size={14} />
+                 Contact Us
               </Link>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Footer Navigation */}
-      <section className="py-32 border-t border-white/5 bg-black/20">
+      <section className="py-12 border-t border-white/5">
         <div className="container-main">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-24 lg:gap-40">
-            {/* Brand Column */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
-              <Link href="/" className="flex items-center gap-4 mb-10 group">
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center relative z-10 overflow-hidden ring-1 ring-white/10 bg-black/40 backdrop-blur-md group-hover:ring-brand-primary/50 transition-all duration-700">
-                   <Image src="/logo.png" alt="Maysan Labs Logo" width={48} height={48} className="object-cover scale-110" />
+              <Link href="/" className="flex items-center gap-3 mb-4 group">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-brand-primary/10 border border-white/5">
+                   <Image src="/logo.png" alt="Maysan Labs" width={20} height={20} className="object-cover" />
                 </div>
-                <span className="font-black text-white text-3xl tracking-tighter uppercase italic">Maysan Labs</span>
+                <span className="font-semibold text-white text-lg">Maysan Labs</span>
               </Link>
-              <p className="text-body-dim text-xl leading-tight max-w-sm font-medium tracking-tighter uppercase">
-                Software engineering for companies that value speed, quality, and results.
+              <p className="text-white/40 text-sm mb-5 max-w-xs">
+                Enterprise SaaS development studio building scalable applications.
               </p>
+              <div className="flex gap-3">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    className="w-8 h-8 rounded-lg border border-white/5 flex items-center justify-center text-white/40 hover:text-white hover:border-white/10 transition-all duration-200"
+                    aria-label={social.name}
+                  >
+                    <social.icon size={14} />
+                  </a>
+                ))}
+              </div>
             </div>
 
-            {/* Links Column */}
             <div>
-              <h4 className="label-mono !text-[10px] !mb-12">Narrative</h4>
-              <div className="flex flex-col gap-6">
+              <h4 className="text-xs font-semibold text-white/60 uppercase tracking-wider mb-4">Company</h4>
+              <div className="flex flex-col gap-2.5">
                 {links.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="text-ghost hover:text-brand-primary text-xs font-black uppercase tracking-widest transition-all duration-300"
+                    className="text-white/40 hover:text-brand-primary text-sm transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -84,25 +97,28 @@ export default function ContactFooter() {
               </div>
             </div>
 
-            {/* Contact Column */}
             <div>
-              <h4 className="label-mono !text-[10px] !mb-12">Contact</h4>
-              <div className="flex flex-col gap-8">
-                <p className="text-body-dim text-xs font-black uppercase tracking-widest leading-loose">
-                  Gurgaon, HR, India
-                </p>
-                <Link href="mailto:business@maysanlabs.com" className="text-brand-primary hover:text-white transition-all duration-500 font-black uppercase tracking-widest text-xs">
+              <h4 className="text-xs font-semibold text-white/60 uppercase tracking-wider mb-4">Contact</h4>
+              <div className="flex flex-col gap-2.5">
+                <div className="flex items-center gap-2 text-white/40 text-xs">
+                  <MapPin size={12} className="text-brand-primary" />
+                  Gurgaon, India
+                </div>
+                <a href="mailto:business@maysanlabs.com" className="text-brand-primary hover:text-white text-sm transition-colors duration-200">
                   business@maysanlabs.com
-                </Link>
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Copyright Bar */}
-          <div className="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-            <p className="text-[10px] font-black text-ghost uppercase tracking-[0.6em]">
-              © {new Date().getFullYear()} Maysan Labs Studios — Precision Engineering
+          <div className="mt-10 pt-6 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-white/25 text-xs">
+              © {new Date().getFullYear()} Maysan Labs. All rights reserved.
             </p>
+            <div className="flex gap-6">
+              <a href="#" className="text-white/25 hover:text-white/50 text-xs transition-colors">Privacy</a>
+              <a href="#" className="text-white/25 hover:text-white/50 text-xs transition-colors">Terms</a>
+            </div>
           </div>
         </div>
       </section>

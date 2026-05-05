@@ -1,106 +1,140 @@
 "use client";
 
 import {
-  Store,
-  Cpu,
-  ShieldCheck,
   TrendingUp,
   Layout,
   BarChart3,
   ArrowUpRight,
+  Zap,
+  Code2,
+  Database,
+  Cloud,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+
+const services = [
+  {
+    title: "SaaS Development",
+    desc: "Build recurring revenue with multi-tenant platforms, subscription billing, and user management.",
+    icon: Cloud,
+    features: ["Multi-tenant architecture", "Stripe/Payment integration", "Role-based access"],
+    color: "from-blue-500/20 to-blue-600/10",
+  },
+  {
+    title: "Enterprise Platforms",
+    desc: "Scalable systems that grow with your business from thousands to millions of users.",
+    icon: TrendingUp,
+    features: ["Auto-scaling infrastructure", "High availability", "99.99% uptime SLA"],
+    color: "from-purple-500/20 to-purple-600/10",
+  },
+  {
+    title: "Custom Web Apps",
+    desc: "Tailored solutions built for your specific business requirements and workflows.",
+    icon: Code2,
+    features: ["React/Next.js frontend", "Node.js backend", "REST & GraphQL APIs"],
+    color: "from-green-500/20 to-green-600/10",
+  },
+  {
+    title: "Cloud Infrastructure",
+    desc: "AWS/Azure managed infrastructure with enterprise-grade security and monitoring.",
+    icon: Database,
+    features: ["DevOps & CI/CD", "Container orchestration", "24/7 monitoring"],
+    color: "from-orange-500/20 to-orange-600/10",
+  },
+  {
+    title: "Dashboard & Analytics",
+    desc: "Real-time dashboards with custom metrics, reporting, and business intelligence.",
+    icon: Layout,
+    features: ["Custom visualizations", "Real-time data", "Export & scheduling"],
+    color: "from-pink-500/20 to-pink-600/10",
+  },
+  {
+    title: "API Development",
+    desc: "Robust APIs that integrate with your existing tools and enable third-party connections.",
+    icon: BarChart3,
+    features: ["REST & GraphQL", "Webhooks", "Developer docs"],
+    color: "from-cyan-500/20 to-cyan-600/10",
+  },
+];
 
 export default function Services() {
-  const services = [
-    {
-      title: "E-Commerce",
-      desc: "Online stores that scale with your sales.",
-      icon: Store,
-    },
-    {
-      title: "CRM Systems",
-      desc: "Manage customers and automate tasks.",
-      icon: TrendingUp,
-    },
-    {
-      title: "Custom Apps",
-      desc: "Built for your specific workflow.",
-      icon: Cpu,
-    },
-    {
-      title: "Cloud Infrastructure",
-      desc: "Scalable hosting that never goes down.",
-      icon: ShieldCheck,
-    },
-    {
-      title: "Internal Tools",
-      desc: "Dashboards that speed up your team.",
-      icon: Layout,
-    },
-    {
-      title: "Growth Engineering",
-      desc: "SEO and data strategies that work.",
-      icon: BarChart3,
-    },
-  ];
-
   return (
-    <section id="services" className="sec-xl relative overflow-hidden bg-background blueprint-grid">
-      <div className="container-main">
-        <div className="flex flex-col md:flex-row items-baseline justify-between mb-16 sm:mb-32 gap-12">
+    <section id="services" className="sec-xl relative overflow-hidden bg-background">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/3 to-transparent" />
+      
+      <div className="container-main relative">
+        <div className="text-center mb-16">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-4xl"
+            className="mb-4"
           >
-            <span className="label-mono mb-6 block">Capabilities</span>
-            <h2 className="heading-lg sm:heading-xl text-silver-gradient">
-               Precision <span className="text-brand-gradient italic">Engineering</span> <br />
-               for Modern Business.
-            </h2>
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-medium">
+              <Zap size={12} className="text-brand-primary" />
+              Services
+            </span>
           </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="heading-lg text-white mb-4"
+          >
+            Build with <span className="text-brand-primary">confidence</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="max-w-sm"
+            className="text-white/45 text-base max-w-xl mx-auto"
           >
-<p className="text-white/50 text-base sm:text-lg font-medium leading-relaxed border-l border-brand-primary/20 pl-8">
-                 High-performance software at studio precision with enterprise scale.
-              </p>
-          </motion.div>
+            End-to-end development services for building scalable, enterprise-grade software.
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="maysan-card group flex flex-col justify-between min-h-[350px] sm:min-h-[400px]"
+              transition={{ delay: index * 0.08 }}
+              className="group relative bg-white/[0.02] border border-white/5 rounded-xl p-6 hover:border-white/10 hover:bg-white/[0.04] transition-all duration-300"
             >
-              <div>
-                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/5 rounded-xl sm:rounded-2xl flex items-center justify-center text-brand-primary border border-white/5 group-hover:bg-brand-primary group-hover:text-black transition-all duration-700 shadow-2xl mb-8 sm:mb-12">
-                  <service.icon size={24} className="sm:w-7 sm:h-7" />
+              <div className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              
+              <div className="relative z-10">
+                <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center text-white/70 mb-5 group-hover:bg-brand-primary/20 group-hover:text-brand-primary transition-all duration-300">
+                  <service.icon size={20} />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-black tracking-tighter uppercase mb-4 sm:mb-6 italic group-hover:text-brand-primary transition-colors duration-700">
+                
+                <h3 className="text-lg font-semibold text-white mb-2">
                   {service.title}
                 </h3>
-                <p className="text-white/50 text-lg sm:text-xl font-medium leading-tight tracking-tighter uppercase">
+                <p className="text-white/45 text-sm mb-4 leading-relaxed">
                   {service.desc}
                 </p>
-              </div>
-
-              <div className="mt-12 flex justify-between items-end">
-                <span className="text-[10px] font-black text-white/20 uppercase tracking-widest">Studio_0{index + 1}</span>
-                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-brand-primary group-hover:bg-brand-primary/5 transition-all duration-700">
-                   <ArrowUpRight size={18} className="group-hover:text-brand-primary transition-colors" />
-                </div>
+                
+                <ul className="space-y-1.5 mb-5">
+                  {service.features.map((feature, i) => (
+                    <li key={i} className="flex items-center gap-2 text-white/35 text-xs">
+                      <div className="w-0.5 h-0.5 rounded-full bg-brand-primary" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                
+                <Link 
+                  href="/services" 
+                  className="inline-flex items-center gap-1.5 text-brand-primary text-xs font-medium group-hover:gap-2.5 transition-all"
+                >
+                  Learn more <ArrowUpRight size={12} />
+                </Link>
               </div>
             </motion.div>
           ))}
