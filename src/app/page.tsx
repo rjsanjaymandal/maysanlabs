@@ -45,7 +45,7 @@ const bentoFeatures = [
     className: "md:col-span-2",
     Icon: Cpu,
     background: <div className="absolute inset-0 bg-gradient-to-tr from-brand-primary/5 to-transparent" />,
-    href: "/engineering",
+    href: "/services",
     cta: "Learn More",
   },
   {

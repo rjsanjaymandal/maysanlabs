@@ -65,7 +65,7 @@ export default function Hero() {
             </span>
           </Link>
           
-          <Link href="/engineering" className="text-xs font-black uppercase tracking-[0.3em] text-white/30 hover:text-white transition-all duration-500 flex items-center gap-6 group">
+          <Link href="/products" className="text-xs font-black uppercase tracking-[0.3em] text-white/30 hover:text-white transition-all duration-500 flex items-center gap-6 group">
              <div className="w-14 h-14 rounded-xl border border-white/10 flex items-center justify-center group-hover:border-brand-primary group-hover:bg-brand-primary/5 transition-all duration-700 glass">
                <Play size={16} fill="currentColor" className="group-hover:scale-110 transition-transform duration-500" />
              </div>

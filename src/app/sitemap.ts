@@ -13,7 +13,6 @@ const ROUTE_CONFIG: Record<string, { priority: number; changeFrequency: Metadata
   '/services':     { priority: 0.9, changeFrequency: 'weekly' },
   '/about':        { priority: 0.8, changeFrequency: 'monthly' },
   '/architecture': { priority: 0.7, changeFrequency: 'monthly' },
-  '/engineering':  { priority: 0.7, changeFrequency: 'monthly' },
   '/blog':        { priority: 0.8, changeFrequency: 'daily' },
   '/insights':    { priority: 0.7, changeFrequency: 'weekly' },
   '/case-studies':{ priority: 0.8, changeFrequency: 'weekly' },

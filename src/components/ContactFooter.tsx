@@ -8,7 +8,6 @@ import { ArrowRight, Mail } from "lucide-react";
 export default function ContactFooter() {
   const links = [
     { name: "Services", href: "/services" },
-    { name: "Engineering", href: "/engineering" },
     { name: "Case Studies", href: "/case-studies" },
     { name: "Blog", href: "/blog" },
     { name: "Careers", href: "/careers" },
@@ -30,7 +29,7 @@ export default function ContactFooter() {
               Ready to <br /><span className="text-brand-primary">Build?</span>
             </h2>
             <p className="text-body-dim mb-20 max-w-2xl mx-auto font-medium text-xl md:text-3xl leading-tight tracking-tighter uppercase">
-              Join leading businesses engineering their future <br className="hidden md:block" /> 
+              Join leading businesses building their future <br className="hidden md:block" /> 
               with Maysan Labs quality standards.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-12">

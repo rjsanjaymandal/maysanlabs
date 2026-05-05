@@ -67,7 +67,6 @@ export const breadcrumbSchema = (items: { name: string; url: string }[]) => ({
 export const navigationSchema = [
   { name: "Home", url: SITE_URL },
   { name: "Services", url: `${SITE_URL}/services` },
-  { name: "Engineering", url: `${SITE_URL}/engineering` },
   { name: "Architecture", url: `${SITE_URL}/architecture` },
   { name: "Insights", url: `${SITE_URL}/insights` },
   { name: "Blog", url: `${SITE_URL}/blog` },
