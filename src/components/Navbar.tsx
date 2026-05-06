@@ -75,10 +75,10 @@ export default function Navbar() {
       </nav>
 
       {/* Sticky Mobile CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-[90] md:hidden">
+      <div className="fixed bottom-0 left-0 right-0 z-[90] md:hidden px-4 pb-4">
         <Link 
           href="/init"
-          className="flex items-center justify-center gap-2 w-full py-4 bg-gradient-to-r from-brand-primary to-[#60A5FA] font-extrabold text-sm text-white shadow-lg transition-all duration-200 uppercase tracking-widest hover:shadow-[0_0_20px_rgba(26,109,214,0.6)] hover:brightness-110"
+          className="flex items-center justify-center gap-2.5 w-full py-4 bg-gradient-to-r from-brand-primary via-[#1E7AE5] to-[#1565d4] rounded-2xl font-bold text-xs text-white uppercase tracking-widest shadow-lg shadow-brand-primary/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-[1.02] active:scale-[0.98]"
         >
           <Phone size={16} />
           Book a Call
@@ -116,16 +116,6 @@ export default function Navbar() {
                     </Link>
                   </motion.div>
                 ))}
-              </div>
-
-              <div className="mt-auto pb-8">
-                <Link 
-                  href="/init" 
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full py-3.5 bg-gradient-to-r from-brand-primary to-[#60A5FA] rounded-full font-extrabold text-center text-white text-sm uppercase tracking-widest shadow-lg hover:shadow-[0_0_25px_rgba(26,109,214,0.6)] hover:brightness-110 transition-all duration-200"
-                >
-                  Book a Call
-                </Link>
               </div>
             </div>
           </motion.div>

@@ -64,7 +64,7 @@ export default function ProductsClient() {
             <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8 max-w-2xl">
               Ready-to-deploy products designed to solve real business problems. From education to healthcare, we've built platforms that scale.
             </p>
-            <Link href="/init" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-semibold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+            <Link href="/init" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
               Start Your Project <ArrowUpRight size={16} />
             </Link>
           </div>
@@ -124,7 +124,7 @@ export default function ProductsClient() {
           <div className="mt-16 text-center py-12 border-t border-white/[0.06]">
             <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4">Need something custom?</h3>
             <p className="text-white/40 mb-8 max-w-lg mx-auto">We also build tailored solutions for unique business requirements.</p>
-            <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+            <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
               <span>Talk to us</span>
               <ArrowRight size={16} />
             </Link>

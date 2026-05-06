@@ -74,7 +74,7 @@ export default function ServicesClient() {
             <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8 max-w-2xl">
               We build scalable, high-performance software solutions for enterprises and fast-growing startups.
             </p>
-            <Link href="/init" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-semibold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+            <Link href="/init" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
               Start a Project <ArrowRight size={16} />
             </Link>
           </motion.div>

@@ -80,7 +80,7 @@ export default function FlashFashionClient() {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+              <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
                 Book a Demo <ArrowRight size={16} />
               </Link>
               <Link href="/case-studies/flash-fashion-ecommerce" className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-semibold text-sm hover:bg-white/[0.08] hover:text-white hover:border-white/25 transition-all duration-200">
@@ -164,7 +164,7 @@ export default function FlashFashionClient() {
           <div className="bg-gradient-to-br from-brand-primary/10 to-transparent border border-brand-primary/20 rounded-2xl p-8 md:p-12 text-center">
             <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">Need a similar ecommerce platform?</h2>
             <p className="text-white/40 mb-8 max-w-xl mx-auto">We build custom ecommerce solutions tailored to your business requirements.</p>
-            <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+            <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
               Start Your Project <ArrowRight size={16} />
             </Link>
           </div>

@@ -34,7 +34,7 @@ export default function CareersClient() {
             <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8 max-w-2xl">
               We&apos;re looking for radical thinkers and elite engineers to build the mission-critical infrastructure of the modern enterprise.
             </p>
-            <Link href="#openings" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+            <Link href="#openings" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
               View Open Roles <ArrowRight size={16} />
             </Link>
           </motion.div>
@@ -130,7 +130,7 @@ export default function CareersClient() {
             <p className="text-white/40 max-w-xl mx-auto mb-8">
               We&apos;re always looking for exceptional engineers and architects. If you&apos;re building the future, we want to hear from you.
             </p>
-            <Link href="/careers/apply" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+            <Link href="/careers/apply" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
               <span>Apply for Future Roles</span>
               <ArrowUpRight size={16} />
             </Link>

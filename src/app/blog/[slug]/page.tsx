@@ -140,7 +140,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </a>
               </div>
             </div>
-            <Link href="/blog" className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-medium text-sm text-black hover:shadow-[0_0_20px_rgba(26,109,214,0.4)] transition-all duration-200">
+            <Link href="/blog" className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-medium text-sm text-black hover:shadow-[0_0_20px_rgba(26,109,214,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200">
               Read More Articles
             </Link>
           </div>
