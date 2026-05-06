@@ -13,6 +13,28 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "flash-fashion-ecommerce",
+    title: "Full-Stack Ecommerce Platform",
+    client: "FlashFashion",
+    category: "Ecommerce",
+    year: "2024",
+    challenge: "Needed a complete ecommerce platform built from scratch with inventory, orders, payments, and customer management.",
+    solution: "Built a full-stack ecommerce platform with Next.js frontend, Node.js backend, PostgreSQL database, and Stripe integration.",
+    impact: [
+      "10,000+ products managed seamlessly.",
+      "50,000+ orders processed successfully.",
+      "3x revenue growth in first 6 months.",
+      "99.9% uptime maintained.",
+    ],
+    metrics: [
+      { label: "Products", value: "10K+" },
+      { label: "Orders", value: "50K+" },
+      { label: "Revenue Growth", value: "3x" },
+      { label: "Uptime", value: "99.9%" },
+    ],
+    technologies: ["Next.js", "React", "Node.js", "PostgreSQL", "Redis", "Stripe", "AWS", "TypeScript"],
+  },
+  {
     slug: "retail-modular-erp",
     title: "Global Retail ERP",
     client: "Acme Retail Global",

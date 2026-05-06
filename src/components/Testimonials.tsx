@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Quote, Star } from "lucide-react";
+import { Quote, Star, MessageSquareQuote } from "lucide-react";
 
 const testimonials = [
   {
@@ -29,8 +29,12 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-16 md:py-20 relative bg-black/10">
-      <div className="container-main">
+    <section className="py-16 md:py-20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/5 to-transparent" />
+      <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-brand-primary/8 blur-[80px] rounded-full pointer-events-none" />
+      
+      <div className="container-main relative">
         <div className="text-center mb-10 md:mb-12">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import BackgroundBeams from "@/components/ui/background-beams";
 
 interface PageHeaderProps {
   title: string;
@@ -15,20 +14,21 @@ export default function PageHeader({
   label,
 }: PageHeaderProps) {
   return (
-    <section className="relative pt-32 pb-16 overflow-hidden bg-[var(--bg-dark)]">
-      <BackgroundBeams />
+    <section className="pt-32 pb-16 relative bg-[var(--bg-dark)]">
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 via-brand-primary/2 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
       
-      <div className="container-main relative z-10">
+      <div className="container-main relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="max-w-3xl"
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 text-white/60 text-xs font-medium mb-6">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
             {label}
           </span>
-          <h1 className="heading-lg text-white mb-4">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-5 leading-tight">
             {title.split("_").map((word, i) => (
               <span key={i}>
                 {i > 0 && " "}
@@ -36,7 +36,7 @@ export default function PageHeader({
               </span>
             ))}
           </h1>
-          <p className="text-white/50 text-lg leading-relaxed">
+          <p className="text-white/50 text-lg md:text-xl leading-relaxed max-w-2xl">
             {subtitle}
           </p>
         </motion.div>

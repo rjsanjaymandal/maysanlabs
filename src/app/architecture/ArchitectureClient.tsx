@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Globe, Cpu, Activity, Zap, Box } from "lucide-react";
+import { Shield, Globe, Cpu, Zap, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
+import Link from "next/link";
 
 export default function ArchitectureClient() {
   const layers = [
@@ -35,106 +36,93 @@ export default function ArchitectureClient() {
   ];
 
   return (
-    <main className="min-h-screen bg-background text-foreground flex flex-col relative overflow-hidden">
+    <main className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
       <Navbar />
 
       {/* Hero Header */}
-      <div className="pt-64 pb-32 relative overflow-hidden">
-        <div className="grid-overlay opacity-40" />
-        <div className="radial-glow -top-40 -right-40 opacity-30" />
+      <section className="pt-32 pb-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 via-brand-primary/2 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
         
-        <div className="container relative z-10">
-          <div className="max-w-4xl">
-            <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-10 inline-block">
+        <div className="container-main relative">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+              <Cpu size={12} />
               How we build
             </span>
-            <h1 className="text-massive leading-[1.1] font-bold mb-12">
-              Modern <span className="font-accent lowercase text-primary italic">architecture</span> for<br />
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
+              Modern <span className="text-brand-primary">architecture</span> for<br />
               Large Projects.
             </h1>
-            <p className="text-lg font-medium text-foreground/50 max-w-2xl leading-relaxed border-l border-border/50 pl-10">
+            <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8 max-w-2xl">
               A look at the strong engineering that keeps your software fast and secure across the world.
             </p>
+            <Link href="/init" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-semibold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+              Start Your Project <ArrowUpRight size={16} />
+            </Link>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="flex-1 py-40 container relative z-10">
-        <div className="mb-20 flex flex-wrap gap-12 border-b border-border/50 pb-12">
-          <div className="flex items-center gap-3 text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em] bg-secondary/30 px-4 py-2 rounded-full">
-             <Activity size={14} className="text-primary" />
-             <span>ID: SYSTEM_v1.0</span>
-          </div>
-          <div className="flex items-center gap-3 text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em] bg-secondary/30 px-4 py-2 rounded-full">
-             <Zap size={14} className="text-primary" />
-             <span>Type: High Speed</span>
-          </div>
-          <div className="flex items-center gap-3 text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em] bg-primary/10 px-4 py-2 rounded-full border border-primary/20">
-             <Shield size={14} className="text-primary" />
-             <span className="text-primary">Status: Operational</span>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {layers.map((layer, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="card-surgical p-12 group !bg-secondary/30 !rounded-[2.5rem]"
-            >
-              <div className="flex flex-col gap-10">
-                <div className="flex justify-between items-start">
-                  <div className="w-12 h-12 bg-white text-primary flex items-center justify-center rounded-2xl shadow-sm group-hover:scale-110 transition-all duration-500">
+      {/* Architecture Layers */}
+      <section className="py-20">
+        <div className="container-main">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {layers.map((layer, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group bg-white/[0.02] border border-white/5 rounded-xl p-8 hover:border-brand-primary/20 hover:bg-white/[0.04] transition-all duration-300"
+              >
+                <div className="flex justify-between items-start mb-6">
+                  <div className="w-12 h-12 bg-white/[0.03] flex items-center justify-center text-white/40 rounded-xl group-hover:bg-brand-primary/20 group-hover:text-brand-primary transition-all duration-300">
                     {layer.icon}
                   </div>
-                  <span className="text-[10px] text-primary/30 font-bold uppercase tracking-widest">{layer.id}</span>
+                  <span className="text-xs text-white/20 font-bold uppercase tracking-widest">{layer.id}</span>
                 </div>
 
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold tracking-tight group-hover:text-primary transition-colors duration-500">
-                    {layer.title}
-                  </h3>
-                  <p className="text-sm font-medium leading-relaxed text-foreground/50 tracking-tight max-w-sm">
-                    {layer.desc}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-brand-primary transition-colors">
+                  {layer.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-white/45">
+                  {layer.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
+      </section>
 
-        {/* Technical Deep-Dive Nodes */}
-        <div className="mt-40 grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { tag: "01", label: "Building Blocks", text: "A modular system that allows us to add new features quickly as you grow." },
-            { tag: "02", label: "Smart Automation", text: "Background tools that handle daily tasks automatically so you don't have to." },
-            { tag: "03", label: "Close to You", text: "Data stored in your region for the fastest possible loading speeds." },
-          ].map((node, i) => (
-            <div key={i} className="bg-secondary/20 p-12 rounded-[2.5rem] border border-transparent hover:border-primary/10 transition-all duration-500 group">
-               <span className="font-bold text-[10px] text-primary/40 block mb-6 uppercase tracking-widest">Node {node.tag}</span>
-               <h4 className="text-xl font-bold mb-6 tracking-tight group-hover:text-primary transition-colors duration-500">{node.label}</h4>
-               <p className="text-sm font-medium leading-relaxed text-foreground/50 tracking-tight">{node.text}</p>
-               <div className="mt-10 pt-10 border-t border-border/50 flex justify-between items-center">
-                  <div className="p-2 bg-white rounded-lg shadow-sm">
-                    <Box size={14} className="text-primary" />
-                  </div>
-                  <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary/40">Verified Ready</span>
-               </div>
-            </div>
-          ))}
+      {/* Technical Deep-Dive Nodes */}
+      <section className="py-16 border-t border-white/5">
+        <div className="container-main">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { tag: "01", label: "Building Blocks", text: "A modular system that allows us to add new features quickly as you grow." },
+              { tag: "02", label: "Smart Automation", text: "Background tools that handle daily tasks automatically so you don't have to." },
+              { tag: "03", label: "Close to You", text: "Data stored in your region for the fastest possible loading speeds." },
+            ].map((node, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white/[0.02] border border-white/5 rounded-xl p-6 hover:border-brand-primary/10 transition-all duration-300 group"
+              >
+                <span className="text-xs text-brand-primary/40 font-bold block mb-4 uppercase tracking-widest">Node {node.tag}</span>
+                <h4 className="text-lg font-semibold text-white mb-3 group-hover:text-brand-primary transition-colors">{node.label}</h4>
+                <p className="text-sm leading-relaxed text-white/45">{node.text}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
       <ContactFooter />
-
-      {/* Decorative Asset */}
-      <div className="absolute top-1/2 -left-40 w-[600px] h-[600px] opacity-10 pointer-events-none mix-blend-screen mask-radial-fade scale-125 rotate-12">
-        <Image src="/assets/wireframe-nodes.png" alt="" fill className="object-contain" priority />
-      </div>
-      <div className="radial-glow bottom-0 right-0 opacity-20" />
     </main>
   );
 }

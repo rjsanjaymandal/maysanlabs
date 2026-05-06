@@ -29,16 +29,17 @@ const Testimonials = dynamic(() => import("@/components/Testimonials"), {
 
 const ContactFooter = dynamic(() => import("@/components/ContactFooter"));
 const Services = dynamic(() => import("@/components/Services"));
+const FAQ = dynamic(() => import("@/components/FAQ"));
 
 const trustLogos = [
-  "TechRetail", "StyleHub", "CloudFirst", "DataSync", "AppFlow", "NexTech", "ScaleUp"
+  "EduMaysan", "FlashFashion", "TechRetail", "StyleHub", "CloudFirst", "DataSync", "AppFlow", "NexTech", "ScaleUp"
 ];
 
 const stats = [
-  { value: "50+", label: "Projects Delivered" },
+  { value: "50+", label: "Enterprise Projects" },
+  { value: "EduMaysan", label: "Flagship EdTech LMS" },
+  { value: "FlashFashion", label: "Ecommerce Platform" },
   { value: "99.9%", label: "Uptime Guaranteed" },
-  { value: "48hrs", label: "Average Response Time" },
-  { value: "5+", label: "Years Experience" },
 ];
 
 const bentoFeatures = [
@@ -112,17 +113,30 @@ export default function Home() {
       </section>
 
       {/* Trust Section */}
-      <section className="py-6 md:py-12 border-b border-white/5 bg-black/10">
-        <div className="container-main mb-3 md:mb-8 text-center">
-           <span className="text-white/30 text-xs">Trusted by fast-growing companies</span>
+      <section className="py-8 md:py-12 border-b border-white/5 bg-black/10">
+        <div className="container-main mb-6 md:mb-8 text-center">
+           <span className="text-white/30 text-xs uppercase tracking-widest font-semibold">Trusted by fast-growing companies</span>
         </div>
-        <Marquee pauseOnHover className="[--duration:25s]">
-          {trustLogos.map((logo) => (
-            <span key={logo} className="text-base md:text-lg font-medium tracking-wide mx-8 md:mx-10 opacity-30 hover:opacity-50 transition-opacity cursor-default text-white">
-              {logo}
-            </span>
+        
+        {/* Mobile Grid (2 per row) */}
+        <div className="md:hidden container-main grid grid-cols-2 gap-4">
+          {trustLogos.slice(0, 6).map((logo) => (
+            <div key={logo} className="flex items-center justify-center py-4 bg-white/[0.02] border border-white/5 rounded-xl opacity-40">
+              <span className="text-sm font-bold text-white tracking-tight">{logo}</span>
+            </div>
           ))}
-        </Marquee>
+        </div>
+
+        {/* Desktop Marquee */}
+        <div className="hidden md:block">
+          <Marquee pauseOnHover className="[--duration:25s]">
+            {trustLogos.map((logo) => (
+              <span key={logo} className="text-base md:text-lg font-medium tracking-wide mx-8 md:mx-10 opacity-30 hover:opacity-50 transition-opacity cursor-default text-white">
+                {logo}
+              </span>
+            ))}
+          </Marquee>
+        </div>
       </section>
 
       {/* Bento Grid Section */}
@@ -159,6 +173,21 @@ export default function Home() {
 
       {/* Testimonials */}
       <Testimonials />
+
+      {/* FAQ Section */}
+      <FAQ />
+
+      {/* Tech Stack Section */}
+      <section className="py-12 border-t border-white/5 bg-black/5">
+        <div className="container-main text-center">
+          <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.2em] mb-8">Our Tech Stack</p>
+          <div className="flex flex-wrap justify-center gap-4 md:gap-8 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+            {["Next.js", "React", "Node.js", "TypeScript", "PostgreSQL", "AWS", "Docker", "Supabase"].map((tech) => (
+              <span key={tech} className="text-white font-semibold text-sm md:text-base">{tech}</span>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <ContactFooter />
     </main>

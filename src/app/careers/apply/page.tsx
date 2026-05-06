@@ -121,7 +121,7 @@ function ApplyForm() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="John Doe"
-                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all text-base"
                 />
               </div>
 
@@ -141,7 +141,7 @@ function ApplyForm() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="john@example.com"
-                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all text-base"
                 />
               </div>
 
@@ -160,7 +160,7 @@ function ApplyForm() {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="+1 (555) 000-0000"
-                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all text-base"
                 />
               </div>
 
@@ -199,7 +199,7 @@ function ApplyForm() {
                   value={formData.linkedIn}
                   onChange={handleChange}
                   placeholder="https://linkedin.com/in/..."
-                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all text-base"
                 />
               </div>
 
@@ -218,7 +218,7 @@ function ApplyForm() {
                   value={formData.portfolio}
                   onChange={handleChange}
                   placeholder="https://github.com/..."
-                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all text-base"
                 />
               </div>
             </div>
@@ -239,7 +239,7 @@ function ApplyForm() {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Tell us why you're a great fit for Maysan Labs..."
-                className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
+                className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none text-base"
               />
             </div>
 
@@ -250,7 +250,7 @@ function ApplyForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-primary text-primary-foreground font-bold py-4 rounded-lg hover:opacity-90 transition-opacity uppercase tracking-widest text-sm shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
+              className="w-full bg-gradient-to-r from-brand-primary to-[#60A5FA] text-white font-extrabold py-4 rounded-lg hover:opacity-90 transition-all uppercase tracking-widest text-sm shadow-lg hover:shadow-[0_0_30px_rgba(26,109,214,0.6)] hover:brightness-110 flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <>

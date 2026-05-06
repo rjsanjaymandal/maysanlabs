@@ -9,34 +9,34 @@ interface BlogCardProps {
 export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link href={`/blog/${post.slug}`} className="block h-full group">
-      <div className="maysan-card h-full flex flex-col group-hover:border-brand-primary/40">
+      <div className="maysan-card h-full flex flex-col group-hover:border-brand-primary/30 group-hover:bg-white/[0.04] transition-all duration-300">
         <div className="flex flex-col h-full relative z-10">
-          <div className="flex items-center gap-6 mb-10 text-[9px] font-black tracking-[0.3em] uppercase text-ghost">
+          <div className="flex items-center gap-4 mb-5 text-xs font-medium uppercase tracking-wider">
             <div className="flex items-center gap-2 text-brand-primary">
               <Tag size={12} />
               <span>{post.category}</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 text-white/30">
               <Clock size={12} />
               <span>{post.readTime}</span>
             </div>
           </div>
 
-          <h3 className="text-2xl font-black mb-6 tracking-tight group-hover:text-brand-primary transition-colors duration-500 uppercase leading-[1.1] italic">
+          <h3 className="text-xl font-semibold mb-4 group-hover:text-brand-primary transition-colors duration-300">
             {post.title}
           </h3>
 
-          <p className="text-sm font-medium leading-relaxed text-body-dim group-hover:text-white transition-colors duration-500 mb-12 line-clamp-3">
+          <p className="text-sm leading-relaxed text-white/45 group-hover:text-white/60 transition-colors duration-300 mb-6 line-clamp-3">
             {post.excerpt}
           </p>
 
-          <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between">
-            <div className="label-mono !text-[9px] !mb-0">
+          <div className="mt-auto pt-4 border-t border-white/5 flex items-center justify-between">
+            <div className="text-xs text-white/30 font-medium">
               {post.date}
             </div>
             
-            <div className="flex items-center gap-2 text-xs font-black text-brand-primary uppercase tracking-widest group-hover:gap-4 transition-all duration-500">
-              READ_MORE <ArrowRight size={14} />
+            <div className="flex items-center gap-2 text-sm font-semibold text-brand-primary group-hover:gap-3 transition-all duration-300">
+              Read more <ArrowRight size={14} />
             </div>
           </div>
         </div>

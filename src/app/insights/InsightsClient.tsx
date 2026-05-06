@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Activity, Zap, Target, Box, Database, TrendingUp, Shield, BarChart3 } from "lucide-react";
-import Image from "next/image";
+import { Activity, Database, TrendingUp, Shield, BarChart3 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 
@@ -39,95 +38,83 @@ const insights = [
 
 export default function InsightsClient() {
   return (
-    <main className="min-h-screen bg-background text-foreground flex flex-col relative overflow-hidden">
+    <main className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
       <Navbar />
 
-      {/* Hero Header */}
-      <div className="pt-64 pb-32 relative overflow-hidden">
-        <div className="grid-overlay opacity-30" />
-        <div className="radial-glow -top-40 -left-40 opacity-20" />
+      <section className="pt-32 pb-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 via-brand-primary/2 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
         
-        <div className="container relative z-10">
-          <div className="max-w-4xl">
-            <span className="font-bold text-[10px] tracking-[0.4em] uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-10 inline-block">
+        <div className="container-main relative">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+              <Activity size={12} />
               Business Data
             </span>
-            <h1 className="text-massive leading-[1.1] font-bold mb-12">
-              Data & <span className="font-accent lowercase text-primary italic">insights</span> for<br />
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
+              Data & <span className="text-brand-primary">insights</span> for<br />
               Your Business.
             </h1>
-            <p className="text-lg font-medium text-foreground/50 max-w-2xl leading-relaxed border-l border-border/50 pl-10">
+            <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8 max-w-2xl">
               We provide clear data and insights to help you make better decisions for your company and grow your business.
             </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="flex-1 py-40 container relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {insights.map((item, index) => (
-            <motion.div
-              key={index}
-              className="card-surgical p-12 group !bg-secondary/30 !rounded-[2.5rem]"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="flex flex-col gap-10">
-                <div className="flex justify-between items-start">
-                  <div className="w-12 h-12 bg-white text-primary flex items-center justify-center rounded-2xl shadow-sm group-hover:scale-110 transition-all duration-500">
-                    {item.icon}
+      <section className="py-20">
+        <div className="container-main">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {insights.map((item, index) => (
+              <motion.div
+                key={index}
+                className="bg-white/[0.02] border border-white/5 rounded-xl p-6 hover:border-brand-primary/20 hover:bg-white/[0.04] transition-all duration-300 group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <div className="flex flex-col gap-6">
+                  <div className="flex justify-between items-start">
+                    <div className="w-12 h-12 bg-white/[0.03] flex items-center justify-center text-white/40 rounded-xl group-hover:bg-brand-primary/20 group-hover:text-brand-primary transition-all duration-300">
+                      {item.icon}
+                    </div>
+                    <span className="text-xs text-white/20 font-bold uppercase tracking-widest">{item.id}</span>
                   </div>
-                  <span className="text-[10px] text-primary/30 font-bold uppercase tracking-widest">{item.id}</span>
+                  <div>
+                    <h3 className="text-4xl font-bold text-white mb-3 group-hover:text-brand-primary transition-colors">
+                      {item.value}
+                    </h3>
+                    <h4 className="text-xs font-bold text-white/40 mb-4 uppercase tracking-wider">
+                      {item.title}
+                    </h4>
+                    <p className="text-sm leading-relaxed text-white/45">
+                      {item.desc}
+                    </p>
+                  </div>
                 </div>
+              </motion.div>
+            ))}
+          </div>
 
-                <div>
-                   <h3 className="text-5xl font-bold text-foreground mb-4 tracking-tighter group-hover:text-primary transition-colors duration-500">
-                     {item.value}
-                   </h3>
-                   <h4 className="text-[10px] font-bold text-foreground/40 mb-6 uppercase tracking-[0.3em]">
-                     {item.title}
-                   </h4>
-                   <p className="text-[10px] font-bold uppercase leading-relaxed text-foreground/30 tracking-tight">
-                     {item.desc}
-                   </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="mt-40 p-20 bg-secondary/20 rounded-[3rem] border border-primary/5 relative overflow-hidden text-center max-w-4xl mx-auto group hover:border-primary/20 transition-all duration-700">
-          <div className="absolute top-0 right-0 p-8">
-             <div className="flex items-center gap-3 font-bold text-[10px] text-primary uppercase tracking-[0.2em] bg-white px-4 py-2 rounded-full shadow-sm">
+          <div className="mt-16 p-12 bg-white/[0.02] border border-white/5 rounded-2xl relative overflow-hidden text-center max-w-4xl mx-auto group hover:border-brand-primary/10 transition-all duration-300">
+            <div className="absolute top-4 right-4">
+              <div className="flex items-center gap-2 font-semibold text-xs text-brand-primary uppercase tracking-wider bg-brand-primary/10 px-3 py-1.5 rounded-full">
                 <Activity size={12} className="animate-pulse" />
                 Coming Soon
-             </div>
-          </div>
-
-          <h3 className="text-3xl font-bold mb-8 tracking-tight">
-            Your Business Dashboard
-          </h3>
-          <p className="text-sm font-medium text-foreground/50 leading-loose mb-12 max-w-2xl mx-auto">
-            We are building a simple dashboard so you can see how your software is performing and track your growth in real-time.
-          </p>
-          
-          <div className="flex items-center justify-center gap-16 text-[10px] font-bold text-foreground/20 uppercase tracking-[0.4em]">
-             <div className="flex items-center gap-3 group-hover:text-primary/40 transition-colors"><Zap size={14} /> Syncing</div>
-             <div className="flex items-center gap-3 group-hover:text-primary/40 transition-colors"><Target size={14} /> Calibrating</div>
-             <div className="flex items-center gap-3 group-hover:text-primary/40 transition-colors"><Box size={14} /> Caching</div>
+              </div>
+            </div>
+            <h3 className="text-2xl font-semibold text-white mb-4">
+              Your Business Dashboard
+            </h3>
+            <p className="text-white/45 leading-relaxed mb-8 max-w-xl mx-auto">
+              We are building a simple dashboard so you can see how your software is performing and track your growth in real-time.
+            </p>
           </div>
         </div>
-      </div>
-      
-      <ContactFooter />
+      </section>
 
-      {/* Decorative Asset */}
-      <div className="absolute top-1/2 -right-40 w-full h-[600px] opacity-10 pointer-events-none mix-blend-screen mask-radial-fade scale-110">
-        <Image src="/assets/wireframe-grid.png" alt="" fill className="object-contain" priority />
-      </div>
-      <div className="radial-glow bottom-0 left-0 opacity-15" />
+      <ContactFooter />
     </main>
   );
 }

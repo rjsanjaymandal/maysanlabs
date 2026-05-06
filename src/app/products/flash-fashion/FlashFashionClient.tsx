@@ -1,44 +1,45 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { 
-  Users, 
-  CreditCard, 
-  GraduationCap, 
-  Bus, 
-  ArrowRight,
-  ArrowUpRight,
-  ArrowLeft
-} from "lucide-react";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 import SpotlightCard from "@/components/SpotlightCard";
+import { ShoppingBag, Package, CreditCard, Users, BarChart3, ArrowRight, ArrowUpRight, ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
-export default function EduMaysanClient() {
-  const features = [
-    {
-      name: "Financial ERP",
-      description: "Comprehensive fee management, automated invoicing, and real-time financial auditing for institutions.",
-      Icon: CreditCard,
-    },
-    {
-      name: "Academic Hub",
-      description: "Advanced gradebooks and exam scheduling with interactive LMS capabilities.",
-      Icon: GraduationCap,
-    },
-    {
-      name: "Identity & Auth",
-      description: "Biometric and smart tracking integration for secure campus access.",
-      Icon: Users,
-    },
-    {
-      name: "Logistics & Fleet",
-      description: "Real-time transport tracking and route optimization for institution assets.",
-      Icon: Bus,
-    }
-  ];
+const features = [
+  {
+    icon: Package,
+    title: "Inventory Management",
+    description: "Real-time stock tracking across multiple warehouses. Low stock alerts and automated reordering."
+  },
+  {
+    icon: CreditCard,
+    title: "Payment Processing",
+    description: "Integrated with Stripe, Razorpay, and Paytm. Multiple payment modes including UPI, cards, and wallets."
+  },
+  {
+    icon: Users,
+    title: "Customer CRM",
+    description: "Complete customer profiles, order history, loyalty programs, and targeted marketing campaigns."
+  },
+  {
+    icon: BarChart3,
+    title: "Analytics Dashboard",
+    description: "Real-time sales analytics, product performance metrics, and business intelligence reports."
+  }
+];
 
+const metrics = [
+  { value: "10K+", label: "Products Managed" },
+  { value: "50K+", label: "Orders Processed" },
+  { value: "99.9%", label: "Uptime" },
+  { value: "3x", label: "Revenue Growth" }
+];
+
+const techStack = ["Next.js", "React", "Node.js", "PostgreSQL", "Redis", "Stripe", "AWS", "TypeScript"];
+
+export default function FlashFashionClient() {
   return (
     <main className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
       <Navbar />
@@ -57,37 +58,57 @@ export default function EduMaysanClient() {
             <span>Back to Products</span>
           </Link>
 
-          <motion.div
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider">
-                <GraduationCap size={12} />
+                <ShoppingBag size={12} />
                 Live Product
               </span>
               <span className="text-white/30">•</span>
-              <span className="text-white/40 text-sm">EdTech</span>
+              <span className="text-white/40 text-sm">Ecommerce</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
-              Edu-Maysan
+              FlashFashion
             </h1>
             <p className="text-xl text-white/50 mb-8 max-w-xl">
-              Next-generation intelligence platform for educational institutions. Unifying finance, logistics, and academics into one seamless system.
+              Full-stack ecommerce platform built from scratch. A complete solution with inventory, orders, payments, and customer management.
             </p>
 
             <div className="flex flex-wrap gap-4">
               <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
                 Book a Demo <ArrowRight size={16} />
               </Link>
-              <Link href="/case-studies" className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-semibold text-sm hover:bg-white/[0.08] hover:text-white hover:border-white/25 transition-all duration-200">
+              <Link href="/case-studies/flash-fashion-ecommerce" className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-semibold text-sm hover:bg-white/[0.08] hover:text-white hover:border-white/25 transition-all duration-200">
                 View Case Study <ArrowUpRight size={16} />
               </Link>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Metrics Section */}
+      <section className="py-12 border-y border-white/[0.06] bg-white/[0.01]">
+        <div className="container-main">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {metrics.map((metric, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="text-3xl md:text-4xl font-bold text-brand-primary mb-2">{metric.value}</div>
+                <div className="text-sm text-white/40 font-medium">{metric.label}</div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -96,7 +117,7 @@ export default function EduMaysanClient() {
         <div className="container-main">
           <div className="text-center mb-12">
             <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">Platform Capabilities</h2>
-            <p className="text-white/40 max-w-xl mx-auto">A comprehensive school management system designed for modern educational institutions.</p>
+            <p className="text-white/40 max-w-xl mx-auto">Everything you need to run a modern ecommerce business at scale.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -110,9 +131,9 @@ export default function EduMaysanClient() {
               >
                 <SpotlightCard className="maysan-card group-hover:border-brand-primary/30 group-hover:bg-white/[0.04] transition-all duration-300">
                   <div className="w-11 h-11 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary mb-4">
-                    <feature.Icon size={20} />
+                    <feature.icon size={20} />
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{feature.name}</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
                   <p className="text-white/45 text-sm">{feature.description}</p>
                 </SpotlightCard>
               </motion.div>
@@ -121,12 +142,28 @@ export default function EduMaysanClient() {
         </div>
       </section>
 
+      {/* Tech Stack Section */}
+      <section className="py-12 border-t border-white/[0.06]">
+        <div className="container-main">
+          <div className="bg-white/[0.02] border border-white/[0.04] rounded-2xl p-8">
+            <h3 className="text-sm font-semibold text-white/50 uppercase tracking-wider mb-5">Technologies Used</h3>
+            <div className="flex flex-wrap gap-2">
+              {techStack.map((tech, i) => (
+                <span key={i} className="px-3.5 py-1.5 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-white/60">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16">
         <div className="container-main">
           <div className="bg-gradient-to-br from-brand-primary/10 to-transparent border border-brand-primary/20 rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">Need a similar education platform?</h2>
-            <p className="text-white/40 mb-8 max-w-xl mx-auto">We build custom educational solutions tailored to your institution's requirements.</p>
+            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">Need a similar ecommerce platform?</h2>
+            <p className="text-white/40 mb-8 max-w-xl mx-auto">We build custom ecommerce solutions tailored to your business requirements.</p>
             <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
               Start Your Project <ArrowRight size={16} />
             </Link>

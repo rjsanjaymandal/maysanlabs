@@ -3,19 +3,19 @@
 @tailwind utilities;
 
 :root {
-    /* ─── Maysan Design System ─── */
-    --brand-primary: #A3E635;
-    --brand-primary-rgb: 163 230 53;
-    --brand-light: #D9FF00;
-    --brand-deep: #4D7C0F;
-    --brand-accent: #374151;
+    /* ─── Maysan Design System - Enterprise Navy Palette ─── */
+    --brand-primary: #1A6DD6;
+    --brand-primary-rgb: 26, 109, 214;
+    --brand-light: #60A5FA;
+    --brand-deep: #0F1923;
+    --brand-accent: #1E3A5F;
     
     --primary: var(--brand-primary);
-    --primary-glow: rgba(var(--brand-primary-rgb), 0.4);
+    --primary-glow: rgba(var(--brand-primary-rgb), 0.3);
     
     --brand-gradient: linear-gradient(135deg, var(--brand-light) 0%, var(--brand-primary) 50%, var(--brand-deep) 100%);
     --brand-glow-complex: radial-gradient(circle at center, var(--brand-primary) 0%, var(--brand-deep) 100%);
-    --silver-gradient: linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%);
+    --silver-gradient: linear-gradient(135deg, #E2F0FF 0%, #B0CCE8 100%);
 
     --radius-sm: 8px;
     --radius-md: 16px;
@@ -25,35 +25,35 @@
     
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-bg-heavy: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.06);
     
     --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-    --brand-dark-text: #030712;
-    --bg-dark: #0a0a0f;
-    --bg-base: #0f0f14;
+    --brand-dark-text: #FFFFFF;
+    --bg-dark: #0D1117;
+    --bg-base: #0F1923;
     
-    /* ─── Extended Color Palette ─── */
-    --surface-elevated: #0a0a0f;
-    --surface-base: #0f0f14;
-    --surface-subtle: #1a1a24;
+    /* ─── Extended Color Palette - Navy Enterprise ─── */
+    --surface-elevated: #0D1117;
+    --surface-base: #0F1923;
+    --surface-subtle: #1A2535;
     
-    --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.75);
-    --text-muted: rgba(255, 255, 255, 0.5);
-    --text-disabled: rgba(255, 255, 255, 0.25);
+    --text-primary: #E2F0FF;
+    --text-secondary: #B0CCE8;
+    --text-muted: #6B8FAB;
+    --text-disabled: rgba(176, 204, 232, 0.25);
     
-    --border-subtle: rgba(255, 255, 255, 0.04);
-    --border-default: rgba(255, 255, 255, 0.08);
-    --border-strong: rgba(255, 255, 255, 0.12);
+    --border-subtle: #1E3A5F;
+    --border-default: #243B55;
+    --border-strong: rgba(255, 255, 255, 0.15);
 }
 
 @layer utilities {
   /* Section Padding - Standardized */
-  .sec-sm { @apply py-12 md:py-16; }
-  .sec-md { @apply py-16 md:py-24 lg:py-32; }
-  .sec-lg { @apply py-20 md:py-32 lg:py-48 relative; }
-  .sec-xl { @apply py-24 md:py-40 lg:py-64 relative; }
+  .sec-sm { @apply py-10 md:py-16; }
+  .sec-md { @apply py-12 md:py-24 lg:py-32; }
+  .sec-lg { @apply py-16 md:py-32 lg:py-48 relative; }
+  .sec-xl { @apply py-20 md:py-40 lg:py-64 relative; }
 
   /* Container */
   .container-main {
@@ -62,10 +62,10 @@
 
   /* Typography Utilities - Fluid & Responsive */
   .heading-xl {
-    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[0.95];
+    @apply text-[32px] sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.1] sm:leading-[0.95];
   }
   .heading-lg {
-    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[0.95];
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] sm:leading-[0.95];
   }
   .heading-md {
     @apply text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight leading-tight;
@@ -98,7 +98,7 @@
 
   /* ─── Standardized Button ─── */
   .btn-primary {
-    @apply bg-brand-primary text-black font-bold uppercase text-xs tracking-widest px-8 py-4 rounded-full transition-all duration-300 hover:shadow-glow-md hover:scale-[1.02];
+    @apply bg-gradient-to-r from-brand-primary to-brand-light text-white font-extrabold uppercase text-xs tracking-widest px-8 py-4 rounded-full transition-all duration-300 hover:shadow-glow-md hover:scale-[1.02] hover:brightness-110 shadow-md;
   }
   .btn-secondary {
     @apply bg-white/5 border border-white/10 text-white font-bold uppercase text-xs tracking-widest px-6 py-3 rounded-full transition-all duration-300 hover:bg-white/10;
@@ -150,10 +150,7 @@
 
   /* Card Bento - Standardized Base */
   .maysan-card {
-    @apply relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] border border-white/5 bg-white/[0.01] p-8 md:p-12 transition-all duration-700 backdrop-blur-3xl;
-  }
-  .maysan-card:hover {
-    @apply border-brand-primary/20 bg-white/[0.03] shadow-[0_0_100px_rgba(163,230,53,0.05)] -translate-y-2;
+    @apply relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.01] p-8 md:p-12 transition-all duration-700;
   }
 }
 
@@ -161,60 +158,60 @@
 @layer base {
   ::selection {
     background-color: var(--brand-primary);
-    color: var(--brand-dark-text);
+    color: white;
   }
   body {
     @apply antialiased bg-background text-foreground;
     font-feature-settings: "ss01", "ss02", "cv01", "cv11";
   }
   :root {
-    --background: oklch(0.18 0.02 260);
-    --foreground: oklch(0.98 0.01 260);
-    --card: oklch(0.22 0.02 260);
-    --card-foreground: oklch(0.98 0.01 260);
-    --popover: oklch(0.22 0.02 260);
-    --popover-foreground: oklch(0.98 0.01 260);
+    --background: oklch(0.15 0.02 250);
+    --foreground: oklch(0.98 0.01 250);
+    --card: oklch(0.18 0.02 250);
+    --card-foreground: oklch(0.98 0.01 250);
+    --popover: oklch(0.18 0.02 250);
+    --popover-foreground: oklch(0.98 0.01 250);
     --primary: var(--brand-primary);
-    --primary-foreground: #000000;
-    --secondary: oklch(0.28 0.02 260);
-    --secondary-foreground: oklch(0.98 0.01 260);
-    --muted: oklch(0.28 0.02 260);
-    --muted-foreground: oklch(0.7 0.01 260);
-    --accent: oklch(0.28 0.02 260);
-    --accent-foreground: oklch(0.98 0.01 260);
+    --primary-foreground: #FFFFFF;
+    --secondary: oklch(0.22 0.02 250);
+    --secondary-foreground: oklch(0.98 0.01 250);
+    --muted: oklch(0.22 0.02 250);
+    --muted-foreground: oklch(0.7 0.01 250);
+    --accent: oklch(0.22 0.02 250);
+    --accent-foreground: oklch(0.98 0.01 250);
     --destructive: oklch(0.58 0.25 28);
-    --border: oklch(1 0 0 / 12%);
-    --input: oklch(1 0 0 / 15%);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 12%);
     --ring: var(--brand-primary);
-    /* ─── Color Palette (Refined Soft Industrial) ─── */
-    --background: 250 0.01 0.48; /* Bright mid-tone industrial slate */
-    --foreground: 0 0 1;
+    /* ─── Color Palette - Enterprise Navy ─── */
+    --background: 220 33% 7%;
+    --foreground: 210 40% 98%;
     
-    --card: 260 0.01 0.55; /* High-visibility card surface */
-    --card-foreground: 0 0 1;
+    --card: 220 33% 10%;
+    --card-foreground: 210 40% 98%;
     
-    --brand-primary: #A3E635;
-    --brand-primary-rgb: 163, 230, 53;
+    --brand-primary: #1A6DD6;
+    --brand-primary-rgb: 26, 109, 214;
     
     /* Premium Gradients */
-    --brand-gradient: linear-gradient(135deg, #A3E635 0%, #65A30D 100%);
-    --surface-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
-    --glass-gradient: radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent);
-    --bg-aurora: radial-gradient(circle at 50% -20%, rgba(163, 230, 53, 0.03), transparent 70%);
+    --brand-gradient: linear-gradient(135deg, #1A6DD6 0%, #0F1923 100%);
+    --surface-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 100%);
+    --glass-gradient: radial-gradient(circle at top left, rgba(255, 255, 255, 0.04), transparent);
+    --bg-aurora: radial-gradient(circle at 50% -20%, rgba(26, 109, 214, 0.08), transparent 70%);
 
     --radius-sm: 0.5rem;
     --radius-md: 1rem;
-    --radius-lg: 2rem;
+    --radius-lg: 1.5rem;
   }
   .dark {
-    --background: oklch(0.1 0.01 260);
+    --background: oklch(0.15 0.02 250);
     --foreground: oklch(0.98 0 0);
-    --card: oklch(0.12 0.01 260);
+    --card: oklch(0.18 0.02 250);
     --card-foreground: oklch(0.98 0 0);
-    --popover: oklch(0.12 0.01 260);
+    --popover: oklch(0.18 0.02 250);
     --popover-foreground: oklch(0.98 0 0);
     --primary: var(--brand-primary);
-    --primary-foreground: #000000;
+    --primary-foreground: #FFFFFF;
   }
   * {
     @apply border-border;
@@ -240,13 +237,17 @@ html, body {
   .maysan-card {
     background: oklch(var(--card));
     background-image: var(--surface-gradient);
-    @apply border border-white/5 rounded-3xl p-10 transition-all duration-700 relative overflow-hidden backdrop-blur-md;
+    @apply border border-white/5 rounded-3xl p-8 md:p-12 transition-all duration-700 relative overflow-hidden;
   }
 
   .maysan-card::before {
     content: '';
     @apply absolute inset-0 opacity-0 transition-opacity duration-700 pointer-events-none;
     background: var(--glass-gradient);
+  }
+
+  .maysan-card:hover {
+    @apply border-brand-primary/20 bg-white/[0.03] -translate-y-1;
   }
 
   .maysan-card:hover::before {
@@ -379,17 +380,7 @@ html, body {
     background-size: 40px 40px;
   }
 
-.maysan-card {
-  @apply relative overflow-hidden rounded-[2.5rem] border border-white/5 bg-white/[0.01] p-8 md:p-12 transition-all duration-700 backdrop-blur-3xl;
-}
 
-.maysan-card:hover {
-  @apply border-brand-primary/20 bg-white/[0.03] shadow-[0_0_100px_rgba(163,230,53,0.05)] -translate-y-2;
-}
-
-.maysan-card:hover::before {
-  opacity: 0.1;
-}
 
 /* ─── Pill Buttons ─── */
 .pill-btn {
@@ -552,4 +543,15 @@ html, body {
 
 .animate-float-subtle {
   animation: float-subtle 6s ease-in-out infinite;
+}
+
+/* Gradient animation for buttons */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  animation: gradient-shift 3s ease infinite;
 }

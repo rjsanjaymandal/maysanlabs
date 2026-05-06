@@ -60,8 +60,10 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-16 md:py-24 relative overflow-hidden bg-background">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/[0.02] to-transparent" />
+    <section id="services" className="py-20 md:py-32 relative overflow-hidden bg-background">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/[0.03] to-transparent" />
+      <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-gradient-to-r from-brand-primary/10 to-transparent blur-[80px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 right-0 w-[300px] h-[300px] bg-gradient-to-l from-brand-primary/8 to-transparent blur-[60px] rounded-full pointer-events-none" />
       
       <div className="container-main relative">
         <div className="text-center mb-12 md:mb-16">
@@ -69,9 +71,9 @@ export default function Services() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-4"
+            className="mb-5"
           >
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-medium">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider">
               <Zap size={12} />
               Services
             </span>
@@ -81,7 +83,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="heading-md text-white mb-3"
+            className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white mb-4"
           >
             Build with <span className="text-brand-primary">confidence</span>
           </motion.h2>
@@ -90,9 +92,9 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-white/40 text-sm md:text-base max-w-lg mx-auto"
+            className="text-white/45 text-lg max-w-2xl mx-auto leading-relaxed"
           >
-            End-to-end development for building scalable, enterprise-grade software.
+            End-to-end development for building scalable, enterprise-grade software that performs under pressure.
           </motion.p>
         </div>
 
@@ -104,24 +106,25 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.06 }}
-              className="group relative bg-white/[0.015] border border-white/[0.04] rounded-xl p-5 hover:border-white/[0.08] hover:bg-white/[0.025] transition-all duration-300"
+              className="group relative bg-white/[0.015] border border-white/[0.04] rounded-2xl p-6 hover:border-brand-primary/20 hover:bg-white/[0.03] transition-all duration-300"
             >
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
               <div className="relative z-10">
-                <div className="w-10 h-10 bg-white/[0.03] rounded-lg flex items-center justify-center text-white/50 mb-4 group-hover:bg-brand-primary/15 group-hover:text-brand-primary transition-all duration-300">
-                  <service.icon size={18} />
+                <div className="w-11 h-11 bg-white/[0.03] rounded-xl flex items-center justify-center text-white/40 mb-5 group-hover:bg-brand-primary/20 group-hover:text-brand-primary transition-all duration-300">
+                  <service.icon size={20} />
                 </div>
                 
-                <h3 className="text-base font-medium text-white mb-2">
+                <h3 className="text-lg font-semibold text-white mb-2.5">
                   {service.title}
                 </h3>
-                <p className="text-white/40 text-sm mb-3.5 leading-relaxed">
+                <p className="text-white/45 text-sm mb-4 leading-relaxed">
                   {service.desc}
                 </p>
                 
-                <ul className="space-y-1 mb-4">
+                <ul className="space-y-1.5 mb-5">
                   {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-white/30 text-xs">
-                      <div className="w-0.5 h-0.5 rounded-full bg-brand-primary/60" />
+                    <li key={i} className="flex items-center gap-2.5 text-white/35 text-xs">
+                      <div className="w-1 h-1 rounded-full bg-brand-primary/70" />
                       {feature}
                     </li>
                   ))}
@@ -129,9 +132,9 @@ export default function Services() {
                 
                 <Link 
                   href="/services" 
-                  className="inline-flex items-center gap-1 text-brand-primary text-xs font-medium group-hover:gap-1.5 transition-all"
+                  className="inline-flex items-center gap-1.5 text-brand-primary text-xs font-semibold group-hover:gap-2 transition-all"
                 >
-                  Learn more <ArrowUpRight size={10} />
+                  Learn more <ArrowUpRight size={12} />
                 </Link>
               </div>
             </motion.div>

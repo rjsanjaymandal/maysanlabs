@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { blogPosts } from "@/lib/blog-data";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
-import { Calendar, User, Clock, ArrowLeft } from "lucide-react";
+import { Calendar, User, Clock, ArrowLeft, ArrowRight, Tag } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
 
@@ -19,20 +19,8 @@ export async function generateMetadata({
   if (!post) return { title: "Post Not Found" };
 
   return {
-    title: post.title,
+    title: `${post.title} | Maysan Labs Blog`,
     description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: "article",
-      publishedTime: post.date,
-      authors: [post.author],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt,
-    },
   };
 }
 
@@ -50,112 +38,71 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
-  // Pre-process content to handle markdown headers and bold text
-  const formattedContent = post.content.split("\n").map((line, i) => {
-    if (line.startsWith("# ")) {
-      return (
-        <h1 key={i} className="text-3xl md:text-4xl font-black mt-12 mb-8 uppercase tracking-tighter italic text-white">
-          {line.replace("# ", "")}
-        </h1>
-      );
-    }
-    if (line.startsWith("## ")) {
-      return (
-        <h2 key={i} className="text-2xl font-black mt-10 mb-6 uppercase tracking-tight italic text-white/90">
-          {line.replace("## ", "")}
-        </h2>
-      );
-    }
-    if (line.startsWith("### ")) {
-      return (
-        <h3 key={i} className="text-xl font-black mt-8 mb-4 uppercase tracking-tight text-white/80">
-          {line.replace("### ", "")}
-        </h3>
-      );
-    }
-    if (line.startsWith("- ")) {
-      return (
-        <li key={i} className="ml-6 mb-2 text-body-dim list-disc">
-          {line.replace("- ", "")}
-        </li>
-      );
-    }
-    if (line.trim() === "") {
-      return <br key={i} />;
-    }
-
-    // Handle bold text **...**
-    const parts = line.split(/(\*\*.*?\*\*)/);
-    return (
-      <p key={i} className="text-lg text-body-dim leading-relaxed mb-6 font-medium">
-        {parts.map((part, j) => {
-          if (part.startsWith("**") && part.endsWith("**")) {
-            return (
-              <strong key={j} className="text-white font-bold">
-                {part.slice(2, -2)}
-              </strong>
-            );
-          }
-          return part;
-        })}
-      </p>
-    );
-  });
+  const currentIndex = blogPosts.findIndex((p) => p.slug === slug);
+  const prevPost = currentIndex > 0 ? blogPosts[currentIndex - 1] : null;
+  const nextPost = currentIndex < blogPosts.length - 1 ? blogPosts[currentIndex + 1] : null;
 
   return (
     <main className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
       <Navbar />
 
-      <article className="pt-44 pb-32">
-        <div className="container-main max-w-4xl">
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 via-brand-primary/2 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
+        
+        <div className="container-main relative">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-[10px] text-brand-primary font-black uppercase tracking-[0.3em] mb-16 hover:gap-4 transition-all"
+            className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-brand-primary transition-colors mb-8 group"
           >
-            <ArrowLeft size={16} /> BACK_TO_LOG
+            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> 
+            <span>Back to Articles</span>
           </Link>
 
-          <header className="mb-20">
-            <div className="flex items-center gap-6 mb-10">
-              <span className="label-mono !mb-0">
+          <header className="max-w-3xl">
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider">
+                <Tag size={12} />
                 {post.category}
               </span>
-              <div className="flex items-center gap-2 text-[10px] text-ghost font-black uppercase tracking-widest">
-                <Clock size={14} className="text-brand-primary" />
-                {post.readTime} READ
+              <span className="text-white/30">•</span>
+              <div className="flex items-center gap-2 text-white/40 text-sm">
+                <Clock size={14} />
+                {post.readTime} read
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-7xl font-black tracking-tighter mb-12 leading-[1] uppercase italic text-white">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
               {post.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-12 py-12 border-y border-white/5">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20">
-                  <User size={20} />
+            <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8">
+              {post.excerpt}
+            </p>
+
+            <div className="flex flex-wrap items-center gap-6 py-5 border-y border-white/[0.06]">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20">
+                  <User size={16} />
                 </div>
                 <div>
-                  <p className="label-mono !text-[8px] !mb-1">
-                    AUTHORED_BY
-                  </p>
-                  <p className="font-black text-sm tracking-tight uppercase italic">
+                  <p className="text-xs text-white/30 uppercase tracking-wider">Written by</p>
+                  <p className="text-sm font-medium text-white">
                     {post.author}
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20">
-                  <Calendar size={20} />
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary border border-brand-primary/20">
+                  <Calendar size={16} />
                 </div>
                 <div>
-                  <p className="label-mono !text-[8px] !mb-1">
-                    PUBLISHED_ON
-                  </p>
-                  <p className="font-black text-sm tracking-tight uppercase italic">
+                  <p className="text-xs text-white/30 uppercase tracking-wider">Published</p>
+                  <p className="text-sm font-medium text-white">
                     {new Date(post.date).toLocaleDateString("en-US", {
-                      month: "short",
+                      month: "long",
                       day: "numeric",
                       year: "numeric",
                     })}
@@ -164,48 +111,76 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               </div>
             </div>
           </header>
+        </div>
+      </section>
 
-          <div className="blog-content prose prose-invert prose-brand max-w-none">
-            {formattedContent}
+      {/* Article Content */}
+      <section className="py-12">
+        <div className="container-main max-w-3xl">
+          <article className="bg-white/[0.01] border border-white/[0.04] rounded-2xl p-8 md:p-12">
+            <div className="prose prose-invert max-w-none">
+              {post.content.split("\n\n").map((paragraph, index) => (
+                <p key={index} className="text-base md:text-lg text-white/70 leading-8 mb-6">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </article>
+
+          {/* Share Section */}
+          <div className="mt-12 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <p className="text-sm text-white/40 mb-2">Share this article</p>
+              <div className="flex gap-2">
+                <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://maysanlabs.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-white/50 hover:text-white hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all">
+                  Twitter
+                </a>
+                <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://maysanlabs.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-white/50 hover:text-white hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all">
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+            <Link href="/blog" className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-medium text-sm text-black hover:shadow-[0_0_20px_rgba(26,109,214,0.4)] transition-all duration-200">
+              Read More Articles
+            </Link>
           </div>
         </div>
-      </article>
+      </section>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            headline: post.title,
-            description: post.excerpt,
-            image: `https://maysanlabs.com/og-image.png`, // Generic default for now, could be post-specific
-            author: {
-              "@type": "Person",
-              name: post.author,
-              url: "https://maysanlabs.com",
-            },
-            datePublished: post.date,
-            dateModified: post.date,
-            publisher: {
-              "@type": "Organization",
-              name: "Maysan Labs",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://maysanlabs.com/favicon.png",
-              },
-            },
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": `https://maysanlabs.com/blog/${post.slug}`,
-            },
-          }),
-        }}
-      />
+      {/* Related Articles */}
+      {(prevPost || nextPost) && (
+        <section className="py-12 border-t border-white/[0.06]">
+          <div className="container-main max-w-3xl">
+            <h3 className="text-base font-semibold text-white/60 uppercase tracking-wider mb-6">Continue Reading</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {prevPost && (
+                <Link href={`/blog/${prevPost.slug}`} className="group p-5 bg-white/[0.02] border border-white/[0.04] rounded-xl hover:border-brand-primary/20 hover:bg-white/[0.04] transition-all duration-300">
+                  <div className="flex items-center gap-2 text-xs text-white/40 mb-2">
+                    <ArrowLeft size={12} className="group-hover:-translate-x-1 transition-transform" /> Previous Article
+                  </div>
+                  <h4 className="text-sm font-medium text-white group-hover:text-brand-primary transition-colors">
+                    {prevPost.title}
+                  </h4>
+                  <p className="text-xs text-white/30 mt-1 line-clamp-1">{prevPost.excerpt}</p>
+                </Link>
+              )}
+              {nextPost && (
+                <Link href={`/blog/${nextPost.slug}`} className="group p-5 bg-white/[0.02] border border-white/[0.04] rounded-xl hover:border-brand-primary/20 hover:bg-white/[0.04] transition-all duration-300 text-left md:text-right">
+                  <div className="flex items-center gap-2 text-xs text-white/40 mb-2 md:justify-end">
+                    Next Article <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                  </div>
+                  <h4 className="text-sm font-medium text-white group-hover:text-brand-primary transition-colors">
+                    {nextPost.title}
+                  </h4>
+                  <p className="text-xs text-white/30 mt-1 line-clamp-1">{nextPost.excerpt}</p>
+                </Link>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
-      <div className="bg-muted/5 border-t border-border">
-        <ContactFooter />
-      </div>
+      <ContactFooter />
     </main>
   );
 }

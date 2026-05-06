@@ -1,96 +1,118 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
-import PageHeader from "@/components/PageHeader";
 import ContactFooter from "@/components/ContactFooter";
 import SpotlightCard from "@/components/SpotlightCard";
 import { caseStudies } from "@/lib/case-studies-data";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Briefcase } from "lucide-react";
 import Link from "next/link";
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import { motion } from "framer-motion";
 
 export default function CaseStudiesClient() {
   return (
     <main className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
       <Navbar />
       
-      <PageHeader
-        label="REAL-WORLD IMPACT"
-        title="CASE_STUDIES"
-        subtitle="Meticulously engineered services for complex enterprise challenges. Explore our portfolio of industrial-grade transformations."
-      />
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 via-brand-primary/2 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
+        
+        <div className="container-main relative">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+              <Briefcase size={12} />
+              Real-World Impact
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
+              Case Studies
+            </h1>
+            <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8 max-w-2xl">
+              Meticulously engineered services for complex enterprise challenges. Explore our portfolio of industrial-grade transformations.
+            </p>
+            <Link href="/init" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-semibold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+              Start Your Project <ArrowUpRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      <section className="sec-lg relative">
-        <div className="container-main relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-            {caseStudies.map((study) => (
-              <Link key={study.slug} href={`/case-studies/${study.slug}`} className="group">
-                <SpotlightCard className="maysan-card h-full flex flex-col group-hover:border-brand-primary/40 transition-colors">
-                  <div className="flex justify-between items-start mb-10">
-                    <div>
-                      <span className="label-mono mb-4 block">
-                        {study.category}
-                      </span>
-                      <h3 className="text-3xl font-black text-white group-hover:text-brand-primary transition-colors uppercase tracking-tight italic">
-                        {study.title}
-                      </h3>
-                    </div>
-                    <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center border border-brand-primary/20 text-brand-primary group-hover:bg-brand-primary group-hover:text-black transition-all duration-500 shadow-lg">
-                      <ArrowRight size={20} />
-                    </div>
-                  </div>
-
-                  <p className="text-body-dim mb-12 leading-relaxed text-sm font-medium flex-1">
-                    {study.challenge}
-                  </p>
-
-                  <div className="grid grid-cols-3 gap-6 mb-10">
-                    {study.metrics.map((metric, idx) => (
-                      <div
-                        key={idx}
-                        className="bg-white/5 rounded-2xl p-6 border border-white/5 group-hover:border-brand-primary/10 transition-colors"
-                      >
-                        <div className="text-2xl font-black text-brand-primary mb-2 tracking-tighter">
-                          {metric.value}
-                        </div>
-                        <div className="text-[9px] uppercase tracking-[0.2em] text-white/20 font-mono font-bold">
-                          {metric.label}
-                        </div>
+      {/* Case Studies Grid */}
+      <section className="py-16 relative">
+        <div className="container-main">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {caseStudies.map((study, index) => (
+              <motion.div
+                key={study.slug}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Link href={`/case-studies/${study.slug}`} className="group block h-full">
+                  <SpotlightCard className="maysan-card h-full group-hover:border-brand-primary/30 group-hover:bg-white/[0.04] transition-all duration-300">
+                    <div className="flex justify-between items-start mb-5">
+                      <div>
+                        <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
+                          {study.category}
+                        </span>
+                        <h3 className="text-xl font-bold text-white group-hover:text-brand-primary transition-colors">
+                          {study.title}
+                        </h3>
                       </div>
-                    ))}
-                  </div>
+                      <div className="w-9 h-9 rounded-full bg-white/[0.03] flex items-center justify-center border border-white/[0.05] text-white/40 group-hover:bg-brand-primary group-hover:text-black group-hover:border-brand-primary transition-all duration-300">
+                        <ArrowRight size={14} />
+                      </div>
+                    </div>
 
-                  <div className="flex flex-wrap gap-3 pt-10 border-t border-white/5">
-                    {study.technologies.slice(0, 4).map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-[9px] uppercase font-mono tracking-widest px-3 py-1.5 bg-white/5 rounded-full border border-white/5 text-white/30 font-bold"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {study.technologies.length > 4 && (
-                      <span className="text-[10px] uppercase font-mono px-2 py-1 text-white/10 italic">
-                        +{study.technologies.length - 4} more
-                      </span>
-                    )}
-                  </div>
-                </SpotlightCard>
-              </Link>
+                    <p className="text-white/45 text-sm leading-relaxed mb-5">
+                      {study.challenge}
+                    </p>
+
+                    <div className="grid grid-cols-3 gap-3 mb-5">
+                      {study.metrics.map((metric, idx) => (
+                        <div
+                          key={idx}
+                          className="bg-white/[0.02] rounded-lg p-3 border border-white/[0.04] group-hover:border-brand-primary/10 transition-colors"
+                        >
+                          <div className="text-lg font-bold text-brand-primary mb-0.5">
+                            {metric.value}
+                          </div>
+                          <div className="text-[9px] uppercase tracking-wider text-white/30 font-medium">
+                            {metric.label}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-wrap gap-2 pt-4 border-t border-white/[0.05]">
+                      {study.technologies.slice(0, 4).map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-xs font-medium px-2.5 py-1 bg-white/[0.02] rounded-full border border-white/[0.04] text-white/40"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {study.technologies.length > 4 && (
+                        <span className="text-xs font-medium px-2 py-1 text-white/20">
+                          +{study.technologies.length - 4}
+                        </span>
+                      )}
+                    </div>
+                  </SpotlightCard>
+                </Link>
+              </motion.div>
             ))}
           </div>
 
-          <div className="mt-32 text-center py-24 border-t border-white/5 relative overflow-hidden rounded-[40px] bg-black/20">
-            <h3 className="text-3xl md:text-5xl font-black mb-12 uppercase tracking-tighter italic">Ready for your transformation?</h3>
-            <Link href="/init">
-              <HoverBorderGradient
-                containerClassName="rounded-full mx-auto w-fit"
-                as="div"
-                className="bg-brand-primary text-black font-black flex items-center gap-2"
-              >
-                <span>BOOK_A_STRATEGY_CALL</span>
-                <ArrowUpRight size={18} />
-              </HoverBorderGradient>
+          {/* CTA Section */}
+          <div className="mt-16 text-center py-12 border-t border-white/[0.06]">
+            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4">Ready for your transformation?</h3>
+            <p className="text-white/40 mb-8 max-w-lg mx-auto">Let's discuss how we can help solve your most complex challenges.</p>
+            <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+              <span>Book a Strategy Call</span>
+              <ArrowUpRight size={16} />
             </Link>
           </div>
         </div>

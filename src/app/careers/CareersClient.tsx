@@ -7,57 +7,61 @@ import SpotlightCard from "@/components/SpotlightCard";
 import { jobPositions } from "@/lib/careers-data";
 import { Users, Target, Rocket, MapPin, ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import BackgroundBeams from "@/components/ui/background-beams";
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 export default function CareersClient() {
   return (
-    <main className="min-h-screen bg-[#0d1117] relative overflow-hidden flex flex-col">
+    <main className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden flex flex-col">
       <Navbar />
 
-      {/* Hero Section with Aceternity Beams */}
-      <section className="sec-xl relative overflow-hidden flex items-center min-h-[70vh]">
-        <BackgroundBeams />
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 to-transparent" />
         
-        <div className="container-main relative z-10">
+        <div className="container-main relative">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl"
           >
-            <span className="label-mono mb-8 block">Join the Lab</span>
-            <h1 className="heading-xl mt-8 mb-12">
-              Shape the Future of <br />
-              <span className="text-brand-primary italic">Engineering.</span>
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+              <Rocket size={12} />
+              Join the Lab
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
+              Shape the Future of <span className="text-brand-primary">Engineering</span>
             </h1>
-            <p className="text-body-dim max-w-2xl text-xl md:text-2xl font-medium leading-relaxed mb-16">
+            <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8 max-w-2xl">
               We&apos;re looking for radical thinkers and elite engineers to build the mission-critical infrastructure of the modern enterprise.
             </p>
+            <Link href="#openings" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+              View Open Roles <ArrowRight size={16} />
+            </Link>
           </motion.div>
         </div>
       </section>
 
       {/* Culture/Values Section */}
-      <section className="sec-md border-y border-white/5 bg-black/20 relative">
+      <section className="py-16 border-y border-white/5">
         <div className="container-main">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: <Rocket size={24} />, title: "Velocity First", desc: "We value speed and decisiveness. We ship early, iterate fast, and maintain absolute quality standards." },
-              { icon: <Users size={24} />, title: "Remote Excellence", desc: "Maysan is a globally distributed team. We trust our people to deliver high-fidelity code from anywhere." },
-              { icon: <Target size={24} />, title: "Radical Integrity", desc: "We take extreme ownership of our work and its impact. Transparency is our default operational mode." }
+              { icon: <Rocket size={20} />, title: "Velocity First", desc: "We value speed and decisiveness. We ship early, iterate fast, and maintain absolute quality standards." },
+              { icon: <Users size={20} />, title: "Remote Excellence", desc: "Maysan is a globally distributed team. We trust our people to deliver high-fidelity code from anywhere." },
+              { icon: <Target size={20} />, title: "Radical Integrity", desc: "We take extreme ownership of our work and its impact. Transparency is our default operational mode." }
             ].map((value, i) => (
               <motion.div 
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.8 }}
+                transition={{ delay: i * 0.1 }}
               >
-                <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-8 border border-brand-primary/20 shadow-lg glow-brand">
+                <div className="w-11 h-11 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-4 border border-brand-primary/20">
                   {value.icon}
                 </div>
-                <h3 className="text-2xl font-black mb-4 tracking-tight uppercase italic">{value.title}</h3>
-                <p className="text-body-dim leading-relaxed font-medium text-sm">
+                <h3 className="text-lg font-semibold text-white mb-2">{value.title}</h3>
+                <p className="text-white/45 text-sm leading-relaxed">
                   {value.desc}
                 </p>
               </motion.div>
@@ -67,77 +71,69 @@ export default function CareersClient() {
       </section>
 
       {/* Open Positions Section */}
-      <section className="sec-lg relative">
+      <section id="openings" className="py-20">
         <div className="container-main">
-          <div className="mb-24">
-            <span className="label-mono mb-6 block">Opportunities</span>
-            <h2 className="heading-lg mb-6">
-              Open <span className="text-brand-primary italic">Roles.</span>
+          <div className="mb-12">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
+              <Target size={12} />
+              Opportunities
+            </span>
+            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
+              Open <span className="text-brand-primary">Roles</span>
             </h2>
-            <p className="text-body-dim font-medium text-lg">
+            <p className="text-white/40 text-lg">
               Join a team engineering the world&apos;s most resilient enterprise infrastructure.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {jobPositions.map((job, index) => (
               <motion.div
                 key={job.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.8 }}
+                transition={{ delay: index * 0.1 }}
               >
-                <SpotlightCard className="maysan-card h-full flex flex-col group">
-                  <div className="flex items-center justify-between mb-10">
-                    <span className="label-system">
-                      {job.category}
-                    </span>
-                    <span className="text-[10px] text-white/20 font-mono uppercase tracking-[0.2em]">
-                      {job.type}
-                    </span>
-                  </div>
-                  <h3 className="text-3xl font-black mb-6 uppercase tracking-tight group-hover:text-brand-primary transition-colors italic">
-                    {job.title}
-                  </h3>
-                  <p className="text-body-dim leading-relaxed mb-10 flex-1 font-medium">
-                    {job.description}
-                  </p>
-                  <div className="flex flex-wrap items-center gap-6 mb-10 pt-8 border-t border-white/5">
-                    <div className="flex items-center gap-3 text-[10px] font-mono uppercase tracking-widest text-white/30">
-                      <MapPin size={14} className="text-brand-primary/60" />
-                      {job.location}
+                <Link href={`/careers/apply?role=${job.id}`} className="group block h-full">
+                  <SpotlightCard className="maysan-card h-full group-hover:border-brand-primary/30 group-hover:bg-white/[0.04] transition-all duration-300">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary">
+                        {job.category}
+                      </span>
+                      <span className="text-xs text-white/30 font-medium uppercase tracking-wider">
+                        {job.type}
+                      </span>
                     </div>
-                  </div>
-                  <Link
-                    href={`/careers/apply?role=${job.id}`}
-                    className="inline-flex items-center gap-4 text-xs font-black text-brand-primary group-hover:gap-6 transition-all uppercase tracking-widest"
-                  >
-                    APPLY_NOW <ArrowRight size={18} />
-                  </Link>
-                </SpotlightCard>
+                    <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-brand-primary transition-colors">
+                      {job.title}
+                    </h3>
+                    <p className="text-white/45 text-sm leading-relaxed mb-5">
+                      {job.description}
+                    </p>
+                    <div className="flex items-center gap-2 mb-5 pt-4 border-t border-white/5">
+                      <MapPin size={14} className="text-white/30" />
+                      <span className="text-sm text-white/40">{job.location}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-brand-primary text-sm font-semibold group-hover:gap-3 transition-all">
+                      Apply now <ArrowRight size={14} />
+                    </div>
+                  </SpotlightCard>
+                </Link>
               </motion.div>
             ))}
           </div>
 
           {/* Opportunistic Hire Section */}
-          <div className="mt-40 maysan-card border-brand-primary/20 bg-brand-primary/5 text-center relative">
-            <div className="relative z-10 py-10">
-              <h3 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tighter italic">Don&apos;t see a perfect fit?</h3>
-              <p className="text-body-dim font-medium max-w-2xl mx-auto mb-12 text-lg">
-                We&apos;re always looking for exceptional engineers and architects. If you&apos;re building the future, we want to hear from you.
-              </p>
-              <Link href="/careers/apply">
-                <HoverBorderGradient
-                  containerClassName="rounded-full mx-auto w-fit"
-                  as="div"
-                  className="bg-brand-primary text-black font-black flex items-center gap-2"
-                >
-                  <span>OPERATIONAL_HIRE</span>
-                  <ArrowUpRight size={18} />
-                </HoverBorderGradient>
-              </Link>
-            </div>
+          <div className="mt-16 bg-white/[0.02] border border-white/5 rounded-2xl p-8 md:p-12 text-center">
+            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4">Don&apos;t see a perfect fit?</h3>
+            <p className="text-white/40 max-w-xl mx-auto mb-8">
+              We&apos;re always looking for exceptional engineers and architects. If you&apos;re building the future, we want to hear from you.
+            </p>
+            <Link href="/careers/apply" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-primary/85 rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+              <span>Apply for Future Roles</span>
+              <ArrowUpRight size={16} />
+            </Link>
           </div>
         </div>
       </section>

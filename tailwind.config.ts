@@ -26,9 +26,14 @@ const config: Config = {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
-        "brand-primary": "rgb(var(--brand-primary-rgb) / <alpha-value>)",
-        "brand-light": "#D9FF00",
-        "brand-deep": "#4D7C0F",
+        "brand-primary": "#1A6DD6",
+        "brand-light": "#60A5FA",
+        "brand-deep": "#0F1923",
+        "brand-navy": {
+          DEFAULT: "#0D1117",
+          light: "#1A2535",
+          accent: "#1E3A5F",
+        },
         titanium: {
           DEFAULT: "#1e293b",
           light: "#334155",
@@ -36,9 +41,9 @@ const config: Config = {
         },
         "protocol-orange": "#f97316",
         surface: {
-          elevated: "#0f172a",
-          base: "#1e293b",
-          subtle: "#334155",
+          elevated: "#0D1117",
+          base: "#0F1923",
+          subtle: "#1A2535",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -70,9 +75,9 @@ const config: Config = {
           muted: "rgba(255, 255, 255, 0.2)",
         },
         emphasis: {
-          high: "rgba(255, 255, 255, 1)",
-          med: "rgba(255, 255, 255, 0.7)",
-          low: "rgba(255, 255, 255, 0.5)",
+          high: "#E2F0FF",
+          med: "#B0CCE8",
+          low: "#6B8FAB",
           subtle: "rgba(255, 255, 255, 0.3)",
           disabled: "rgba(255, 255, 255, 0.15)",
         },
@@ -98,11 +103,11 @@ const config: Config = {
         mono: ["var(--font-mono)", "monospace"],
       },
       boxShadow: {
-        'glow-sm': '0 0 20px rgba(163, 230, 53, 0.15)',
-        'glow-md': '0 0 40px rgba(163, 230, 53, 0.25)',
-        'glow-lg': '0 0 60px rgba(163, 230, 53, 0.35)',
-        'glow-xl': '0 0 80px rgba(163, 230, 53, 0.45)',
-        'inner-glow': 'inset 0 0 20px rgba(163, 230, 53, 0.1)',
+        'glow-sm': '0 0 20px rgba(26, 109, 214, 0.15)',
+        'glow-md': '0 0 40px rgba(26, 109, 214, 0.25)',
+        'glow-lg': '0 0 60px rgba(26, 109, 214, 0.35)',
+        'glow-xl': '0 0 80px rgba(26, 109, 214, 0.45)',
+        'inner-glow': 'inset 0 0 20px rgba(26, 109, 214, 0.1)',
       },
       keyframes: {
         marquee: {

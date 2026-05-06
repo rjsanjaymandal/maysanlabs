@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
+import ContactFooter from "@/components/ContactFooter";
+import FAQ from "@/components/FAQ";
 import { Send, CheckCircle } from "lucide-react";
 import { sendEmail } from "@/app/actions/sendEmail";
 import { motion } from "framer-motion";
@@ -50,8 +52,11 @@ export default function InitPage() {
     <main className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden text-foreground">
       <Navbar />
       
-      <section className="pt-32 pb-20">
-        <div className="container-main">
+      <section className="pt-32 pb-20 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 via-brand-primary/2 to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
+        
+        <div className="container-main relative">
           {!isSubmitted ? (
             <div className="max-w-2xl mx-auto">
               <motion.div 
@@ -60,14 +65,14 @@ export default function InitPage() {
                 transition={{ duration: 0.6 }}
                 className="text-center mb-10"
               >
-                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 text-white/60 text-xs font-medium mb-6">
+                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
                   <Send size={12} />
                   Get in Touch
                 </span>
-                <h1 className="heading-lg text-white mb-4">
+                <h1 className="text-4xl md:text-5xl font-semibold text-white mb-4 leading-tight">
                   Start a <span className="text-brand-primary">project</span>
                 </h1>
-                <p className="text-white/45 text-base">
+                <p className="text-white/45 text-lg">
                   Tell us about your project and we&apos;ll get back to you within 24 hours.
                 </p>
               </motion.div>
@@ -89,7 +94,7 @@ export default function InitPage() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="John Doe / Acme Corp"
-                      className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:border-brand-primary/50 outline-none transition-all"
+                      className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-base focus:border-brand-primary/50 outline-none transition-all"
                     />
                   </div>
 
@@ -103,7 +108,7 @@ export default function InitPage() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="john@example.com"
-                        className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:border-brand-primary/50 outline-none transition-all"
+                        className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-base focus:border-brand-primary/50 outline-none transition-all"
                       />
                     </div>
 
@@ -115,7 +120,7 @@ export default function InitPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+1 234 567 890"
-                        className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:border-brand-primary/50 outline-none transition-all"
+                        className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-base focus:border-brand-primary/50 outline-none transition-all"
                       />
                     </div>
                   </div>
@@ -128,7 +133,7 @@ export default function InitPage() {
                       onChange={handleChange}
                       placeholder="Tell us about what you're building..."
                       rows={4}
-                      className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:border-brand-primary/50 outline-none transition-all resize-none"
+                      className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-base focus:border-brand-primary/50 outline-none transition-all resize-none"
                     />
                   </div>
                 </div>
@@ -136,7 +141,7 @@ export default function InitPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full mt-8 px-6 py-3.5 bg-brand-primary rounded-full font-medium text-sm text-black hover:shadow-[0_0_20px_rgba(163,230,53,0.3)] transition-all duration-200 flex items-center justify-center gap-2"
+                  className="w-full mt-8 px-6 py-3.5 bg-gradient-to-r from-brand-primary to-[#60A5FA] rounded-full font-extrabold text-sm text-white shadow-lg hover:shadow-[0_0_30px_rgba(26,109,214,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 uppercase tracking-wider hover:brightness-110"
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                   {!isSubmitting && <Send size={16} />}
@@ -166,6 +171,10 @@ export default function InitPage() {
           )}
         </div>
       </section>
+
+      <FAQ />
+
+      <ContactFooter />
     </main>
   );
 }

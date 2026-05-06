@@ -1,134 +1,121 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, Variants, Transition } from "framer-motion";
-import { Terminal, Plus, Minus } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, HelpCircle } from "lucide-react";
 
-const faqs = [
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqItems: FAQItem[] = [
   {
-    id: "Q_ARCH_01",
-    question: "Do you help after launch?",
-    answer: "Yes. Ongoing support to keep things fast and secure. You own everything.",
+    question: "What industries do you specialize in?",
+    answer: "We specialize in EdTech, E-commerce, Fintech, Healthcare, and Enterprise SaaS. Our team has deep expertise in building scalable platforms that handle millions of users with 99.99% uptime.",
   },
   {
-    id: "Q_TIME_01",
-    question: "How long to build?",
-    answer: "4-6 weeks for most projects. Custom builds in as little as 2 weeks.",
+    question: "How long does it take to build a custom software solution?",
+    answer: "Typical projects range from 8-16 weeks depending on complexity. We use agile methodology with bi-weekly sprints, so you'll see progress every 2 weeks and have regular opportunities to provide feedback.",
   },
   {
-    id: "Q_SEC_01",
-    question: "Is my data secure?",
-    answer: "Bank-level encryption. Your data stays yours, always.",
+    question: "What is your development process?",
+    answer: "We follow a structured process: Discovery & Planning → Design & Architecture → Development → Testing & QA → Deployment → Ongoing Support. Each phase has clear deliverables and regular communication.",
   },
   {
-    id: "Q_SUPPORT_01",
-    question: "Ongoing support?",
-    answer: "Yes. We keep your software updated as your business grows.",
+    question: "Do you offer ongoing support and maintenance?",
+    answer: "Yes, we provide comprehensive post-launch support including bug fixes, security updates, performance optimization, and feature enhancements. We offer flexible maintenance packages tailored to your needs.",
+  },
+  {
+    question: "What technologies do you use?",
+    answer: "We use modern, battle-tested technologies: Next.js, React, TypeScript, Node.js, PostgreSQL, Supabase, AWS, and Docker. We choose technologies based on your specific requirements for scalability and performance.",
+  },
+  {
+    question: "How do you ensure code quality and security?",
+    answer: "We implement rigorous code reviews, automated testing, security audits, and follow OWASP guidelines. Our architectures include SOC2 compliance-ready security measures including encryption, zero-trust design, and regular penetration testing.",
+  },
+  {
+    question: "Can you work with our existing team?",
+    answer: "Absolutely! We can work as an extension of your team or lead the entire project. We're experienced in collaborating with in-house teams, integrating with your existing systems, and transitioning knowledge at project end.",
+  },
+  {
+    question: "What is your pricing model?",
+    answer: "We offer flexible engagement models: Fixed Price for well-defined projects, Time & Material for evolving requirements, and Retainer for ongoing partnership. We provide detailed quotes after understanding your specific needs.",
   },
 ];
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 20,
-    } as Transition,
-  },
-};
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="sec-xl relative overflow-hidden bg-black">
-      <div className="container-main max-w-4xl mx-auto">
-        <div className="mb-32 flex flex-col items-center text-center">
-          <span className="announcement-bar mb-8">Common Questions</span>
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-8">
-            Frequently <span className="text-brand-primary italic lowercase">asked</span><br />
-            Questions.
-          </h2>
-          <p className="text-sm font-medium text-white/85 leading-loose max-w-lg">
-            Quick answers about working with us.
-          </p>
+    <section className="py-20 border-t border-white/5" id="faq">
+      <div className="container-main">
+        <div className="text-center mb-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-4"
+          >
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider">
+              <HelpCircle size={12} />
+              FAQ
+            </span>
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl md:text-4xl font-semibold text-white"
+          >
+            Frequently Asked <span className="text-brand-primary">Questions</span>
+          </motion.h2>
         </div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="space-y-6"
-        >
-          {faqs.map((faq, index) => {
-            const isOpen = openIndex === index;
-            return (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className={`maysan-card !p-0 transition-all duration-500 ${
-                  isOpen ? "border-brand-primary/40 bg-white/[0.08]" : "hover:border-brand-primary/20"
-                }`}
+        <div className="max-w-3xl mx-auto space-y-3">
+          {faqItems.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="w-full text-left bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-white/10 transition-all duration-300 group"
               >
-                <button
-                  className="w-full flex items-center justify-between p-8 md:p-10 text-left transition-colors"
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
-                >
-                  <div className="flex items-center gap-8">
-                    <span className="font-mono text-2xl italic text-brand-primary/20 hidden sm:block">0{index+1}</span>
-                    <span className="text-lg md:text-xl font-black text-white pr-4 tracking-tighter uppercase">
-                      {faq.question}
-                    </span>
-                  </div>
-                  <div className="shrink-0">
-                     <div className={`w-10 h-10 rounded-[var(--radius-md)] flex items-center justify-center border border-white/10 transition-all duration-300 ${isOpen ? "bg-[var(--brand-primary)] text-[var(--brand-dark-text)] scale-110 font-bold" : "bg-white/5"}`}>
-                        {isOpen ? <Minus size={16} /> : <Plus size={16} />}
-                     </div>
-                  </div>
-                </button>
-
+                <div className="flex items-center justify-between gap-4">
+                  <span className="text-white font-medium text-sm md:text-base group-hover:text-brand-primary transition-colors">
+                    {item.question}
+                  </span>
+                  <ChevronDown 
+                    size={18} 
+                    className={`text-white/40 group-hover:text-brand-primary transition-all duration-300 flex-shrink-0 ${
+                      openIndex === index ? "rotate-180" : ""
+                    }`}
+                  />
+                </div>
                 <AnimatePresence>
-                  {isOpen && (
+                  {openIndex === index && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
                     >
-                      <div className="px-10 pb-12 pt-2 flex gap-10">
-                         <div className="w-px bg-brand-primary/30 shrink-0" />
-                         <div className="space-y-6">
-                            <p className="text-sm sm:text-base font-medium leading-relaxed text-white/85">
-                              {faq.answer}
-                            </p>
-                            <div className="flex items-center gap-3">
-                               <Terminal size={12} className="text-brand-primary/60" />
-                               <span className="text-[9px] font-mono font-bold uppercase tracking-widest text-brand-primary/60">Verified Protocol</span>
-                            </div>
-                         </div>
-                      </div>
+                      <p className="text-white/45 text-sm mt-4 pt-4 border-t border-white/5 leading-relaxed">
+                        {item.answer}
+                      </p>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+              </button>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

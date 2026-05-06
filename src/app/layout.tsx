@@ -110,6 +110,8 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -145,6 +147,7 @@ export default function RootLayout({
           <SmoothScroll>
             <GoogleAnalytics />
             {children}
+            <WhatsAppButton />
           </SmoothScroll>
         </ThemeProvider>
       </body>

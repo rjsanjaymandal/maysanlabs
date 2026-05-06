@@ -87,12 +87,12 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center gap-3"
         >
-          <Link href="/init" className="group px-7 sm:px-8 py-3 bg-brand-primary rounded-full font-medium text-sm text-black transition-all duration-300 hover:shadow-[0_0_25px_rgba(163,230,53,0.35)] flex items-center gap-2">
-            Start Your Project
+          <Link href="/init" className="group px-7 sm:px-8 py-4 bg-gradient-to-r from-brand-primary to-[#60A5FA] rounded-full font-extrabold text-sm text-white shadow-lg hover:shadow-[0_0_30px_rgba(26,109,214,0.6)] hover:scale-[1.02] hover:brightness-110 transition-all duration-300 flex items-center gap-2 uppercase tracking-wider">
+            Book a free 30-min discovery call
             <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
           </Link>
           
-          <Link href="/products" className="px-7 sm:px-8 py-3 rounded-full border border-white/[0.1] text-white/60 font-medium text-sm transition-all duration-300 hover:bg-white/[0.05] hover:text-white hover:border-white/[0.15] flex items-center gap-2">
+          <Link href="/products" className="px-7 sm:px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-bold text-sm transition-all duration-300 hover:bg-white/[0.08] hover:text-white hover:border-white/25 flex items-center gap-2 uppercase tracking-wider">
               <Play size={11} fill="currentColor" />
               <span className="hidden sm:inline">View Our Work</span>
               <span className="sm:hidden">Work</span>

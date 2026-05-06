@@ -80,7 +80,7 @@ export default function Pricing() {
                 <>
                   <BorderBeam size={250} duration={12} delay={9} />
                   <div className="absolute top-0 right-0 left-0 -mt-3.5 flex justify-center">
-                    <span className="bg-brand-primary text-black text-[10px] font-black px-4 py-1 rounded-[var(--radius-sm)] tracking-widest uppercase shadow-lg z-10">
+                    <span className="bg-gradient-to-r from-brand-primary to-[#60A5FA] text-white text-[10px] font-extrabold px-4 py-1 rounded-[var(--radius-sm)] tracking-widest uppercase shadow-lg shadow-brand-primary/30 z-10">
                       Highest_Priority
                     </span>
                   </div>
@@ -123,7 +123,7 @@ export default function Pricing() {
                 <HoverBorderGradient
                   containerClassName="rounded-full w-full"
                   as="div"
-                  className={`flex items-center justify-center gap-2 py-4 ${plan.featured ? "bg-brand-primary text-black font-black" : "bg-black text-white"}`}
+                  className={`flex items-center justify-center gap-2 py-4 ${plan.featured ? "bg-gradient-to-r from-brand-primary to-[#60A5FA] text-white font-extrabold shadow-md hover:brightness-110" : "bg-black text-white"}`}
                 >
                   <span className="font-bold uppercase tracking-tight text-xs">Book a Strategy Call</span>
                   <ArrowUpRight size={16} />
