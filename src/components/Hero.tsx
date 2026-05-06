@@ -87,12 +87,13 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center gap-3"
         >
-          <Link href="/init" className="group px-7 sm:px-8 py-4 bg-gradient-to-r from-brand-primary to-[#60A5FA] rounded-full font-extrabold text-sm text-white shadow-lg hover:shadow-[0_0_30px_rgba(26,109,214,0.6)] hover:scale-[1.02] hover:brightness-110 transition-all duration-300 flex items-center gap-2 uppercase tracking-wider">
-            Book a free 30-min discovery call
-            <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+          <Link href="/init" className="group relative px-7 sm:px-8 py-4 bg-[#1A6DD6] rounded-full font-bold text-[10px] uppercase tracking-widest text-white shadow-xl shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 hover:scale-[1.02] flex items-center gap-2">
+            <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span className="relative z-10">Book a free 30-min discovery call</span>
+            <ArrowRight size={14} className="relative z-10 group-hover:translate-x-0.5 transition-transform" />
           </Link>
           
-          <Link href="/products" className="px-7 sm:px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-bold text-sm transition-all duration-300 hover:bg-white/[0.08] hover:text-white hover:border-white/25 flex items-center gap-2 uppercase tracking-wider">
+          <Link href="/products" className="group relative px-7 sm:px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-bold text-[10px] uppercase tracking-widest transition-all duration-300 hover:bg-white/[0.08] hover:text-white hover:border-white/25 flex items-center gap-2">
               <Play size={11} fill="currentColor" />
               <span className="hidden sm:inline">View Our Work</span>
               <span className="sm:hidden">Work</span>
