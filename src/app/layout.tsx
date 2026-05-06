@@ -99,6 +99,7 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     apple: "/apple-icon.png",
   },
+  manifest: "/manifest.json",
 };
 
 import type { Viewport } from "next";
