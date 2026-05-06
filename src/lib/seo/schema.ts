@@ -16,12 +16,12 @@ export const organizationSchema = {
   "areaServed": "Worldwide",
   "serviceType": ["SaaS Development", "Custom Software Development", "Cloud Infrastructure", "Web Application Development"],
   "priceRange": "$$$",
-  "telephone": process.env.NEXT_PUBLIC_CONTACT_PHONE || "+91-XXXXXXXXXX",
+  "telephone": process.env.NEXT_PUBLIC_CONTACT_PHONE || "+919660641530",
   "contactPoint": {
     "@type": "ContactPoint",
     "email": process.env.NEXT_PUBLIC_CONTACT_EMAIL || "business@maysanlabs.com",
     "contactType": "sales",
-    "availableLanguage": ["English", "Hindi"]
+    "availableLanguage": ["English", "Arabic", "Hindi"]
   },
   "address": {
     "@type": "PostalAddress",
@@ -31,8 +31,10 @@ export const organizationSchema = {
     "addressCountry": process.env.NEXT_PUBLIC_ADDRESS_COUNTRY || "IN"
   },
   "sameAs": [
-    process.env.NEXT_PUBLIC_LINKEDIN_URL || "https://linkedin.com/company/maysanlabs",
-    process.env.NEXT_PUBLIC_TWITTER_URL || "https://twitter.com/maysanlabs"
+    "https://www.facebook.com/maysanlabs",
+    "https://www.instagram.com/maysanlabs",
+    "https://in.linkedin.com/company/maysanlabs",
+    "https://x.com/maysanlabs"
   ],
   "potentialAction": {
     "@type": "ContactAction",
