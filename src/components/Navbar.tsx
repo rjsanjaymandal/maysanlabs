@@ -59,8 +59,10 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
-            <Link href="/init" className="px-6 py-2.5 bg-gradient-to-r from-brand-primary to-[#60A5FA] rounded-full font-extrabold text-xs uppercase tracking-widest text-white shadow-lg hover:shadow-[0_0_30px_rgba(26,109,214,0.6)] hover:scale-105 active:scale-95 transition-all duration-200 hover:brightness-110">
-              Book a Call
+            <Link href="/init" className="group relative px-6 py-2.5 bg-[#1A6DD6] rounded-full font-extrabold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/20 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105 active:scale-95">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1A6DD6] via-[#2563EB] to-[#1D4ED8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative z-10">Book a Call</span>
             </Link>
           </div>
 
@@ -78,10 +80,12 @@ export default function Navbar() {
       <div className="fixed bottom-0 left-0 right-0 z-[90] md:hidden px-4 pb-4">
         <Link 
           href="/init"
-          className="flex items-center justify-center gap-2.5 w-full py-4 bg-gradient-to-r from-brand-primary via-[#1E7AE5] to-[#1565d4] rounded-2xl font-bold text-xs text-white uppercase tracking-widest shadow-lg shadow-brand-primary/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-[1.02] active:scale-[0.98]"
+          className="group relative flex items-center justify-center gap-2.5 w-full py-4 bg-[#1A6DD6] rounded-2xl font-bold text-[10px] uppercase tracking-widest text-white shadow-xl shadow-blue-500/30 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-[1.02] active:scale-[0.98]"
         >
-          <Phone size={16} />
-          Book a Call
+          <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A6DD6] via-[#2563EB] to-[#1D4ED8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <Phone size={15} className="relative z-10" />
+          <span className="relative z-10">Book a Call</span>
         </Link>
       </div>
 
