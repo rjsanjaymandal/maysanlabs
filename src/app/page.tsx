@@ -32,13 +32,13 @@ const Services = dynamic(() => import("@/components/Services"));
 const FAQ = dynamic(() => import("@/components/FAQ"));
 
 const trustLogos = [
-  "EduMaysan", "FlashFashion", "TechRetail", "StyleHub", "CloudFirst", "DataSync", "AppFlow", "NexTech", "ScaleUp"
+  "EduMaysan", "Maysan Shop", "TechRetail", "StyleHub", "CloudFirst", "DataSync", "AppFlow", "NexTech", "ScaleUp"
 ];
 
 const stats = [
   { value: "50+", label: "Enterprise Projects" },
   { value: "EduMaysan", label: "Flagship EdTech LMS" },
-  { value: "FlashFashion", label: "Ecommerce Platform" },
+  { value: "Maysan Shop", label: "Ecommerce Platform" },
   { value: "99.9%", label: "Uptime Guaranteed" },
 ];
 

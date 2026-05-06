@@ -9,15 +9,17 @@ import { motion } from "framer-motion";
 
 const products = [
   {
-    name: "FlashFashion",
-    description: "Full-stack ecommerce platform built from scratch. Inventory, orders, payments, and customer management all in one.",
+    name: "Maysan Shop",
+    tagline: "Commerce without boundaries",
+    description: "Full-stack ecommerce solution with inventory, orders, payments, and customer management. Built for scale.",
     icon: ShoppingBag,
     status: "Live",
-    href: "/products/flash-fashion",
+    href: "/case-studies/flash-fashion-ecommerce",
     category: "Ecommerce",
   },
   {
     name: "Edu-Maysan",
+    tagline: "Intelligence for every classroom",
     description: "Next-generation intelligence platform for educational institutions. Unifying finance, logistics, and academics.",
     icon: GraduationCap,
     status: "Live",
@@ -26,6 +28,7 @@ const products = [
   },
   {
     name: "LogiTrack",
+    tagline: "Logistics reimagined",
     description: "Supply chain management system for logistics companies. Real-time tracking and optimization.",
     icon: null,
     status: "Coming Soon",
@@ -34,6 +37,7 @@ const products = [
   },
   {
     name: "HealthSync",
+    tagline: "Healthcare synchronized",
     description: "Healthcare management platform for clinics and hospitals. Patient records and appointments.",
     icon: null,
     status: "Coming Soon",
@@ -105,9 +109,14 @@ export default function ProductsClient() {
                         {product.status}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-brand-primary transition-colors">
+                    <h3 className="text-xl font-bold text-white mb-1 group-hover:text-brand-primary transition-colors">
                       {product.name}
                     </h3>
+                    {product.tagline && (
+                      <p className="text-brand-primary text-xs font-medium mb-3 italic">
+                        {product.tagline}
+                      </p>
+                    )}
                     <p className="text-white/45 text-sm leading-relaxed mb-5">
                       {product.description}
                     </p>

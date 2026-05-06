@@ -44,14 +44,15 @@ export default function ContactFooter() {
               Let&apos;s build something great together. Our team is ready to help.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/init" className="group px-8 py-4 bg-gradient-to-r from-brand-primary to-[#60A5FA] rounded-full font-extrabold text-sm text-white transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(26,109,214,0.6)] hover:scale-105 active:scale-95 flex items-center gap-2 uppercase tracking-wider hover:brightness-110">
-                Book a Call
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <Link href="/init" className="group relative px-8 py-4 bg-[#1A6DD6] rounded-full font-bold text-xs uppercase tracking-widest text-white shadow-xl shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 hover:scale-105 active:scale-95 flex items-center gap-2">
+                <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative z-10">Book a Call</span>
+                <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
               </Link>
               
-              <Link href="mailto:business@maysanlabs.com" className="px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-semibold text-sm transition-all duration-300 hover:bg-white/[0.08] hover:text-white hover:border-white/25 flex items-center gap-2">
+              <Link href="mailto:business@maysanlabs.com" className="group relative px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-bold text-xs uppercase tracking-widest transition-all duration-300 hover:bg-white/[0.08] hover:text-white hover:border-white/25 flex items-center gap-2">
                   <Mail size={16} />
-                  Contact Us
+                  <span>Contact Us</span>
               </Link>
             </div>
           </motion.div>

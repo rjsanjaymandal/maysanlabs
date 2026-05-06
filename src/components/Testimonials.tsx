@@ -5,6 +5,13 @@ import { Quote, Star, MessageSquareQuote } from "lucide-react";
 
 const testimonials = [
   {
+    name: "Vikram Singh",
+    role: "Founder, Maysan Shop (Client)",
+    message: "Maysan Labs built our entire e-commerce platform from scratch. The inventory management, order processing, and payment integration work flawlessly. Our sales increased 300% in the first quarter.",
+    metric: "300%",
+    metricLabel: "Sales increase",
+  },
+  {
     name: "Rahul Sharma",
     role: "CEO, TechRetail",
     message: "Maysan Labs delivered a scalable architecture that handled our Black Friday traffic without issues. Their code quality is exceptional.",
@@ -58,7 +65,7 @@ export default function Testimonials() {
           </motion.h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
