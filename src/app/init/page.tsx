@@ -141,10 +141,13 @@ export default function InitPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full mt-8 px-6 py-3.5 bg-gradient-to-r from-brand-primary to-[#60A5FA] rounded-full font-extrabold text-sm text-white shadow-lg hover:shadow-[0_0_30px_rgba(26,109,214,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 uppercase tracking-wider hover:brightness-110"
+                  className="group relative w-full mt-8 px-6 py-3.5 bg-[#1A6DD6] rounded-full font-bold text-xs uppercase tracking-widest text-white shadow-xl shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
                 >
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                  {!isSubmitting && <Send size={16} />}
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className="relative z-10">
+                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {!isSubmitting && <Send size={16} className="inline ml-2" />}
+                  </span>
                 </button>
               </motion.form>
             </div>
