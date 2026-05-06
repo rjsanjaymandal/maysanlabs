@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Mail, MapPin, Twitter, Linkedin, Send, Instagram } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Twitter, Linkedin, Send, Instagram, Facebook } from "lucide-react";
 
 const links = [
   { name: "Services", href: "/services" },
@@ -13,9 +13,10 @@ const links = [
 ];
 
 const socialLinks = [
+  { name: "Facebook", icon: Facebook, href: "https://www.facebook.com/maysanlabs" },
   { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/maysanlabs" },
   { name: "LinkedIn", icon: Linkedin, href: "https://in.linkedin.com/company/maysanlabs" },
-  { name: "Twitter", icon: Twitter, href: "https://twitter.com" },
+  { name: "Twitter", icon: Twitter, href: "https://x.com/maysanlabs" },
 ];
 
 export default function ContactFooter() {
