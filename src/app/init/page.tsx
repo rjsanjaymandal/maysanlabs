@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
-import { Send, CheckCircle, ArrowRight } from "lucide-react";
+import { Send, CheckCircle } from "lucide-react";
 import { sendEmail } from "@/app/actions/sendEmail";
 import { motion } from "framer-motion";
 
@@ -50,42 +50,38 @@ export default function InitPage() {
     <main className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden text-foreground">
       <Navbar />
       
-      {/* Background Decor */}
-      <div className="radial-blur -top-40 -left-40 opacity-10" />
-
-      <section className="sec-xl">
+      <section className="pt-32 pb-20">
         <div className="container-main">
           {!isSubmitted ? (
-            <div className="max-w-3xl mx-auto">
-              {/* Header */}
+            <div className="max-w-2xl mx-auto">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-center mb-16"
+                transition={{ duration: 0.6 }}
+                className="text-center mb-10"
               >
-                <span className="label-mono mb-8 block">Get in Touch</span>
-                <h1 className="heading-xl mb-12">
-                  Book a <span className="text-brand-primary italic">Call.</span>
+                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 text-white/60 text-xs font-medium mb-6">
+                  <Send size={12} />
+                  Get in Touch
+                </span>
+                <h1 className="heading-lg text-white mb-4">
+                  Start a <span className="text-brand-primary">project</span>
                 </h1>
-                <p className="text-body-dim max-w-xl mx-auto mt-6 text-xl font-medium leading-relaxed">
-                  Tell us about your project details and we will schedule a conversation to discuss the next steps.
+                <p className="text-white/45 text-base">
+                  Tell us about your project and we&apos;ll get back to you within 24 hours.
                 </p>
               </motion.div>
 
-              {/* Form */}
               <motion.form 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.1 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
                 onSubmit={handleSubmit} 
-                className="maysan-card border-brand-primary/10 bg-black/20 backdrop-blur-3xl p-10 md:p-16"
+                className="bg-white/[0.02] border border-white/5 rounded-xl p-8"
               >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                  <div className="md:col-span-2">
-                    <label className="label-mono !text-[9px] !mb-4">
-                      Your Name / Company *
-                    </label>
+                <div className="space-y-6">
+                  <div>
+                    <label className="text-white/60 text-sm mb-2 block">Name / Company *</label>
                     <input
                       type="text"
                       name="name"
@@ -93,50 +89,46 @@ export default function InitPage() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="John Doe / Acme Corp"
-                      className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-brand-primary/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10"
+                      className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:border-brand-primary/50 outline-none transition-all"
                     />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="text-white/60 text-sm mb-2 block">Email *</label>
+                      <input
+                        type="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="john@example.com"
+                        className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:border-brand-primary/50 outline-none transition-all"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="text-white/60 text-sm mb-2 block">Phone</label>
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+1 234 567 890"
+                        className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:border-brand-primary/50 outline-none transition-all"
+                      />
+                    </div>
                   </div>
 
                   <div>
-                    <label className="label-mono !text-[9px] !mb-4">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="john@example.com"
-                      className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-brand-primary/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="label-mono !text-[9px] !mb-4">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+1 234 567 890"
-                      className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-brand-primary/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10"
-                    />
-                  </div>
-
-                  <div className="md:col-span-2">
-                    <label className="label-mono !text-[9px] !mb-4">
-                      Project Details / Requirements
-                    </label>
+                    <label className="text-white/60 text-sm mb-2 block">Project Details</label>
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell us about what you're building..."
-                      rows={5}
-                      className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 text-white focus:border-brand-primary/50 outline-none transition-all duration-300 font-mono text-sm placeholder:text-white/10 resize-none"
+                      rows={4}
+                      className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:border-brand-primary/50 outline-none transition-all resize-none"
                     />
                   </div>
                 </div>
@@ -144,37 +136,31 @@ export default function InitPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="pill-btn pill-btn-primary w-full"
+                  className="w-full mt-8 px-6 py-3.5 bg-brand-primary rounded-full font-medium text-sm text-black hover:shadow-[0_0_20px_rgba(163,230,53,0.3)] transition-all duration-200 flex items-center justify-center gap-2"
                 >
-                  {isSubmitting ? (
-                    <>SENDING...</>
-                  ) : (
-                    <>
-                      SEND_MESSAGE <Send size={18} />
-                    </>
-                  )}
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {!isSubmitting && <Send size={16} />}
                 </button>
               </motion.form>
             </div>
           ) : (
-            /* Success State */
             <motion.div 
                initial={{ opacity: 0, scale: 0.9 }}
                animate={{ opacity: 1, scale: 1 }}
-               className="max-w-2xl mx-auto text-center"
+               className="max-w-md mx-auto text-center py-20"
             >
-              <div className="w-24 h-24 bg-brand-primary rounded-[2rem] flex items-center justify-center mx-auto mb-12 shadow-[0_0_40px_rgba(163,230,53,0.4)] glow-brand">
-                <CheckCircle size={48} className="text-black" />
+              <div className="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <CheckCircle size={32} className="text-black" />
               </div>
-              <h2 className="heading-xl mb-6">Message <br /><span className="text-brand-primary italic">Sent.</span></h2>
-              <p className="text-body-dim mb-16 text-xl font-medium max-w-md mx-auto">
-                We&apos;ve received your request. Our team will get back to you shortly to schedule your call.
+              <h2 className="heading-md text-white mb-4">Message Sent</h2>
+              <p className="text-white/45 mb-8">
+                We&apos;ve received your request. Our team will get back to you shortly.
               </p>
               <button
                 onClick={() => setIsSubmitted(false)}
-                className="pill-btn pill-btn-secondary mx-auto min-w-[280px]"
+                className="text-brand-primary text-sm hover:underline"
               >
-                Send Another Message <ArrowRight size={18} />
+                Send another message
               </button>
             </motion.div>
           )}

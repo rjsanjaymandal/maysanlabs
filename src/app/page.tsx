@@ -91,9 +91,9 @@ export default function Home() {
       <Hero />
       
       {/* Stats Section */}
-      <section className="py-12 bg-black/20 border-y border-white/5">
+      <section className="pt-8 pb-6 md:pt-12 md:pb-8 bg-black/20 border-y border-white/5">
         <div className="container-main">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
@@ -101,10 +101,10 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="text-center py-4"
+                className="text-center py-2 md:py-4"
               >
-                <p className="text-3xl md:text-4xl font-bold text-brand-primary mb-1">{stat.value}</p>
-                <p className="text-white/40 text-xs">{stat.label}</p>
+                <p className="text-2xl md:text-4xl font-bold text-brand-primary mb-0.5">{stat.value}</p>
+                <p className="text-white/40 text-[10px] md:text-xs">{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -112,13 +112,13 @@ export default function Home() {
       </section>
 
       {/* Trust Section */}
-      <section className="py-12 border-b border-white/5 bg-black/10">
-        <div className="container-main mb-8 text-center">
+      <section className="py-6 md:py-12 border-b border-white/5 bg-black/10">
+        <div className="container-main mb-3 md:mb-8 text-center">
            <span className="text-white/30 text-xs">Trusted by fast-growing companies</span>
         </div>
         <Marquee pauseOnHover className="[--duration:25s]">
           {trustLogos.map((logo) => (
-            <span key={logo} className="text-lg font-medium tracking-wide mx-10 opacity-30 hover:opacity-50 transition-opacity cursor-default text-white">
+            <span key={logo} className="text-base md:text-lg font-medium tracking-wide mx-8 md:mx-10 opacity-30 hover:opacity-50 transition-opacity cursor-default text-white">
               {logo}
             </span>
           ))}

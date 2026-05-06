@@ -28,15 +28,15 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/80 backdrop-blur-xl py-3 border-b border-white/5" : "bg-transparent py-5"
+      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+        scrolled ? "bg-background/90 backdrop-blur-xl py-2 md:py-3 border-b border-white/5" : "bg-transparent py-3 md:py-5"
       }`}>
         <div className="container-main flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-lg flex items-center justify-center relative z-10 overflow-hidden bg-white/5 border border-white/10">
-               <Image src="/logo.png" alt="Maysan Labs" width={24} height={24} className="object-cover" priority />
+          <Link href="/" className="flex items-center gap-2 md:gap-3 group">
+            <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg flex items-center justify-center relative z-10 overflow-hidden bg-white/5 border border-white/10">
+               <Image src="/logo.png" alt="Maysan Labs" width={20} height={20} className="object-cover md:w-6 md:h-6" priority />
             </div>
-            <span className="font-semibold text-white text-lg">Maysan Labs</span>
+            <span className="font-semibold text-white text-base md:text-lg">Maysan Labs</span>
           </Link>
 
           <div className="hidden lg:flex items-center gap-8">

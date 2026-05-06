@@ -29,16 +29,16 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="sec-xl relative bg-black/20">
+    <section className="py-16 md:py-20 relative bg-black/10">
       <div className="container-main">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10 md:mb-12">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-4"
+            className="mb-3"
           >
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-medium">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-medium">
               <Star size={12} />
               Testimonials
             </span>
@@ -50,11 +50,11 @@ export default function Testimonials() {
             transition={{ delay: 0.1 }}
             className="heading-md text-white"
           >
-            What our clients say
+            What clients say
           </motion.h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-5">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -62,37 +62,37 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative bg-white/[0.02] border border-white/5 rounded-xl p-6 hover:border-white/10 transition-all duration-300"
+              className="relative bg-white/[0.015] border border-white/[0.04] rounded-xl p-5 hover:border-white/[0.08] transition-all duration-300"
             >
-              <div className="absolute top-5 right-5 text-white/10">
-                <Quote size={28} />
+              <div className="absolute top-4 right-4 text-white/[0.08]">
+                <Quote size={24} />
               </div>
               
               <div className="relative z-10">
-                <div className="flex gap-1 mb-4">
+                <div className="flex gap-0.5 mb-3.5">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={12} className="text-brand-primary fill-brand-primary" />
+                    <Star key={i} size={10} className="text-brand-primary fill-brand-primary" />
                   ))}
                 </div>
                 
-                <p className="text-white/60 text-sm mb-6 leading-relaxed">
+                <p className="text-white/50 text-sm mb-4.5 leading-relaxed">
                   &ldquo;{testimonial.message}&rdquo;
                 </p>
 
-                <div className="flex items-center justify-between pt-4 border-t border-white/5">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center font-semibold text-white/70 text-sm">
+                <div className="flex items-center justify-between pt-3.5 border-t border-white/[0.04]">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 bg-white/[0.03] rounded-lg flex items-center justify-center font-medium text-white/60 text-sm">
                       {testimonial.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="text-white text-sm font-medium">{testimonial.name}</p>
-                      <p className="text-white/35 text-xs">{testimonial.role}</p>
+                      <p className="text-white text-xs font-medium">{testimonial.name}</p>
+                      <p className="text-white/30 text-[10px]">{testimonial.role}</p>
                     </div>
                   </div>
                   
                   <div className="text-right">
-                    <p className="text-brand-primary font-semibold text-lg">{testimonial.metric}</p>
-                    <p className="text-white/30 text-xs">{testimonial.metricLabel}</p>
+                    <p className="text-brand-primary font-medium text-base">{testimonial.metric}</p>
+                    <p className="text-white/25 text-[10px]">{testimonial.metricLabel}</p>
                   </div>
                 </div>
               </div>

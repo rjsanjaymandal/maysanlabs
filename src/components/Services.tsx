@@ -60,19 +60,19 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="sec-xl relative overflow-hidden bg-background">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/3 to-transparent" />
+    <section id="services" className="py-16 md:py-24 relative overflow-hidden bg-background">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/[0.02] to-transparent" />
       
       <div className="container-main relative">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 md:mb-16">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-4"
           >
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-medium">
-              <Zap size={12} className="text-brand-primary" />
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-medium">
+              <Zap size={12} />
               Services
             </span>
           </motion.div>
@@ -81,7 +81,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="heading-lg text-white mb-4"
+            className="heading-md text-white mb-3"
           >
             Build with <span className="text-brand-primary">confidence</span>
           </motion.h2>
@@ -90,40 +90,38 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-white/45 text-base max-w-xl mx-auto"
+            className="text-white/40 text-sm md:text-base max-w-lg mx-auto"
           >
-            End-to-end development services for building scalable, enterprise-grade software.
+            End-to-end development for building scalable, enterprise-grade software.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {services.map((service, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.08 }}
-              className="group relative bg-white/[0.02] border border-white/5 rounded-xl p-6 hover:border-white/10 hover:bg-white/[0.04] transition-all duration-300"
+              transition={{ delay: index * 0.06 }}
+              className="group relative bg-white/[0.015] border border-white/[0.04] rounded-xl p-5 hover:border-white/[0.08] hover:bg-white/[0.025] transition-all duration-300"
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-              
               <div className="relative z-10">
-                <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center text-white/70 mb-5 group-hover:bg-brand-primary/20 group-hover:text-brand-primary transition-all duration-300">
-                  <service.icon size={20} />
+                <div className="w-10 h-10 bg-white/[0.03] rounded-lg flex items-center justify-center text-white/50 mb-4 group-hover:bg-brand-primary/15 group-hover:text-brand-primary transition-all duration-300">
+                  <service.icon size={18} />
                 </div>
                 
-                <h3 className="text-lg font-semibold text-white mb-2">
+                <h3 className="text-base font-medium text-white mb-2">
                   {service.title}
                 </h3>
-                <p className="text-white/45 text-sm mb-4 leading-relaxed">
+                <p className="text-white/40 text-sm mb-3.5 leading-relaxed">
                   {service.desc}
                 </p>
                 
-                <ul className="space-y-1.5 mb-5">
+                <ul className="space-y-1 mb-4">
                   {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-white/35 text-xs">
-                      <div className="w-0.5 h-0.5 rounded-full bg-brand-primary" />
+                    <li key={i} className="flex items-center gap-2 text-white/30 text-xs">
+                      <div className="w-0.5 h-0.5 rounded-full bg-brand-primary/60" />
                       {feature}
                     </li>
                   ))}
@@ -131,9 +129,9 @@ export default function Services() {
                 
                 <Link 
                   href="/services" 
-                  className="inline-flex items-center gap-1.5 text-brand-primary text-xs font-medium group-hover:gap-2.5 transition-all"
+                  className="inline-flex items-center gap-1 text-brand-primary text-xs font-medium group-hover:gap-1.5 transition-all"
                 >
-                  Learn more <ArrowUpRight size={12} />
+                  Learn more <ArrowUpRight size={10} />
                 </Link>
               </div>
             </motion.div>

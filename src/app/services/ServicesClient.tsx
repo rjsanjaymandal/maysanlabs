@@ -3,54 +3,47 @@
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 import {
-  Store,
-  Cpu,
-  ShieldCheck,
-  TrendingUp,
-  Layout,
-  BarChart3,
-  ArrowUpRight
+  Code2,
+  Smartphone,
+  ShoppingCart,
+  Cloud,
+  Workflow,
+  Sparkles,
+  ArrowRight
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 const services = [
   {
-    title: "Web Engineering",
-    desc: "Fast, scalable websites that grow with you.",
-    icon: <Store size={24} />,
-    tag: "SCALE_V1"
+    title: "Web Development",
+    desc: "Fast, scalable websites built with modern frameworks that grow with your business.",
+    icon: Code2,
   },
   {
-    title: "App Development",
-    desc: "Mobile apps that work seamlessly everywhere.",
-    icon: <Cpu size={24} />,
-    tag: "CROSS_PLATFORM"
+    title: "Mobile Apps",
+    desc: "Cross-platform mobile applications that work seamlessly on iOS and Android.",
+    icon: Smartphone,
   },
   {
     title: "E-Commerce",
-    desc: "Online stores with automated order management.",
-    icon: <TrendingUp size={24} />,
-    tag: "RETAIL_STACK"
+    desc: "Online stores with automated order management, payments, and inventory.",
+    icon: ShoppingCart,
   },
   {
-    title: "Cloud Services",
-    desc: "Secure hosting that keeps your data safe.",
-    icon: <ShieldCheck size={24} />,
-    tag: "SECURE_INFRA"
+    title: "Cloud Infrastructure",
+    desc: "Secure, scalable hosting on AWS/Azure with enterprise-grade security.",
+    icon: Cloud,
   },
   {
     title: "Custom Software",
-    desc: "Built for your unique business needs.",
-    icon: <Layout size={24} />,
-    tag: "ENTERPRISE_ERP"
+    desc: "Tailored solutions built for your unique business requirements.",
+    icon: Workflow,
   },
   {
-    title: "AI Solutions",
-    desc: "Smart AI that follows your rules.",
-    icon: <BarChart3 size={24} />,
-    tag: "AI_MODELS"
+    title: "AI & Automation",
+    desc: "Smart automation and AI integration to streamline your operations.",
+    icon: Sparkles,
   },
 ];
 
@@ -59,71 +52,53 @@ export default function ServicesClient() {
     <main className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden">
       <Navbar />
       
-      {/* Background Decor */}
-      <div className="radial-blur -top-40 -left-20 opacity-10" />
-
-      {/* Hero Section */}
-      <section className="sec-xl relative overflow-hidden flex items-center min-h-[60vh]">
-        <div className="container-main relative z-10">
+      <section className="pt-32 pb-20 relative">
+        <div className="container-main">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-32"
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
           >
-            <span className="label-mono mb-8 block">Our Services</span>
-            <h1 className="heading-xl mt-8 mb-12">
-              Book a <span className="text-brand-primary italic">Call.</span>
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 text-white/60 text-xs font-medium mb-6">
+              Services
+            </span>
+            <h1 className="heading-lg text-white mb-6">
+              What we <span className="text-brand-primary">do</span>
             </h1>
-            <p className="text-body-dim max-w-2xl mx-auto mt-6 text-xl md:text-2xl font-medium leading-relaxed">
-              Software that connects your operations and scales with your business.
+            <p className="text-white/45 max-w-xl mx-auto text-base">
+              We build scalable, high-performance software solutions for enterprises and fast-growing startups.
             </p>
           </motion.div>
  
-          {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-32">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
             {services.map((service, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ 
-                  delay: index * 0.1, 
-                  duration: 0.8,
-                  ease: [0.16, 1, 0.3, 1] 
-                }}
-                className="maysan-card group flex flex-col justify-between"
+                transition={{ delay: index * 0.08 }}
+                className="group bg-white/[0.02] border border-white/5 rounded-xl p-6 hover:border-white/10 hover:bg-white/[0.04] transition-all duration-300"
               >
-                <div>
-                   <div className="w-14 h-14 bg-brand-primary/10 rounded-[var(--radius-md)] flex items-center justify-center mb-10 text-brand-primary border border-brand-primary/20 group-hover:bg-brand-primary group-hover:text-black transition-all duration-500 shadow-lg">
-                     {service.icon}
-                   </div>
-                   <label className="block label-mono mb-4 text-brand-primary/60">
-                      Protocol_{service.tag}
-                   </label>
-                   <h3 className="text-3xl font-black text-white mb-6 uppercase tracking-tighter group-hover:text-brand-primary transition-colors italic"> {service.title}</h3>
-                   <p className="text-body-dim text-sm leading-relaxed font-medium">{service.desc}</p>
+                <div className="w-11 h-11 bg-white/5 rounded-lg flex items-center justify-center text-white/60 mb-4 group-hover:bg-brand-primary/20 group-hover:text-brand-primary transition-all duration-200">
+                  <service.icon size={20} />
                 </div>
-                
-                <div className="mt-12 flex items-center justify-between border-t border-white/5 pt-8">
-                   <span className="font-mono text-[9px] tracking-[0.4em] uppercase text-white/20">{service.tag}</span>
-                   <ArrowUpRight size={14} className="text-brand-primary opacity-0 group-hover:opacity-100 transition-all font-black" />
-                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">{service.title}</h3>
+                <p className="text-white/45 text-sm leading-relaxed">{service.desc}</p>
               </motion.div>
             ))}
           </div>
  
-          {/* CTA */}
           <motion.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center py-20 border-t border-white/5"
+            className="text-center"
           >
-            <Link href="/init" className="pill-btn pill-btn-primary min-w-[280px] mx-auto group">
-              <span>Book a Strategy Call</span>
-              <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+            <Link href="/init" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary rounded-full font-medium text-sm text-black hover:shadow-[0_0_20px_rgba(163,230,53,0.3)] transition-all duration-200">
+              Start a Project
+              <ArrowRight size={16} />
             </Link>
           </motion.div>
         </div>
