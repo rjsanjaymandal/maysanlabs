@@ -1,5 +1,126 @@
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://maysanlabs.com";
 
+export const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${SITE_URL}/#business`,
+  name: "Maysan Labs",
+  image: `${SITE_URL}/logo.png`,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Sector 44",
+    addressLocality: "Gurgaon",
+    addressRegion: "Haryana",
+    postalCode: "122001",
+    addressCountry: "IN"
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "28.4647",
+    longitude: "77.0300"
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00"
+    }
+  ],
+  priceRange: "$$$",
+  telephone: "+919660641530",
+  email: "business@maysanlabs.com",
+  url: SITE_URL,
+  areaServed: {
+    "@type": "Place",
+    name: "Worldwide"
+  },
+  serviceType: ["SaaS Development", "Custom Software Development", "Web Development"]
+};
+
+export const productSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "Maysan Shop",
+    description: "Full-stack ecommerce solution with inventory, orders, payments, and customer management. Built for scale.",
+    brand: {
+      "@type": "Brand",
+      name: "Maysan Labs"
+    },
+    provider: {
+      "@type": "Organization",
+      name: "Maysan Labs",
+      url: SITE_URL
+    },
+    url: `${SITE_URL}/products`,
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "USD",
+      price: "5000",
+      availability: "https://schema.org/InStock"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "Edu-Maysan",
+    description: "Next-generation intelligence platform for educational institutions. Unifying finance, logistics, and academics.",
+    brand: {
+      "@type": "Brand",
+      name: "Maysan Labs"
+    },
+    provider: {
+      "@type": "Organization",
+      name: "Maysan Labs",
+      url: SITE_URL
+    },
+    url: `${SITE_URL}/products/edu-maysan`,
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "USD",
+      price: "8000",
+      availability: "https://schema.org/InStock"
+    }
+  }
+];
+
+export const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "AggregateRating",
+  itemReviewed: {
+    "@type": "Organization",
+    name: "Maysan Labs"
+  },
+  ratingValue: "4.9",
+  reviewCount: "50",
+  bestRating: "5",
+  worstRating: "1"
+};
+
+export const softwareAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Maysan Shop",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web Browser",
+  provider: {
+    "@type": "Organization",
+    name: "Maysan Labs",
+    url: SITE_URL
+  },
+  offers: {
+    "@type": "Offer",
+    price: "5000",
+    priceCurrency: "USD"
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "25"
+  }
+};
+
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",

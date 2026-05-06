@@ -8,6 +8,7 @@ import {
   organizationSchema,
   websiteSchema,
   getNavigationSchema,
+  localBusinessSchema,
 } from "@/lib/seo/schema";
 
 const interTight = Inter_Tight({
@@ -91,6 +92,7 @@ export const metadata: Metadata = {
     canonical: "https://maysanlabs.com",
     languages: {
       en: "https://maysanlabs.com",
+      ar: "https://maysanlabs.com/ar",
     },
   },
   category: "technology",
@@ -137,6 +139,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(getNavigationSchema()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessSchema),
           }}
         />
       </head>
