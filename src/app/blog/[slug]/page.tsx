@@ -5,6 +5,7 @@ import ContactFooter from "@/components/ContactFooter";
 import { Calendar, User, Clock, ArrowLeft, ArrowRight, Tag } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
+import { generateBlogPostSEO } from "@/lib/seo/helpers";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -18,10 +19,8 @@ export async function generateMetadata({
 
   if (!post) return { title: "Post Not Found" };
 
-  return {
-    title: `${post.title} | Maysan Labs Blog`,
-    description: post.excerpt,
-  };
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://maysanlabs.com";
+  return generateBlogPostSEO(post, siteUrl);
 }
 
 export async function generateStaticParams() {
