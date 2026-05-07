@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ProductsClient from "./ProductsClient";
+import { generateBreadcrumbSchema } from "@/lib/seo/helpers";
 
 export const metadata: Metadata = {
   title: "Products | Enterprise SaaS Solutions | Maysan Labs",
@@ -12,9 +13,30 @@ export const metadata: Metadata = {
     type: "website",
     images: [{ url: "/og-image.png", width: 1200, height: 630 }],
   },
-  alternates: { canonical: "https://maysanlabs.com/products" },
+  alternates: { 
+    canonical: "https://maysanlabs.com/products",
+    languages: {
+      en: "https://maysanlabs.com/products",
+      ar: "https://maysanlabs.com/ar/products",
+    },
+  },
 };
 
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: "/" },
+  { name: "Products", url: "/products" }
+]);
+
 export default function ProductsLandingPage() {
-  return <ProductsClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema),
+        }}
+      />
+      <ProductsClient />
+    </>
+  );
 }

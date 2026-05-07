@@ -350,7 +350,10 @@ export default {
   generateProductSEO,
   generateBaseSEO,
   generateJSONLDScripts,
-  generateFAQSchema
+  generateFAQSchema,
+  generateHowToSchema,
+  generateJobPostingSchema,
+  generateBreadcrumbSchema
 };
 
 /**
@@ -372,6 +375,82 @@ export function generateFAQSchema(faqs: FAQItem[], siteUrl: string = "https://ma
         "@type": "Answer",
         "text": faq.answer
       }
+    }))
+  };
+}
+
+/**
+ * Generate HowTo schema for services/process pages
+ */
+export interface HowToStep {
+  name: string;
+  text: string;
+}
+
+export function generateHowToSchema(title: string, steps: HowToStep[], siteUrl: string = "https://maysanlabs.com") {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": title,
+    "step": steps.map((step, index) => ({
+      "@type": "HowToStep",
+      "position": index + 1,
+      "name": step.name,
+      "text": step.text
+    }))
+  };
+}
+
+/**
+ * Generate JobPosting schema for careers page
+ */
+export interface JobDetails {
+  title: string;
+  description: string;
+  datePosted: string;
+  validThrough: string;
+  employmentType: string;
+  location: string;
+}
+
+export function generateJobPostingSchema(job: JobDetails, siteUrl: string = "https://maysanlabs.com") {
+  return {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": job.title,
+    "description": job.description,
+    "datePosted": job.datePosted,
+    "validThrough": job.validThrough,
+    "employmentType": job.employmentType,
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Maysan Labs",
+      "sameAs": siteUrl
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Gurgaon",
+        "addressRegion": "Haryana",
+        "addressCountry": "IN"
+      }
+    }
+  };
+}
+
+/**
+ * Generate BreadcrumbList schema
+ */
+export function generateBreadcrumbSchema(items: { name: string; url: string }[], siteUrl: string = "https://maysanlabs.com") {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": items.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": item.url.startsWith('http') ? item.url : `${siteUrl}${item.url}`
     }))
   };
 }
