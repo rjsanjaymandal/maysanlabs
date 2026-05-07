@@ -66,7 +66,7 @@ export default function ProductsClient() {
               Built Solutions
             </h1>
             <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8 max-w-2xl">
-              Ready-to-deploy products designed to solve real business problems. From education to healthcare, we've built platforms that scale.
+              Ready-to-deploy products designed to solve real business problems. From education to healthcare, we&apos;ve built platforms that scale.
             </p>
             <Link href="/init" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
               Start Your Project <ArrowUpRight size={16} />

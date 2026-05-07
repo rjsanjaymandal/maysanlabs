@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowLeft, CheckCircle, Briefcase, Code, Mail, Phone, Send } from "lucide-react";
 import { sendEmail } from "@/app/actions/sendEmail";
@@ -78,9 +79,9 @@ export default function MultiStepForm() {
         </div>
         <h3 className="text-2xl font-bold text-white mb-3">Thank You!</h3>
         <p className="text-white/50 mb-6">We&apos;ve received your request and will get back to you within 24 hours.</p>
-        <a href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] transition-all">
+        <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] transition-all">
           Back to Home
-        </a>
+        </Link>
       </motion.div>
     );
   }

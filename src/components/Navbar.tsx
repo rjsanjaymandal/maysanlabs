@@ -16,12 +16,20 @@ export default function Navbar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    setMounted(true);
+    // Use setTimeout to avoid calling setState synchronously
+    const timeout = setTimeout(() => {
+      setMounted(true);
+    }, 0);
+    
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   const navItems = [

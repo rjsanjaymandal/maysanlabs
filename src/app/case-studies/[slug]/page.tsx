@@ -81,7 +81,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             </h1>
             
             <p className="text-xl text-white/50 leading-relaxed border-l-4 border-brand-primary pl-6 py-2">
-              "{study.challenge}"
+              &ldquo;{study.challenge}&rdquo;
             </p>
           </div>
         </div>

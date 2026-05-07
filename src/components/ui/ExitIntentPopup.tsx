@@ -19,7 +19,12 @@ export default function ExitIntentPopup() {
     };
 
     const saved = localStorage.getItem("exitIntentShown");
-    if (saved) setHasShown(true);
+    if (saved) {
+      const timeout = setTimeout(() => {
+        setHasShown(true);
+      }, 0);
+      return () => clearTimeout(timeout);
+    }
 
     document.addEventListener("mouseleave", handleExitIntent);
     return () => document.removeEventListener("mouseleave", handleExitIntent);
