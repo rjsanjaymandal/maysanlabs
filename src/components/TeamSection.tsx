@@ -127,9 +127,9 @@ export default function TeamSection() {
         {/* Join Team CTA */}
         <div className="text-center mt-16">
           <p className="text-white/50 mb-6">Want to join our growing team?</p>
-          <a href="/careers" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] transition-all">
+          <Link href="/careers" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] transition-all">
             View Open Positions
-          </a>
+          </Link>
         </div>
       </div>
     </section>

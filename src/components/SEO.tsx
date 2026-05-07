@@ -16,8 +16,8 @@ import {
 import type { Metadata } from "next";
 
 interface SEOProps {
-  type: "page" | "blog" | "case-study" | "product";
-  data?: any;
+  type?: "page" | "blog" | "case-study" | "product";
+  data?: Record<string, unknown>;
   overrideTitle?: string;
   overrideDescription?: string;
 }
@@ -27,7 +27,7 @@ interface SEOProps {
  * based on the page type and data provided
  */
 export default function SEO({
-  type = "page",
+  type,
   data,
   overrideTitle,
   overrideDescription
@@ -64,21 +64,21 @@ export function generateSEOMetadata({
   switch (type) {
     case "blog":
       if (data) {
-        const blogSEO = generateBlogPostSEO(data, process.env.NEXT_PUBLIC_SITE_URL || "https://maysanlabs.com");
+        const blogSEO = generateBlogPostSEO(data as unknown as Parameters<typeof generateBlogPostSEO>[0], process.env.NEXT_PUBLIC_SITE_URL || "https://maysanlabs.com");
         metadata = { ...metadata, ...blogSEO };
       }
       break;
       
     case "case-study":
       if (data) {
-        const caseStudySEO = generateCaseStudySEO(data, process.env.NEXT_PUBLIC_SITE_URL || "https://maysanlabs.com");
+        const caseStudySEO = generateCaseStudySEO(data as unknown as Parameters<typeof generateCaseStudySEO>[0], process.env.NEXT_PUBLIC_SITE_URL || "https://maysanlabs.com");
         metadata = { ...metadata, ...caseStudySEO };
       }
       break;
       
     case "product":
       if (data) {
-        const productSEO = generateProductSEO(data, process.env.NEXT_PUBLIC_SITE_URL || "https://maysanlabs.com");
+        const productSEO = generateProductSEO(data as unknown as Parameters<typeof generateProductSEO>[0], process.env.NEXT_PUBLIC_SITE_URL || "https://maysanlabs.com");
         metadata = { ...metadata, ...productSEO };
       }
       break;
@@ -106,19 +106,19 @@ export function generateSEOJSONLD({
     localBusiness: localBusinessSchema
   };
   
-  let additionalData: Record<string, any> = {};
+  const additionalData: Record<string, unknown> = {};
   
   // Add type-specific schemas
   switch (type) {
     case "blog":
       if (data) {
-        additionalData.blogPost = generateBlogPostJSONLD(data, process.env.NEXT_PUBLIC_SITE_URL || "https://maysanlabs.com");
+        additionalData.blogPost = generateBlogPostJSONLD(data as unknown as Parameters<typeof generateBlogPostJSONLD>[0], process.env.NEXT_PUBLIC_SITE_URL || "https://maysanlabs.com");
       }
       break;
       
     case "case-study":
       if (data) {
-        additionalData.caseStudy = generateCaseStudyJSONLD(data, process.env.NEXT_PUBLIC_SITE_URL || "https://maysanlabs.com");
+        additionalData.caseStudy = generateCaseStudyJSONLD(data as unknown as Parameters<typeof generateCaseStudyJSONLD>[0], process.env.NEXT_PUBLIC_SITE_URL || "https://maysanlabs.com");
       }
       break;
       

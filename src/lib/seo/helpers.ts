@@ -306,9 +306,9 @@ export function generateJSONLDScripts(
     navigation: ReturnType<typeof getNavigationSchema>;
     localBusiness: typeof localBusinessSchema;
   },
-  additionalData?: Record<string, any>
-) {
-  const scripts = [
+  additionalData?: Record<string, unknown>
+): { type: string; content: object }[] {
+  const scripts: { type: string; content: object }[] = [
     {
       type: "application/ld+json",
       content: baseData.organization
@@ -330,10 +330,10 @@ export function generateJSONLDScripts(
   // Add additional schemas if provided
   if (additionalData) {
     Object.entries(additionalData).forEach(([key, value]) => {
-      if (value) {
+      if (value && typeof value === 'object') {
         scripts.push({
           type: "application/ld+json",
-          content: value
+          content: value as object
         });
       }
     });
