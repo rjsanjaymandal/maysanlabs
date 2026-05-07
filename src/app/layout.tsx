@@ -10,6 +10,34 @@ import {
   getNavigationSchema,
   localBusinessSchema,
 } from "@/lib/seo/schema";
+import { generateFAQSchema } from "@/lib/seo/helpers";
+
+const faqData = [
+  {
+    question: "What industries do you specialize in?",
+    answer: "We specialize in EdTech, E-commerce, Fintech, Healthcare, and Enterprise SaaS. Our team has deep expertise in building scalable platforms that handle millions of users with 99.99% uptime."
+  },
+  {
+    question: "How long does it take to build a custom software solution?",
+    answer: "Typical projects range from 8-16 weeks depending on complexity. We use agile methodology with bi-weekly sprints, so you'll see progress every 2 weeks and have regular opportunities to provide feedback."
+  },
+  {
+    question: "What is your development process?",
+    answer: "We follow a structured process: Discovery & Planning → Design & Architecture → Development → Testing & QA → Deployment → Ongoing Support. Each phase has clear deliverables and regular communication."
+  },
+  {
+    question: "Do you offer ongoing support and maintenance?",
+    answer: "Yes, we provide comprehensive post-launch support including bug fixes, security updates, performance optimization, and feature enhancements. We offer flexible maintenance packages tailored to your needs."
+  },
+  {
+    question: "What technologies do you use?",
+    answer: "We use modern technologies including Next.js, React, Node.js, TypeScript, PostgreSQL, MongoDB, AWS, and Docker. We select the best tech stack based on your specific requirements and scalability needs."
+  },
+  {
+    question: "How do you ensure code quality and security?",
+    answer: "We follow industry best practices including code reviews, automated testing, security audits, and compliance with OWASP guidelines. All our code is reviewed by senior developers and we use industry-standard security measures."
+  }
+];
 
 const interTight = Inter_Tight({
   variable: "--font-sans",
@@ -146,6 +174,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(localBusinessSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateFAQSchema(faqData)),
           }}
         />
       </head>

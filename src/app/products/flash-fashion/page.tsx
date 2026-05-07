@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import FlashFashionClient from "./FlashFashionClient";
+import { generateProductSEO } from "@/lib/seo/helpers";
 
-export const metadata: Metadata = {
-  title: "FlashFashion - Ecommerce Platform Built From Scratch",
-  description: "FlashFashion is a full-stack ecommerce platform built from scratch. Complete inventory management, order processing, payment integration, and customer CRM.",
+const productData = {
+  name: "Maysan Shop",
+  description: "Full-stack ecommerce solution with inventory, orders, payments, and customer management. Built for scale.",
+  price: 5000,
+  currency: "USD",
+  url: "https://maysanlabs.com/products/flash-fashion"
 };
+
+export const metadata: Metadata = generateProductSEO(productData, "https://maysanlabs.com");
 
 export default function FlashFashionPage() {
   return <FlashFashionClient />;

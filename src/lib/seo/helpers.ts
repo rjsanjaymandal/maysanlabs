@@ -223,12 +223,7 @@ export function generateProductSEO(product: ProductInfo, siteUrl: string): Metad
       title: product.name,
       description: product.description,
       url: product.url,
-      type: "product",
-      product: {
-        price: product.price,
-        priceCurrency: product.currency,
-        availability: "http://schema.org/InStock"
-      },
+      type: "website",
       images: [
         {
           url: `/og-image.png`,
@@ -354,5 +349,29 @@ export default {
   generateCaseStudyJSONLD,
   generateProductSEO,
   generateBaseSEO,
-  generateJSONLDScripts
+  generateJSONLDScripts,
+  generateFAQSchema
 };
+
+/**
+ * Generate FAQPage schema for SEO
+ */
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export function generateFAQSchema(faqs: FAQItem[], siteUrl: string = "https://maysanlabs.com") {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+}

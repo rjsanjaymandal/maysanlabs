@@ -5,6 +5,7 @@ import { ArrowLeft, CheckCircle2, Zap, Target, Cpu, ArrowRight } from "lucide-re
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import { generateCaseStudySEO } from "@/lib/seo/helpers";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -23,10 +24,21 @@ export async function generateMetadata({
   const study = caseStudies.find((s) => s.slug === slug);
   if (!study) return { title: "Case Study Not Found" };
 
-  return {
-    title: `${study.title} | Maysan Labs Case Study`,
-    description: study.challenge,
-  };
+  // Use automated SEO helper
+  return generateCaseStudySEO(
+    {
+      title: study.title,
+      slug: study.slug,
+      excerpt: study.challenge,
+      content: study.solution,
+      date: study.year,
+      client: study.client,
+      industry: study.category,
+      results: study.impact,
+      technologies: study.technologies
+    },
+    "https://maysanlabs.com"
+  );
 }
 
 export default async function CaseStudyDetailPage({ params }: PageProps) {
