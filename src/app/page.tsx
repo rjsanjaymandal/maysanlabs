@@ -30,6 +30,7 @@ const Testimonials = dynamic(() => import("@/components/Testimonials"), {
 const ContactFooter = dynamic(() => import("@/components/ContactFooter"));
 const Services = dynamic(() => import("@/components/Services"));
 const FAQ = dynamic(() => import("@/components/FAQ"));
+const TrustBadges = dynamic(() => import("@/components/TrustBadges"));
 
 const trustLogos = [
   "EduMaysan", "FlashFashion", "TechRetail", "StyleHub", "CloudFirst", "DataSync", "AppFlow", "NexTech", "ScaleUp"
@@ -176,6 +177,9 @@ export default function Home() {
 
       {/* FAQ Section */}
       <FAQ />
+
+      {/* Trust Badges */}
+      <TrustBadges />
 
       {/* Tech Stack Section */}
       <section className="py-12 border-t border-white/5 bg-black/5">

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 import FAQ from "@/components/FAQ";
+import MultiStepForm from "@/components/MultiStepForm";
 import { Send, CheckCircle } from "lucide-react";
 import { sendEmail } from "@/app/actions/sendEmail";
 import { motion } from "framer-motion";
@@ -57,7 +58,7 @@ export default function InitPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
         
         <div className="container-main relative">
-          {!isSubmitted ? (
+{!isSubmitted ? (
             <div className="max-w-2xl mx-auto">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -77,79 +78,7 @@ export default function InitPage() {
                 </p>
               </motion.div>
 
-              <motion.form 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                onSubmit={handleSubmit} 
-                className="bg-white/[0.02] border border-white/5 rounded-xl p-8"
-              >
-                <div className="space-y-6">
-                  <div>
-                    <label className="text-white/60 text-sm mb-2 block">Name / Company *</label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="John Doe / Acme Corp"
-                      className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-base focus:border-brand-primary/50 outline-none transition-all"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="text-white/60 text-sm mb-2 block">Email *</label>
-                      <input
-                        type="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="john@example.com"
-                        className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-base focus:border-brand-primary/50 outline-none transition-all"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="text-white/60 text-sm mb-2 block">Phone</label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+1 234 567 890"
-                        className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-base focus:border-brand-primary/50 outline-none transition-all"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="text-white/60 text-sm mb-2 block">Project Details</label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us about what you're building..."
-                      rows={4}
-                      className="w-full bg-black/20 border border-white/10 rounded-lg px-4 py-3 text-white text-base focus:border-brand-primary/50 outline-none transition-all resize-none"
-                    />
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="group relative w-full mt-8 px-6 py-3.5 bg-[#1A6DD6] rounded-full font-bold text-xs uppercase tracking-widest text-white shadow-xl shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <span className="relative z-10">
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                    {!isSubmitting && <Send size={16} className="inline ml-2" />}
-                  </span>
-                </button>
-              </motion.form>
+              <MultiStepForm />
             </div>
           ) : (
             <motion.div 

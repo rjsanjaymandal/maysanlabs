@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import Newsletter from "@/components/Newsletter";
 import ContactFooter from "@/components/ContactFooter";
 import BlogCard from "@/components/BlogCard";
 import PageHeader from "@/components/PageHeader";
@@ -52,18 +53,7 @@ export default function BlogListingPage() {
         </div>
       </section>
 
-      {/* Newsletter CTA */}
-      <section className="py-16 border-t border-white/5">
-        <div className="container-main">
-          <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">Stay updated with our latest insights</h2>
-            <p className="text-white/40 mb-8 max-w-xl mx-auto">Get the latest on enterprise software development, cloud architecture, and engineering best practices.</p>
-            <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
-              Talk to us
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Newsletter />
 
       <ContactFooter />
     </main>

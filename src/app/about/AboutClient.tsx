@@ -3,6 +3,7 @@
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 import PageHeader from "@/components/PageHeader";
+import TeamSection from "@/components/TeamSection";
 import { Cpu, Shield, Globe, Target, Zap, Users } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -101,6 +102,8 @@ export default function AboutClient() {
           </div>
         </div>
       </section>
+
+      <TeamSection />
 
       <ContactFooter />
     </main>

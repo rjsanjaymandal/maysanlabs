@@ -1,0 +1,100 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Shield, Award, Clock, Zap, CheckCircle } from "lucide-react";
+
+const badges = [
+  {
+    icon: Shield,
+    title: "SSL Secured",
+    description: "256-bit encryption for all data",
+    color: "from-green-500 to-emerald-600",
+  },
+  {
+    icon: Award,
+    title: "ISO 27001",
+    description: "Information security certified",
+    color: "from-blue-500 to-indigo-600",
+  },
+  {
+    icon: Clock,
+    title: "24/7 Support",
+    description: "Round-the-clock technical assistance",
+    color: "from-purple-500 to-violet-600",
+  },
+  {
+    icon: Zap,
+    title: "99.9% Uptime",
+    description: "Guaranteed service availability",
+    color: "from-orange-500 to-amber-600",
+  },
+];
+
+const stats = [
+  { value: "50+", label: "Enterprise Projects" },
+  { value: "99.9%", label: "Uptime SLA" },
+  { value: "24/7", label: "Support" },
+  { value: "100%", label: "Client Satisfaction" },
+];
+
+export default function TrustBadges() {
+  return (
+    <section className="py-16 border-t border-white/5 bg-black/20">
+      <div className="container-main">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
+            <CheckCircle size={12} />
+            Trusted & Certified
+          </span>
+          <h2 className="text-2xl md:text-3xl font-semibold text-white">
+            Why Businesses <span className="text-brand-primary">Trust Us</span>
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          {badges.map((badge, index) => (
+            <motion.div
+              key={badge.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-white/10 transition-all group"
+            >
+              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${badge.color} flex items-center justify-center mb-4 shadow-lg`}>
+                <badge.icon size={22} className="text-white" />
+              </div>
+              <h3 className="text-white font-semibold text-sm mb-1">{badge.title}</h3>
+              <p className="text-white/40 text-xs">{badge.description}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-white/5">
+          {stats.map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="text-center"
+            >
+              <div className="text-3xl md:text-4xl font-bold text-brand-primary mb-1">
+                {stat.value}
+              </div>
+              <div className="text-white/40 text-xs uppercase tracking-wider">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
