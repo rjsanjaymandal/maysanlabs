@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     siteName: "Maysan Labs",
     title: "Maysan Labs | Enterprise SaaS Development Company",
     description:
-      "Maysan Labs is a leading enterprise SaaS development company offering custom software development, cloud infrastructure services, and scalable web applications.",
+      "Maysan Labs is a leading enterprise SaaS development company offering custom software development, cloud infrastructure services, and scalable web applications. Trusted by global enterprises for MERN stack, React, and Node.js development.",
     images: [
       {
         url: "/og-image.png",
@@ -126,8 +126,8 @@ export const metadata: Metadata = {
   category: "technology",
   classification: "SaaS Development Company",
   icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-icon.png",
+    icon: "/logo.png",
+    apple: "/logo.png",
   },
   manifest: "/manifest.json",
 };
@@ -152,6 +152,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={cn("antialiased", interTight.variable, jetbrainsMono.variable)}>
       <head>
+        {/* Preconnect to external origins for faster loading */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        
+        {/* Defer non-critical scripts */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -7,9 +7,13 @@ import { ArrowRight, Mail, MapPin, Twitter, Linkedin, Send, Instagram, Facebook 
 
 const links = [
   { name: "Services", href: "/services" },
+  { name: "Products", href: "/products" },
   { name: "Case Studies", href: "/case-studies" },
   { name: "Blog", href: "/blog" },
   { name: "Careers", href: "/careers" },
+  { name: "About", href: "/about" },
+  { name: "Architecture", href: "/architecture" },
+  { name: "Insights", href: "/insights" },
 ];
 
 const socialLinks = [
@@ -71,9 +75,9 @@ export default function ContactFooter() {
                 </div>
                 <span className="font-semibold text-white text-lg">Maysan Labs</span>
               </Link>
-              <p className="text-white/40 text-sm mb-6 max-w-sm leading-relaxed">
-                Enterprise SaaS development studio building scalable applications for businesses that demand precision.
-              </p>
+<p className="text-white/70 text-sm mb-6 max-w-sm leading-relaxed">
+                 Enterprise SaaS development studio building scalable applications for businesses that demand precision.
+               </p>
               <div className="flex gap-3">
                 {socialLinks.map((social) => (
                   <a
@@ -91,13 +95,13 @@ export default function ContactFooter() {
             </div>
 
             <div>
-              <h4 className="text-xs font-semibold text-white/50 uppercase tracking-widest mb-5">Company</h4>
+              <h3 className="text-xs font-semibold text-white/70 uppercase tracking-widest mb-5">Company</h3>
               <div className="flex flex-col gap-3">
                 {links.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="text-white/40 hover:text-brand-primary text-sm transition-colors duration-200"
+                    className="text-white/70 hover:text-brand-primary text-sm transition-colors duration-200"
                   >
                     {link.name}
                   </Link>
@@ -106,7 +110,7 @@ export default function ContactFooter() {
             </div>
 
             <div>
-              <h4 className="text-xs font-semibold text-white/50 uppercase tracking-widest mb-5">Contact</h4>
+              <h3 className="text-xs font-semibold text-white/70 uppercase tracking-widest mb-5">Contact</h3>
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2.5 text-white/40 text-sm">
                   <MapPin size={14} className="text-brand-primary" />
@@ -120,12 +124,12 @@ export default function ContactFooter() {
           </div>
 
           <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/30 text-sm">
+            <p className="text-white/60 text-sm">
               © {new Date().getFullYear()} Maysan Labs. All rights reserved.
             </p>
             <div className="flex gap-8">
-              <a href="#" className="text-white/30 hover:text-white/50 text-sm transition-colors">Privacy Policy</a>
-              <a href="#" className="text-white/30 hover:text-white/50 text-sm transition-colors">Terms of Service</a>
+              <a href="#" className="text-white/60 hover:text-brand-primary text-sm transition-colors">Privacy Policy</a>
+              <a href="#" className="text-white/60 hover:text-brand-primary text-sm transition-colors">Terms of Service</a>
             </div>
           </div>
         </div>

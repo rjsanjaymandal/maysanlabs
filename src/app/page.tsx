@@ -116,7 +116,7 @@ export default function Home() {
       {/* Trust Section */}
       <section className="py-8 md:py-12 border-b border-white/5 bg-black/10">
         <div className="container-main mb-6 md:mb-8 text-center">
-           <span className="text-white/30 text-xs uppercase tracking-widest font-semibold">Trusted by fast-growing companies</span>
+           <span className="text-white/70 text-xs uppercase tracking-widest font-semibold">Trusted by fast-growing companies</span>
         </div>
         
         {/* Mobile Grid (2 per row) */}
@@ -184,7 +184,7 @@ export default function Home() {
       {/* Tech Stack Section */}
       <section className="py-12 border-t border-white/5 bg-black/5">
         <div className="container-main text-center">
-          <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.2em] mb-8">Our Tech Stack</p>
+          <p className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] mb-8">Our Tech Stack</p>
           <div className="flex flex-wrap justify-center gap-4 md:gap-8 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
             {["Next.js", "React", "Node.js", "TypeScript", "PostgreSQL", "AWS", "Docker", "Supabase"].map((tech) => (
               <span key={tech} className="text-white font-semibold text-sm md:text-base">{tech}</span>
