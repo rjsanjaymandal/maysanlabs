@@ -27,10 +27,10 @@ interface SEOProps {
  * based on the page type and data provided
  */
 export default function SEO({
-  type,
-  data,
-  overrideTitle,
-  overrideDescription
+  type: _type,
+  data: _data,
+  overrideTitle: _overrideTitle,
+  overrideDescription: _overrideDescription
 }: SEOProps) {
   // This component doesn't render anything visible
   // It's used for its side effects in generateMetadata in page components

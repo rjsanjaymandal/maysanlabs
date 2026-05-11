@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import CareersClient from "./CareersClient";
 import { generateJobPostingSchema } from "@/lib/seo/helpers";
-import { blogPosts } from "@/lib/blog-data";
 
 export const metadata: Metadata = {
   title: "Careers | Join Maysan Labs - Enterprise Software Development",

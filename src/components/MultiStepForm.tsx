@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, CheckCircle, Briefcase, Code, Mail, Phone, Send } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle, Briefcase, Code, Mail, Send } from "lucide-react";
 import { sendEmail } from "@/app/actions/sendEmail";
 
 const steps = [

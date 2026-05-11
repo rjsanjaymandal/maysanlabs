@@ -10,12 +10,55 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Blog | Enterprise SaaS Development Insights",
   description: "Read the latest insights on SaaS development, custom software, cloud infrastructure, and enterprise technology from Maysan Labs experts.",
+  openGraph: {
+    title: "Blog | Enterprise SaaS Development Insights",
+    description: "Read the latest insights on SaaS development and enterprise technology from Maysan Labs experts.",
+    url: "https://maysanlabs.com/blog",
+    type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Maysan Labs Blog" }],
+  },
+  alternates: { 
+    canonical: "https://maysanlabs.com/blog",
+    languages: {
+      en: "https://maysanlabs.com/blog",
+      ar: "https://maysanlabs.com/ar/blog",
+    },
+  },
+};
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "Maysan Labs Blog",
+  description: "Enterprise SaaS development insights, technical guides, and best practices from Maysan Labs experts",
+  url: "https://maysanlabs.com/blog",
+  publisher: {
+    "@type": "Organization",
+    name: "Maysan Labs",
+    url: "https://maysanlabs.com"
+  },
+  blogPost: blogPosts.slice(0, 6).map((post) => ({
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    url: `https://maysanlabs.com/blog/${post.slug}`,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      name: post.author
+    }
+  }))
 };
 
 export default function BlogListingPage() {
   return (
-    <main className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
-      <Navbar />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
+      <main className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
+        <Navbar />
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 relative">
@@ -56,5 +99,6 @@ export default function BlogListingPage() {
 
       <ContactFooter />
     </main>
+    </>
   );
 }

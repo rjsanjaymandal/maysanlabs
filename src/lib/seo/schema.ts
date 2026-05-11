@@ -275,7 +275,7 @@ export const cloudFAQs = [
   }
 ];
 
-export function generateFAQPageSchema(faqs: { question: string; answer: string }[], pageUrl: string) {
+export function generateFAQPageSchema(faqs: { question: string; answer: string }[], _pageUrl: string) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",

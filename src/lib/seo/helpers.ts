@@ -2,10 +2,7 @@ import {
   organizationSchema, 
   websiteSchema, 
   getNavigationSchema,
-  localBusinessSchema,
-  reviewSchema,
-  softwareAppSchema,
-  breadcrumbSchema
+  localBusinessSchema
 } from "./schema";
 import type { Metadata } from "next";
 
@@ -208,7 +205,7 @@ export function generateCaseStudyJSONLD(study: CaseStudy, siteUrl: string) {
 /**
  * Generate SEO metadata for product pages
  */
-export function generateProductSEO(product: ProductInfo, siteUrl: string): Metadata {
+export function generateProductSEO(product: ProductInfo, _siteUrl: string): Metadata {
   return {
     title: `${product.name} | Maysan Labs Products`,
     description: product.description,
@@ -329,7 +326,7 @@ export function generateJSONLDScripts(
 
   // Add additional schemas if provided
   if (additionalData) {
-    Object.entries(additionalData).forEach(([key, value]) => {
+    Object.entries(additionalData).forEach(([_key, value]) => {
       if (value && typeof value === 'object') {
         scripts.push({
           type: "application/ld+json",
@@ -342,7 +339,7 @@ export function generateJSONLDScripts(
   return scripts;
 }
 
-export default {
+const seoHelpers = {
   generateBlogPostSEO,
   generateBlogPostJSONLD,
   generateCaseStudySEO,
@@ -356,6 +353,8 @@ export default {
   generateBreadcrumbSchema
 };
 
+export default seoHelpers;
+
 /**
  * Generate FAQPage schema for SEO
  */
@@ -364,7 +363,7 @@ export interface FAQItem {
   answer: string;
 }
 
-export function generateFAQSchema(faqs: FAQItem[], siteUrl: string = "https://maysanlabs.com") {
+export function generateFAQSchema(faqs: FAQItem[], _siteUrl: string = "https://maysanlabs.com") {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -387,7 +386,7 @@ export interface HowToStep {
   text: string;
 }
 
-export function generateHowToSchema(title: string, steps: HowToStep[], siteUrl: string = "https://maysanlabs.com") {
+export function generateHowToSchema(title: string, steps: HowToStep[], _siteUrl: string = "https://maysanlabs.com") {
   return {
     "@context": "https://schema.org",
     "@type": "HowTo",

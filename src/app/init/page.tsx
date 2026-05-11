@@ -6,48 +6,10 @@ import ContactFooter from "@/components/ContactFooter";
 import FAQ from "@/components/FAQ";
 import MultiStepForm from "@/components/MultiStepForm";
 import { Send, CheckCircle } from "lucide-react";
-import { sendEmail } from "@/app/actions/sendEmail";
 import { motion } from "framer-motion";
 
 export default function InitPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.email) return;
-
-    setIsSubmitting(true);
-
-    const data = new FormData();
-    data.append("companyName", formData.name);
-    data.append("email", formData.email);
-    data.append("contact", formData.phone);
-    data.append("requirements", formData.message);
-
-    try {
-      const result = await sendEmail(data);
-      if (result.success) {
-        setIsSubmitted(true);
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
 
   return (
     <main className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden text-foreground">
