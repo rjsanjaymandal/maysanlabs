@@ -52,12 +52,17 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://maysanlabs.com"),
   title: {
-    default: "Maysan Labs | Enterprise SaaS Development Company",
+    default: "Maysan Labs | Enterprise SaaS Development Company | Gurgaon, India",
     template: "%s | Maysan Labs",
   },
   description:
-    "Maysan Labs is a leading enterprise SaaS development company offering custom software development, cloud infrastructure services, and scalable web applications. Trusted by global enterprises for MERN stack, React, and Node.js development.",
+    "Maysan Labs is a leading enterprise SaaS development company in Gurgaon, India. Expert developers building custom software, web applications, and cloud solutions. Trusted by enterprises for MERN stack, React, and Node.js development. Contact Maysan Labs for scalable digital solutions.",
   keywords: [
+    "Maysan Labs",
+    "maysanlabs",
+    "Maysan",
+    "Maysan Labs Gurgaon",
+    "Maysan Labs India",
     "SaaS development company",
     "custom software development company",
     "enterprise SaaS development",

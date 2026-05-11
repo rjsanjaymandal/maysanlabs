@@ -71,7 +71,7 @@ export default function ContactFooter() {
             <div className="md:col-span-2">
               <Link href="/" className="flex items-center gap-3 mb-5 group">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden bg-white/5">
-                   <Image src="/logo.png" alt="Maysan Labs" width={32} height={32} className="object-contain rounded-full" />
+                   <Image src="/logo.png" alt="Maysan Labs" width={40} height={40} className="object-contain" />
                 </div>
                 <span className="font-semibold text-white text-lg">Maysan Labs</span>
               </Link>

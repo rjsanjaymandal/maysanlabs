@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar";
 import Newsletter from "@/components/Newsletter";
 import ContactFooter from "@/components/ContactFooter";
 import BlogCard from "@/components/BlogCard";
-import PageHeader from "@/components/PageHeader";
 import { blogPosts } from "@/lib/blog-data";
 import { Metadata } from "next";
 import { BookOpen } from "lucide-react";

@@ -454,3 +454,80 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[],
     }))
   };
 }
+
+/**
+ * Generate Brand schema for Google rich results
+ */
+export function generateBrandSchema(siteUrl: string = "https://maysanlabs.com") {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Brand",
+    "name": "Maysan Labs",
+    "alternateName": "Maysan",
+    "description": "Maysan Labs is a leading enterprise SaaS development company in Gurgaon, India, specializing in custom software, web applications, and cloud solutions.",
+    "url": siteUrl,
+    "logo": `${siteUrl}/logo.png`,
+    "sameAs": [
+      "https://www.facebook.com/maysanlabs",
+      "https://www.instagram.com/maysanlabs",
+      "https://in.linkedin.com/company/maysanlabs",
+      "https://x.com/maysanlabs"
+    ],
+    "areaServed": {
+      "@type": "Place",
+      "name": "Gurgaon, Haryana, India"
+    },
+    "serviceType": [
+      "SaaS Development",
+      "Custom Software Development",
+      "Web Application Development",
+      "Cloud Infrastructure",
+      "Mobile App Development"
+    ]
+  };
+}
+
+/**
+ * Generate local SEO with proper NAP (Name, Address, Phone)
+ */
+export function generateLocalSeoSchema(siteUrl: string = "https://maysanlabs.com") {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareDevelopment",
+    "name": "Maysan Labs",
+    "description": "Maysan Labs - Expert software development company in Gurgaon, India. Building scalable web applications, SaaS products, and enterprise solutions.",
+    "url": siteUrl,
+    "telephone": "+919660641530",
+    "email": "business@maysanlabs.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sector 44",
+      "addressLocality": "Gurgaon",
+      "addressRegion": "Haryana",
+      "postalCode": "122001",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "28.4647",
+      "longitude": "77.0300"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "priceRange": "$$$",
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "serviceType": [
+      "Software Development",
+      "Web Development",
+      "SaaS Development",
+      "Cloud Solutions"
+    ]
+  };
+}

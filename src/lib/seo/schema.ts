@@ -125,9 +125,10 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Maysan Labs",
+  "alternateName": "Maysan",
   "url": SITE_URL,
   "logo": `${SITE_URL}/logo.png`,
-  "description": "Maysan Labs is a leading enterprise SaaS development company offering custom software development, cloud infrastructure services, and scalable web applications using MERN stack, React, and Node.js.",
+  "description": "Maysan Labs is a leading enterprise SaaS development company in Gurgaon, India. Expert developers building custom software, web applications, and cloud solutions using MERN stack, React, and Node.js. Trusted by enterprises worldwide for scalable digital transformation.",
   "foundingDate": "2020",
   "numberOfEmployees": {
     "@type": "QuantitativeValue",
@@ -135,7 +136,7 @@ export const organizationSchema = {
     "maxValue": 50
   },
   "areaServed": "Worldwide",
-  "serviceType": ["SaaS Development", "Custom Software Development", "Cloud Infrastructure", "Web Application Development"],
+  "serviceType": ["SaaS Development", "Custom Software Development", "Cloud Infrastructure", "Web Application Development", "Enterprise Software", "Mobile App Development"],
   "priceRange": "$$$",
   "telephone": process.env.NEXT_PUBLIC_CONTACT_PHONE || "+919660641530",
   "contactPoint": {
@@ -146,6 +147,7 @@ export const organizationSchema = {
   },
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Sector 44",
     "addressLocality": process.env.NEXT_PUBLIC_ADDRESS_LOCALITY || "Gurgaon",
     "addressRegion": process.env.NEXT_PUBLIC_ADDRESS_REGION || "Haryana",
     "postalCode": process.env.NEXT_PUBLIC_ADDRESS_POSTAL_CODE || "122001",
@@ -158,9 +160,9 @@ export const organizationSchema = {
     "https://x.com/maysanlabs"
   ],
   "potentialAction": {
-    "@type": "ContactAction",
-    "name": "Contact Maysan Labs",
-    "target": `${SITE_URL}/init`
+    "@type": "SearchAction",
+    "target": `${SITE_URL}/?s={search_term_string}`,
+    "query-input": "required name=search_term_string"
   }
 };
 
@@ -209,5 +211,163 @@ export function getNavigationSchema() {
       name: item.name,
       url: item.url,
     })),
+  };
+}
+
+export const serviceFAQs = [
+  {
+    question: "What services does Maysan Labs offer?",
+    answer: "Maysan Labs offers enterprise SaaS development, custom software development, web application development, cloud infrastructure services, API development, mobile app development, and digital transformation consulting."
+  },
+  {
+    question: "How long does it take to develop a custom software solution?",
+    answer: "Development timelines vary based on complexity. A simple web application typically takes 2-3 months, while enterprise-grade solutions with advanced features can take 6-12 months. Maysan Labs provides detailed project timelines after the discovery phase."
+  },
+  {
+    question: "What technologies does Maysan Labs specialize in?",
+    answer: "Maysan Labs specializes in MERN stack (MongoDB, Express, React, Node.js), React, Next.js, TypeScript, Python, Django, PostgreSQL, MongoDB, AWS, Docker, and Kubernetes for scalable cloud solutions."
+  },
+  {
+    question: "Does Maysan Labs provide post-launch support?",
+    answer: "Yes, Maysan Labs offers comprehensive post-launch support including bug fixes, security updates, performance optimization, and feature enhancements. We offer flexible maintenance packages tailored to client needs."
+  },
+  {
+    question: "Can Maysan Labs work with existing codebases?",
+    answer: "Absolutely. Maysan Labs has experience migrating legacy systems, refactoring codebases, and integrating new features into existing applications while maintaining backward compatibility."
+  }
+];
+
+export const softwareDevFAQs = [
+  {
+    question: "Why choose Maysan Labs for software development?",
+    answer: "Maysan Labs is a leading software development company in Gurgaon, India with expertise in enterprise solutions. We deliver scalable, secure, and high-performance applications using modern technologies like React, Node.js, and cloud-native architectures."
+  },
+  {
+    question: "What is the software development process at Maysan Labs?",
+    answer: "Maysan Labs follows a structured process: Discovery & Planning → Design & Architecture → Development → Testing & QA → Deployment → Ongoing Support. Each phase has clear deliverables and regular communication."
+  },
+  {
+    question: "How does Maysan Labs ensure code quality?",
+    answer: "Maysan Labs follows industry best practices including code reviews, automated testing, security audits, and compliance with OWASP guidelines. All code is reviewed by senior developers."
+  },
+  {
+    question: "What industries does Maysan Labs serve?",
+    answer: "Maysan Labs serves EdTech, FinTech, Healthcare, E-commerce, Manufacturing, Retail, and Enterprise sectors with custom software solutions tailored to industry-specific requirements."
+  },
+  {
+    question: "How much does custom software development cost?",
+    answer: "Costs vary based on project scope, complexity, and timeline. Maysan Labs offers competitive pricing with flexible engagement models - from fixed-price projects to time-and-materials. Contact us for a detailed quote."
+  }
+];
+
+export const cloudFAQs = [
+  {
+    question: "What cloud services does Maysan Labs offer?",
+    answer: "Maysan Labs offers cloud infrastructure setup, AWS/Azure/GCP migration, containerization with Docker/Kubernetes, serverless architecture, cloud cost optimization, and 24/7 cloud monitoring."
+  },
+  {
+    question: "Can Maysan Labs help migrate to cloud?",
+    answer: "Yes, Maysan Labs provides end-to-end cloud migration services including assessment, planning, migration, and optimization. We specialize in AWS, Azure, and GCP with proven migration methodologies."
+  },
+  {
+    question: "Does Maysan Labs provide DevOps services?",
+    answer: "Yes, Maysan Labs offers DevOps consulting and implementation including CI/CD pipelines, infrastructure as code (Terraform), container orchestration, and automated deployment workflows."
+  }
+];
+
+export function generateFAQPageSchema(faqs: { question: string; answer: string }[], pageUrl: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+}
+
+export const howToContactSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Get Started with Maysan Labs",
+  "description": "A step-by-step guide to start your project with Maysan Labs, the leading software development company in Gurgaon, India.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Describe Your Project",
+      "text": "Tell us about your project requirements, goals, and timeline. Maysan Labs team will understand your vision and technical needs.",
+      "url": `${SITE_URL}/init`
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Get a Consultation",
+      "text": "Schedule a free consultation with our experts. We'll discuss your requirements and provide expert guidance on the best approach.",
+      "url": `${SITE_URL}/init`
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Receive a Proposal",
+      "text": "Get a detailed project proposal with timeline, technology recommendations, and competitive pricing from Maysan Labs.",
+      "url": `${SITE_URL}/init`
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Start Development",
+      "text": "Once approved, Maysan Labs begins the development process with regular updates, agile methodology, and quality assurance.",
+      "url": `${SITE_URL}/init`
+    }
+  ],
+  "totalTime": "P2W"
+};
+
+export const howToHireSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Hire Developers from Maysan Labs",
+  "description": "Learn how to hire expert developers from Maysan Labs, a top software development company in India.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Browse Open Positions",
+      "text": "Explore career opportunities at Maysan Labs and find roles that match your skills.",
+      "url": `${SITE_URL}/careers`
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Submit Your Application",
+      "text": "Apply online with your resume and portfolio. Maysan Labs looks for skilled developers in React, Node.js, and cloud technologies.",
+      "url": `${SITE_URL}/careers`
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Technical Interview",
+      "text": "Complete a technical interview where you'll demonstrate your coding skills and problem-solving abilities.",
+      "url": `${SITE_URL}/careers`
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Join Maysan Labs",
+      "text": "If selected, you'll join a dynamic team working on cutting-edge enterprise projects.",
+      "url": `${SITE_URL}/careers`
+    }
+  ],
+  "totalTime": "P1M"
+};
+
+export function generateHowToSchema(title: string, steps: { name: string; text: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": title,
+    "step": steps.map((step, index) => ({
+      "@type": "HowToStep",
+      "position": index + 1,
+      "name": step.name,
+      "text": step.text
+    }))
   };
 }

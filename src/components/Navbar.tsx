@@ -47,9 +47,7 @@ export default function Navbar() {
       }`}>
         <div className="container-main flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2.5 md:gap-3 group">
-            <div className="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center relative z-10 overflow-hidden bg-white/5">
-               <Image src="/logo.png" alt="Maysan Labs" width={28} height={28} className="object-contain rounded-full" priority />
-            </div>
+            <Image src="/logo.png" alt="Maysan Labs" width={44} height={44} className="object-contain rounded-full" priority />
             <span className="font-semibold text-white text-base md:text-lg">Maysan Labs</span>
           </Link>
 

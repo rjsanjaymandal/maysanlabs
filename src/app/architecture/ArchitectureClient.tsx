@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Shield, Globe, Cpu, Zap, ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 import Link from "next/link";

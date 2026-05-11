@@ -7,17 +7,30 @@ const BASE_URL = 'https://maysanlabs.com'
 // Pages that should be excluded from the sitemap
 const EXCLUDED_ROUTES = new Set(['/_not-found', '/global-error', '/error', '/init', '/careers/apply'])
 
-// Priority and frequency overrides for specific routes
+const CASE_STUDIES = [
+  'flash-fashion-ecommerce',
+  'retail-modular-erp',
+  'fintech-connectivity-bridge',
+  'custom-manufacturing-intelligence'
+]
+
+const PRODUCTS = [
+  'flash-fashion',
+  'edu-maysan'
+]
+
 const ROUTE_CONFIG: Record<string, { priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }> = {
   '/':             { priority: 1.0, changeFrequency: 'weekly' },
   '/services':     { priority: 0.9, changeFrequency: 'weekly' },
   '/about':        { priority: 0.8, changeFrequency: 'monthly' },
   '/architecture': { priority: 0.7, changeFrequency: 'monthly' },
-  '/blog':        { priority: 0.8, changeFrequency: 'daily' },
-  '/insights':    { priority: 0.7, changeFrequency: 'weekly' },
-  '/case-studies':{ priority: 0.8, changeFrequency: 'weekly' },
-  '/careers':     { priority: 0.6, changeFrequency: 'weekly' },
-  '/products/edu-maysan': { priority: 0.7, changeFrequency: 'monthly' },
+  '/blog':         { priority: 0.8, changeFrequency: 'daily' },
+  '/insights':     { priority: 0.7, changeFrequency: 'weekly' },
+  '/case-studies': { priority: 0.9, changeFrequency: 'weekly' },
+  '/careers':      { priority: 0.7, changeFrequency: 'weekly' },
+  '/products':     { priority: 0.9, changeFrequency: 'weekly' },
+  '/products/edu-maysan': { priority: 0.8, changeFrequency: 'monthly' },
+  '/products/flash-fashion': { priority: 0.8, changeFrequency: 'monthly' },
 }
 
 const DEFAULT_CONFIG = { priority: 0.6, changeFrequency: 'monthly' as const }
@@ -94,9 +107,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   })
 
-  // Add career routes (though careers/page.tsx is already discovered, 
-  // we could add detail pages if they existed, but for now just the main careers page is enough)
-  
+  // Add case study routes
+  CASE_STUDIES.forEach(slug => {
+    routes.push({
+      url: `${BASE_URL}/case-studies/${slug}`,
+      lastModified: new Date('2024-01-15'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    })
+  })
+
+  // Add product routes
+  PRODUCTS.forEach(slug => {
+    routes.push({
+      url: `${BASE_URL}/products/${slug}`,
+      lastModified: new Date('2024-01-15'),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    })
+  })
+
   // Sort by priority descending for cleaner output
   routes.sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0))
 
