@@ -36,12 +36,8 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-16 md:py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/5 to-transparent" />
-      <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-brand-primary/8 blur-[80px] rounded-full pointer-events-none" />
-      
-      <div className="container-main relative">
+    <section className="py-16 md:py-20 relative bg-black/10">
+      <div className="container-main">
         <div className="text-center mb-10 md:mb-12">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -49,7 +45,7 @@ export default function Testimonials() {
             viewport={{ once: true }}
             className="mb-3"
           >
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-medium">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-medium">
               <Star size={12} />
               Testimonials
             </span>
@@ -65,7 +61,7 @@ export default function Testimonials() {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-5">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -73,9 +69,9 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative bg-white/[0.015] border border-white/[0.04] rounded-xl p-5 hover:border-white/[0.08] transition-all duration-300"
+              className="relative bg-white/[0.02] border border-white/[0.06] rounded-xl p-5 hover:border-brand-primary/20 transition-all duration-300"
             >
-              <div className="absolute top-4 right-4 text-white/[0.08]">
+              <div className="absolute top-4 right-4 text-brand-primary/[0.1]">
                 <Quote size={24} />
               </div>
               
@@ -86,24 +82,24 @@ export default function Testimonials() {
                   ))}
                 </div>
                 
-                <p className="text-white/50 text-sm mb-4.5 leading-relaxed">
+                <p className="text-white/60 text-sm mb-4.5 leading-relaxed">
                   &ldquo;{testimonial.message}&rdquo;
                 </p>
 
-                <div className="flex items-center justify-between pt-3.5 border-t border-white/[0.04]">
+                <div className="flex items-center justify-between pt-3.5 border-t border-white/[0.06]">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 bg-white/[0.03] rounded-lg flex items-center justify-center font-medium text-white/60 text-sm">
+                    <div className="w-8 h-8 bg-brand-primary/10 rounded-lg flex items-center justify-center font-medium text-brand-primary text-sm">
                       {testimonial.name.charAt(0)}
                     </div>
                     <div>
                       <p className="text-white text-xs font-medium">{testimonial.name}</p>
-                      <p className="text-white/30 text-[10px]">{testimonial.role}</p>
+                      <p className="text-white/40 text-[10px]">{testimonial.role}</p>
                     </div>
                   </div>
                   
                   <div className="text-right">
                     <p className="text-brand-primary font-medium text-base">{testimonial.metric}</p>
-                    <p className="text-white/25 text-[10px]">{testimonial.metricLabel}</p>
+                    <p className="text-white/35 text-[10px]">{testimonial.metricLabel}</p>
                   </div>
                 </div>
               </div>

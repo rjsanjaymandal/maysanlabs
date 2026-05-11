@@ -22,7 +22,7 @@ export default function Hero() {
           maxSize={1.2}
           particleDensity={80}
           className="w-full h-full"
-          particleColor="#A3E635"
+          particleColor="#3B82F6"
         />
       </div>
       

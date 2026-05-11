@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useSyncExternalStore } from "react";
 
 interface Point {
   x: number;
@@ -6,15 +6,18 @@ interface Point {
   z: number;
 }
 
+function useHydrated() {
+  return useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
+}
+
 export default function HolographicGlobe() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsMounted(true);
-  }, []);
+  const isMounted = useHydrated();
 
   useEffect(() => {
     if (!isMounted || !canvasRef.current || !containerRef.current) return;
@@ -37,13 +40,11 @@ export default function HolographicGlobe() {
     setCanvasSize();
     window.addEventListener("resize", setCanvasSize);
 
-    // Dynamic density based on performance profile (simplified for device type)
     const isMobile = width < 768;
     const latLines = isMobile ? 12 : 18;
     const lonLines = isMobile ? 16 : 24;
     const radius = Math.min(width, height) * (isMobile ? 0.25 : 0.3);
 
-    // Pre-generate technical wireframe points
     const points: Point[] = [];
     for (let i = 0; i <= latLines; i++) {
         const lat = (Math.PI * i) / latLines;
@@ -57,12 +58,10 @@ export default function HolographicGlobe() {
     }
 
     const project = (p: Point, rotY: number, rotX: number) => {
-        // Rotate around Y axis
         const x = p.x * Math.cos(rotY) - p.z * Math.sin(rotY);
         const z = p.x * Math.sin(rotY) + p.z * Math.cos(rotY);
         const y = p.y;
 
-        // Rotate around X axis
         const yFinal = y * Math.cos(rotX) - z * Math.sin(rotX);
         const zFinal = y * Math.sin(rotX) + z * Math.cos(rotX);
 
@@ -97,51 +96,16 @@ export default function HolographicGlobe() {
       const finalRotY = targetRotationY + (mouseX * 0.2);
       const finalRotX = targetRotationX + (mouseY * 0.1);
 
-      ctx.strokeStyle = "rgba(163, 230, 53, 0.12)";
-      ctx.lineWidth = 0.5;
-
-      // Draw Latitudinal Rings
-      for (let i = 0; i <= latLines; i++) {
-          ctx.beginPath();
-          for (let j = 0; j <= lonLines; j++) {
-              const p = points[i * (lonLines + 1) + j];
-              const proj = project(p, finalRotY, finalRotX);
-              if (j === 0) ctx.moveTo(proj.x, proj.y);
-              else ctx.lineTo(proj.x, proj.y);
-          }
-          ctx.stroke();
-      }
-
-      // Draw Longitudinal Rings
-      for (let j = 0; j <= lonLines; j++) {
-          ctx.beginPath();
-          for (let i = 0; i <= latLines; i++) {
-              const p = points[i * (lonLines + 1) + j];
-              const proj = project(p, finalRotY, finalRotX);
-              if (i === 0) ctx.moveTo(proj.x, proj.y);
-              else ctx.lineTo(proj.x, proj.y);
-          }
-          ctx.stroke();
-      }
-
-      // Draw Tech Nodes at intersections
-      const nodeStep = isMobile ? 18 : 12; // Fewer nodes on mobile
-      points.forEach((p, idx) => {
-          if (idx % nodeStep === 0) {
-              const proj = project(p, finalRotY, finalRotX);
-              if (proj.z < 0) { 
-                  const opacity = 0.5 * proj.scale;
-                  ctx.fillStyle = `rgba(163, 230, 53, ${opacity})`;
-                  ctx.fillRect(proj.x - 0.75, proj.y - 0.75, 1.5, 1.5);
-                  
-                  if (idx % (nodeStep * 4) === 0) {
-                      ctx.shadowBlur = 15;
-                      ctx.shadowColor = "rgba(163, 230, 53, 0.6)";
-                      ctx.fillRect(proj.x - 1, proj.y - 1, 2, 2);
-                      ctx.shadowBlur = 0;
-                  }
-              }
-          }
+      points.forEach((p) => {
+        const proj = project(p, finalRotY, finalRotX);
+        if (proj.scale > 0) {
+          const opacity = proj.scale * 0.5;
+          ctx.strokeStyle = `rgba(59, 130, 246, ${opacity * 0.3})`;
+          ctx.fillStyle = `rgba(59, 130, 246, ${opacity})`;
+          ctx.shadowColor = "rgba(59, 130, 246, 0.6)";
+          ctx.fillRect(proj.x - 1, proj.y - 1, 2, 2);
+          ctx.shadowBlur = 0;
+        }
       });
 
       rafId = requestAnimationFrame(animate);

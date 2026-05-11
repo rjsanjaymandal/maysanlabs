@@ -34,10 +34,10 @@ export function HoverBorderGradient({
 
   const movingBackgroundPath = (direction: string) => {
     const paths: { [key: string]: string } = {
-      TOP: "radial-gradient(20% 50% at 50% 0%, var(--brand-primary) 0%, rgba(163, 230, 53, 0) 100%)",
-      LEFT: "radial-gradient(20% 50% at 0% 50%, var(--brand-primary) 0%, rgba(163, 230, 53, 0) 100%)",
-      BOTTOM: "radial-gradient(20% 50% at 50% 100%, var(--brand-primary) 0%, rgba(163, 230, 53, 0) 100%)",
-      RIGHT: "radial-gradient(20% 50% at 100% 50%, var(--brand-primary) 0%, rgba(163, 230, 53, 0) 100%)",
+      TOP: "radial-gradient(20% 50% at 50% 0%, var(--brand-primary) 0%, rgba(59, 130, 246, 0) 100%)",
+      LEFT: "radial-gradient(20% 50% at 0% 50%, var(--brand-primary) 0%, rgba(59, 130, 246, 0) 100%)",
+      BOTTOM: "radial-gradient(20% 50% at 50% 100%, var(--brand-primary) 0%, rgba(59, 130, 246, 0) 100%)",
+      RIGHT: "radial-gradient(20% 50% at 100% 50%, var(--brand-primary) 0%, rgba(59, 130, 246, 0) 100%)",
     };
     return paths[direction];
   };
@@ -82,7 +82,7 @@ export function HoverBorderGradient({
         initial={{ background: movingBackgroundPath(direction) }}
         animate={{
           background: hovered
-            ? [movingBackgroundPath(direction), "radial-gradient(50% 50% at 50% 50%, var(--brand-primary) 0%, rgba(163, 230, 53, 0) 100%)"]
+            ? [movingBackgroundPath(direction), "radial-gradient(50% 50% at 50% 50%, var(--brand-primary) 0%, rgba(59, 130, 246, 0) 100%)"]
             : movingBackgroundPath(direction),
         }}
         transition={{ ease: "linear", duration: duration ?? 1 }}

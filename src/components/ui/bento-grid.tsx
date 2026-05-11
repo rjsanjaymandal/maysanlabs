@@ -71,7 +71,7 @@ const BentoCard = ({
           background: useMotionTemplate`
             radial-gradient(
               400px circle at ${mouseX}px ${mouseY}px,
-              rgba(163, 230, 53, 0.08),
+              rgba(59, 130, 246, 0.1),
               transparent 80%
             )
           `,

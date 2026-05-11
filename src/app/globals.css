@@ -141,8 +141,8 @@
   }
   .label-system {
     @apply text-[9px] font-bold uppercase tracking-[0.1em] px-2 py-1 rounded;
-    color: rgba(163, 230, 53, 0.9);
-    background: rgba(163, 230, 53, 0.1);
+    color: rgba(59, 130, 246, 0.9);
+    background: rgba(59, 130, 246, 0.1);
   }
   .badge {
     @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md;
@@ -302,21 +302,21 @@ html, body {
     background-image: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 100%);
   }
 
-  /* ─── Glow Effects ─── */
+/* ─── Glow Effects ─── */
   .glow-sm {
-    box-shadow: 0 0 20px rgba(163, 230, 53, 0.15);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
   }
   
   .glow-md {
-    box-shadow: 0 0 40px rgba(163, 230, 53, 0.25);
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.25);
   }
   
   .glow-lg {
-    box-shadow: 0 0 60px rgba(163, 230, 53, 0.35);
+    box-shadow: 0 0 60px rgba(59, 130, 246, 0.35);
   }
   
   .glow-primary {
-    box-shadow: 0 0 40px rgba(163, 230, 53, 0.4);
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
   }
 
   /* ─── Interactive States ─── */
@@ -498,11 +498,11 @@ html, body {
 
 /* Glow effects */
 .glow-primary {
-  box-shadow: 0 0 40px rgba(163, 230, 53, 0.4);
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
 }
 
 .glow-primary-subtle {
-  box-shadow: 0 0 20px rgba(163, 230, 53, 0.2);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
 }
 
 /* ─── Theme Background Patterns ─── */

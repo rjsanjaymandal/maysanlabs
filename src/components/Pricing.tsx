@@ -90,7 +90,7 @@ export default function Pricing() {
               <div className="flex items-center gap-4 mb-8">
                 <div className={`w-12 h-12 rounded-[var(--radius-md)] flex items-center justify-center border transition-all duration-500 ${
                   plan.featured 
-                  ? "bg-brand-primary text-black border-brand-primary/20 shadow-[0_0_20px_rgba(163,230,53,0.4)]" 
+                  ? "bg-brand-primary text-white border-brand-primary/20 shadow-[0_0_20px_rgba(59,130,246,0.4)]" 
                   : "bg-brand-primary/10 text-brand-primary border-brand-primary/20 group-hover:bg-brand-primary group-hover:text-black"
                 }`}>
                   {plan.icon}

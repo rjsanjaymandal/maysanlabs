@@ -36,9 +36,9 @@ class Beam {
       this.x,
       this.y + this.length
     );
-    gradient.addColorStop(0, "rgba(163, 230, 53, 0)");
-    gradient.addColorStop(0.5, `rgba(163, 230, 53, ${this.opacity})`);
-    gradient.addColorStop(1, "rgba(163, 230, 53, 0)");
+    gradient.addColorStop(0, "rgba(59, 130, 246, 0)");
+    gradient.addColorStop(0.5, `rgba(59, 130, 246, ${this.opacity})`);
+    gradient.addColorStop(1, "rgba(59, 130, 246, 0)");
 
     ctx.fillStyle = gradient;
     ctx.fillRect(this.x, this.y, 1, this.length);

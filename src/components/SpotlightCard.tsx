@@ -46,7 +46,7 @@ export default function SpotlightCard({
           ? `perspective(1000px) rotateX(${position.rotateX}deg) rotateY(${position.rotateY}deg)` 
           : "perspective(1000px) rotateX(0deg) rotateY(0deg)",
         background: isHovered
-          ? `radial-gradient(800px circle at ${position.x}px ${position.y}px, rgba(163, 230, 53, 0.08), transparent 40%)`
+          ? `radial-gradient(800px circle at ${position.x}px ${position.y}px, rgba(59, 130, 246, 0.1), transparent 40%)`
           : undefined,
       }}
     >

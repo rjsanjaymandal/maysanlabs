@@ -25,11 +25,11 @@ const socialLinks = [
 
 export default function ContactFooter() {
   return (
-    <footer className="bg-[var(--bg-dark)] border-t border-white/5">
+    <footer className="bg-[var(--bg-dark)] border-t border-white/5 pb-20 md:pb-0">
       {/* CTA Section */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/10 via-brand-primary/5 to-transparent" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
+      <section className="py-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.08] via-brand-primary/[0.03] to-transparent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/10 blur-[80px] rounded-full pointer-events-none" />
         <div className="container-main">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -38,25 +38,24 @@ export default function ContactFooter() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-medium mb-6">
               <Send size={12} />
               Get Started
             </span>
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-5">
+            <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4">
               Ready to <span className="text-brand-primary">scale</span>?
             </h2>
-            <p className="text-white/50 text-lg mb-8 max-w-lg mx-auto">
+            <p className="text-white/50 text-base mb-8 max-w-lg mx-auto">
               Let&apos;s build something great together. Our team is ready to help.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/init" className="group relative px-8 py-4 bg-[#1A6DD6] rounded-full font-bold text-xs uppercase tracking-widest text-white shadow-xl shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 hover:scale-105 active:scale-95 flex items-center gap-2">
-                <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative z-10">Book a Call</span>
-                <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link href="/init" className="group px-7 py-3 bg-brand-primary rounded-full font-medium text-sm text-white transition-all duration-300 hover:shadow-[0_0_25px_rgba(59,130,246,0.35)] flex items-center gap-2">
+                <span>Book a Call</span>
+                <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
               </Link>
               
-              <Link href="mailto:business@maysanlabs.com" className="group relative px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-bold text-xs uppercase tracking-widest transition-all duration-300 hover:bg-white/[0.08] hover:text-white hover:border-white/25 flex items-center gap-2">
-                  <Mail size={16} />
+              <Link href="mailto:business@maysanlabs.com" className="px-7 py-3 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-medium text-sm transition-all duration-300 hover:bg-white/[0.06] hover:text-white hover:border-white/25 flex items-center gap-2">
+                  <Mail size={14} />
                   <span>Contact Us</span>
               </Link>
             </div>
