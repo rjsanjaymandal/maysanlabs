@@ -46,9 +46,16 @@ export default function Navbar() {
         mounted && scrolled ? "bg-[var(--bg-dark)] py-2 md:py-3 shadow-lg shadow-black/20" : "bg-transparent py-4 md:py-5"
       }`}>
         <div className="container-main flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 md:gap-3 group">
-            <Image src="/logo.png" alt="Maysan Labs" width={44} height={44} className="object-contain rounded-full" priority />
-            <span className="font-semibold text-white text-base md:text-lg">Maysan Labs</span>
+          <Link href="/" className="flex items-center group">
+            <div className="relative h-12 w-12 transition-all duration-300 rounded-full overflow-hidden">
+              <Image 
+                src="/logo.png" 
+                alt="Maysan Labs" 
+                fill
+                className="object-cover transition-transform group-hover:scale-105" 
+                priority 
+              />
+            </div>
           </Link>
 
           <div className="hidden lg:flex items-center gap-8">

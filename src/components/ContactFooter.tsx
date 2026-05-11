@@ -68,15 +68,19 @@ export default function ContactFooter() {
         <div className="container-main">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
             <div className="md:col-span-2">
-              <Link href="/" className="flex items-center gap-3 mb-5 group">
-                <div className="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden bg-white/5">
-                   <Image src="/logo.png" alt="Maysan Labs" width={40} height={40} className="object-contain" />
+              <Link href="/" className="inline-block mb-5 group">
+                <div className="relative h-12 w-12 transition-all duration-300 rounded-full overflow-hidden">
+                  <Image 
+                    src="/logo.png" 
+                    alt="Maysan Labs" 
+                    fill
+                    className="object-cover transition-transform group-hover:scale-105" 
+                  />
                 </div>
-                <span className="font-semibold text-white text-lg">Maysan Labs</span>
               </Link>
-<p className="text-white/70 text-sm mb-6 max-w-sm leading-relaxed">
+              <p className="text-white/70 text-sm mb-6 max-w-sm leading-relaxed">
                  Enterprise SaaS development studio building scalable applications for businesses that demand precision.
-               </p>
+              </p>
               <div className="flex gap-3">
                 {socialLinks.map((social) => (
                   <a
