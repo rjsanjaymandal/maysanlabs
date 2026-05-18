@@ -57,9 +57,12 @@ export default function Navbar() {
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
               className="relative h-10 w-10 rounded-full overflow-hidden flex items-center justify-center"
             >
-              <img 
-                src="/favicon.png?v=100" 
+              <Image 
+                src="/favicon.png" 
                 alt="Maysan Labs" 
+                width={40}
+                height={40}
+                priority
                 className="h-full w-full object-cover" 
               />
             </motion.div>
