@@ -118,7 +118,7 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-[60] bg-background/98 backdrop-blur-2xl lg:hidden"
           >
-            <div className="flex flex-col h-full p-6 pt-24">
+            <div className="flex flex-col h-full p-6 pt-24 justify-between">
               <div className="flex flex-col gap-2">
                 {navItems.map((item, index) => (
                   <motion.div
@@ -140,6 +140,15 @@ export default function Navbar() {
                     </Link>
                   </motion.div>
                 ))}
+              </div>
+
+              {/* Mobile Actions: Language & Theme Controls */}
+              <div className="flex items-center justify-between border-t border-white/5 pt-6 mt-6 pb-20">
+                <span className="text-white/40 text-xs font-semibold uppercase tracking-wider">Preferences</span>
+                <div className="flex items-center gap-4">
+                  <LanguageToggle />
+                  <ThemeToggle />
+                </div>
               </div>
             </div>
           </motion.div>

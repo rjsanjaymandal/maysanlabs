@@ -93,22 +93,36 @@ export default function Home() {
       <Hero />
       
       {/* Stats Section */}
-      <section className="pt-8 pb-6 md:pt-12 md:pb-8 bg-black/20 border-y border-white/5">
-        <div className="container-main">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center py-2 md:py-4"
-              >
-                <p className="text-2xl md:text-4xl font-bold text-brand-primary mb-0.5">{stat.value}</p>
-                <p className="text-white/40 text-[10px] md:text-xs">{stat.label}</p>
-              </motion.div>
-            ))}
+      <section className="pt-8 pb-6 md:pt-12 md:pb-8 bg-black/25 border-y border-white/5 relative overflow-hidden">
+        <div className="container-main relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {stats.map((stat, index) => {
+              const isMetric = /^[0-9.+%]+$/.test(stat.value.replace(/\s/g, ''));
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex flex-col items-center justify-center p-5 bg-white/[0.01] border border-white/[0.04] rounded-2xl hover:bg-white/[0.03] hover:border-white/[0.08] transition-all duration-300 group relative overflow-hidden shadow-lg"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  {isMetric ? (
+                    <p className="text-2xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-400 mb-1 tracking-tight drop-shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+                      {stat.value}
+                    </p>
+                  ) : (
+                    <p className="text-xs md:text-sm font-extrabold text-white mb-1.5 px-3 py-0.5 bg-white/[0.04] border border-white/5 rounded-full shadow-inner tracking-wide uppercase">
+                      {stat.value}
+                    </p>
+                  )}
+                  <p className="text-white/40 text-[9px] md:text-[10px] uppercase tracking-wider font-semibold text-center group-hover:text-white/60 transition-colors">
+                    {stat.label}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -182,12 +196,18 @@ export default function Home() {
       <TrustBadges />
 
       {/* Tech Stack Section */}
-      <section className="py-12 border-t border-white/5 bg-black/5">
-        <div className="container-main text-center">
-          <p className="text-white/60 text-[10px] font-bold uppercase tracking-[0.2em] mb-8">Our Tech Stack</p>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-            {["Next.js", "React", "Node.js", "TypeScript", "PostgreSQL", "AWS", "Docker", "Supabase"].map((tech) => (
-              <span key={tech} className="text-white font-semibold text-sm md:text-base">{tech}</span>
+      <section className="py-16 border-t border-white/5 bg-black/15 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-brand-primary/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="container-main text-center relative z-10">
+          <p className="text-brand-primary/60 text-[10px] font-bold uppercase tracking-[0.25em] mb-8">Empowered by Industry Standards</p>
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-3xl mx-auto">
+            {["Next.js", "React", "Node.js", "TypeScript", "PostgreSQL", "AWS", "Docker", "Supabase", "Tailwind CSS", "Framer Motion", "GraphQL", "Redis"].map((tech) => (
+              <span 
+                key={tech} 
+                className="px-4 py-2 text-xs md:text-sm font-semibold text-white/70 bg-white/[0.02] border border-white/[0.05] rounded-full hover:text-white hover:border-brand-primary/30 hover:bg-brand-primary/5 hover:-translate-y-0.5 transition-all duration-300 cursor-default shadow-sm"
+              >
+                {tech}
+              </span>
             ))}
           </div>
         </div>

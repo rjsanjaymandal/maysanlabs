@@ -107,7 +107,7 @@ export default function ContactFooter() {
 
             <div>
               <h3 className="text-xs font-semibold text-white/70 uppercase tracking-widest mb-5">Company</h3>
-              <div className="flex flex-col gap-3">
+              <div className="grid grid-cols-2 md:grid-cols-1 gap-3">
                 {links.map((link) => (
                   <Link
                     key={link.name}

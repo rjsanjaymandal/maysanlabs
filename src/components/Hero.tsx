@@ -117,7 +117,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-          className="w-full max-w-5xl mt-16 md:mt-24 mb-6 relative group"
+          className="w-full max-w-5xl mt-16 md:mt-24 mb-6 relative group px-4 sm:px-6 md:px-0"
         >
           {/* Neon Ambient Background Glows */}
           <div className="absolute -inset-1 bg-gradient-to-r from-brand-primary/20 to-blue-500/10 rounded-[32px] blur-2xl opacity-45 group-hover:opacity-60 transition duration-1000 group-hover:duration-200 pointer-events-none animate-pulse" />
@@ -143,7 +143,7 @@ export default function Hero() {
                 <div className="w-3 h-3 rounded-full bg-green-500/60" />
               </div>
               <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-white/[0.02] border border-white/[0.05] rounded-lg text-[10px] text-white/40 font-mono w-64 justify-center">
-                <Globe size={10} className="text-brand-primary animate-pulse" />
+                <Globe size={10} className="text-brand-primary animate-pulse shrink-0" />
                 <span>control.maysanlabs.com/analytics</span>
               </div>
               <div className="w-12 h-3" />
@@ -155,20 +155,20 @@ export default function Hero() {
               {/* Left Panel: Terminal Operations Control (Span 4) */}
               <div className="md:col-span-4 flex flex-col gap-4">
                 {/* Mini Terminal Window */}
-                <div className="bg-black/50 border border-white/5 rounded-2xl p-4 font-mono text-[10px] md:text-[11px] text-brand-primary flex flex-col gap-2 shadow-inner">
+                <div className="bg-black/50 border border-white/5 rounded-2xl p-4 font-mono text-[10px] md:text-[11px] text-brand-primary flex flex-col gap-2 shadow-inner overflow-hidden">
                   <div className="flex items-center gap-2 text-white/50 text-[10px] border-b border-white/5 pb-2">
-                    <Terminal size={12} />
+                    <Terminal size={12} className="shrink-0" />
                     <span>maysan-labs-core-worker.log</span>
                   </div>
-                  <div className="flex gap-2 text-green-400">
-                    <span className="text-white/30">$</span>
+                  <div className="flex gap-2 text-green-400 whitespace-pre-wrap break-all">
+                    <span className="text-white/30 shrink-0">$</span>
                     <span>npm run dev --host</span>
                   </div>
-                  <div className="text-white/60">✓ Turbopack compiled core pipeline [0.08s]</div>
-                  <div className="text-blue-400/80">ℹ [Supabase] Connected to database cluster</div>
-                  <div className="text-purple-400/80">ℹ [Redis] Syncing cache routes ...</div>
+                  <div className="text-white/60 whitespace-pre-wrap break-all">✓ Turbopack compiled core pipeline [0.08s]</div>
+                  <div className="text-blue-400/80 whitespace-pre-wrap break-all">ℹ [Supabase] Connected to database cluster</div>
+                  <div className="text-purple-400/80 whitespace-pre-wrap break-all">ℹ [Redis] Syncing cache routes ...</div>
                   <div className="flex items-center gap-1.5 text-white/40 text-[9px] animate-pulse">
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-primary" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-primary shrink-0" />
                     <span>Listening on port 3000...</span>
                   </div>
                 </div>
@@ -177,28 +177,28 @@ export default function Hero() {
                 <div className="bg-white/[0.01] border border-white/[0.05] rounded-2xl p-4 flex flex-col justify-between h-24 hover:bg-white/[0.03] transition-colors shadow-lg">
                   <div className="flex items-center justify-between text-white/40 text-xs">
                     <span>Global Latency</span>
-                    <Server size={14} className="text-brand-primary" />
+                    <Server size={14} className="text-brand-primary shrink-0" />
                   </div>
                   <div className="flex items-end justify-between mt-2">
                     <span className="text-xl md:text-2xl font-bold text-white tracking-tight">14.8ms</span>
-                    <span className="text-[9px] md:text-[10px] text-green-400 font-semibold px-2 py-0.5 bg-green-500/10 rounded-full border border-green-500/20">Optimal</span>
+                    <span className="text-[9px] md:text-[10px] text-green-400 font-semibold px-2 py-0.5 bg-green-500/10 rounded-full border border-green-500/20 shrink-0">Optimal</span>
                   </div>
                 </div>
               </div>
 
               {/* Center Panel: Primary Analytics & Graph (Span 5) */}
-              <div className="md:col-span-5 bg-white/[0.01] border border-white/[0.05] rounded-3xl p-5 flex flex-col justify-between min-h-[220px] hover:bg-white/[0.03] transition-all shadow-xl relative overflow-hidden group">
+              <div className="md:col-span-5 bg-white/[0.01] border border-white/[0.05] rounded-3xl p-5 flex flex-col justify-between min-h-[180px] md:min-h-[220px] hover:bg-white/[0.03] transition-all shadow-xl relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/10 blur-2xl rounded-full opacity-30 group-hover:opacity-50 transition-opacity" />
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <p className="text-[10px] text-white/40 uppercase tracking-widest font-semibold">Active SaaS Deployments</p>
                     <h3 className="text-base md:text-lg font-bold text-white mt-0.5">Enterprise Analytics</h3>
                   </div>
-                  <TrendingUp size={16} className="text-brand-primary" />
+                  <TrendingUp size={16} className="text-brand-primary shrink-0" />
                 </div>
                 
                 {/* Sparkline Graphic */}
-                <div className="h-24 w-full flex items-end gap-1.5 mt-2">
+                <div className="h-24 w-full flex items-end gap-1 md:gap-1.5 mt-2">
                   {[20, 35, 25, 45, 30, 55, 40, 70, 60, 85, 75, 95].map((height, i) => (
                     <motion.div
                       key={i}
@@ -217,7 +217,7 @@ export default function Hero() {
                 <div className="flex items-center justify-between text-[10px] text-white/30 border-t border-white/5 pt-3 mt-4">
                   <span>May 12 - May 18</span>
                   <span className="flex items-center gap-1 text-green-400 font-semibold font-mono">
-                    <Activity size={10} />
+                    <Activity size={10} className="shrink-0" />
                     <span>+24.8% spike</span>
                   </span>
                 </div>
@@ -229,7 +229,7 @@ export default function Hero() {
                 <div className="bg-white/[0.01] border border-white/[0.05] rounded-2xl p-4 flex flex-col gap-3 hover:bg-white/[0.03] transition-colors shadow-lg">
                   <div className="flex items-center justify-between text-white/40 text-xs">
                     <span>Active Clusters</span>
-                    <Database size={14} className="text-brand-primary" />
+                    <Database size={14} className="text-brand-primary shrink-0" />
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center justify-between text-[10px]">
@@ -254,7 +254,7 @@ export default function Hero() {
                   <div className="absolute inset-0 bg-white/[0.02] opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="flex items-center justify-between text-[9px] text-brand-primary font-bold uppercase tracking-wider">
                     <span>Flagship App</span>
-                    <Sparkles size={12} className="text-brand-primary" />
+                    <Sparkles size={12} className="text-brand-primary shrink-0" />
                   </div>
                   <div className="mt-1">
                     <p className="text-[10px] text-white/40">EduMaysan LMS</p>
@@ -262,7 +262,7 @@ export default function Hero() {
                   </div>
                   <div className="flex items-center justify-between text-[9px] text-white/35 border-t border-white/[0.05] pt-2 mt-2">
                     <span>Region: Worldwide</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse shrink-0" />
                   </div>
                 </div>
               </div>
