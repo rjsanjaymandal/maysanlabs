@@ -11,12 +11,6 @@ const badges = [
     color: "from-green-500 to-emerald-600",
   },
   {
-    icon: Award,
-    title: "ISO 27001",
-    description: "Information security certified",
-    color: "from-blue-500 to-indigo-600",
-  },
-  {
     icon: Clock,
     title: "24/7 Support",
     description: "Round-the-clock technical assistance",
@@ -56,7 +50,7 @@ export default function TrustBadges() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
           {badges.map((badge, index) => (
             <motion.div
               key={badge.title}
@@ -64,10 +58,10 @@ export default function TrustBadges() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-white/10 transition-all group"
+              className="bg-white/[0.02] border border-white/5 rounded-xl p-4 sm:p-5 hover:border-white/10 transition-all group text-center"
             >
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${badge.color} flex items-center justify-center mb-4 shadow-lg`}>
-                <badge.icon size={22} className="text-white" />
+              <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${badge.color} flex items-center justify-center mb-3 sm:mb-4 shadow-lg mx-auto`}>
+                <badge.icon size={18} className="text-white" />
               </div>
               <h3 className="text-white font-semibold text-sm mb-1">{badge.title}</h3>
               <p className="text-white/40 text-xs">{badge.description}</p>
@@ -75,7 +69,7 @@ export default function TrustBadges() {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-white/5">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-8 border-t border-white/5">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
@@ -85,7 +79,7 @@ export default function TrustBadges() {
               transition={{ delay: index * 0.1 }}
               className="text-center"
             >
-              <div className="text-3xl md:text-4xl font-bold text-brand-primary mb-1">
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-primary mb-1">
                 {stat.value}
               </div>
               <div className="text-white/40 text-xs uppercase tracking-wider">

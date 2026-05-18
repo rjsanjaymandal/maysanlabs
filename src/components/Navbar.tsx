@@ -46,16 +46,19 @@ export default function Navbar() {
         mounted && scrolled ? "bg-[var(--bg-dark)] py-2 md:py-3 shadow-lg shadow-black/20" : "bg-transparent py-4 md:py-5"
       }`}>
         <div className="container-main flex items-center justify-between">
-          <Link href="/" className="flex items-center group">
-            <div className="relative h-12 w-12 transition-all duration-300 rounded-full overflow-hidden">
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative h-10 w-10 transition-all duration-300 rounded-xl overflow-hidden border border-white/10 bg-white/[0.03] shadow-md flex items-center justify-center">
               <Image 
-                src="/logo.png" 
+                src="/icon-rounded-v2.png" 
                 alt="Maysan Labs" 
                 fill
                 className="object-cover transition-transform group-hover:scale-105" 
                 priority 
               />
             </div>
+            <span className="text-sm md:text-base font-extrabold tracking-wider text-white transition-colors duration-200 group-hover:text-[#1A6DD6] uppercase">
+              Maysan <span className="text-[#1A6DD6]">Labs</span>
+            </span>
           </Link>
 
           <div className="hidden lg:flex items-center gap-8">

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, CheckCircle, Briefcase, Code, Mail, Send } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle, Briefcase, Code, Mail, Send, Loader2, AlertCircle } from "lucide-react";
 import { sendEmail } from "@/app/actions/sendEmail";
 
 const steps = [
@@ -34,6 +34,7 @@ export default function MultiStepForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const updateFormData = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -49,6 +50,7 @@ export default function MultiStepForm() {
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
+    setError(null);
     const data = new FormData();
     data.append("companyName", formData.name);
     data.append("email", formData.email);
@@ -59,8 +61,11 @@ export default function MultiStepForm() {
       const result = await sendEmail(data);
       if (result.success) {
         setIsSubmitted(true);
+      } else {
+        setError(result.message || "Something went wrong. Please try again.");
       }
     } catch (error) {
+      setError("Failed to send message. Please try again.");
       console.error(error);
     } finally {
       setIsSubmitting(false);
@@ -253,11 +258,32 @@ export default function MultiStepForm() {
               disabled={isSubmitting || !formData.name || !formData.email}
               className="flex items-center gap-2 px-6 py-3 bg-brand-primary rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] transition-all disabled:opacity-50"
             >
-              {isSubmitting ? "Sending..." : "Submit"}
-              <Send size={16} />
+              {isSubmitting ? (
+                <>
+                  <Loader2 size={16} className="animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  Submit
+                  <Send size={16} />
+                </>
+              )}
             </button>
           )}
         </div>
+
+        {/* Error Message */}
+        {error && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-4 p-4 bg-red-500/10 border border-red-500/20 rounded-xl flex items-center gap-3 text-red-400"
+          >
+            <AlertCircle size={18} />
+            <span className="text-sm">{error}</span>
+          </motion.div>
+        )}
       </div>
     </div>
   );
