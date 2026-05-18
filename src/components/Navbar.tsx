@@ -47,7 +47,7 @@ export default function Navbar() {
       }`}>
         <div className="container-main flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative h-10 w-10 transition-all duration-300 rounded-full overflow-hidden border border-white/10 bg-white/[0.03] shadow-md flex items-center justify-center">
+            <div className="relative h-10 w-10 transition-all duration-300 rounded-xl overflow-hidden border border-white/10 bg-white/[0.03] shadow-md flex items-center justify-center">
               <img 
                 src="/icon-rounded-v2.png?v=3" 
                 alt="Maysan Labs" 
