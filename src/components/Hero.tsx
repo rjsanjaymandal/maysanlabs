@@ -96,15 +96,15 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto px-4 sm:px-0"
+          className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto px-3 sm:px-0"
         >
-          <Link href="/init" className="group relative w-full sm:w-auto px-6 sm:px-8 py-4 bg-[#1A6DD6] rounded-full font-bold text-[9px] xs:text-[10px] uppercase tracking-wider sm:tracking-widest text-white shadow-xl shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 hover:scale-[1.02] flex items-center justify-center gap-2">
+          <Link href="/init" className="group relative w-full sm:w-auto px-5 sm:px-8 py-4 bg-[#1A6DD6] rounded-full font-bold text-[9px] xs:text-[10px] uppercase tracking-wider sm:tracking-widest text-white shadow-xl shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 hover:scale-[1.02] flex items-center justify-center gap-2">
             <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative z-10 text-center">Book a free 30-min discovery call</span>
             <ArrowRight size={14} className="relative z-10 group-hover:translate-x-0.5 transition-transform shrink-0" />
           </Link>
           
-          <Link href="/products" className="group relative w-full sm:w-auto px-6 sm:px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-bold text-[9px] xs:text-[10px] uppercase tracking-wider sm:tracking-widest transition-all duration-300 hover:bg-white/[0.08] hover:text-white hover:border-white/25 flex items-center justify-center gap-2">
+          <Link href="/products" className="group relative w-full sm:w-auto px-5 sm:px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-bold text-[9px] xs:text-[10px] uppercase tracking-wider sm:tracking-widest transition-all duration-300 hover:bg-white/[0.08] hover:text-white hover:border-white/25 flex items-center justify-center gap-2">
               <Play size={11} fill="currentColor" className="shrink-0" />
               <span>View Our Work</span>
           </Link>
@@ -115,7 +115,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-          className="w-full max-w-5xl mt-16 md:mt-24 mb-6 relative group px-4 sm:px-6 md:px-0"
+          className="w-full max-w-5xl mt-12 md:mt-24 mb-6 relative group px-3 sm:px-6 md:px-0"
         >
           {/* Neon Ambient Background Glows */}
           <div className="absolute -inset-1 bg-gradient-to-r from-brand-primary/20 to-blue-500/10 rounded-[32px] blur-2xl opacity-45 group-hover:opacity-60 transition duration-1000 group-hover:duration-200 pointer-events-none animate-pulse" />
@@ -131,21 +131,21 @@ export default function Hero() {
               repeatType: "reverse",
               ease: "easeInOut"
             }}
-            className="backdrop-blur-xl bg-black/60 border border-white/10 rounded-[24px] md:rounded-[32px] overflow-hidden shadow-2xl hover:border-white/20 transition-all duration-500 relative"
+            className="backdrop-blur-xl bg-black/60 border border-white/10 rounded-[20px] md:rounded-[32px] overflow-hidden shadow-2xl hover:border-white/20 transition-all duration-500 relative"
           >
             <BorderBeam size={350} duration={12} delay={0} colorFrom="#1A6DD6" colorTo="#60A5FA" />
             {/* Browser Chrome Header Wrapper */}
-            <div className="flex items-center justify-between px-4 py-3 bg-white/[0.04] border-b border-white/[0.08]">
+            <div className="flex items-center justify-between px-3 sm:px-4 py-3 bg-white/[0.04] border-b border-white/[0.08]">
               <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500/60" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
-                <div className="w-3 h-3 rounded-full bg-green-500/60" />
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
               </div>
-              <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-white/[0.02] border border-white/[0.05] rounded-lg text-[10px] text-white/40 font-mono w-64 justify-center">
+              <div className="flex items-center gap-2 px-3 py-1 bg-white/[0.02] border border-white/[0.05] rounded-lg text-[9px] sm:text-[10px] text-white/40 font-mono w-44 sm:w-64 justify-center truncate">
                 <Globe size={10} className="text-brand-primary animate-pulse shrink-0" />
                 <span>control.maysanlabs.com/analytics</span>
               </div>
-              <div className="w-12 h-3" />
+              <div className="w-8 sm:w-12 h-3" />
             </div>
 
             {/* Main Dashboard Panel */}
@@ -197,17 +197,17 @@ export default function Hero() {
                 </div>
                 
                 {/* Sparkline Graphic */}
-                <div className="h-24 w-full flex items-end gap-1 md:gap-1.5 mt-2">
+                <div className="h-24 w-full flex items-end gap-1.5 md:gap-2 mt-2">
                   {[20, 35, 25, 45, 30, 55, 40, 70, 60, 85, 75, 95].map((height, i) => (
                     <motion.div
                       key={i}
                       initial={{ height: 0 }}
                       animate={{ height: `${height}%` }}
                       transition={{ duration: 0.8, delay: i * 0.05, ease: "easeOut" }}
-                      className={`w-full rounded-t-sm transition-all ${
+                      className={`w-full rounded-t-lg transition-all duration-300 ${
                         i === 11 
-                          ? "bg-gradient-to-t from-brand-primary to-blue-400 shadow-md shadow-brand-primary/45" 
-                          : "bg-white/[0.08] hover:bg-brand-primary/40"
+                          ? "bg-gradient-to-t from-brand-primary to-[#00d2ff] shadow-[0_0_12px_rgba(26,109,214,0.6)]" 
+                          : "bg-white/[0.08] hover:bg-brand-primary/50 hover:shadow-[0_0_8px_rgba(26,109,214,0.3)]"
                       }`}
                     />
                   ))}
