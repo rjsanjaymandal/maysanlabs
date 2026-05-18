@@ -84,16 +84,25 @@ export default function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full text-left bg-white/[0.02] border border-white/5 rounded-xl p-5 hover:border-white/10 transition-all duration-300 group"
+                className={`w-full text-left rounded-2xl p-5 md:p-6 transition-all duration-300 relative overflow-hidden group border ${
+                  openIndex === index 
+                    ? "bg-brand-primary/[0.02] border-brand-primary/30 shadow-lg shadow-brand-primary/5" 
+                    : "bg-white/[0.01] border-white/[0.05] hover:border-white/15"
+                }`}
               >
+                {openIndex === index && (
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-brand-primary to-blue-500" />
+                )}
                 <div className="flex items-center justify-between gap-4">
-                  <span className="text-white font-medium text-sm md:text-base group-hover:text-brand-primary transition-colors">
+                  <span className={`font-semibold text-sm md:text-base transition-colors duration-300 ${
+                    openIndex === index ? "text-white" : "text-white/80 group-hover:text-[#1A6DD6]"
+                  }`}>
                     {item.question}
                   </span>
                   <ChevronDown 
                     size={18} 
-                    className={`text-white/40 group-hover:text-brand-primary transition-all duration-300 flex-shrink-0 ${
-                      openIndex === index ? "rotate-180" : ""
+                    className={`transition-all duration-300 flex-shrink-0 ${
+                      openIndex === index ? "rotate-180 text-[#1A6DD6]" : "text-white/40 group-hover:text-[#1A6DD6]"
                     }`}
                   />
                 </div>

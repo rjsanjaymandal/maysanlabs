@@ -61,7 +61,7 @@ export default function Testimonials() {
           </motion.h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -69,7 +69,7 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative bg-white/[0.02] border border-white/[0.06] rounded-xl p-5 hover:border-brand-primary/20 transition-all duration-300"
+              className="relative bg-white/[0.01] border border-white/[0.05] rounded-2xl p-5 hover:border-brand-primary/30 hover:bg-brand-primary/[0.01] transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-primary/5 overflow-hidden group"
             >
               <div className="absolute top-4 right-4 text-brand-primary/[0.1]">
                 <Quote size={24} />
@@ -98,8 +98,8 @@ export default function Testimonials() {
                   </div>
                   
                   <div className="text-right">
-                    <p className="text-brand-primary font-medium text-base">{testimonial.metric}</p>
-                    <p className="text-white/35 text-[10px]">{testimonial.metricLabel}</p>
+                    <p className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-400 font-extrabold text-base drop-shadow-[0_0_10px_rgba(59,130,246,0.15)]">{testimonial.metric}</p>
+                    <p className="text-white/35 text-[9px] uppercase tracking-wider font-semibold">{testimonial.metricLabel}</p>
                   </div>
                 </div>
               </div>

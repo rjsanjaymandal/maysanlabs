@@ -104,8 +104,14 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.06 }}
-              className="group relative bg-white/[0.02] border border-white/[0.06] rounded-xl p-5 hover:border-brand-primary/20 hover:bg-brand-primary/[0.02] transition-all duration-300"
+              className="group relative bg-white/[0.01] border border-white/[0.05] rounded-2xl p-6 transition-all duration-500 hover:shadow-2xl hover:shadow-brand-primary/5 hover:-translate-y-1 overflow-hidden"
             >
+              {/* Colored ambient glow backdrop */}
+              <div className={`absolute -inset-px bg-gradient-to-tr ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl`} />
+              
+              {/* Glass container overlay */}
+              <div className="absolute inset-[1px] bg-[var(--bg-dark)]/98 rounded-2xl pointer-events-none group-hover:bg-[var(--bg-dark)]/90 transition-colors" />
+
               <div className="relative z-10">
                 <div className="w-10 h-10 bg-brand-primary/10 rounded-lg flex items-center justify-center text-brand-primary/70 mb-4 group-hover:bg-brand-primary/20 group-hover:text-brand-primary transition-all duration-300">
                   <service.icon size={18} />
@@ -118,10 +124,10 @@ export default function Services() {
                   {service.desc}
                 </p>
                 
-                <ul className="space-y-1 mb-4">
+                <ul className="space-y-2 mb-5 border-t border-white/[0.04] pt-4">
                   {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-white/40 text-xs">
-                      <div className="w-0.5 h-0.5 rounded-full bg-brand-primary" />
+                    <li key={i} className="flex items-center gap-2.5 text-white/45 text-xs group-hover:text-white/60 transition-colors">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-primary group-hover:scale-125 transition-transform duration-300 shrink-0" />
                       {feature}
                     </li>
                   ))}
@@ -129,9 +135,9 @@ export default function Services() {
                 
                 <Link 
                   href="/services" 
-                  className="inline-flex items-center gap-1 text-brand-primary text-xs font-medium group-hover:gap-1.5 transition-all"
+                  className="inline-flex items-center gap-1 text-brand-primary text-xs font-semibold group-hover:gap-2 transition-all duration-300"
                 >
-                  Learn more <ArrowUpRight size={10} />
+                  <span>Learn more</span> <ArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
                 </Link>
               </div>
             </motion.div>
