@@ -50,7 +50,7 @@ export const caseStudies: CaseStudy[] = [
     metrics: [
       { label: "Inventory Accuracy", value: "99.9%" },
       { label: "Speed Increase", value: "40%" },
-      { label: "Annual Savings", value: "$1.2M" },
+      { label: "Annual Savings", value: "₹10 Crores" },
     ],
     technologies: ["Next.js", "Rust", "PostgreSQL", "Kafka", "AWS Edge"],
   },
