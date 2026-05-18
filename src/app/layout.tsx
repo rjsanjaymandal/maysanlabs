@@ -131,8 +131,8 @@ export const metadata: Metadata = {
   category: "technology",
   classification: "SaaS Development Company",
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: "/icon-rounded-v2.png",
+    apple: "/icon-rounded-v2.png",
   },
   manifest: "/manifest.json",
 };
