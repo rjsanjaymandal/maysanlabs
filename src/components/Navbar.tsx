@@ -52,14 +52,13 @@ export default function Navbar() {
                 scale: 1.06, 
                 rotate: -3,
                 boxShadow: "0 0 20px rgba(26, 109, 214, 0.4)",
-                borderColor: "rgba(26, 109, 214, 0.4)"
               }}
               whileTap={{ scale: 0.95, rotate: 0 }}
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              className="relative h-10 w-10 rounded-xl overflow-hidden border border-white/10 bg-white/[0.03] shadow-md flex items-center justify-center"
+              className="relative h-10 w-10 rounded-xl overflow-hidden shadow-md flex items-center justify-center"
             >
               <img 
-                src="/icon-rounded-v2.png?v=3" 
+                src="/icon-rounded-v2.png?v=100" 
                 alt="Maysan Labs" 
                 className="h-full w-full object-cover" 
               />
