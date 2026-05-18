@@ -7,6 +7,7 @@ export interface BlogPost {
   author: string;
   category: string;
   readTime: string;
+  externalUrl?: string;
 }
 
 export const blogPosts: BlogPost[] = [
