@@ -68,14 +68,22 @@ export default function ContactFooter() {
         <div className="container-main">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
             <div className="md:col-span-2">
-              <Link href="/" className="inline-block mb-5 group">
-                <div className="relative h-20 w-20 transition-all duration-300 rounded-2xl overflow-hidden border border-white/5 bg-white/[0.02] shadow-md">
+              <Link href="/" className="flex items-center gap-4 mb-5 group">
+                <div className="relative h-14 w-14 transition-all duration-300 rounded-full overflow-hidden border border-white/10 bg-white/[0.03] shadow-md flex items-center justify-center">
                   <Image 
-                    src="/logo-rounded-v2.png" 
+                    src="/icon-rounded-v2.png" 
                     alt="Maysan Labs" 
                     fill
                     className="object-cover transition-transform group-hover:scale-105" 
                   />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xl font-extrabold tracking-wider text-white uppercase group-hover:text-[#1A6DD6] transition-colors duration-200">
+                    Maysan <span className="text-[#1A6DD6]">Labs</span>
+                  </span>
+                  <span className="text-[10px] text-white/40 tracking-widest uppercase font-semibold mt-0.5">
+                    Build • Scale • Grow
+                  </span>
                 </div>
               </Link>
               <p className="text-white/70 text-sm mb-6 max-w-sm leading-relaxed">
