@@ -6,6 +6,8 @@ import Hero from "@/components/Hero";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import BorderBeam from "@/components/ui/border-beam";
+import { FloatingParticles } from "@/components/ui/particles";
 import { 
   Cpu, 
   Layers, 
@@ -93,6 +95,7 @@ export default function Home() {
 
   return (
     <main className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden text-foreground">
+      <FloatingParticles count={25} minSize={1} maxSize={4} color="rgba(59, 130, 246, 0.12)" />
       <Navbar />
       <Hero />
       
@@ -242,6 +245,7 @@ export default function Home() {
           {/* Giant Immersive Widescreen Frame Mockup */}
           <div className="max-w-5xl mx-auto">
             <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/[0.01] shadow-2xl backdrop-blur-sm group">
+              <BorderBeam size={450} duration={16} delay={4} colorFrom="#1A6DD6" colorTo="#60A5FA" />
               
               {/* Top window styling header bar */}
               <div className="px-5 py-3.5 border-b border-white/5 bg-white/[0.02] flex items-center justify-between">

@@ -16,6 +16,7 @@ import {
   Sparkles
 } from "lucide-react";
 import { SparklesCore } from "@/components/ui/sparkles";
+import BorderBeam from "@/components/ui/border-beam";
 
 const benefits = [
   "Enterprise-grade architecture",
@@ -132,8 +133,9 @@ export default function Hero() {
               repeatType: "reverse",
               ease: "easeInOut"
             }}
-            className="backdrop-blur-xl bg-black/60 border border-white/10 rounded-[24px] md:rounded-[32px] overflow-hidden shadow-2xl hover:border-white/20 transition-all duration-500"
+            className="backdrop-blur-xl bg-black/60 border border-white/10 rounded-[24px] md:rounded-[32px] overflow-hidden shadow-2xl hover:border-white/20 transition-all duration-500 relative"
           >
+            <BorderBeam size={350} duration={12} delay={0} colorFrom="#1A6DD6" colorTo="#60A5FA" />
             {/* Browser Chrome Header Wrapper */}
             <div className="flex items-center justify-between px-4 py-3 bg-white/[0.04] border-b border-white/[0.08]">
               <div className="flex gap-1.5">
