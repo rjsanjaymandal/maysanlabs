@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/:path*(manifest.json|manifest.webmanifest|favicon.ico|icon-rounded-v2.png|icon-192x192-v2.png|icon-512x512-v2.png)",
+        source: "/:path*(manifest.json|manifest.webmanifest|favicon.ico|icon-rounded-v2.png|icon-192x192-v2.png|icon-512x512-v2.png|icon-192x192-v3.png|icon-512x512-v3.png)",
         headers: [
           {
             key: "Cache-Control",

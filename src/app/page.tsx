@@ -269,7 +269,7 @@ export default function Home() {
                     className="w-full h-full relative"
                   >
                     <Image
-                      src="/banner-centered.png"
+                      src="/banner-centered-v3.png"
                       alt="Maysan Labs Corporate Widescreen Identity"
                       fill
                       priority
@@ -286,7 +286,7 @@ export default function Home() {
                     className="w-full h-full relative"
                   >
                     <Image
-                      src="/banner-columns.png"
+                      src="/banner-columns-v3.png"
                       alt="Maysan Labs Core Strategy Pillars Widescreen"
                       fill
                       priority
