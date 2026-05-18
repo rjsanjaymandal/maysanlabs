@@ -47,8 +47,27 @@ const faqItems: FAQItem[] = [
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
+  // Generate structured FAQPage schema for dynamic rich snippet SEO authority
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map((item) => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
   return (
     <section className="py-20 border-t border-white/5" id="faq">
+      {/* Dynamic SEO JSON-LD FAQ Schema injection */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="container-main">
         <div className="text-center mb-12">
           <motion.div 
