@@ -54,52 +54,70 @@ const BentoCard = ({
   return (
     <motion.div
       key={name}
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       onMouseMove={handleMouseMove}
       className={cn(
-        "group relative col-span-3 md:col-span-1 flex flex-col justify-between overflow-hidden rounded-xl",
-        "bg-white/[0.02] border border-white/5 hover:border-white/10 transition-all duration-300",
+        "group relative col-span-3 md:col-span-1 flex flex-col justify-between overflow-hidden rounded-2xl",
+        "p-[1px] bg-white/[0.04] hover:bg-white/[0.08] transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 shadow-lg hover:shadow-2xl",
         className,
       )}
     >
+      {/* Dynamic Cursor-Tracking Ambient Card Glow */}
       <motion.div
-        className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-500 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
             radial-gradient(
-              400px circle at ${mouseX}px ${mouseY}px,
-              rgba(59, 130, 246, 0.1),
+              350px circle at ${mouseX}px ${mouseY}px,
+              rgba(26, 109, 214, 0.08),
               transparent 80%
             )
           `,
         }}
       />
 
-      <div className="absolute inset-0 z-0 opacity-30 group-hover:opacity-50 transition-opacity duration-300">{background}</div>
-      
-      <div className="relative z-10 p-6">
-        <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-white/60 mb-4 group-hover:bg-brand-primary/20 group-hover:text-brand-primary transition-all duration-200">
-          <Icon className="h-5 w-5" />
-        </div>
-        <h3 className="text-lg font-semibold text-white mb-2">
-          {name}
-        </h3>
-        <p className="text-white/45 text-sm leading-relaxed">
-          {description}
-        </p>
-      </div>
+      {/* Dynamic Cursor-Tracking 1px Border Stroke Glow */}
+      <motion.div
+        className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100 -z-10"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              180px circle at ${mouseX}px ${mouseY}px,
+              rgba(26, 109, 214, 0.45),
+              transparent 80%
+            )
+          `,
+        }}
+      />
 
-      <div className="relative z-10 px-6 pb-6">
-        <Link
-          href={href}
-          className="inline-flex items-center gap-1.5 text-brand-primary text-xs font-medium hover:gap-2 transition-all duration-200"
-        >
-          {cta}
-          <ArrowRightIcon className="h-3 w-3" />
-        </Link>
+      {/* High-contrast solid dark backdrop container */}
+      <div className="relative flex flex-col justify-between h-full w-full rounded-[15px] bg-[#030712]/95 overflow-hidden p-6 z-10">
+        <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-35 transition-opacity duration-500">{background}</div>
+        
+        <div className="relative z-10">
+          <div className="w-12 h-12 bg-white/[0.02] border border-white/5 rounded-xl flex items-center justify-center text-white/50 mb-5 group-hover:bg-brand-primary/15 group-hover:text-brand-primary transition-all duration-300">
+            <Icon className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
+          </div>
+          <h3 className="text-xl font-bold text-white mb-2 group-hover:text-brand-primary transition-colors duration-300">
+            {name}
+          </h3>
+          <p className="text-white/45 text-sm leading-relaxed group-hover:text-white/60 transition-colors duration-300">
+            {description}
+          </p>
+        </div>
+
+        <div className="relative z-10 mt-6">
+          <Link
+            href={href}
+            className="inline-flex items-center gap-1.5 text-brand-primary text-xs font-semibold uppercase tracking-wider group-hover:gap-2.5 transition-all duration-300"
+          >
+            <span>{cta}</span>
+            <ArrowRightIcon className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform" />
+          </Link>
+        </div>
       </div>
     </motion.div>
   );

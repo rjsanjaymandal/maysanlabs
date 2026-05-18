@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter_Tight, JetBrains_Mono } from "next/font/google";
+import { Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import ThemeProvider from "@/components/ThemeProvider";
@@ -39,7 +39,7 @@ const faqData = [
   }
 ];
 
-const interTight = Inter_Tight({
+const outfit = Outfit({
   variable: "--font-sans",
   subsets: ["latin"],
 });
@@ -155,7 +155,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={cn("antialiased", interTight.variable, jetbrainsMono.variable)}>
+    <html lang="en" suppressHydrationWarning className={cn("antialiased", outfit.variable, jetbrainsMono.variable)}>
       <head>
         {/* Preconnect to external origins for faster loading */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />

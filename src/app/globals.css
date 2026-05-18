@@ -224,7 +224,7 @@
     background-color: oklch(var(--background));
     background-image: var(--bg-aurora);
     color: oklch(var(--foreground));
-    @apply antialiased selection:bg-brand-primary selection:text-black;
+    @apply font-sans antialiased selection:bg-brand-primary selection:text-black;
   }
 }
 
