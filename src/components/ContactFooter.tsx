@@ -38,23 +38,23 @@ export default function ContactFooter() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-medium mb-6">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
               <Send size={12} />
               Get Started
             </span>
-            <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4">
-              Ready to <span className="text-brand-primary">scale</span>?
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-5">
+              Ready to <span className="bg-gradient-to-r from-brand-primary to-brand-light bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(26,109,214,0.2)]">scale</span>?
             </h2>
-            <p className="text-white/50 text-base mb-8 max-w-lg mx-auto">
+            <p className="text-white/60 text-base leading-relaxed mb-8 max-w-lg mx-auto font-medium">
               Let&apos;s build something great together. Our team is ready to help.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link href="/init" className="group px-7 py-3 bg-brand-primary rounded-full font-medium text-sm text-white transition-all duration-300 hover:shadow-[0_0_25px_rgba(59,130,246,0.35)] flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
+              <Link href="/init" className="group px-8 py-3.5 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-semibold text-sm text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(26,109,214,0.45)] hover:scale-[1.02] hover:brightness-110 flex items-center gap-2.5">
                 <span>Book a Call</span>
-                <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform duration-300" />
               </Link>
               
-              <Link href="mailto:business@maysanlabs.com" className="px-7 py-3 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-medium text-sm transition-all duration-300 hover:bg-white/[0.06] hover:text-white hover:border-white/25 flex items-center gap-2">
+              <Link href="mailto:business@maysanlabs.com" className="px-8 py-3.5 rounded-full border border-white/10 bg-white/[0.02] text-white/70 font-semibold text-sm transition-all duration-300 hover:bg-white/[0.05] hover:text-white hover:border-white/20 flex items-center gap-2.5 shadow-md">
                   <Mail size={14} />
                   <span>Contact Us</span>
               </Link>

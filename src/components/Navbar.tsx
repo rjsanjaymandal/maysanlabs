@@ -119,27 +119,44 @@ export default function Navbar() {
             className="fixed inset-0 z-[60] bg-background/98 backdrop-blur-2xl lg:hidden"
           >
             <div className="flex flex-col h-full p-6 pt-24 justify-between">
-              <div className="flex flex-col gap-2">
-                {navItems.map((item, index) => (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.06 }}
-                  >
-                    <Link
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className={`text-lg font-medium py-3 px-4 rounded-xl block transition-all duration-200 ${
-                        pathname === item.href 
-                          ? "text-brand-primary bg-brand-primary/5" 
-                          : "text-white/50 hover:text-white hover:bg-white/[0.03]"
-                      }`}
+              <div className="flex flex-col gap-6">
+                {/* Brand Logo Header inside Mobile Drawer */}
+                <div className="flex items-center gap-3 px-4 pb-4 border-b border-white/5">
+                  <div className="relative h-9 w-9 rounded-full overflow-hidden border border-white/10 bg-white/[0.03] shadow-md flex items-center justify-center">
+                    <Image 
+                      src="/icon-rounded-v2.png" 
+                      alt="Maysan Labs" 
+                      fill
+                      className="object-cover" 
+                    />
+                  </div>
+                  <span className="text-sm font-extrabold tracking-wider text-white uppercase">
+                    Maysan <span className="text-[#1A6DD6]">Labs</span>
+                  </span>
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  {navItems.map((item, index) => (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
                     >
-                      {item.name}
-                    </Link>
-                  </motion.div>
-                ))}
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className={`text-base font-semibold py-3 px-4 rounded-xl block transition-all duration-200 ${
+                          pathname === item.href 
+                            ? "text-[#1A6DD6] bg-[#1A6DD6]/5" 
+                            : "text-white/60 hover:text-white hover:bg-white/[0.02]"
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
 
               {/* Mobile Actions: Language & Theme Controls */}
