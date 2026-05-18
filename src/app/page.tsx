@@ -98,6 +98,7 @@ export default function Home() {
       
       {/* Stats Section */}
       <section className="pt-8 pb-6 md:pt-12 md:pb-8 bg-black/25 border-y border-white/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.01] to-transparent pointer-events-none" />
         <div className="container-main relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {stats.map((stat, index) => {
@@ -108,8 +109,14 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex flex-col items-center justify-center p-5 bg-white/[0.01] border border-white/[0.04] rounded-2xl hover:bg-white/[0.03] hover:border-white/[0.08] transition-all duration-300 group relative overflow-hidden shadow-lg"
+                  transition={{ delay: index * 0.08 }}
+                  whileHover={{ 
+                    y: -5,
+                    boxShadow: "0 10px 30px -15px rgba(26, 109, 214, 0.35)",
+                    borderColor: "rgba(59, 130, 246, 0.25)",
+                    backgroundColor: "rgba(255, 255, 255, 0.03)"
+                  }}
+                  className="flex flex-col items-center justify-center p-5 bg-white/[0.01] border border-white/[0.04] rounded-2xl transition-all duration-300 group relative overflow-hidden shadow-lg cursor-default"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   {isMetric ? (
@@ -117,7 +124,7 @@ export default function Home() {
                       {stat.value}
                     </p>
                   ) : (
-                    <p className="text-xs md:text-sm font-extrabold text-white mb-1.5 px-3 py-0.5 bg-white/[0.04] border border-white/5 rounded-full shadow-inner tracking-wide uppercase">
+                    <p className="text-[10px] md:text-xs font-extrabold text-white mb-1.5 px-3 py-0.5 bg-white/[0.04] border border-white/5 rounded-full shadow-inner tracking-wide uppercase">
                       {stat.value}
                     </p>
                   )}
@@ -130,34 +137,28 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+ 
       {/* Trust Section */}
       <section className="py-8 md:py-12 border-b border-white/5 bg-black/10">
         <div className="container-main mb-6 md:mb-8 text-center">
-           <span className="text-white/70 text-xs uppercase tracking-widest font-semibold">Trusted by fast-growing companies</span>
+           <span className="text-white/50 text-[10px] uppercase tracking-widest font-bold">Trusted by fast-growing companies</span>
         </div>
         
-        {/* Mobile Grid (2 per row) */}
-        <div className="md:hidden container-main grid grid-cols-2 gap-4">
-          {trustLogos.slice(0, 6).map((logo) => (
-            <div key={logo} className="flex items-center justify-center py-4 bg-white/[0.02] border border-white/5 rounded-xl opacity-40">
-              <span className="text-sm font-bold text-white tracking-tight">{logo}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Desktop Marquee */}
-        <div className="hidden md:block">
-          <Marquee pauseOnHover className="[--duration:25s]">
+        {/* Unified Responsive Glassmorphic Marquee */}
+        <div className="w-full overflow-hidden">
+          <Marquee pauseOnHover className="[--duration:30s] py-1">
             {trustLogos.map((logo) => (
-              <span key={logo} className="text-base md:text-lg font-medium tracking-wide mx-8 md:mx-10 opacity-30 hover:opacity-50 transition-opacity cursor-default text-white">
-                {logo}
-              </span>
+              <div 
+                key={logo} 
+                className="flex items-center justify-center px-5 py-2.5 mx-3 bg-white/[0.02] border border-white/[0.04] rounded-xl hover:border-brand-primary/20 hover:bg-white/[0.04] transition-all duration-300 opacity-45 hover:opacity-90 group cursor-default"
+              >
+                <span className="text-xs md:text-sm font-extrabold text-white tracking-tight group-hover:text-[#1A6DD6] transition-colors">{logo}</span>
+              </div>
             ))}
           </Marquee>
         </div>
       </section>
-
+ 
       {/* Bento Grid Section */}
       <section className="sec-xl container-main relative">
         <div className="mb-16">
@@ -176,7 +177,7 @@ export default function Home() {
             Built for <span className="text-brand-primary italic">scale</span>
           </h2>
         </div>
-
+ 
         <BentoGrid className="md:grid-cols-3">
           {bentoFeatures.map((feature) => (
             <BentoCard key={feature.name} {...feature} />
@@ -256,7 +257,7 @@ export default function Home() {
               </div>
 
               {/* Viewport content */}
-              <div className="relative aspect-[21/9] w-full overflow-hidden">
+              <div className="relative aspect-[16/10] sm:aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden">
                 <div className="absolute inset-0 bg-black/10 z-10 pointer-events-none" />
                 
                 {activeTab === "identity" ? (

@@ -93,16 +93,17 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <button 
+          <motion.button 
+            whileTap={{ scale: 0.92 }}
             className="lg:hidden w-10 h-10 flex items-center justify-center text-white/50 hover:text-white bg-white/[0.03] border border-white/5 rounded-full hover:bg-white/[0.06] hover:border-white/10 transition-all duration-200"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          </motion.button>
         </div>
       </nav>
-
+ 
       {/* Sticky Mobile CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-[90] md:hidden px-4 pb-4">
         <Link 
@@ -115,7 +116,7 @@ export default function Navbar() {
           <span className="relative z-10">Book a Call</span>
         </Link>
       </div>
-
+ 
       <AnimatePresence>
         {isOpen && (
           <motion.div 
@@ -134,6 +135,8 @@ export default function Navbar() {
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05 }}
+                      whileHover={{ x: 4 }}
+                      whileTap={{ scale: 0.97 }}
                     >
                       <Link
                         href={item.href}
