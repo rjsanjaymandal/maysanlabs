@@ -86,9 +86,9 @@ export default function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-semibold text-white"
+            className="text-3xl md:text-5xl font-bold tracking-[-0.02em] text-white leading-tight"
           >
-            Frequently Asked <span className="text-brand-primary">Questions</span>
+            Frequently Asked <span className="bg-gradient-to-r from-brand-primary to-brand-light bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(26,109,214,0.2)]">Questions</span>
           </motion.h2>
         </div>
 
@@ -134,7 +134,7 @@ export default function FAQ() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="text-white/45 text-sm mt-4 pt-4 border-t border-white/5 leading-relaxed">
+                      <p className="text-white/60 text-sm mt-4 pt-4 border-t border-white/5 leading-relaxed font-medium">
                         {item.answer}
                       </p>
                     </motion.div>
