@@ -47,13 +47,23 @@ export default function Navbar() {
       }`}>
         <div className="container-main flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative h-10 w-10 transition-all duration-300 rounded-xl overflow-hidden border border-white/10 bg-white/[0.03] shadow-md flex items-center justify-center">
+            <motion.div 
+              whileHover={{ 
+                scale: 1.06, 
+                rotate: -3,
+                boxShadow: "0 0 20px rgba(26, 109, 214, 0.4)",
+                borderColor: "rgba(26, 109, 214, 0.4)"
+              }}
+              whileTap={{ scale: 0.95, rotate: 0 }}
+              transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              className="relative h-10 w-10 rounded-xl overflow-hidden border border-white/10 bg-white/[0.03] shadow-md flex items-center justify-center"
+            >
               <img 
                 src="/icon-rounded-v2.png?v=3" 
                 alt="Maysan Labs" 
-                className="h-full w-full object-cover transition-transform group-hover:scale-105" 
+                className="h-full w-full object-cover" 
               />
-            </div>
+            </motion.div>
             <span className="text-sm md:text-base font-extrabold tracking-wider text-white transition-colors duration-200 group-hover:text-[#1A6DD6] uppercase">
               Maysan <span className="text-[#1A6DD6]">Labs</span>
             </span>

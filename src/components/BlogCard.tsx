@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BlogPost } from "@/lib/blog-data";
 import { ArrowRight, Clock, Tag, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -9,7 +10,16 @@ interface BlogCardProps {
 export default function BlogCard({ post }: BlogCardProps) {
   const isExternal = !!post.externalUrl;
   const cardContent = (
-    <div className="maysan-card h-full flex flex-col group-hover:border-brand-primary/30 group-hover:bg-white/[0.04] transition-all duration-300">
+    <motion.div 
+      whileHover={{ 
+        y: -8, 
+        scale: 1.015,
+        boxShadow: "0 15px 35px rgba(26, 109, 214, 0.14)",
+        borderColor: "rgba(26, 109, 214, 0.3)"
+      }}
+      transition={{ type: "spring", stiffness: 350, damping: 22 }}
+      className="maysan-card h-full flex flex-col transition-colors duration-300"
+    >
       <div className="flex flex-col h-full relative z-10">
         <div className="flex items-center gap-4 mb-5 text-xs font-medium uppercase tracking-wider">
           <div className="flex items-center gap-2 text-brand-primary">
@@ -41,7 +51,7 @@ export default function BlogCard({ post }: BlogCardProps) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 
   if (isExternal) {
