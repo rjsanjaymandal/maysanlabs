@@ -20,31 +20,37 @@ const services = [
     title: "Web Development",
     desc: "Fast, scalable websites built with modern frameworks that grow with your business.",
     icon: Code2,
+    color: "from-blue-500 to-cyan-400",
   },
   {
     title: "Mobile Apps",
     desc: "Cross-platform mobile applications that work seamlessly on iOS and Android.",
     icon: Smartphone,
+    color: "from-purple-500 to-indigo-400",
   },
   {
     title: "E-Commerce",
     desc: "Online stores with automated order management, payments, and inventory.",
     icon: ShoppingCart,
+    color: "from-pink-500 to-rose-400",
   },
   {
     title: "Cloud Infrastructure",
     desc: "Secure, scalable hosting on AWS/Azure with enterprise-grade security.",
     icon: Cloud,
+    color: "from-cyan-500 to-blue-400",
   },
   {
     title: "Custom Software",
     desc: "Tailored solutions built for your unique business requirements.",
     icon: Workflow,
+    color: "from-orange-500 to-yellow-400",
   },
   {
     title: "AI & Automation",
     desc: "Smart automation and AI integration to streamline your operations.",
     icon: Sparkles,
+    color: "from-green-500 to-emerald-400",
   },
 ];
 
@@ -81,21 +87,33 @@ export default function ServicesClient() {
             </Link>
           </motion.div>
  
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
-                className="group bg-white/[0.02] border border-white/5 rounded-xl p-6 hover:border-white/10 hover:bg-white/[0.04] transition-all duration-300"
+                transition={{ delay: index * 0.06 }}
+                className="group relative rounded-2xl border border-white/[0.05] bg-white/[0.01] p-6 hover:bg-white/[0.02] hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden text-left"
               >
-                <div className="w-11 h-11 bg-white/5 rounded-lg flex items-center justify-center text-white/60 mb-4 group-hover:bg-brand-primary/20 group-hover:text-brand-primary transition-all duration-200">
-                  <service.icon size={20} />
+                {/* Custom Gradient Neon Border on card hover */}
+                <div className={`absolute -inset-px bg-gradient-to-br ${service.color} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none -z-10`} />
+                <div className="absolute inset-[1px] bg-[var(--bg-dark)] rounded-2xl -z-10" />
+
+                <div className="w-12 h-12 bg-white/[0.03] border border-white/5 rounded-xl flex items-center justify-center text-white/50 mb-5 group-hover:bg-brand-primary/15 group-hover:text-brand-primary transition-all duration-300">
+                  <service.icon size={20} className="group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">{service.title}</h3>
-                <p className="text-white/45 text-sm leading-relaxed">{service.desc}</p>
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-brand-primary transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="text-white/45 text-sm leading-relaxed mb-5 group-hover:text-white/60 transition-colors duration-300">
+                  {service.desc}
+                </p>
+                <div className="flex items-center gap-1.5 text-brand-primary text-xs font-semibold uppercase tracking-wider group-hover:gap-2.5 transition-all">
+                  <span>Learn more</span>
+                  <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
+                </div>
               </motion.div>
             ))}
           </div>
