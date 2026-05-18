@@ -20,7 +20,7 @@ const projectTypes = [
   { id: "custom", label: "Custom Solution", desc: "Other custom development" },
 ];
 
-const budgets = ["<$5K", "$5K-$15K", "$15K-$50K", "$50K+", "Not sure yet"];
+const budgets = ["< ₹5 Lakhs", "₹5L - ₹15L", "₹15L - ₹50L", "₹50 Lakhs+", "Not sure yet"];
 
 export default function MultiStepForm() {
   const [currentStep, setCurrentStep] = useState(1);
