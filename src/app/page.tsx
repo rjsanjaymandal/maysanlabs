@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import { motion } from "framer-motion";
@@ -13,7 +13,8 @@ import {
   Layers, 
   Zap, 
   ShieldCheck, 
-  Code2
+  Code2,
+  Server
 } from "lucide-react";
 import Marquee from "@/components/ui/marquee";
 
@@ -261,42 +262,131 @@ export default function Home() {
               </div>
 
               {/* Viewport content */}
-              <div className="relative aspect-[16/10] sm:aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden">
-                <div className="absolute inset-0 bg-black/10 z-10 pointer-events-none" />
+              <div className="relative min-h-[460px] md:min-h-0 md:aspect-[21/9] w-full overflow-hidden bg-black/45 backdrop-blur-md flex flex-col justify-between select-none">
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/[0.04] via-transparent to-blue-500/[0.02] z-0 pointer-events-none" />
                 
                 {activeTab === "identity" ? (
                   <motion.div
                     key="identity-pane"
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="w-full h-full relative"
+                    className="w-full h-full relative z-10 flex flex-col p-4 sm:p-6 justify-between flex-grow"
                   >
-                    <Image
-                      src="/banner-centered-v3.png"
-                      alt="Maysan Labs Corporate Widescreen Identity"
-                      fill
-                      priority
-                      className="object-cover transition-transform duration-[10000ms] ease-out group-hover:scale-105"
-                    />
+                    {/* Top status bar */}
+                    <div className="flex items-center justify-between border-b border-white/5 pb-4">
+                      <span className="text-[10px] text-white/40 uppercase tracking-widest font-semibold font-mono">
+                        [DESIGN STANDARD] EST. 2026
+                      </span>
+                      <span className="text-[10px] text-brand-primary uppercase tracking-widest font-bold font-mono">
+                        MAYSAN ARCHITECTURE
+                      </span>
+                    </div>
+
+                    {/* Central Editorial Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-auto py-6 items-center text-left">
+                      {/* Left Column: Big Editorial Typography */}
+                      <div className="space-y-4">
+                        <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
+                          WE DESIGN HIGH-CONTRAST DIGITAL EXPERIENCES.
+                        </h3>
+                        <p className="text-white/40 text-xs leading-relaxed max-w-sm">
+                          A premium software architecture and visual design standard built to scale enterprise-grade digital platforms.
+                        </p>
+                      </div>
+                      
+                      {/* Right Column: Premium Color & Layout specs */}
+                      <div className="border-l border-white/5 pl-6 space-y-4 font-mono">
+                        <div className="space-y-1">
+                          <span className="text-[8px] text-brand-primary uppercase tracking-wider block">01 / BRAND COLOR CANVAS</span>
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 rounded-full bg-brand-primary border border-brand-primary/30" />
+                            <span className="text-xs text-white/80 font-bold">#1A6DD6</span>
+                            <span className="text-[10px] text-white/30">Cyber Royal Blue</span>
+                          </div>
+                        </div>
+                        <div className="space-y-1">
+                          <span className="text-[8px] text-brand-primary uppercase tracking-wider block">02 / INTERACTION CANVAS</span>
+                          <div className="flex items-center gap-2">
+                            <div className="w-3 h-3 rounded-full bg-[#00d2ff] border border-[#00d2ff]/30" />
+                            <span className="text-xs text-white/80 font-bold">#00D2FF</span>
+                            <span className="text-[10px] text-white/30">Vibrant Cyan</span>
+                          </div>
+                        </div>
+                        <div className="space-y-1">
+                          <span className="text-[8px] text-brand-primary uppercase tracking-wider block">03 / TYPOGRAPHY CANVAS</span>
+                          <span className="text-xs text-white/80 font-bold">Outfit Pro / sans-serif</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom Status bar */}
+                    <div className="flex items-center justify-between border-t border-white/5 pt-4 text-[9px] font-mono text-white/30 uppercase tracking-widest">
+                      <span>MAYSAN IDENTITY REGISTER v1.0</span>
+                      <span className="text-brand-primary font-bold">VERIFIED</span>
+                    </div>
                   </motion.div>
                 ) : (
                   <motion.div
                     key="pillars-pane"
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="w-full h-full relative"
+                    className="w-full h-full relative z-10 flex flex-col p-4 sm:p-6 justify-between flex-grow"
                   >
-                    <Image
-                      src="/banner-columns-v3.png"
-                      alt="Maysan Labs Core Strategy Pillars Widescreen"
-                      fill
-                      priority
-                      className="object-cover transition-transform duration-[10000ms] ease-out group-hover:scale-105"
-                    />
+                    {/* Top status bar */}
+                    <div className="flex items-center justify-between border-b border-white/5 pb-4">
+                      <span className="text-[10px] text-white/40 uppercase tracking-widest font-semibold font-mono">
+                        [STRATEGIC PRINCIPLES]
+                      </span>
+                      <span className="text-[10px] text-brand-primary uppercase tracking-widest font-bold font-mono">
+                        03 / THREE EXECUTION PILLARS
+                      </span>
+                    </div>
+
+                    {/* Three strategic Columns Cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-auto py-6 text-left">
+                      {/* Pillar 1: Speed */}
+                      <div className="bg-white/[0.01] border border-white/5 rounded-2xl p-6 flex flex-col justify-between min-h-[140px] hover:border-brand-primary/20 transition-all duration-300">
+                        <div className="text-[10px] font-mono text-white/30 font-bold tracking-wider mb-2">
+                          [01] SPEED
+                        </div>
+                        <div className="my-auto">
+                          <h4 className="text-sm font-bold text-white mb-2 uppercase tracking-tight">EDGE CACHING SYSTEMS</h4>
+                          <p className="text-xs text-white/45 leading-relaxed">Engineered for absolute responsiveness with sub-50ms data caching layers.</p>
+                        </div>
+                      </div>
+
+                      {/* Pillar 2: Scale */}
+                      <div className="bg-white/[0.01] border border-white/5 rounded-2xl p-6 flex flex-col justify-between min-h-[140px] hover:border-brand-primary/20 transition-all duration-300">
+                        <div className="text-[10px] font-mono text-white/30 font-bold tracking-wider mb-2">
+                          [02] SCALE
+                        </div>
+                        <div className="my-auto">
+                          <h4 className="text-sm font-bold text-white mb-2 uppercase tracking-tight">ELASTIC ARCHITECTURES</h4>
+                          <p className="text-xs text-white/45 leading-relaxed">Dynamically scales to handle millions of queries with zero performance overhead.</p>
+                        </div>
+                      </div>
+
+                      {/* Pillar 3: Security */}
+                      <div className="bg-white/[0.01] border border-white/5 rounded-2xl p-6 flex flex-col justify-between min-h-[140px] hover:border-brand-primary/20 transition-all duration-300">
+                        <div className="text-[10px] font-mono text-white/30 font-bold tracking-wider mb-2">
+                          [03] STABILITY
+                        </div>
+                        <div className="my-auto">
+                          <h4 className="text-sm font-bold text-white mb-2 uppercase tracking-tight">ENTERPRISE HARDENING</h4>
+                          <p className="text-xs text-white/45 leading-relaxed">Secured with regular penetration testing and strict server encapsulation protocols.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom Status bar */}
+                    <div className="flex items-center justify-between border-t border-white/5 pt-4 text-[9px] font-mono text-white/30 uppercase tracking-widest">
+                      <span>MAYSAN STRATEGY MATRIX v1.0</span>
+                      <span className="text-brand-primary font-bold">SECURE</span>
+                    </div>
                   </motion.div>
                 )}
                 
