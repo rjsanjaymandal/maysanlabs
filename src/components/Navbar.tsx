@@ -118,20 +118,6 @@ export default function Navbar() {
           >
             <div className="flex flex-col h-full p-6 pt-24 justify-between">
               <div className="flex flex-col gap-6">
-                {/* Brand Logo Header inside Mobile Drawer */}
-                <div className="flex items-center gap-3 px-4 pb-4 border-b border-white/5">
-                  <div className="relative h-9 w-9 rounded-full overflow-hidden border border-white/10 bg-white/[0.03] shadow-md flex items-center justify-center">
-                    <img 
-                      src="/icon-rounded-v2.png?v=3" 
-                      alt="Maysan Labs" 
-                      className="h-full w-full object-cover" 
-                    />
-                  </div>
-                  <span className="text-sm font-extrabold tracking-wider text-white uppercase">
-                    Maysan <span className="text-[#1A6DD6]">Labs</span>
-                  </span>
-                </div>
-
                 <div className="flex flex-col gap-1.5">
                   {navItems.map((item, index) => (
                     <motion.div
