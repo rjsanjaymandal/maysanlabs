@@ -49,25 +49,25 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3 group">
             <motion.div 
               whileHover={{ 
-                scale: 1.06, 
+                scale: 1.05, 
                 rotate: -3,
                 boxShadow: "0 0 20px rgba(26, 109, 214, 0.4)",
               }}
               whileTap={{ scale: 0.95, rotate: 0 }}
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              className="relative h-10 w-10 rounded-full overflow-hidden flex items-center justify-center"
+              className="relative h-9 w-9 rounded-full overflow-hidden flex items-center justify-center border border-white/10 bg-white/[0.02]"
             >
               <Image 
                 src="/favicon.png" 
                 alt="Maysan Labs" 
-                width={40}
-                height={40}
+                width={36}
+                height={36}
                 priority
                 className="h-full w-full object-cover" 
               />
             </motion.div>
-            <span className="text-sm md:text-base font-extrabold tracking-wider text-white transition-colors duration-200 group-hover:text-[#1A6DD6] uppercase">
-              Maysan <span className="text-[#1A6DD6]">Labs</span>
+            <span className="text-xs sm:text-sm font-semibold tracking-[0.22em] text-white/90 transition-colors duration-300 group-hover:text-white uppercase">
+              Maysan <span className="text-[#1A6DD6] group-hover:text-blue-400 transition-colors duration-300">Labs</span>
             </span>
           </Link>
 
@@ -76,22 +76,21 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-sm font-medium transition-all duration-200 relative group ${
-                  pathname === item.href ? "text-brand-primary" : "text-white/50 hover:text-white"
+                className={`text-[10px] uppercase tracking-widest font-semibold transition-all duration-300 relative group py-1.5 ${
+                  pathname === item.href ? "text-brand-primary" : "text-white/45 hover:text-white"
                 }`}
               >
                 {item.name}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-brand-primary transition-all duration-300 ${pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                <span className={`absolute -bottom-0.5 left-0 h-[1.5px] bg-brand-primary transition-all duration-355 ${pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
               </Link>
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-4">
             <LanguageToggle />
             <ThemeToggle />
-            <Link href="/init" className="group relative px-6 py-2.5 bg-[#1A6DD6] rounded-full font-extrabold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/20 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105 active:scale-95">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#1A6DD6] via-[#2563EB] to-[#1D4ED8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <Link href="/init" className="group relative px-6 py-2.5 bg-white/[0.04] border border-white/10 rounded-full font-bold text-[9px] uppercase tracking-widest text-white/90 shadow-lg shadow-black/10 overflow-hidden transition-all duration-300 hover:bg-[#1A6DD6] hover:border-[#1A6DD6] hover:text-white hover:shadow-blue-500/20 hover:scale-105 active:scale-95">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative z-10">Book a Call</span>
             </Link>
           </div>
