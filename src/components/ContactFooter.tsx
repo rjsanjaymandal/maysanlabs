@@ -89,17 +89,17 @@ export default function ContactFooter() {
               <p className="text-white/70 text-sm mb-6 max-w-sm leading-relaxed">
                  Enterprise SaaS development studio building scalable applications for businesses that demand precision.
               </p>
-              <div className="flex gap-3">
+              <div className="flex gap-3.5">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-lg border border-white/5 bg-white/[0.02] flex items-center justify-center text-white/40 hover:text-white hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all duration-200"
+                    className="w-10 h-10 rounded-xl border border-white/5 bg-white/[0.02] flex items-center justify-center text-white/40 hover:text-[#1A6DD6] hover:border-[#1A6DD6]/30 hover:bg-[#1A6DD6]/5 hover:-translate-y-0.5 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-blue-500/10"
                     aria-label={social.name}
                   >
-                    <social.icon size={16} />
+                    <social.icon size={18} />
                   </a>
                 ))}
               </div>
@@ -112,7 +112,7 @@ export default function ContactFooter() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="text-white/70 hover:text-brand-primary text-sm transition-colors duration-200"
+                    className="text-white/60 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-x-1 inline-block"
                   >
                     {link.name}
                   </Link>
@@ -122,13 +122,19 @@ export default function ContactFooter() {
 
             <div>
               <h3 className="text-xs font-semibold text-white/70 uppercase tracking-widest mb-5">Contact</h3>
-              <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-2.5 text-white/40 text-sm">
-                  <MapPin size={14} className="text-brand-primary" />
-                  Gurgaon, India
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center gap-3 text-white/60 text-sm group">
+                  <div className="w-8 h-8 rounded-lg bg-white/[0.02] border border-white/5 flex items-center justify-center text-white/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300">
+                    <MapPin size={14} />
+                  </div>
+                  <span>Gurgaon, India</span>
                 </div>
-                <a href="mailto:business@maysanlabs.com" className="text-brand-primary hover:text-white text-sm transition-colors duration-200">
-                  business@maysanlabs.com
+                
+                <a href="mailto:business@maysanlabs.com" className="flex items-center gap-3 text-white/60 text-sm group">
+                  <div className="w-8 h-8 rounded-lg bg-white/[0.02] border border-white/5 flex items-center justify-center text-white/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300">
+                    <Mail size={14} />
+                  </div>
+                  <span className="text-brand-primary group-hover:text-white transition-colors duration-300">business@maysanlabs.com</span>
                 </a>
               </div>
             </div>
@@ -139,8 +145,8 @@ export default function ContactFooter() {
               © {new Date().getFullYear()} Maysan Labs. All rights reserved.
             </p>
             <div className="flex gap-8">
-              <a href="#" className="text-white/60 hover:text-brand-primary text-sm transition-colors">Privacy Policy</a>
-              <a href="#" className="text-white/60 hover:text-brand-primary text-sm transition-colors">Terms of Service</a>
+              <a href="#" className="text-white/65 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-y-[-1px] inline-block">Privacy Policy</a>
+              <a href="#" className="text-white/65 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-y-[-1px] inline-block">Terms of Service</a>
             </div>
           </div>
         </div>
