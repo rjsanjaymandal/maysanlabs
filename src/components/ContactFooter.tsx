@@ -69,9 +69,9 @@ export default function ContactFooter() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
             <div className="md:col-span-2">
               <Link href="/" className="flex items-center gap-4 mb-5 group">
-                <div className="relative h-14 w-14 transition-all duration-300 rounded-2xl overflow-hidden shadow-md flex items-center justify-center">
+                <div className="relative h-14 w-14 transition-all duration-300 rounded-full overflow-hidden flex items-center justify-center">
                   <img 
-                    src="/icon-rounded-v2.png?v=100" 
+                    src="/favicon.png?v=100" 
                     alt="Maysan Labs" 
                     className="h-full w-full object-cover transition-transform group-hover:scale-105" 
                   />

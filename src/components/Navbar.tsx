@@ -55,10 +55,10 @@ export default function Navbar() {
               }}
               whileTap={{ scale: 0.95, rotate: 0 }}
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              className="relative h-10 w-10 rounded-xl overflow-hidden shadow-md flex items-center justify-center"
+              className="relative h-10 w-10 rounded-full overflow-hidden flex items-center justify-center"
             >
               <img 
-                src="/icon-rounded-v2.png?v=100" 
+                src="/favicon.png?v=100" 
                 alt="Maysan Labs" 
                 className="h-full w-full object-cover" 
               />

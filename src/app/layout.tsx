@@ -132,12 +132,12 @@ export const metadata: Metadata = {
   classification: "SaaS Development Company",
   icons: {
     icon: [
-      { url: "/icon-rounded-v2.png?v=100" },
+      { url: "/favicon.png?v=100" },
       { url: "/icon-192x192-v4.png", sizes: "192x192", type: "image/png" },
       { url: "/icon-512x512-v4.png", sizes: "512x512", type: "image/png" },
     ],
     apple: [
-      { url: "/icon-rounded-v2.png?v=100" },
+      { url: "/favicon.png?v=100" },
       { url: "/icon-192x192-v4.png", sizes: "192x192", type: "image/png" },
       { url: "/icon-512x512-v4.png", sizes: "512x512", type: "image/png" },
     ],
