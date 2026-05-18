@@ -74,10 +74,10 @@ export default function ServicesClient() {
               <Code2 size={12} />
               Services
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.03em] text-white mb-6 leading-[1.05]">
               What we <span className="text-brand-primary">do</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8 max-w-2xl">
+            <p className="text-base md:text-lg text-white/60 leading-relaxed mb-8 max-w-2xl font-medium">
               We build scalable, high-performance software solutions for enterprises and fast-growing startups.
             </p>
             <Link href="/init" className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-[#1A6DD6] rounded-full font-bold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02]">

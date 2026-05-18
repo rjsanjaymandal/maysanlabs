@@ -17,6 +17,15 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: "/:path*(manifest.json|manifest.webmanifest|favicon.ico|icon-rounded-v2.png|icon-192x192-v2.png|icon-512x512-v2.png)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+          },
+        ],
+      },
+      {
         source: "/:all*(svg|jpg|jpeg|png|gif|webp|avif)",
         headers: [
           {

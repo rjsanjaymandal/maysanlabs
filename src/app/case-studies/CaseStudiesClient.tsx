@@ -24,14 +24,16 @@ export default function CaseStudiesClient() {
               <Briefcase size={12} />
               Real-World Impact
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.03em] text-white mb-6 leading-[1.05]">
               Case Studies
             </h1>
-            <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8 max-w-2xl">
+            <p className="text-base md:text-lg text-white/60 leading-relaxed mb-8 max-w-2xl font-medium">
               Meticulously engineered services for complex enterprise challenges. Explore our portfolio of industrial-grade transformations.
             </p>
-            <Link href="/init" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
-              Start Your Project <ArrowUpRight size={16} />
+            <Link href="/init" className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-[#1A6DD6] rounded-full font-bold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02]">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative z-10">Start Your Project</span>
+              <ArrowUpRight size={16} className="relative z-10" />
             </Link>
           </div>
         </div>
@@ -110,9 +112,10 @@ export default function CaseStudiesClient() {
           <div className="mt-16 text-center py-12 border-t border-white/[0.06]">
             <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4">Ready for your transformation?</h3>
             <p className="text-white/40 mb-8 max-w-lg mx-auto">Let&apos;s discuss how we can help solve your most complex challenges.</p>
-            <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
-              <span>Book a Strategy Call</span>
-              <ArrowUpRight size={16} />
+            <Link href="/init" className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-[#1A6DD6] rounded-full font-bold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02]">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative z-10">Book a Strategy Call</span>
+              <ArrowUpRight size={16} className="relative z-10" />
             </Link>
           </div>
         </div>

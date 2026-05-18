@@ -131,10 +131,10 @@ export const metadata: Metadata = {
   category: "technology",
   classification: "SaaS Development Company",
   icons: {
-    icon: "/icon-rounded-v2.png",
-    apple: "/icon-rounded-v2.png",
+    icon: "/icon-rounded-v2.png?v=3",
+    apple: "/icon-rounded-v2.png?v=3",
   },
-  manifest: "/manifest.json",
+  manifest: "/manifest.json?v=3",
 };
 
 import type { Viewport } from "next";
