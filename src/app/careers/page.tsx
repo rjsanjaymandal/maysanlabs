@@ -1,26 +1,24 @@
 import type { Metadata } from "next";
 import CareersClient from "./CareersClient";
-import { generateJobPostingSchema } from "@/lib/seo/helpers";
+import { generateJobPostingSchema, generatePageSEO } from "@/lib/seo/helpers";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generatePageSEO({
   title: "Careers | Join Maysan Labs - Enterprise Software Development",
   description: "Join our team of elite engineers and designers to build next-generation enterprise SaaS services. We offer competitive salaries, remote work, and cutting-edge projects.",
-  keywords: ["careers", "jobs", "software engineer jobs", "frontend developer jobs", "backend developer jobs", "full stack developer jobs", "react jobs", "node.js jobs", "remote jobs", "Maysan Labs careers"],
-  openGraph: {
-    title: "Careers | Join Maysan Labs",
-    description: "Join our team of elite engineers and designers to build next-generation enterprise SaaS services.",
-    url: "https://maysanlabs.com/careers",
-    type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Careers at Maysan Labs" }],
-  },
-  alternates: { 
-    canonical: "https://maysanlabs.com/careers",
-    languages: {
-      en: "https://maysanlabs.com/careers",
-      ar: "https://maysanlabs.com/ar/careers",
-    },
-  },
-};
+  path: "/careers",
+  keywords: [
+    "careers",
+    "jobs",
+    "software engineer jobs",
+    "frontend developer jobs",
+    "backend developer jobs",
+    "full stack developer jobs",
+    "react jobs",
+    "node.js jobs",
+    "remote jobs",
+    "Maysan Labs careers"
+  ]
+});
 
 // Generate JobPosting schema for general positions
 const jobPostingSchema = generateJobPostingSchema({

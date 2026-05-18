@@ -1,25 +1,19 @@
 import CaseStudiesClient from "./CaseStudiesClient";
 import { Metadata } from "next";
+import { generatePageSEO } from "@/lib/seo/helpers";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generatePageSEO({
   title: "Case Studies | Enterprise Software Success Stories",
   description: "Explore our case studies showcasing successful enterprise software implementations, SaaS services, and custom development projects by Maysan Labs.",
-  keywords: ["case studies", "success stories", "enterprise software examples", "SaaS case studies", "custom software portfolio"],
-  openGraph: {
-    title: "Case Studies | Enterprise Software Success Stories",
-    description: "Explore our case studies showcasing successful enterprise software implementations by Maysan Labs.",
-    url: "https://maysanlabs.com/case-studies",
-    type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Maysan Labs Case Studies" }],
-  },
-  alternates: { 
-    canonical: "https://maysanlabs.com/case-studies",
-    languages: {
-      en: "https://maysanlabs.com/case-studies",
-      ar: "https://maysanlabs.com/ar/case-studies",
-    },
-  },
-};
+  path: "/case-studies",
+  keywords: [
+    "case studies",
+    "success stories",
+    "enterprise software examples",
+    "SaaS case studies",
+    "custom software portfolio"
+  ]
+});
 
 const caseStudiesSchema = {
   "@context": "https://schema.org",
