@@ -6,31 +6,31 @@ import { Quote, Star } from "lucide-react";
 const testimonials = [
   {
     name: "Vikram Singh",
-    role: "Founder, Maysan Shop (Client)",
-    message: "Maysan Labs built our entire e-commerce platform from scratch. The inventory management, order processing, and payment integration work flawlessly. Our sales increased 300% in the first quarter.",
+    role: "Founder, Maysan Shop",
+    message: "Maysan Labs built our entire custom ERP and inventory system from scratch. The regional warehousing, automated order workflows, and UPI payment integrations work flawlessly. Our order fulfillment efficiency jumped dramatically.",
     metric: "300%",
-    metricLabel: "Sales increase",
+    metricLabel: "Efficiency gain",
   },
   {
     name: "Rahul Sharma",
-    role: "CEO, TechRetail",
-    message: "Maysan Labs delivered a scalable architecture that handled our Black Friday traffic without issues. Their code quality is exceptional.",
+    role: "CEO, TechRetail India",
+    message: "Maysan Labs delivered an ultra-scalable cloud database that handled our Diwali festive sale traffic without a single hiccup. Their engineering quality is truly world-class.",
     metric: "3x faster",
     metricLabel: "Page load time",
   },
   {
     name: "Priya Mehta",
     role: "Founder, StyleHub",
-    message: "They built a platform that scaled from 10K to 500K users seamlessly. True partners in our growth journey.",
-    metric: "500K",
+    message: "They engineered a robust system that scaled from 10,000 to 5 Lakh active users seamlessly. True partners in our growth journey.",
+    metric: "5 Lakhs",
     metricLabel: "Active users",
   },
   {
-    name: "Ankit Gupta",
-    role: "CTO, CloudFirst",
-    message: "The enterprise features they implemented helped us close deals with Fortune 500 companies. Outstanding technical depth.",
-    metric: "$2M",
-    metricLabel: "New revenue",
+    name: "Suraj Devadiga",
+    role: "Founder, Flash Fashion",
+    message: "Maysan Labs engineered a world-class, ultra-fast e-commerce platform for our clothing brand. Surili from their team spearheaded our digital marketing campaigns, driving massive brand adoption across India.",
+    metric: "₹1.5 Cr+",
+    metricLabel: "First-Month Sales",
   },
 ];
 
@@ -88,11 +88,11 @@ export default function Testimonials() {
 
                 <div className="flex items-center justify-between pt-3.5 border-t border-white/[0.06]">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 bg-brand-primary/10 rounded-lg flex items-center justify-center font-medium text-brand-primary text-sm">
+                    <div className="w-8 h-8 bg-brand-primary/10 rounded-lg flex items-center justify-center font-medium text-brand-primary text-sm font-semibold">
                       {testimonial.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="text-white text-xs font-medium">{testimonial.name}</p>
+                      <p className="text-white text-xs font-semibold">{testimonial.name}</p>
                       <p className="text-white/40 text-[10px]">{testimonial.role}</p>
                     </div>
                   </div>
