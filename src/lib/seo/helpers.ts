@@ -333,9 +333,21 @@ export function generatePageSEO({
   const combinedKeywords = Array.from(new Set([...keywords, ...baseKeywords]));
 
   return {
+    metadataBase: new URL(siteUrl),
     title: cleanPath === "/" ? title : `${title} | Maysan Labs`,
     description,
     keywords: combinedKeywords,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     openGraph: {
       type: "website",
       locale: "en_US",
