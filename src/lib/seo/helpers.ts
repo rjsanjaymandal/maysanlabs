@@ -293,6 +293,89 @@ export function generateBaseSEO(siteUrl: string): Metadata {
   };
 }
 
+export interface PageSEOProps {
+  title: string;
+  description: string;
+  path: string;
+  keywords?: string[];
+  image?: string;
+  siteUrl?: string;
+}
+
+/**
+ * Automatically generate pristine, fully optimized SEO Metadata for any page
+ */
+export function generatePageSEO({
+  title,
+  description,
+  path,
+  keywords = [],
+  image = "/og-image.png",
+  siteUrl = "https://maysanlabs.com"
+}: PageSEOProps): Metadata {
+  const cleanPath = path.startsWith("/") ? path : `/${path}`;
+  const fullUrl = cleanPath === "/" ? siteUrl : `${siteUrl}${cleanPath}`;
+  
+  const baseKeywords = [
+    "Maysan Labs",
+    "maysanlabs",
+    "Maysan",
+    "SaaS development company",
+    "custom software development company",
+    "enterprise SaaS development",
+    "cloud infrastructure services",
+    "custom web application development",
+    "MERN stack developers",
+    "React development company",
+    "Node.js backend development"
+  ];
+  
+  const combinedKeywords = Array.from(new Set([...keywords, ...baseKeywords]));
+
+  return {
+    title: cleanPath === "/" ? title : `${title} | Maysan Labs`,
+    description,
+    keywords: combinedKeywords,
+    openGraph: {
+      type: "website",
+      locale: "en_US",
+      url: fullUrl,
+      siteName: "Maysan Labs",
+      title: cleanPath === "/" ? title : `${title} | Maysan Labs`,
+      description,
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: title
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: cleanPath === "/" ? title : `${title} | Maysan Labs`,
+      description,
+      images: [image],
+      creator: "@maysanlabs",
+      site: "@maysanlabs"
+    },
+    alternates: {
+      canonical: fullUrl,
+      languages: {
+        en: fullUrl,
+        ar: `${siteUrl}/ar${cleanPath === "/" ? "" : cleanPath}`
+      }
+    },
+    icons: {
+      icon: "/icon-rounded-v2.png",
+      apple: "/icon-rounded-v2.png"
+    },
+    manifest: "/manifest.json"
+  };
+}
+
+
 /**
  * Generate all JSON-LD scripts for a page
  */
@@ -346,6 +429,7 @@ const seoHelpers = {
   generateCaseStudyJSONLD,
   generateProductSEO,
   generateBaseSEO,
+  generatePageSEO,
   generateJSONLDScripts,
   generateFAQSchema,
   generateHowToSchema,
