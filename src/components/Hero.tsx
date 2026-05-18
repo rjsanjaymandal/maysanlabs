@@ -38,10 +38,8 @@ export default function Hero() {
           particleColor="#3B82F6"
         />
       </div>
-      
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/8 blur-[100px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/4 left-1/4 w-[250px] h-[250px] bg-brand-primary/5 blur-[60px] rounded-full pointer-events-none" />
-      
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] sm:w-[500px] h-[240px] sm:h-[500px] bg-brand-primary/4 sm:bg-brand-primary/8 blur-[50px] sm:blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-[120px] sm:w-[250px] h-[120px] sm:h-[250px] bg-brand-primary/3 sm:bg-brand-primary/5 blur-[30px] sm:blur-[60px] rounded-full pointer-events-none" />
       <div className="container-main relative z-10 flex flex-col items-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

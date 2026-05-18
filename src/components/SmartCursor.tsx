@@ -5,14 +5,23 @@ import { motion, useSpring, useMotionValue } from "framer-motion";
 import styles from "./SmartCursor.module.css";
 
 function subscribeReducedMotion(callback: () => void) {
-  const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  mediaQuery.addEventListener("change", callback);
-  return () => mediaQuery.removeEventListener("change", callback);
+  if (typeof window === "undefined") return () => {};
+  try {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    mediaQuery.addEventListener("change", callback);
+    return () => mediaQuery.removeEventListener("change", callback);
+  } catch (e) {
+    return () => {};
+  }
 }
 
 function getReducedMotionSnapshot() {
   if (typeof window === "undefined") return false;
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  try {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  } catch (e) {
+    return false;
+  }
 }
 
 function getReducedMotionServerSnapshot() {

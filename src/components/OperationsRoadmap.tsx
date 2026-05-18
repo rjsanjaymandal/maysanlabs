@@ -36,7 +36,7 @@ export default function OperationsRoadmap() {
   return (
     <section className="py-20 relative overflow-hidden bg-background">
       {/* Decorative ambient gradient backdrop glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/2 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] sm:w-[500px] h-[240px] sm:h-[500px] bg-brand-primary/2 rounded-full blur-[60px] sm:blur-[120px] pointer-events-none" />
 
       <div className="container-main mb-14">
         <motion.div

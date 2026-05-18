@@ -97,7 +97,7 @@ export default function SocialProof() {
   return (
     <section className="sec-xl bg-background overflow-hidden relative">
       {/* Ambient Gradients */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-brand-primary/10 via-brand-primary/5 to-transparent blur-[150px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[800px] h-[300px] sm:h-[800px] bg-gradient-radial from-brand-primary/5 sm:from-brand-primary/10 via-brand-primary/2 sm:via-brand-primary/5 to-transparent blur-[60px] sm:blur-[150px] rounded-full pointer-events-none -z-10" />
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-background to-transparent pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
 

@@ -29,7 +29,7 @@ export default function ContactFooter() {
       {/* CTA Section */}
       <section className="py-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.08] via-brand-primary/[0.03] to-transparent" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/10 blur-[80px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] sm:w-[500px] h-[240px] sm:h-[500px] bg-brand-primary/5 sm:bg-brand-primary/10 blur-[40px] sm:blur-[80px] rounded-full pointer-events-none" />
         <div className="container-main">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

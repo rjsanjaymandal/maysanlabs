@@ -191,8 +191,8 @@ export default function Home() {
       {/* Immersive Panoramic Brand Showroom */}
       <section className="py-24 border-y border-white/5 bg-black/20 relative overflow-hidden">
         {/* Dynamic Color Reflective Ambient Glow backdrops */}
-        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full blur-[140px] pointer-events-none transition-all duration-1000 ${
-          activeTab === "identity" ? "bg-brand-primary/10" : "bg-blue-500/10"
+        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] sm:w-[600px] h-[180px] sm:h-[400px] rounded-full blur-[50px] sm:blur-[140px] pointer-events-none transition-all duration-1000 ${
+          activeTab === "identity" ? "bg-brand-primary/5 sm:bg-brand-primary/10" : "bg-blue-500/5 sm:bg-blue-500/10"
         }`} />
         
         <div className="container-main relative z-10">
