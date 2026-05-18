@@ -50,8 +50,8 @@ export default function Hero() {
           className="mb-5 md:mb-6"
         >
           <h1 className="heading-xl text-white max-w-4xl">
-            Build <span className="text-brand-primary">scalable SaaS</span> <br />
-            products that <span className="text-white/50">grow with you</span>
+            Build <span className="text-brand-primary">scalable SaaS</span> with <br />
+            <span className="text-white/50">Maysan Labs</span>
           </h1>
         </motion.div>
 
@@ -62,8 +62,8 @@ export default function Hero() {
            className="mt-3 md:mt-4 max-w-xl md:max-w-2xl mx-auto"
           >
           <p className="text-white/45 text-sm sm:text-base md:text-lg leading-relaxed">
-            Full-stack development studio specializing in enterprise SaaS. 
-            From MVP to millions of users—we help you scale.
+            Maysan Labs is an elite software studio specializing in enterprise SaaS development. 
+            From MVP to millions of users—we help you build, scale, and grow.
           </p>
         </motion.div>
 
