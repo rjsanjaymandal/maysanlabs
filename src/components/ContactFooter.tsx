@@ -70,11 +70,10 @@ export default function ContactFooter() {
             <div className="md:col-span-2">
               <Link href="/" className="flex items-center gap-4 mb-5 group">
                 <div className="relative h-14 w-14 transition-all duration-300 rounded-full overflow-hidden border border-white/10 bg-white/[0.03] shadow-md flex items-center justify-center">
-                  <Image 
-                    src="/icon-rounded-v2.png" 
+                  <img 
+                    src="/icon-rounded-v2.png?v=3" 
                     alt="Maysan Labs" 
-                    fill
-                    className="object-cover transition-transform group-hover:scale-105" 
+                    className="h-full w-full object-cover transition-transform group-hover:scale-105" 
                   />
                 </div>
                 <div className="flex flex-col">

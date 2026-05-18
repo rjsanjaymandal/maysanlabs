@@ -48,12 +48,10 @@ export default function Navbar() {
         <div className="container-main flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative h-10 w-10 transition-all duration-300 rounded-full overflow-hidden border border-white/10 bg-white/[0.03] shadow-md flex items-center justify-center">
-              <Image 
-                src="/icon-rounded-v2.png" 
+              <img 
+                src="/icon-rounded-v2.png?v=3" 
                 alt="Maysan Labs" 
-                fill
-                className="object-cover transition-transform group-hover:scale-105" 
-                priority 
+                className="h-full w-full object-cover transition-transform group-hover:scale-105" 
               />
             </div>
             <span className="text-sm md:text-base font-extrabold tracking-wider text-white transition-colors duration-200 group-hover:text-[#1A6DD6] uppercase">
@@ -123,11 +121,10 @@ export default function Navbar() {
                 {/* Brand Logo Header inside Mobile Drawer */}
                 <div className="flex items-center gap-3 px-4 pb-4 border-b border-white/5">
                   <div className="relative h-9 w-9 rounded-full overflow-hidden border border-white/10 bg-white/[0.03] shadow-md flex items-center justify-center">
-                    <Image 
-                      src="/icon-rounded-v2.png" 
+                    <img 
+                      src="/icon-rounded-v2.png?v=3" 
                       alt="Maysan Labs" 
-                      fill
-                      className="object-cover" 
+                      className="h-full w-full object-cover" 
                     />
                   </div>
                   <span className="text-sm font-extrabold tracking-wider text-white uppercase">
