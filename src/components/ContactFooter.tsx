@@ -71,12 +71,12 @@ export default function ContactFooter() {
               <Link href="/" className="flex items-center gap-4 mb-5 group">
                 <div className="relative h-14 w-14 transition-all duration-300 rounded-full overflow-hidden flex items-center justify-center">
                   <Image 
-                    src="/favicon.png" 
+                    src="/logo-rounded-v2.png" 
                     alt="Maysan Labs" 
                     width={56}
                     height={56}
                     priority
-                    className="h-full w-full object-cover transition-transform group-hover:scale-105" 
+                    className="h-full w-full object-contain transition-transform group-hover:scale-105" 
                   />
                 </div>
                 <div className="flex flex-col">

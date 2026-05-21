@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About — Engineering Philosophy",
+  title: "About Maysan Labs | Enterprise SaaS Development Company | Gurgaon, India",
   description:
-    "At Maysan Labs, we engineer digital systems with industrial precision. Learn about our philosophy on scalable architecture, data sovereignty, and edge distribution.",
+    "Learn about Maysan Labs - a leading enterprise SaaS development company in Gurgaon, India. Our team builds scalable web applications, cloud infrastructure, and custom software for global enterprises. Contact Maysan Labs.",
+  keywords: ["about Maysan Labs", "maysanlabs about", "Maysan Labs team", "Maysan Labs Gurgaon", "enterprise software company", "SaaS development company", "custom software development", "Maysan Labs founders"],
   alternates: {
     canonical: "/about",
   },
   openGraph: {
-    title: "About Maysan Labs — Engineering Philosophy",
+    title: "About Maysan Labs — Enterprise SaaS Development Company",
     description:
-      "Digital systems built with industrial precision, designed for maximum resilience and global operational scale.",
+      "Learn about Maysan Labs - enterprise SaaS development company in Gurgaon, India building scalable software solutions for global enterprises.",
     url: "/about",
   },
 };

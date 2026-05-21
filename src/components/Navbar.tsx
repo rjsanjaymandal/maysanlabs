@@ -58,12 +58,12 @@ export default function Navbar() {
               className="relative h-9 w-9 rounded-full overflow-hidden flex items-center justify-center border border-white/10 bg-white/[0.02]"
             >
               <Image 
-                src="/favicon.png" 
+                src="/logo-rounded-v2.png" 
                 alt="Maysan Labs" 
                 width={36}
                 height={36}
                 priority
-                className="h-full w-full object-cover" 
+                className="h-full w-full object-contain" 
               />
             </motion.div>
             <span className="text-xs sm:text-sm font-semibold tracking-[0.22em] text-white/90 transition-colors duration-300 group-hover:text-white uppercase">

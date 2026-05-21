@@ -9,8 +9,9 @@ import { BookOpen } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Blog | Enterprise SaaS Development Insights",
-  description: "Read the latest insights on SaaS development, custom software, cloud infrastructure, and enterprise technology from Maysan Labs experts.",
+  title: "Blog | Enterprise SaaS Development Insights | Maysan Labs",
+  description: "Read the latest insights on SaaS development, custom software, cloud infrastructure, and enterprise technology from Maysan Labs experts. Maysan Labs blog covers React, Node.js, and cloud architecture.",
+  keywords: ["Maysan Labs blog", "maysanlabs blog", "SaaS development insights", "enterprise technology blog", "React tutorials", "Node.js insights", "cloud architecture tips"],
   openGraph: {
     title: "Blog | Enterprise SaaS Development Insights",
     description: "Read the latest insights on SaaS development and enterprise technology from Maysan Labs experts.",

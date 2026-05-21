@@ -3,8 +3,8 @@ import InsightsClient from "./InsightsClient";
 
 export const metadata: Metadata = {
   title: "Insights & Technical Blog | Maysan Labs",
-  description: "Explore our latest technical insights, architectural deep dives, and scaling strategies for modern SaaS products. Expert advice on React, Node.js, cloud infrastructure, and enterprise development.",
-  keywords: ["tech blog", "technical insights", "software development blog", "SaaS development", "React tutorials", "Node.js tutorials", "cloud architecture", "enterprise software", "scaling strategies", "Maysan Labs blog"],
+  description: "Explore technical insights from Maysan Labs - architectural deep dives, scaling strategies, and best practices for modern SaaS products. Expert advice on React, Node.js, cloud infrastructure, and enterprise development from the maysanlabs team.",
+  keywords: ["Maysan Labs insights", "maysanlabs technical blog", "SaaS development insights", "React tutorials", "Node.js guides", "cloud architecture", "enterprise software", "scaling strategies", "Maysan Labs blog"],
   openGraph: {
     title: "Insights & Technical Blog | Maysan Labs",
     description: "Explore our latest technical insights, architectural deep dives, and scaling strategies for modern SaaS products.",

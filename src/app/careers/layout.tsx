@@ -2,15 +2,17 @@ import { Metadata } from "next";
 import { jobPositions } from "@/lib/careers-data";
 
 export const metadata: Metadata = {
-  title: "Careers | Join the Future of SaaS",
+  title: "Careers | Join Maysan Labs | SaaS Engineering Jobs Gurgaon",
   description:
-    "Join Maysan Labs and help us build high-performance enterprise SaaS infrastructure. Explore open roles in engineering, design, and marketing.",
+    "Join Maysan Labs and build high-performance enterprise SaaS infrastructure. Explore open roles in engineering, design, and marketing at Maysan Labs in Gurgaon, India.",
   keywords: [
-    "SaaS Careers",
-    "Software Engineering Jobs",
-    "Product Design Jobs",
-    "Remote Engineering Jobs",
-    "Maysan Labs Careers",
+    "Maysan Labs careers",
+    "maysanlabs jobs",
+    "Maysan Labs hiring",
+    "SaaS careers Gurgaon",
+    "software engineering jobs Gurgaon",
+    "remote engineering jobs",
+    "Maysan Labs Gurgaon careers",
   ],
 };
 

@@ -80,8 +80,8 @@ export default function FlashFashionClient() {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
-                Book a Demo <ArrowRight size={16} />
+              <Link href="http://flashhfashion.in/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-4 bg-[#1A6DD6] rounded-full font-semibold text-sm text-white hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+                Launch Live Store <ArrowUpRight size={16} />
               </Link>
               <Link href="/case-studies/flash-fashion-ecommerce" className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-semibold text-sm hover:bg-white/[0.08] hover:text-white hover:border-white/25 transition-all duration-200">
                 View Case Study <ArrowUpRight size={16} />

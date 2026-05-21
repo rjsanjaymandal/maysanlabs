@@ -1,11 +1,12 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "System Architecture | Maysan Labs",
-  description: "Visualizing the industrial engineering behind our modular SaaS ecosystems. Built for scale, security, and low-latency global operations.",
+  title: "Cloud Architecture | Enterprise Infrastructure | Maysan Labs",
+  description: "Explore Maysan Labs cloud architecture - built for scale, security, and low-latency global operations. AWS, Azure, GCP, Kubernetes, microservices. Maysan Labs designs enterprise SaaS infrastructure.",
+  keywords: ["Maysan Labs architecture", "cloud architecture", "enterprise infrastructure", "AWS architecture", "Kubernetes", "microservices", "distributed systems", "SaaS architecture", "Maysan Labs cloud"],
   openGraph: {
-    title: "System Architecture | Maysan Labs",
-    description: "Explore the technical foundations of Maysan Labs' modular SaaS architecture.",
+    title: "Cloud Architecture | Maysan Labs",
+    description: "Maysan Labs cloud architecture built for scale, security, and low-latency global operations.",
   }
 };
 
