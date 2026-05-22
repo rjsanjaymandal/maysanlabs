@@ -16,7 +16,8 @@ import {
   Code2,
   Server
 } from "lucide-react";
-import Marquee from "@/components/ui/marquee";
+import FadeInScroll from "@/components/FadeInScroll";
+import LogoMarquee from "@/components/LogoMarquee";
 
 // Dynamic Imports for performance hardening
 const BentoGrid = dynamic(() => import("@/components/ui/bento-grid").then(m => m.BentoGrid), {
@@ -36,10 +37,6 @@ const ContactFooter = dynamic(() => import("@/components/ContactFooter"));
 const Services = dynamic(() => import("@/components/Services"));
 const FAQ = dynamic(() => import("@/components/FAQ"));
 const TrustBadges = dynamic(() => import("@/components/TrustBadges"));
-
-const trustLogos = [
-  "EduMaysan", "FlashFashion", "TechRetail", "StyleHub", "CloudFirst", "DataSync", "AppFlow", "NexTech", "ScaleUp"
-];
 
 const stats = [
   { value: "50+", label: "Enterprise Projects" },
@@ -147,25 +144,13 @@ export default function Home() {
         <div className="container-main mb-6 md:mb-8 text-center">
            <span className="text-white/50 text-[10px] uppercase tracking-widest font-bold">Trusted by fast-growing companies</span>
         </div>
-        
-        {/* Unified Responsive Glassmorphic Marquee */}
-        <div className="w-full overflow-hidden">
-          <Marquee pauseOnHover className="[--duration:30s] py-1">
-            {trustLogos.map((logo) => (
-              <div 
-                key={logo} 
-                className="flex items-center justify-center px-5 py-2.5 mx-3 bg-white/[0.02] border border-white/[0.04] rounded-xl hover:border-brand-primary/20 hover:bg-white/[0.04] transition-all duration-300 opacity-45 hover:opacity-90 group cursor-default"
-              >
-                <span className="text-xs md:text-sm font-extrabold text-white tracking-tight group-hover:text-[#1A6DD6] transition-colors">{logo}</span>
-              </div>
-            ))}
-          </Marquee>
-        </div>
+        <LogoMarquee />
       </section>
  
       {/* Bento Grid Section */}
-      <section className="sec-xl container-main relative">
-        <div className="mb-16">
+      <FadeInScroll>
+        <section className="sec-xl container-main relative">
+          <div className="mb-16">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -188,8 +173,10 @@ export default function Home() {
           ))}
         </BentoGrid>
       </section>
+      </FadeInScroll>
 
       {/* Immersive Panoramic Brand Showroom */}
+      <FadeInScroll>
       <section className="py-24 border-y border-white/5 bg-black/20 relative overflow-hidden">
         {/* Dynamic Color Reflective Ambient Glow backdrops */}
         <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] sm:w-[600px] h-[180px] sm:h-[400px] rounded-full blur-[50px] sm:blur-[140px] pointer-events-none transition-all duration-1000 ${
@@ -439,23 +426,29 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </FadeInScroll>
 
-      {/* Process Flow */}
+      <FadeInScroll>
       <OperationsRoadmap />
+      </FadeInScroll>
 
-      {/* Services */}
+      <FadeInScroll delay={0.1}>
       <Services />
+      </FadeInScroll>
 
-      {/* Testimonials */}
+      <FadeInScroll delay={0.2}>
       <Testimonials />
+      </FadeInScroll>
 
-      {/* FAQ Section */}
+      <FadeInScroll delay={0.1}>
       <FAQ />
+      </FadeInScroll>
 
-      {/* Trust Badges */}
+      <FadeInScroll>
       <TrustBadges />
+      </FadeInScroll>
 
-      {/* Tech Stack Section */}
+      <FadeInScroll>
       <section className="py-16 border-t border-white/5 bg-black/15 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-brand-primary/5 blur-[120px] rounded-full pointer-events-none" />
         <div className="container-main text-center relative z-10">
@@ -472,8 +465,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </FadeInScroll>
 
+      <FadeInScroll delay={0.2}>
       <ContactFooter />
+      </FadeInScroll>
     </main>
   );
 }
