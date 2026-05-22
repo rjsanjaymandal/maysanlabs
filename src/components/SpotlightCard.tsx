@@ -1,6 +1,12 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useCallback } from "react";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 interface SpotlightCardProps {
   children: React.ReactNode;
@@ -12,50 +18,55 @@ export default function SpotlightCard({
   className = "",
 }: SpotlightCardProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0, rotateX: 0, rotateY: 0 });
-  const [isHovered, setIsHovered] = useState(false);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    
-    // Calculate tilt
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 25;
-    const rotateY = (centerX - x) / 25;
-    
-    setPosition({ x, y, rotateX, rotateY });
-  };
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { stiffness: 150, damping: 15 });
+  const springY = useSpring(mouseY, { stiffness: 150, damping: 15 });
+
+  const spotlightBg = useTransform(
+    [springX, springY],
+    ([x, y]: number[]) =>
+      `radial-gradient(600px circle at ${x}px ${y}px, rgba(0, 210, 255, 0.12), transparent 40%)`
+  );
+
+  const borderBg = useTransform(
+    [springX, springY],
+    ([x, y]: number[]) =>
+      `radial-gradient(400px circle at ${x}px ${y}px, rgba(0, 210, 255, 0.35), transparent 40%)`
+  );
+
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!ref.current) return;
+      const rect = ref.current.getBoundingClientRect();
+      mouseX.set(e.clientX - rect.left);
+      mouseY.set(e.clientY - rect.top);
+    },
+    [mouseX, mouseY]
+  );
+
+  const handleMouseLeave = useCallback(() => {
+    mouseX.set(-9999);
+    mouseY.set(-9999);
+  }, [mouseX, mouseY]);
 
   return (
     <div
       ref={ref}
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`relative overflow-hidden transition-all duration-700 ease-expo ${
-        isHovered
-          ? "scale-[1.01] shadow-2xl z-20"
-          : "scale-100 shadow-none z-10"
-      } ${className}`}
-      style={{
-        transform: isHovered 
-          ? `perspective(1000px) rotateX(${position.rotateX}deg) rotateY(${position.rotateY}deg)` 
-          : "perspective(1000px) rotateX(0deg) rotateY(0deg)",
-        background: isHovered
-          ? `radial-gradient(800px circle at ${position.x}px ${position.y}px, rgba(59, 130, 246, 0.1), transparent 40%)`
-          : undefined,
-      }}
+      onMouseLeave={handleMouseLeave}
+      className={`group relative overflow-hidden ${className}`}
     >
-      {/* Spotlight border effect */}
-      <div
-        className="pointer-events-none absolute inset-0 rounded-[inherit] transition-opacity duration-300"
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-[inherit] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        style={{ background: spotlightBg }}
+      />
+      <motion.div
+        className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{
-          opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(400px circle at ${position.x}px ${position.y}px, var(--brand-primary), transparent 40%)`,
+          background: borderBg,
           mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
           maskComposite: "exclude",
           WebkitMaskComposite: "xor",
