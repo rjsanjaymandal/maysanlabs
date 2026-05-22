@@ -219,6 +219,11 @@ export default function RootLayout({
         {/* Preconnect to external origins for faster loading */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* Preload hero banner image for LCP optimization */}
+        <link rel="preload" as="image" href="/og-image.png" />
         
         {/* Defer non-critical scripts */}
         <script

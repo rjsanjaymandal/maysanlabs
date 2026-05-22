@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Menu, X, Phone } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import LanguageToggle from "@/components/ui/LanguageToggle";
@@ -57,12 +56,11 @@ export default function Navbar() {
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
               className="relative h-9 w-9 rounded-full overflow-hidden flex items-center justify-center border border-white/10 bg-white/[0.02]"
             >
-              <Image 
+              <img 
                 src="/logo-rounded-v2.png" 
-                alt="Maysan Labs" 
+                alt="Maysan Labs - Enterprise SaaS Development Company" 
                 width={36}
                 height={36}
-                priority
                 className="h-full w-full object-contain" 
               />
             </motion.div>

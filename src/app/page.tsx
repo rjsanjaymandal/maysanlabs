@@ -132,7 +132,7 @@ export default function Home() {
                       {stat.value}
                     </p>
                   )}
-                  <p className="text-white/40 text-[9px] md:text-[10px] uppercase tracking-wider font-semibold text-center group-hover:text-white/60 transition-colors">
+                  <p className="text-white/45 text-[9px] md:text-[10px] uppercase tracking-wider font-semibold text-center group-hover:text-white/60 transition-colors">
                     {stat.label}
                   </p>
                 </motion.div>
@@ -212,9 +212,9 @@ export default function Home() {
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
               Immersive <span className="text-brand-primary">Brand</span> Showroom
             </h2>
-            <p className="text-white/40 text-sm max-w-xl mx-auto leading-relaxed">
-              Explore the design system, operational philosophy, and technical pillars that define Maysan Labs.
-            </p>
+            <p className="text-white/60 text-sm max-w-xl mx-auto leading-relaxed">
+               Explore the design system, operational philosophy, and technical pillars that define Maysan Labs.
+             </p>
           </div>
 
           {/* Premium Glassmorphic Tab Switcher */}
@@ -354,7 +354,7 @@ export default function Home() {
                           [01] SPEED
                         </div>
                         <div className="my-auto">
-                          <h4 className="text-sm font-bold text-white mb-2 uppercase tracking-tight">EDGE CACHING SYSTEMS</h4>
+                          <h3 className="text-sm font-bold text-white mb-2 uppercase tracking-tight">EDGE CACHING SYSTEMS</h3>
                           <p className="text-xs text-white/45 leading-relaxed">Engineered for absolute responsiveness with sub-50ms data caching layers.</p>
                         </div>
                       </div>
@@ -365,7 +365,7 @@ export default function Home() {
                           [02] SCALE
                         </div>
                         <div className="my-auto">
-                          <h4 className="text-sm font-bold text-white mb-2 uppercase tracking-tight">ELASTIC ARCHITECTURES</h4>
+                          <h3 className="text-sm font-bold text-white mb-2 uppercase tracking-tight">ELASTIC ARCHITECTURES</h3>
                           <p className="text-xs text-white/45 leading-relaxed">Dynamically scales to handle millions of queries with zero performance overhead.</p>
                         </div>
                       </div>
@@ -376,7 +376,7 @@ export default function Home() {
                           [03] STABILITY
                         </div>
                         <div className="my-auto">
-                          <h4 className="text-sm font-bold text-white mb-2 uppercase tracking-tight">ENTERPRISE HARDENING</h4>
+                          <h3 className="text-sm font-bold text-white mb-2 uppercase tracking-tight">ENTERPRISE HARDENING</h3>
                           <p className="text-xs text-white/45 leading-relaxed">Secured with regular penetration testing and strict server encapsulation protocols.</p>
                         </div>
                       </div>
@@ -400,17 +400,17 @@ export default function Home() {
                   <>
                     <div className="flex flex-col gap-1.5">
                       <span className="text-[10px] text-brand-primary font-bold uppercase tracking-wider">Brand Name</span>
-                      <h4 className="text-base font-bold text-white">MAYSAN LABS</h4>
+                      <h3 className="text-base font-bold text-white">MAYSAN LABS</h3>
                       <p className="text-white/40 text-xs leading-relaxed">The high-contrast design system reflecting zero-latency enterprise solutions.</p>
                     </div>
                     <div className="flex flex-col gap-1.5 border-y md:border-y-0 md:border-x border-white/5 py-4 md:py-0 md:px-6">
                       <span className="text-[10px] text-brand-primary font-bold uppercase tracking-wider">Corporate Motto</span>
-                      <h4 className="text-base font-bold text-white">BUILD • SCALE • GROW</h4>
+                      <h3 className="text-base font-bold text-white">BUILD • SCALE • GROW</h3>
                       <p className="text-white/40 text-xs leading-relaxed">A unified three-phase engineering standard applied to all customer products.</p>
                     </div>
                     <div className="flex flex-col gap-1.5 md:pl-6">
                       <span className="text-[10px] text-brand-primary font-bold uppercase tracking-wider">Core Standard</span>
-                      <h4 className="text-base font-bold text-white">Engineering First</h4>
+                      <h3 className="text-base font-bold text-white">Engineering First</h3>
                       <p className="text-white/40 text-xs leading-relaxed">Focused on clean TypeScript architecture, high concurrency, and uptime.</p>
                     </div>
                   </>
@@ -418,17 +418,17 @@ export default function Home() {
                   <>
                     <div className="flex flex-col gap-1.5">
                       <span className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">Pillar 01</span>
-                      <h4 className="text-base font-bold text-white">Custom Solutions</h4>
-                      <p className="text-white/40 text-xs leading-relaxed">Precision-built React, Next.js, and Node.js architectures tailored to your business model.</p>
-                    </div>
-                    <div className="flex flex-col gap-1.5 border-y md:border-y-0 md:border-x border-white/5 py-4 md:py-0 md:px-6">
-                      <span className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">Pillar 02</span>
-                      <h4 className="text-base font-bold text-white">Scalable Growth</h4>
-                      <p className="text-white/40 text-xs leading-relaxed">High-performance structures configured to handle heavy, rapid user growth with zero bottlenecks.</p>
-                    </div>
-                    <div className="flex flex-col gap-1.5 md:pl-6">
-                      <span className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">Pillar 03</span>
-                      <h4 className="text-base font-bold text-white">Cloud & DevOps</h4>
+                      <h3 className="text-base font-bold text-white">Custom Solutions</h3>
+                       <p className="text-white/40 text-xs leading-relaxed">Precision-built React, Next.js, and Node.js architectures tailored to your business model.</p>
+                     </div>
+                     <div className="flex flex-col gap-1.5 border-y md:border-y-0 md:border-x border-white/5 py-4 md:py-0 md:px-6">
+                       <span className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">Pillar 02</span>
+                       <h3 className="text-base font-bold text-white">Scalable Growth</h3>
+                       <p className="text-white/40 text-xs leading-relaxed">High-performance structures configured to handle heavy, rapid user growth with zero bottlenecks.</p>
+                     </div>
+                     <div className="flex flex-col gap-1.5 md:pl-6">
+                       <span className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">Pillar 03</span>
+                       <h3 className="text-base font-bold text-white">Cloud & DevOps</h3>
                       <p className="text-white/40 text-xs leading-relaxed">Autonomous deployment pipelines, secure AWS frameworks, and persistent container management.</p>
                     </div>
                   </>

@@ -72,10 +72,10 @@ export default function Hero() {
            transition={{ duration: 0.6, delay: 0.2 }}
            className="mt-3 md:mt-4 max-w-xl md:max-w-2xl mx-auto"
           >
-          <p className="text-white/45 text-sm sm:text-base md:text-lg leading-relaxed">
-            Maysan Labs is an elite software studio specializing in enterprise SaaS development. 
-            From MVP to millions of users—we help you build, scale, and grow.
-          </p>
+           <p className="text-slate-300 text-sm sm:text-base md:text-lg leading-relaxed">
+             Maysan Labs is an elite software studio specializing in enterprise SaaS development. 
+             From MVP to millions of users—we help you build, scale, and grow.
+           </p>
         </motion.div>
 
         <motion.div
@@ -85,7 +85,7 @@ export default function Hero() {
           className="mt-5 md:mt-6 flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-8"
         >
           {benefits.map((benefit, i) => (
-            <div key={i} className="flex items-center gap-1.5 md:gap-2 text-white/35 text-[10px] md:text-sm px-3 py-1.5 bg-white/[0.02] rounded-full">
+            <div key={i} className="flex items-center gap-1.5 md:gap-2 text-white/60 text-[10px] md:text-sm px-3 py-1.5 bg-white/[0.02] rounded-full">
               <CheckCircle2 size={12} className="text-brand-primary shrink-0" />
               {benefit}
             </div>
@@ -104,7 +104,7 @@ export default function Hero() {
             <ArrowRight size={14} className="relative z-10 group-hover:translate-x-0.5 transition-transform shrink-0" />
           </Link>
           
-          <Link href="/products" className="group relative w-full sm:w-auto px-5 sm:px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-bold text-[9px] xs:text-[10px] uppercase tracking-wider sm:tracking-widest transition-all duration-300 hover:bg-white/[0.08] hover:text-white hover:border-white/25 flex items-center justify-center gap-2">
+          <Link href="/products" className="group relative w-full sm:w-auto px-5 sm:px-8 py-4 rounded-full border border-white/20 text-white/50 font-bold text-[9px] xs:text-[10px] uppercase tracking-wider sm:tracking-widest transition-all duration-300 hover:text-white hover:border-white/40 hover:bg-white/[0.02] flex items-center justify-center gap-2">
               <Play size={11} fill="currentColor" className="shrink-0" />
               <span>View Our Work</span>
           </Link>
