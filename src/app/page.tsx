@@ -25,7 +25,7 @@ const BentoGrid = dynamic(() => import("@/components/ui/bento-grid").then(m => m
 });
 const BentoCard = dynamic(() => import("@/components/ui/bento-grid").then(m => m.BentoCard));
 
-const OperationsRoadmap = dynamic(() => import("@/components/OperationsRoadmap"), {
+const ScrollTimeline = dynamic(() => import("@/components/ScrollTimeline"), {
   loading: () => <div className="min-h-[400px] bg-transparent" />
 });
 
@@ -429,7 +429,7 @@ export default function Home() {
       </FadeInScroll>
 
       <FadeInScroll>
-      <OperationsRoadmap />
+      <ScrollTimeline />
       </FadeInScroll>
 
       <FadeInScroll delay={0.1}>
