@@ -82,8 +82,8 @@ export default function MultiStepForm() {
         <div className="w-20 h-20 rounded-full bg-brand-primary/20 flex items-center justify-center mx-auto mb-6">
           <CheckCircle size={40} className="text-brand-primary" />
         </div>
-        <h3 className="text-2xl font-bold text-white mb-3">Thank You!</h3>
-        <p className="text-white/50 mb-6">We&apos;ve received your request and will get back to you within 24 hours.</p>
+        <h3 className="text-2xl font-bold text-foreground mb-3">Thank You!</h3>
+        <p className="text-foreground/50 mb-6">We&apos;ve received your request and will get back to you within 24 hours.</p>
         <Link href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] transition-all">
           Back to Home
         </Link>
@@ -100,7 +100,7 @@ export default function MultiStepForm() {
             <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
               currentStep >= step.id
                 ? "bg-brand-primary text-black"
-                : "bg-white/[0.05] text-white/30 border border-white/10"
+                : "bg-white/[0.05] text-foreground/30 border border-white/10"
             }`}>
               {currentStep > step.id ? <CheckCircle size={18} /> : <step.icon size={18} />}
             </div>
@@ -121,7 +121,7 @@ export default function MultiStepForm() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
             >
-              <h3 className="text-xl font-semibold text-white mb-6">What type of project?</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-6">What type of project?</h3>
               <div className="space-y-3">
                 {projectTypes.map((type) => (
                   <button
@@ -135,8 +135,8 @@ export default function MultiStepForm() {
                   >
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-white font-medium">{type.label}</p>
-                        <p className="text-white/40 text-sm">{type.desc}</p>
+                        <p className="text-foreground font-medium">{type.label}</p>
+                        <p className="text-foreground/40 text-sm">{type.desc}</p>
                       </div>
                       {formData.projectType === type.id && (
                         <CheckCircle size={20} className="text-brand-primary" />
@@ -146,7 +146,7 @@ export default function MultiStepForm() {
                 ))}
               </div>
               <div className="mt-6">
-                <p className="text-white/40 text-sm mb-3">Budget Range</p>
+                <p className="text-foreground/40 text-sm mb-3">Budget Range</p>
                 <div className="flex flex-wrap gap-2">
                   {budgets.map((budget) => (
                     <button
@@ -155,7 +155,7 @@ export default function MultiStepForm() {
                       className={`px-4 py-2 rounded-full text-sm transition-all ${
                         formData.budget === budget
                           ? "bg-brand-primary text-black"
-                          : "bg-white/[0.03] text-white/60 border border-white/5 hover:border-white/10"
+                          : "bg-white/[0.03] text-foreground/60 border border-white/5 hover:border-white/10"
                       }`}
                     >
                       {budget}
@@ -173,15 +173,15 @@ export default function MultiStepForm() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
             >
-              <h3 className="text-xl font-semibold text-white mb-6">Tell us about your project</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-6">Tell us about your project</h3>
               <textarea
                 value={formData.description}
                 onChange={(e) => updateFormData("description", e.target.value)}
                 placeholder="Describe your project, goals, timeline, and any specific requirements..."
                 rows={6}
-                className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:border-brand-primary/50 focus:outline-none transition-all resize-none"
+                className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none transition-all resize-none"
               />
-              <p className="text-white/30 text-sm mt-3">The more details you provide, the better we can help you.</p>
+              <p className="text-foreground/30 text-sm mt-3">The more details you provide, the better we can help you.</p>
             </motion.div>
           )}
 
@@ -192,36 +192,36 @@ export default function MultiStepForm() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
             >
-              <h3 className="text-xl font-semibold text-white mb-6">Your contact information</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-6">Your contact information</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="text-white/40 text-sm mb-2 block">Name / Company *</label>
+                  <label className="text-foreground/40 text-sm mb-2 block">Name / Company *</label>
                   <input
                     type="text"
                     value={formData.name}
                     onChange={(e) => updateFormData("name", e.target.value)}
                     placeholder="John Doe / Acme Corp"
-                    className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:border-brand-primary/50 focus:outline-none transition-all"
+                    className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none transition-all"
                   />
                 </div>
                 <div>
-                  <label className="text-white/40 text-sm mb-2 block">Email *</label>
+                  <label className="text-foreground/40 text-sm mb-2 block">Email *</label>
                   <input
                     type="email"
                     value={formData.email}
                     onChange={(e) => updateFormData("email", e.target.value)}
                     placeholder="john@example.com"
-                    className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:border-brand-primary/50 focus:outline-none transition-all"
+                    className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none transition-all"
                   />
                 </div>
                 <div>
-                  <label className="text-white/40 text-sm mb-2 block">Phone (optional)</label>
+                  <label className="text-foreground/40 text-sm mb-2 block">Phone (optional)</label>
                   <input
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => updateFormData("phone", e.target.value)}
                     placeholder="+1 234 567 8900"
-                    className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/30 focus:border-brand-primary/50 focus:outline-none transition-all"
+                    className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none transition-all"
                   />
                 </div>
               </div>
@@ -234,7 +234,7 @@ export default function MultiStepForm() {
           {currentStep > 1 ? (
             <button
               onClick={prevStep}
-              className="flex items-center gap-2 px-5 py-3 rounded-full border border-white/10 text-white/60 hover:text-white hover:border-white/20 transition-all"
+              className="flex items-center gap-2 px-5 py-3 rounded-full border border-white/10 text-foreground/60 hover:text-foreground hover:border-white/20 transition-all"
             >
               <ArrowLeft size={16} />
               Back

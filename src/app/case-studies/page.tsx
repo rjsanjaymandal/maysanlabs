@@ -1,6 +1,6 @@
 import CaseStudiesClient from "./CaseStudiesClient";
 import { Metadata } from "next";
-import { generatePageSEO } from "@/lib/seo/helpers";
+import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
 
 export const metadata: Metadata = generatePageSEO({
   title: "Case Studies | Enterprise Software Success Stories",
@@ -14,6 +14,11 @@ export const metadata: Metadata = generatePageSEO({
     "custom software portfolio"
   ]
 });
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: "/" },
+  { name: "Case Studies", url: "/case-studies" }
+]);
 
 const caseStudiesSchema = {
   "@context": "https://schema.org",
@@ -60,10 +65,8 @@ const caseStudiesSchema = {
 export default function CaseStudiesPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudiesSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudiesSchema) }} />
       <CaseStudiesClient />
     </>
   );

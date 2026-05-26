@@ -8,11 +8,51 @@ import MultiStepForm from "@/components/MultiStepForm";
 import { Send, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
+const initHowToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How to Start a Software Project with Maysan Labs",
+  description: "A step-by-step process to kick off your custom software development project.",
+  totalTime: "PT24H",
+  estimatedCost: {
+    "@type": "MonetaryAmount",
+    currency: "USD",
+    value: "5000"
+  },
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Fill out the project form",
+      text: "Tell us about your project requirements, budget, and timeline through our online form.",
+      url: "https://maysanlabs.com/init"
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Schedule a consultation",
+      text: "Our team reviews your requirements and schedules a free consultation within 24 hours.",
+      url: "https://maysanlabs.com/init"
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Receive proposal",
+      text: "We prepare a detailed proposal with scope, timeline, and pricing tailored to your needs.",
+      url: "https://maysanlabs.com/init"
+    }
+  ]
+};
+
 export default function InitPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   return (
     <main className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden text-foreground">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(initHowToSchema) }}
+      />
       <Navbar />
       
       <section className="pt-32 pb-20 relative">
@@ -32,10 +72,10 @@ export default function InitPage() {
                   <Send size={12} />
                   Get in Touch
                 </span>
-                <h1 className="text-4xl md:text-5xl font-semibold text-white mb-4 leading-tight">
+                <h1 className="text-4xl md:text-5xl font-semibold text-foreground mb-4 leading-tight">
                   Start a <span className="text-brand-primary">project</span>
                 </h1>
-                <p className="text-white/45 text-lg">
+                <p className="text-foreground/45 text-lg">
                   Tell us about your project and we&apos;ll get back to you within 24 hours.
                 </p>
               </motion.div>
@@ -51,8 +91,8 @@ export default function InitPage() {
               <div className="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <CheckCircle size={32} className="text-black" />
               </div>
-              <h2 className="heading-md text-white mb-4">Message Sent</h2>
-              <p className="text-white/45 mb-8">
+              <h2 className="heading-md text-foreground mb-4">Message Sent</h2>
+              <p className="text-foreground/45 mb-8">
                 We&apos;ve received your request. Our team will get back to you shortly.
               </p>
               <button

@@ -62,7 +62,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="py-20 border-t border-white/5" id="faq">
+    <section className="py-20 border-t border-[var(--sec-border)]" id="faq">
       {/* Dynamic SEO JSON-LD FAQ Schema injection */}
       <script
         type="application/ld+json"
@@ -76,7 +76,7 @@ export default function FAQ() {
             viewport={{ once: true }}
             className="mb-4"
           >
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] text-brand-primary text-xs font-semibold uppercase tracking-wider">
               <HelpCircle size={12} />
               FAQ
             </span>
@@ -86,7 +86,7 @@ export default function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-bold tracking-[-0.02em] text-white leading-tight"
+            className="text-3xl md:text-5xl font-bold tracking-[-0.02em] text-foreground leading-tight"
           >
             Frequently Asked <span className="bg-gradient-to-r from-brand-primary to-brand-light bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(26,109,214,0.2)]">Questions</span>
           </motion.h2>
@@ -106,7 +106,7 @@ export default function FAQ() {
                 className={`w-full text-left rounded-2xl p-5 md:p-6 transition-all duration-300 relative overflow-hidden group border ${
                   openIndex === index 
                     ? "bg-brand-primary/[0.02] border-brand-primary/30 shadow-lg shadow-brand-primary/5" 
-                    : "bg-white/[0.01] border-white/[0.05] hover:border-white/15"
+                    : "bg-[var(--glass-chip-bg)] border-[var(--glass-chip-border)] hover:border-white/15"
                 }`}
               >
                 {openIndex === index && (
@@ -114,14 +114,14 @@ export default function FAQ() {
                 )}
                 <div className="flex items-center justify-between gap-4">
                   <span className={`font-semibold text-sm md:text-base transition-colors duration-300 ${
-                    openIndex === index ? "text-white" : "text-white/80 group-hover:text-[#1A6DD6]"
+                    openIndex === index ? "text-foreground" : "text-foreground/80 group-hover:text-[#1A6DD6]"
                   }`}>
                     {item.question}
                   </span>
                   <ChevronDown 
                     size={18} 
                     className={`transition-all duration-300 flex-shrink-0 ${
-                      openIndex === index ? "rotate-180 text-[#1A6DD6]" : "text-white/40 group-hover:text-[#1A6DD6]"
+                      openIndex === index ? "rotate-180 text-[#1A6DD6]" : "text-foreground/40 group-hover:text-[#1A6DD6]"
                     }`}
                   />
                 </div>
@@ -134,7 +134,7 @@ export default function FAQ() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="text-white/60 text-sm mt-4 pt-4 border-t border-white/5 leading-relaxed font-medium">
+                      <p className="text-foreground/60 text-sm mt-4 pt-4 border-t border-[var(--sec-border)] leading-relaxed font-medium">
                         {item.answer}
                       </p>
                     </motion.div>

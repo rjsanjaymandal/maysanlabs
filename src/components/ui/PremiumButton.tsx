@@ -35,8 +35,8 @@ export default function PremiumButton({
 
   const variantStyles = {
     primary: "bg-[#1A6DD6] text-white shadow-lg shadow-blue-500/25 before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/10 before:to-transparent hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02] active:scale-[0.98]",
-    secondary: "bg-white/[0.05] border border-white/10 text-white hover:bg-white/[0.1] hover:border-white/20 hover:text-white",
-    outline: "bg-transparent border border-white/20 text-white hover:bg-white/5 hover:border-white/30"
+    secondary: "bg-white/[0.05] border border-white/10 text-foreground hover:bg-white/[0.1] hover:border-white/20 hover:text-foreground",
+    outline: "bg-transparent border border-white/20 text-foreground hover:bg-white/5 hover:border-white/30"
   };
 
   const buttonClass = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;

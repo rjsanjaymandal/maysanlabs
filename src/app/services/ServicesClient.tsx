@@ -26,7 +26,7 @@ const services = [
     title: "Mobile Apps",
     desc: "Cross-platform mobile applications that work seamlessly on iOS and Android.",
     icon: Smartphone,
-    color: "from-purple-500 to-indigo-400",
+    color: "from-teal-500 to-cyan-400",
   },
   {
     title: "E-Commerce",
@@ -56,7 +56,7 @@ const services = [
 
 export default function ServicesClient() {
   return (
-    <main className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden">
+    <main aria-label="Maysan Labs Development Services" className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden">
       <Navbar />
       
       <section className="pt-32 pb-20 relative">
@@ -70,14 +70,14 @@ export default function ServicesClient() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
               <Code2 size={12} />
               Services
             </span>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.03em] text-white mb-6 leading-[1.05]">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.03em] text-foreground mb-6 leading-[1.05]">
               What we <span className="text-brand-primary">do</span>
             </h1>
-            <p className="text-base md:text-lg text-white/60 leading-relaxed mb-8 max-w-2xl font-medium">
+            <p className="text-base md:text-lg text-foreground/60 leading-relaxed mb-8 max-w-2xl font-medium">
               We build scalable, high-performance software solutions for enterprises and fast-growing startups.
             </p>
             <Link href="/init" className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-[#1A6DD6] rounded-full font-bold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02]">
@@ -95,19 +95,19 @@ export default function ServicesClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.06 }}
-                className="group relative rounded-2xl border border-white/[0.05] bg-white/[0.01] p-6 hover:bg-white/[0.02] hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden text-left"
+                className="group relative rounded-2xl border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] p-6 hover:bg-[var(--glass-chip-bg)] hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden text-left"
               >
                 {/* Custom Gradient Neon Border on card hover */}
                 <div className={`absolute -inset-px bg-gradient-to-br ${service.color} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none -z-10`} />
                 <div className="absolute inset-[1px] bg-[var(--bg-dark)] rounded-2xl -z-10" />
 
-                <div className="w-12 h-12 bg-white/[0.03] border border-white/5 rounded-xl flex items-center justify-center text-white/50 mb-5 group-hover:bg-brand-primary/15 group-hover:text-brand-primary transition-all duration-300">
+                <div className="w-12 h-12 bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-xl flex items-center justify-center text-foreground/50 mb-5 group-hover:bg-brand-primary/15 group-hover:text-brand-primary transition-all duration-300">
                   <service.icon size={20} className="group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-brand-primary transition-colors duration-300">
+                <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-brand-primary transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-white/45 text-sm leading-relaxed mb-5 group-hover:text-white/60 transition-colors duration-300">
+                <p className="text-foreground/45 text-sm leading-relaxed mb-5 group-hover:text-foreground/60 transition-colors duration-300">
                   {service.desc}
                 </p>
                 <div className="flex items-center gap-1.5 text-brand-primary text-xs font-semibold uppercase tracking-wider group-hover:gap-2.5 transition-all">

@@ -1,6 +1,6 @@
 import AboutClient from "./AboutClient";
 import { Metadata } from "next";
-import { generatePageSEO } from "@/lib/seo/helpers";
+import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
 
 export const metadata: Metadata = generatePageSEO({
   title: "About Us | Maysan Labs - Enterprise SaaS Development Company",
@@ -15,6 +15,16 @@ export const metadata: Metadata = generatePageSEO({
   ]
 });
 
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: "/" },
+  { name: "About", url: "/about" }
+]);
+
 export default function AboutPage() {
-  return <AboutClient />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <AboutClient />
+    </>
+  );
 }

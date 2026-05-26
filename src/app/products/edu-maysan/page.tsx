@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import EduMaysanClient from "./EduMaysanClient";
-import { generateProductSEO } from "@/lib/seo/helpers";
+import { generateBreadcrumbSchema, generateProductSEO } from "@/lib/seo/helpers";
 
 const productData = {
   name: "Edu-Maysan",
@@ -12,6 +12,27 @@ const productData = {
 
 export const metadata: Metadata = generateProductSEO(productData, "https://maysanlabs.com");
 
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: "/" },
+  { name: "Products", url: "/products" },
+  { name: "Edu-Maysan", url: "/products/edu-maysan" }
+]);
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Edu-Maysan",
+  description: productData.description,
+  brand: { "@type": "Brand", name: "Maysan Labs" },
+  offers: { "@type": "Offer", price: productData.price, priceCurrency: productData.currency, availability: "https://schema.org/InStock" }
+};
+
 export default function EduMaysanPage() {
-  return <EduMaysanClient />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <EduMaysanClient />
+    </>
+  );
 }

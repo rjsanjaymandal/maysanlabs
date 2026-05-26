@@ -71,7 +71,7 @@ function TimelineStep({
   ]);
 
   const cardBorder = useTransform(isActive, [0, 1], [
-    "rgba(255, 255, 255, 0.04)",
+    "rgba(148, 163, 184, 0.2)",
     "rgba(0, 210, 255, 0.2)",
   ]);
 
@@ -94,7 +94,7 @@ function TimelineStep({
 
       <div className="md:hidden flex flex-col items-center shrink-0 z-10 pt-5">
         <motion.div
-          className="w-8 h-8 bg-white/5 border flex items-center justify-center rounded-lg"
+          className="w-8 h-8 bg-[var(--glass-chip-bg)] border flex items-center justify-center rounded-lg"
           style={{ borderColor: nodeColor }}
         >
           <motion.div style={{ color: iconColor }}>
@@ -104,7 +104,7 @@ function TimelineStep({
       </div>
 
       <motion.div
-        className="flex-1 md:w-[calc(50%-2rem)] bg-white/[0.01] border rounded-2xl p-5 md:p-6 transition-shadow duration-500 shadow-md hover:shadow-lg hover:shadow-brand-primary/5"
+        className="flex-1 md:w-[calc(50%-2rem)] bg-[var(--glass-chip-bg)] border rounded-2xl p-5 md:p-6 transition-shadow duration-500 shadow-md hover:shadow-lg hover:shadow-brand-primary/5"
         style={{ borderColor: cardBorder }}
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -119,9 +119,9 @@ function TimelineStep({
           <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-brand-primary/10 text-brand-primary uppercase tracking-wider">
             0{index + 1}
           </span>
-          <h3 className="text-lg font-bold text-white">{stage.title}</h3>
+          <h3 className="text-lg font-bold text-foreground">{stage.title}</h3>
         </div>
-        <p className="text-white/45 text-sm leading-relaxed">{stage.desc}</p>
+        <p className="text-foreground/45 text-sm leading-relaxed">{stage.desc}</p>
       </motion.div>
     </div>
   );
@@ -154,11 +154,11 @@ export default function ScrollTimeline() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
             <Rocket size={12} className="text-brand-primary" />
             Our Process
           </span>
-          <h2 className="text-3xl md:text-4xl font-semibold text-white">
+          <h2 className="text-3xl md:text-4xl font-semibold text-foreground">
             How <span className="text-brand-primary">Maysan Labs</span> delivers success
           </h2>
         </motion.div>
@@ -167,7 +167,7 @@ export default function ScrollTimeline() {
       <div className="container-main">
         <div className="relative max-w-4xl mx-auto">
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 z-0">
-            <div className="absolute inset-0 rounded-full bg-slate-800" />
+            <div className="absolute inset-0 rounded-full bg-[var(--glass-chip-border)]" />
             <motion.div
               className="absolute top-0 left-0 w-full origin-top rounded-full bg-[#00D2FF] shadow-[0_0_12px_rgba(0,210,255,0.4)]"
               style={{ scaleY: lineScaleY }}

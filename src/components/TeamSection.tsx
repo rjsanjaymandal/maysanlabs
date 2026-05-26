@@ -60,7 +60,7 @@ export default function TeamSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-semibold text-white"
+            className="text-3xl md:text-4xl font-semibold text-foreground"
           >
             Meet the <span className="text-brand-primary">Founders</span>
           </motion.h2>
@@ -80,20 +80,20 @@ export default function TeamSection() {
               <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-brand-primary/20 to-brand-primary/5 flex items-center justify-center text-brand-primary text-3xl font-bold mb-6">
                 {member.name.charAt(0)}
               </div>
-              <h3 className="text-xl font-semibold text-white mb-1 group-hover:text-brand-primary transition-colors">
+              <h3 className="text-xl font-semibold text-foreground mb-1 group-hover:text-brand-primary transition-colors">
                 {member.name}
               </h3>
               <p className="text-brand-primary text-sm font-medium mb-4">
                 {member.role}
               </p>
-              <p className="text-white/45 text-sm leading-relaxed mb-6">
+              <p className="text-foreground/45 text-sm leading-relaxed mb-6">
                 {member.bio}
               </p>
               <div className="flex gap-3">
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-white/[0.03] flex items-center justify-center text-white/40 hover:text-white hover:bg-brand-primary/10 hover:text-brand-primary transition-all">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-white/[0.03] flex items-center justify-center text-foreground/40 hover:text-foreground hover:bg-brand-primary/10 hover:text-brand-primary transition-all">
                   <Linkedin size={16} />
                 </a>
-                <a href="mailto:business@maysanlabs.com" className="w-9 h-9 rounded-lg bg-white/[0.03] flex items-center justify-center text-white/40 hover:text-white hover:bg-brand-primary/10 hover:text-brand-primary transition-all">
+                <a href="mailto:business@maysanlabs.com" className="w-9 h-9 rounded-lg bg-white/[0.03] flex items-center justify-center text-foreground/40 hover:text-foreground hover:bg-brand-primary/10 hover:text-brand-primary transition-all">
                   <Mail size={16} />
                 </a>
               </div>
@@ -103,7 +103,7 @@ export default function TeamSection() {
 
         {/* Advisors */}
         <div className="mb-12">
-          <h3 className="text-lg font-semibold text-white mb-8 text-center">
+          <h3 className="text-lg font-semibold text-foreground mb-8 text-center">
             Advisory Board
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
@@ -116,9 +116,9 @@ export default function TeamSection() {
                 transition={{ delay: index * 0.1 }}
                 className="bg-white/[0.02] border border-white/5 rounded-xl p-6"
               >
-                <h4 className="text-white font-semibold mb-1">{advisor.name}</h4>
+                <h4 className="text-foreground font-semibold mb-1">{advisor.name}</h4>
                 <p className="text-brand-primary text-sm mb-3">{advisor.role} at {advisor.company}</p>
-                <p className="text-white/40 text-sm">{advisor.bio}</p>
+                <p className="text-foreground/40 text-sm">{advisor.bio}</p>
               </motion.div>
             ))}
           </div>
@@ -126,7 +126,7 @@ export default function TeamSection() {
 
         {/* Join Team CTA */}
         <div className="text-center mt-16">
-          <p className="text-white/50 mb-6">Want to join our growing team?</p>
+          <p className="text-foreground/50 mb-6">Want to join our growing team?</p>
           <Link href="/careers" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] transition-all">
             View Open Positions
           </Link>

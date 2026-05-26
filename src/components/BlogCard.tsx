@@ -26,22 +26,22 @@ export default function BlogCard({ post }: BlogCardProps) {
             <Tag size={12} />
             <span>{post.category}</span>
           </div>
-          <div className="flex items-center gap-2 text-white/30">
+          <div className="flex items-center gap-2 text-foreground/30">
             <Clock size={12} />
             <span>{post.readTime}</span>
           </div>
         </div>
 
-        <h3 className="text-xl font-semibold mb-4 group-hover:text-brand-primary transition-colors duration-300">
+        <h3 className="text-xl font-semibold text-foreground mb-4 group-hover:text-brand-primary transition-colors duration-300">
           {post.title}
         </h3>
 
-        <p className="text-sm leading-relaxed text-white/45 group-hover:text-white/60 transition-colors duration-300 mb-6 line-clamp-3">
+        <p className="text-sm leading-relaxed text-foreground/45 group-hover:text-foreground/60 transition-colors duration-300 mb-6 line-clamp-3">
           {post.excerpt}
         </p>
 
         <div className="mt-auto pt-4 border-t border-white/5 flex items-center justify-between">
-          <div className="text-xs text-white/30 font-medium">
+          <div className="text-xs text-foreground/30 font-medium">
             {post.date}
           </div>
           

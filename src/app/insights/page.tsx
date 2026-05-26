@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import InsightsClient from "./InsightsClient";
+import { generateBreadcrumbSchema } from "@/lib/seo/helpers";
 
 export const metadata: Metadata = {
   title: "Insights & Technical Blog | Maysan Labs",
@@ -21,6 +22,16 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: "/" },
+  { name: "Insights", url: "/insights" }
+]);
+
 export default function InsightsPage() {
-  return <InsightsClient />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <InsightsClient />
+    </>
+  );
 }

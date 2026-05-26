@@ -41,12 +41,12 @@ export default function LogoMarquee({
           {logos.map((logo, i) => (
             <div
               key={`a-${i}`}
-              className="flex items-center gap-3 px-5 py-2.5 bg-white/[0.02] border border-white/[0.04] rounded-xl hover:border-brand-primary/20 hover:bg-white/[0.04] transition-all duration-300 opacity-45 hover:opacity-90 group cursor-default shrink-0"
+              className="flex items-center gap-3 px-5 py-2.5 bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-xl hover:border-brand-primary/20 hover:bg-white/[0.04] transition-all duration-300 opacity-45 hover:opacity-90 group cursor-default shrink-0"
             >
               <div className="w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-primary text-sm font-bold group-hover:bg-brand-primary/20 transition-colors">
                 {logo.icon}
               </div>
-              <span className="text-sm font-extrabold text-white tracking-tight group-hover:text-brand-primary transition-colors">
+              <span className="text-sm font-extrabold text-foreground tracking-tight group-hover:text-brand-primary transition-colors">
                 {logo.name}
               </span>
             </div>
@@ -56,12 +56,12 @@ export default function LogoMarquee({
           {logos.map((logo, i) => (
             <div
               key={`b-${i}`}
-              className="flex items-center gap-3 px-5 py-2.5 bg-white/[0.02] border border-white/[0.04] rounded-xl hover:border-brand-primary/20 hover:bg-white/[0.04] transition-all duration-300 opacity-45 hover:opacity-90 group cursor-default shrink-0"
+              className="flex items-center gap-3 px-5 py-2.5 bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-xl hover:border-brand-primary/20 hover:bg-white/[0.04] transition-all duration-300 opacity-45 hover:opacity-90 group cursor-default shrink-0"
             >
               <div className="w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-primary text-sm font-bold group-hover:bg-brand-primary/20 transition-colors">
                 {logo.icon}
               </div>
-              <span className="text-sm font-extrabold text-white tracking-tight group-hover:text-brand-primary transition-colors">
+              <span className="text-sm font-extrabold text-foreground tracking-tight group-hover:text-brand-primary transition-colors">
                 {logo.name}
               </span>
             </div>

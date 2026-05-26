@@ -40,7 +40,7 @@ export default function EduMaysanClient() {
   ];
 
   return (
-    <main className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
+    <main aria-label="Edu-Maysan LMS Product Information" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
       <Navbar />
       
       {/* Hero Section */}
@@ -51,7 +51,7 @@ export default function EduMaysanClient() {
         <div className="container-main relative">
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-brand-primary transition-colors mb-8 group"
+            className="inline-flex items-center gap-2 text-sm text-foreground/40 hover:text-brand-primary transition-colors mb-8 group"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span>Back to Products</span>
@@ -68,14 +68,14 @@ export default function EduMaysanClient() {
                 <GraduationCap size={12} />
                 Live Product
               </span>
-              <span className="text-white/30">•</span>
-              <span className="text-white/40 text-sm">EdTech</span>
+              <span className="text-foreground/30">•</span>
+              <span className="text-foreground/40 text-sm">EdTech</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 leading-tight">
               Edu-Maysan
             </h1>
-            <p className="text-xl text-white/50 mb-8 max-w-xl">
+            <p className="text-xl text-foreground/50 mb-8 max-w-xl">
               Next-generation intelligence platform for educational institutions. Unifying finance, logistics, and academics into one seamless system.
             </p>
 
@@ -83,7 +83,7 @@ export default function EduMaysanClient() {
               <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
                 Book a Demo <ArrowRight size={16} />
               </Link>
-              <Link href="/case-studies" className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-semibold text-sm hover:bg-white/[0.08] hover:text-white hover:border-white/25 transition-all duration-200">
+              <Link href="/case-studies" className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-foreground/70 font-semibold text-sm hover:bg-white/[0.08] hover:text-foreground hover:border-white/25 transition-all duration-200">
                 View Case Study <ArrowUpRight size={16} />
               </Link>
             </div>
@@ -95,8 +95,8 @@ export default function EduMaysanClient() {
       <section className="py-16">
         <div className="container-main">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">Platform Capabilities</h2>
-            <p className="text-white/40 max-w-xl mx-auto">A comprehensive school management system designed for modern educational institutions.</p>
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">Platform Capabilities</h2>
+            <p className="text-foreground/40 max-w-xl mx-auto">A comprehensive school management system designed for modern educational institutions.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -112,8 +112,8 @@ export default function EduMaysanClient() {
                   <div className="w-11 h-11 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary mb-4">
                     <feature.Icon size={20} />
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{feature.name}</h3>
-                  <p className="text-white/45 text-sm">{feature.description}</p>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{feature.name}</h3>
+                  <p className="text-foreground/45 text-sm">{feature.description}</p>
                 </SpotlightCard>
               </motion.div>
             ))}
@@ -125,8 +125,8 @@ export default function EduMaysanClient() {
       <section className="py-16">
         <div className="container-main">
           <div className="bg-gradient-to-br from-brand-primary/10 to-transparent border border-brand-primary/20 rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">Need a similar education platform?</h2>
-            <p className="text-white/40 mb-8 max-w-xl mx-auto">We build custom educational solutions tailored to your institution&apos;s requirements.</p>
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">Need a similar education platform?</h2>
+            <p className="text-foreground/40 mb-8 max-w-xl mx-auto">We build custom educational solutions tailored to your institution&apos;s requirements.</p>
             <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
               Start Your Project <ArrowRight size={16} />
             </Link>

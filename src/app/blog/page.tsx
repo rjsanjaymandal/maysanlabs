@@ -7,6 +7,7 @@ import { fetchExternalTechBlogs } from "@/lib/devto";
 import { Metadata } from "next";
 import { BookOpen } from "lucide-react";
 import Link from "next/link";
+import { generateBreadcrumbSchema } from "@/lib/seo/helpers";
 
 export const metadata: Metadata = {
   title: "Blog | Enterprise SaaS Development Insights | Maysan Labs",
@@ -27,6 +28,11 @@ export const metadata: Metadata = {
     },
   },
 };
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: "/" },
+  { name: "Blog", url: "/blog" }
+]);
 
 const blogSchema = {
   "@context": "https://schema.org",
@@ -58,10 +64,8 @@ export default async function BlogListingPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
       <main className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
         <Navbar />
 
@@ -76,10 +80,10 @@ export default async function BlogListingPage() {
                 <BookOpen size={12} />
                 Our Insights
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 leading-tight">
                 Articles
               </h1>
-              <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8 max-w-2xl">
+              <p className="text-lg md:text-xl text-foreground/50 leading-relaxed mb-8 max-w-2xl">
                 Engineering high-performance enterprise SaaS infrastructure. Research, benchmarks, and details from our elite lab.
               </p>
               <Link href="/init" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">

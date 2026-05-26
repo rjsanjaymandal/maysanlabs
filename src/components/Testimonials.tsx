@@ -36,7 +36,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-16 md:py-20 relative bg-black/10">
+    <section className="py-16 md:py-20 relative bg-[var(--sec-bg-alt)]">
       <div className="container-main">
         <div className="text-center mb-10 md:mb-12">
           <motion.div 
@@ -55,7 +55,7 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="heading-md text-white"
+            className="heading-md text-foreground"
           >
             What clients say
           </motion.h2>
@@ -69,7 +69,7 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="relative bg-white/[0.01] border border-white/[0.05] rounded-2xl p-5 hover:border-brand-primary/30 hover:bg-brand-primary/[0.01] transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-primary/5 overflow-hidden group"
+              className="relative bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-2xl p-5 hover:border-brand-primary/30 hover:bg-brand-primary/[0.01] transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-primary/5 overflow-hidden group"
             >
               <div className="absolute top-4 right-4 text-brand-primary/[0.1]">
                 <Quote size={24} />
@@ -82,24 +82,24 @@ export default function Testimonials() {
                   ))}
                 </div>
                 
-                <p className="text-white/60 text-sm mb-4.5 leading-relaxed">
+                <p className="text-foreground/60 text-sm mb-4.5 leading-relaxed">
                   &ldquo;{testimonial.message}&rdquo;
                 </p>
 
-                <div className="flex items-center justify-between pt-3.5 border-t border-white/[0.06]">
+                  <div className="flex items-center justify-between pt-3.5 border-t border-[var(--sec-border)]">
                   <div className="flex items-center gap-2.5">
                     <div className="w-8 h-8 bg-brand-primary/10 rounded-lg flex items-center justify-center font-medium text-brand-primary text-sm font-semibold">
                       {testimonial.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="text-white text-xs font-semibold">{testimonial.name}</p>
-                      <p className="text-white/40 text-[10px]">{testimonial.role}</p>
+                      <p className="text-foreground text-xs font-semibold">{testimonial.name}</p>
+                      <p className="text-foreground/40 text-[10px]">{testimonial.role}</p>
                     </div>
                   </div>
                   
                   <div className="text-right">
                     <p className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-400 font-extrabold text-base drop-shadow-[0_0_10px_rgba(59,130,246,0.15)]">{testimonial.metric}</p>
-                    <p className="text-white/35 text-[9px] uppercase tracking-wider font-semibold">{testimonial.metricLabel}</p>
+                    <p className="text-foreground/35 text-[9px] uppercase tracking-wider font-semibold">{testimonial.metricLabel}</p>
                   </div>
                 </div>
               </div>

@@ -41,7 +41,7 @@ const techStack = ["Next.js", "React", "Node.js", "PostgreSQL", "Redis", "Stripe
 
 export default function FlashFashionClient() {
   return (
-    <main className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
+    <main aria-label="FlashFashion Ecommerce Platform Details" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
       <Navbar />
       
       {/* Hero Section */}
@@ -52,7 +52,7 @@ export default function FlashFashionClient() {
         <div className="container-main relative">
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-brand-primary transition-colors mb-8 group"
+            className="inline-flex items-center gap-2 text-sm text-foreground/40 hover:text-brand-primary transition-colors mb-8 group"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span>Back to Products</span>
@@ -68,14 +68,14 @@ export default function FlashFashionClient() {
                 <ShoppingBag size={12} />
                 Live Product
               </span>
-              <span className="text-white/30">•</span>
-              <span className="text-white/40 text-sm">Ecommerce</span>
+              <span className="text-foreground/30">•</span>
+              <span className="text-foreground/40 text-sm">Ecommerce</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 leading-tight">
               FlashFashion
             </h1>
-            <p className="text-xl text-white/50 mb-8 max-w-xl">
+            <p className="text-xl text-foreground/50 mb-8 max-w-xl">
               Full-stack ecommerce platform built from scratch. A complete solution with inventory, orders, payments, and customer management.
             </p>
 
@@ -83,7 +83,7 @@ export default function FlashFashionClient() {
               <Link href="http://flashhfashion.in/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-4 bg-[#1A6DD6] rounded-full font-semibold text-sm text-white hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
                 Launch Live Store <ArrowUpRight size={16} />
               </Link>
-              <Link href="/case-studies/flash-fashion-ecommerce" className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-semibold text-sm hover:bg-white/[0.08] hover:text-white hover:border-white/25 transition-all duration-200">
+              <Link href="/case-studies/flash-fashion-ecommerce" className="inline-flex items-center gap-2 px-8 py-4 rounded-full border border-white/15 bg-white/[0.03] text-foreground/70 font-semibold text-sm hover:bg-white/[0.08] hover:text-foreground hover:border-white/25 transition-all duration-200">
                 View Case Study <ArrowUpRight size={16} />
               </Link>
             </div>
@@ -105,7 +105,7 @@ export default function FlashFashionClient() {
                 className="text-center"
               >
                 <div className="text-3xl md:text-4xl font-bold text-brand-primary mb-2">{metric.value}</div>
-                <div className="text-sm text-white/40 font-medium">{metric.label}</div>
+                <div className="text-sm text-foreground/40 font-medium">{metric.label}</div>
               </motion.div>
             ))}
           </div>
@@ -116,8 +116,8 @@ export default function FlashFashionClient() {
       <section className="py-16">
         <div className="container-main">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">Platform Capabilities</h2>
-            <p className="text-white/40 max-w-xl mx-auto">Everything you need to run a modern ecommerce business at scale.</p>
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">Platform Capabilities</h2>
+            <p className="text-foreground/40 max-w-xl mx-auto">Everything you need to run a modern ecommerce business at scale.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -133,8 +133,8 @@ export default function FlashFashionClient() {
                   <div className="w-11 h-11 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary mb-4">
                     <feature.icon size={20} />
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-                  <p className="text-white/45 text-sm">{feature.description}</p>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
+                  <p className="text-foreground/45 text-sm">{feature.description}</p>
                 </SpotlightCard>
               </motion.div>
             ))}
@@ -146,10 +146,10 @@ export default function FlashFashionClient() {
       <section className="py-12 border-t border-white/[0.06]">
         <div className="container-main">
           <div className="bg-white/[0.02] border border-white/[0.04] rounded-2xl p-8">
-            <h3 className="text-sm font-semibold text-white/50 uppercase tracking-wider mb-5">Technologies Used</h3>
+            <h3 className="text-sm font-semibold text-foreground/50 uppercase tracking-wider mb-5">Technologies Used</h3>
             <div className="flex flex-wrap gap-2">
               {techStack.map((tech, i) => (
-                <span key={i} className="px-3.5 py-1.5 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-white/60">
+                <span key={i} className="px-3.5 py-1.5 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-foreground/60">
                   {tech}
                 </span>
               ))}
@@ -162,8 +162,8 @@ export default function FlashFashionClient() {
       <section className="py-16">
         <div className="container-main">
           <div className="bg-gradient-to-br from-brand-primary/10 to-transparent border border-brand-primary/20 rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4">Need a similar ecommerce platform?</h2>
-            <p className="text-white/40 mb-8 max-w-xl mx-auto">We build custom ecommerce solutions tailored to your business requirements.</p>
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">Need a similar ecommerce platform?</h2>
+            <p className="text-foreground/40 mb-8 max-w-xl mx-auto">We build custom ecommerce solutions tailored to your business requirements.</p>
             <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
               Start Your Project <ArrowRight size={16} />
             </Link>

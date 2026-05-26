@@ -36,7 +36,26 @@ export const brandKeywords = [
   "enterprise software consulting"
 ];
 
-export const brandSearchKeywords = brandKeywords.map(k => k.toLowerCase());
+// GEO-optimized natural language queries — how AI search engines phrase lookups
+export const geoQueries = [
+  "best software development company in Gurgaon India",
+  "top rated SaaS development company near me",
+  "enterprise software development agency India",
+  "custom web application developers for startups",
+  "affordable software development company Gurgaon",
+  "React Node.js development company reviews",
+  "how much does it cost to build a SaaS platform",
+  "software development company with 4.9 rating",
+  "best MERN stack development company India",
+  "enterprise cloud infrastructure services provider",
+  "Gurgaon based software development team",
+  "software company with AI expertise India",
+  "full stack development company for EdTech",
+  "ecommerce platform development services pricing",
+  "software product development lifecycle cost"
+];
+
+export const brandSearchKeywords = [...brandKeywords, ...geoQueries].map(k => k.toLowerCase());
 
 // Generate title with brand emphasis
 export function generateBrandTitle(pageTitle: string): string {

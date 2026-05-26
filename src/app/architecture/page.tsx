@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ArchitectureClient from "./ArchitectureClient";
-import { generatePageSEO } from "@/lib/seo/helpers";
+import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
 
 export const metadata: Metadata = generatePageSEO({
   title: "Cloud Architecture | Enterprise Infrastructure | Maysan Labs",
@@ -19,6 +19,16 @@ export const metadata: Metadata = generatePageSEO({
   ]
 });
 
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: "/" },
+  { name: "Architecture", url: "/architecture" }
+]);
+
 export default function ArchitecturePage() {
-  return <ArchitectureClient />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <ArchitectureClient />
+    </>
+  );
 }

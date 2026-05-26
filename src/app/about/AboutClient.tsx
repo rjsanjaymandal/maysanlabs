@@ -59,8 +59,8 @@ export default function AboutClient() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="text-white/40 text-sm">What drives us</span>
-            <h2 className="heading-md text-white mt-2">Our Values</h2>
+            <span className="text-foreground/40 text-sm">What drives us</span>
+            <h2 className="heading-md text-foreground mt-2">Our Values</h2>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -73,11 +73,11 @@ export default function AboutClient() {
                 transition={{ delay: index * 0.08 }}
                 className="bg-white/[0.02] border border-white/5 rounded-xl p-6 hover:border-white/10 transition-all duration-300"
               >
-                <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-white/60 mb-4">
+                <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-foreground/60 mb-4">
                   <value.icon size={18} />
                 </div>
-                <h3 className="text-base font-semibold text-white mb-2">{value.title}</h3>
-                <p className="text-white/45 text-sm leading-relaxed">{value.desc}</p>
+                <h3 className="text-base font-semibold text-foreground mb-2">{value.title}</h3>
+                <p className="text-foreground/45 text-sm leading-relaxed">{value.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -87,9 +87,9 @@ export default function AboutClient() {
       <section className="py-16 bg-black/20 border-y border-white/5">
         <div className="container-main">
           <div className="max-w-3xl">
-            <span className="text-white/40 text-sm mb-4 block">Our Story</span>
-            <h2 className="heading-md text-white mb-6">Built on <span className="text-brand-primary">trust</span></h2>
-            <div className="space-y-4 text-white/50 text-base leading-relaxed">
+            <span className="text-foreground/40 text-sm mb-4 block">Our Story</span>
+            <h2 className="heading-md text-foreground mb-6">Built on <span className="text-brand-primary">trust</span></h2>
+            <div className="space-y-4 text-foreground/50 text-base leading-relaxed">
               <p>
                 We started Maysan Labs to help businesses transform their ideas into scalable software. 
                 We saw too many companies struggle with slow development, poor code quality, and lack of technical expertise.

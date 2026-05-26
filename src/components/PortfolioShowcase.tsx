@@ -53,22 +53,22 @@ export default function PortfolioShowcase({
           <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-[#1A6DD6] uppercase mb-3">
             {category}
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white tracking-tight leading-tight mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground tracking-tight leading-tight mb-4">
             {title}
           </h2>
           {tagline && (
-            <p className="text-white/40 text-xs sm:text-sm font-medium italic mb-4">
+            <p className="text-foreground/40 text-xs sm:text-sm font-medium italic mb-4">
               &ldquo;{tagline}&rdquo;
             </p>
           )}
-          <p className="text-white/45 text-sm sm:text-base leading-relaxed mb-6">
+          <p className="text-foreground/45 text-sm sm:text-base leading-relaxed mb-6">
             {description}
           </p>
 
           {benefits.length > 0 && (
             <div className="flex flex-col gap-2.5 mb-8">
               {benefits.map((benefit, idx) => (
-                <div key={idx} className="flex items-center gap-2 text-white/50 text-xs sm:text-sm">
+                <div key={idx} className="flex items-center gap-2 text-foreground/50 text-xs sm:text-sm">
                   <CheckCircle2 size={14} className="text-[#1A6DD6] shrink-0" />
                   <span>{benefit}</span>
                 </div>
@@ -91,7 +91,7 @@ export default function PortfolioShowcase({
                 className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border font-bold text-[9px] sm:text-[10px] uppercase tracking-widest transition-all duration-300 hover:scale-105 active:scale-95 ${
                   isLiveMode 
                     ? "bg-green-500/20 border-green-500/40 text-green-400" 
-                    : "bg-white/[0.03] border-white/15 text-white/70 hover:bg-white/[0.08] hover:text-white hover:border-white/25"
+                    : "bg-white/[0.03] border-white/15 text-foreground/70 hover:bg-white/[0.08] hover:text-foreground hover:border-white/25"
                 }`}
               >
                 <span className={`w-1.5 h-1.5 rounded-full ${isLiveMode ? "bg-green-400 animate-pulse" : "bg-white/40"}`} />
@@ -104,7 +104,7 @@ export default function PortfolioShowcase({
                 href={secondaryCtaHref} 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 bg-white/[0.03] text-white/70 font-bold text-[9px] sm:text-[10px] uppercase tracking-widest transition-all duration-300 hover:bg-white/[0.08] hover:text-white hover:border-white/25 hover:scale-105 active:scale-95"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 bg-white/[0.03] text-foreground/70 font-bold text-[9px] sm:text-[10px] uppercase tracking-widest transition-all duration-300 hover:bg-white/[0.08] hover:text-foreground hover:border-white/25 hover:scale-105 active:scale-95"
               >
                 <span>{secondaryCtaText}</span>
                 <ArrowUpRight size={14} />

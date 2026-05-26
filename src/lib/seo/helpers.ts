@@ -86,6 +86,9 @@ export function generateBlogPostSEO(post: BlogPost, siteUrl: string): Metadata {
  * Generate JSON-LD for blog post
  */
 export function generateBlogPostJSONLD(post: BlogPost, siteUrl: string) {
+  const personName = post.author;
+  const personUrl = `${siteUrl}/authors/${post.author.toLowerCase().replace(/\s+/g, "-")}`;
+
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -96,9 +99,16 @@ export function generateBlogPostJSONLD(post: BlogPost, siteUrl: string) {
     ],
     datePublished: post.date,
     dateModified: post.date,
+    articleSection: post.category,
     author: {
       "@type": "Person",
-      name: post.author
+      name: personName,
+      url: personUrl,
+      sameAs: [
+        "https://github.com/maysanlabs",
+        "https://in.linkedin.com/company/maysanlabs"
+      ],
+      knowsAbout: [post.category, "Enterprise SaaS", "Software Development"]
     },
     publisher: {
       "@type": "Organization",
@@ -114,12 +124,22 @@ export function generateBlogPostJSONLD(post: BlogPost, siteUrl: string) {
       post.title,
       post.category,
       "Maysan Labs",
-      "blog"
+      "blog",
+      "enterprise software",
+      "SaaS"
     ].filter(Boolean),
     mainEntityOfPage: {
       "@type": "WebPage",
       id: `${siteUrl}/blog/${post.slug}`
-    }
+    },
+    about: {
+      "@type": "Thing",
+      name: post.category
+    },
+    mentions: [
+      { "@type": "Thing", name: "Enterprise SaaS" },
+      { "@type": "Thing", name: "Software Development" }
+    ]
   };
 }
 
@@ -141,7 +161,8 @@ export function generateCaseStudySEO(study: CaseStudy, siteUrl: string): Metadat
       title: study.title,
       description: study.excerpt,
       url: `${siteUrl}/case-studies/${study.slug}`,
-      type: "website",
+      type: "article",
+      publishedTime: typeof study.date === 'string' ? study.date : undefined,
       images: [
         {
           url: `/og-image.png`,
@@ -392,7 +413,7 @@ export function generatePageSEO({
 
   return {
     metadataBase: new URL(siteUrl),
-    title: cleanPath === "/" ? title : `${title} | Maysan Labs`,
+    title: title,
     description,
     keywords: combinedKeywords,
     robots: {
@@ -411,7 +432,7 @@ export function generatePageSEO({
       locale: "en_US",
       url: fullUrl,
       siteName: "Maysan Labs",
-      title: cleanPath === "/" ? title : `${title} | Maysan Labs`,
+      title: title,
       description,
       images: [
         {
@@ -424,7 +445,7 @@ export function generatePageSEO({
     },
     twitter: {
       card: "summary_large_image",
-      title: cleanPath === "/" ? title : `${title} | Maysan Labs`,
+      title: title,
       description,
       images: [image],
       creator: "@maysanlabs",

@@ -120,7 +120,7 @@ export default function SocialProof() {
               ].map((ent, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-4 md:gap-6 text-[10px] font-black tracking-[0.3em] text-white/10 uppercase"
+                  className="flex items-center gap-4 md:gap-6 text-[10px] font-black tracking-[0.3em] text-foreground/10 uppercase"
                 >
                   <div className="w-1 h-1 bg-brand-primary/30 rounded-full" />
                   <span>{ent}</span>
@@ -150,7 +150,7 @@ export default function SocialProof() {
               Built for<br />
               <span className="text-brand-primary italic">speed.</span>
             </h2>
-            <p className="text-lg md:text-2xl font-medium text-white/50 leading-relaxed border-l border-white/5 pl-6 md:pl-10 max-w-sm tracking-tight">
+            <p className="text-lg md:text-2xl font-medium text-foreground/50 leading-relaxed border-l border-white/5 pl-6 md:pl-10 max-w-sm tracking-tight">
               We test everything to ensure your system is fast and ready for launch.
             </p>
           </motion.div>
@@ -170,10 +170,10 @@ export default function SocialProof() {
                  </div>
                  
                  <div>
-                   <div className="text-4xl md:text-6xl font-black text-white mb-4 md:mb-6 tracking-tighter italic">
-                      <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-                   </div>
-                   <p className="text-xs font-black text-white/30 group-hover:text-white/60 transition-colors uppercase tracking-widest">
+                    <div className="text-4xl md:text-6xl font-black text-foreground mb-4 md:mb-6 tracking-tighter italic">
+                       <AnimatedCounter target={stat.value} suffix={stat.suffix} />
+                    </div>
+                    <p className="text-xs font-black text-foreground/30 group-hover:text-foreground/60 transition-colors uppercase tracking-widest">
                      {stat.label}
                    </p>
                  </div>

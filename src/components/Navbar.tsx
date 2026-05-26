@@ -54,7 +54,7 @@ export default function Navbar() {
               }}
               whileTap={{ scale: 0.95, rotate: 0 }}
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              className="relative h-9 w-9 rounded-full overflow-hidden flex items-center justify-center border border-white/10 bg-white/[0.02]"
+              className="relative h-9 w-9 rounded-full overflow-hidden flex items-center justify-center border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)]"
             >
               <img 
                 src="/logo-rounded-v2.png" 
@@ -64,7 +64,7 @@ export default function Navbar() {
                 className="h-full w-full object-contain" 
               />
             </motion.div>
-            <span className="text-xs sm:text-sm font-semibold tracking-[0.22em] text-white/90 transition-colors duration-300 group-hover:text-white uppercase">
+            <span className="text-xs sm:text-sm font-semibold tracking-[0.22em] text-foreground/90 transition-colors duration-300 group-hover:text-foreground uppercase">
               Maysan <span className="text-[#1A6DD6] group-hover:text-blue-400 transition-colors duration-300">Labs</span>
             </span>
           </Link>
@@ -75,7 +75,7 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 className={`text-[10px] uppercase tracking-widest font-semibold transition-all duration-300 relative group py-1.5 ${
-                  pathname === item.href ? "text-brand-primary" : "text-white/45 hover:text-white"
+                  pathname === item.href ? "text-brand-primary" : "text-foreground/45 hover:text-foreground"
                 }`}
               >
                 {item.name}
@@ -87,7 +87,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <LanguageToggle />
             <ThemeToggle />
-            <Link href="/init" className="group relative px-6 py-2.5 bg-white/[0.04] border border-white/10 rounded-full font-bold text-[9px] uppercase tracking-widest text-white/90 shadow-lg shadow-black/10 overflow-hidden transition-all duration-300 hover:bg-[#1A6DD6] hover:border-[#1A6DD6] hover:text-white hover:shadow-blue-500/20 hover:scale-105 active:scale-95">
+            <Link href="/init" className="group relative px-6 py-2.5 bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full font-bold text-[9px] uppercase tracking-widest text-foreground/90 shadow-lg shadow-black/10 overflow-hidden transition-all duration-300 hover:bg-[#1A6DD6] hover:border-[#1A6DD6] hover:text-white hover:shadow-blue-500/20 hover:scale-105 active:scale-95">
               <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative z-10">Book a Call</span>
             </Link>
@@ -95,7 +95,7 @@ export default function Navbar() {
 
           <motion.button 
             whileTap={{ scale: 0.92 }}
-            className="lg:hidden w-10 h-10 flex items-center justify-center text-white/50 hover:text-white bg-white/[0.03] border border-white/5 rounded-full hover:bg-white/[0.06] hover:border-white/10 transition-all duration-200"
+            className="lg:hidden w-10 h-10 flex items-center justify-center text-foreground/50 hover:text-foreground bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full hover:bg-[var(--glass-chip-bg)] hover:border-[var(--text-on-white)]/20 transition-all duration-200"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -144,7 +144,7 @@ export default function Navbar() {
                         className={`text-base font-semibold py-3 px-4 rounded-xl block transition-all duration-200 ${
                           pathname === item.href 
                             ? "text-[#1A6DD6] bg-[#1A6DD6]/5" 
-                            : "text-white/60 hover:text-white hover:bg-white/[0.02]"
+                            : "text-foreground/60 hover:text-foreground hover:bg-[var(--text-on-white)]/[0.03]"
                         }`}
                       >
                         {item.name}
@@ -155,8 +155,8 @@ export default function Navbar() {
               </div>
 
               {/* Mobile Actions: Language & Theme Controls */}
-              <div className="flex items-center justify-between border-t border-white/5 pt-6 mt-6 pb-20">
-                <span className="text-white/40 text-xs font-semibold uppercase tracking-wider">Preferences</span>
+              <div className="flex items-center justify-between border-t border-[var(--sec-border)] pt-6 mt-6 pb-20">
+                <span className="text-foreground/40 text-xs font-semibold uppercase tracking-wider">Preferences</span>
                 <div className="flex items-center gap-4">
                   <LanguageToggle />
                   <ThemeToggle />

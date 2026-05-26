@@ -7,18 +7,6 @@ const BASE_URL = 'https://maysanlabs.com'
 // Pages that should be excluded from the sitemap
 const EXCLUDED_ROUTES = new Set(['/_not-found', '/global-error', '/error', '/init', '/careers/apply'])
 
-const CASE_STUDIES = [
-  'flash-fashion-ecommerce',
-  'retail-modular-erp',
-  'fintech-connectivity-bridge',
-  'custom-manufacturing-intelligence'
-]
-
-const PRODUCTS = [
-  'flash-fashion',
-  'edu-maysan'
-]
-
 const ROUTE_CONFIG: Record<string, { priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }> = {
   '/':             { priority: 1.0, changeFrequency: 'weekly' },
   '/services':     { priority: 0.9, changeFrequency: 'weekly' },
@@ -92,6 +80,7 @@ function discoverRoutes(dir: string, basePath: string = ''): MetadataRoute.Sitem
 }
 
 import { blogPosts } from '@/lib/blog-data'
+import { caseStudies } from '@/lib/case-studies-data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const appDir = path.join(process.cwd(), 'src', 'app')
@@ -107,23 +96,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   })
 
-  // Add case study routes
-  CASE_STUDIES.forEach(slug => {
+  // Add case study routes with images
+  caseStudies.forEach(study => {
     routes.push({
-      url: `${BASE_URL}/case-studies/${slug}`,
-      lastModified: new Date('2024-01-15'),
+      url: `${BASE_URL}/case-studies/${study.slug}`,
+      lastModified: new Date(study.year),
       changeFrequency: 'monthly',
       priority: 0.8,
+      images: [`${BASE_URL}/og-image.png`],
     })
   })
 
-  // Add product routes
-  PRODUCTS.forEach(slug => {
+  // Add product routes with images
+  const productRoutes = [
+    { slug: 'flash-fashion', name: 'Maysan Shop', lastmod: new Date('2025-01-01') },
+    { slug: 'edu-maysan', name: 'Edu-Maysan', lastmod: new Date('2025-01-01') },
+  ]
+  productRoutes.forEach(p => {
     routes.push({
-      url: `${BASE_URL}/products/${slug}`,
-      lastModified: new Date('2024-01-15'),
+      url: `${BASE_URL}/products/${p.slug}`,
+      lastModified: p.lastmod,
       changeFrequency: 'monthly',
       priority: 0.8,
+      images: [`${BASE_URL}/og-image.png`],
     })
   })
 

@@ -35,7 +35,13 @@ export const localBusinessSchema = {
     "@type": "Place",
     name: "Worldwide"
   },
-  serviceType: ["SaaS Development", "Custom Software Development", "Web Development"]
+  serviceType: ["SaaS Development", "Custom Software Development", "Web Development"],
+  sameAs: [
+    "https://www.facebook.com/maysanlabs",
+    "https://www.instagram.com/maysanlabs",
+    "https://in.linkedin.com/company/maysanlabs",
+    "https://x.com/maysanlabs"
+  ]
 };
 
 export const productSchema = [
@@ -97,6 +103,59 @@ export const reviewSchema = {
   bestRating: "5",
   worstRating: "1"
 };
+
+export function generateIndividualReviewSchemas() {
+  const reviews = [
+    {
+      name: "Vikram Singh",
+      role: "Founder, Maysan Shop",
+      message: "Maysan Labs built our entire custom ERP and inventory system from scratch. The regional warehousing, automated order workflows, and UPI payment integrations work flawlessly. Our order fulfillment efficiency jumped dramatically.",
+      rating: "5"
+    },
+    {
+      name: "Rahul Sharma",
+      role: "CEO, TechRetail India",
+      message: "Maysan Labs delivered an ultra-scalable cloud database that handled our Diwali festive sale traffic without a single hiccup. Their engineering quality is truly world-class.",
+      rating: "5"
+    },
+    {
+      name: "Priya Mehta",
+      role: "Founder, StyleHub",
+      message: "They engineered a robust system that scaled from 10,000 to 5 Lakh active users seamlessly. True partners in our growth journey.",
+      rating: "5"
+    },
+    {
+      name: "Suraj Devadiga",
+      role: "Founder, Flash Fashion",
+      message: "Maysan Labs engineered a world-class, ultra-fast e-commerce platform for our clothing brand.",
+      rating: "5"
+    }
+  ];
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": reviews.map((review) => ({
+      "@type": "Review",
+      "itemReviewed": {
+        "@type": "Organization",
+        "name": "Maysan Labs",
+        "url": SITE_URL
+      },
+      "author": {
+        "@type": "Person",
+        "name": review.name,
+        "description": review.role
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": review.rating,
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "reviewBody": review.message
+    }))
+  };
+}
 
 export const softwareAppSchema = {
   "@context": "https://schema.org",
@@ -382,3 +441,74 @@ export function generateHowToSchema(title: string, steps: { name: string; text: 
     }))
   };
 }
+
+export const speakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "SpeakableSpecification",
+  "cssSelector": [
+    ".geo-summary",
+    ".geo-tldr",
+    ".hero-title-text",
+    ".page-description"
+  ]
+};
+
+export const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Maysan Labs Team",
+  "description": "Enterprise SaaS development team specializing in React, Node.js, cloud infrastructure, and custom software solutions.",
+  "knowsAbout": [
+    "SaaS Development",
+    "Cloud Infrastructure",
+    "React Development",
+    "Node.js Development",
+    "Enterprise Software",
+    "Web Application Development",
+    "API Development",
+    "DevOps",
+    "AWS",
+    "Docker",
+    "Kubernetes",
+    "TypeScript",
+    "PostgreSQL"
+  ],
+  "sameAs": [
+    "https://github.com/maysanlabs",
+    "https://www.facebook.com/maysanlabs",
+    "https://in.linkedin.com/company/maysanlabs",
+    "https://x.com/maysanlabs"
+  ]
+};
+
+export const geoSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/#webpage`,
+      "about": {
+        "@id": `${SITE_URL}/#organization`
+      },
+      "mentions": [
+        { "@type": "Service", "name": "SaaS Development" },
+        { "@type": "Service", "name": "Custom Software Development" },
+        { "@type": "Service", "name": "Cloud Infrastructure" },
+        { "@type": "Service", "name": "Web Application Development" }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      "description": "Enterprise SaaS development company in Gurgaon, India",
+      "knowsAbout": [
+        "SaaS Development",
+        "Cloud Computing",
+        "Enterprise Software",
+        "React.js",
+        "Node.js",
+        "AWS Cloud Services"
+      ]
+    }
+  ]
+};

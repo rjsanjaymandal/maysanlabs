@@ -44,7 +44,7 @@ export default function Problem() {
               Old code <br />
               <span className="text-brand-primary italic">slows you down.</span>
             </h2>
-            <p className="text-2xl text-white/50 font-medium mb-12 tracking-tight">
+            <p className="text-2xl text-foreground/50 font-medium mb-12 tracking-tight">
               We build fast, modern apps that help your team move faster.
             </p>
           </motion.div>
@@ -55,7 +55,7 @@ export default function Problem() {
             transition={{ duration: 1, delay: 0.2 }}
             className="lg:max-w-xs border-l border-white/5 pl-8"
           >
-            <p className="text-sm font-medium text-white/30 leading-loose uppercase tracking-widest">
+            <p className="text-sm font-medium text-foreground/30 leading-loose uppercase tracking-widest">
               Reliable systems built for what comes next.
             </p>
           </motion.div>
@@ -78,10 +78,10 @@ export default function Problem() {
                   </div>
                 </div>
                 
-                <h3 className="text-4xl font-black mb-8 tracking-tighter uppercase leading-none text-white group-hover:text-brand-primary transition-colors duration-700 italic">
+                <h3 className="text-4xl font-black mb-8 tracking-tighter uppercase leading-none text-foreground group-hover:text-brand-primary transition-colors duration-700 italic">
                   {arch.title}
                 </h3>
-                <p className="text-white/50 text-lg leading-relaxed font-medium group-hover:text-white/80 transition-colors duration-700">
+                <p className="text-foreground/50 text-lg leading-relaxed font-medium group-hover:text-foreground/80 transition-colors duration-700">
                   {arch.text}
                 </p>
               </div>

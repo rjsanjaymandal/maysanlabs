@@ -2,10 +2,10 @@ import { notFound } from "next/navigation";
 import { blogPosts } from "@/lib/blog-data";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
-import { Calendar, User, Clock, ArrowLeft, ArrowRight, Tag } from "lucide-react";
+import { Calendar, User, Clock, ArrowLeft, ArrowRight, Tag, Lightbulb } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
-import { generateBlogPostSEO } from "@/lib/seo/helpers";
+import { generateBlogPostSEO, generateBlogPostJSONLD } from "@/lib/seo/helpers";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -41,8 +41,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const prevPost = currentIndex > 0 ? blogPosts[currentIndex - 1] : null;
   const nextPost = currentIndex < blogPosts.length - 1 ? blogPosts[currentIndex + 1] : null;
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://maysanlabs.com";
+  const blogJSONLD = generateBlogPostJSONLD(post, siteUrl);
+
   return (
     <main className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogJSONLD),
+        }}
+      />
       <Navbar />
 
       {/* Hero Section */}
@@ -53,7 +62,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="container-main relative">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-brand-primary transition-colors mb-8 group"
+            className="inline-flex items-center gap-2 text-sm text-foreground/40 hover:text-brand-primary transition-colors mb-8 group"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> 
             <span>Back to Articles</span>
@@ -65,18 +74,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <Tag size={12} />
                 {post.category}
               </span>
-              <span className="text-white/30">•</span>
-              <div className="flex items-center gap-2 text-white/40 text-sm">
+              <span className="text-foreground/30">•</span>
+              <div className="flex items-center gap-2 text-foreground/40 text-sm">
                 <Clock size={14} />
                 {post.readTime} read
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 leading-tight">
               {post.title}
             </h1>
 
-            <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8">
+            <p className="text-lg md:text-xl text-foreground/50 leading-relaxed mb-8">
               {post.excerpt}
             </p>
 
@@ -86,8 +95,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <User size={16} />
                 </div>
                 <div>
-                  <p className="text-xs text-white/30 uppercase tracking-wider">Written by</p>
-                  <p className="text-sm font-medium text-white">
+                  <p className="text-xs text-foreground/30 uppercase tracking-wider">Written by</p>
+                  <p className="text-sm font-medium text-foreground">
                     {post.author}
                   </p>
                 </div>
@@ -98,8 +107,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <Calendar size={16} />
                 </div>
                 <div>
-                  <p className="text-xs text-white/30 uppercase tracking-wider">Published</p>
-                  <p className="text-sm font-medium text-white">
+                  <p className="text-xs text-foreground/30 uppercase tracking-wider">Published</p>
+                  <p className="text-sm font-medium text-foreground">
                     {new Date(post.date).toLocaleDateString("en-US", {
                       month: "long",
                       day: "numeric",
@@ -113,13 +122,43 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
       </section>
 
+      {/* GEO Key Takeaways — optimized for AI search engine extraction */}
+      <section className="py-4 geo-tldr" aria-label="Key Takeaways">
+        <div className="container-main max-w-3xl">
+          <div className="bg-brand-primary/5 border border-brand-primary/10 rounded-xl p-5 md:p-6">
+            <div className="flex items-start gap-3">
+              <Lightbulb size={20} className="text-brand-primary mt-0.5 shrink-0" />
+              <div>
+                <h2 className="text-sm font-semibold text-foreground/60 uppercase tracking-wider mb-2">
+                  Key Takeaways
+                </h2>
+                <ul className="space-y-2 text-sm md:text-base text-foreground/70">
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-primary mt-1.5 shrink-0">•</span>
+                    <span>{post.excerpt}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-primary mt-1.5 shrink-0">•</span>
+                    <span>Category: {post.category} — expert insights from Maysan Labs, a leading enterprise SaaS development company.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-brand-primary mt-1.5 shrink-0">•</span>
+                    <span>Reading time: {post.readTime} — written by {post.author}.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Article Content */}
       <section className="py-12">
         <div className="container-main max-w-3xl">
           <article className="bg-white/[0.01] border border-white/[0.04] rounded-2xl p-8 md:p-12">
             <div className="prose prose-invert max-w-none">
               {post.content.split("\n\n").map((paragraph, index) => (
-                <p key={index} className="text-base md:text-lg text-white/70 leading-8 mb-6">
+                <p key={index} className="text-base md:text-lg text-foreground/70 leading-8 mb-6">
                   {paragraph}
                 </p>
               ))}
@@ -129,12 +168,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           {/* Share Section */}
           <div className="mt-12 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <p className="text-sm text-white/40 mb-2">Share this article</p>
+              <p className="text-sm text-foreground/40 mb-2">Share this article</p>
               <div className="flex gap-2">
-                <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://maysanlabs.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-white/50 hover:text-white hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all">
+                <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://maysanlabs.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-foreground/50 hover:text-foreground hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all">
                   Twitter
                 </a>
-                <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://maysanlabs.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-white/50 hover:text-white hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all">
+                <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://maysanlabs.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-foreground/50 hover:text-foreground hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all">
                   LinkedIn
                 </a>
               </div>
@@ -150,28 +189,28 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {(prevPost || nextPost) && (
         <section className="py-12 border-t border-white/[0.06]">
           <div className="container-main max-w-3xl">
-            <h3 className="text-base font-semibold text-white/60 uppercase tracking-wider mb-6">Continue Reading</h3>
+            <h3 className="text-base font-semibold text-foreground/60 uppercase tracking-wider mb-6">Continue Reading</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {prevPost && (
                 <Link href={`/blog/${prevPost.slug}`} className="group p-5 bg-white/[0.02] border border-white/[0.04] rounded-xl hover:border-brand-primary/20 hover:bg-white/[0.04] transition-all duration-300">
-                  <div className="flex items-center gap-2 text-xs text-white/40 mb-2">
+                  <div className="flex items-center gap-2 text-xs text-foreground/40 mb-2">
                     <ArrowLeft size={12} className="group-hover:-translate-x-1 transition-transform" /> Previous Article
                   </div>
-                  <h4 className="text-sm font-medium text-white group-hover:text-brand-primary transition-colors">
+                  <h4 className="text-sm font-medium text-foreground group-hover:text-brand-primary transition-colors">
                     {prevPost.title}
                   </h4>
-                  <p className="text-xs text-white/30 mt-1 line-clamp-1">{prevPost.excerpt}</p>
+                  <p className="text-xs text-foreground/30 mt-1 line-clamp-1">{prevPost.excerpt}</p>
                 </Link>
               )}
               {nextPost && (
                 <Link href={`/blog/${nextPost.slug}`} className="group p-5 bg-white/[0.02] border border-white/[0.04] rounded-xl hover:border-brand-primary/20 hover:bg-white/[0.04] transition-all duration-300 text-left md:text-right">
-                  <div className="flex items-center gap-2 text-xs text-white/40 mb-2 md:justify-end">
+                  <div className="flex items-center gap-2 text-xs text-foreground/40 mb-2 md:justify-end">
                     Next Article <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
                   </div>
-                  <h4 className="text-sm font-medium text-white group-hover:text-brand-primary transition-colors">
+                  <h4 className="text-sm font-medium text-foreground group-hover:text-brand-primary transition-colors">
                     {nextPost.title}
                   </h4>
-                  <p className="text-xs text-white/30 mt-1 line-clamp-1">{nextPost.excerpt}</p>
+                  <p className="text-xs text-foreground/30 mt-1 line-clamp-1">{nextPost.excerpt}</p>
                 </Link>
               )}
             </div>

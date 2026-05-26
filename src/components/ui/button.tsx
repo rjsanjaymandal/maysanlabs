@@ -11,11 +11,11 @@ const buttonVariants = cva(
         default: "bg-gradient-to-r from-brand-primary to-brand-primary/90 text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-[1.02]",
         gradient: "bg-gradient-to-r from-brand-primary via-brand-light to-brand-primary text-black hover:shadow-[0_0_35px_rgba(26,109,214,0.6)] hover:scale-[1.02] bg-[length:200%_100%] animate-gradient",
         outline:
-          "border-white/15 bg-white/[0.03] text-white hover:bg-white/[0.08] hover:border-white/25",
+          "border-white/15 bg-white/[0.03] text-foreground hover:bg-white/[0.08] hover:border-white/25",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80 aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         ghost:
-          "hover:bg-white/5 text-white/70 hover:text-white",
+          "hover:bg-white/5 text-foreground/70 hover:text-foreground",
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",

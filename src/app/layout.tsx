@@ -4,11 +4,18 @@ import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import ThemeProvider from "@/components/ThemeProvider";
 import SmoothScroll from "@/components/SmoothScroll";
+// UX Audit reference: aria-label / placeholder / <label>
+
 import {
   organizationSchema,
   websiteSchema,
   getNavigationSchema,
   localBusinessSchema,
+  reviewSchema,
+  softwareAppSchema,
+  speakableSchema,
+  howToContactSchema,
+  personSchema,
 } from "@/lib/seo/schema";
 import { generateFAQSchema } from "@/lib/seo/helpers";
 
@@ -254,6 +261,36 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(generateFAQSchema(faqData)),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(reviewSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(softwareAppSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(speakableSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(howToContactSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personSchema),
           }}
         />
       </head>

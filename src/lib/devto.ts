@@ -1,5 +1,18 @@
 import { BlogPost } from "./blog-data";
 
+interface DevToArticle {
+  id: number;
+  title: string;
+  description?: string;
+  published_at?: string;
+  tag_list?: string[];
+  reading_time_minutes?: number;
+  url?: string;
+  user?: {
+    name: string;
+  };
+}
+
 export async function fetchExternalTechBlogs(): Promise<BlogPost[]> {
   try {
     const res = await fetch("https://dev.to/api/articles?tag=technology&per_page=12", {
@@ -17,7 +30,7 @@ export async function fetchExternalTechBlogs(): Promise<BlogPost[]> {
     const data = await res.json();
     if (!Array.isArray(data)) return [];
 
-    return data.map((article: any) => {
+    return data.map((article: DevToArticle) => {
       // Clean up tag names nicely
       const rawTag = article.tag_list && article.tag_list.length > 0 
         ? article.tag_list.find((t: string) => t.toLowerCase() !== "technology" && t.toLowerCase() !== "tech") || article.tag_list[0]

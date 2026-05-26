@@ -27,7 +27,7 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
             className={`relative px-6 py-3 rounded-full text-sm font-semibold flex items-center gap-2.5 transition-all duration-300 ${
               activeTab === "local"
                 ? "text-black font-black"
-                : "text-white/60 hover:text-white"
+                : "text-foreground/60 hover:text-foreground"
             }`}
           >
             {activeTab === "local" && (
@@ -49,7 +49,7 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
             className={`relative px-6 py-3 rounded-full text-sm font-semibold flex items-center gap-2.5 transition-all duration-300 ${
               activeTab === "external"
                 ? "text-black font-black"
-                : "text-white/60 hover:text-white"
+                : "text-foreground/60 hover:text-foreground"
             }`}
           >
             {activeTab === "external" && (
@@ -84,10 +84,10 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
               ))
             ) : (
               <div className="col-span-full py-20 text-center flex flex-col items-center justify-center border border-white/[0.04] bg-white/[0.01] rounded-2xl">
-                <div className="w-12 h-12 rounded-full bg-white/[0.03] flex items-center justify-center text-white/30 mb-4 animate-pulse">
+                <div className="w-12 h-12 rounded-full bg-white/[0.03] flex items-center justify-center text-foreground/30 mb-4 animate-pulse">
                   <Globe size={20} />
                 </div>
-                <p className="text-white/40 text-sm font-semibold">
+                <p className="text-foreground/40 text-sm font-semibold">
                   Connecting to automated feed. Please check back in a few moments...
                 </p>
               </div>

@@ -68,7 +68,7 @@ const comingSoonProducts = [
 
 export default function ProductsClient() {
   return (
-    <main className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
+    <main aria-label="Maysan Labs Flagship Products" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
       <Navbar />
       
       {/* Hero Section */}
@@ -82,10 +82,10 @@ export default function ProductsClient() {
               <Layers size={12} />
               Our Solutions
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 leading-tight">
               Flagship Products
             </h1>
-            <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8 max-w-2xl">
+            <p className="text-lg md:text-xl text-foreground/50 leading-relaxed mb-8 max-w-2xl">
               Ready-to-deploy products designed to solve real business problems. From education to healthcare, we&apos;ve built platforms that scale.
             </p>
             <Link href="/init" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary rounded-full font-semibold text-sm text-white hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] hover:scale-105 active:scale-95 transition-all duration-200">
@@ -126,10 +126,10 @@ export default function ProductsClient() {
             <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-[#1A6DD6] uppercase mb-3 block">
               Innovation Pipeline
             </span>
-            <h2 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-foreground tracking-tight">
               In Active Development
             </h2>
-            <p className="text-white/40 text-sm mt-3">
+            <p className="text-foreground/40 text-sm mt-3">
               We constantly iterate on new enterprise paradigms. Here are the solutions entering beta testing soon.
             </p>
           </div>
@@ -146,14 +146,14 @@ export default function ProductsClient() {
               >
                 <SpotlightCard className="maysan-card h-full hover:border-[#1A6DD6]/30 hover:bg-white/[0.03] transition-all duration-300">
                   <div className="flex items-center justify-between mb-5">
-                    <span className="text-xs font-medium text-white/30 uppercase tracking-wider">
+                    <span className="text-xs font-medium text-foreground/30 uppercase tracking-wider">
                       {product.category}
                     </span>
-                    <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white/5 text-white/40">
+                    <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white/5 text-foreground/40">
                       {product.status}
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="text-xl font-bold text-foreground mb-2">
                     {product.name}
                   </h3>
                   {product.tagline && (
@@ -161,7 +161,7 @@ export default function ProductsClient() {
                       {product.tagline}
                     </p>
                   )}
-                  <p className="text-white/45 text-sm leading-relaxed">
+                  <p className="text-foreground/45 text-sm leading-relaxed">
                     {product.description}
                   </p>
                 </SpotlightCard>
@@ -171,8 +171,8 @@ export default function ProductsClient() {
 
           {/* CTA Section */}
           <div className="mt-20 text-center py-12 border-t border-white/[0.06]">
-            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4">Need something custom?</h3>
-            <p className="text-white/40 mb-8 max-w-lg mx-auto">We also build tailored solutions for unique business requirements.</p>
+            <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">Need something custom?</h3>
+            <p className="text-foreground/40 mb-8 max-w-lg mx-auto">We also build tailored solutions for unique business requirements.</p>
             <Link href="/init" className="inline-flex items-center gap-2 px-8 py-4 bg-brand-primary rounded-full font-semibold text-sm text-white hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:scale-105 active:scale-95 transition-all duration-200">
               <span>Talk to us</span>
               <ArrowRight size={16} />

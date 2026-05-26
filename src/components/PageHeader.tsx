@@ -25,10 +25,10 @@ export default function PageHeader({
           transition={{ duration: 0.6 }}
           className="max-w-3xl"
         >
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
             {label}
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-5 leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-5 leading-tight">
             {title.split("_").map((word, i) => (
               <span key={i}>
                 {i > 0 && " "}
@@ -36,13 +36,13 @@ export default function PageHeader({
               </span>
             ))}
           </h1>
-          <p className="text-white/50 text-lg md:text-xl leading-relaxed max-w-2xl">
+          <p className="text-foreground/50 text-lg md:text-xl leading-relaxed max-w-2xl">
             {subtitle}
           </p>
         </motion.div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-primary/10 to-transparent" />
     </section>
   );
 }

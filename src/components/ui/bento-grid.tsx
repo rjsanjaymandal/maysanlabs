@@ -61,7 +61,7 @@ const BentoCard = ({
       onMouseMove={handleMouseMove}
       className={cn(
         "group relative col-span-3 md:col-span-1 flex flex-col justify-between overflow-hidden rounded-2xl",
-        "p-[1px] bg-white/[0.04] hover:bg-white/[0.08] transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 shadow-lg hover:shadow-2xl",
+        "p-[1px] bg-[var(--glass-chip-bg)] hover:bg-[var(--glass-chip-bg)] transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 shadow-lg hover:shadow-2xl",
         className,
       )}
     >
@@ -94,17 +94,17 @@ const BentoCard = ({
       />
 
       {/* High-contrast solid dark backdrop container */}
-      <div className="relative flex flex-col justify-between h-full w-full rounded-[15px] bg-[#030712]/95 overflow-hidden p-6 z-10">
+      <div className="relative flex flex-col justify-between h-full w-full rounded-[15px] bg-[var(--surface-elevated)] overflow-hidden p-6 z-10">
         <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-35 transition-opacity duration-500">{background}</div>
         
         <div className="relative z-10">
-          <div className="w-12 h-12 bg-white/[0.02] border border-white/5 rounded-xl flex items-center justify-center text-white/50 mb-5 group-hover:bg-brand-primary/15 group-hover:text-brand-primary transition-all duration-300">
+          <div className="w-12 h-12 bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-xl flex items-center justify-center text-foreground/50 mb-5 group-hover:bg-brand-primary/15 group-hover:text-brand-primary transition-all duration-300">
             <Icon className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
           </div>
-          <h3 className="text-xl font-bold text-white mb-2 group-hover:text-brand-primary transition-colors duration-300">
+          <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-brand-primary transition-colors duration-300">
             {name}
           </h3>
-          <p className="text-white/45 text-sm leading-relaxed group-hover:text-white/60 transition-colors duration-300">
+          <p className="text-foreground/45 text-sm leading-relaxed group-hover:text-foreground/60 transition-colors duration-300">
             {description}
           </p>
         </div>

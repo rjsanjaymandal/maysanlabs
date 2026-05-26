@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default function CareersClient() {
   return (
-    <main className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden flex flex-col">
+    <main aria-label="Careers at Maysan Labs" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden flex flex-col">
       <Navbar />
 
       {/* Hero Section */}
@@ -28,10 +28,10 @@ export default function CareersClient() {
               <Rocket size={12} />
               Join the Lab
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 leading-tight">
               Shape the Future of <span className="text-brand-primary">Engineering</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8 max-w-2xl">
+            <p className="text-lg md:text-xl text-foreground/50 leading-relaxed mb-8 max-w-2xl">
               We&apos;re looking for radical thinkers and elite engineers to build the mission-critical infrastructure of the modern enterprise.
             </p>
             <Link href="#openings" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
@@ -60,8 +60,8 @@ export default function CareersClient() {
                 <div className="w-11 h-11 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-4 border border-brand-primary/20">
                   {value.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">{value.title}</h3>
-                <p className="text-white/45 text-sm leading-relaxed">
+                <h3 className="text-lg font-semibold text-foreground mb-2">{value.title}</h3>
+                <p className="text-foreground/45 text-sm leading-relaxed">
                   {value.desc}
                 </p>
               </motion.div>
@@ -78,10 +78,10 @@ export default function CareersClient() {
               <Target size={12} />
               Opportunities
             </span>
-            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
               Open <span className="text-brand-primary">Roles</span>
             </h2>
-            <p className="text-white/40 text-lg">
+            <p className="text-foreground/40 text-lg">
               Join a team engineering the world&apos;s most resilient enterprise infrastructure.
             </p>
           </div>
@@ -101,19 +101,19 @@ export default function CareersClient() {
                       <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary">
                         {job.category}
                       </span>
-                      <span className="text-xs text-white/30 font-medium uppercase tracking-wider">
+                      <span className="text-xs text-foreground/30 font-medium uppercase tracking-wider">
                         {job.type}
                       </span>
                     </div>
-                    <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-brand-primary transition-colors">
+                    <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-brand-primary transition-colors">
                       {job.title}
                     </h3>
-                    <p className="text-white/45 text-sm leading-relaxed mb-5">
+                    <p className="text-foreground/45 text-sm leading-relaxed mb-5">
                       {job.description}
                     </p>
                     <div className="flex items-center gap-2 mb-5 pt-4 border-t border-white/5">
-                      <MapPin size={14} className="text-white/30" />
-                      <span className="text-sm text-white/40">{job.location}</span>
+                      <MapPin size={14} className="text-foreground/30" />
+                      <span className="text-sm text-foreground/40">{job.location}</span>
                     </div>
                     <div className="flex items-center gap-2 text-brand-primary text-sm font-semibold group-hover:gap-3 transition-all">
                       Apply now <ArrowRight size={14} />
@@ -126,8 +126,8 @@ export default function CareersClient() {
 
           {/* Opportunistic Hire Section */}
           <div className="mt-16 bg-white/[0.02] border border-white/5 rounded-2xl p-8 md:p-12 text-center">
-            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4">Don&apos;t see a perfect fit?</h3>
-            <p className="text-white/40 max-w-xl mx-auto mb-8">
+            <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">Don&apos;t see a perfect fit?</h3>
+            <p className="text-foreground/40 max-w-xl mx-auto mb-8">
               We&apos;re always looking for exceptional engineers and architects. If you&apos;re building the future, we want to hear from you.
             </p>
             <Link href="/careers/apply" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">

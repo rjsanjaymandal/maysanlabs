@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import CareersClient from "./CareersClient";
-import { generateJobPostingSchema, generatePageSEO } from "@/lib/seo/helpers";
+import { generateBreadcrumbSchema, generateJobPostingSchema, generatePageSEO } from "@/lib/seo/helpers";
 
 export const metadata: Metadata = generatePageSEO({
   title: "Careers | Join Maysan Labs - Enterprise Software Development",
@@ -20,6 +20,11 @@ export const metadata: Metadata = generatePageSEO({
   ]
 });
 
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: "Home", url: "/" },
+  { name: "Careers", url: "/careers" }
+]);
+
 // Generate JobPosting schema for general positions
 const jobPostingSchema = generateJobPostingSchema({
   title: "Software Engineer",
@@ -33,12 +38,8 @@ const jobPostingSchema = generateJobPostingSchema({
 export default function CareersPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jobPostingSchema),
-        }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingSchema) }} />
       <CareersClient />
     </>
   );

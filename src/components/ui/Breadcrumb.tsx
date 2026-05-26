@@ -16,22 +16,22 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
     <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm">
       <Link 
         href="/" 
-        className="text-white/60 hover:text-brand-primary transition-colors"
+        className="text-foreground/60 hover:text-brand-primary transition-colors"
       >
         Home
       </Link>
       {items.map((item, index) => (
         <span key={index} className="flex items-center gap-2">
-          <span className="text-white/40">/</span>
+          <span className="text-foreground/40">/</span>
           {item.href ? (
             <Link 
               href={item.href}
-              className="text-white/60 hover:text-brand-primary transition-colors"
+              className="text-foreground/60 hover:text-brand-primary transition-colors"
             >
               {item.label}
             </Link>
           ) : (
-            <span className="text-white/90" aria-current="page">{item.label}</span>
+            <span className="text-foreground/90" aria-current="page">{item.label}</span>
           )}
         </span>
       ))}

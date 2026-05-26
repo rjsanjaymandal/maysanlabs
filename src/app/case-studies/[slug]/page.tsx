@@ -5,7 +5,7 @@ import { ArrowLeft, CheckCircle2, Zap, Target, Cpu, ArrowRight } from "lucide-re
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { generateCaseStudySEO } from "@/lib/seo/helpers";
+import { generateCaseStudySEO, generateCaseStudyJSONLD } from "@/lib/seo/helpers";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -49,8 +49,29 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
     notFound();
   }
 
+  const studyJSONLD = generateCaseStudyJSONLD(
+    {
+      title: study.title,
+      slug: study.slug,
+      excerpt: study.challenge,
+      content: study.solution,
+      date: study.year,
+      client: study.client,
+      industry: study.category,
+      results: study.impact,
+      technologies: study.technologies
+    },
+    "https://maysanlabs.com"
+  );
+
   return (
     <main className="min-h-screen bg-[var(--bg-dark)]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(studyJSONLD),
+        }}
+      />
       <Navbar />
 
       {/* Hero Section */}
@@ -61,7 +82,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         <div className="container-main relative">
           <Link
             href="/case-studies"
-            className="inline-flex items-center gap-2 text-sm text-white/40 hover:text-brand-primary transition-colors mb-8 group"
+            className="inline-flex items-center gap-2 text-sm text-foreground/40 hover:text-brand-primary transition-colors mb-8 group"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span>Back to Case Studies</span>
@@ -72,15 +93,15 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider">
                 {study.category}
               </span>
-              <span className="text-white/30">•</span>
-              <span className="text-white/40 text-sm">{study.year}</span>
+              <span className="text-foreground/30">•</span>
+              <span className="text-foreground/40 text-sm">{study.year}</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-8 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-8 leading-tight">
               {study.title}
             </h1>
             
-            <p className="text-xl text-white/50 leading-relaxed border-l-4 border-brand-primary pl-6 py-2">
+            <p className="text-xl text-foreground/50 leading-relaxed border-l-4 border-brand-primary pl-6 py-2">
               &ldquo;{study.challenge}&rdquo;
             </p>
           </div>
@@ -96,7 +117,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                 <div className="text-3xl md:text-4xl font-bold text-brand-primary mb-2">
                   {metric.value}
                 </div>
-                <div className="text-xs uppercase tracking-wider text-white/40 font-medium">
+                <div className="text-xs uppercase tracking-wider text-foreground/40 font-medium">
                   {metric.label}
                 </div>
               </div>
@@ -108,16 +129,16 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
       {/* Content Section */}
       <section className="py-16">
         <div className="container-main">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <article className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-8 space-y-12">
               {/* Challenge */}
               <div>
-                <h2 className="text-2xl font-semibold text-white mb-5 flex items-center gap-3">
+                <h2 className="text-2xl font-semibold text-foreground mb-5 flex items-center gap-3">
                   <Target className="text-brand-primary" size={20} />
                   The Challenge
                 </h2>
                 <div className="bg-white/[0.02] border border-white/[0.04] rounded-xl p-6">
-                  <p className="text-white/60 text-base leading-relaxed">
+                  <p className="text-foreground/60 text-base leading-relaxed">
                     {study.challenge}
                   </p>
                 </div>
@@ -125,12 +146,12 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
               {/* Solution */}
               <div>
-                <h2 className="text-2xl font-semibold text-white mb-5 flex items-center gap-3">
+                <h2 className="text-2xl font-semibold text-foreground mb-5 flex items-center gap-3">
                   <Cpu className="text-brand-primary" size={20} />
                   Technical Implementation
                 </h2>
                 <div className="bg-white/[0.02] border border-white/[0.04] rounded-xl p-6">
-                  <p className="text-white/60 text-base leading-relaxed">
+                  <p className="text-foreground/60 text-base leading-relaxed">
                     {study.solution}
                   </p>
                 </div>
@@ -138,7 +159,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
               {/* Impact */}
               <div>
-                <h2 className="text-2xl font-semibold text-white mb-5 flex items-center gap-3">
+                <h2 className="text-2xl font-semibold text-foreground mb-5 flex items-center gap-3">
                   <Zap className="text-brand-primary" size={20} />
                   Operational Impact
                 </h2>
@@ -152,7 +173,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                         className="text-brand-primary shrink-0 mt-0.5"
                         size={18}
                       />
-                      <span className="text-white/70 font-medium">
+                      <span className="text-foreground/70 font-medium">
                         {item}
                       </span>
                     </li>
@@ -163,14 +184,14 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
 
             <div className="lg:col-span-4">
               <div className="sticky top-32 bg-white/[0.02] border border-white/[0.04] rounded-2xl p-6">
-                <h4 className="text-sm font-semibold text-white/50 uppercase tracking-wider mb-5">
+                <h4 className="text-sm font-semibold text-foreground/50 uppercase tracking-wider mb-5">
                   Technologies Used
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {study.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1.5 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-white/60"
+                      className="px-3 py-1.5 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-foreground/60"
                     >
                       {tech}
                     </span>
@@ -178,7 +199,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-white/[0.06]">
-                  <h4 className="text-sm font-semibold text-white/50 uppercase tracking-wider mb-4">
+                  <h4 className="text-sm font-semibold text-foreground/50 uppercase tracking-wider mb-4">
                     Ready to scale?
                   </h4>
                   <Link
@@ -191,7 +212,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                 </div>
               </div>
             </div>
-          </div>
+          </article>
         </div>
       </section>
 

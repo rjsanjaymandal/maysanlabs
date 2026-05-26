@@ -6,8 +6,8 @@ export default function Custom404() {
     <main className="min-h-screen bg-[var(--bg-dark)] flex items-center justify-center px-4">
       <div className="text-center max-w-2xl">
         <h1 className="text-8xl font-bold text-brand-primary mb-4">404</h1>
-        <h2 className="text-2xl font-semibold text-white mb-4">Page Not Found</h2>
-        <p className="text-white/50 mb-8">
+        <h2 className="text-2xl font-semibold text-[var(--text-on-white)] mb-4">Page Not Found</h2>
+        <p className="text-[var(--text-on-white)]/50 mb-8">
           Sorry, we couldn&apos;t find the page you&apos;re looking for. 
           The page might have been moved or deleted.
         </p>
@@ -22,7 +22,7 @@ export default function Custom404() {
           </Link>
           <Link 
             href="/init" 
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 text-white/70 font-semibold text-sm hover:bg-white/5 hover:text-white transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 text-[var(--text-on-white)]/70 font-semibold text-sm hover:bg-white/5 hover:text-[var(--text-on-white)] transition-all"
           >
             Contact Us
             <ArrowRight size={16} />
@@ -31,20 +31,20 @@ export default function Custom404() {
 
         <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
           <div>
-            <h3 className="text-white/30 text-xs font-semibold uppercase tracking-wider mb-3">Pages</h3>
+            <h3 className="text-[var(--text-on-white)]/30 text-xs font-semibold uppercase tracking-wider mb-3">Pages</h3>
             <ul className="space-y-2">
-              <li><Link href="/services" className="text-white/50 hover:text-brand-primary text-sm">Services</Link></li>
-              <li><Link href="/products" className="text-white/50 hover:text-brand-primary text-sm">Products</Link></li>
-              <li><Link href="/case-studies" className="text-white/50 hover:text-brand-primary text-sm">Case Studies</Link></li>
-              <li><Link href="/blog" className="text-white/50 hover:text-brand-primary text-sm">Blog</Link></li>
+              <li><Link href="/services" className="text-[var(--text-on-white)]/50 hover:text-brand-primary text-sm">Services</Link></li>
+              <li><Link href="/products" className="text-[var(--text-on-white)]/50 hover:text-brand-primary text-sm">Products</Link></li>
+              <li><Link href="/case-studies" className="text-[var(--text-on-white)]/50 hover:text-brand-primary text-sm">Case Studies</Link></li>
+              <li><Link href="/blog" className="text-[var(--text-on-white)]/50 hover:text-brand-primary text-sm">Blog</Link></li>
             </ul>
           </div>
           <div>
-            <h3 className="text-white/30 text-xs font-semibold uppercase tracking-wider mb-3">Company</h3>
+            <h3 className="text-[var(--text-on-white)]/30 text-xs font-semibold uppercase tracking-wider mb-3">Company</h3>
             <ul className="space-y-2">
-              <li><Link href="/about" className="text-white/50 hover:text-brand-primary text-sm">About</Link></li>
-              <li><Link href="/careers" className="text-white/50 hover:text-brand-primary text-sm">Careers</Link></li>
-              <li><Link href="/init" className="text-white/50 hover:text-brand-primary text-sm">Contact</Link></li>
+              <li><Link href="/about" className="text-[var(--text-on-white)]/50 hover:text-brand-primary text-sm">About</Link></li>
+              <li><Link href="/careers" className="text-[var(--text-on-white)]/50 hover:text-brand-primary text-sm">Careers</Link></li>
+              <li><Link href="/init" className="text-[var(--text-on-white)]/50 hover:text-brand-primary text-sm">Contact</Link></li>
             </ul>
           </div>
         </div>

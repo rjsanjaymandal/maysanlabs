@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 
 export default function CaseStudiesClient() {
   return (
-    <main className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
+    <main aria-label="Maysan Labs Case Studies" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
       <Navbar />
       
       {/* Hero Section */}
@@ -24,10 +24,10 @@ export default function CaseStudiesClient() {
               <Briefcase size={12} />
               Real-World Impact
             </span>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.03em] text-white mb-6 leading-[1.05]">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-[-0.03em] text-foreground mb-6 leading-[1.05]">
               Case Studies
             </h1>
-            <p className="text-base md:text-lg text-white/60 leading-relaxed mb-8 max-w-2xl font-medium">
+            <p className="text-base md:text-lg text-foreground/60 leading-relaxed mb-8 max-w-2xl font-medium">
               Meticulously engineered services for complex enterprise challenges. Explore our portfolio of industrial-grade transformations.
             </p>
             <Link href="/init" className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-[#1A6DD6] rounded-full font-bold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02]">
@@ -58,16 +58,16 @@ export default function CaseStudiesClient() {
                         <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
                           {study.category}
                         </span>
-                        <h3 className="text-xl font-bold text-white group-hover:text-brand-primary transition-colors">
+                        <h3 className="text-xl font-bold text-foreground group-hover:text-brand-primary transition-colors">
                           {study.title}
                         </h3>
                       </div>
-                      <div className="w-9 h-9 rounded-full bg-white/[0.03] flex items-center justify-center border border-white/[0.05] text-white/40 group-hover:bg-brand-primary group-hover:text-black group-hover:border-brand-primary transition-all duration-300">
+                      <div className="w-9 h-9 rounded-full bg-white/[0.03] flex items-center justify-center border border-white/[0.05] text-foreground/40 group-hover:bg-brand-primary group-hover:text-black group-hover:border-brand-primary transition-all duration-300">
                         <ArrowRight size={14} />
                       </div>
                     </div>
 
-                    <p className="text-white/45 text-sm leading-relaxed mb-5">
+                    <p className="text-foreground/45 text-sm leading-relaxed mb-5">
                       {study.challenge}
                     </p>
 
@@ -80,7 +80,7 @@ export default function CaseStudiesClient() {
                           <div className="text-lg font-bold text-brand-primary mb-0.5">
                             {metric.value}
                           </div>
-                          <div className="text-[9px] uppercase tracking-wider text-white/30 font-medium">
+                          <div className="text-[9px] uppercase tracking-wider text-foreground/30 font-medium">
                             {metric.label}
                           </div>
                         </div>
@@ -91,13 +91,13 @@ export default function CaseStudiesClient() {
                       {study.technologies.slice(0, 4).map((tech) => (
                         <span
                           key={tech}
-                          className="text-xs font-medium px-2.5 py-1 bg-white/[0.02] rounded-full border border-white/[0.04] text-white/40"
+                          className="text-xs font-medium px-2.5 py-1 bg-white/[0.02] rounded-full border border-white/[0.04] text-foreground/40"
                         >
                           {tech}
                         </span>
                       ))}
                       {study.technologies.length > 4 && (
-                        <span className="text-xs font-medium px-2 py-1 text-white/20">
+                        <span className="text-xs font-medium px-2 py-1 text-foreground/20">
                           +{study.technologies.length - 4}
                         </span>
                       )}
@@ -110,8 +110,8 @@ export default function CaseStudiesClient() {
 
           {/* CTA Section */}
           <div className="mt-16 text-center py-12 border-t border-white/[0.06]">
-            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4">Ready for your transformation?</h3>
-            <p className="text-white/40 mb-8 max-w-lg mx-auto">Let&apos;s discuss how we can help solve your most complex challenges.</p>
+            <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">Ready for your transformation?</h3>
+            <p className="text-foreground/40 mb-8 max-w-lg mx-auto">Let&apos;s discuss how we can help solve your most complex challenges.</p>
             <Link href="/init" className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-[#1A6DD6] rounded-full font-bold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02]">
               <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative z-10">Book a Strategy Call</span>

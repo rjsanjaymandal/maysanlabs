@@ -99,9 +99,9 @@ export default function Pricing() {
               </div>
 
               <div className="flex items-baseline gap-1 mb-8">
-                <span className="text-lg text-white/30 font-mono italic">₹</span>
-                <span className="text-5xl font-black tracking-tighter text-white">{plan.price}</span>
-                <span className="text-xs text-white/30 font-mono uppercase tracking-widest ml-2">/ start</span>
+                <span className="text-lg text-foreground/30 font-mono italic">₹</span>
+                <span className="text-5xl font-black tracking-tighter text-foreground">{plan.price}</span>
+                <span className="text-xs text-foreground/30 font-mono uppercase tracking-widest ml-2">/ start</span>
               </div>
 
               <p className="text-sm text-body-dim mb-10 leading-relaxed font-medium">
@@ -110,7 +110,7 @@ export default function Pricing() {
 
               <ul className="space-y-4 mb-12 flex-1">
                 {plan.features.map((f, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm font-medium text-white/80">
+                  <li key={i} className="flex items-center gap-3 text-sm font-medium text-foreground/80">
                     <div className="flex-shrink-0 w-5 h-5 rounded-full bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center text-brand-primary">
                       <Check size={12} />
                     </div>

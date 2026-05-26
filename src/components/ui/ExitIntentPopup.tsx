@@ -58,7 +58,7 @@ export default function ExitIntentPopup() {
               <div className="bg-[var(--bg-dark)] border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden h-full w-full">
                 <button
                   onClick={closePopup}
-                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white/40 hover:text-white hover:bg-white/10 transition-all"
+                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-foreground/40 hover:text-foreground hover:bg-white/10 transition-all"
                 >
                   <X size={16} />
                 </button>
@@ -74,23 +74,23 @@ export default function ExitIntentPopup() {
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-bold text-white mb-3">
+                <h3 className="text-2xl font-bold text-foreground mb-3">
                   Get a Free Project Consultation
                 </h3>
-                <p className="text-white/50 mb-6 leading-relaxed">
+                <p className="text-foreground/50 mb-6 leading-relaxed">
                   Our experts are ready to discuss your project. Get insights on architecture, timeline, and pricing - absolutely free.
                 </p>
 
                 <div className="space-y-3 mb-6">
-                  <div className="flex items-center gap-3 text-white/60 text-sm">
+                  <div className="flex items-center gap-3 text-foreground/60 text-sm">
                     <div className="w-1.5 h-1.5 rounded-full bg-brand-primary" />
                     30-minute free discovery call
                   </div>
-                  <div className="flex items-center gap-3 text-white/60 text-sm">
+                  <div className="flex items-center gap-3 text-foreground/60 text-sm">
                     <div className="w-1.5 h-1.5 rounded-full bg-brand-primary" />
                     Technical roadmap & recommendations
                   </div>
-                  <div className="flex items-center gap-3 text-white/60 text-sm">
+                  <div className="flex items-center gap-3 text-foreground/60 text-sm">
                     <div className="w-1.5 h-1.5 rounded-full bg-brand-primary" />
                     No obligation, no pressure
                   </div>
@@ -105,7 +105,7 @@ export default function ExitIntentPopup() {
                   <ArrowRight size={16} />
                 </Link>
 
-                <p className="text-center text-white/30 text-xs mt-4">
+                <p className="text-center text-foreground/30 text-xs mt-4">
                   Limited slots available this week
                 </p>
               </div>

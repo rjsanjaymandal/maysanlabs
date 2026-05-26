@@ -51,11 +51,11 @@ export default function InsightsClient() {
               <Activity size={12} />
               Business Data
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 leading-tight">
               Data & <span className="text-brand-primary">insights</span> for<br />
               Your Business.
             </h1>
-            <p className="text-lg md:text-xl text-white/50 leading-relaxed mb-8 max-w-2xl">
+            <p className="text-lg md:text-xl text-foreground/50 leading-relaxed mb-8 max-w-2xl">
               We provide clear data and insights to help you make better decisions for your company and grow your business.
             </p>
           </div>
@@ -76,19 +76,19 @@ export default function InsightsClient() {
               >
                 <div className="flex flex-col gap-6">
                   <div className="flex justify-between items-start">
-                    <div className="w-12 h-12 bg-white/[0.03] flex items-center justify-center text-white/40 rounded-xl group-hover:bg-brand-primary/20 group-hover:text-brand-primary transition-all duration-300">
+                    <div className="w-12 h-12 bg-white/[0.03] flex items-center justify-center text-foreground/40 rounded-xl group-hover:bg-brand-primary/20 group-hover:text-brand-primary transition-all duration-300">
                       {item.icon}
                     </div>
-                    <span className="text-xs text-white/20 font-bold uppercase tracking-widest">{item.id}</span>
+                    <span className="text-xs text-foreground/20 font-bold uppercase tracking-widest">{item.id}</span>
                   </div>
                   <div>
-                    <h3 className="text-4xl font-bold text-white mb-3 group-hover:text-brand-primary transition-colors">
+                    <h3 className="text-4xl font-bold text-foreground mb-3 group-hover:text-brand-primary transition-colors">
                       {item.value}
                     </h3>
-                    <h4 className="text-xs font-bold text-white/40 mb-4 uppercase tracking-wider">
+                    <h4 className="text-xs font-bold text-foreground/40 mb-4 uppercase tracking-wider">
                       {item.title}
                     </h4>
-                    <p className="text-sm leading-relaxed text-white/45">
+                    <p className="text-sm leading-relaxed text-foreground/45">
                       {item.desc}
                     </p>
                   </div>
@@ -104,10 +104,10 @@ export default function InsightsClient() {
                 Coming Soon
               </div>
             </div>
-            <h3 className="text-2xl font-semibold text-white mb-4">
+            <h3 className="text-2xl font-semibold text-foreground mb-4">
               Your Business Dashboard
             </h3>
-            <p className="text-white/45 leading-relaxed mb-8 max-w-xl mx-auto">
+            <p className="text-foreground/45 leading-relaxed mb-8 max-w-xl mx-auto">
               We are building a simple dashboard so you can see how your software is performing and track your growth in real-time.
             </p>
           </div>
