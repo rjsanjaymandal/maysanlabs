@@ -3,6 +3,7 @@ import { Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import ThemeProvider from "@/components/ThemeProvider";
+import ScrollProgress from "@/components/ScrollProgress";
 import SmoothScroll from "@/components/SmoothScroll";
 // UX Audit reference: aria-label / placeholder / <label>
 
@@ -318,6 +319,7 @@ export default function RootLayout({
           <ThemeProvider>
             <SmoothScroll>
               <GoogleAnalytics />
+              <ScrollProgress />
               {children}
               <WhatsAppButton />
               <ExitIntentPopup />

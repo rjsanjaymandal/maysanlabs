@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Quote, Star } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Quote, Star, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 const testimonials = [
   {
@@ -35,6 +36,39 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [direction, setDirection] = useState(1);
+
+  const goTo = useCallback((index: number) => {
+    setDirection(index > current ? 1 : -1);
+    setCurrent(index);
+  }, [current]);
+
+  const next = useCallback(() => {
+    setDirection(1);
+    setCurrent((c) => (c + 1) % testimonials.length);
+  }, []);
+
+  const prev = useCallback(() => {
+    setDirection(-1);
+    setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
+  }, []);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, [isPaused, next]);
+
+  const t = testimonials[current];
+
+  const variants = {
+    enter: (d: number) => ({ x: d > 0 ? 200 : -200, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (d: number) => ({ x: d > 0 ? -200 : 200, opacity: 0 }),
+  };
+
   return (
     <section className="py-16 md:py-20 relative bg-[var(--sec-bg-alt)]">
       <div className="container-main">
@@ -61,50 +95,93 @@ export default function Testimonials() {
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="relative bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-2xl p-5 hover:border-brand-primary/30 hover:bg-brand-primary/[0.01] transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-primary/5 overflow-hidden group"
-            >
-              <div className="absolute top-4 right-4 text-brand-primary/[0.1]">
-                <Quote size={24} />
-              </div>
-              
-              <div className="relative z-10">
-                <div className="flex gap-0.5 mb-3.5">
+        <div
+          className="max-w-3xl mx-auto relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div className="relative min-h-[280px] flex items-center">
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={current}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                className="w-full bg-[var(--surface-elevated)] border border-[var(--border-subtle)] rounded-2xl p-8 md:p-10 shadow-lg"
+              >
+                <div className="flex gap-0.5 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={10} className="text-brand-primary fill-brand-primary" />
+                    <Star key={i} size={14} className="text-brand-primary fill-brand-primary" />
                   ))}
                 </div>
-                
-                <p className="text-foreground/60 text-sm mb-4.5 leading-relaxed">
-                  &ldquo;{testimonial.message}&rdquo;
+
+                <p className="text-foreground/70 text-base md:text-lg leading-relaxed mb-6">
+                  &ldquo;{t.message}&rdquo;
                 </p>
 
-                  <div className="flex items-center justify-between pt-3.5 border-t border-[var(--sec-border)]">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 bg-brand-primary/10 rounded-lg flex items-center justify-center font-medium text-brand-primary text-sm font-semibold">
-                      {testimonial.name.charAt(0)}
+                <div className="flex items-center justify-between pt-5 border-t border-[var(--border-subtle)]">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-brand-primary/10 rounded-xl flex items-center justify-center font-bold text-brand-primary">
+                      {t.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="text-foreground text-xs font-semibold">{testimonial.name}</p>
-                      <p className="text-foreground/40 text-[10px]">{testimonial.role}</p>
+                      <p className="text-foreground font-semibold text-sm">{t.name}</p>
+                      <p className="text-foreground/40 text-xs">{t.role}</p>
                     </div>
                   </div>
-                  
                   <div className="text-right">
-                    <p className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-400 font-extrabold text-base drop-shadow-[0_0_10px_rgba(59,130,246,0.15)]">{testimonial.metric}</p>
-                    <p className="text-foreground/35 text-[9px] uppercase tracking-wider font-semibold">{testimonial.metricLabel}</p>
+                    <p className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-400 font-extrabold text-lg drop-shadow-[0_0_10px_rgba(59,130,246,0.15)]">
+                      {t.metric}
+                    </p>
+                    <p className="text-foreground/35 text-[10px] uppercase tracking-wider font-semibold">
+                      {t.metricLabel}
+                    </p>
                   </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <div className="flex items-center justify-center gap-4 mt-6">
+            <button
+              onClick={prev}
+              className="w-9 h-9 rounded-full bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-foreground/40 hover:text-foreground hover:border-white/20 hover:bg-white/[0.06] transition-all"
+            >
+              <ChevronLeft size={16} />
+            </button>
+
+            <div className="flex items-center gap-2">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goTo(i)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    i === current
+                      ? "w-6 bg-brand-primary"
+                      : "w-1.5 bg-white/[0.12] hover:bg-white/[0.2]"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={next}
+              className="w-9 h-9 rounded-full bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-foreground/40 hover:text-foreground hover:border-white/20 hover:bg-white/[0.06] transition-all"
+            >
+              <ChevronRight size={16} />
+            </button>
+
+            <button
+              onClick={() => setIsPaused((p) => !p)}
+              className="w-9 h-9 rounded-full bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-foreground/30 hover:text-foreground hover:border-white/20 transition-all ml-2"
+              title={isPaused ? "Resume auto-play" : "Pause auto-play"}
+            >
+              {isPaused ? <Play size={12} /> : <Pause size={12} />}
+            </button>
+          </div>
         </div>
       </div>
     </section>

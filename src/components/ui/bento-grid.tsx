@@ -1,9 +1,9 @@
 "use client";
 
 import { ArrowRightIcon } from "lucide-react";
-import { ReactNode } from "react";
+import { ReactNode, useCallback, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate, useTransform, useSpring } from "framer-motion";
 import Link from "next/link";
 
 const BentoGrid = ({
@@ -45,20 +45,47 @@ const BentoCard = ({
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
+  const centerX = useMotionValue(0);
+  const centerY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { stiffness: 150, damping: 15 });
+  const springY = useSpring(mouseY, { stiffness: 150, damping: 15 });
+
+  const cardRef = useRef<HTMLDivElement>(null);
+
   function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
+    const { left, top, width, height } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
+    centerX.set(width / 2);
+    centerY.set(height / 2);
   }
+
+  function handleMouseLeave() {
+    mouseX.set(centerX.get());
+    mouseY.set(centerY.get());
+  }
+
+  const rotateX = useTransform(
+    [springY, centerY],
+    ([y, halfH]: number[]) => (halfH ? ((y - halfH) / halfH) * -6 : 0)
+  );
+  const rotateY = useTransform(
+    [springX, centerX],
+    ([x, halfW]: number[]) => (halfW ? ((x - halfW) / halfW) * 6 : 0)
+  );
 
   return (
     <motion.div
       key={name}
+      ref={cardRef}
       initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
       onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ perspective: 1000, rotateX, rotateY }}
       className={cn(
         "group relative col-span-3 md:col-span-1 flex flex-col justify-between overflow-hidden rounded-2xl",
         "p-[1px] bg-[var(--glass-chip-bg)] hover:bg-[var(--glass-chip-bg)] transition-all duration-500 hover:scale-[1.01] hover:-translate-y-0.5 shadow-lg hover:shadow-2xl",

@@ -13,9 +13,12 @@ import {
   Layers, 
   Zap, 
   ShieldCheck, 
-  Code2
+  Code2,
+  TrendingUp,
+  Rocket
 } from "lucide-react";
 import FadeInScroll from "@/components/FadeInScroll";
+import ParallaxSection, { ParallaxBackground } from "@/components/ParallaxSection";
 import LogoMarquee from "@/components/LogoMarquee";
 import ArchitectureVisualizer from "@/components/ArchitectureVisualizer";
 import ROICalculator from "@/components/ROICalculator";
@@ -48,41 +51,59 @@ const stats = [
 
 const bentoFeatures = [
   {
-    name: "Enterprise Scale",
-    description: "Architectures that handle millions of users with zero downtime and optimal performance.",
-    className: "md:col-span-2",
+    name: "Custom Software",
+    description: "Tailored React, Next.js, and Node.js architectures precision-built for your business model.",
+    className: "md:col-span-1",
     Icon: Cpu,
     background: <div className="absolute inset-0 bg-gradient-to-tr from-brand-primary/5 to-transparent" />,
     href: "/services",
-    cta: "Learn More",
+    cta: "Build With Us",
   },
   {
-    name: "Security First",
-    description: "Bank-grade security with SOC2 compliance, encryption, and regular penetration testing.",
+    name: "Cloud Infrastructure",
+    description: "Auto-scaling AWS, Kubernetes, and edge-deployed infrastructure with 99.99% uptime.",
+    className: "md:col-span-1",
+    Icon: Layers,
+    background: <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 to-transparent" />,
+    href: "/architecture",
+    cta: "Scale Up",
+  },
+  {
+    name: "Growth Advisory",
+    description: "Technical strategy, architecture reviews, and roadmaps to accelerate your product-market fit.",
+    className: "md:col-span-1",
+    Icon: TrendingUp,
+    background: <div className="absolute inset-0 bg-gradient-to-bl from-brand-primary/5 to-transparent" />,
+    href: "/insights",
+    cta: "Grow Faster",
+  },
+  {
+    name: "MVP Engineering",
+    description: "From idea to working product in weeks. Lean development with production-grade foundations.",
+    className: "md:col-span-1",
+    Icon: Rocket,
+    background: <div className="absolute inset-0 flex items-center justify-center opacity-5">
+      <Code2 size={120} className="text-brand-primary" />
+    </div>,
+    href: "/init",
+    cta: "Start Building",
+  },
+  {
+    name: "Enterprise Scale",
+    description: "Multi-region deployments, read replicas, edge caching — architecture for millions of users.",
     className: "md:col-span-1",
     Icon: ShieldCheck,
     background: <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent" />,
     href: "/services",
-    cta: "Our Standards",
-  },
-  {
-    name: "Future-Proof",
-    description: "Modern tech stack that's easy to maintain, extend, and scale as your business grows.",
-    className: "md:col-span-1",
-    Icon: Layers,
-    background: <div className="absolute inset-0 bg-gradient-to-bl from-white/5 to-transparent" />,
-    href: "/services",
-    cta: "See How",
+    cta: "Enterprise Plan",
   },
   {
     name: "Fast Delivery",
-    description: "Agile methodology with bi-weekly sprints. See progress every 2 weeks.",
-    className: "md:col-span-2",
+    description: "Bi-weekly sprints, CI/CD pipelines, and transparent progress tracking. Ship with confidence.",
+    className: "md:col-span-1",
     Icon: Zap,
     background: (
-      <div className="absolute inset-0 flex items-center justify-center opacity-5">
-        <Code2 size={120} className="text-brand-primary" />
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-tr from-brand-primary/5 via-transparent to-transparent" />
     ),
     href: "/init",
     cta: "Start Project",
@@ -175,13 +196,27 @@ export default function Home() {
             </span>
           </motion.div>
           <h2 className="heading-lg sm:heading-xl text-[var(--text-on-white)]">
-            Built to <span className="text-brand-primary italic">scale</span>
+            <span className="text-brand-primary">Build</span>.{" "}
+            <span className="text-brand-primary">Scale</span>.{" "}
+            <span className="text-brand-primary italic">Grow.</span>
           </h2>
+          <p className="text-[var(--text-secondary)] text-sm md:text-base max-w-2xl mx-auto mt-4 leading-relaxed">
+            Three pillars that define every product we engineer — from your first commit to your millionth user.
+          </p>
         </div>
  
         <BentoGrid className="md:grid-cols-3">
-          {bentoFeatures.map((feature) => (
-            <BentoCard key={feature.name} {...feature} />
+          {bentoFeatures.map((feature, i) => (
+            <BentoCard
+              key={i}
+              name={feature.name}
+              description={feature.description}
+              className={feature.className}
+              Icon={feature.Icon}
+              background={feature.background}
+              href={feature.href}
+              cta={feature.cta}
+            />
           ))}
         </BentoGrid>
       </section>
@@ -195,6 +230,7 @@ export default function Home() {
       <FadeInScroll>
       <section className="py-24 border-y border-white/5 bg-[#0B1120] relative overflow-hidden">
         {/* Dynamic Color Reflective Ambient Glow backdrops */}
+        <ParallaxBackground speed={0.2} className="bg-gradient-to-b from-brand-primary/5 via-transparent to-transparent" />
         <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] sm:w-[600px] h-[180px] sm:h-[400px] rounded-full blur-[50px] sm:blur-[140px] pointer-events-none transition-all duration-1000 ${
           activeTab === "identity" ? "bg-brand-primary/5 sm:bg-brand-primary/10" : "bg-blue-500/5 sm:bg-blue-500/10"
         }`} />

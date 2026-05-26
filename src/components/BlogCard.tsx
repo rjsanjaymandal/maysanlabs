@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { BlogPost } from "@/lib/blog-data";
 import { ArrowRight, Clock, Tag, ExternalLink } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { useRef } from "react";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -9,8 +10,44 @@ interface BlogCardProps {
 
 export default function BlogCard({ post }: BlogCardProps) {
   const isExternal = !!post.externalUrl;
+  const cardRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const centerX = useMotionValue(0);
+  const centerY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { stiffness: 150, damping: 15 });
+  const springY = useSpring(mouseY, { stiffness: 150, damping: 15 });
+
+  const rotateX = useTransform(
+    [springY, centerY],
+    ([y, halfH]: number[]) => (halfH ? ((y - halfH) / halfH) * -5 : 0)
+  );
+  const rotateY = useTransform(
+    [springX, centerX],
+    ([x, halfW]: number[]) => (halfW ? ((x - halfW) / halfW) * 5 : 0)
+  );
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = cardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
+    centerX.set(rect.width / 2);
+    centerY.set(rect.height / 2);
+  };
+
+  const handleMouseLeave = () => {
+    mouseX.set(centerX.get());
+    mouseY.set(centerY.get());
+  };
+
   const cardContent = (
-    <motion.div 
+    <motion.div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ perspective: 1000, rotateX, rotateY }}
       whileHover={{ 
         y: -8, 
         scale: 1.015,

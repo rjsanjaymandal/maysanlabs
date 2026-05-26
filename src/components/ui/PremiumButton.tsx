@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Phone } from "lucide-react";
+import { useScramble } from "@/hooks/useScramble";
+import { useEffect } from "react";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -13,6 +15,7 @@ interface ButtonProps {
   showArrow?: boolean;
   icon?: React.ReactNode;
   onClick?: () => void;
+  scrambleOnHover?: boolean;
 }
 
 export default function PremiumButton({ 
@@ -23,7 +26,8 @@ export default function PremiumButton({
   size = "md",
   showArrow = true,
   icon,
-  onClick
+  onClick,
+  scrambleOnHover = true
 }: ButtonProps) {
   const baseStyles = "relative inline-flex items-center justify-center font-bold uppercase tracking-wider transition-all duration-300 rounded-full overflow-hidden";
   
@@ -41,14 +45,23 @@ export default function PremiumButton({
 
   const buttonClass = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;
 
+  const childrenText = typeof children === "string" ? children : "";
+  const { text, scramble, reset } = useScramble();
+
+  useEffect(() => {
+    return () => reset();
+  }, [reset]);
+
   const content = (
     <motion.span 
       className="flex items-center gap-2.5 relative z-10"
       whileHover={{ x: 4 }}
       transition={{ duration: 0.2 }}
+      onMouseEnter={() => scrambleOnHover && childrenText && scramble(childrenText)}
+      onMouseLeave={() => scrambleOnHover && childrenText && scramble(childrenText)}
     >
       {icon}
-      {children}
+      {childrenText && scrambleOnHover && text ? text : children}
       {showArrow && variant === "primary" && <ArrowRight size={14} />}
     </motion.span>
   );

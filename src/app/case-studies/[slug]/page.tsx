@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { generateCaseStudySEO, generateCaseStudyJSONLD } from "@/lib/seo/helpers";
 import CaseStudyPerformanceToggle from "@/components/CaseStudyPerformanceToggle";
+import ScrollRevealImage from "@/components/ScrollRevealImage";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -214,7 +215,9 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-8 leading-tight">
-              {study.title}
+              <ScrollRevealImage direction="up">
+                {study.title}
+              </ScrollRevealImage>
             </h1>
             
             <p className="text-xl text-foreground/50 leading-relaxed border-l-4 border-brand-primary pl-6 py-2">
