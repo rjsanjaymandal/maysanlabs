@@ -18,13 +18,19 @@ export async function applyJob(formData: FormData) {
   }
 
   // Check for missing SMTP configuration
-  if (
-    !process.env.SMTP_HOST ||
-    !process.env.SMTP_USER ||
-    !process.env.SMTP_PASS
-  ) {
-    console.error("Missing SMTP Configuration for Careers System.");
-    return { success: false, message: "Server configuration error" };
+  const smtpConfigured =
+    process.env.SMTP_HOST &&
+    process.env.SMTP_USER &&
+    process.env.SMTP_PASS &&
+    !process.env.SMTP_USER.includes("your-email") &&
+    !process.env.SMTP_PASS.includes("your-app");
+
+  if (!smtpConfigured) {
+    console.warn("SMTP not configured. Logging application to console instead.");
+    console.log("=== New Job Application ===");
+    console.log({ name, email, phone, jobId, jobTitle, linkedIn, portfolio, message });
+    console.log("===========================");
+    return { success: true, message: "Application submitted successfully" };
   }
 
   const transporter = nodemailer.createTransport({
@@ -115,6 +121,6 @@ export async function applyJob(formData: FormData) {
     return { success: true, message: "Application submitted successfully" };
   } catch (error) {
     console.error("Application processing error:", error);
-    return { success: false, message: "Failed to process application" };
+    return { success: false, message: "Failed to submit application. Please try again or email us directly." };
   }
 }

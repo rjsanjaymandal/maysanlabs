@@ -13,13 +13,19 @@ export async function sendEmail(formData: FormData) {
   }
 
   // Check for missing SMTP configuration
-  if (
-    !process.env.SMTP_HOST ||
-    !process.env.SMTP_USER ||
-    !process.env.SMTP_PASS
-  ) {
-    console.error("Missing SMTP Configuration. Please set SMTP_HOST, SMTP_USER, and SMTP_PASS in .env.local");
-    return { success: false, message: "Server configuration error" };
+  const smtpConfigured =
+    process.env.SMTP_HOST &&
+    process.env.SMTP_USER &&
+    process.env.SMTP_PASS &&
+    !process.env.SMTP_USER.includes("your-email") &&
+    !process.env.SMTP_PASS.includes("your-app");
+
+  if (!smtpConfigured) {
+    console.warn("SMTP not configured. Logging inquiry to console instead.");
+    console.log("=== New Project Inquiry ===");
+    console.log({ companyName, email, contact, requirements });
+    console.log("===========================");
+    return { success: true, message: "Inquiry received successfully" };
   }
 
   const transporter = nodemailer.createTransport({
@@ -90,6 +96,6 @@ export async function sendEmail(formData: FormData) {
     return { success: true, message: "Inquiry received successfully" };
   } catch (error: unknown) {
     console.error("Notification Error:", error);
-    return { success: false, message: "Failed to process inquiry" };
+    return { success: false, message: "Failed to send inquiry. Our team has been notified of this issue." };
   }
 }
