@@ -116,7 +116,7 @@ export default function Home() {
       <Hero />
       
       {/* Stats Section */}
-      <section className="pt-8 pb-6 md:pt-12 md:pb-8 bg-slate-50/50 dark:bg-black/40 border-y border-slate-200/80 dark:border-white/5 relative overflow-hidden">
+      <section className="pt-8 pb-6 md:pt-12 md:pb-8 bg-[var(--sec-bg-alt)] border-y border-[var(--sec-border)] relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.01] to-transparent pointer-events-none" />
         <div className="container-main relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
@@ -129,19 +129,19 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
-                  className="flex flex-col items-center justify-center p-5 bg-white hover:bg-slate-50/80 dark:bg-slate-900/50 dark:hover:bg-slate-900/80 border border-slate-200 dark:border-white/10 hover:border-brand-primary/40 dark:hover:border-brand-primary/40 rounded-2xl transition-all duration-300 group relative overflow-hidden shadow-sm hover:shadow-md dark:shadow-none hover:-translate-y-1 cursor-default backdrop-blur-md"
+                  className="flex flex-col items-center justify-center p-5 bg-[var(--surface-elevated)] hover:bg-[var(--surface-subtle)] dark:bg-slate-900/50 dark:hover:bg-slate-900/80 border border-[var(--border-subtle)] dark:border-white/10 hover:border-brand-primary/40 dark:hover:border-brand-primary/40 rounded-2xl transition-all duration-300 group relative overflow-hidden shadow-sm hover:shadow-md dark:shadow-none hover:-translate-y-1 cursor-default backdrop-blur-md"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   {isMetric ? (
-                    <p className="text-2xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-600 dark:from-brand-primary dark:to-[#00d2ff] mb-1 tracking-tight drop-shadow-[0_0_15px_rgba(26,109,214,0.15)] dark:drop-shadow-[0_0_15px_rgba(26,109,214,0.3)]">
+                    <p className="text-2xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-light dark:from-brand-primary dark:to-[#00d2ff] mb-1 tracking-tight drop-shadow-[0_0_15px_rgba(26,109,214,0.15)] dark:drop-shadow-[0_0_15px_rgba(26,109,214,0.3)]">
                       {stat.value}
                     </p>
                   ) : (
-                    <p className="text-[10px] md:text-xs font-extrabold text-slate-800 bg-slate-100/80 border border-slate-200 dark:text-white dark:bg-white/[0.06] dark:border-white/10 rounded-full mb-1.5 px-3 py-0.5 shadow-inner tracking-wide uppercase">
+                    <p className="text-[10px] md:text-xs font-extrabold text-[var(--text-secondary)] bg-[var(--surface-subtle)] border border-[var(--border-subtle)] dark:text-white dark:bg-white/[0.06] dark:border-white/10 rounded-full mb-1.5 px-3 py-0.5 shadow-inner tracking-wide uppercase">
                       {stat.value}
                     </p>
                   )}
-                  <p className="text-slate-600 dark:text-slate-400 text-[9px] md:text-[10px] uppercase tracking-wider font-semibold text-center group-hover:text-slate-800 dark:group-hover:text-white transition-colors">
+                  <p className="text-[var(--text-secondary)] dark:text-slate-400 text-[9px] md:text-[10px] uppercase tracking-wider font-semibold text-center group-hover:text-[var(--text-primary)] dark:group-hover:text-white transition-colors">
                     {stat.label}
                   </p>
                 </motion.div>
@@ -152,9 +152,9 @@ export default function Home() {
       </section>
  
       {/* Trust Section */}
-      <section className="py-8 md:py-12 border-b border-white/5 bg-black/10">
+      <section className="py-8 md:py-12 border-b border-[var(--sec-border)] bg-[var(--sec-bg)]">
         <div className="container-main mb-6 md:mb-8 text-center">
-           <span className="text-[var(--text-on-white)]/50 text-[10px] uppercase tracking-widest font-bold">Trusted by fast-growing companies</span>
+           <span className="text-[var(--text-secondary)] text-[10px] uppercase tracking-widest font-bold">Trusted by fast-growing companies</span>
         </div>
         <LogoMarquee />
       </section>
@@ -469,7 +469,7 @@ export default function Home() {
       </FadeInScroll>
 
       <FadeInScroll>
-      <section className="py-16 border-t border-white/5 bg-black/15 relative overflow-hidden">
+      <section className="py-16 border-t border-[var(--sec-border)] bg-[var(--sec-bg-alt)] relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-brand-primary/5 blur-[120px] rounded-full pointer-events-none" />
         <div className="container-main text-center relative z-10">
           <p className="text-brand-primary/60 text-[10px] font-bold uppercase tracking-[0.25em] mb-8">Empowered by Industry Standards</p>
@@ -477,7 +477,7 @@ export default function Home() {
             {["Next.js", "React", "Node.js", "TypeScript", "PostgreSQL", "AWS", "Docker", "Supabase", "Tailwind CSS", "Framer Motion", "GraphQL", "Redis"].map((tech) => (
               <span 
                 key={tech} 
-                className="px-4 py-2 text-xs md:text-sm font-semibold text-[var(--text-on-white)]/70 bg-white/[0.02] border border-white/[0.05] rounded-full hover:text-[var(--text-on-white)] hover:border-brand-primary/30 hover:bg-brand-primary/5 hover:-translate-y-0.5 transition-all duration-300 cursor-default shadow-sm"
+                className="px-4 py-2 text-xs md:text-sm font-semibold text-[var(--text-secondary)] bg-[var(--surface-elevated)] border border-[var(--border-subtle)] rounded-full hover:text-[var(--text-primary)] hover:border-brand-primary/30 hover:bg-brand-primary/5 hover:-translate-y-0.5 transition-all duration-300 cursor-default shadow-sm dark:shadow-none"
               >
                 {tech}
               </span>
