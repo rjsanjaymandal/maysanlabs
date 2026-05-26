@@ -6,10 +6,126 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { generateCaseStudySEO, generateCaseStudyJSONLD } from "@/lib/seo/helpers";
+import CaseStudyPerformanceToggle from "@/components/CaseStudyPerformanceToggle";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
+
+const beforeAfterData: Record<string, {
+  before: { label: string; items: string[] };
+  after: { label: string; items: string[] };
+  metrics: { label: string; before: string; after: string }[];
+}> = {
+  "flash-fashion-ecommerce": {
+    before: {
+      label: "Legacy Ecommerce Bottlenecks",
+      items: [
+        "Manual inventory tracking across spreadsheets",
+        "No real-time order management — 24hr+ sync delay",
+        "Server crashes during flash sale traffic spikes",
+        "No integrated payment gateway — manual invoicing",
+        "Page load times exceeding 4 seconds on mobile",
+      ],
+    },
+    after: {
+      label: "Maysan Full-Stack Ecommerce Solution",
+      items: [
+        "Automated inventory with real-time sync across all channels",
+        "50,000+ orders processed with sub-second confirmation",
+        "Auto-scaling architecture handles 10x traffic surges",
+        "Stripe + UPI integrated with 99.9% payment success rate",
+        "Sub-200ms global page load with edge caching",
+      ],
+    },
+    metrics: [
+      { label: "Page Load Time", before: "4.2s", after: "<200ms" },
+      { label: "Order Processing", before: "24hr+", after: "Real-time" },
+      { label: "Uptime", before: "96%", after: "99.9%" },
+    ],
+  },
+  "retail-modular-erp": {
+    before: {
+      label: "Legacy ERP Bottlenecks",
+      items: [
+        "Inventory tracked separately across 400+ stores",
+        "80% of procurement done manually via phone/email",
+        "No unified view of stock across regions",
+        "Stock discrepancies causing 15%+ revenue loss",
+        "Week-long reconciliation cycles",
+      ],
+    },
+    after: {
+      label: "Maysan Modular ERP Solution",
+      items: [
+        "Real-time edge sync across all 400+ store locations",
+        "Automated procurement with ML-based demand forecasting",
+        "Unified dashboard with multi-region inventory visibility",
+        "80% fewer procurement errors with automated workflows",
+        "Daily auto-reconciliation with audit trail",
+      ],
+    },
+    metrics: [
+      { label: "Inventory Accuracy", before: "72%", after: "99.9%" },
+      { label: "Procurement Errors", before: "~80% manual", after: "80% fewer" },
+      { label: "Reconciliation", before: "7 days", after: "Daily" },
+    ],
+  },
+  "fintech-connectivity-bridge": {
+    before: {
+      label: "Legacy Fintech Bottlenecks",
+      items: [
+        "Bank API responses averaging 800ms+ latency",
+        "Connection drops during peak trading hours",
+        "Manual reconciliation between banking systems",
+        "No zero-trust security layer — compliance risk",
+        "Limited to 10k concurrent connections",
+      ],
+    },
+    after: {
+      label: "Maysan Fintech Bridge Solution",
+      items: [
+        "API-first architecture with sub-35ms average response",
+        "1M+ concurrent connections with zero dropoffs",
+        "Automated real-time reconciliation engine",
+        "Zero-trust security with end-to-end encryption",
+        "12 months of production with zero security incidents",
+      ],
+    },
+    metrics: [
+      { label: "Response Time", before: "800ms+", after: "<35ms" },
+      { label: "Concurrent Connections", before: "10k", after: "1M+" },
+      { label: "Security Incidents", before: "Recurring", after: "Zero (12mo)" },
+    ],
+  },
+  "custom-manufacturing-intelligence": {
+    before: {
+      label: "Legacy Manufacturing Bottlenecks",
+      items: [
+        "No visibility into real-time production metrics",
+        "Unplanned downtime detected too late — costly delays",
+        "OEE tracking done manually on paper logs",
+        "No predictive maintenance — reactive only",
+        "Siloed data across plant floor systems",
+      ],
+    },
+    after: {
+      label: "Maysan Industrial IoT Solution",
+      items: [
+        "Real-time OEE dashboard with live production visibility",
+        "Predictive maintenance alerts 48 hours before failure",
+        "65% reduction in unplanned downtime",
+        "Automated data pipeline from sensors to analytics",
+        "Unified IoT platform accessible by all teams",
+      ],
+    },
+    metrics: [
+      { label: "Unplanned Downtime", before: "Frequent", after: "65% less" },
+      { label: "Maintenance", before: "Reactive only", after: "48hr predictive" },
+      { label: "OEE Tracking", before: "Paper logs", after: "Real-time" },
+    ],
+  },
+};
 
 export async function generateStaticParams() {
   return caseStudies.map((study) => ({
@@ -126,8 +242,24 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Content Section */}
+      {/* Before vs After Performance Toggle */}
       <section className="py-16">
+        <div className="container-main">
+          <CaseStudyPerformanceToggle
+            title={study.title}
+            challenge={study.challenge}
+            solution={study.solution}
+            data={beforeAfterData[study.slug] || {
+              before: { label: "Legacy State", items: ["No baseline data available"] },
+              after: { label: "Maysan Solution", items: ["Solution implemented", study.solution] },
+              metrics: [{ label: "Metric", before: "—", after: "—" }],
+            }}
+          />
+        </div>
+      </section>
+
+      {/* Content Section */}
+      <section className="py-16 border-t border-white/[0.06]">
         <div className="container-main">
           <article className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-8 space-y-12">

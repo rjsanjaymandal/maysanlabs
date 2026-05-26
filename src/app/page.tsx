@@ -17,6 +17,8 @@ import {
 } from "lucide-react";
 import FadeInScroll from "@/components/FadeInScroll";
 import LogoMarquee from "@/components/LogoMarquee";
+import ArchitectureVisualizer from "@/components/ArchitectureVisualizer";
+import ROICalculator from "@/components/ROICalculator";
 
 // Dynamic Imports for performance hardening
 const BentoGrid = dynamic(() => import("@/components/ui/bento-grid").then(m => m.BentoGrid), {
@@ -183,6 +185,10 @@ export default function Home() {
           ))}
         </BentoGrid>
       </section>
+      </FadeInScroll>
+
+      <FadeInScroll>
+      <ArchitectureVisualizer />
       </FadeInScroll>
 
       {/* Immersive Panoramic Brand Showroom */}
@@ -444,6 +450,10 @@ export default function Home() {
 
       <FadeInScroll delay={0.1}>
       <Services />
+      </FadeInScroll>
+
+      <FadeInScroll delay={0.1}>
+      <ROICalculator />
       </FadeInScroll>
 
       <FadeInScroll delay={0.2}>
