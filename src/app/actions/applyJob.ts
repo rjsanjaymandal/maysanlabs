@@ -36,10 +36,14 @@ export async function applyJob(formData: FormData) {
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT) || 587,
-    secure: false, 
+    secure: Number(process.env.SMTP_PORT) === 465,
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
+    },
+    tls: {
+      rejectUnauthorized: false,
+      minVersion: "TLSv1.2",
     },
   });
 
@@ -120,7 +124,8 @@ export async function applyJob(formData: FormData) {
 
     return { success: true, message: "Application submitted successfully" };
   } catch (error) {
-    console.error("Application processing error:", error);
-    return { success: false, message: "Failed to submit application. Please try again or email us directly." };
+    const errMsg = error instanceof Error ? error.message : String(error);
+    console.error("Application processing error:", errMsg);
+    return { success: false, message: "Application submission failed. Please email us at careers@maysanlabs.com", error: errMsg };
   }
 }

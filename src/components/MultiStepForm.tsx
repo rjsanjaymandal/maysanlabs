@@ -63,6 +63,9 @@ export default function MultiStepForm() {
         setIsSubmitted(true);
       } else {
         setError(result.message || "Something went wrong. Please try again.");
+        if ("error" in result && result.error) {
+          console.error("Send error detail:", result.error);
+        }
       }
     } catch (error) {
       setError("Failed to send message. Please try again.");

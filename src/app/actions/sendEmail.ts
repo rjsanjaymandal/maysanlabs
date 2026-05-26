@@ -31,10 +31,14 @@ export async function sendEmail(formData: FormData) {
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT) || 587,
-    secure: false, 
+    secure: Number(process.env.SMTP_PORT) === 465,
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
+    },
+    tls: {
+      rejectUnauthorized: false,
+      minVersion: "TLSv1.2",
     },
   });
 
@@ -95,7 +99,8 @@ export async function sendEmail(formData: FormData) {
 
     return { success: true, message: "Inquiry received successfully" };
   } catch (error: unknown) {
-    console.error("Notification Error:", error);
-    return { success: false, message: "Failed to send inquiry. Our team has been notified of this issue." };
+    const errMsg = error instanceof Error ? error.message : String(error);
+    console.error("Notification Error:", errMsg);
+    return { success: false, message: "Email delivery failed. Please contact us directly at business@maysanlabs.com", error: errMsg };
   }
 }

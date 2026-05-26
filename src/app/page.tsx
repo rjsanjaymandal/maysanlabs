@@ -175,7 +175,7 @@ export default function Home() {
             </span>
           </motion.div>
           <h2 className="heading-lg sm:heading-xl text-[var(--text-on-white)]">
-            Built for <span className="text-brand-primary italic">scale</span>
+            Built to <span className="text-brand-primary italic">scale</span>
           </h2>
         </div>
  
