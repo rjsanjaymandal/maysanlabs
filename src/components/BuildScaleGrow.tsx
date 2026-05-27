@@ -92,26 +92,25 @@ const ScaleCanvas = () => {
   const [activeNode, setActiveNode] = useState<string | null>(null);
 
   const nodes = [
-    { id: "edge", label: "Edge CDN", x: 30, y: 90, color: "rgba(16, 185, 129, 0.8)", icon: Globe },
-    { id: "gateway", label: "App Router", x: 120, y: 40, color: "rgba(20, 184, 166, 0.8)", icon: Activity },
-    { id: "db", label: "Global DB", x: 210, y: 90, color: "rgba(16, 185, 129, 0.8)", icon: Server },
+    { id: "edge", label: "Edge CDN", x: "15%", y: "75%", color: "rgba(16, 185, 129, 0.8)", icon: Globe },
+    { id: "gateway", label: "App Router", x: "50%", y: "30%", color: "rgba(20, 184, 166, 0.8)", icon: Activity },
+    { id: "db", label: "Global DB", x: "85%", y: "75%", color: "rgba(16, 185, 129, 0.8)", icon: Server },
   ];
 
   return (
     <div className="relative w-full h-[180px] rounded-lg bg-slate-900/50 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] p-4 flex flex-col justify-between overflow-hidden group/canvas">
       {/* Topology Ambient Lines */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 45 90 L 135 40 L 225 90" stroke="rgba(16, 185, 129, 0.15)" strokeWidth="2" fill="none" />
-        <path d="M 45 90 L 225 90" stroke="rgba(16, 185, 129, 0.08)" strokeWidth="1" fill="none" strokeDasharray="4 4" />
+      <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 15 75 L 50 30 L 85 75" stroke="rgba(16, 185, 129, 0.15)" strokeWidth="1" fill="none" />
+        <path d="M 15 75 L 85 75" stroke="rgba(16, 185, 129, 0.08)" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
         
         {/* Pulsing Edge Particle stream */}
         <motion.circle
-          r="3"
+          r="1.5"
           fill="#10b981"
           animate={{
-            pathLength: [0, 1],
-            cx: [45, 135, 225],
-            cy: [90, 40, 90]
+            cx: [15, 50, 85],
+            cy: [75, 30, 75]
           }}
           transition={{
             duration: 3,
@@ -121,12 +120,11 @@ const ScaleCanvas = () => {
         />
         
         <motion.circle
-          r="2.5"
+          r="1.25"
           fill="#14b8a6"
           animate={{
-            pathLength: [0, 1],
-            cx: [225, 135, 45],
-            cy: [90, 40, 90]
+            cx: [85, 50, 15],
+            cy: [75, 30, 75]
           }}
           transition={{
             duration: 3.5,
@@ -138,7 +136,7 @@ const ScaleCanvas = () => {
       </svg>
 
       {/* Topology Nodes */}
-      <div className="absolute inset-0 w-full h-full flex justify-between items-center px-6">
+      <div className="absolute inset-0 w-full h-full pointer-events-none">
         {nodes.map((node) => {
           const NodeIcon = node.icon;
           const isActive = activeNode === node.id;
@@ -147,13 +145,13 @@ const ScaleCanvas = () => {
               key={node.id}
               style={{
                 position: "absolute",
-                left: `${node.x}px`,
-                top: `${node.y}px`,
+                left: node.x,
+                top: node.y,
                 transform: "translate(-50%, -50%)"
               }}
               onMouseEnter={() => setActiveNode(node.id)}
               onMouseLeave={() => setActiveNode(null)}
-              className="flex flex-col items-center cursor-pointer group/node"
+              className="flex flex-col items-center cursor-pointer group/node pointer-events-auto"
             >
               {/* Outer halo */}
               <motion.div
@@ -217,7 +215,7 @@ const GrowCanvas = () => {
 
       {/* SVG Path Curve Warper */}
       <div className="relative w-full h-[80px] mt-4">
-        <svg className="w-full h-full overflow-visible" xmlns="http://www.w3.org/2000/svg">
+        <svg className="w-full h-full overflow-visible" viewBox="0 0 230 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="curveGradient" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stopColor="#f97316" />

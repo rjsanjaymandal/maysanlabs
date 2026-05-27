@@ -5,7 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, Phone, Search } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
-import SearchModal from "@/components/SearchModal";
+import dynamic from "next/dynamic";
+const SearchModal = dynamic(() => import("@/components/SearchModal"), { ssr: false });
 
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -65,6 +66,18 @@ export default function Navbar() {
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
   const navItems = [
@@ -138,7 +151,7 @@ export default function Navbar() {
 
           <motion.button 
             whileTap={{ scale: 0.92 }}
-            className="lg:hidden w-10 h-10 flex items-center justify-center text-foreground/50 hover:text-foreground bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full hover:bg-[var(--glass-chip-bg)] hover:border-[var(--text-on-white)]/20 transition-all duration-200"
+            className="lg:hidden w-11 h-11 flex items-center justify-center text-foreground/50 hover:text-foreground bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full hover:bg-[var(--glass-chip-bg)] hover:border-[var(--text-on-white)]/20 transition-all duration-200"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
             aria-expanded={isOpen}

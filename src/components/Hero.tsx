@@ -61,7 +61,7 @@ export default function Hero() {
           className="mb-5 md:mb-6"
         >
           <h1 className="heading-xl text-foreground max-w-4xl">
-            Build <span className="text-brand-primary">scalable SaaS</span> with <br />
+            Build <span className="text-brand-primary">scalable SaaS</span> with <br className="hidden md:block" />
             <span className="text-foreground/50">Maysan Labs</span>
           </h1>
         </motion.div>
@@ -85,7 +85,7 @@ export default function Hero() {
           className="mt-5 md:mt-6 flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-8"
         >
           {benefits.map((benefit, i) => (
-            <div key={i} className="flex items-center gap-1.5 md:gap-2 text-foreground/60 text-[10px] md:text-sm px-3 py-1.5 bg-white/2 rounded-full">
+            <div key={i} className="flex items-center gap-1.5 md:gap-2 text-foreground/60 text-[11.5px] sm:text-xs md:text-sm px-3 py-1.5 bg-white/2 rounded-full">
               <CheckCircle2 size={12} className="text-brand-primary shrink-0" />
               {benefit}
             </div>

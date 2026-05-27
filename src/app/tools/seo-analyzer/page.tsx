@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 import SeoAnalyzerClient from "./SeoAnalyzerClient";
 
 export const metadata: Metadata = generatePageSEO({
-  title: "Free Search & Google SEO Checker | Maysan Labs",
-  description: "Scan your website setup, broken links, ranking barriers, and descriptions instantly.",
+  title: "Sitemap & Technical SEO Analyzer | Free Broken Link Checker | Maysan Labs",
+  description: "Scan your sitemap for broken links, missing meta tags, bad schema markups, and indexation gaps. Get a free technical SEO audit report with actionable fixes.",
   path: "/tools/seo-analyzer",
-  keywords: ["SEO checker", "Google ranking scanner", "broken link checker", "meta tags scanner", "schema markup checker", "free SEO tool"]
+  keywords: ["SEO checker", "sitemap analyzer", "broken link checker", "meta tags scanner", "schema markup checker", "free SEO tool", "technical SEO audit"]
 });
 
 const breadcrumbSchema = generateBreadcrumbSchema([

@@ -30,9 +30,12 @@ export default function CookieConsent() {
 
   useEffect(() => {
     const stored = getStoredConsent();
-    setConsent(stored);
-    window.__cookieConsent = stored ?? null;
-    setMounted(true);
+    const raf = requestAnimationFrame(() => {
+      setConsent(stored);
+      window.__cookieConsent = stored ?? null;
+      setMounted(true);
+    });
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   const handleAccept = () => {

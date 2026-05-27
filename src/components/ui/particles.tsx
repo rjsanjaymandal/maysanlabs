@@ -32,10 +32,13 @@ export function FloatingParticles({
   maxSize = 6,
 }: FloatingParticlesProps) {
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Defer state update to avoid cascading render warning in some strict lint environments
+    // Defer state updates to avoid cascading render warnings and comply with strict eslint rules
     const raf = requestAnimationFrame(() => {
+      const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
+      setIsMobile(isMobileViewport);
       setMounted(true);
     });
     return () => cancelAnimationFrame(raf);
@@ -44,8 +47,10 @@ export function FloatingParticles({
   // Generate particles only once on the client to avoid hydration mismatch
   const particles = useMemo(() => {
     if (!mounted) return [];
-    return generateParticles(count, minSize, maxSize);
-  }, [mounted, count, minSize, maxSize]);
+    // Cap count on mobile to reduce rendering workload
+    const adjustedCount = isMobile ? Math.min(count, 8) : count;
+    return generateParticles(adjustedCount, minSize, maxSize);
+  }, [mounted, count, minSize, maxSize, isMobile]);
 
   return (
     <div className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}>
@@ -70,6 +75,7 @@ export function FloatingParticles({
                   opacity: particle.opacity,
                   animation: `float ${particle.duration}s ease-in-out infinite`,
                   animationDelay: `${particle.delay}s`,
+                  willChange: "transform",
                 }}
               />
             ))}

@@ -102,7 +102,7 @@ export default function RoiCalculator() {
             <div className="lg:col-span-6 bg-white/[0.02] border border-white/[0.06] rounded-3xl p-6 md:p-8 space-y-6">
               <div>
                 <span className="text-[10px] font-bold text-foreground/40 uppercase tracking-widest block mb-3">1. Select Business Scenario</span>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {scenarios.map((s, i) => {
                     const Icon = s.icon;
                     return (
@@ -220,7 +220,7 @@ export default function RoiCalculator() {
               <div className="space-y-6 relative z-10">
                 <div>
                   <span className="text-[10px] font-bold text-brand-primary uppercase tracking-widest block mb-1">Projected Annual Revenue</span>
-                  <p className="text-4xl md:text-5xl font-black text-foreground tracking-tight">
+                  <p className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground tracking-tight">
                     ₹{(annualRevenue / 100000).toFixed(1)} Lakhs
                   </p>
                   <p className="text-[10px] text-foreground/45 mt-1 leading-relaxed">

@@ -180,6 +180,7 @@ export const viewport: Viewport = {
   themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
+  maximumScale: 5,
 };
 
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
@@ -194,14 +195,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={cn("antialiased", outfit.variable, jetbrainsMono.variable)}>
       <head>
-        {/* Preconnect to external origins for faster loading */}
+        {/* Preconnect & DNS-prefetch to external origins for faster loading */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
-        {/* Preload hero banner image for LCP optimization */}
-        <link rel="preload" as="image" href="/og-image.png" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         
         {/* Defer non-critical scripts */}
         <script

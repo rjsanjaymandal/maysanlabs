@@ -164,7 +164,7 @@ export default function Home() {
 
       {/* Immersive Panoramic Brand Showroom */}
       <FadeInScroll>
-      <section className="py-24 border-y border-white/5 bg-[#0B1120] relative overflow-hidden">
+      <section className="py-24 border-y border-slate-200/50 dark:border-white/5 bg-slate-50 dark:bg-[#0B1120] relative overflow-hidden">
         {/* Dynamic Color Reflective Ambient Glow backdrops */}
         <ParallaxBackground speed={0.2} className="bg-gradient-to-b from-brand-primary/5 via-transparent to-transparent" />
         <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] sm:w-[600px] h-[180px] sm:h-[400px] rounded-full blur-[50px] sm:blur-[140px] pointer-events-none transition-all duration-1000 ${
@@ -184,60 +184,60 @@ export default function Home() {
                 Brand Showroom
               </span>
             </motion.div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4">
               Immersive <span className="text-brand-primary">Brand</span> Showroom
             </h2>
-            <p className="text-white/60 text-sm max-w-xl mx-auto leading-relaxed">
+            <p className="text-slate-600 dark:text-white/60 text-sm max-w-xl mx-auto leading-relaxed">
                Explore the design system, operational philosophy, and technical pillars that define Maysan Labs.
              </p>
           </div>
 
           {/* Premium Glassmorphic Tab Switcher */}
           <div className="flex justify-center mb-10">
-            <div className="inline-flex p-1.5 rounded-full bg-white/[0.02] border border-white/[0.06] backdrop-blur-md shadow-lg">
+            <div className="inline-flex p-1 sm:p-1.5 rounded-full bg-slate-200/40 dark:bg-white/[0.02] border border-slate-300/30 dark:border-white/[0.06] backdrop-blur-md shadow-lg">
               <button
                 onClick={() => setActiveTab("identity")}
-                className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                className={`px-3 sm:px-6 py-2 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
                   activeTab === "identity" 
                     ? "bg-[#1A6DD6] text-white shadow-lg shadow-blue-500/20" 
-                    : "text-white/45 hover:text-white/70"
+                    : "text-slate-600 dark:text-white/45 hover:text-slate-900 dark:hover:text-white/70"
                 }`}
               >
-                01. Brand Identity
+                01. Identity
               </button>
               <button
                 onClick={() => setActiveTab("pillars")}
-                className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                className={`px-3 sm:px-6 py-2 sm:py-2.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
                   activeTab === "pillars" 
                     ? "bg-[#1A6DD6] text-white shadow-lg shadow-blue-500/20" 
-                    : "text-white/45 hover:text-white/70"
+                    : "text-slate-600 dark:text-white/45 hover:text-slate-900 dark:hover:text-white/70"
                 }`}
               >
-                02. Core Pillars
+                02. Pillars
               </button>
             </div>
           </div>
 
           {/* Giant Immersive Widescreen Frame Mockup */}
           <div className="max-w-5xl mx-auto">
-            <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/[0.01] shadow-2xl backdrop-blur-sm group">
+            <div className="relative rounded-3xl overflow-hidden border border-slate-200/50 dark:border-white/10 bg-white/[0.01] shadow-2xl backdrop-blur-sm group">
               <BorderBeam size={450} duration={16} delay={4} colorFrom="#1A6DD6" colorTo="#60A5FA" />
               
               {/* Top window styling header bar */}
-              <div className="px-5 py-3.5 border-b border-white/5 bg-white/[0.02] flex items-center justify-between">
+              <div className="px-5 py-3.5 border-b border-slate-200/50 dark:border-b-white/5 bg-slate-200/30 dark:bg-white/[0.02] flex items-center justify-between">
                 <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/30" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/30" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/30" />
+                  <div className="w-3 h-3 rounded-full bg-slate-300 dark:bg-red-500/20 border border-slate-400/50 dark:border-red-500/30" />
+                  <div className="w-3 h-3 rounded-full bg-slate-300 dark:bg-yellow-500/20 border border-slate-400/50 dark:border-yellow-500/30" />
+                  <div className="w-3 h-3 rounded-full bg-slate-300 dark:bg-green-500/20 border border-slate-400/50 dark:border-green-500/30" />
                 </div>
-                <div className="text-[10px] text-white/30 font-semibold uppercase tracking-widest font-mono">
+                <div className="text-[10px] text-slate-400 dark:text-white/30 font-semibold uppercase tracking-widest font-mono">
                   {activeTab === "identity" ? "maysan_identity.png" : "core_pillars_matrix.png"}
                 </div>
                 <div className="w-16" />
               </div>
 
               {/* Viewport content */}
-              <div className="relative min-h-[460px] md:min-h-0 md:aspect-[21/9] w-full overflow-hidden bg-black/45 backdrop-blur-md flex flex-col justify-between select-none">
+              <div className="relative min-h-[380px] sm:min-h-[420px] md:min-h-0 md:aspect-[21/9] w-full overflow-hidden bg-black/45 backdrop-blur-md flex flex-col justify-between select-none">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/[0.04] via-transparent to-blue-500/[0.02] z-0 pointer-events-none" />
                 
                 {activeTab === "identity" ? (
@@ -469,7 +469,7 @@ export default function Home() {
 
       <FadeInScroll>
       <section className="py-16 border-t border-[var(--sec-border)] bg-[var(--sec-bg-alt)] relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-brand-primary/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[150px] sm:h-[300px] bg-brand-primary/5 blur-[80px] sm:blur-[120px] rounded-full pointer-events-none" />
         <div className="container-main text-center relative z-10">
           <p className="text-brand-primary/60 text-[10px] font-bold uppercase tracking-[0.25em] mb-8">Empowered by Industry Standards</p>
           <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-3xl mx-auto">

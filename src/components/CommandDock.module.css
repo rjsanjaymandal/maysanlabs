@@ -201,49 +201,8 @@
 }
 
 @media (max-width: 768px) {
-  .statusPanel {
-    width: calc(100vw - 2rem);
-    left: 1rem;
-    right: 1rem;
-    transform: none;
-    bottom: calc(100% + 0.5rem);
-    border-radius: 0;
-  }
-
   .dockWrapper {
-    bottom: 0.5rem;
-  }
-  .dock {
-    padding: 0.35rem;
-    border-radius: 0;
-    width: 100%;
-    max-width: calc(100vw - 1rem);
-    background: hsla(var(--background), 0.9);
-    backdrop-filter: blur(20px);
-  }
-  .dockContent {
-    gap: 0;
-    padding: 0;
-    justify-content: space-between;
-  }
-  .dockLeft, .dockRight, .itemLabel {
-    display: none;
-  }
-  .navGroup {
-    width: 100%;
-    gap: 0.25rem;
-    justify-content: space-around;
-  }
-  .dockItem {
-    padding: 1.15rem 0.25rem;
-    flex: 1;
-    min-height: 52px;
-    justify-content: center;
-  }
-  .dockItem svg {
-    width: 24px;
-    height: 24px;
-    stroke-width: 1.5px;
+    display: none !important;
   }
 }
 

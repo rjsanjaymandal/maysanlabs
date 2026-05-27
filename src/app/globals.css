@@ -690,3 +690,31 @@ html, body {
 .animate-gradient {
   animation: gradient-shift 3s ease infinite;
 }
+
+/* ─── Performance: Content Visibility for below-fold sections ─── */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+/* ─── Performance & UX: Cap excessive blurs on mobile devices to prevent GPU lag ─── */
+@media (max-width: 768px) {
+  .mobile-blur-cap {
+    filter: blur(40px) !important;
+  }
+}
+
+/* ─── Accessibility: prefers-reduced-motion global override ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}

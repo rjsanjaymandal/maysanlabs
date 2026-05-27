@@ -247,7 +247,7 @@ export default function ArchitectureVisualizer() {
                   <span className="ml-auto text-brand-primary">{mode === "mvp" ? "6 nodes" : "16 nodes"}</span>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 p-0.5 overflow-hidden">
                   {layers.map((layer, i) => {
                     const Icon = layer.icon;
                     return (
@@ -280,7 +280,7 @@ export default function ArchitectureVisualizer() {
                   ))}
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                <div className="mt-6 pt-4 border-t border-white/[0.06] flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                   <div className="flex items-center gap-2 text-xs text-foreground/40">
                     <Zap size={12} className="text-brand-primary" />
                     <span>Estimated latency: <strong className="text-foreground/70">{mode === "mvp" ? "<50ms" : "<15ms"}</strong></span>

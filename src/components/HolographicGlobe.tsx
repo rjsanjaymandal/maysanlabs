@@ -22,10 +22,15 @@ export default function HolographicGlobe() {
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mq.matches);
+    const raf = requestAnimationFrame(() => {
+      setReducedMotion(mq.matches);
+    });
     const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
     mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
+    return () => {
+      cancelAnimationFrame(raf);
+      mq.removeEventListener("change", handler);
+    };
   }, []);
 
   useEffect(() => {
@@ -127,7 +132,7 @@ export default function HolographicGlobe() {
       window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(rafId);
     };
-  }, [isMounted]);
+  }, [isMounted, reducedMotion]);
 
   if (!isMounted) return <div className="absolute inset-0 z-0 bg-transparent" />;
 

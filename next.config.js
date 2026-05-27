@@ -3,6 +3,9 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   reactStrictMode: true,
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+  },
   generateBuildId: () => `build-${Date.now()}`,
   async headers() {
     return [

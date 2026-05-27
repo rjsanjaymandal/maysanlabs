@@ -8,6 +8,19 @@ export interface CheckedPage {
   h1Count: number;
   h2Count: number;
   hasSchema: boolean;
+  hasCanonical: boolean;
+  canonical: string;
+  isNoindex: boolean;
+  hasOgTitle: boolean;
+  hasOgDesc: boolean;
+  hasOgImage: boolean;
+  hasTwitterCard: boolean;
+  hasViewport: boolean;
+  hasHtmlLang: boolean;
+  missingAltCount: number;
+  wordCount: number;
+  pageSize: number;
+  https: boolean;
 }
 
 export interface SeoAuditResult {
@@ -18,6 +31,16 @@ export interface SeoAuditResult {
   missingMeta: number;
   brokenLinks: number;
   missingSchemas: number;
+  noindexPages: number;
+  missingCanonical: number;
+  canonicalMismatch: number;
+  missingOgTags: number;
+  missingTwitterCard: number;
+  missingViewport: number;
+  missingHtmlLang: number;
+  totalAltMissing: number;
+  totalWordCount: number;
+  totalPageSize: number;
   suggestions: string[];
   sitemapFetched: boolean;
   urlsList: CheckedPage[];
@@ -25,8 +48,7 @@ export interface SeoAuditResult {
 
 export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult> {
   let targetUrl = sitemapUrl.trim();
-  
-  // Format input URL
+
   if (!targetUrl.startsWith("http")) {
     targetUrl = `https://${targetUrl}`;
   }
@@ -36,7 +58,6 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
   const urls: string[] = [];
 
   try {
-    // If user entered a bare domain, attempt to check sitemap.xml first
     let fetchUrl = targetUrl;
     try {
       const parsed = new URL(targetUrl);
@@ -44,7 +65,7 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
         fetchUrl = `${parsed.origin}/sitemap.xml`;
       }
     } catch {
-      // Use as is if invalid URL structure
+      // Use as is
     }
 
     const res = await fetch(fetchUrl, {
@@ -53,14 +74,13 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
         "Accept": "application/xml, text/xml, */*"
       },
       next: { revalidate: 0 },
-      signal: AbortSignal.timeout(6000) // 6 second timeout
+      signal: AbortSignal.timeout(6000)
     });
 
     if (res.ok) {
       xmlText = await res.text();
       sitemapFetched = true;
     } else if (fetchUrl !== targetUrl) {
-      // Fallback to the original URL if sitemap.xml attempt failed
       const secondRes = await fetch(targetUrl, {
         headers: { "User-Agent": "MaysanSeoBot/3.0" },
         next: { revalidate: 0 },
@@ -74,7 +94,6 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
     console.error("Sitemap fetch failed:", e);
   }
 
-  // Parse sitemap URL nodes
   if (sitemapFetched && xmlText) {
     const locRegex = /<loc>(https?:\/\/[^\s<]+)<\/loc>/gi;
     let match;
@@ -83,18 +102,26 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
     }
   }
 
-  // If no URLs found in sitemap or fetching failed, audit the landing page directly
   if (urls.length === 0) {
     urls.push(targetUrl);
   }
 
+  const sampleUrls = urls.slice(0, 6);
   const urlsList: CheckedPage[] = [];
+
   let missingMeta = 0;
   let brokenLinks = 0;
   let missingSchemas = 0;
-
-  // Audit up to 6 pages to avoid timing out the server action
-  const sampleUrls = urls.slice(0, 6);
+  let noindexPages = 0;
+  let missingCanonical = 0;
+  let canonicalMismatch = 0;
+  let missingOgTags = 0;
+  let missingTwitterCard = 0;
+  let missingViewport = 0;
+  let missingHtmlLang = 0;
+  let totalAltMissing = 0;
+  let totalWordCount = 0;
+  let totalPageSize = 0;
 
   await Promise.all(
     sampleUrls.map(async (url) => {
@@ -104,6 +131,19 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
       let h1Count = 0;
       let h2Count = 0;
       let hasSchema = false;
+      let hasCanonical = false;
+      let canonical = "";
+      let isNoindex = false;
+      let hasOgTitle = false;
+      let hasOgDesc = false;
+      let hasOgImage = false;
+      let hasTwitterCard = false;
+      let hasViewport = false;
+      let hasHtmlLang = false;
+      let missingAltCount = 0;
+      let wordCount = 0;
+      let pageSize = 0;
+      let https = true;
 
       try {
         const pageRes = await fetch(url, {
@@ -112,34 +152,91 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9"
           },
           next: { revalidate: 0 },
-          signal: AbortSignal.timeout(4000) // 4s timeout per page fetch
+          signal: AbortSignal.timeout(5000)
         });
 
         status = pageRes.status;
+        https = pageRes.url.startsWith("https");
+
         if (pageRes.ok) {
           const html = await pageRes.text();
+          pageSize = Math.round(new Blob([html]).size / 1024);
 
-          // Title extraction
+          // Title
           const titleMatch = html.match(/<title[^>]*>(.*?)<\/title>/i);
           title = titleMatch ? titleMatch[1].trim() : "";
 
-          // Description extraction
+          // Meta description
           const descMatch = html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i) ||
                             html.match(/<meta[^>]+content=["']([^"']*)["'][^>]+name=["']description["']/i);
           description = descMatch ? descMatch[1].trim() : "";
 
-          // Heading counts
+          // H1/H2 counts
           h1Count = (html.match(/<h1[^>]*>/gi) || []).length;
           h2Count = (html.match(/<h2[^>]*>/gi) || []).length;
 
           // Schema check
           hasSchema = html.includes("application/ld+json") || html.includes("itemtype=\"http://schema.org");
 
-          // Accumulate errors
-          if (!description) missingMeta++;
-          if (h1Count === 0 || h1Count > 1 || h2Count < 2) {
-            // counts as indexation checks
+          // Canonical URL
+          const canonMatch = html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']*)["']/i) ||
+                             html.match(/<link[^>]+href=["']([^"']*)["'][^>]+rel=["']canonical["']/i);
+          if (canonMatch) {
+            hasCanonical = true;
+            canonical = canonMatch[1];
+            if (!canonical.includes(new URL(url).hostname)) {
+              canonicalMismatch++;
+            }
+          } else {
+            missingCanonical++;
           }
+
+          // Robots meta (noindex)
+          const robotsMatch = html.match(/<meta[^>]+name=["']robots["'][^>]+content=["']([^"']*)["']/i);
+          if (robotsMatch && robotsMatch[1].toLowerCase().includes("noindex")) {
+            isNoindex = true;
+            noindexPages++;
+          }
+
+          // OG tags
+          hasOgTitle = /<meta[^>]+property=["']og:title["'][^>]+content=["']/i.test(html);
+          hasOgDesc = /<meta[^>]+property=["']og:description["'][^>]+content=["']/i.test(html);
+          hasOgImage = /<meta[^>]+property=["']og:image["'][^>]+content=["']/i.test(html);
+          if (!hasOgTitle || !hasOgDesc || !hasOgImage) missingOgTags++;
+
+          // Twitter card
+          hasTwitterCard = /<meta[^>]+name=["']twitter:card["'][^>]+content=["']/i.test(html);
+          if (!hasTwitterCard) missingTwitterCard++;
+
+          // Viewport meta
+          hasViewport = /<meta[^>]+name=["']viewport["']/i.test(html);
+          if (!hasViewport) missingViewport++;
+
+          // HTML lang
+          hasHtmlLang = /<html[^>]+lang=["']/i.test(html);
+          if (!hasHtmlLang) missingHtmlLang++;
+
+          // Image alt text analysis
+          const imgTags = html.match(/<img[^>]*>/gi) || [];
+          missingAltCount = 0;
+          for (const img of imgTags) {
+            if (!/alt\s*=/i.test(img)) missingAltCount++;
+            // Check empty alt
+            if (/alt\s*=\s*["']\s*["']/i.test(img)) missingAltCount++;
+          }
+          totalAltMissing += missingAltCount;
+
+          // Word count (approximate)
+          const textContent = html
+            .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "")
+            .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, "")
+            .replace(/<[^>]+>/g, " ")
+            .replace(/\s+/g, " ");
+          wordCount = textContent.split(" ").filter(w => w.length > 0).length;
+          totalWordCount += wordCount;
+          totalPageSize += pageSize;
+
+          if (!description) missingMeta++;
           if (!hasSchema) missingSchemas++;
         } else {
           brokenLinks++;
@@ -151,27 +248,34 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
       }
 
       urlsList.push({
-        url,
-        status,
-        title,
-        description,
-        h1Count,
-        h2Count,
-        hasSchema
+        url, status, title, description,
+        h1Count, h2Count, hasSchema,
+        hasCanonical, canonical, isNoindex,
+        hasOgTitle, hasOgDesc, hasOgImage,
+        hasTwitterCard, hasViewport, hasHtmlLang,
+        missingAltCount, wordCount, pageSize, https
       });
     })
   );
 
-  // Generate audit recommendations
   const totalUrls = sitemapFetched ? urls.length : 1;
-  const passedChecksCount = 
-    (sitemapFetched ? 20 : 0) + 
-    (brokenLinks === 0 ? 20 : 10) + 
-    (missingMeta === 0 ? 20 : 10) + 
-    (missingSchemas === 0 ? 20 : 10) + 
-    (urlsList.every(p => p.h1Count === 1) ? 20 : 10);
+  const checksPerPage = 12;
+  const totalChecks = sampleUrls.length * checksPerPage;
+  const passed =
+    (sitemapFetched ? checksPerPage : 0) +
+    (brokenLinks === 0 ? checksPerPage : 0) +
+    (missingMeta === 0 ? checksPerPage : 0) +
+    (missingSchemas === 0 ? checksPerPage : 0) +
+    (missingCanonical === 0 ? checksPerPage : 0) +
+    (noindexPages === 0 ? checksPerPage : 0) +
+    (missingOgTags === 0 ? checksPerPage : 0) +
+    (missingTwitterCard === 0 ? checksPerPage : 0) +
+    (missingViewport === 0 ? checksPerPage : 0) +
+    (missingHtmlLang === 0 ? checksPerPage : 0) +
+    (totalAltMissing === 0 ? checksPerPage : Math.max(0, Math.floor(checksPerPage * (1 - totalAltMissing / Math.max(totalAltMissing, sampleUrls.length * 2))))) +
+    (urlsList.every(p => p.h1Count === 1) ? checksPerPage : Math.max(0, Math.floor(checksPerPage * (1 - urlsList.filter(p => p.h1Count !== 1).length / sampleUrls.length))));
 
-  const seoScore = Math.min(100, passedChecksCount);
+  const seoScore = Math.min(100, Math.round((passed / Math.max(totalChecks, 1)) * 100));
   const indexability = seoScore >= 85 ? "healthy" : seoScore >= 65 ? "action-required" : "poor";
 
   const suggestions: string[] = [];
@@ -204,6 +308,45 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
     suggestions.push("Ensure every audited URL features exactly one <h1> heading to preserve clean semantic indexing structures.");
   }
 
+  if (missingCanonical > 0) {
+    suggestions.push(`${missingCanonical} page(s) are missing a canonical URL tag. Add rel="canonical" to prevent duplicate content issues, especially for similar parameterized URLs.`);
+  }
+
+  if (canonicalMismatch > 0) {
+    suggestions.push(`${canonicalMismatch} canonical tag(s) point to a different domain. This can confuse crawlers about which site version should be indexed.`);
+  }
+
+  if (noindexPages > 0) {
+    suggestions.push(`${noindexPages} sampled page(s) contain a "noindex" directives. Review whether these pages should remain hidden from search engines.`);
+  }
+
+  if (missingOgTags > 0) {
+    suggestions.push(`Open Graph tags are incomplete on ${missingOgTags} page(s). Add og:title, og:description, and og:image to control how links appear on social platforms.`);
+  }
+
+  if (missingTwitterCard > 0) {
+    suggestions.push(`Twitter Card meta tags are missing on ${missingTwitterCard} page(s). Add name="twitter:card" summary_large_image to enrich tweet previews.`);
+  }
+
+  if (!urlsList.some(p => p.hasViewport)) {
+    suggestions.push("Viewport meta tag is missing. Add <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"> for proper mobile rendering.");
+  }
+
+  if (!urlsList.some(p => p.hasHtmlLang)) {
+    suggestions.push("HTML lang attribute is missing from <html> element. Set a language attribute to help search engines and screen readers interpret your content.");
+  }
+
+  if (totalAltMissing > 0) {
+    suggestions.push(`${totalAltMissing} images are missing alt text across sampled pages. Add descriptive alt attributes for accessibility and image search ranking.`);
+  }
+
+  if (totalAltMissing > 0) {
+    const avgSize = Math.round(totalPageSize / sampleUrls.length);
+    if (avgSize > 500) {
+      suggestions.push(`Average page weight is ${avgSize}KB across sampled pages. Reduce bundle sizes, lazy-load below-fold content, and enable compression.`);
+    }
+  }
+
   return {
     url: targetUrl,
     totalUrls,
@@ -212,6 +355,16 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
     missingMeta,
     brokenLinks,
     missingSchemas,
+    noindexPages,
+    missingCanonical,
+    canonicalMismatch,
+    missingOgTags,
+    missingTwitterCard,
+    missingViewport,
+    missingHtmlLang,
+    totalAltMissing,
+    totalWordCount,
+    totalPageSize,
     suggestions,
     sitemapFetched,
     urlsList

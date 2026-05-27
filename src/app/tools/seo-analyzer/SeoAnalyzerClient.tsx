@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, Search, CheckCircle2, XCircle, Mail, Download, Clock, Zap, Smartphone, Sparkles, Loader2, BarChart2 } from "lucide-react";
+import { Globe, Search, CheckCircle2, XCircle, Mail, Download, Clock, Zap, Smartphone, FileText, Sparkles, Loader2, BarChart2, AlertTriangle, Shield, Gauge } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
@@ -10,12 +10,13 @@ import { SeoAuditResult, analyzeSitemap } from "@/app/actions/analyzeSitemap";
 
 const scanSteps = [
   "Connecting to remote host...",
-  "Fetching sitemap.xml location...",
-  "Discovering XML URL nodes...",
-  "Analyzing meta descriptions & title tags...",
-  "Parsing JSON-LD schema objects...",
-  "Checking for broken links & indexability...",
-  "Generating sitemap optimization audit...",
+  "Locating sitemap.xml & robots.txt...",
+  "Parsing XML URL node tree...",
+  "Auditing meta titles & descriptions...",
+  "Analyzing JSON-LD structured schemas...",
+  "Checking HTTP status codes & redirects...",
+  "Verifying heading hierarchy & indexability...",
+  "Compiling structured crawl report...",
 ];
 
 export default function SeoAnalyzerClient() {
@@ -142,10 +143,10 @@ export default function SeoAnalyzerClient() {
                 Free SEO Tool
               </span>
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                Search & Google <span className="text-brand-primary">SEO Checker</span>
+                Sitemap & Technical <span className="text-brand-primary">SEO Analyzer</span>
               </h1>
               <p className="text-foreground/50 max-w-2xl mx-auto text-sm md:text-base">
-                Scan your website setup, broken links, ranking barriers, and descriptions instantly.
+                Scan your website&apos;s sitemap for broken links, missing meta tags, bad schema markups, and indexation gaps. Get a clear audit report with prioritized fixes.
               </p>
             </motion.div>
 
@@ -222,10 +223,16 @@ export default function SeoAnalyzerClient() {
                   ref={resultsRef}
                 >
                   <div className="glass-strong rounded-2xl p-6 md:p-8">
-                    <div className="flex items-center justify-between mb-6">
+                    <div className="flex items-center justify-between mb-4">
                       <div>
                         <h2 className="text-lg font-bold text-foreground mb-1">Results for {results.url}</h2>
-                        <p className="text-xs text-foreground/40">Technical Sitemap Indexation Report</p>
+                        <div className="flex items-center gap-3">
+                          <span className="text-[10px] text-foreground/40">Technical Sitemap Indexation Report</span>
+                          <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold ${results.sitemapFetched ? "bg-green-400/10 text-green-400" : "bg-amber-400/10 text-amber-400"}`}>
+                            <Globe size={10} />
+                            {results.sitemapFetched ? "Sitemap Found" : "Sitemap Not Found"}
+                          </span>
+                        </div>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-xs text-foreground/40">Indexability</span>
@@ -235,38 +242,193 @@ export default function SeoAnalyzerClient() {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                      <div className="bg-black/20 rounded-xl p-4">
-                        <span className="text-xs text-foreground/50 font-medium block mb-1">Overall SEO</span>
-                        <p className="text-2xl font-black text-foreground">{results.seoScore}/100</p>
-                        <p className="text-[10px] text-foreground/40 mt-0.5">Optimizations Completed</p>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-4">
+                      <div className="bg-black/20 rounded-xl p-3 text-center">
+                        <span className="text-[10px] text-foreground/50 font-medium block mb-1">Overall SEO</span>
+                        <p className="text-xl font-black text-foreground">{results.seoScore}<span className="text-xs text-foreground/40 font-normal">/100</span></p>
+                        <div className="w-full h-1.5 bg-white/[0.04] rounded-full mt-2 overflow-hidden">
+                          <div className={`h-full rounded-full ${results.seoScore >= 85 ? "bg-green-400" : results.seoScore >= 65 ? "bg-amber-400" : "bg-red-400"}`} style={{ width: `${results.seoScore}%` }} />
+                        </div>
                       </div>
-                      <div className="bg-black/20 rounded-xl p-4">
-                        <span className="text-xs text-foreground/50 font-medium block mb-1">Discovered Pages</span>
-                        <p className="text-2xl font-black text-foreground">{results.totalUrls}</p>
-                        <p className="text-[10px] text-foreground/40 mt-0.5">Sitemap URL Nodes</p>
+                      <div className="bg-black/20 rounded-xl p-3 text-center">
+                        <span className="text-[10px] text-foreground/50 font-medium block mb-1">Pages</span>
+                        <p className="text-xl font-black text-foreground">{results.totalUrls}</p>
+                        <p className="text-[10px] text-foreground/40 mt-0.5">Sitemap URLs</p>
                       </div>
-                      <div className="bg-black/20 rounded-xl p-4">
-                        <span className="text-xs text-foreground/50 font-medium block mb-1">Missing Meta Tags</span>
-                        <p className={`text-2xl font-black ${results.missingMeta > 0 ? "text-amber-400" : "text-green-400"}`}>{results.missingMeta}</p>
-                        <p className="text-[10px] text-foreground/40 mt-0.5">Title/Description Errors</p>
+                      <div className="bg-black/20 rounded-xl p-3 text-center">
+                        <span className="text-[10px] text-foreground/50 font-medium block mb-1">Meta Tags</span>
+                        <p className={`text-xl font-black ${results.missingMeta > 0 ? "text-amber-400" : "text-green-400"}`}>{results.missingMeta}</p>
+                        <p className="text-[10px] text-foreground/40 mt-0.5">Missing</p>
                       </div>
-                      <div className="bg-black/20 rounded-xl p-4">
-                        <span className="text-xs text-foreground/50 font-medium block mb-1">Broken Links</span>
-                        <p className={`text-2xl font-black ${results.brokenLinks > 0 ? "text-red-400" : "text-green-400"}`}>{results.brokenLinks}</p>
-                        <p className="text-[10px] text-foreground/40 mt-0.5">404 Crawl Blocks</p>
+                      <div className="bg-black/20 rounded-xl p-3 text-center">
+                        <span className="text-[10px] text-foreground/50 font-medium block mb-1">Broken</span>
+                        <p className={`text-xl font-black ${results.brokenLinks > 0 ? "text-red-400" : "text-green-400"}`}>{results.brokenLinks}</p>
+                        <p className="text-[10px] text-foreground/40 mt-0.5">Links</p>
+                      </div>
+                      <div className="bg-black/20 rounded-xl p-3 text-center">
+                        <span className="text-[10px] text-foreground/50 font-medium block mb-1">Schema</span>
+                        <p className={`text-xl font-black ${results.missingSchemas > 0 ? "text-amber-400" : "text-green-400"}`}>{results.missingSchemas}</p>
+                        <p className="text-[10px] text-foreground/40 mt-0.5">Missing</p>
+                      </div>
+                      <div className="bg-black/20 rounded-xl p-3 text-center">
+                        <span className="text-[10px] text-foreground/50 font-medium block mb-1">Indexability</span>
+                        <span className={`inline-block px-2 py-1 rounded-full text-xs font-bold mt-1 ${results.indexability === "healthy" ? "bg-green-400/10 text-green-400" : results.indexability === "action-required" ? "bg-amber-400/10 text-amber-400" : "bg-red-400/10 text-red-400"}`}>
+                          {results.indexability === "healthy" ? "Healthy" : results.indexability === "action-required" ? "Needs Action" : "Poor"}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Advanced Checks Grid */}
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                      <div className="bg-black/20 rounded-xl p-3 text-center">
+                        <span className="text-[10px] text-foreground/50 font-medium block mb-1">Canonical</span>
+                        <p className={`text-xl font-black ${results.missingCanonical > 0 ? "text-amber-400" : "text-green-400"}`}>{results.missingCanonical}</p>
+                        <p className="text-[10px] text-foreground/40 mt-0.5">Missing</p>
+                      </div>
+                      <div className="bg-black/20 rounded-xl p-3 text-center">
+                        <span className="text-[10px] text-foreground/50 font-medium block mb-1">Noindex</span>
+                        <p className={`text-xl font-black ${results.noindexPages > 0 ? "text-amber-400" : "text-green-400"}`}>{results.noindexPages}</p>
+                        <p className="text-[10px] text-foreground/40 mt-0.5">Blocked Pages</p>
+                      </div>
+                      <div className="bg-black/20 rounded-xl p-3 text-center">
+                        <span className="text-[10px] text-foreground/50 font-medium block mb-1">OG Tags</span>
+                        <p className={`text-xl font-black ${results.missingOgTags > 0 ? "text-amber-400" : "text-green-400"}`}>{results.missingOgTags}</p>
+                        <p className="text-[10px] text-foreground/40 mt-0.5">Incomplete</p>
+                      </div>
+                      <div className="bg-black/20 rounded-xl p-3 text-center">
+                        <span className="text-[10px] text-foreground/50 font-medium block mb-1">Twitter Card</span>
+                        <p className={`text-xl font-black ${results.missingTwitterCard > 0 ? "text-amber-400" : "text-green-400"}`}>{results.missingTwitterCard}</p>
+                        <p className="text-[10px] text-foreground/40 mt-0.5">Missing</p>
+                      </div>
+                      <div className="bg-black/20 rounded-xl p-3 text-center">
+                        <span className="text-[10px] text-foreground/50 font-medium block mb-1">Viewport</span>
+                        <p className={`text-xl font-black ${results.missingViewport > 0 ? "text-red-400" : "text-green-400"}`}>{results.missingViewport}</p>
+                        <p className="text-[10px] text-foreground/40 mt-0.5">Missing</p>
+                      </div>
+                      <div className="bg-black/20 rounded-xl p-3 text-center">
+                        <span className="text-[10px] text-foreground/50 font-medium block mb-1">HTML Lang</span>
+                        <p className={`text-xl font-black ${results.missingHtmlLang > 0 ? "text-amber-400" : "text-green-400"}`}>{results.missingHtmlLang}</p>
+                        <p className="text-[10px] text-foreground/40 mt-0.5">Missing</p>
+                      </div>
+                      <div className="bg-black/20 rounded-xl p-3 text-center">
+                        <span className="text-[10px] text-foreground/50 font-medium block mb-1">Alt Text</span>
+                        <p className={`text-xl font-black ${results.totalAltMissing > 0 ? "text-amber-400" : "text-green-400"}`}>{results.totalAltMissing}</p>
+                        <p className="text-[10px] text-foreground/40 mt-0.5">Missing</p>
+                      </div>
+                      <div className="bg-black/20 rounded-xl p-3 text-center">
+                        <span className="text-[10px] text-foreground/50 font-medium block mb-1">Page Weight</span>
+                        <p className="text-xl font-black text-foreground">{results.urlsList.length > 0 ? Math.round(results.totalPageSize / results.urlsList.length) : 0}<span className="text-xs text-foreground/40 font-normal">KB</span></p>
+                        <p className="text-[10px] text-foreground/40 mt-0.5">Avg</p>
+                      </div>
+                    </div>
+
+                    {/* Issues Breakdown visual */}
+                    <div className="bg-black/20 rounded-xl p-4 mb-6">
+                      <h3 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                        <AlertTriangle size={14} className="text-brand-primary" />
+                        Issues Breakdown
+                      </h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5">
+                        <div>
+                          <div className="flex items-center justify-between text-xs mb-1">
+                            <span className="text-foreground/60">Meta Tags</span>
+                            <span className={`font-bold ${results.missingMeta > 0 ? "text-amber-400" : "text-green-400"}`}>{results.missingMeta}</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-white/[0.04] rounded-full overflow-hidden">
+                            <div className={`h-full rounded-full ${results.missingMeta > 0 ? "bg-amber-400" : "bg-green-400"}`} style={{ width: `${Math.min(results.missingMeta * 20, 100)}%` }} />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex items-center justify-between text-xs mb-1">
+                            <span className="text-foreground/60">Broken Links</span>
+                            <span className={`font-bold ${results.brokenLinks > 0 ? "text-red-400" : "text-green-400"}`}>{results.brokenLinks}</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-white/[0.04] rounded-full overflow-hidden">
+                            <div className={`h-full rounded-full ${results.brokenLinks > 0 ? "bg-red-400" : "bg-green-400"}`} style={{ width: `${Math.min(results.brokenLinks * 20, 100)}%` }} />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex items-center justify-between text-xs mb-1">
+                            <span className="text-foreground/60">Schema</span>
+                            <span className={`font-bold ${results.missingSchemas > 0 ? "text-amber-400" : "text-green-400"}`}>{results.missingSchemas}</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-white/[0.04] rounded-full overflow-hidden">
+                            <div className={`h-full rounded-full ${results.missingSchemas > 0 ? "bg-amber-400" : "bg-green-400"}`} style={{ width: `${Math.min(results.missingSchemas * 20, 100)}%` }} />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex items-center justify-between text-xs mb-1">
+                            <span className="text-foreground/60">Canonical</span>
+                            <span className={`font-bold ${results.missingCanonical > 0 ? "text-amber-400" : "text-green-400"}`}>{results.missingCanonical}</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-white/[0.04] rounded-full overflow-hidden">
+                            <div className={`h-full rounded-full ${results.missingCanonical > 0 ? "bg-amber-400" : "bg-green-400"}`} style={{ width: `${Math.min(results.missingCanonical * 20, 100)}%` }} />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex items-center justify-between text-xs mb-1">
+                            <span className="text-foreground/60">Noindex</span>
+                            <span className={`font-bold ${results.noindexPages > 0 ? "text-amber-400" : "text-green-400"}`}>{results.noindexPages}</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-white/[0.04] rounded-full overflow-hidden">
+                            <div className={`h-full rounded-full ${results.noindexPages > 0 ? "bg-amber-400" : "bg-green-400"}`} style={{ width: `${Math.min(results.noindexPages * 20, 100)}%` }} />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex items-center justify-between text-xs mb-1">
+                            <span className="text-foreground/60">OG Tags</span>
+                            <span className={`font-bold ${results.missingOgTags > 0 ? "text-amber-400" : "text-green-400"}`}>{results.missingOgTags}</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-white/[0.04] rounded-full overflow-hidden">
+                            <div className={`h-full rounded-full ${results.missingOgTags > 0 ? "bg-amber-400" : "bg-green-400"}`} style={{ width: `${Math.min(results.missingOgTags * 20, 100)}%` }} />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex items-center justify-between text-xs mb-1">
+                            <span className="text-foreground/60">Twitter Card</span>
+                            <span className={`font-bold ${results.missingTwitterCard > 0 ? "text-amber-400" : "text-green-400"}`}>{results.missingTwitterCard}</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-white/[0.04] rounded-full overflow-hidden">
+                            <div className={`h-full rounded-full ${results.missingTwitterCard > 0 ? "bg-amber-400" : "bg-green-400"}`} style={{ width: `${Math.min(results.missingTwitterCard * 20, 100)}%` }} />
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex items-center justify-between text-xs mb-1">
+                            <span className="text-foreground/60">Alt Text</span>
+                            <span className={`font-bold ${results.totalAltMissing > 0 ? "text-amber-400" : "text-green-400"}`}>{results.totalAltMissing}</span>
+                          </div>
+                          <div className="w-full h-1.5 bg-white/[0.04] rounded-full overflow-hidden">
+                            <div className={`h-full rounded-full ${results.totalAltMissing > 0 ? "bg-amber-400" : "bg-green-400"}`} style={{ width: `${Math.min(results.totalAltMissing * 10, 100)}%` }} />
+                          </div>
+                        </div>
                       </div>
                     </div>
 
                     <div className="bg-black/20 rounded-xl p-4 mb-6">
-                      <h3 className="text-sm font-semibold text-foreground mb-3">Critical Crawl Suggestions</h3>
-                      <ul className="space-y-2">
-                        {results.suggestions.map((suggestion, i) => (
-                          <li key={i} className="flex items-start gap-2 text-xs text-foreground/60">
-                            <span className="text-brand-primary mt-0.5 shrink-0">&#9656;</span>
-                            {suggestion}
-                          </li>
-                        ))}
+                      <h3 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                        <Zap size={14} className="text-brand-primary" />
+                        Prioritized Action Items
+                      </h3>
+                      <ul className="space-y-3">
+{results.suggestions.map((suggestion, i) => {
+  const s = suggestion.toLowerCase();
+  const isPositive = s.includes("healthy") || s.includes("excellent") || s.includes("fully populated") || s.includes("successfully exposed") || s.includes("contain microdata") || s.includes("link health is excellent") || s.includes("successful 200") || s.includes("fully populated");
+  const isAction = s.includes("broken") || s.includes("missing") || s.includes("could not locate") || s.includes("ensure every") || s.includes("incomplete") || s.includes("not found") || s.includes("blocked") || s.includes("different domain") || s.includes("page weight") || s.includes("alt text") || s.includes("alt tag");
+  const label = isPositive ? "PASS" : isAction ? "ACTION" : "NOTE";
+  return (
+    <li key={i} className={`flex items-start gap-2.5 text-xs p-3 rounded-lg ${isPositive ? "bg-green-400/5 border border-green-400/10" : "bg-white/[0.02] border border-white/[0.06]"}`}>
+        <span className={`mt-0.5 shrink-0 ${isPositive ? "text-green-400" : "text-brand-primary"}`}>
+          {isPositive ? <CheckCircle2 size={14} /> : <AlertTriangle size={14} />}
+        </span>
+        <span className={`${isPositive ? "text-green-400/80" : "text-foreground/60"}`}>
+          <strong className={`${isPositive ? "text-green-400" : "text-foreground/80"}`}>
+            {label}:{" "}
+          </strong>
+          {suggestion}
+                              </span>
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
 
@@ -298,61 +460,71 @@ export default function SeoAnalyzerClient() {
                       </h3>
                       <div className="overflow-x-auto">
                         <table className="w-full text-left border-collapse text-xs">
-                          <thead>
-                            <tr className="border-b border-white/10 text-foreground/40 font-mono text-[10px] uppercase tracking-wider">
-                              <th className="py-2.5 pr-4 font-semibold">Audited URL</th>
-                              <th className="py-2.5 px-4 text-center font-semibold">Status</th>
-                              <th className="py-2.5 px-4 text-center font-semibold">Title</th>
-                              <th className="py-2.5 px-4 text-center font-semibold">Meta Desc</th>
-                              <th className="py-2.5 px-4 text-center font-semibold">Heading Tags</th>
-                              <th className="py-2.5 pl-4 text-center font-semibold">Schema</th>
-                            </tr>
-                          </thead>
-                          <tbody className="divide-y divide-white/5">
-                            {results.urlsList.map((page, index) => {
-                              // Extract relative path
-                              let displayPath = page.url;
-                              try {
-                                const parsed = new URL(page.url);
-                                displayPath = parsed.pathname === "/" ? "/" : parsed.pathname;
-                              } catch {
-                                // Use raw url if invalid URL
-                              }
-                              return (
-                                <tr key={index} className="hover:bg-white/[0.02] transition-colors">
-                                  <td className="py-3 pr-4 font-mono max-w-[200px] overflow-hidden text-ellipsis whitespace-nowrap text-foreground/80">
-                                    {displayPath}
-                                  </td>
-                                  <td className="py-3 px-4 text-center">
-                                    <span className={`inline-block px-2 py-0.5 rounded text-[10px] font-bold font-mono ${page.status === 200 ? "bg-green-400/10 text-green-400" : "bg-red-400/10 text-red-400"}`}>
-                                      {page.status} {page.status === 200 ? "OK" : "Err"}
-                                    </span>
-                                  </td>
-                                  <td className="py-3 px-4 text-center">
-                                    {page.title ? (
-                                      <CheckCircle2 size={14} className="text-green-400 mx-auto" />
-                                    ) : (
-                                      <XCircle size={14} className="text-red-400 mx-auto" />
-                                    )}
-                                  </td>
-                                  <td className="py-3 px-4 text-center">
-                                    {page.description ? (
-                                      <CheckCircle2 size={14} className="text-green-400 mx-auto" />
-                                    ) : (
-                                      <XCircle size={14} className="text-amber-400 mx-auto" />
-                                    )}
-                                  </td>
-                                  <td className="py-3 px-4 text-center font-mono text-[10px] text-foreground/60">
-                                    H1:{page.h1Count} / H2:{page.h2Count}
-                                  </td>
-                                  <td className="py-3 pl-4 text-center">
-                                    <span className={`inline-block px-1.5 py-0.5 rounded text-[9px] ${page.hasSchema ? "bg-green-400/10 text-green-400" : "bg-white/[0.04] text-foreground/30"}`}>
-                                      {page.hasSchema ? "JSON-LD" : "None"}
-                                    </span>
-                                  </td>
-                                </tr>
-                              );
-                            })}
+<thead>
+                             <tr className="border-b border-white/10 text-foreground/40 font-mono text-[10px] uppercase tracking-wider">
+                               <th className="py-2.5 pr-4 font-semibold">Audited URL</th>
+                               <th className="py-2.5 px-3 text-center font-semibold">Health</th>
+                               <th className="py-2.5 px-3 text-center font-semibold">Status</th>
+                               <th className="py-2.5 px-3 text-center font-semibold">Title</th>
+                               <th className="py-2.5 px-3 text-center font-semibold">Meta Desc</th>
+                               <th className="py-2.5 px-3 text-center font-semibold">Heading Tags</th>
+                               <th className="py-2.5 pl-3 text-center font-semibold">Schema</th>
+                             </tr>
+                           </thead>
+                           <tbody className="divide-y divide-white/5">
+                             {results.urlsList.map((page, index) => {
+                               // Extract relative path
+                               let displayPath = page.url;
+                               try {
+                                 const parsed = new URL(page.url);
+                                 displayPath = parsed.pathname === "/" ? "/" : parsed.pathname;
+                               } catch {
+                                 // Use raw url if invalid URL
+                               }
+                               // Calculate per-page health score
+                               const checks = [!!page.title, !!page.description, page.h1Count === 1, page.status === 200, page.hasSchema];
+                               const passed = checks.filter(Boolean).length;
+                               const pageScore = Math.round((passed / checks.length) * 100);
+                               return (
+                                 <tr key={index} className="hover:bg-white/[0.02] transition-colors">
+                                   <td className="py-3 pr-4 font-mono max-w-[180px] overflow-hidden text-ellipsis whitespace-nowrap text-foreground/80">
+                                     {displayPath}
+                                   </td>
+                                   <td className="py-3 px-3 text-center">
+                                     <span className={`inline-flex items-center justify-center w-8 h-8 rounded-full text-[10px] font-bold font-mono ${pageScore >= 80 ? "bg-green-400/10 text-green-400" : pageScore >= 50 ? "bg-amber-400/10 text-amber-400" : "bg-red-400/10 text-red-400"}`}>
+                                       {pageScore}
+                                     </span>
+                                   </td>
+                                   <td className="py-3 px-3 text-center">
+                                     <span className={`inline-block px-2 py-0.5 rounded text-[10px] font-bold font-mono ${page.status === 200 ? "bg-green-400/10 text-green-400" : "bg-red-400/10 text-red-400"}`}>
+                                       {page.status}
+                                     </span>
+                                   </td>
+                                   <td className="py-3 px-3 text-center">
+                                     {page.title ? (
+                                       <CheckCircle2 size={13} className="text-green-400 mx-auto" />
+                                     ) : (
+                                       <XCircle size={13} className="text-red-400 mx-auto" />
+                                     )}
+                                   </td>
+                                   <td className="py-3 px-3 text-center">
+                                     {page.description ? (
+                                       <CheckCircle2 size={13} className="text-green-400 mx-auto" />
+                                     ) : (
+                                       <XCircle size={13} className="text-amber-400 mx-auto" />
+                                     )}
+                                   </td>
+                                   <td className="py-3 px-3 text-center font-mono text-[10px] text-foreground/60">
+                                     H1:{page.h1Count} / H2:{page.h2Count}
+                                   </td>
+                                   <td className="py-3 pl-3 text-center">
+                                     <span className={`inline-block px-1.5 py-0.5 rounded text-[9px] ${page.hasSchema ? "bg-green-400/10 text-green-400" : "bg-white/[0.04] text-foreground/30"}`}>
+                                       {page.hasSchema ? "JSON-LD" : "None"}
+                                     </span>
+                                   </td>
+                                 </tr>
+                               );
+                             })}
                           </tbody>
                         </table>
                       </div>
@@ -504,22 +676,22 @@ export default function SeoAnalyzerClient() {
                     <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center mx-auto mb-3">
                       <Globe size={18} className="text-brand-primary" />
                     </div>
-                    <h3 className="text-sm font-semibold text-foreground mb-1">Indexability Check</h3>
-                    <p className="text-xs text-foreground/40">Audit standard header and indexing tags</p>
+                    <h3 className="text-sm font-semibold text-foreground mb-1">Sitemap Crawl</h3>
+                    <p className="text-xs text-foreground/40">Discover all indexed URLs & node structure</p>
                   </div>
                   <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-5 text-center">
                     <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center mx-auto mb-3">
-                      <Smartphone size={18} className="text-brand-primary" />
+                      <FileText size={18} className="text-brand-primary" />
                     </div>
-                    <h3 className="text-sm font-semibold text-foreground mb-1">Link Audits</h3>
-                    <p className="text-xs text-foreground/40">Discover broken URLs and redirect loops</p>
+                    <h3 className="text-sm font-semibold text-foreground mb-1">Meta & Schema Audit</h3>
+                    <p className="text-xs text-foreground/40">Check titles, descriptions & JSON-LD markup</p>
                   </div>
                   <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-5 text-center">
                     <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center mx-auto mb-3">
-                      <Clock size={18} className="text-brand-primary" />
+                      <Shield size={18} className="text-brand-primary" />
                     </div>
-                    <h3 className="text-sm font-semibold text-foreground mb-1">Schema Compliance</h3>
-                    <p className="text-xs text-foreground/40">Verify JSON-LD structured business tags</p>
+                    <h3 className="text-sm font-semibold text-foreground mb-1">Health Scoring</h3>
+                    <p className="text-xs text-foreground/40">Per-page health score & indexability grade</p>
                   </div>
                 </div>
               </motion.div>

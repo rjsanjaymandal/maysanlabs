@@ -10,9 +10,12 @@ export default function GoogleAnalytics() {
   const [consented, setConsented] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.__cookieConsent === "accepted") {
-      setConsented(true);
-    }
+    const raf = requestAnimationFrame(() => {
+      if (typeof window !== "undefined" && window.__cookieConsent === "accepted") {
+        setConsented(true);
+      }
+    });
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   if (!consented) return null;

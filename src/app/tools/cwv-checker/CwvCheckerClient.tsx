@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { Globe, Search, CheckCircle, AlertTriangle, XCircle, ArrowRight, Mail, Download, BookOpen, Clock, Zap, Smartphone, FileText, BarChart3, Activity, Gauge, Loader2, Sparkles } from "lucide-react";
 
 interface WebVitalResult {
@@ -389,13 +390,13 @@ export default function CwvCheckerClient() {
                           >
                             Scan Another URL
                           </button>
-                          <a
+                          <Link
                             href="/start"
                             className="px-5 py-2.5 bg-brand-primary rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] transition-all inline-flex items-center gap-2"
                           >
                             <Sparkles size={14} />
                             Book a Free Audit
-                          </a>
+                          </Link>
                         </div>
                       </motion.div>
                     ) : (
