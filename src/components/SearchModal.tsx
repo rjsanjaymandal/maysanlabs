@@ -117,22 +117,22 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: -20, opacity: 0, scale: 0.97 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="relative w-full max-w-lg rounded-2xl border border-white/10 bg-surface-elevated shadow-2xl shadow-black/40 overflow-hidden"
+            className="relative w-full max-w-lg rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-slate-900/95 backdrop-blur-xl shadow-2xl shadow-slate-200/50 dark:shadow-black/60 overflow-hidden"
           >
             {/* Search Input */}
-            <div className="flex items-center gap-3 border-b border-white/5 px-5 py-4">
-              <Search size={18} className="shrink-0 text-foreground/40" />
+            <div className="flex items-center gap-3 border-b border-slate-100 dark:border-white/5 px-5 py-4">
+              <Search size={18} className="shrink-0 text-slate-400 dark:text-foreground/40" />
               <input
                 ref={inputRef}
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search pages..."
-                className="flex-1 bg-transparent text-sm text-foreground placeholder-foreground/30 outline-none"
+                className="flex-1 bg-transparent text-sm text-slate-800 dark:text-foreground placeholder-slate-400 dark:placeholder-foreground/30 outline-none"
               />
               <button
                 onClick={onClose}
-                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-foreground/50 transition-colors hover:bg-white/10 hover:text-foreground"
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-slate-500 dark:text-foreground/50 transition-colors hover:bg-slate-100 dark:hover:bg-white/10 hover:text-slate-800 dark:hover:text-foreground"
               >
                 <X size={14} />
               </button>
@@ -142,7 +142,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             <div className="max-h-[50vh] overflow-y-auto p-2">
               {results.length === 0 ? (
                 <div className="py-10 text-center">
-                  <p className="text-sm text-foreground/40">
+                  <p className="text-sm text-slate-500 dark:text-foreground/40">
                     No results found for &ldquo;{query}&rdquo;
                   </p>
                 </div>
@@ -153,23 +153,23 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                       <Link
                         href={item.url}
                         onClick={onClose}
-                        className="group flex items-center justify-between rounded-xl px-4 py-3 transition-all duration-200 hover:bg-white/5"
+                        className="group flex items-center justify-between rounded-xl px-4 py-3 transition-all duration-200 hover:bg-slate-50 dark:hover:bg-white/5"
                       >
                         <div className="flex flex-col gap-0.5">
-                          <span className="text-sm font-semibold text-foreground group-hover:text-brand-primary transition-colors">
+                          <span className="text-sm font-semibold text-slate-800 dark:text-foreground group-hover:text-brand-primary transition-colors">
                             {item.title}
                           </span>
-                          <span className="text-xs text-foreground/40">
+                          <span className="text-xs text-slate-500 dark:text-foreground/40">
                             {item.description}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="rounded-full border border-white/5 bg-white/[0.03] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-foreground/30">
+                          <span className="rounded-full border border-slate-200 dark:border-white/5 bg-slate-100 dark:bg-white/[0.03] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-foreground/30">
                             {item.category}
                           </span>
                           <ArrowRight
                             size={14}
-                            className="shrink-0 text-foreground/20 transition-all duration-200 group-hover:text-brand-primary group-hover:translate-x-0.5"
+                            className="shrink-0 text-slate-300 dark:text-foreground/20 transition-all duration-200 group-hover:text-brand-primary group-hover:translate-x-0.5"
                           />
                         </div>
                       </Link>
@@ -180,9 +180,9 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
             </div>
 
             {/* Footer hint */}
-            <div className="border-t border-white/5 px-5 py-3">
-              <p className="text-[10px] text-foreground/25">
-                <kbd className="rounded border border-white/10 bg-white/5 px-1.5 py-0.5 font-mono text-[10px]">
+            <div className="border-t border-slate-100 dark:border-white/5 px-5 py-3">
+              <p className="text-[10px] text-slate-400 dark:text-foreground/25">
+                <kbd className="rounded border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 px-1.5 py-0.5 font-mono text-[10px]">
                   Esc
                 </kbd>{" "}
                 to close
