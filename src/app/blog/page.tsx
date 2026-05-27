@@ -24,7 +24,6 @@ export const metadata: Metadata = {
     canonical: "https://maysanlabs.com/blog",
     languages: {
       en: "https://maysanlabs.com/blog",
-      ar: "https://maysanlabs.com/ar/blog",
     },
   },
 };
@@ -86,7 +85,7 @@ export default async function BlogListingPage() {
               <p className="text-lg md:text-xl text-foreground/50 leading-relaxed mb-8 max-w-2xl">
                 Engineering high-performance enterprise SaaS infrastructure. Research, benchmarks, and details from our elite lab.
               </p>
-              <Link href="/init" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+              <Link href="/start" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
                 Get in touch
               </Link>
             </div>

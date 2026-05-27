@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 
 interface TextRevealProps {
@@ -16,10 +16,23 @@ export default function TextReveal({
   as: Tag = "h2",
   delay = 0,
 }: TextRevealProps) {
+  const [reducedMotion, setReducedMotion] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-10%" });
 
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   const words = children.split(" ");
+
+  if (reducedMotion) {
+    return <Tag className={className}>{children}</Tag>;
+  }
 
   return (
     <Tag ref={ref as React.RefObject<HTMLHeadingElement>} className={className}>

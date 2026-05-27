@@ -7,6 +7,9 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { generateBlogPostSEO, generateBlogPostJSONLD } from "@/lib/seo/helpers";
 
+export const revalidate = 3600;
+export const dynamicParams = true;
+
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
 }
@@ -164,6 +167,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               ))}
             </div>
           </article>
+
+          {/* Inline CTA */}
+          <div className="mt-12 bg-gradient-to-br from-brand-primary/[0.08] to-brand-primary/[0.02] border border-brand-primary/20 rounded-2xl p-8 md:p-10 text-center">
+            <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">Ready to build something great?</h3>
+            <p className="text-foreground/60 text-sm mb-6 max-w-md mx-auto">
+              Let&apos;s discuss your project. Our team is ready to help you scale.
+            </p>
+            <Link href="/start" className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-bold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.45)] hover:scale-[1.02] transition-all duration-300">
+              Start Your Project
+              <ArrowRight size={14} />
+            </Link>
+          </div>
 
           {/* Share Section */}
           <div className="mt-12 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">

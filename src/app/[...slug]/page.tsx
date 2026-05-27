@@ -21,7 +21,7 @@ export default function Custom404() {
             Go Home
           </Link>
           <Link 
-            href="/init" 
+            href="/start" 
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 text-[var(--text-on-white)]/70 font-semibold text-sm hover:bg-white/5 hover:text-[var(--text-on-white)] transition-all"
           >
             Contact Us
@@ -44,7 +44,7 @@ export default function Custom404() {
             <ul className="space-y-2">
               <li><Link href="/about" className="text-[var(--text-on-white)]/50 hover:text-brand-primary text-sm">About</Link></li>
               <li><Link href="/careers" className="text-[var(--text-on-white)]/50 hover:text-brand-primary text-sm">Careers</Link></li>
-              <li><Link href="/init" className="text-[var(--text-on-white)]/50 hover:text-brand-primary text-sm">Contact</Link></li>
+              <li><Link href="/start" className="text-[var(--text-on-white)]/50 hover:text-brand-primary text-sm">Contact</Link></li>
             </ul>
           </div>
         </div>

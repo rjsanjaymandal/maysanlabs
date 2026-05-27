@@ -5,7 +5,7 @@ import path from 'path'
 const BASE_URL = 'https://maysanlabs.com'
 
 // Pages that should be excluded from the sitemap
-const EXCLUDED_ROUTES = new Set(['/_not-found', '/global-error', '/error', '/init', '/careers/apply'])
+const EXCLUDED_ROUTES = new Set(['/_not-found', '/global-error', '/error', '/start', '/careers/apply'])
 
 const ROUTE_CONFIG: Record<string, { priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }> = {
   '/':             { priority: 1.0, changeFrequency: 'weekly' },
@@ -19,6 +19,17 @@ const ROUTE_CONFIG: Record<string, { priority: number; changeFrequency: Metadata
   '/products':     { priority: 0.9, changeFrequency: 'weekly' },
   '/products/edu-maysan': { priority: 0.8, changeFrequency: 'monthly' },
   '/products/flash-fashion': { priority: 0.8, changeFrequency: 'monthly' },
+  '/pricing':      { priority: 0.8, changeFrequency: 'weekly' },
+  '/privacy':      { priority: 0.3, changeFrequency: 'yearly' },
+  '/terms':        { priority: 0.3, changeFrequency: 'yearly' },
+  '/contact':      { priority: 0.7, changeFrequency: 'monthly' },
+  '/tools/cwv-checker': { priority: 0.6, changeFrequency: 'weekly' },
+  '/tools': { priority: 0.8, changeFrequency: 'weekly' },
+  '/tools/seo-analyzer': { priority: 0.7, changeFrequency: 'weekly' },
+  '/tools/headless-roi': { priority: 0.7, changeFrequency: 'weekly' },
+  '/tools/scope-estimator': { priority: 0.7, changeFrequency: 'weekly' },
+  '/tools/privacy-generator': { priority: 0.6, changeFrequency: 'monthly' },
+  '/tools/og-generator': { priority: 0.6, changeFrequency: 'monthly' },
 }
 
 const DEFAULT_CONFIG = { priority: 0.6, changeFrequency: 'monthly' as const }

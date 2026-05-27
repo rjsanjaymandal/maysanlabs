@@ -98,7 +98,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto px-3 sm:px-0"
         >
-          <Link href="/init" className="group relative w-full sm:w-auto px-5 sm:px-8 py-4 bg-[#1A6DD6] rounded-full font-bold text-[9px] xs:text-[10px] uppercase tracking-wider sm:tracking-widest text-white shadow-xl shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 hover:scale-[1.02] flex items-center justify-center gap-2">
+          <Link href="/start" className="group relative w-full sm:w-auto px-5 sm:px-8 py-4 bg-[#1A6DD6] rounded-full font-bold text-[9px] xs:text-[10px] uppercase tracking-wider sm:tracking-widest text-white shadow-xl shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 hover:scale-[1.02] flex items-center justify-center gap-2">
             <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative z-10 text-center">Book a free 30-min discovery call</span>
             <ArrowRight size={14} className="relative z-10 group-hover:translate-x-0.5 transition-transform shrink-0" />

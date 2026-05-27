@@ -62,8 +62,8 @@ export const productSchema = [
     url: `${SITE_URL}/products`,
     offers: {
       "@type": "Offer",
-      priceCurrency: "USD",
-      price: "5000",
+      priceCurrency: "INR",
+      price: "400000",
       availability: "https://schema.org/InStock"
     }
   },
@@ -84,8 +84,8 @@ export const productSchema = [
     url: `${SITE_URL}/products/edu-maysan`,
     offers: {
       "@type": "Offer",
-      priceCurrency: "USD",
-      price: "8000",
+      priceCurrency: "INR",
+      price: "640000",
       availability: "https://schema.org/InStock"
     }
   }
@@ -170,8 +170,8 @@ export const softwareAppSchema = {
   },
   offers: {
     "@type": "Offer",
-    price: "5000",
-    priceCurrency: "USD"
+    price: "400000",
+    priceCurrency: "INR"
   },
   aggregateRating: {
     "@type": "AggregateRating",
@@ -306,6 +306,23 @@ export const serviceFAQs = [
     answer: "Absolutely. Maysan Labs has experience migrating legacy systems, refactoring codebases, and integrating new features into existing applications while maintaining backward compatibility."
   }
 ];
+
+export const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Enterprise SaaS Development",
+  "description": "Maysan Labs offers enterprise SaaS development, custom software development, web application development, cloud infrastructure services, API development, and mobile app development for global enterprises.",
+  "provider": { "@type": "Organization", "name": "Maysan Labs" },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Development Services",
+    "itemListElement": [
+      { "@type": "Offer", "name": "Starter Plan", "price": "250000", "priceCurrency": "INR" },
+      { "@type": "Offer", "name": "Growth Plan", "price": "500000", "priceCurrency": "INR" },
+      { "@type": "Offer", "name": "Enterprise Plan", "price": "1200000", "priceCurrency": "INR" }
+    ]
+  }
+};
 
 export const softwareDevFAQs = [
   {
@@ -446,10 +463,8 @@ export const speakableSchema = {
   "@context": "https://schema.org",
   "@type": "SpeakableSpecification",
   "cssSelector": [
-    ".geo-summary",
     ".geo-tldr",
-    ".hero-title-text",
-    ".page-description"
+    ".blog-summary"
   ]
 };
 

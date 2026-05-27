@@ -7,19 +7,38 @@ import { Mail, ArrowRight, CheckCircle } from "lucide-react";
 export default function Newsletter() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setEmail("");
+    if (!email) return;
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setSubscribed(true);
+        setEmail("");
+      } else {
+        setError(data.error || "Something went wrong.");
+      }
+    } catch {
+      setError("Network error. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <section className="py-20 border-t border-white/5">
       <div className="container-main">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -28,7 +47,7 @@ export default function Newsletter() {
           <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 flex items-center justify-center mx-auto mb-6">
             <Mail size={28} className="text-brand-primary" />
           </div>
-          
+
           <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-3">
             Stay Updated with Our Insights
           </h2>
@@ -56,16 +75,22 @@ export default function Newsletter() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                aria-label="Email for newsletter"
                 className="flex-1 px-5 py-3.5 bg-white/[0.03] border border-white/10 rounded-full text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none transition-all"
               />
               <button
                 type="submit"
-                className="px-7 py-3.5 bg-brand-primary rounded-full font-semibold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] transition-all flex items-center gap-2"
+                disabled={loading}
+                className="px-7 py-3.5 bg-brand-primary rounded-full font-semibold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] transition-all flex items-center gap-2 disabled:opacity-50"
               >
-                Subscribe
+                {loading ? "Subscribing..." : "Subscribe"}
                 <ArrowRight size={16} />
               </button>
             </form>
+          )}
+
+          {error && (
+            <p role="alert" aria-live="polite" className="text-red-400 text-sm mt-3">{error}</p>
           )}
 
           <p className="text-foreground/30 text-xs mt-4">

@@ -9,6 +9,9 @@ import { generateCaseStudySEO, generateCaseStudyJSONLD } from "@/lib/seo/helpers
 import CaseStudyPerformanceToggle from "@/components/CaseStudyPerformanceToggle";
 import ScrollRevealImage from "@/components/ScrollRevealImage";
 
+export const revalidate = 3600;
+export const dynamicParams = true;
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -338,7 +341,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
                     Ready to scale?
                   </h4>
                   <Link
-                    href="/init"
+                    href="/start"
                     className="flex items-center justify-center gap-2 w-full py-3.5 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] transition-all duration-200"
                   >
                     <span>Discuss your project</span>

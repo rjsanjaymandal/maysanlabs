@@ -163,10 +163,12 @@ export default function PortfolioShowcase({
                     style={{ '--scroll-translate': `-${scrollPercentage}` } as React.CSSProperties}
                     className="w-full h-auto absolute top-0 left-0 transition-transform duration-[4500ms] ease-in-out transform translate-y-0 group-hover:translate-y-[var(--scroll-translate)]"
                   >
-                    <img 
+                    <Image 
                       src={imageUrl} 
                       alt={`${title} product interface preview`}
-                      loading="eager"
+                      width={1200}
+                      height={1600}
+                      sizes="(max-width: 768px) 100vw, 60vw"
                       className="w-full h-auto object-cover object-top"
                     />
                   </div>

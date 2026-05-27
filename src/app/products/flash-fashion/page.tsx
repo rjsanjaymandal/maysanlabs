@@ -5,8 +5,8 @@ import { generateBreadcrumbSchema, generateProductSEO } from "@/lib/seo/helpers"
 const productData = {
   name: "Maysan Shop",
   description: "Full-stack ecommerce solution with inventory, orders, payments, and customer management. Built for scale.",
-  price: 5000,
-  currency: "USD",
+  price: 400000,
+  currency: "INR",
   url: "https://maysanlabs.com/products/flash-fashion"
 };
 

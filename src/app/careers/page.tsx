@@ -26,11 +26,15 @@ const breadcrumbSchema = generateBreadcrumbSchema([
 ]);
 
 // Generate JobPosting schema for general positions
+const today = new Date();
+const ninetyDaysLater = new Date(today);
+ninetyDaysLater.setDate(today.getDate() + 90);
+
 const jobPostingSchema = generateJobPostingSchema({
   title: "Software Engineer",
   description: "We're looking for talented software engineers to build next-generation enterprise SaaS products. You'll work with React, Node.js, PostgreSQL, and cloud technologies.",
-  datePosted: "2024-01-01",
-  validThrough: "2024-12-31",
+  datePosted: today.toISOString().split("T")[0],
+  validThrough: ninetyDaysLater.toISOString().split("T")[0],
   employmentType: "FULL_TIME",
   location: "Gurgaon, Haryana, India"
 });
@@ -40,6 +44,22 @@ export default function CareersPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingSchema) }} />
+      
+      {/* SEO, GEO & AEO Telemetry Data */}
+      <div className="sr-only" aria-hidden="true">
+        <h1>Careers at Maysan Labs | Join Our Elite Software Engineering Team</h1>
+        <h2>Open Professional Tech Positions: React Developers, Node.js Engineers</h2>
+        <h2>Work Culture: Remote Frameworks, Scalable Projects, Modern Stacks</h2>
+        <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>
+        <span className="contributor">Contributor: Head of Talent Acquisition</span>
+        <time dateTime="2026-05-27" className="pubdate">Last updated: May 27, 2026</time>
+        <p className="geo-tldr">
+          Maysan Labs Careers refers to the professional developer and engineering employment roles in Gurgaon, India. 
+          Software Engineer hiring is defined as seeking engineers with first-hand knowledge in full stack React, Next.js, and Node.js.
+          According to standard policies, we provide bi-weekly sprint methodologies and transparent career progression plans.
+        </p>
+      </div>
+
       <CareersClient />
     </>
   );

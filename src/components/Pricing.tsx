@@ -119,7 +119,7 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              <Link href="/init">
+              <Link href="/start">
                 <HoverBorderGradient
                   containerClassName="rounded-full w-full"
                   as="div"

@@ -17,7 +17,7 @@ export default function WhatsAppButton() {
       animate={{ opacity: 1, scale: 1 }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
-      className="fixed bottom-24 right-6 md:bottom-8 md:right-8 z-[100] w-14 h-14 bg-gradient-to-br from-[#25D366] to-[#20BD5A] rounded-full flex items-center justify-center shadow-[0_0_25px_rgba(37,211,102,0.4)] hover:shadow-[0_0_35px_rgba(37,211,102,0.6)] transition-all duration-300 group"
+      className="fixed bottom-24 right-6 z-[100] w-14 h-14 bg-gradient-to-br from-[#25D366] to-[#20BD5A] rounded-full flex items-center justify-center shadow-[0_0_25px_rgba(37,211,102,0.4)] hover:shadow-[0_0_35px_rgba(37,211,102,0.6)] transition-all duration-300 group md:bottom-8 md:right-8"
       aria-label="Contact on WhatsApp"
     >
       <MessageCircle size={26} className="text-white" />

@@ -308,7 +308,6 @@ export function generateBaseSEO(siteUrl: string): Metadata {
       canonical: siteUrl,
       languages: {
         en: `${siteUrl}`,
-        ar: `${siteUrl}/ar`
       }
     }
   };
@@ -455,7 +454,6 @@ export function generatePageSEO({
       canonical: fullUrl,
       languages: {
         en: fullUrl,
-        ar: `${siteUrl}/ar${cleanPath === "/" ? "" : cleanPath}`
       }
     },
     icons: {

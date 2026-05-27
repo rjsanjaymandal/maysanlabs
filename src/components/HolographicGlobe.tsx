@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useSyncExternalStore } from "react";
+import React, { useEffect, useRef, useSyncExternalStore, useState } from "react";
 
 interface Point {
   x: number;
@@ -18,9 +18,18 @@ export default function HolographicGlobe() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isMounted = useHydrated();
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
-    if (!isMounted || !canvasRef.current || !containerRef.current) return;
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted || reducedMotion || !canvasRef.current || !containerRef.current) return;
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -121,6 +130,17 @@ export default function HolographicGlobe() {
   }, [isMounted]);
 
   if (!isMounted) return <div className="absolute inset-0 z-0 bg-transparent" />;
+
+  if (reducedMotion) {
+    return (
+      <div
+        className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-20"
+        style={{
+          background: "radial-gradient(circle at center, rgba(59, 130, 246, 0.3) 0%, transparent 70%)",
+        }}
+      />
+    );
+  }
 
   return (
     <div

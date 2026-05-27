@@ -2,7 +2,44 @@
 
 import nodemailer from "nodemailer";
 
+// Simple in-memory rate limiter (resets on server restart)
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const RATE_LIMIT_MAX_REQUESTS = 5; // max 5 requests per window
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const record = rateLimitMap.get(ip);
+  
+  if (!record) {
+    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+  
+  if (now > record.resetTime) {
+    // Reset the window
+    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+  
+  if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return true; // Rate limited
+  }
+  
+  // Increment count
+  record.count += 1;
+  return false;
+}
+
 export async function applyJob(formData: FormData) {
+  // Honeypot check: if the hidden field is filled, it's likely a bot
+  const honeypot = formData.get("website") as string;
+  if (honeypot && honeypot.trim() !== "") {
+    console.warn("[Form Security] Honeypot triggered - potential bot submission");
+    // Return success to avoid tipping off bots, but don't process the form
+    return { success: true, message: "Application submitted successfully" };
+  }
+  
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const phone = formData.get("phone") as string;
@@ -15,7 +52,7 @@ export async function applyJob(formData: FormData) {
 
   if (!name || !email || !resume) {
     return { success: false, message: "Missing required fields (Name, Email, Resume)" };
-  }
+}
 
   // Check for missing SMTP configuration
   const smtpConfigured =

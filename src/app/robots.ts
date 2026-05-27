@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [
           '/api/',
           '/private/',
-          '/init',
+          '/start',
           '/careers/apply',
           '/404',
         ],
@@ -17,12 +17,12 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: 'GPTBot',
         allow: '/',
-        disallow: ['/api/', '/init', '/careers/apply'],
+        disallow: ['/api/', '/start', '/careers/apply'],
       },
       {
         userAgent: 'CCBot',
         allow: '/',
-        disallow: ['/api/', '/init', '/careers/apply'],
+        disallow: ['/api/', '/start', '/careers/apply'],
       },
       {
         userAgent: 'Google-Extended',

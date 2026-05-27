@@ -85,7 +85,7 @@ export function MobileCTA() {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[90] md:hidden px-4 pb-4">
       <Link 
-        href="/init"
+        href="/start"
         className="relative flex items-center justify-center gap-2.5 w-full py-4 bg-[#1A6DD6] rounded-2xl font-bold text-[10px] uppercase tracking-widest text-white shadow-xl shadow-blue-500/30 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-[1.02] active:scale-[0.98]"
       >
         <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent" />
@@ -99,7 +99,7 @@ export function MobileCTA() {
 export function NavCTA() {
   return (
     <Link 
-      href="/init" 
+      href="/start" 
       className="relative px-6 py-2.5 bg-[#1A6DD6] rounded-full font-extrabold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/20 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105 active:scale-95"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent" />

@@ -3,321 +3,354 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ArrowRight,
-  Check,
-  Cpu,
-  Globe,
-  Smartphone,
-  LayoutDashboard,
-  Users,
-  DollarSign,
-  Shield,
-  BarChart3,
-  Calendar,
-  Layers,
-  Sparkles,
+  Calculator, Users, IndianRupee, TrendingUp, Clock,
+  Building2, ShoppingCart, Globe, ArrowRight, BarChart3,
+  Shield, Code2
 } from "lucide-react";
 import Link from "next/link";
 
-type Platform = "saas" | "erp" | "mobile" | "web";
-type Scale = "startup" | "growth" | "enterprise";
-
-interface Feature {
-  id: string;
-  label: string;
-  icon: typeof Cpu;
-}
-
-const platforms: { id: Platform; label: string; desc: string; icon: typeof Cpu }[] = [
-  { id: "saas", label: "SaaS Platform", desc: "Multi-tenant cloud app", icon: Globe },
-  { id: "erp", label: "Custom ERP", desc: "Business operations system", icon: LayoutDashboard },
-  { id: "mobile", label: "Mobile App", desc: "iOS / Android app", icon: Smartphone },
-  { id: "web", label: "Web App", desc: "Portal or dashboard", icon: Cpu },
+const scenarios = [
+  {
+    name: "SaaS Startup",
+    icon: Code2,
+    users: 200,
+    arpu: 1500,
+    budget: 1000000,
+    note: "B2B SaaS, 200 customers @ ₹1,500/mo",
+    color: "from-blue-500 to-brand-primary",
+  },
+  {
+    name: "E-commerce",
+    icon: ShoppingCart,
+    users: 1000,
+    arpu: 300,
+    budget: 500000,
+    note: "D2C brand, 1,000 orders/mo @ ₹300 avg",
+    color: "from-green-500 to-emerald-400",
+  },
+  {
+    name: "Marketplace",
+    icon: Globe,
+    users: 500,
+    arpu: 800,
+    budget: 800000,
+    note: "Multi-vendor, 500 sellers @ ₹800/mo",
+    color: "from-purple-500 to-violet-400",
+  },
+  {
+    name: "Enterprise",
+    icon: Building2,
+    users: 50,
+    arpu: 25000,
+    budget: 1500000,
+    note: "B2B platform, 50 clients @ ₹25,000/mo",
+    color: "from-amber-500 to-orange-400",
+  },
 ];
 
-const features: Feature[] = [
-  { id: "auth", label: "Auth & SSO", icon: Shield },
-  { id: "payments", label: "Stripe / Payments", icon: DollarSign },
-  { id: "multi-tenant", label: "Multi-tenancy", icon: Layers },
-  { id: "dashboard", label: "Real-time Dashboards", icon: BarChart3 },
-  { id: "analytics", label: "Analytics Engine", icon: BarChart3 },
-  { id: "notifications", label: "Email / Push Notifications", icon: Globe },
-];
-
-const scales: { id: Scale; label: string; users: string; desc: string }[] = [
-  { id: "startup", label: "Startup", users: "Up to 1k users", desc: "MVP phase" },
-  { id: "growth", label: "Growth", users: "1k – 100k users", desc: "Scaling fast" },
-  { id: "enterprise", label: "Enterprise", users: "100k – 1M+ users", desc: "Production grade" },
-];
-
-const results: Record<string, { timeline: string; stack: string[]; note: string }> = {
-  "saas": { timeline: "10 – 14 weeks", stack: ["Next.js", "Supabase", "Stripe", "Redis", "AWS"], note: "Includes multi-tenant isolation, subscription billing, and admin dashboard." },
-  "erp": { timeline: "14 – 20 weeks", stack: ["Next.js", "PostgreSQL", "Redis", "Docker", "Kubernetes"], note: "Includes role-based access, automated workflows, and BI reporting." },
-  "mobile": { timeline: "12 – 18 weeks", stack: ["React Native", "Node.js", "PostgreSQL", "Firebase", "AWS"], note: "Includes push notifications, offline sync, and mobile-first UI." },
-  "web": { timeline: "8 – 12 weeks", stack: ["Next.js", "Supabase", "Vercel", "Tailwind", "TypeScript"], note: "Includes SSR, authentication, and responsive design." },
+const altCosts = {
+  "In-house Gurugram Dev Team": 2400000,
+  "Traditional Legacy Agency": 1200000,
+  "Freelancer Development": 600000,
 };
 
-export default function ROICalculator() {
-  const [step, setStep] = useState(0);
-  const [platform, setPlatform] = useState<Platform | null>(null);
-  const [selectedFeatures, setSelectedFeatures] = useState<string[]>([]);
-  const [scale, setScale] = useState<Scale | null>(null);
+export default function RoiCalculator() {
+  const [activeScenario, setActiveScenario] = useState<number>(0);
+  const [users, setUsers] = useState<number>(scenarios[0].users);
+  const [arpu, setArpu] = useState<number>(scenarios[0].arpu);
+  const [projectBudget, setProjectBudget] = useState<number>(scenarios[0].budget);
+  const [showAltCompare, setShowAltCompare] = useState<boolean>(true);
 
-  const toggleFeature = (id: string) => {
-    setSelectedFeatures((prev) =>
-      prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id]
-    );
+  const annualRevenue = users * arpu * 12;
+  const netProfit = annualRevenue - projectBudget;
+  const roi = projectBudget > 0 ? ((annualRevenue - projectBudget) / projectBudget) * 100 : 0;
+  const monthsToProfit = users * arpu > 0 ? Math.ceil(projectBudget / (users * arpu)) : null;
+
+  const applyScenario = (index: number) => {
+    setActiveScenario(index);
+    setUsers(scenarios[index].users);
+    setArpu(scenarios[index].arpu);
+    setProjectBudget(scenarios[index].budget);
   };
 
-  const canNext = step === 0 ? platform : step === 1 ? selectedFeatures.length >= 2 : scale;
-
-  const handleNext = () => {
-    if (!canNext) return;
-    setStep((s) => Math.min(s + 1, 3));
+  const getSavings = (altCost: number) => {
+    return altCost - projectBudget;
   };
-
-  const handleBack = () => {
-    setStep((s) => Math.max(s - 1, 0));
-  };
-
-  const result = platform ? results[platform] : null;
-  const featureCost = selectedFeatures.length * 2;
-  const scaleMultiplier = scale === "startup" ? 1 : scale === "growth" ? 1.5 : 2.5;
-  const estimatedWeeks = result ? Math.round(parseInt(result.timeline.split("–")[0]) * scaleMultiplier + featureCost) : 0;
-  const estimatedRange = result ? `${estimatedWeeks} – ${estimatedWeeks + 4} weeks` : "";
 
   return (
-    <section className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.02] via-transparent to-brand-primary/[0.02] pointer-events-none" />
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.03] via-transparent to-brand-primary/[0.03] pointer-events-none" />
       <div className="container-main relative z-10">
-        <div className="mb-10 text-center">
+        <div className="mb-14 text-center">
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
-            <Sparkles size={12} />
-            ROI Estimator
+            <Calculator size={12} />
+            Interactive ROI Calculator
           </span>
-          <h2 className="heading-lg sm:heading-xl text-[var(--text-on-white)] mb-3">
-            Estimate your{" "}
-            <span className="text-brand-primary">build roadmap</span>
+          <h2 className="heading-lg text-foreground mb-4">
+            Calculate Your{" "}
+            <span className="text-brand-primary">Custom Product ROI</span>
           </h2>
-          <p className="text-[var(--text-on-white)]/50 max-w-xl mx-auto text-sm">
-            Select your needs and get a recommended timeline, stack, and estimated investment range
+          <p className="text-foreground/50 max-w-xl mx-auto text-sm md:text-base leading-relaxed">
+            Estimate your software growth, timeline efficiency, and net resource savings compared to traditional development alternatives in India.
           </p>
         </div>
 
-        <div className="max-w-2xl mx-auto">
-          <div className="flex items-center justify-center gap-2 mb-8">
-            {["Platform", "Features", "Scale", "Roadmap"].map((s, i) => (
-              <div key={s} className="flex items-center gap-2">
-                <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
-                    i <= step
-                      ? "bg-brand-primary text-black"
-                      : "bg-white/[0.03] text-foreground/30 border border-white/[0.06]"
-                  }`}
-                >
-                  {i < step ? <Check size={14} /> : i + 1}
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+            
+            {/* Left Column: Interactive Inputs (Span 6) */}
+            <div className="lg:col-span-6 bg-white/[0.02] border border-white/[0.06] rounded-3xl p-6 md:p-8 space-y-6">
+              <div>
+                <span className="text-[10px] font-bold text-foreground/40 uppercase tracking-widest block mb-3">1. Select Business Scenario</span>
+                <div className="grid grid-cols-2 gap-3">
+                  {scenarios.map((s, i) => {
+                    const Icon = s.icon;
+                    return (
+                      <button
+                        key={s.name}
+                        onClick={() => applyScenario(i)}
+                        className={`relative rounded-xl p-4 text-left transition-all duration-300 group ${
+                          activeScenario === i
+                            ? "bg-brand-primary/10 border-2 border-brand-primary/50 shadow-[0_0_20px_rgba(26,109,214,0.1)]"
+                            : "bg-white/[0.02] border border-white/[0.06] hover:border-white/[0.12]"
+                        }`}
+                      >
+                        <div className={`w-8 h-8 rounded-lg mb-3 flex items-center justify-center ${
+                          activeScenario === i ? "bg-brand-primary/20" : "bg-white/[0.05]"
+                        }`}>
+                          <Icon size={14} className={activeScenario === i ? "text-brand-primary" : "text-foreground/40"} />
+                        </div>
+                        <p className={`text-xs font-semibold mb-0.5 ${activeScenario === i ? "text-brand-primary" : "text-foreground/70"}`}>
+                          {s.name}
+                        </p>
+                        <p className="text-[9px] text-foreground/40 leading-tight">{s.note}</p>
+                        {activeScenario === i && (
+                          <div className={`absolute inset-0 rounded-xl border-2 border-brand-primary/30 bg-gradient-to-br ${s.color} opacity-[0.03] pointer-events-none`} />
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
-                <span className={`text-xs hidden sm:inline ${i <= step ? "text-foreground/70" : "text-foreground/30"}`}>
-                  {s}
-                </span>
-                {i < 3 && <div className={`w-8 h-px ${i < step ? "bg-brand-primary" : "bg-white/[0.06]"}`} />}
               </div>
-            ))}
-          </div>
 
-          <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6 md:p-8 min-h-[360px]">
-            <AnimatePresence mode="wait">
-              {step === 0 && (
-                <motion.div
-                  key="step0"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                >
-                  <h3 className="text-lg font-semibold text-foreground mb-5">What are you building?</h3>
-                  <div className="grid grid-cols-2 gap-3">
-                    {platforms.map((p) => {
-                      const Icon = p.icon;
-                      const selected = platform === p.id;
-                      return (
-                        <button
-                          key={p.id}
-                          onClick={() => setPlatform(p.id)}
-                          className={`flex items-start gap-3 p-4 rounded-xl border text-left transition-all duration-200 ${
-                            selected
-                              ? "bg-brand-primary/10 border-brand-primary/30 text-foreground"
-                              : "bg-white/[0.02] border-white/[0.06] text-foreground/60 hover:border-white/[0.12] hover:text-foreground"
-                          }`}
-                        >
-                          <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
-                            selected ? "bg-brand-primary/20" : "bg-white/[0.03]"
-                          }`}>
-                            <Icon size={18} className={selected ? "text-brand-primary" : "text-foreground/40"} />
-                          </div>
-                          <div>
-                            <p className="text-sm font-semibold">{p.label}</p>
-                            <p className="text-xs text-foreground/40 mt-0.5">{p.desc}</p>
-                          </div>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </motion.div>
-              )}
-
-              {step === 1 && (
-                <motion.div
-                  key="step1"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                >
-                  <h3 className="text-lg font-semibold text-foreground mb-2">Select features (pick 2+)</h3>
-                  <p className="text-foreground/40 text-sm mb-5">Each feature adds ~2 weeks to development</p>
-                  <div className="grid grid-cols-2 gap-3">
-                    {features.map((f) => {
-                      const Icon = f.icon;
-                      const selected = selectedFeatures.includes(f.id);
-                      return (
-                        <button
-                          key={f.id}
-                          onClick={() => toggleFeature(f.id)}
-                          className={`flex items-center gap-3 p-3.5 rounded-xl border text-left transition-all duration-200 ${
-                            selected
-                              ? "bg-brand-primary/10 border-brand-primary/30"
-                              : "bg-white/[0.02] border-white/[0.06] hover:border-white/[0.12]"
-                          }`}
-                        >
-                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
-                            selected ? "bg-brand-primary/20" : "bg-white/[0.03]"
-                          }`}>
-                            <Icon size={16} className={selected ? "text-brand-primary" : "text-foreground/40"} />
-                          </div>
-                          <span className={`text-sm ${selected ? "text-foreground font-medium" : "text-foreground/60"}`}>
-                            {f.label}
-                          </span>
-                          {selected && <Check size={14} className="ml-auto text-brand-primary shrink-0" />}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </motion.div>
-              )}
-
-              {step === 2 && (
-                <motion.div
-                  key="step2"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                >
-                  <h3 className="text-lg font-semibold text-foreground mb-5">Expected user scale?</h3>
-                  <div className="space-y-3">
-                    {scales.map((s) => {
-                      const Icon = s.id === "startup" ? Users : s.id === "growth" ? BarChart3 : Globe;
-                      const selected = scale === s.id;
-                      return (
-                        <button
-                          key={s.id}
-                          onClick={() => setScale(s.id)}
-                          className={`flex items-center gap-4 w-full p-4 rounded-xl border text-left transition-all duration-200 ${
-                            selected
-                              ? "bg-brand-primary/10 border-brand-primary/30"
-                              : "bg-white/[0.02] border-white/[0.06] hover:border-white/[0.12]"
-                          }`}
-                        >
-                          <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${
-                            selected ? "bg-brand-primary/20" : "bg-white/[0.03]"
-                          }`}>
-                            <Icon size={20} className={selected ? "text-brand-primary" : "text-foreground/40"} />
-                          </div>
-                          <div className="flex-1">
-                            <p className={`text-sm font-semibold ${selected ? "text-foreground" : "text-foreground/70"}`}>
-                              {s.label}
-                            </p>
-                            <p className="text-xs text-foreground/40">{s.desc}</p>
-                          </div>
-                          <div className="text-right">
-                            <p className="text-xs text-foreground/40">{s.users}</p>
-                          </div>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </motion.div>
-              )}
-
-              {step === 3 && result && (
-                <motion.div
-                  key="step3"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className="text-center"
-                >
-                  <div className="w-14 h-14 rounded-2xl bg-brand-primary/20 flex items-center justify-center mx-auto mb-4">
-                    <Sparkles size={28} className="text-brand-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">Your Build Roadmap</h3>
-                  <p className="text-foreground/40 text-sm mb-6">{result.note}</p>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-left">
-                    <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-4">
-                      <Calendar size={16} className="text-brand-primary mb-2" />
-                      <p className="text-[10px] text-foreground/40 uppercase tracking-wider mb-1">Timeline</p>
-                      <p className="text-sm font-bold text-foreground">{estimatedRange}</p>
+              <div className="space-y-4 border-t border-white/5 pt-5">
+                <span className="text-[10px] font-bold text-foreground/40 uppercase tracking-widest block mb-2">2. Scoping Metrics</span>
+                
+                {/* Custom Project Budget Input & Slider */}
+                <div className="bg-black/10 border border-white/5 rounded-2xl p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-lg bg-brand-primary/15 flex items-center justify-center">
+                        <IndianRupee size={14} className="text-brand-primary" />
+                      </div>
+                      <label htmlFor="proj-budget-input" className="text-xs font-semibold text-foreground">Estimated Software Budget</label>
                     </div>
-                    <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-4">
-                      <Layers size={16} className="text-brand-primary mb-2" />
-                      <p className="text-[10px] text-foreground/40 uppercase tracking-wider mb-1">Stack</p>
-                      <p className="text-sm font-bold text-foreground">{result.stack.join(" + ")}</p>
+                    <span className="text-xs font-bold text-brand-primary">₹{(projectBudget / 100000).toFixed(1)} Lakhs</span>
+                  </div>
+                  <div className="space-y-2">
+                    <input
+                      id="proj-budget-slider"
+                      type="range"
+                      min={100000}
+                      max={3000000}
+                      step={50000}
+                      value={projectBudget}
+                      onChange={(e) => setProjectBudget(Number(e.target.value))}
+                      className="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-brand-primary"
+                    />
+                    <input
+                      id="proj-budget-input"
+                      type="number"
+                      min={50000}
+                      value={projectBudget}
+                      onChange={(e) => setProjectBudget(Math.max(0, Number(e.target.value)))}
+                      className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2 text-sm text-foreground focus:border-brand-primary/50 focus:outline-none transition-all font-mono font-bold"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-black/10 border border-white/5 rounded-2xl p-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-7 h-7 rounded-lg bg-brand-primary/15 flex items-center justify-center">
+                        <Users size={14} className="text-brand-primary" />
+                      </div>
+                      <label htmlFor="users-input" className="text-xs font-semibold text-foreground">Target Customer Count</label>
                     </div>
-                    <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-4">
-                      <Users size={16} className="text-brand-primary mb-2" />
-                      <p className="text-[10px] text-foreground/40 uppercase tracking-wider mb-1">Scale</p>
-                      <p className="text-sm font-bold text-foreground capitalize">{scale || "—"} tier</p>
+                    <div className="relative">
+                      <input
+                        id="users-input"
+                        type="number"
+                        min={1}
+                        value={users}
+                        onChange={(e) => setUsers(Math.max(1, Number(e.target.value)))}
+                        className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2 pr-12 text-sm text-foreground focus:border-brand-primary/50 focus:outline-none transition-all font-bold"
+                      />
+                      <span className="absolute right-4 top-1/2 -translate-y-1/2 text-foreground/40 text-[10px] font-mono">users</span>
                     </div>
                   </div>
 
-                  <Link
-                    href="/init"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-bold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] transition-all duration-200"
+                  <div className="bg-black/10 border border-white/5 rounded-2xl p-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-7 h-7 rounded-lg bg-brand-primary/15 flex items-center justify-center">
+                        <IndianRupee size={14} className="text-brand-primary" />
+                      </div>
+                      <label htmlFor="arpu-input" className="text-xs font-semibold text-foreground">Avg Revenue/User/Mo</label>
+                    </div>
+                    <div className="relative">
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/40 text-xs font-mono">₹</span>
+                      <input
+                        id="arpu-input"
+                        type="number"
+                        min={1}
+                        value={arpu}
+                        onChange={(e) => setArpu(Math.max(1, Number(e.target.value)))}
+                        className="w-full bg-black/20 border border-white/10 rounded-xl pl-7 pr-4 py-2 text-sm text-foreground focus-border-brand-primary/50 focus:outline-none transition-all font-bold"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Calculations & Dashboard (Span 6) */}
+            <div className="lg:col-span-6 bg-white/[0.04] border border-white/[0.1] rounded-3xl p-6 md:p-8 flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-brand-primary/5 blur-3xl pointer-events-none" />
+              
+              <div className="space-y-6 relative z-10">
+                <div>
+                  <span className="text-[10px] font-bold text-brand-primary uppercase tracking-widest block mb-1">Projected Annual Revenue</span>
+                  <p className="text-4xl md:text-5xl font-black text-foreground tracking-tight">
+                    ₹{(annualRevenue / 100000).toFixed(1)} Lakhs
+                  </p>
+                  <p className="text-[10px] text-foreground/45 mt-1 leading-relaxed">
+                    Producted Year 1 gross billing outline, calculated dynamically based on target volume.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 border-t border-white/10 pt-5">
+                  <div className="bg-black/25 rounded-2xl p-4 border border-white/5">
+                    <span className="text-[10px] text-foreground/40 block mb-1 font-semibold uppercase">Initial Investment</span>
+                    <span className="text-lg font-bold text-foreground">₹{(projectBudget / 100000).toFixed(1)}L</span>
+                  </div>
+                  
+                  <div className={`rounded-2xl p-4 border ${
+                    netProfit > 0 ? "bg-green-500/5 border-green-500/10 text-green-400" : "bg-red-500/5 border-red-500/10 text-red-400"
+                  }`}>
+                    <span className="text-[10px] block mb-1 font-semibold uppercase opacity-65">Year 1 Net Profit</span>
+                    <span className="text-lg font-bold">
+                      {netProfit >= 0 ? "+" : ""}
+                      ₹{(netProfit / 100000).toFixed(1)}L
+                    </span>
+                  </div>
+                </div>
+
+                <div className="space-y-3.5 pt-2">
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-foreground/50">Return on Investment (ROI)</span>
+                    <span className={`font-bold flex items-center gap-1.5 text-sm ${roi > 0 ? "text-green-400" : "text-foreground/40"}`}>
+                      <TrendingUp size={14} />
+                      {roi > 0 ? `+${roi.toFixed(0)}%` : "0%"}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between items-center text-xs">
+                    <span className="text-foreground/50">Breakeven Timeline</span>
+                    <span className="font-semibold text-brand-primary flex items-center gap-1.5">
+                      <Clock size={12} />
+                      {monthsToProfit ? (
+                        monthsToProfit <= 12 ? (
+                          `${monthsToProfit} Months`
+                        ) : (
+                          `${monthsToProfit} Months (> 1 year)`
+                        )
+                      ) : (
+                        "Needs more monthly active users"
+                      )}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Alternative Comparison Toggle */}
+                <div className="border-t border-white/10 pt-4">
+                  <button
+                    onClick={() => setShowAltCompare(!showAltCompare)}
+                    className="text-xs text-brand-primary hover:text-brand-light transition-colors font-medium flex items-center gap-1.5"
                   >
-                    Book a Call to Validate This Roadmap
-                    <ArrowRight size={16} />
-                  </Link>
-                  <p className="text-foreground/30 text-xs mt-3">Free 30-min discovery call with our architects</p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {step < 3 && (
-              <div className="flex items-center justify-between mt-8 pt-4 border-t border-white/[0.06]">
-                <button
-                  onClick={handleBack}
-                  className={`text-sm px-4 py-2 rounded-lg transition-all ${
-                    step > 0
-                      ? "text-foreground/50 hover:text-foreground bg-white/[0.02] border border-white/[0.06]"
-                      : "text-foreground/20 cursor-default"
-                  }`}
-                >
-                  Back
-                </button>
-                <button
-                  onClick={handleNext}
-                  disabled={!canNext}
-                  className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
-                    canNext
-                      ? "bg-brand-primary text-black hover:shadow-[0_0_20px_rgba(26,109,214,0.4)]"
-                      : "bg-white/[0.03] text-foreground/30 cursor-default"
-                  }`}
-                >
-                  {step === 2 ? "See My Roadmap" : "Next"}
-                  <ArrowRight size={14} />
-                </button>
+                    <BarChart3 size={12} />
+                    {showAltCompare ? "Hide" : "Show"} Indian developer market alternatives
+                  </button>
+                  
+                  <AnimatePresence>
+                    {showAltCompare && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="mt-3 bg-black/20 border border-white/5 rounded-xl overflow-hidden divide-y divide-white/5"
+                      >
+                        {Object.entries(altCosts).map(([label, cost]) => {
+                          const saved = getSavings(cost);
+                          const isSaved = saved > 0;
+                          return (
+                            <div key={label} className="px-4 py-2.5 flex justify-between items-center text-[10px]">
+                              <span className="text-foreground/50">{label}</span>
+                              <div className="text-right">
+                                <span className="text-foreground/70 block">₹{(cost / 100000).toFixed(1)}L/yr</span>
+                                <span className={`font-bold block ${isSaved ? "text-green-400" : "text-foreground/30"}`}>
+                                  {isSaved ? `Save ₹${(saved / 100000).toFixed(1)}L` : `+₹${(Math.abs(saved) / 100000).toFixed(1)}L`}
+                                </span>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
-            )}
+
+              <div className="mt-6 pt-4 border-t border-white/5 text-center">
+                <p className="text-[9px] text-foreground/30 leading-relaxed">
+                  ROI = (Annual Revenue - Initial Budget) / Initial Budget &times; 100. Comparisons based on average Gurugram & Bengaluru staffing benchmark metrics.
+                </p>
+              </div>
+            </div>
           </div>
+
+          {/* Fully bespoke bottom consultation block - NO PRICING */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-6"
+          >
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center">
+                  <Shield size={20} className="text-brand-primary" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">Ready to engineer your custom solution?</p>
+                  <p className="text-xs text-foreground/50">Schedule a free technical requirements scoping call with our Gurugram engineering team.</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 shrink-0 w-full md:w-auto justify-between md:justify-end">
+                <div className="text-left md:text-right hidden sm:block">
+                  <p className="text-[10px] text-foreground/40 uppercase tracking-widest font-bold">Billing Scope</p>
+                  <p className="text-xs font-semibold text-brand-primary">Custom Milestone Quotation</p>
+                </div>
+                <Link
+                  href="/start"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-primary rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] transition-all w-full md:w-auto justify-center"
+                >
+                  Book Custom Scoping Call
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

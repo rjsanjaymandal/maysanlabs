@@ -102,7 +102,10 @@ export default function FAQ() {
               transition={{ delay: index * 0.05 }}
             >
               <button
+                id={`faq-button-${index}`}
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                aria-expanded={openIndex === index}
+                aria-controls={`faq-panel-${index}`}
                 className={`w-full text-left rounded-2xl p-5 md:p-6 transition-all duration-300 relative overflow-hidden group border ${
                   openIndex === index 
                     ? "bg-brand-primary/[0.02] border-brand-primary/30 shadow-lg shadow-brand-primary/5" 
@@ -128,6 +131,9 @@ export default function FAQ() {
                 <AnimatePresence>
                   {openIndex === index && (
                     <motion.div
+                      id={`faq-panel-${index}`}
+                      role="region"
+                      aria-labelledby={`faq-button-${index}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}

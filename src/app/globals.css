@@ -64,6 +64,10 @@
     /* ─── Light Mode Ambient Gradients (softer glow) ─── */
     --bg-soft-glow: radial-gradient(ellipse at 20% 50%, rgba(26, 109, 214, 0.03) 0%, transparent 60%);
     --bg-soft-glow-secondary: radial-gradient(ellipse at 80% 20%, rgba(26, 109, 214, 0.015) 0%, transparent 50%);
+
+    /* ─── Surface & Glass Gradients (for .maysan-card) ─── */
+    --surface-gradient: linear-gradient(135deg, rgba(26, 109, 214, 0.04) 0%, rgba(255, 255, 255, 0.8) 100%);
+    --glass-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
 }
 
 /* ─── Light Mode Overrides (softer) ─── */
@@ -257,10 +261,6 @@ html:not(.dark) .text-white\/\[0\.02\] {
     opacity: 0.8;
   }
 
-  /* Card Bento - Standardized Base */
-  .maysan-card {
-    @apply relative overflow-hidden rounded-3xl border border-white/5 bg-white/[0.01] p-8 md:p-12 transition-all duration-700;
-  }
 }
 
 /* ─── Base Styles ─── */
@@ -302,15 +302,7 @@ html:not(.dark) .text-white\/\[0\.02\] {
     --input: 214 18% 93%;
     --ring: 214 78% 47%;
 
-    /* Premium Gradients */
-    --brand-gradient: linear-gradient(135deg, #1A6DD6 0%, #0F1923 100%);
-    --surface-gradient: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0) 100%);
-    --glass-gradient: radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), transparent);
     --bg-aurora: radial-gradient(circle at 50% -10%, rgba(16, 185, 129, 0.05) 0%, rgba(20, 184, 166, 0.03) 50%, transparent 80%);
-
-    --radius-sm: 0.5rem;
-    --radius-md: 1rem;
-    --radius-lg: 1.5rem;
   }
   .dark {
     --background: 220 33% 7%;
@@ -341,14 +333,7 @@ html:not(.dark) .text-white\/\[0\.02\] {
     --input: 217 33% 17%;
     --ring: 214 78% 47%;
 
-    --brand-gradient: linear-gradient(135deg, #1A6DD6 0%, #0F1923 100%);
-    --surface-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0) 100%);
-    --glass-gradient: radial-gradient(circle at top left, rgba(255, 255, 255, 0.04), transparent);
     --bg-aurora: radial-gradient(circle at 50% -20%, rgba(26, 109, 214, 0.08), transparent 70%);
-
-    --radius-sm: 0.5rem;
-    --radius-md: 1rem;
-    --radius-lg: 1.5rem;
   }
   * {
     @apply border-border;
@@ -365,6 +350,26 @@ html:not(.dark) .text-white\/\[0\.02\] {
 
 html, body {
   scroll-behavior: smooth;
+}
+
+/* Skip to content link - visually hidden until focused */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  z-index: 10000;
+  transform: translateX(-50%);
+  padding: 0.75rem 1.5rem;
+  background: var(--brand-primary);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 0;
 }
 
 /* ─── Typography Overrides ─── */
@@ -400,6 +405,11 @@ html, body {
     background: var(--brand-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  /* ─── Speakable Schema CSS Selector (WebPage) ─── */
+  .blog-summary {
+    @apply text-foreground leading-relaxed;
   }
 
   .text-silver-gradient {
@@ -486,16 +496,6 @@ html, body {
 
 .weight-contrast em {
   @apply font-normal italic text-brand-primary not-italic;
-}
-
-.maysan-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top right, var(--primary-glow), transparent 70%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
 }
 
 /* ─── Standardized Glass Surfaces ─── */
@@ -638,15 +638,6 @@ html, body {
 @keyframes shimmer {
   0% { transform: skewX(-20deg) translateX(-150%); }
   100% { transform: skewX(-20deg) translateX(150%); }
-}
-
-/* Glow effects */
-.glow-primary {
-  box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
-}
-
-.glow-primary-subtle {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
 }
 
 /* ─── Theme Background Patterns ─── */

@@ -7,20 +7,20 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Start Your Project | Contact Maysan Labs",
     description: "Ready to build your enterprise SaaS solution? Contact Maysan Labs for a free consultation.",
-    url: "https://maysanlabs.com/init",
+    url: "https://maysanlabs.com/start",
     type: "website",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Contact Maysan Labs" }],
   },
   alternates: { 
-    canonical: "https://maysanlabs.com/init",
+    canonical: "https://maysanlabs.com/start",
     languages: {
-      en: "https://maysanlabs.com/init",
-      ar: "https://maysanlabs.com/ar/init",
+      en: "https://maysanlabs.com/start",
+      ar: "https://maysanlabs.com/ar/start",
     },
   },
 };
 
-export default function InitLayout({
+export default function StartLayout({
   children,
 }: {
   children: React.ReactNode;

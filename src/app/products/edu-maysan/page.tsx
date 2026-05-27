@@ -5,8 +5,8 @@ import { generateBreadcrumbSchema, generateProductSEO } from "@/lib/seo/helpers"
 const productData = {
   name: "Edu-Maysan",
   description: "Next-generation intelligence platform for educational institutions. Unifying finance, logistics, and academics.",
-  price: 8000,
-  currency: "USD",
+  price: 640000,
+  currency: "INR",
   url: "https://maysanlabs.com/products/edu-maysan"
 };
 

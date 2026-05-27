@@ -8,7 +8,7 @@ import MultiStepForm from "@/components/MultiStepForm";
 import { Send, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
-const initHowToSchema = {
+const startHowToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
   name: "How to Start a Software Project with Maysan Labs",
@@ -16,8 +16,8 @@ const initHowToSchema = {
   totalTime: "PT24H",
   estimatedCost: {
     "@type": "MonetaryAmount",
-    currency: "USD",
-    value: "5000"
+    currency: "INR",
+    value: "400000"
   },
   step: [
     {
@@ -25,33 +25,33 @@ const initHowToSchema = {
       position: 1,
       name: "Fill out the project form",
       text: "Tell us about your project requirements, budget, and timeline through our online form.",
-      url: "https://maysanlabs.com/init"
+      url: "https://maysanlabs.com/start"
     },
     {
       "@type": "HowToStep",
       position: 2,
       name: "Schedule a consultation",
       text: "Our team reviews your requirements and schedules a free consultation within 24 hours.",
-      url: "https://maysanlabs.com/init"
+      url: "https://maysanlabs.com/start"
     },
     {
       "@type": "HowToStep",
       position: 3,
       name: "Receive proposal",
       text: "We prepare a detailed proposal with scope, timeline, and pricing tailored to your needs.",
-      url: "https://maysanlabs.com/init"
+      url: "https://maysanlabs.com/start"
     }
   ]
 };
 
-export default function InitPage() {
+export default function StartPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   return (
     <main className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden text-foreground">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(initHowToSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(startHowToSchema) }}
       />
       <Navbar />
       
@@ -60,7 +60,7 @@ export default function InitPage() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
         
         <div className="container-main relative">
-{!isSubmitted ? (
+          {!isSubmitted ? (
             <div className="max-w-2xl mx-auto">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}

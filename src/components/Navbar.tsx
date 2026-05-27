@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, X, Phone } from "lucide-react";
+import Image from "next/image";
+import { Menu, X, Phone, Search } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
-import LanguageToggle from "@/components/ui/LanguageToggle";
+import SearchModal from "@/components/SearchModal";
+
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -13,9 +15,10 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const menuRef = useRef<HTMLDivElement>(null);
 
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   useEffect(() => {
-    // Use setTimeout to avoid calling setState synchronously
     const timeout = setTimeout(() => {
       setMounted(true);
     }, 0);
@@ -31,9 +34,43 @@ export default function Navbar() {
     };
   }, []);
 
+  // Keyboard shortcut: Cmd/Ctrl+K opens search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setIsSearchOpen(true);
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // Focus trap when mobile menu is open
+  useEffect(() => {
+    if (!isOpen || !menuRef.current) return;
+    const firstFocusable = menuRef.current.querySelector<HTMLElement>("a, button, [tabindex]:not([tabindex='-1'])");
+    firstFocusable?.focus();
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== "Tab" || !menuRef.current) return;
+      const focusable = menuRef.current.querySelectorAll<HTMLElement>("a, button, [tabindex]:not([tabindex='-1'])");
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
   const navItems = [
     { name: "Services", href: "/services" },
     { name: "Products", href: "/products" },
+    { name: "Tools", href: "/tools" },
     { name: "Case Studies", href: "/case-studies" },
     { name: "Blog", href: "/blog" },
     { name: "Careers", href: "/careers" },
@@ -56,9 +93,9 @@ export default function Navbar() {
               transition={{ type: "spring", stiffness: 400, damping: 15 }}
               className="relative h-9 w-9 rounded-full overflow-hidden flex items-center justify-center border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)]"
             >
-              <img 
+              <Image 
                 src="/logo-rounded-v2.png" 
-                alt="Maysan Labs - Enterprise SaaS Development Company" 
+                alt="Maysan Labs"
                 width={36}
                 height={36}
                 className="h-full w-full object-contain" 
@@ -85,9 +122,15 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-4">
-            <LanguageToggle />
             <ThemeToggle />
-            <Link href="/init" className="group relative px-6 py-2.5 bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full font-bold text-[9px] uppercase tracking-widest text-foreground/90 shadow-lg shadow-black/10 overflow-hidden transition-all duration-300 hover:bg-[#1A6DD6] hover:border-[#1A6DD6] hover:text-white hover:shadow-blue-500/20 hover:scale-105 active:scale-95">
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              aria-label="Open search"
+              className="w-9 h-9 flex items-center justify-center text-foreground/50 hover:text-foreground bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full transition-all duration-200 hover:border-[var(--text-on-white)]/20"
+            >
+              <Search size={15} />
+            </button>
+            <Link href="/start" className="group relative px-6 py-2.5 bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full font-bold text-[9px] uppercase tracking-widest text-foreground/90 shadow-lg shadow-black/10 overflow-hidden transition-all duration-300 hover:bg-[#1A6DD6] hover:border-[#1A6DD6] hover:text-white hover:shadow-blue-500/20 hover:scale-105 active:scale-95">
               <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative z-10">Book a Call</span>
             </Link>
@@ -98,6 +141,7 @@ export default function Navbar() {
             className="lg:hidden w-10 h-10 flex items-center justify-center text-foreground/50 hover:text-foreground bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full hover:bg-[var(--glass-chip-bg)] hover:border-[var(--text-on-white)]/20 transition-all duration-200"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? <X size={18} /> : <Menu size={18} />}
           </motion.button>
@@ -107,7 +151,7 @@ export default function Navbar() {
       {/* Sticky Mobile CTA */}
       <div className="fixed bottom-0 left-0 right-0 z-[90] md:hidden px-4 pb-4">
         <Link 
-          href="/init"
+          href="/start"
           className="group relative flex items-center justify-center gap-2.5 w-full py-4 bg-[#1A6DD6] rounded-2xl font-bold text-[10px] uppercase tracking-widest text-white shadow-xl shadow-blue-500/30 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-[1.02] active:scale-[0.98]"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -120,6 +164,10 @@ export default function Navbar() {
       <AnimatePresence>
         {isOpen && (
           <motion.div 
+            ref={menuRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -154,11 +202,17 @@ export default function Navbar() {
                 </div>
               </div>
 
-              {/* Mobile Actions: Language & Theme Controls */}
+              {/* Mobile Actions: Preferences */}
               <div className="flex items-center justify-between border-t border-[var(--sec-border)] pt-6 mt-6 pb-20">
                 <span className="text-foreground/40 text-xs font-semibold uppercase tracking-wider">Preferences</span>
                 <div className="flex items-center gap-4">
-                  <LanguageToggle />
+                  <button
+                    onClick={() => { setIsOpen(false); setIsSearchOpen(true); }}
+                    aria-label="Open search"
+                    className="w-9 h-9 flex items-center justify-center text-foreground/50 hover:text-foreground bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full transition-all duration-200"
+                  >
+                    <Search size={15} />
+                  </button>
                   <ThemeToggle />
                 </div>
               </div>
@@ -166,6 +220,8 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </>
   );
 }

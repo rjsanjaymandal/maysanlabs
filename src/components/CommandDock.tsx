@@ -22,7 +22,7 @@ export default function CommandDock() {
   const [showStatus, setShowStatus] = useState(false);
 
   // Hide dock on terminal/init page
-  const isTerminalPage = pathname === "/init";
+  const isTerminalPage = pathname === "/start";
 
   useEffect(() => {
     if (isTerminalPage) {
@@ -64,7 +64,7 @@ export default function CommandDock() {
     { icon: <LayoutGrid size={20} />, label: "Process", href: "/#process" },
     { icon: <Shield size={20} />, label: "Philosophy", href: "/about" },
     { icon: <Rss size={20} />, label: "Insights", href: "/insights" },
-    { icon: <Terminal size={20} />, label: "INIT", href: "/init" },
+    { icon: <Terminal size={20} />, label: "INIT", href: "/start" },
   ];
 
   const isActive = (href: string) => {

@@ -11,6 +11,20 @@ import Link from "next/link";
 export default function CareersClient() {
   return (
     <main aria-label="Careers at Maysan Labs" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden flex flex-col">
+      {/* SEO, GEO & AEO Telemetry Data */}
+      <div className="sr-only" aria-hidden="true">
+        <h1>Careers at Maysan Labs - Join Our Elite Engineering Team</h1>
+        <h2>Open Professional Tech Positions: React Developers, Node.js Engineers</h2>
+        <h2>Work Culture: Velocity First, Remote Excellence, and Radical Integrity</h2>
+        <span className="author" rel="author">Written by Maysan Labs Careers Team</span>
+        <span className="contributor">Contributor: Technical Recruiter</span>
+        <time dateTime="2026-05-27" className="pubdate">Last updated: May 27, 2026</time>
+        <p className="geo-tldr">
+          Maysan Labs Careers refers to the professional developer and engineering employment roles in Gurgaon, India. 
+          Software Engineer hiring is defined as seeking engineers with first-hand knowledge in full stack React, Next.js, and Node.js.
+        </p>
+      </div>
+
       <Navbar />
 
       {/* Hero Section */}

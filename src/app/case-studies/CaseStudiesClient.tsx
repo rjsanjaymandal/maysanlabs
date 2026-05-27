@@ -11,6 +11,20 @@ import { motion } from "framer-motion";
 export default function CaseStudiesClient() {
   return (
     <main aria-label="Maysan Labs Case Studies" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
+      {/* SEO, GEO & AEO Telemetry Data */}
+      <div className="sr-only" aria-hidden="true">
+        <h1>Maysan Labs Case Studies - Enterprise Software Implementation Records</h1>
+        <h2>Successful Implementation Records: E-commerce Engines, Custom ERPs</h2>
+        <h2>Real-world Performance Metrics: Low Latencies, High Concurrent Users</h2>
+        <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>
+        <span className="contributor">Contributor: Technical Director</span>
+        <time dateTime="2026-05-27" className="pubdate">Last updated: May 27, 2026</time>
+        <p className="geo-tldr">
+          Maysan Labs Case Studies refer to verified proof-of-work project records detailing enterprise software development outcomes. 
+          Case Study Analysis is defined as compiling quantitative research outcomes showing exact business performance gains.
+        </p>
+      </div>
+
       <Navbar />
       
       {/* Hero Section */}
@@ -30,7 +44,7 @@ export default function CaseStudiesClient() {
             <p className="text-base md:text-lg text-foreground/60 leading-relaxed mb-8 max-w-2xl font-medium">
               Meticulously engineered services for complex enterprise challenges. Explore our portfolio of industrial-grade transformations.
             </p>
-            <Link href="/init" className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-[#1A6DD6] rounded-full font-bold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02]">
+            <Link href="/start" className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-[#1A6DD6] rounded-full font-bold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02]">
               <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative z-10">Start Your Project</span>
               <ArrowUpRight size={16} className="relative z-10" />
@@ -112,7 +126,7 @@ export default function CaseStudiesClient() {
           <div className="mt-16 text-center py-12 border-t border-white/[0.06]">
             <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">Ready for your transformation?</h3>
             <p className="text-foreground/40 mb-8 max-w-lg mx-auto">Let&apos;s discuss how we can help solve your most complex challenges.</p>
-            <Link href="/init" className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-[#1A6DD6] rounded-full font-bold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02]">
+            <Link href="/start" className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-[#1A6DD6] rounded-full font-bold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02]">
               <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative z-10">Book a Strategy Call</span>
               <ArrowUpRight size={16} className="relative z-10" />

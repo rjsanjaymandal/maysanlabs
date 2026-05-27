@@ -32,6 +32,7 @@ function ApplyForm() {
     linkedIn: "",
     portfolio: "",
     message: "",
+    website: "", // honeypot field
   });
 
   const [resume, setResume] = useState<File | null>(null);
@@ -243,12 +244,26 @@ function ApplyForm() {
               />
             </div>
 
-            {error && (
-              <p className="text-destructive text-sm font-medium">{error}</p>
-            )}
-
-            <button
-              type="submit"
+             {error && (
+               <p className="text-destructive text-sm font-medium">{error}</p>
+             )}
+             
+             {/* Honeypot field - hidden from humans, visible to bots */}
+             <div className="absolute left-[-9999px]">
+               <label htmlFor="website">Website</label>
+               <input
+                 id="website"
+                 name="website"
+                 type="text"
+                 value={formData.website}
+                 onChange={handleChange}
+                 aria-hidden="true"
+                 tabIndex={-1}
+               />
+</div>
+              
+              <button
+               type="submit"
               disabled={isSubmitting}
               className="w-full bg-gradient-to-r from-brand-primary to-[#60A5FA] text-white font-extrabold py-4 rounded-lg hover:opacity-90 transition-all uppercase tracking-widest text-sm shadow-lg hover:shadow-[0_0_30px_rgba(26,109,214,0.6)] hover:brightness-110 flex items-center justify-center gap-2"
             >

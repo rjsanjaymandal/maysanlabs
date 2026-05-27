@@ -31,6 +31,7 @@ export default function MultiStepForm() {
     name: "",
     email: "",
     phone: "",
+    website: "", // honeypot field
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -124,11 +125,13 @@ export default function MultiStepForm() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
             >
-              <h3 className="text-xl font-semibold text-foreground mb-6">What type of project?</h3>
-              <div className="space-y-3">
+              <h3 id="step1-heading" className="text-xl font-semibold text-foreground mb-6">What type of project?</h3>
+              <div className="space-y-3" role="radiogroup" aria-labelledby="step1-heading">
                 {projectTypes.map((type) => (
                   <button
                     key={type.id}
+                    role="radio"
+                    aria-checked={formData.projectType === type.id}
                     onClick={() => updateFormData("projectType", type.id)}
                     className={`w-full p-4 rounded-xl text-left transition-all ${
                       formData.projectType === type.id
@@ -176,8 +179,10 @@ export default function MultiStepForm() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
             >
-              <h3 className="text-xl font-semibold text-foreground mb-6">Tell us about your project</h3>
+              <h3 id="step2-heading" className="text-xl font-semibold text-foreground mb-6">Tell us about your project</h3>
+              <label htmlFor="project-description" className="sr-only">Project description</label>
               <textarea
+                id="project-description"
                 value={formData.description}
                 onChange={(e) => updateFormData("description", e.target.value)}
                 placeholder="Describe your project, goals, timeline, and any specific requirements..."
@@ -198,8 +203,9 @@ export default function MultiStepForm() {
               <h3 className="text-xl font-semibold text-foreground mb-6">Your contact information</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="text-foreground/40 text-sm mb-2 block">Name / Company *</label>
+                  <label htmlFor="contact-name" className="text-foreground/40 text-sm mb-2 block">Name / Company *</label>
                   <input
+                    id="contact-name"
                     type="text"
                     value={formData.name}
                     onChange={(e) => updateFormData("name", e.target.value)}
@@ -208,8 +214,9 @@ export default function MultiStepForm() {
                   />
                 </div>
                 <div>
-                  <label className="text-foreground/40 text-sm mb-2 block">Email *</label>
+                  <label htmlFor="contact-email" className="text-foreground/40 text-sm mb-2 block">Email *</label>
                   <input
+                    id="contact-email"
                     type="email"
                     value={formData.email}
                     onChange={(e) => updateFormData("email", e.target.value)}
@@ -218,13 +225,27 @@ export default function MultiStepForm() {
                   />
                 </div>
                 <div>
-                  <label className="text-foreground/40 text-sm mb-2 block">Phone (optional)</label>
+                  <label htmlFor="contact-phone" className="text-foreground/40 text-sm mb-2 block">Phone (optional)</label>
                   <input
+                    id="contact-phone"
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => updateFormData("phone", e.target.value)}
                     placeholder="+1 234 567 8900"
                     className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none transition-all"
+                  />
+                </div>
+                
+                {/* Honeypot field - hidden from humans, visible to bots */}
+                <div className="absolute left-[-9999px]">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    id="website"
+                    type="text"
+                    value={formData.website}
+                    onChange={(e) => updateFormData("website", e.target.value)}
+                    aria-hidden="true"
+                    tabIndex={-1}
                   />
                 </div>
               </div>
@@ -279,6 +300,8 @@ export default function MultiStepForm() {
         {/* Error Message */}
         {error && (
           <motion.div
+            role="alert"
+            aria-live="polite"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             className="mt-4 p-4 bg-red-500/10 border border-red-500/20 rounded-xl flex items-center gap-3 text-red-400"
