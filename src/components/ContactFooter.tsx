@@ -152,14 +152,14 @@ export default function ContactFooter() {
               </div>
             </div>
 
-            <div>
+            <div className="flex flex-col">
               <h3 className="text-xs font-semibold text-foreground/70 uppercase tracking-widest mb-5">Company</h3>
-              <div className="grid grid-cols-2 md:grid-cols-1 gap-3">
+              <div className="flex flex-col gap-2.5">
                 {links.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="text-foreground/60 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-x-1 inline-block"
+                    className="text-foreground/60 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-x-1 inline-block w-fit"
                   >
                     {link.name}
                   </Link>
@@ -187,13 +187,13 @@ export default function ContactFooter() {
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-3">
             <p className="text-foreground/60 text-sm">
               © {new Date().getFullYear()} Maysan Labs. All rights reserved.
             </p>
-            <div className="flex gap-8">
-              <Link href="/privacy" className="text-foreground/65 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-y-[-1px] inline-block">Privacy Policy</Link>
-              <Link href="/terms" className="text-foreground/65 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-y-[-1px] inline-block">Terms of Service</Link>
+            <div className="flex gap-5">
+              <Link href="/privacy" className="text-foreground/65 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-y-[-1px]">Privacy Policy</Link>
+              <Link href="/terms" className="text-foreground/65 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-y-[-1px]">Terms of Service</Link>
             </div>
           </div>
         </div>
