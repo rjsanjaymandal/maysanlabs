@@ -3,19 +3,25 @@
 import { useState, useEffect } from "react";
 import Script from "next/script";
 
-const GTM_ID = "GTM-TJ8X38P8";
-const GA_ID = "G-W29JP8RY97";
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-TJ8X38P8";
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-W29JP8RY97";
 
 export default function GoogleAnalytics() {
   const [consented, setConsented] = useState(false);
 
   useEffect(() => {
-    const raf = requestAnimationFrame(() => {
-      if (typeof window !== "undefined" && window.__cookieConsent === "accepted") {
+    const checkConsent = () => {
+      const stored = typeof window !== "undefined" ? localStorage.getItem("cookie-consent") : null;
+      if (stored === "accepted" || window.__cookieConsent === "accepted") {
         setConsented(true);
       }
-    });
-    return () => cancelAnimationFrame(raf);
+    };
+
+    checkConsent();
+
+    const handleChange = () => checkConsent();
+    window.addEventListener("cookieConsentChanged", handleChange);
+    return () => window.removeEventListener("cookieConsentChanged", handleChange);
   }, []);
 
   if (!consented) return null;

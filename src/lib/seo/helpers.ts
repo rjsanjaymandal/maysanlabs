@@ -520,44 +520,9 @@ export function generateJSONLDScripts(
   return scripts;
 }
 
-const seoHelpers = {
-  generateBlogPostSEO,
-  generateBlogPostJSONLD,
-  generateCaseStudySEO,
-  generateCaseStudyJSONLD,
-  generateProductSEO,
-  generateBaseSEO,
-  generatePageSEO,
-  generateJSONLDScripts,
-  generateFAQSchema,
-  generateHowToSchema,
-  generateJobPostingSchema,
-  generateBreadcrumbSchema
-};
-
-export default seoHelpers;
-
-/**
- * Generate FAQPage schema for SEO
- */
 export interface FAQItem {
   question: string;
   answer: string;
-}
-
-export function generateFAQSchema(faqs: FAQItem[], _siteUrl: string = "https://maysanlabs.com") {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  };
 }
 
 /**
@@ -566,20 +531,6 @@ export function generateFAQSchema(faqs: FAQItem[], _siteUrl: string = "https://m
 export interface HowToStep {
   name: string;
   text: string;
-}
-
-export function generateHowToSchema(title: string, steps: HowToStep[], _siteUrl: string = "https://maysanlabs.com") {
-  return {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": title,
-    "step": steps.map((step, index) => ({
-      "@type": "HowToStep",
-      "position": index + 1,
-      "name": step.name,
-      "text": step.text
-    }))
-  };
 }
 
 /**

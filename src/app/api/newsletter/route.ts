@@ -41,7 +41,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true, message: "Subscribed (dev mode)" });
     }
 
-    const res = await fetch("https://api.resend.com/audiences/YOUR_AUDIENCE_ID/contacts", {
+    const audienceId = process.env.RESEND_AUDIENCE_ID;
+    if (!audienceId) {
+      console.log("[Newsletter] Dev mode (no RESEND_AUDIENCE_ID) — new subscription:", email);
+      return NextResponse.json({ success: true, message: "Subscribed (dev mode)" });
+    }
+
+    const res = await fetch(`https://api.resend.com/audiences/${audienceId}/contacts`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${apiKey}`,

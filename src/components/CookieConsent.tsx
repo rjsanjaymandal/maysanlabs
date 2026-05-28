@@ -42,12 +42,14 @@ export default function CookieConsent() {
     localStorage.setItem(STORAGE_KEY, "accepted");
     window.__cookieConsent = "accepted";
     setConsent("accepted");
+    window.dispatchEvent(new CustomEvent("cookieConsentChanged"));
   };
 
   const handleDecline = () => {
     localStorage.setItem(STORAGE_KEY, "declined");
     window.__cookieConsent = "declined";
     setConsent("declined");
+    window.dispatchEvent(new CustomEvent("cookieConsentChanged"));
   };
 
   if (!mounted || consent !== null) return null;

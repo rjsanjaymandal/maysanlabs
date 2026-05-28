@@ -34,14 +34,23 @@ export default function ExitIntentPopup() {
 
   const closePopup = () => setIsVisible(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setEmailError("Please enter a valid email address");
       return;
     }
-    setSubmitted(true);
     setEmailError("");
+    try {
+      await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, source: "exit-intent" }),
+      });
+    } catch {
+      // Silently fail — popup shouldn't block the user
+    }
+    setSubmitted(true);
   };
 
   return (
@@ -118,6 +127,7 @@ export default function ExitIntentPopup() {
                           value={email}
                           onChange={(e) => { setEmail(e.target.value); setEmailError(""); }}
                           placeholder="Enter your email"
+                          aria-label="Email for SaaS scaling checklist"
                           className="w-full pl-10 pr-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-brand-primary/40 focus:bg-white/[0.05] transition-all"
                         />
                       </div>

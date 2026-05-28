@@ -128,6 +128,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search pages..."
+                aria-label="Search pages"
                 className="flex-1 bg-transparent text-sm text-slate-800 dark:text-foreground placeholder-slate-400 dark:placeholder-foreground/30 outline-none"
               />
               <button

@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Activity, ShieldAlert, BadgePercent, LayoutGrid, Sparkles, ArrowRight, Search, FileText, Share2, Hammer } from "lucide-react";
+import { Activity, ShieldAlert, BadgePercent, LayoutGrid, Sparkles, ArrowRight, Search, FileText, Share2, Hammer, FileImage } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 
@@ -63,6 +63,15 @@ const tools = [
     category: "Business & Legal Tools",
     badge: "Social Preview",
     color: "from-fuchsia-500 to-purple-400",
+  },
+  {
+    title: "Smart Image Compressor",
+    desc: "Compress JPEG, PNG, and WebP images directly in your browser. Scale sizes, convert formats, and optimize assets instantly with 100% privacy.",
+    href: "/tools/image-compressor",
+    icon: FileImage,
+    category: "Business & Legal Tools",
+    badge: "Optimize Image",
+    color: "from-teal-500 to-emerald-400",
   },
 ];
 
@@ -130,6 +139,7 @@ export default function ToolsClient() {
                 <input
                   type="text"
                   placeholder="Search tools..."
+                  aria-label="Search tools"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full bg-black/5 dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-full pl-10 pr-4 py-2 text-sm text-foreground focus:outline-none focus:border-brand-primary/50 transition-all placeholder:text-foreground/40"
