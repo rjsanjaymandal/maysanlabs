@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
+import type { WebVitalResult } from "@/lib/pagespeed-types";
 
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 5;
+
+const cacheMap = new Map<string, { data: unknown; expiry: number }>();
+const CACHE_TTL_MS = 5 * 60 * 1000;
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
@@ -32,16 +36,29 @@ export async function POST(request: NextRequest) {
 
     const fullUrl = url.startsWith("http") ? url : `https://${url}`;
 
+    const cacheKey = `${fullUrl}:${strategy}`;
+    const cached = cacheMap.get(cacheKey);
+    if (cached && Date.now() < cached.expiry) {
+      return NextResponse.json(cached.data);
+    }
+
     const apiKey = process.env.GOOGLE_PAGESPEED_API_KEY;
     if (!apiKey) {
       return NextResponse.json({ error: "PageSpeed API key not configured" }, { status: 500 });
     }
 
-    const params = new URLSearchParams({ url: fullUrl, key: apiKey, strategy });
+    const params = new URLSearchParams();
+    params.append("url", fullUrl);
+    params.append("key", apiKey);
+    params.append("strategy", strategy);
+    params.append("category", "performance");
+    params.append("category", "seo");
+    params.append("category", "accessibility");
+    params.append("category", "best-practices");
 
     const psiRes = await fetch(
       `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?${params}`,
-      { next: { revalidate: 300 } }
+      { signal: AbortSignal.timeout(20000) }
     );
 
     if (!psiRes.ok) {
@@ -119,7 +136,7 @@ export async function POST(request: NextRequest) {
       "Implement resource hints (preload, preconnect, prefetch) for critical third-party origins."
     );
 
-    const result = {
+    const result: WebVitalResult = {
       url: fullUrl,
       strategy,
       lcp: {
@@ -158,6 +175,7 @@ export async function POST(request: NextRequest) {
       suggestions,
     };
 
+    cacheMap.set(cacheKey, { data: result, expiry: Date.now() + CACHE_TTL_MS });
     return NextResponse.json(result);
   } catch (error) {
     console.error("[PageSpeed] Error:", error);

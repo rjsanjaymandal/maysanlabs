@@ -42,7 +42,7 @@ export default function Hero() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] sm:w-[500px] h-[240px] sm:h-[500px] bg-brand-primary/4 sm:bg-brand-primary/8 blur-[50px] sm:blur-[100px] rounded-full pointer-events-none" />
       <div className="absolute top-1/4 left-1/4 w-[120px] sm:w-[250px] h-[120px] sm:h-[250px] bg-brand-primary/3 sm:bg-brand-primary/5 blur-[30px] sm:blur-[60px] rounded-full pointer-events-none" />
       <div className="container-main relative z-10 flex flex-col items-center text-center">
-        <div className="mb-5 md:mb-6 animate-fade-in-up [animation-duration:0.5s]">
+        <div className="mb-5 md:mb-6 md:animate-fade-in-up md:[animation-duration:0.5s]">
           <span className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/3 border border-white/8 text-foreground/60 text-xs sm:text-sm font-medium">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse" />
             <span className="hidden sm:inline">Trusted by 50+ companies worldwide</span>
@@ -50,20 +50,20 @@ export default function Hero() {
           </span>
         </div>
 
-        <div className="mb-5 md:mb-6 animate-fade-in-up-lg [animation-duration:0.4s] [animation-delay:50ms]">
+        <div className="mb-5 md:mb-6 md:animate-fade-in-up-lg md:[animation-duration:0.4s] md:[animation-delay:50ms]">
           <h1 className="heading-xl text-foreground max-w-4xl">
             Get <span className="text-brand-primary">Custom Software & AI tools</span> <br className="hidden md:block" />
             built to grow <span className="text-brand-primary">your business</span>
           </h1>
         </div>
 
-        <div className="mt-3 md:mt-4 max-w-xl md:max-w-2xl mx-auto animate-fade-in-up [animation-duration:0.5s] [animation-delay:150ms]">
+        <div className="mt-3 md:mt-4 max-w-xl md:max-w-2xl mx-auto md:animate-fade-in-up md:[animation-duration:0.5s] md:[animation-delay:150ms]">
           <p className="text-foreground/60 text-sm sm:text-base md:text-lg leading-relaxed">
             We build custom software, mobile apps, and smart AI tools that save you time, reduce your staffing costs, and automate daily business tasks. No tech background required — we handle everything from design to launch.
           </p>
         </div>
 
-        <div className="mt-5 md:mt-6 flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-8 animate-fade-in-up [animation-duration:0.5s] [animation-delay:250ms]">
+        <div className="mt-5 md:mt-6 flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-8 md:animate-fade-in-up md:[animation-duration:0.5s] md:[animation-delay:250ms]">
           {benefits.map((benefit, i) => (
             <div key={i} className="flex items-center gap-1.5 md:gap-2 text-foreground/60 text-[11.5px] sm:text-xs md:text-sm px-3 py-1.5 bg-white/2 rounded-full">
               <CheckCircle2 size={12} className="text-brand-primary shrink-0" />
@@ -72,7 +72,7 @@ export default function Hero() {
           ))}
         </div>
  
-        <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto px-3 sm:px-0 animate-fade-in-up [animation-duration:0.5s] [animation-delay:350ms]">
+        <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto px-3 sm:px-0 md:animate-fade-in-up md:[animation-duration:0.5s] md:[animation-delay:350ms]">
           <Link href="/start" className="group relative w-full sm:w-auto px-5 sm:px-8 py-4 bg-[#1A6DD6] rounded-full font-bold text-[9px] xs:text-[10px] uppercase tracking-wider sm:tracking-widest text-white shadow-xl shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/40 hover:scale-[1.02] flex items-center justify-center gap-2">
             <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative z-10 text-center">Book a free 30-min discovery call</span>
@@ -86,7 +86,7 @@ export default function Hero() {
         </div>
 
         {/* Floating Glassmorphic Dashboard Showcase */}
-        <div className="w-full max-w-5xl mt-12 md:mt-24 mb-6 relative group px-3 sm:px-6 md:px-0 animate-fade-in-up [animation-duration:0.8s] [animation-delay:500ms] [content-visibility:auto]">
+        <div className="w-full max-w-5xl mt-12 md:mt-24 mb-6 relative group px-3 sm:px-6 md:px-0 md:animate-fade-in-up md:[animation-duration:0.8s] md:[animation-delay:500ms] [content-visibility:auto]">
           {/* Neon Ambient Background Glows */}
           <div className="absolute -inset-1 bg-gradient-to-r from-brand-primary/20 to-blue-500/10 rounded-[32px] blur-2xl opacity-45 group-hover:opacity-60 transition duration-1000 group-hover:duration-200 pointer-events-none animate-pulse" />
           <div className="absolute -top-12 -left-12 w-64 h-64 bg-brand-primary/5 rounded-full blur-3xl opacity-20 pointer-events-none" />
@@ -230,7 +230,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="mt-10 md:mt-16 animate-fade-in [animation-duration:0.8s] [animation-delay:700ms]">
+        <div className="mt-10 md:mt-16 md:animate-fade-in md:[animation-duration:0.8s] md:[animation-delay:700ms]">
           <Link href="#services" className="text-foreground/25 text-xs sm:text-sm hover:text-foreground/40 transition-colors flex flex-col items-center gap-1.5">
             <span>Explore services</span>
             <ArrowDown size={12} className="animate-bounce" />

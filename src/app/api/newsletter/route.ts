@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { email } = body;
+    const { email, company, source } = body;
 
     if (!email || typeof email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
@@ -37,13 +37,13 @@ export async function POST(request: NextRequest) {
     const apiKey = process.env.RESEND_API_KEY;
 
     if (!apiKey || apiKey.startsWith("re_")) {
-      console.log("[Newsletter] Dev mode — new subscription:", email);
+      console.log("[Newsletter] Dev mode — new subscription:", { email, company, source });
       return NextResponse.json({ success: true, message: "Subscribed (dev mode)" });
     }
 
     const audienceId = process.env.RESEND_AUDIENCE_ID;
     if (!audienceId) {
-      console.log("[Newsletter] Dev mode (no RESEND_AUDIENCE_ID) — new subscription:", email);
+      console.log("[Newsletter] Dev mode (no RESEND_AUDIENCE_ID) — new subscription:", { email, company, source });
       return NextResponse.json({ success: true, message: "Subscribed (dev mode)" });
     }
 
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, first_name: company || "" }),
     });
 
     if (!res.ok) {

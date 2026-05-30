@@ -79,7 +79,6 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
 
     if (res.ok) {
       xmlText = await res.text();
-      sitemapFetched = true;
     } else if (fetchUrl !== targetUrl) {
       const secondRes = await fetch(targetUrl, {
         headers: { "User-Agent": "MaysanSeoBot/3.0" },
@@ -94,12 +93,13 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
     console.error("Sitemap fetch failed:", e);
   }
 
-  if (sitemapFetched && xmlText) {
+  if (xmlText) {
     const locRegex = /<loc>(https?:\/\/[^\s<]+)<\/loc>/gi;
     let match;
     while ((match = locRegex.exec(xmlText)) !== null) {
       urls.push(match[1]);
     }
+    if (urls.length > 0) sitemapFetched = true;
   }
 
   if (urls.length === 0) {
@@ -160,7 +160,7 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
 
         if (pageRes.ok) {
           const html = await pageRes.text();
-          pageSize = Math.round(new Blob([html]).size / 1024);
+          pageSize = Math.round(Buffer.byteLength(html, "utf8") / 1024);
 
           // Title
           const titleMatch = html.match(/<title[^>]*>(.*?)<\/title>/i);
@@ -236,7 +236,7 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
           totalWordCount += wordCount;
           totalPageSize += pageSize;
 
-          if (!description) missingMeta++;
+          if (!title || !description) missingMeta++;
           if (!hasSchema) missingSchemas++;
         } else {
           brokenLinks++;

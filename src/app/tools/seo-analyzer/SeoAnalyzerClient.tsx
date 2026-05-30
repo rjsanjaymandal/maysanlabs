@@ -8,29 +8,7 @@ import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 import { analyzeSitemap } from "@/app/actions/analyzeSitemap";
 import type { SeoAuditResult } from "@/app/actions/analyzeSitemap";
-
-interface Metric {
-  value: number | null;
-  grade: "good" | "needs-work" | "poor" | null;
-}
-
-interface WebVitalResult {
-  url: string;
-  strategy: string;
-  lcp: Metric;
-  inp: Metric;
-  cls: Metric;
-  ttfb: Metric;
-  fcp: Metric;
-  tbt: Metric;
-  si: Metric;
-  mobile: number;
-  seo: number;
-  performance: number;
-  accessibility: number | null;
-  bestPractices: number | null;
-  suggestions: string[];
-}
+import type { WebVitalResult } from "@/lib/pagespeed-types";
 
 interface ScanRecord {
   url: string;
@@ -168,10 +146,6 @@ function loadHistory(): ScanRecord[] {
   try { const raw = localStorage.getItem(HISTORY_KEY); return raw ? JSON.parse(raw) : []; } catch { return []; }
 }
 
-function saveToHistory(record: ScanRecord) {
-  try { const history = loadHistory(); history.unshift(record); localStorage.setItem(HISTORY_KEY, JSON.stringify(history.slice(0, MAX_HISTORY))); } catch { }
-}
-
 export default function SeoAnalyzerClient() {
   const [url, setUrl] = useState("");
   const [strategy, setStrategy] = useState<"mobile" | "desktop">("mobile");
@@ -183,8 +157,6 @@ export default function SeoAnalyzerClient() {
   const [showLeadForm, setShowLeadForm] = useState(false);
   const [perfResults, setPerfResults] = useState<WebVitalResult | null>(null);
   const [seoResults, setSeoResults] = useState<SeoAuditResult | null>(null);
-  const [perfProgress, setPerfProgress] = useState(0);
-  const [seoProgress, setSeoProgress] = useState(0);
   const [perfStep, setPerfStep] = useState("");
   const [seoStep, setSeoStep] = useState("");
   const [urlError, setUrlError] = useState<string | null>(null);
@@ -194,10 +166,16 @@ export default function SeoAnalyzerClient() {
   const [showHistory, setShowHistory] = useState(false);
   const [copied, setCopied] = useState(false);
   const [seoError, setSeoError] = useState<string | null>(null);
+  const [showDetailed, setShowDetailed] = useState(false);
+  const [scanError, setScanError] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<"performance" | "seo">("performance");
   const resultsRef = useRef<HTMLDivElement>(null);
+  const abortRef = useRef<AbortController | null>(null);
 
-  useEffect(() => { setHistory(loadHistory()); }, []);
+  useEffect(() => {
+    setHistory(loadHistory());
+    return () => abortRef.current?.abort();
+  }, []);
 
   const validateUrl = (input: string): string | null => {
     if (!input.trim()) return "Please enter a URL";
@@ -216,21 +194,24 @@ export default function SeoAnalyzerClient() {
     if (error) return;
 
     setScanning(true);
+    setScanError(null);
     setPerfResults(null);
     setSeoResults(null);
     setSeoError(null);
     setShowLeadForm(false);
-    setPerfProgress(0);
-    setSeoProgress(0);
+    setLeadCaptured(false);
     setPerfStep(perfSteps[0]);
     setSeoStep("");
 
     const fullUrl = url.startsWith("http") ? url : `https://${url}`;
 
+    abortRef.current?.abort();
+    abortRef.current = new AbortController();
+    const signal = abortRef.current.signal;
+
     let perfStepIdx = 1;
     const perfInterval = setInterval(() => {
       if (perfStepIdx < perfSteps.length) {
-        setPerfProgress(Math.min((perfStepIdx / perfSteps.length) * 100, 90));
         setPerfStep(perfSteps[perfStepIdx - 1]);
         perfStepIdx++;
       }
@@ -240,6 +221,7 @@ export default function SeoAnalyzerClient() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url: fullUrl, strategy }),
+      signal,
     }).then(async (res) => {
       clearInterval(perfInterval);
       if (!res.ok) {
@@ -253,7 +235,6 @@ export default function SeoAnalyzerClient() {
     let seoStepIdx = 1;
     const seoInterval = setInterval(() => {
       if (seoStepIdx <= seoSteps.length) {
-        setSeoProgress(Math.min((seoStepIdx / seoSteps.length) * 100, 90));
         setSeoStep(seoSteps[seoStepIdx - 1]);
         seoStepIdx++;
       }
@@ -261,7 +242,6 @@ export default function SeoAnalyzerClient() {
 
     const seoPromise = analyzeSitemap(fullUrl).then((result) => {
       clearInterval(seoInterval);
-      setSeoProgress(100);
       setSeoStep("SEO audit complete!");
       return result;
     }).catch((err) => {
@@ -277,14 +257,12 @@ export default function SeoAnalyzerClient() {
       clearInterval(seoInterval);
 
       if (perf) {
-        setPerfProgress(100);
         setPerfStep("PageSpeed report ready!");
         setPerfResults(perf);
       }
 
       if (seo) {
         setSeoResults(seo);
-        setSeoProgress(100);
         setSeoStep("SEO audit complete!");
       }
 
@@ -296,21 +274,15 @@ export default function SeoAnalyzerClient() {
         const needs = m.filter((x) => x.grade === "needs-work").length;
         const overall = poor > 0 ? "Poor" : needs > 0 ? "Needs Work" : "Good";
 
-        saveToHistory({
-          url: fullUrl,
-          strategy,
-          timestamp: Date.now(),
-          overall,
-          perf: perf?.performance ?? 0,
-          seoScore: seo?.seoScore ?? 0,
-        });
-        setHistory(loadHistory());
+        const newRecord: ScanRecord = { url: fullUrl, strategy, timestamp: Date.now(), overall, perf: perf?.performance ?? 0, seoScore: seo?.seoScore ?? 0 };
+        try { const raw = localStorage.getItem(HISTORY_KEY); const existing = raw ? JSON.parse(raw) : []; existing.unshift(newRecord); localStorage.setItem(HISTORY_KEY, JSON.stringify(existing.slice(0, MAX_HISTORY))); } catch { }
+        setHistory(prev => [newRecord, ...prev].slice(0, MAX_HISTORY));
         resultsRef.current?.scrollIntoView({ behavior: "smooth" });
       }, 400);
     } catch (err) {
       clearInterval(perfInterval);
       clearInterval(seoInterval);
-      setUrlError(err instanceof Error ? err.message : "Scan failed. Please try again.");
+      setScanError(err instanceof Error ? err.message : "Scan failed. Please try again.");
       setScanning(false);
     }
   }, [url, strategy]);
@@ -374,11 +346,14 @@ export default function SeoAnalyzerClient() {
     navigator.clipboard.writeText(lines.join("\n")).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
+    }).catch(() => {
+      // Clipboard API not available (HTTP or older browser)
     });
   };
 
   const resetAll = () => {
     setUrl("");
+    setScanError(null);
     setPerfResults(null);
     setSeoResults(null);
     setScanning(false);
@@ -461,6 +436,10 @@ export default function SeoAnalyzerClient() {
 
             {showHistory && history.length > 0 && (
               <motion.div initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} className="mt-3 p-3 bg-black/20 rounded-xl border border-white/[0.04] max-h-48 overflow-y-auto">
+                <div className="flex items-center justify-between mb-2 px-1">
+                  <span className="text-[10px] text-foreground/30 font-mono">Scan history</span>
+                  <button onClick={() => { localStorage.removeItem(HISTORY_KEY); setHistory([]); }} className="text-[10px] text-red-400/50 hover:text-red-400 transition-colors">Clear All</button>
+                </div>
                 {history.map((h, i) => (
                   <div key={i} className="flex items-center justify-between py-1.5 text-xs border-b border-white/[0.03] last:border-0">
                     <div className="flex items-center gap-2 min-w-0">
@@ -490,24 +469,39 @@ export default function SeoAnalyzerClient() {
               </div>
               <div className="space-y-4">
                 <div>
-                  <div className="flex items-center justify-between text-xs mb-1.5">
-                    <span className="text-foreground/50 flex items-center gap-1.5"><Zap size={11} className="text-brand-primary" /> Performance & Core Web Vitals</span>
-                    <span className="text-foreground/30">{Math.round(perfProgress)}%</span>
+                  <div className="flex items-center gap-1.5 text-xs mb-1.5">
+                    <Zap size={11} className="text-brand-primary" />
+                    <span className="text-foreground/50">Performance & Core Web Vitals</span>
+                    {perfStep === "PageSpeed report ready!" && <span className="text-green-400 text-[10px] ml-auto">Done</span>}
                   </div>
                   <div className="w-full h-1.5 bg-white/[0.04] rounded-full overflow-hidden">
-                    <motion.div initial={{ width: 0 }} animate={{ width: `${perfProgress}%` }} transition={{ duration: 0.5 }} className="h-full rounded-full bg-gradient-to-r from-brand-primary to-brand-light" />
+                    <motion.div animate={{ x: ["-100%", "200%"] }} transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }} className="w-1/2 h-full rounded-full bg-gradient-to-r from-transparent via-brand-primary to-transparent" />
                   </div>
                   <p className="text-[10px] text-foreground/30 font-mono mt-1">{perfStep}</p>
                 </div>
                 <div>
-                  <div className="flex items-center justify-between text-xs mb-1.5">
-                    <span className="text-foreground/50 flex items-center gap-1.5"><FileText size={11} className="text-brand-primary" /> SEO & Sitemap Audit</span>
-                    <span className="text-foreground/30">{Math.round(seoProgress)}%</span>
+                  <div className="flex items-center gap-1.5 text-xs mb-1.5">
+                    <FileText size={11} className="text-brand-primary" />
+                    <span className="text-foreground/50">SEO & Sitemap Audit</span>
+                    {seoStep === "SEO audit complete!" && <span className="text-green-400 text-[10px] ml-auto">Done</span>}
                   </div>
                   <div className="w-full h-1.5 bg-white/[0.04] rounded-full overflow-hidden">
-                    <motion.div initial={{ width: 0 }} animate={{ width: `${seoProgress}%` }} transition={{ duration: 0.5 }} className="h-full rounded-full bg-gradient-to-r from-amber-400 to-brand-primary" />
+                    <motion.div animate={{ x: ["-100%", "200%"] }} transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }} className="w-1/2 h-full rounded-full bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
                   </div>
                   <p className="text-[10px] text-foreground/30 font-mono mt-1">{seoStep || "Waiting..."}</p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Scan error banner */}
+          {scanError && !scanning && (
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="glass-strong rounded-2xl p-6 md:p-8 mb-6 border border-red-400/20">
+              <div className="flex items-center gap-3">
+                <AlertTriangle size={20} className="text-red-400 shrink-0" />
+                <div>
+                  <h3 className="text-sm font-bold text-foreground">Scan Failed</h3>
+                  <p className="text-xs text-foreground/60 mt-1">{scanError}</p>
                 </div>
               </div>
             </motion.div>
@@ -588,14 +582,16 @@ export default function SeoAnalyzerClient() {
                     </div>
 
                     <div className="mb-6">
-                      <button onClick={() => { const el = document.getElementById("perf-detailed"); if (el) el.classList.toggle("hidden"); }} className="flex items-center gap-1.5 text-xs text-foreground/40 hover:text-foreground/70 transition-all mb-3">
-                        <Clock size={12} /> Show detailed metrics <ChevronDown size={10} />
+                      <button onClick={() => setShowDetailed(!showDetailed)} className="flex items-center gap-1.5 text-xs text-foreground/40 hover:text-foreground/70 transition-all mb-3">
+                        <Clock size={12} /> {showDetailed ? "Hide" : "Show"} detailed metrics {showDetailed ? <ChevronUp size={10} /> : <ChevronDown size={10} />}
                       </button>
-                      <div id="perf-detailed" className="hidden grid grid-cols-2 sm:grid-cols-3 gap-3">
-                        <MetricBadge label="FCP" value={perfResults.fcp.value !== null ? `${perfResults.fcp.value.toFixed(1)}s` : null} grade={perfResults.fcp.grade} info={metricInfo.FCP} />
-                        <MetricBadge label="TBT" value={perfResults.tbt.value !== null ? `${perfResults.tbt.value}ms` : null} grade={perfResults.tbt.grade} info={metricInfo.TBT} />
-                        <MetricBadge label="Speed Index" value={perfResults.si.value !== null ? `${perfResults.si.value.toFixed(1)}s` : null} grade={perfResults.si.grade} info={metricInfo.SI} />
-                      </div>
+                      {showDetailed && (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                          <MetricBadge label="FCP" value={perfResults.fcp.value !== null ? `${perfResults.fcp.value.toFixed(1)}s` : null} grade={perfResults.fcp.grade} info={metricInfo.FCP} />
+                          <MetricBadge label="TBT" value={perfResults.tbt.value !== null ? `${perfResults.tbt.value}ms` : null} grade={perfResults.tbt.grade} info={metricInfo.TBT} />
+                          <MetricBadge label="Speed Index" value={perfResults.si.value !== null ? `${perfResults.si.value.toFixed(1)}s` : null} grade={perfResults.si.grade} info={metricInfo.SI} />
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}
@@ -785,6 +781,7 @@ export default function SeoAnalyzerClient() {
                         <h3 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
                           <FileText size={14} className="text-brand-primary" />
                           Sitemap Audited URL Node Sample
+                          <span className="text-[10px] text-foreground/30 font-normal ml-2">({seoResults.urlsList.length} of {seoResults.totalUrls} URLs sampled)</span>
                         </h3>
                         <div className="overflow-x-auto">
                           <table className="w-full text-left border-collapse text-xs">
