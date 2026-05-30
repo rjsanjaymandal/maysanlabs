@@ -20,7 +20,7 @@ const liveProducts = [
       "Precision-tuned responsive mobile checkout flow",
       "Autonomous dispatch and logistics pipeline"
     ],
-    imageUrl: "/banner-centered-v4.png",
+    imageUrl: "/banner-centered-v4.webp",
     iframeUrl: "https://flashhfashion.in/",
     ctaHref: "/case-studies/flash-fashion-ecommerce",
     ctaText: "Explore Case Study",

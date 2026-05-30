@@ -117,7 +117,7 @@ export default function ContactFooter() {
               <Link href="/" className="flex items-center gap-4 mb-5 group">
                 <div className="relative h-14 w-14 transition-all duration-300 rounded-full overflow-hidden flex items-center justify-center">
                   <Image 
-                    src="/logo-rounded-v2.png" 
+                    src="/logo-rounded-v2.webp" 
                     alt="Maysan Labs"
                     width={56}
                     height={56}

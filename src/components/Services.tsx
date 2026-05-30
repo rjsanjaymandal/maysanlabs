@@ -16,45 +16,45 @@ import SpotlightCard from "@/components/SpotlightCard";
 
 const services = [
   {
-    title: "SaaS Development",
-    desc: "Build recurring revenue with multi-tenant platforms, subscription billing, and user management.",
+    title: "Custom Software & Web Apps",
+    desc: "Beautiful, customized software built exactly for your business. Manage your customers, sales, and daily operations in one clean portal.",
     icon: Cloud,
-    features: ["Multi-tenant architecture", "Stripe/Payment integration", "Role-based access"],
+    features: ["Custom design (no templates)", "Simple customer/staff logins", "Highly secure database"],
     color: "from-blue-500/20 to-blue-600/10",
   },
   {
-    title: "Enterprise Platforms",
-    desc: "Scalable systems that grow with your business from thousands to millions of users.",
+    title: "Business Automation Tools",
+    desc: "Get rid of manual Excel sheets. We automate your daily billing, receipts, WhatsApp notifications, and customer emails.",
     icon: TrendingUp,
-    features: ["Auto-scaling infrastructure", "High availability", "99.99% uptime SLA"],
+    features: ["GST-ready billing systems", "Automated WhatsApp & SMS alerts", "Automatic invoice generation"],
     color: "from-purple-500/20 to-purple-600/10",
   },
   {
-    title: "Custom Web Apps",
-    desc: "Tailored solutions built for your specific business requirements and workflows.",
+    title: "Custom Mobile Apps (Android & iOS)",
+    desc: "Launch your own customized mobile app on Android and iOS to connect with your customers or track your field teams easily.",
     icon: Code2,
-    features: ["React/Next.js frontend", "Node.js backend", "REST & GraphQL APIs"],
+    features: ["Works on Android & iPhones", "Fast, light & responsive", "App Store & Play Store publishing"],
     color: "from-green-500/20 to-green-600/10",
   },
   {
-    title: "Cloud Infrastructure",
-    desc: "AWS/Azure managed infrastructure with enterprise-grade security and monitoring.",
+    title: "Secure Cloud Hosting",
+    desc: "Get secure server hosting on AWS with automatic daily backups. Your business data is always safe, encrypted, and accessible.",
     icon: Database,
-    features: ["DevOps & CI/CD", "Container orchestration", "24/7 monitoring"],
+    features: ["Automatic daily data backups", "Safe & encrypted database", "99.9% guaranteed uptime SLA"],
     color: "from-orange-500/20 to-orange-600/10",
   },
   {
-    title: "Dashboard & Analytics",
-    desc: "Real-time dashboards with custom metrics, reporting, and business intelligence.",
+    title: "Smart Business Dashboards",
+    desc: "Track your daily sales, inventory, expenses, and net profit in real-time with easy-to-read charts and single-click Excel exports.",
     icon: Layout,
-    features: ["Custom visualizations", "Real-time data", "Export & scheduling"],
+    features: ["Real-time sales & profit tracker", "One-click Excel data export", "Simple charts & visual reports"],
     color: "from-pink-500/20 to-pink-600/10",
   },
   {
-    title: "API Development",
-    desc: "Robust APIs that integrate with your existing tools and enable third-party connections.",
+    title: "Integration with Popular Tools",
+    desc: "Connect your custom software with WhatsApp Business APIs, SMS services, Razorpay, Paytm, Tally, or Google Sheets.",
     icon: BarChart3,
-    features: ["REST & GraphQL", "Webhooks", "Developer docs"],
+    features: ["Razorpay & UPI payment setup", "Tally & Zoho ledgers sync", "WhatsApp Business API links"],
     color: "from-cyan-500/20 to-cyan-600/10",
   },
 ];
@@ -130,7 +130,7 @@ export default function Services() {
             transition={{ delay: 0.1 }}
             className="heading-md text-[var(--text-on-white)] mb-3"
           >
-            Build with <span className="text-brand-primary">confidence</span>
+            Software services for your <span className="text-brand-primary">business growth</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -139,7 +139,7 @@ export default function Services() {
             transition={{ delay: 0.2 }}
             className="text-[var(--text-on-white)]/45 text-sm md:text-base max-w-lg mx-auto"
           >
-            End-to-end development for building scalable, enterprise-grade software.
+            From custom apps to automatic WhatsApp billing, we handle all your technology needs so you can focus 100% on growing your business.
           </motion.p>
         </div>
 

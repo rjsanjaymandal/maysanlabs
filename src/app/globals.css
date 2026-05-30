@@ -629,6 +629,15 @@ html, body {
   }
 }
 
+@keyframes float-simple {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.animate-float {
+  animation: float-simple 6s ease-in-out infinite;
+}
+
 @keyframes gradient-rotate {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -695,6 +704,11 @@ html, body {
 .content-auto {
   content-visibility: auto;
   contain-intrinsic-size: auto 500px;
+}
+
+.content-auto-wide {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1000px;
 }
 
 /* ─── Performance & UX: Cap excessive blurs on mobile devices to prevent GPU lag ─── */

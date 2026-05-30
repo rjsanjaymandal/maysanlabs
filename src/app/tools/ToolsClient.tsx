@@ -3,29 +3,20 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Activity, ShieldAlert, BadgePercent, LayoutGrid, Sparkles, ArrowRight, Search, FileText, Share2, Hammer, FileImage } from "lucide-react";
+import { ShieldAlert, BadgePercent, LayoutGrid, Sparkles, ArrowRight, Search, FileText, Share2, Hammer, FileImage } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 
-const categories = ["All", "Site Checkups", "Profit & Cost Calculators", "Business & Legal Tools"];
+const categories = ["All", "Website Checkers", "Profit & Price Calculators", "Daily Office Tools"];
 
 const tools = [
   {
-    title: "Website Speed & Health Checker",
-    desc: "Test how fast your website loads and its overall performance. Get a simple, easy-to-read health report with clear improvement tips.",
-    href: "/tools/cwv-checker",
-    icon: Activity,
-    category: "Site Checkups",
-    badge: "Speed Test",
-    color: "from-blue-500 to-cyan-400",
-  },
-  {
-    title: "Search & Google SEO Checker",
-    desc: "Scan your website for setup errors, missing descriptions, broken links, and Google search ranking blockages.",
+    title: "SEO & Website Health Checker",
+    desc: "Check Core Web Vitals, Lighthouse scores, sitemap health, meta tags, schema, and broken links in one scan. Get a complete performance + SEO audit report.",
     href: "/tools/seo-analyzer",
     icon: ShieldAlert,
-    category: "Site Checkups",
-    badge: "SEO Helper",
+    category: "Website Checkers",
+    badge: "SEO + Speed",
     color: "from-emerald-500 to-teal-400",
   },
   {
@@ -33,7 +24,7 @@ const tools = [
     desc: "See how much more money your store can make by boosting loading speeds, increasing customer sales, and lowering platform fees.",
     href: "/tools/headless-roi",
     icon: BadgePercent,
-    category: "Profit & Cost Calculators",
+    category: "Profit & Price Calculators",
     badge: "Boost Profit",
     color: "from-amber-500 to-orange-400",
   },
@@ -42,34 +33,34 @@ const tools = [
     desc: "Select the features you want in your custom application to instantly calculate a detailed cost breakdown and delivery timeline.",
     href: "/tools/scope-estimator",
     icon: LayoutGrid,
-    category: "Profit & Cost Calculators",
+    category: "Profit & Price Calculators",
     badge: "Price Finder",
     color: "from-rose-500 to-pink-400",
   },
   {
     title: "Legal Policy & Terms Generator",
-    desc: "Instantly draft standard, standard-grade privacy policies and terms of service documents tailored for websites and products.",
+    desc: "Instantly create standard privacy policy and terms of service documents for your business website or mobile app.",
     href: "/tools/privacy-generator",
     icon: FileText,
-    category: "Business & Legal Tools",
+    category: "Daily Office Tools",
     badge: "Free Legal Docs",
     color: "from-violet-500 to-indigo-400",
   },
   {
     title: "Social Share Image Editor",
-    desc: "Design and preview exactly how your website looks when shared on social media, and compile customized share graphics.",
+    desc: "Design and preview how your website links look when shared on WhatsApp, Facebook, or LinkedIn.",
     href: "/tools/og-generator",
     icon: Share2,
-    category: "Business & Legal Tools",
+    category: "Daily Office Tools",
     badge: "Social Preview",
     color: "from-fuchsia-500 to-purple-400",
   },
   {
     title: "Smart Image Compressor",
-    desc: "Compress JPEG, PNG, and WebP images directly in your browser. Scale sizes, convert formats, and optimize assets instantly with 100% privacy.",
+    desc: "Reduce image file sizes instantly inside your browser. Shrink JPEGs, PNGs, and WebPs locally in seconds for faster loading.",
     href: "/tools/image-compressor",
     icon: FileImage,
-    category: "Business & Legal Tools",
+    category: "Daily Office Tools",
     badge: "Optimize Image",
     color: "from-teal-500 to-emerald-400",
   },
@@ -110,10 +101,10 @@ export default function ToolsClient() {
                 Maysan Labs Tools
               </span>
               <h1 className="text-4xl md:text-7xl font-bold tracking-[-0.03em] leading-[1.05] mb-6">
-                Authority Builders & <span className="bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] bg-clip-text text-transparent">Micro-SaaS</span>
+                Useful Business <span className="bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] bg-clip-text text-transparent">Helper Tools</span>
               </h1>
               <p className="text-foreground/50 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-                Empowering founders, builders, and marketers with highly functional, premium tools. Estimate budgets, check Web Vitals, audit SEOs, and compile assets in seconds.
+                Free, simple, and useful tools built by Maysan Labs to help you manage your business website, estimate project costs, calculate profits, and generate legal documents in seconds.
               </p>
             </motion.div>
 
@@ -214,19 +205,19 @@ export default function ToolsClient() {
               <div className="max-w-xl relative z-10">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-[10px] font-bold uppercase tracking-wider mb-4">
                   <Sparkles size={10} />
-                  Enterprise Solutions
+                  Custom Solutions
                 </span>
                 <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-4">
-                  Need a custom internal tool or high-performing software built?
+                  Need custom business software, mobile apps, or automation?
                 </h2>
                 <p className="text-xs md:text-sm text-foreground/50 leading-relaxed mb-6">
-                  We architect high-fidelity custom systems, MERN stacks, scalable cloud nodes, and automated workflows. Collaborate with the experts at Maysan Labs to scale your operations.
+                  We build high-quality custom systems, mobile apps, WhatsApp automation, and customized business software. Talk to the experts at Maysan Labs to scale up your business operations.
                 </p>
                 <Link
                   href="/start"
                   className="px-6 py-3.5 bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] text-white hover:shadow-[0_0_30px_rgba(26,109,214,0.3)] shadow-[0_0_15px_rgba(26,109,214,0.15)] rounded-full font-bold uppercase text-[10px] tracking-wider transition-all duration-300 inline-flex items-center gap-2 hover:scale-[1.02]"
                 >
-                  Book a Consultation Call
+                  Get a Free Project Call
                   <ArrowRight size={12} />
                 </Link>
               </div>

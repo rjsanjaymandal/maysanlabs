@@ -86,7 +86,7 @@ export default function Home() {
       <Hero />
       
       {/* Stats Section */}
-      <section className="pt-8 pb-6 md:pt-12 md:pb-8 bg-[var(--sec-bg-alt)] border-y border-[var(--sec-border)] relative overflow-hidden">
+      <section className="content-auto pt-8 pb-6 md:pt-12 md:pb-8 bg-[var(--sec-bg-alt)] border-y border-[var(--sec-border)] relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.01] to-transparent pointer-events-none" />
         <div className="container-main relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
@@ -122,7 +122,7 @@ export default function Home() {
       </section>
  
       {/* Trust Section */}
-      <section className="py-8 md:py-12 border-b border-[var(--sec-border)] bg-[var(--sec-bg)]">
+      <section className="content-auto py-8 md:py-12 border-b border-[var(--sec-border)] bg-[var(--sec-bg)]">
         <div className="container-main mb-6 md:mb-8 text-center">
            <span className="text-[var(--text-secondary)] text-[10px] uppercase tracking-widest font-bold">Trusted by fast-growing companies</span>
         </div>

@@ -34,17 +34,21 @@ export const SparklesCore = (props: ParticlesProps) => {
     opacity: number;
   }[]>([]);
   const animationRef = useRef<number>(0);
+  const cleanupRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
-    if (canvasRef.current) {
-      const ctx = canvasRef.current.getContext("2d");
-      if (ctx) {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    // Defer heavy canvas init to avoid blocking LCP
+    const raf = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
         const resizeCanvas = () => {
-          if (canvasRef.current) {
-            canvasRef.current.width = window.innerWidth;
-            canvasRef.current.height = window.innerHeight;
-            initParticles();
-          }
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+          initParticles();
         };
 
         const initParticles = () => {
@@ -87,12 +91,17 @@ export const SparklesCore = (props: ParticlesProps) => {
         animate();
         window.addEventListener("resize", resizeCanvas);
 
-        return () => {
+        cleanupRef.current = () => {
           window.removeEventListener("resize", resizeCanvas);
           cancelAnimationFrame(animationRef.current);
         };
-      }
-    }
+      });
+    });
+
+    return () => {
+      cancelAnimationFrame(raf);
+      if (cleanupRef.current) cleanupRef.current();
+    };
   }, [maxSize, minSize, particleColor, particleDensity, speed]);
 
   return (

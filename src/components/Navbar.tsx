@@ -107,7 +107,7 @@ export default function Navbar() {
               className="relative h-9 w-9 rounded-full overflow-hidden flex items-center justify-center border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)]"
             >
               <Image 
-                src="/logo-rounded-v2.png" 
+                src="/logo-rounded-v2.webp" 
                 alt="Maysan Labs"
                 width={36}
                 height={36}
