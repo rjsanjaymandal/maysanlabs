@@ -117,7 +117,7 @@ export default function ScopeEstimatorClient() {
   }, [email, company, selectedApp, selectedFeatures, selectedInfra, acceleratedTimeline]);
 
   return (
-    <div className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between">
+    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between">
       <div>
         <Navbar />
 
@@ -326,7 +326,7 @@ export default function ScopeEstimatorClient() {
                                 placeholder="you@company.com"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-foreground focus:outline-none focus:border-brand-primary/50 transition-all"
+                                className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all"
                               />
                             </div>
                             <div>
@@ -338,7 +338,7 @@ export default function ScopeEstimatorClient() {
                                 placeholder="Acme Corp"
                                 value={company}
                                 onChange={(e) => setCompany(e.target.value)}
-                                className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-foreground focus:outline-none focus:border-brand-primary/50 transition-all"
+                                className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all"
                               />
                             </div>
                             {leadError && (
@@ -453,6 +453,6 @@ export default function ScopeEstimatorClient() {
       </div>
 
       <ContactFooter />
-    </div>
+    </main>
   );
 }

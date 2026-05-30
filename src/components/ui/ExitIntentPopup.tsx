@@ -63,12 +63,19 @@ export default function ExitIntentPopup() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200]"
             onClick={closePopup}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); closePopup(); } }}
+            role="button"
+            tabIndex={-1}
+            aria-label="Close popup"
           />
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="fixed inset-0 flex items-center justify-center z-[201] pointer-events-none"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Exit intent popup"
+            className="relative w-[90vw] max-w-[500px] pointer-events-all"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -79,6 +86,7 @@ export default function ExitIntentPopup() {
               <div className="bg-[var(--bg-dark)] border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
                 <button
                   onClick={closePopup}
+                  aria-label="Close popup"
                   className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-foreground/40 hover:text-foreground hover:bg-white/10 transition-all"
                 >
                   <X size={16} />
@@ -128,7 +136,7 @@ export default function ExitIntentPopup() {
                           onChange={(e) => { setEmail(e.target.value); setEmailError(""); }}
                           placeholder="Enter your email"
                           aria-label="Email for SaaS scaling checklist"
-                          className="w-full pl-10 pr-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-brand-primary/40 focus:bg-white/[0.05] transition-all"
+                          className="w-full pl-10 pr-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/40 focus:bg-white/[0.05] transition-all"
                         />
                       </div>
                       {emailError && (

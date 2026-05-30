@@ -48,7 +48,7 @@ export default function ContactClient() {
   };
 
   return (
-    <main className="min-h-screen bg-[var(--bg-dark)] text-foreground relative overflow-hidden">
+    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground relative overflow-hidden">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }} />
 
@@ -258,7 +258,7 @@ export default function ContactClient() {
                         value={formData.name}
                         onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
                         placeholder="Your name or company"
-                        className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none transition-all"
+                        className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
                       />
                     </div>
                     <div>
@@ -270,7 +270,7 @@ export default function ContactClient() {
                         value={formData.email}
                         onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
                         placeholder="you@company.com"
-                        className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none transition-all"
+                        className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
                       />
                     </div>
                     <div>
@@ -281,7 +281,7 @@ export default function ContactClient() {
                         value={formData.subject}
                         onChange={(e) => setFormData((p) => ({ ...p, subject: e.target.value }))}
                         placeholder="What's this about?"
-                        className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none transition-all"
+                        className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
                       />
                     </div>
                     <div>
@@ -293,7 +293,7 @@ export default function ContactClient() {
                         value={formData.message}
                         onChange={(e) => setFormData((p) => ({ ...p, message: e.target.value }))}
                         placeholder="Tell us about your project, timeline, and requirements..."
-                        className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none transition-all resize-none"
+                        className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all resize-none"
                       />
                     </div>
 

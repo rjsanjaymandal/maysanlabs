@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default function CareersClient() {
   return (
-    <main aria-label="Careers at Maysan Labs" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden flex flex-col">
+    <main id="main-content" aria-label="Careers at Maysan Labs" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden flex flex-col">
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
         <h1>Careers at Maysan Labs - Join Our Elite Engineering Team</h1>

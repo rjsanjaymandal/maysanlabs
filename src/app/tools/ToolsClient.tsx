@@ -80,7 +80,7 @@ export default function ToolsClient() {
   }, [activeCategory, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between">
+    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between">
       <div>
         <Navbar />
         
@@ -133,7 +133,7 @@ export default function ToolsClient() {
                   aria-label="Search tools"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-black/5 dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-full pl-10 pr-4 py-2 text-sm text-foreground focus:outline-none focus:border-brand-primary/50 transition-all placeholder:text-foreground/40"
+                  className="w-full bg-black/5 dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-full pl-10 pr-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all placeholder:text-foreground/40"
                 />
               </div>
             </div>
@@ -227,6 +227,6 @@ export default function ToolsClient() {
       </div>
       
       <ContactFooter />
-    </div>
+    </main>
   );
 }

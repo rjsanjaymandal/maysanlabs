@@ -164,7 +164,7 @@ export default function RoiCalculator() {
                       min={50000}
                       value={projectBudget}
                       onChange={(e) => setProjectBudget(Math.max(0, Number(e.target.value)))}
-                      className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2 text-sm text-foreground focus:border-brand-primary/50 focus:outline-none transition-all font-mono font-bold"
+                      className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2 text-sm text-foreground focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all font-mono font-bold"
                     />
                   </div>
                 </div>
@@ -184,7 +184,7 @@ export default function RoiCalculator() {
                         min={1}
                         value={users}
                         onChange={(e) => setUsers(Math.max(1, Number(e.target.value)))}
-                        className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2 pr-12 text-sm text-foreground focus:border-brand-primary/50 focus:outline-none transition-all font-bold"
+                        className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2 pr-12 text-sm text-foreground focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all font-bold"
                       />
                       <span className="absolute right-4 top-1/2 -translate-y-1/2 text-foreground/40 text-[10px] font-mono">users</span>
                     </div>
@@ -205,7 +205,7 @@ export default function RoiCalculator() {
                         min={1}
                         value={arpu}
                         onChange={(e) => setArpu(Math.max(1, Number(e.target.value)))}
-                        className="w-full bg-black/20 border border-white/10 rounded-xl pl-7 pr-4 py-2 text-sm text-foreground focus-border-brand-primary/50 focus:outline-none transition-all font-bold"
+                        className="w-full bg-black/20 border border-white/10 rounded-xl pl-7 pr-4 py-2 text-sm text-foreground focus-border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all font-bold"
                       />
                     </div>
                   </div>

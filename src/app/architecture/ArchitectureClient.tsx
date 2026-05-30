@@ -35,7 +35,7 @@ export default function ArchitectureClient() {
   ];
 
   return (
-    <main className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
+    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
       <Navbar />
 
       {/* SEO, GEO & AEO Telemetry Data */}

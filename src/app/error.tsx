@@ -72,7 +72,7 @@ export default function Error({
         }) }} />
       </div>
 
-      <main className="flex items-center justify-center px-4 pt-20 pb-32">
+      <main id="main-content" className="flex items-center justify-center px-4 pt-20 pb-32">
         <div className="w-full max-w-md">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

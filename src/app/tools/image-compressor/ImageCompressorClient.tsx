@@ -491,7 +491,7 @@ export default function ImageCompressorClient() {
     : 0;
 
   return (
-    <div className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between selection:bg-brand-primary selection:text-black">
+    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between selection:bg-brand-primary selection:text-black">
       <div>
         <Navbar />
 
@@ -656,7 +656,7 @@ export default function ImageCompressorClient() {
                           <select
                             value={format}
                             onChange={(e) => setFormat(e.target.value as typeof format)}
-                            className="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-foreground focus:border-brand-primary/50 focus:outline-none transition-all"
+                            className="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-foreground focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
                           >
                             <option value="original">Original Format</option>
                             <option value="image/jpeg">JPEG (.jpg)</option>
@@ -671,7 +671,7 @@ export default function ImageCompressorClient() {
                           <select
                             value={scale}
                             onChange={(e) => setScale(parseInt(e.target.value))}
-                            className="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-foreground focus:border-brand-primary/50 focus:outline-none transition-all"
+                            className="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-foreground focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
                           >
                             <option value="100">100% (Original Dimensions)</option>
                             <option value="75">75% (Scale Down)</option>
@@ -729,6 +729,9 @@ export default function ImageCompressorClient() {
                               animate={{ opacity: 1, x: 0 }}
                               exit={{ opacity: 0, x: 10 }}
                               onClick={() => setActiveFileId(fileObj.id)}
+                              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActiveFileId(fileObj.id); } }}
+                              role="button"
+                              tabIndex={0}
                               className={`p-4 border cursor-pointer rounded-xl flex items-center justify-between gap-4 transition-all duration-300 ${
                                 isActive 
                                   ? "border-brand-primary/50 bg-brand-primary/[0.03] shadow-[inset_0_0_15px_rgba(26,109,214,0.05)]" 
@@ -856,8 +859,8 @@ export default function ImageCompressorClient() {
                         <div className="flex items-center justify-between gap-4 p-2 bg-black/40 border border-white/[0.06] rounded-2xl">
                           <button
                             onClick={() => rotateFile(activeFile.id)}
+                            aria-label="Rotate Image 90° Clockwise"
                             className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-bold text-foreground/70 hover:text-brand-primary bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.08] hover:border-brand-primary/30 rounded-xl transition-all duration-300"
-                            title="Rotate Image 90° Clockwise"
                           >
                             <RotateCw size={12} className="animate-hover-spin" />
                             Rotate 90°
@@ -871,7 +874,7 @@ export default function ImageCompressorClient() {
                                   ? "bg-brand-primary text-white shadow-[0_0_10px_rgba(26,109,214,0.3)]"
                                   : "text-foreground/50 hover:text-white hover:bg-white/[0.04]"
                               }`}
-                              title="Slider Mode"
+                              aria-label="Slider Mode"
                             >
                               <Sliders size={12} />
                             </button>
@@ -882,7 +885,7 @@ export default function ImageCompressorClient() {
                                   ? "bg-brand-primary text-white shadow-[0_0_10px_rgba(26,109,214,0.3)]"
                                   : "text-foreground/50 hover:text-white hover:bg-white/[0.04]"
                               }`}
-                              title="Side by Side Mode"
+                              aria-label="Side by Side Mode"
                             >
                               <Columns size={12} />
                             </button>
@@ -893,7 +896,7 @@ export default function ImageCompressorClient() {
                                   ? "bg-brand-primary text-white shadow-[0_0_10px_rgba(26,109,214,0.3)]"
                                   : "text-foreground/50 hover:text-white hover:bg-white/[0.04]"
                               }`}
-                              title="Quick Toggle Mode (Hover/Tap)"
+                              aria-label="Quick Toggle Mode"
                             >
                               <Eye size={12} />
                             </button>
@@ -997,6 +1000,9 @@ export default function ImageCompressorClient() {
                               onTouchStart={() => setIsHovered(true)}
                               onTouchEnd={() => setIsHovered(false)}
                               onClick={() => setIsHovered(prev => !prev)}
+                              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setIsHovered(prev => !prev); } }}
+                              role="button"
+                              tabIndex={0}
                             >
                               {/* Background/toggle layer */}
                               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -1080,6 +1086,6 @@ export default function ImageCompressorClient() {
       </div>
 
       <ContactFooter />
-    </div>
+    </main>
   );
 }

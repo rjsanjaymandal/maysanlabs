@@ -59,7 +59,7 @@ const plans = [
 
 export default function PricingClient() {
   return (
-    <main aria-label="Maysan Labs Pricing" className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden">
+    <main id="main-content" aria-label="Maysan Labs Pricing" className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden">
       <Navbar />
 
       {/* SEO, GEO & AEO Telemetry Data */}

@@ -14,7 +14,7 @@ const breadcrumbSchema = generateBreadcrumbSchema([
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen pt-32 pb-20">
+    <main id="main-content" className="min-h-screen pt-32 pb-20">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="container-main max-w-3xl">
         <h1 className="text-4xl font-bold mb-8">Terms of Service</h1>

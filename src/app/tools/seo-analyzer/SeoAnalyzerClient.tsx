@@ -369,7 +369,7 @@ export default function SeoAnalyzerClient() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between">
+    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between">
       <div>
         <Navbar />
         <div className="pt-32 pb-20 px-4">
@@ -395,11 +395,12 @@ export default function SeoAnalyzerClient() {
                 <Globe size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/30" />
                 <input
                   type="text"
+                  aria-label="Website URL"
                   placeholder="Enter your website URL (e.g., example.com)"
                   value={url}
                   onChange={(e) => { setUrl(e.target.value); setUrlError(null); }}
                   disabled={scanning}
-                  className="w-full bg-black/20 border border-white/10 rounded-xl pl-10 pr-4 py-3.5 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none transition-all text-sm disabled:opacity-50"
+                  className="w-full bg-black/20 border border-white/10 rounded-xl pl-10 pr-4 py-3.5 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all text-sm disabled:opacity-50"
                 />
               </div>
               <button
@@ -918,11 +919,11 @@ export default function SeoAnalyzerClient() {
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                               <label htmlFor="lead-email" className="text-xs font-semibold text-foreground/70 mb-1.5 block">Email Address</label>
-                              <input id="lead-email" type="email" required placeholder="you@company.com" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none transition-all text-sm" />
+                              <input id="lead-email" type="email" required placeholder="you@company.com" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all text-sm" />
                             </div>
                             <div>
                               <label htmlFor="lead-company" className="text-xs font-semibold text-foreground/70 mb-1.5 block">Company Name</label>
-                              <input id="lead-company" type="text" required placeholder="Your Company" value={company} onChange={(e) => setCompany(e.target.value)} className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none transition-all text-sm" />
+                              <input id="lead-company" type="text" required placeholder="Your Company" value={company} onChange={(e) => setCompany(e.target.value)} className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all text-sm" />
                             </div>
                           </div>
                           {leadError && <p className="text-red-400 text-xs">{leadError}</p>}
@@ -975,6 +976,6 @@ export default function SeoAnalyzerClient() {
       </div>
     </div>
       <ContactFooter />
-    </div>
+    </main>
   );
 }

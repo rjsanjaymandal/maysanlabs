@@ -148,6 +148,7 @@ export default function Testimonials() {
           <div className="flex items-center justify-center gap-4 mt-6">
             <button
               onClick={prev}
+              aria-label="Previous testimonial"
               className="w-9 h-9 rounded-full bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-foreground/40 hover:text-foreground hover:border-white/20 hover:bg-white/[0.06] transition-all"
             >
               <ChevronLeft size={16} />
@@ -158,6 +159,7 @@ export default function Testimonials() {
                 <button
                   key={i}
                   onClick={() => goTo(i)}
+                  aria-label={`Go to testimonial ${i + 1}`}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
                     i === current
                       ? "w-6 bg-brand-primary"
@@ -169,6 +171,7 @@ export default function Testimonials() {
 
             <button
               onClick={next}
+              aria-label="Next testimonial"
               className="w-9 h-9 rounded-full bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-foreground/40 hover:text-foreground hover:border-white/20 hover:bg-white/[0.06] transition-all"
             >
               <ChevronRight size={16} />
@@ -176,8 +179,8 @@ export default function Testimonials() {
 
             <button
               onClick={() => setIsPaused((p) => !p)}
+              aria-label={isPaused ? "Resume auto-play" : "Pause auto-play"}
               className="w-9 h-9 rounded-full bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-foreground/30 hover:text-foreground hover:border-white/20 transition-all ml-2"
-              title={isPaused ? "Resume auto-play" : "Pause auto-play"}
             >
               {isPaused ? <Play size={12} /> : <Pause size={12} />}
             </button>

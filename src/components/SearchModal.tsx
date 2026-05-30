@@ -105,6 +105,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           <div
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={onClose}
+            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClose(); } }}
+            role="button"
+            tabIndex={-1}
+            aria-label="Close search"
           />
 
           {/* Modal */}
@@ -133,6 +137,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
               />
               <button
                 onClick={onClose}
+                aria-label="Close search"
                 className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-slate-500 dark:text-foreground/50 transition-colors hover:bg-slate-100 dark:hover:bg-white/10 hover:text-slate-800 dark:hover:text-foreground"
               >
                 <X size={14} />

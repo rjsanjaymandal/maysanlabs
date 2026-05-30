@@ -48,7 +48,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const blogJSONLD = generateBlogPostJSONLD(post, siteUrl);
 
   return (
-    <main className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
+    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

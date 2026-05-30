@@ -48,7 +48,7 @@ export default function StartClient() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   return (
-    <main className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden text-foreground">
+    <main id="main-content" className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden text-foreground">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(startHowToSchema) }}

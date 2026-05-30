@@ -305,7 +305,7 @@ function ApplyForm() {
 
 export default function CareerApplyPage() {
   return (
-    <main className="min-h-screen bg-background flex flex-col pt-20">
+    <main id="main-content" className="min-h-screen bg-background flex flex-col pt-20">
       <Navbar />
       <div className="container max-w-3xl flex-1 flex flex-col justify-center py-16 px-4">
         <Suspense

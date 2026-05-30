@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 
 export default function CaseStudiesClient() {
   return (
-    <main aria-label="Maysan Labs Case Studies" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
+    <main id="main-content" aria-label="Maysan Labs Case Studies" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
         <h1>Maysan Labs Case Studies - Enterprise Software Implementation Records</h1>

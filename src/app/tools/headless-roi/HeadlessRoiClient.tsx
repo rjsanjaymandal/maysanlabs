@@ -90,7 +90,7 @@ export default function HeadlessRoiClient() {
   }, [email, company]);
 
   return (
-    <div className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between">
+    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between">
       <div>
         <Navbar />
 
@@ -152,7 +152,7 @@ export default function HeadlessRoiClient() {
                         max={10000}
                         value={aov}
                         onChange={(e) => setAov(Math.max(5, Number(e.target.value)))}
-                        className="w-full bg-black/20 border border-white/10 rounded-xl pl-7 pr-3 py-2 text-sm text-foreground focus:outline-none focus:border-brand-primary/50 font-bold"
+                        className="w-full bg-black/20 border border-white/10 rounded-xl pl-7 pr-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 font-bold"
                       />
                     </div>
                   </div>
@@ -321,18 +321,20 @@ export default function HeadlessRoiClient() {
                       <input
                         type="email"
                         required
+                        aria-label="Email address"
                         placeholder="you@company.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-brand-primary/50 transition-all"
+                        className="bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground placeholder:text-foreground/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all"
                       />
                       <input
                         type="text"
                         required
+                        aria-label="Company name"
                         placeholder="Company Name"
                         value={company}
                         onChange={(e) => setCompany(e.target.value)}
-                        className="bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-brand-primary/50 transition-all"
+                        className="bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground placeholder:text-foreground/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all"
                       />
                     </div>
                     {leadError && (
@@ -364,6 +366,6 @@ export default function HeadlessRoiClient() {
       </div>
 
       <ContactFooter />
-    </div>
+    </main>
   );
 }

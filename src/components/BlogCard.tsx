@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { BlogPost } from "@/lib/blog-data";
 import { ArrowRight, Clock, Tag, ExternalLink } from "lucide-react";

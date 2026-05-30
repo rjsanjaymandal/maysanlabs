@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef, useSyncExternalStore, useState } from "react";
 
 interface Point {

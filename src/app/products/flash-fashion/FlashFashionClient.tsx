@@ -41,7 +41,7 @@ const techStack = ["Next.js", "React", "Node.js", "PostgreSQL", "Redis", "Stripe
 
 export default function FlashFashionClient() {
   return (
-    <main aria-label="FlashFashion Ecommerce Platform Details" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
+    <main id="main-content" aria-label="FlashFashion Ecommerce Platform Details" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
       <Navbar />
       
       {/* Hero Section */}

@@ -91,7 +91,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-[100] ${
+      <nav aria-label="Main navigation" className={`fixed top-0 left-0 right-0 z-[100] ${
         mounted && scrolled ? "bg-[var(--bg-dark)] py-2 md:py-3 shadow-lg shadow-black/20" : "bg-transparent py-4 md:py-5"
       }`}>
         <div className="container-main flex items-center justify-between">

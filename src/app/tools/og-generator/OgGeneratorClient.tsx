@@ -186,7 +186,7 @@ export default function OgGeneratorClient() {
   }, [email, company, title, triggerDownload]);
 
   return (
-    <div className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between">
+    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between">
       <div>
         <Navbar />
 
@@ -227,7 +227,7 @@ export default function OgGeneratorClient() {
                     maxLength={50}
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="w-full bg-black/20 border border-white/10 rounded-xl px-3 py-2 text-xs text-foreground focus:outline-none focus:border-brand-primary/50 font-bold"
+                    className="w-full bg-black/20 border border-white/10 rounded-xl px-3 py-2 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 font-bold"
                   />
                 </div>
 
@@ -239,7 +239,7 @@ export default function OgGeneratorClient() {
                     rows={3}
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    className="w-full bg-black/20 border border-white/10 rounded-xl px-3 py-2 text-xs text-foreground focus:outline-none focus:border-brand-primary/50 leading-relaxed resize-none"
+                    className="w-full bg-black/20 border border-white/10 rounded-xl px-3 py-2 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 leading-relaxed resize-none"
                   />
                 </div>
 
@@ -250,7 +250,7 @@ export default function OgGeneratorClient() {
                     type="text"
                     value={domain}
                     onChange={(e) => setDomain(e.target.value)}
-                    className="w-full bg-black/20 border border-white/10 rounded-xl px-3 py-2 text-xs text-foreground focus:outline-none focus:border-brand-primary/50 font-mono"
+                    className="w-full bg-black/20 border border-white/10 rounded-xl px-3 py-2 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 font-mono"
                   />
                 </div>
 
@@ -444,7 +444,7 @@ export default function OgGeneratorClient() {
                       placeholder="you@company.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-black/5 dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground focus:outline-none focus:border-brand-primary/50 transition-all font-bold placeholder:text-foreground/45"
+                      className="w-full bg-black/5 dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all font-bold placeholder:text-foreground/45"
                     />
                   </div>
 
@@ -457,7 +457,7 @@ export default function OgGeneratorClient() {
                       placeholder="Acme Corp"
                       value={company}
                       onChange={(e) => setCompany(e.target.value)}
-                      className="w-full bg-black/5 dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground focus:outline-none focus:border-brand-primary/50 transition-all font-bold placeholder:text-foreground/45"
+                      className="w-full bg-black/5 dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all font-bold placeholder:text-foreground/45"
                     />
                   </div>
 
@@ -503,6 +503,6 @@ export default function OgGeneratorClient() {
       </AnimatePresence>
 
       <ContactFooter />
-    </div>
+    </main>
   );
 }

@@ -103,6 +103,7 @@ export default function CommandDock() {
 
               <div className={styles.dockRight}>
                 <button
+                  aria-label="Toggle system status"
                   className={`${styles.terminalBtn} ${showStatus ? styles.activeBtn : ""}`}
                   onClick={() => setShowStatus(!showStatus)}
                 >
@@ -126,6 +127,7 @@ export default function CommandDock() {
                     </span>
                     <button
                       onClick={() => setShowStatus(false)}
+                      aria-label="Close status panel"
                       className={styles.closeBtn}
                     >
                       <ChevronUp size={14} />

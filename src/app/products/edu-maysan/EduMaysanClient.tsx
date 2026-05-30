@@ -40,7 +40,7 @@ export default function EduMaysanClient() {
   ];
 
   return (
-    <main aria-label="Edu-Maysan LMS Product Information" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
+    <main id="main-content" aria-label="Edu-Maysan LMS Product Information" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
       <Navbar />
       
       {/* Hero Section */}

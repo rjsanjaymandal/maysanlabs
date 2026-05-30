@@ -76,7 +76,7 @@ export default function Newsletter() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 aria-label="Email for newsletter"
-                className="flex-1 px-5 py-3.5 bg-white/[0.03] border border-white/10 rounded-full text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none transition-all"
+                className="flex-1 px-5 py-3.5 bg-white/[0.03] border border-white/10 rounded-full text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
               />
               <button
                 type="submit"

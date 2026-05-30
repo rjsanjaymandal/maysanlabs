@@ -185,7 +185,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
   );
 
   return (
-    <main className="min-h-screen bg-[var(--bg-dark)]">
+    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

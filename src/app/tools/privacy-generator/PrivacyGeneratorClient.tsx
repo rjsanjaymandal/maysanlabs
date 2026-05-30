@@ -121,7 +121,7 @@ If you have any queries regarding any of our terms, please contact us at: ${supp
   }, [email, company, companyName]);
 
   return (
-    <div className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between">
+    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between">
       <div>
         <Navbar />
 
@@ -161,7 +161,7 @@ If you have any queries regarding any of our terms, please contact us at: ${supp
                     type="text"
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
-                    className="w-full bg-black/20 border border-white/10 rounded-xl px-3 py-2 text-xs text-foreground focus:outline-none focus:border-brand-primary/50 font-bold"
+                    className="w-full bg-black/20 border border-white/10 rounded-xl px-3 py-2 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 font-bold"
                   />
                 </div>
 
@@ -172,7 +172,7 @@ If you have any queries regarding any of our terms, please contact us at: ${supp
                     type="text"
                     value={websiteUrl}
                     onChange={(e) => setWebsiteUrl(e.target.value)}
-                    className="w-full bg-black/20 border border-white/10 rounded-xl px-3 py-2 text-xs text-foreground focus:outline-none focus:border-brand-primary/50 font-bold"
+                    className="w-full bg-black/20 border border-white/10 rounded-xl px-3 py-2 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 font-bold"
                   />
                 </div>
 
@@ -183,7 +183,7 @@ If you have any queries regarding any of our terms, please contact us at: ${supp
                     type="email"
                     value={supportEmail}
                     onChange={(e) => setSupportEmail(e.target.value)}
-                    className="w-full bg-black/20 border border-white/10 rounded-xl px-3 py-2 text-xs text-foreground focus:outline-none focus:border-brand-primary/50 font-bold"
+                    className="w-full bg-black/20 border border-white/10 rounded-xl px-3 py-2 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 font-bold"
                   />
                 </div>
 
@@ -194,7 +194,7 @@ If you have any queries regarding any of our terms, please contact us at: ${supp
                     type="text"
                     value={jurisdiction}
                     onChange={(e) => setJurisdiction(e.target.value)}
-                    className="w-full bg-black/20 border border-white/10 rounded-xl px-3 py-2 text-xs text-foreground focus:outline-none focus:border-brand-primary/50 font-bold"
+                    className="w-full bg-black/20 border border-white/10 rounded-xl px-3 py-2 text-xs text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 font-bold"
                   />
                 </div>
 
@@ -344,18 +344,20 @@ If you have any queries regarding any of our terms, please contact us at: ${supp
                       <input
                         type="email"
                         required
+                        aria-label="Email address"
                         placeholder="you@company.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-brand-primary/50 transition-all"
+                        className="bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground placeholder:text-foreground/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all"
                       />
                       <input
                         type="text"
                         required
+                        aria-label="Company name"
                         placeholder="Company Name"
                         value={company}
                         onChange={(e) => setCompany(e.target.value)}
-                        className="bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-brand-primary/50 transition-all"
+                        className="bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground placeholder:text-foreground/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all"
                       />
                     </div>
                     {leadError && (
@@ -387,6 +389,6 @@ If you have any queries regarding any of our terms, please contact us at: ${supp
       </div>
 
       <ContactFooter />
-    </div>
+    </main>
   );
 }
