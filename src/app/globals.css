@@ -716,6 +716,54 @@ html, body {
   }
 }
 
+/* ─── Mobile INP: Faster touch response on all interactive elements ─── */
+button,
+a,
+[role="button"],
+input,
+select,
+textarea,
+label {
+  touch-action: manipulation;
+}
+
+/* ─── Mobile LCP + INP: GPU compositing hints for above-fold animated elements ─── */
+.animate-float,
+.animate-fade-in-up,
+.animate-fade-in-up-lg,
+.animate-border-beam {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* ─── Mobile INP: Isolate heavy layout sections to prevent cascading reflows ─── */
+.contain-layout {
+  contain: layout;
+}
+
+/* ─── Mobile LCP: Ensure hero dashboard frame has stable size before paint ─── */
+.hero-dashboard {
+  min-height: 400px;
+  contain: layout;
+}
+
+@media (max-width: 768px) {
+  /* ─── Mobile: Prevent layout shift on tap targets ─── */
+  button,
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* ─── Mobile: Force GPU layer for floating elements ─── */
+  .animate-float {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+}
+
 /* ─── Accessibility: prefers-reduced-motion global override ─── */
 @media (prefers-reduced-motion: reduce) {
   *,

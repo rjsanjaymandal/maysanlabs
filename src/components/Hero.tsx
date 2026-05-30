@@ -93,7 +93,7 @@ export default function Hero() {
           <div className="absolute -bottom-12 -right-12 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl opacity-20 pointer-events-none" />
 
           {/* Gentle Floating Frame */}
-          <div className="animate-float backdrop-blur-xl bg-black/60 border border-white/10 rounded-[20px] md:rounded-[32px] overflow-hidden shadow-2xl hover:border-white/20 transition-all duration-500 relative"
+          <div className="animate-float hero-dashboard backdrop-blur-xl bg-black/60 border border-white/10 rounded-[20px] md:rounded-[32px] overflow-hidden shadow-2xl hover:border-white/20 transition-all duration-500 relative"
           >
             <BorderBeam size={350} duration={12} delay={0} colorFrom="#1A6DD6" colorTo="#60A5FA" />
             {/* Browser Chrome Header Wrapper */}
