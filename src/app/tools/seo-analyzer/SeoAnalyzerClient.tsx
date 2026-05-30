@@ -62,6 +62,35 @@ const seoSteps = [
   "Compiling structured crawl report...",
 ];
 
+function getLetterGrade(score: number): { letter: string; color: string } {
+  if (score >= 90) return { letter: "A", color: "text-green-400" };
+  if (score >= 75) return { letter: "B", color: "text-emerald-400" };
+  if (score >= 60) return { letter: "C", color: "text-amber-400" };
+  if (score >= 40) return { letter: "D", color: "text-orange-400" };
+  return { letter: "F", color: "text-red-400" };
+}
+
+function SiteScoreCircle({ score, size = 140 }: { score: number; size?: number }) {
+  const { letter, color } = getLetterGrade(score);
+  const r = 54;
+  const circ = 2 * Math.PI * r;
+  const offset = circ - (score / 100) * circ;
+  const strokeColor = score >= 75 ? "#22c55e" : score >= 60 ? "#fbbf24" : score >= 40 ? "#fb923c" : "#f87171";
+  return (
+    <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
+      <svg width={size} height={size} className="transform -rotate-90 absolute">
+        <circle cx={size / 2} cy={size / 2} r={r} stroke="rgba(255,255,255,0.06)" strokeWidth="8" fill="none" />
+        <circle cx={size / 2} cy={size / 2} r={r} stroke={strokeColor} strokeWidth="8" fill="none" strokeLinecap="round"
+          strokeDasharray={circ} strokeDashoffset={offset} style={{ transition: "stroke-dashoffset 1s ease-in-out" }} />
+      </svg>
+      <div className="text-center z-10">
+        <span className={`text-4xl font-black ${color}`}>{letter}</span>
+        <p className="text-xs text-foreground/40 mt-0.5">{score}/100</p>
+      </div>
+    </div>
+  );
+}
+
 const metricInfo: Record<string, string> = {
   LCP: "Largest Contentful Paint measures when the largest content element becomes visible. Target: <2.5s.",
   INP: "Interaction to Next Paint measures responsiveness to user interactions. Target: <200ms.",
@@ -314,6 +343,16 @@ export default function SeoAnalyzerClient() {
   const gradedCount = metrics.filter((m) => m.grade !== null).length;
   const overallGrade: string | null = gradedCount === 0 ? null : poorCount > 0 ? "poor" : needsWorkCount > 0 ? "needs-work" : "good";
 
+  const combinedScore = perfResults
+    ? Math.round(
+        (perfResults.performance * 0.4 +
+          perfResults.seo * 0.2 +
+          (seoResults?.seoScore ?? 0) * 0.2 +
+          (perfResults.accessibility ?? 70) * 0.1 +
+          (perfResults.bestPractices ?? 70) * 0.1)
+      )
+    : 0;
+
   const copyResults = () => {
     if (!perfResults) return;
     const lines = [
@@ -478,6 +517,45 @@ export default function SeoAnalyzerClient() {
           <AnimatePresence>
             {(perfResults || seoResults) && !scanning && (
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="space-y-6" ref={resultsRef}>
+                {/* Site Score Hero */}
+                <div className="glass-strong rounded-2xl p-6 md:p-8 text-center">
+                  <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-4">
+                    <SiteScoreCircle score={combinedScore} />
+                    <div className="text-left">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h2 className="text-xl font-bold text-foreground">{perfResults?.url ?? ""}</h2>
+                        <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase ${strategy === "mobile" ? "bg-brand-primary/10 text-brand-primary" : "bg-cyan-500/10 text-cyan-400"}`}>
+                          {strategy === "mobile" ? <><Smartphone size={10} className="inline mr-0.5" /> Mobile</> : <><Monitor size={10} className="inline mr-0.5" /> Desktop</>}
+                        </span>
+                      </div>
+                      <p className="text-sm text-foreground/50 max-w-md">
+                        {combinedScore >= 80
+                          ? "Your site is in great shape! A few tweaks can push it further."
+                          : combinedScore >= 60
+                          ? "Decent foundation with room for improvement. Focus on the flagged issues."
+                          : "Significant issues found. Prioritize the action items below to boost your score."}
+                      </p>
+                      <div className="flex items-center gap-3 mt-3">
+                        <div className="flex gap-1">
+                          <button onClick={copyResults} className="p-2 rounded-lg bg-white/[0.03] border border-white/[0.06] text-foreground/40 hover:text-foreground hover:border-white/20 transition-all" title="Copy report">
+                            {copied ? <CheckCircle size={14} className="text-green-400" /> : <Share2 size={14} />}
+                          </button>
+                          <button onClick={resetAll} className="p-2 rounded-lg bg-white/[0.03] border border-white/[0.06] text-foreground/40 hover:text-foreground hover:border-white/20 transition-all" title="New scan">
+                            <RefreshCw size={14} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-3 justify-center">
+                    <ScoreBar label="Performance" score={perfResults?.performance ?? null} />
+                    <ScoreBar label="SEO (Lighthouse)" score={perfResults?.seo ?? null} />
+                    {seoResults && <ScoreBar label="SEO (Sitemap)" score={seoResults.seoScore} />}
+                    <ScoreBar label="Accessibility" score={perfResults?.accessibility ?? null} />
+                    <ScoreBar label="Best Practices" score={perfResults?.bestPractices ?? null} />
+                  </div>
+                </div>
+
                 {/* Section tabs */}
                 <div className="flex items-center gap-2 p-1 bg-black/30 rounded-xl border border-white/[0.06] w-fit mx-auto">
                   <button onClick={() => scrollToSection("perf-section")} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${activeSection === "performance" ? "bg-brand-primary text-black shadow-lg" : "text-foreground/50 hover:text-foreground"}`}>
@@ -493,28 +571,13 @@ export default function SeoAnalyzerClient() {
                   <div id="perf-section" className="glass-strong rounded-2xl p-6 md:p-8 scroll-mt-24">
                     <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
                       <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <h2 className="text-lg font-bold text-foreground">Results for {perfResults.url}</h2>
-                          <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase ${strategy === "mobile" ? "bg-brand-primary/10 text-brand-primary" : "bg-cyan-500/10 text-cyan-400"}`}>
-                            {strategy === "mobile" ? <><Smartphone size={10} className="inline mr-0.5" /> Mobile</> : <><Monitor size={10} className="inline mr-0.5" /> Desktop</>}
-                          </span>
-                        </div>
-                        <p className="text-xs text-foreground/40">Core Web Vitals & Lighthouse Scores</p>
+                        <h2 className="text-lg font-bold text-foreground">Core Web Vitals</h2>
+                        <p className="text-xs text-foreground/40">Real-user metrics that impact search rankings</p>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <div className="flex gap-1">
-                          <button onClick={copyResults} className="p-2 rounded-lg bg-white/[0.03] border border-white/[0.06] text-foreground/40 hover:text-foreground hover:border-white/20 transition-all" title="Copy report">
-                            {copied ? <CheckCircle size={14} className="text-green-400" /> : <Share2 size={14} />}
-                          </button>
-                          <button onClick={resetAll} className="p-2 rounded-lg bg-white/[0.03] border border-white/[0.06] text-foreground/40 hover:text-foreground hover:border-white/20 transition-all" title="New scan">
-                            <RefreshCw size={14} />
-                          </button>
-                        </div>
-                        <span className="text-xs text-foreground/40">Overall</span>
-                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${overallGrade === "good" ? "bg-green-400/10 text-green-400" : overallGrade === "needs-work" ? "bg-amber-400/10 text-amber-400" : overallGrade === "poor" ? "bg-red-400/10 text-red-400" : "bg-white/5 text-foreground/40"}`}>
-                          {getLabel(overallGrade)}
-                        </span>
-                      </div>
+                      <span className="text-xs text-foreground/40">Overall</span>
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold ${overallGrade === "good" ? "bg-green-400/10 text-green-400" : overallGrade === "needs-work" ? "bg-amber-400/10 text-amber-400" : overallGrade === "poor" ? "bg-red-400/10 text-red-400" : "bg-white/5 text-foreground/40"}`}>
+                        {getLabel(overallGrade)}
+                      </span>
                     </div>
 
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
@@ -533,13 +596,6 @@ export default function SeoAnalyzerClient() {
                         <MetricBadge label="TBT" value={perfResults.tbt.value !== null ? `${perfResults.tbt.value}ms` : null} grade={perfResults.tbt.grade} info={metricInfo.TBT} />
                         <MetricBadge label="Speed Index" value={perfResults.si.value !== null ? `${perfResults.si.value.toFixed(1)}s` : null} grade={perfResults.si.grade} info={metricInfo.SI} />
                       </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-4 mb-6">
-                      <ScoreBar label="Performance" score={perfResults.performance} />
-                      <ScoreBar label="SEO" score={perfResults.seo} />
-                      <ScoreBar label="Accessibility" score={perfResults.accessibility} />
-                      <ScoreBar label="Best Practices" score={perfResults.bestPractices} />
                     </div>
                   </div>
                 )}
