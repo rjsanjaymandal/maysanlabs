@@ -273,6 +273,10 @@ html:not(.dark) .text-white\/\[0\.02\] {
     @apply antialiased bg-background text-foreground;
     font-feature-settings: "ss01", "ss02", "cv01", "cv11";
   }
+  :where(a, button, input, textarea, select, summary):focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
+  }
   :root {
     --background: 210 17% 99%;
     --foreground: 222 25% 16%;
@@ -392,6 +396,37 @@ html, body {
 
   .maysan-card:hover::before {
     @apply opacity-100;
+  }
+
+  .blog-card {
+    @apply relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/80 bg-card/95 p-6 shadow-sm transition-[transform,border-color,background-color,box-shadow] duration-200;
+    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.05);
+  }
+
+  .blog-card::before {
+    content: "";
+    @apply pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-primary/30 to-transparent opacity-60;
+  }
+
+  .group:hover .blog-card {
+    @apply -translate-y-1 border-brand-primary/35 bg-card;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.1);
+  }
+
+  .dark .blog-card {
+    background:
+      linear-gradient(180deg, rgba(15, 25, 35, 0.94), rgba(13, 17, 23, 0.9)),
+      hsl(var(--card));
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+  }
+
+  .dark .group:hover .blog-card {
+    border-color: rgba(var(--brand-primary-rgb), 0.42);
+    background:
+      linear-gradient(180deg, rgba(20, 31, 44, 0.98), rgba(13, 17, 23, 0.92)),
+      hsl(var(--card));
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.38), 0 0 32px rgba(var(--brand-primary-rgb), 0.12);
   }
 
   /* ─── Theme Gradients ─── */

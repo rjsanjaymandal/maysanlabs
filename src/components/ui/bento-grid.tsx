@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowRightIcon } from "lucide-react";
-import { ReactNode, useCallback, useRef } from "react";
+import { ReactNode, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { motion, useMotionValue, useMotionTemplate, useTransform, useSpring } from "framer-motion";
 import Link from "next/link";

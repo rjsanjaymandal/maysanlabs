@@ -6,33 +6,43 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],
   },
-  generateBuildId: () => `build-${Date.now()}`,
   async headers() {
+    const staticAssetCache = "public, max-age=31536000, immutable";
+    const shortLivedDocumentCache = "public, max-age=0, s-maxage=300, stale-while-revalidate=600, stale-if-error=86400";
+
     return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+        ],
+      },
       {
         source: "/((?!_next/static|_next/image|.*\\..*).*)",
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=0, s-maxage=300, stale-while-revalidate=600, stale-if-error=86400",
+            value: shortLivedDocumentCache,
           },
         ],
       },
       {
-        source: "/:path*(manifest.json|manifest.webmanifest|favicon.ico|icon-rounded-v2.png|icon-192x192-v2.png|icon-512x512-v2.png|icon-192x192-v3.png|icon-512x512-v3.png|icon-192x192-v4.png|icon-512x512-v4.png)",
+        source: "/:path*(manifest.json|manifest.webmanifest)",
         headers: [
           {
             key: "Cache-Control",
-            value: "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
+            value: "public, max-age=3600, stale-while-revalidate=86400",
           },
         ],
       },
       {
-        source: "/:all*(svg|jpg|jpeg|png|gif|webp|avif)",
+        source: "/:all*(ico|svg|jpg|jpeg|png|gif|webp|avif)",
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
+            value: staticAssetCache,
           },
         ],
       },

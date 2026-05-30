@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, Monitor, Play } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 
 interface PortfolioShowcaseProps {
   title: string;

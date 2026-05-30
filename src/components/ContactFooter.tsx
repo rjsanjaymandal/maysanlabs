@@ -1,8 +1,5 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { ArrowRight, Mail, MapPin, Twitter, Linkedin, Send, Instagram, Facebook } from "lucide-react";
 
 const links = [
@@ -77,13 +74,7 @@ export default function ContactFooter() {
         <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.08] via-brand-primary/[0.03] to-transparent" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] sm:w-[500px] h-[240px] sm:h-[500px] bg-brand-primary/5 sm:bg-brand-primary/10 blur-[40px] sm:blur-[80px] rounded-full pointer-events-none" />
         <div className="container-main">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
+          <div className="text-center">
             <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
               <Send size={12} />
               Get Started
@@ -105,7 +96,7 @@ export default function ContactFooter() {
                   <span>Contact Us</span>
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

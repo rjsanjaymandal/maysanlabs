@@ -2,35 +2,6 @@
 
 import nodemailer from "nodemailer";
 
-// Simple in-memory rate limiter (resets on server restart)
-const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
-const RATE_LIMIT_MAX_REQUESTS = 5; // max 5 requests per window
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const record = rateLimitMap.get(ip);
-  
-  if (!record) {
-    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
-    return false;
-  }
-  
-  if (now > record.resetTime) {
-    // Reset the window
-    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
-    return false;
-  }
-  
-  if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
-    return true; // Rate limited
-  }
-  
-  // Increment count
-  record.count += 1;
-  return false;
-}
-
 export async function applyJob(formData: FormData) {
   // Honeypot check: if the hidden field is filled, it's likely a bot
   const honeypot = formData.get("website") as string;

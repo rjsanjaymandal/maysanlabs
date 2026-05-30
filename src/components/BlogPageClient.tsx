@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, Globe, Cpu, ChevronLeft, ChevronRight } from "lucide-react";
+import { Globe, Cpu, ChevronRight } from "lucide-react";
 import BlogCard from "@/components/BlogCard";
 import { BlogPost } from "@/lib/blog-data";
 
@@ -44,46 +43,44 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
     <div className="flex flex-col w-full">
       {/* Premium Tab Selector */}
       <div className="flex justify-center mb-10 relative z-20">
-        <div className="p-1.5 rounded-full bg-white/[0.02] border border-white/[0.06] backdrop-blur-xl flex items-center gap-2 shadow-2xl">
+        <div
+          role="tablist"
+          aria-label="Blog article source"
+          className="p-1.5 rounded-full bg-card/80 border border-border/80 dark:bg-white/[0.03] dark:border-white/[0.08] backdrop-blur-xl flex items-center gap-2 shadow-sm"
+        >
           <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === "local"}
             onClick={() => handleTabChange("local")}
-            className={`relative px-6 py-3 rounded-full text-sm font-semibold flex items-center gap-2.5 transition-all duration-300 ${
+            className={`relative px-4 sm:px-6 py-3 rounded-full text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all duration-300 focus-ring ${
               activeTab === "local"
-                ? "text-black font-black"
-                : "text-foreground/60 hover:text-foreground"
+                ? "bg-brand-primary text-white shadow-[0_0_18px_rgba(26,109,214,0.32)]"
+                : "text-foreground/60 hover:text-foreground hover:bg-white/[0.04]"
             }`}
           >
-            {activeTab === "local" && (
-              <motion.div
-                layoutId="activeTabGlow"
-                className="absolute inset-0 bg-brand-primary rounded-full shadow-[0_0_20px_rgba(26,109,214,0.4)]"
-                transition={{ type: "spring", stiffness: 380, damping: 30 }}
-              />
-            )}
             <span className="relative z-10 flex items-center gap-2">
               <Cpu size={15} />
-              Lab Insights ({localPosts.length})
+              <span className="sm:hidden">Lab ({localPosts.length})</span>
+              <span className="hidden sm:inline">Lab Insights ({localPosts.length})</span>
             </span>
           </button>
 
           <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === "external"}
             onClick={() => handleTabChange("external")}
-            className={`relative px-6 py-3 rounded-full text-sm font-semibold flex items-center gap-2.5 transition-all duration-300 ${
+            className={`relative px-4 sm:px-6 py-3 rounded-full text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all duration-300 focus-ring ${
               activeTab === "external"
-                ? "text-black font-black"
-                : "text-foreground/60 hover:text-foreground"
+                ? "bg-brand-primary text-white shadow-[0_0_18px_rgba(26,109,214,0.32)]"
+                : "text-foreground/60 hover:text-foreground hover:bg-white/[0.04]"
             }`}
           >
-            {activeTab === "external" && (
-              <motion.div
-                layoutId="activeTabGlow"
-                className="absolute inset-0 bg-brand-primary rounded-full shadow-[0_0_20px_rgba(26,109,214,0.4)]"
-                transition={{ type: "spring", stiffness: 380, damping: 30 }}
-              />
-            )}
             <span className="relative z-10 flex items-center gap-2">
               <Globe size={15} />
-              Global Tech News ({externalPosts.length || 0})
+              <span className="sm:hidden">Global ({externalPosts.length || 0})</span>
+              <span className="hidden sm:inline">Global Tech News ({externalPosts.length || 0})</span>
             </span>
           </button>
         </div>
@@ -95,11 +92,13 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
           {categories.map((cat) => (
             <button
               key={cat}
+              type="button"
+              aria-pressed={categoryFilter === cat}
               onClick={() => { setCategoryFilter(cat); setCurrentPage(1); }}
-              className={`px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 ${
+              className={`px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 focus-ring ${
                 categoryFilter === cat
-                  ? "bg-brand-primary text-black"
-                  : "bg-white/[0.03] border border-white/[0.06] text-foreground/50 hover:text-foreground hover:border-white/20"
+                  ? "bg-brand-primary text-white"
+                  : "bg-card/70 border border-border/70 text-foreground/55 hover:text-foreground hover:border-brand-primary/30 dark:bg-white/[0.03] dark:border-white/[0.08]"
               }`}
             >
               {cat === "all" ? "All" : cat}
@@ -110,39 +109,32 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
 
       {/* Grid listing section */}
       <div className="relative min-h-[400px]">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`${activeTab}-${categoryFilter}-${currentPage}`}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {paginatedPosts.length > 0 ? (
-              paginatedPosts.map((post) => (
-                <BlogCard key={post.slug} post={post} />
-              ))
-            ) : (
-              <div className="col-span-full py-20 text-center flex flex-col items-center justify-center border border-white/[0.04] bg-white/[0.01] rounded-2xl">
-                <div className="w-12 h-12 rounded-full bg-white/[0.03] flex items-center justify-center text-foreground/30 mb-4 animate-pulse">
-                  <Globe size={20} />
-                </div>
-                <p className="text-foreground/40 text-sm font-semibold">
-                  {activeTab === "external" ? "Connecting to automated feed. Please check back in a few moments..." : "No posts found in this category."}
-                </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
+          {paginatedPosts.length > 0 ? (
+            paginatedPosts.map((post) => (
+              <BlogCard key={post.slug} post={post} />
+            ))
+          ) : (
+            <div className="col-span-full py-20 text-center flex flex-col items-center justify-center border border-border/70 bg-card/70 dark:border-white/[0.06] dark:bg-white/[0.02] rounded-2xl">
+              <div className="w-12 h-12 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-4">
+                <Globe size={20} />
               </div>
-            )}
-          </motion.div>
-        </AnimatePresence>
+              <p className="text-foreground/50 text-sm font-semibold">
+                {activeTab === "external" ? "Connecting to automated feed. Please check back in a few moments..." : "No posts found in this category."}
+              </p>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Load More / Pagination */}
       {hasMore && (
         <div className="mt-12 text-center">
           <button
+            type="button"
             onClick={() => setCurrentPage((p) => p + 1)}
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-white/[0.03] border border-white/10 rounded-full text-sm font-semibold text-foreground/70 hover:text-foreground hover:border-white/20 transition-all duration-300"
+            aria-label="Load more blog articles"
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-card/75 border border-border/80 rounded-full text-sm font-semibold text-foreground/70 hover:text-foreground hover:border-brand-primary/30 transition-all duration-300 focus-ring dark:bg-white/[0.03] dark:border-white/10"
           >
             Load More Articles
             <ChevronRight size={16} />

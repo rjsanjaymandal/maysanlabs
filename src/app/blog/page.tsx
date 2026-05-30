@@ -9,6 +9,8 @@ import { BookOpen } from "lucide-react";
 import Link from "next/link";
 import { generateBreadcrumbSchema } from "@/lib/seo/helpers";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Blog | Enterprise SaaS Development Insights | Maysan Labs",
   description: "Read the latest insights on SaaS development, custom software, cloud infrastructure, and enterprise technology from Maysan Labs experts. Maysan Labs blog covers React, Node.js, and cloud architecture.",
@@ -85,7 +87,7 @@ export default async function BlogListingPage() {
               <p className="text-lg md:text-xl text-foreground/50 leading-relaxed mb-8 max-w-2xl">
                 Engineering high-performance enterprise SaaS infrastructure. Research, benchmarks, and details from our elite lab.
               </p>
-              <Link href="/start" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+              <Link href="/start" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-white hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200 focus-ring">
                 Get in touch
               </Link>
             </div>
@@ -93,7 +95,7 @@ export default async function BlogListingPage() {
         </section>
 
         {/* Blog Posts Section */}
-        <section className="py-16">
+        <section className="py-16 content-auto-wide">
           <div className="container-main">
             <BlogPageClient localPosts={blogPosts} externalPosts={externalPosts} />
           </div>

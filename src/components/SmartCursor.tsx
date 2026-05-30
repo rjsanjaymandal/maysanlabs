@@ -10,7 +10,7 @@ function subscribeReducedMotion(callback: () => void) {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     mediaQuery.addEventListener("change", callback);
     return () => mediaQuery.removeEventListener("change", callback);
-  } catch (e) {
+  } catch {
     return () => {};
   }
 }
@@ -19,7 +19,7 @@ function getReducedMotionSnapshot() {
   if (typeof window === "undefined") return false;
   try {
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  } catch (e) {
+  } catch {
     return false;
   }
 }

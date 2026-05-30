@@ -227,6 +227,8 @@ export function generateCaseStudyJSONLD(study: CaseStudy, siteUrl: string) {
  * Generate SEO metadata for product pages
  */
 export function generateProductSEO(product: ProductInfo, _siteUrl: string): Metadata {
+  void _siteUrl;
+
   return {
     title: `${product.name} | Maysan Labs Products`,
     description: product.description,
@@ -507,7 +509,7 @@ export function generateJSONLDScripts(
 
   // Add additional schemas if provided
   if (additionalData) {
-    Object.entries(additionalData).forEach(([_key, value]) => {
+    Object.values(additionalData).forEach((value) => {
       if (value && typeof value === 'object') {
         scripts.push({
           type: "application/ld+json",

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, ArrowRight, CheckCircle, Send } from "lucide-react";
 import { sendEmail } from "@/app/actions/sendEmail";

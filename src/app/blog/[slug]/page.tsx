@@ -174,7 +174,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <p className="text-foreground/60 text-sm mb-6 max-w-md mx-auto">
               Let&apos;s discuss your project. Our team is ready to help you scale.
             </p>
-            <Link href="/start" className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-bold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.45)] hover:scale-[1.02] transition-all duration-300">
+            <Link href="/start" className="inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-bold text-sm text-white hover:shadow-[0_0_30px_rgba(26,109,214,0.45)] hover:scale-[1.02] transition-all duration-300 focus-ring">
               Start Your Project
               <ArrowRight size={14} />
             </Link>
@@ -185,15 +185,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div>
               <p className="text-sm text-foreground/40 mb-2">Share this article</p>
               <div className="flex gap-2">
-                <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://maysanlabs.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-foreground/50 hover:text-foreground hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all">
+                <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://maysanlabs.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-foreground/50 hover:text-foreground hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all focus-ring">
                   Twitter
                 </a>
-                <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://maysanlabs.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-foreground/50 hover:text-foreground hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all">
+                <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://maysanlabs.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-foreground/50 hover:text-foreground hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all focus-ring">
                   LinkedIn
                 </a>
               </div>
             </div>
-            <Link href="/blog" className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-medium text-sm text-black hover:shadow-[0_0_20px_rgba(26,109,214,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200">
+            <Link href="/blog" className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-medium text-sm text-white hover:shadow-[0_0_20px_rgba(26,109,214,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 focus-ring">
               Read More Articles
             </Link>
           </div>

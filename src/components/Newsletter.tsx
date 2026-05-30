@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Mail, ArrowRight, CheckCircle } from "lucide-react";
 
 export default function Newsletter() {
@@ -38,12 +37,7 @@ export default function Newsletter() {
   return (
     <section className="py-20 border-t border-white/5">
       <div className="container-main">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-2xl mx-auto text-center"
-        >
+        <div className="max-w-2xl mx-auto text-center">
           <div className="w-16 h-16 rounded-2xl bg-brand-primary/10 flex items-center justify-center mx-auto mb-6">
             <Mail size={28} className="text-brand-primary" />
           </div>
@@ -56,17 +50,15 @@ export default function Newsletter() {
           </p>
 
           {subscribed ? (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="bg-green-500/10 border border-green-500/20 rounded-xl p-6 flex items-center gap-4"
+            <div
+              className="bg-green-500/10 border border-green-500/20 rounded-xl p-6 flex items-center gap-4 animate-fade-in"
             >
               <CheckCircle size={24} className="text-green-500 flex-shrink-0" />
               <div className="text-left">
                 <p className="text-foreground font-semibold">Thanks for subscribing!</p>
                 <p className="text-foreground/50 text-sm">Check your email for confirmation.</p>
               </div>
-            </motion.div>
+            </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input
@@ -96,7 +88,7 @@ export default function Newsletter() {
           <p className="text-foreground/30 text-xs mt-4">
             No spam, unsubscribe anytime. We respect your privacy.
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

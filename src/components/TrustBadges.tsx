@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Award, Clock, Zap, CheckCircle } from "lucide-react";
+import { Shield, Clock, Zap, CheckCircle } from "lucide-react";
 
 const badges = [
   {

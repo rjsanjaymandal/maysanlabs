@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Quote, Star, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 
 const testimonials = [
   {

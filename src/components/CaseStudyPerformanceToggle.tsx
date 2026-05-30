@@ -7,14 +7,9 @@ import {
   AlertTriangle,
   Zap,
   CheckCircle2,
-  Clock,
-  Server,
-  TrendingUp,
   BarChart3,
   Bug,
-  Shield,
   X,
-  Timer,
 } from "lucide-react";
 
 interface BeforeAfterData {
@@ -24,9 +19,6 @@ interface BeforeAfterData {
 }
 
 export default function CaseStudyPerformanceToggle({
-  title,
-  challenge,
-  solution,
   data,
 }: {
   title: string;

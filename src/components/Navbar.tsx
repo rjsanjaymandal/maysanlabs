@@ -6,10 +6,11 @@ import Image from "next/image";
 import { Menu, X, Phone, Search } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import dynamic from "next/dynamic";
-const SearchModal = dynamic(() => import("@/components/SearchModal"));
+const SearchModal = dynamic(() => import("@/components/SearchModal"), {
+  loading: () => null,
+});
 
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,6 +54,10 @@ export default function Navbar() {
     const firstFocusable = menuRef.current.querySelector<HTMLElement>("a, button, [tabindex]:not([tabindex='-1'])");
     firstFocusable?.focus();
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+        return;
+      }
       if (e.key !== "Tab" || !menuRef.current) return;
       const focusable = menuRef.current.querySelectorAll<HTMLElement>("a, button, [tabindex]:not([tabindex='-1'])");
       if (focusable.length === 0) return;
@@ -91,20 +96,13 @@ export default function Navbar() {
 
   return (
     <>
-      <nav aria-label="Main navigation" className={`fixed top-0 left-0 right-0 z-[100] ${
+      <nav aria-label="Main navigation" className={`fixed top-0 left-0 right-0 z-[100] transition-[background-color,padding,box-shadow] duration-200 ${
         mounted && scrolled ? "bg-[var(--bg-dark)] py-2 md:py-3 shadow-lg shadow-black/20" : "bg-transparent py-4 md:py-5"
       }`}>
         <div className="container-main flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
-            <motion.div 
-              whileHover={{ 
-                scale: 1.05, 
-                rotate: -3,
-                boxShadow: "0 0 20px rgba(26, 109, 214, 0.4)",
-              }}
-              whileTap={{ scale: 0.95, rotate: 0 }}
-              transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              className="relative h-9 w-9 rounded-full overflow-hidden flex items-center justify-center border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)]"
+            <div 
+              className="relative h-9 w-9 rounded-full overflow-hidden flex items-center justify-center border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] transition-transform duration-200 group-hover:-rotate-3 group-hover:scale-105 group-hover:shadow-[0_0_20px_rgba(26,109,214,0.35)]"
             >
               <Image 
                 src="/logo-rounded-v2.webp" 
@@ -114,7 +112,7 @@ export default function Navbar() {
                 priority
                 className="h-full w-full object-contain" 
               />
-            </motion.div>
+            </div>
             <span className="text-xs sm:text-sm font-semibold tracking-[0.22em] text-foreground/90 transition-colors duration-300 group-hover:text-foreground uppercase">
               Maysan <span className="text-[#1A6DD6] group-hover:text-blue-400 transition-colors duration-300">Labs</span>
             </span>
@@ -125,12 +123,13 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
+                aria-current={pathname === item.href ? "page" : undefined}
                 className={`text-[10px] uppercase tracking-widest font-semibold transition-all duration-300 relative group py-1.5 ${
                   pathname === item.href ? "text-brand-primary" : "text-foreground/45 hover:text-foreground"
                 }`}
               >
                 {item.name}
-                <span className={`absolute -bottom-0.5 left-0 h-[1.5px] bg-brand-primary transition-all duration-355 ${pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                <span className={`absolute -bottom-0.5 left-0 h-[1.5px] bg-brand-primary transition-all duration-300 ${pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
               </Link>
             ))}
           </div>
@@ -138,9 +137,11 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <ThemeToggle />
             <button
+              type="button"
               onClick={() => setIsSearchOpen(true)}
               aria-label="Open search"
-              className="w-9 h-9 flex items-center justify-center text-foreground/50 hover:text-foreground bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full transition-all duration-200 hover:border-[var(--text-on-white)]/20"
+              aria-keyshortcuts="Control+K Meta+K"
+              className="w-9 h-9 flex items-center justify-center text-foreground/50 hover:text-foreground bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full transition-all duration-200 hover:border-[var(--text-on-white)]/20 focus-ring"
             >
               <Search size={15} />
             </button>
@@ -150,15 +151,16 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <motion.button 
-            whileTap={{ scale: 0.92 }}
-            className="lg:hidden w-11 h-11 flex items-center justify-center text-foreground/50 hover:text-foreground bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full hover:bg-[var(--glass-chip-bg)] hover:border-[var(--text-on-white)]/20 transition-all duration-200"
+          <button 
+            type="button"
+            className="lg:hidden w-11 h-11 flex items-center justify-center text-foreground/50 hover:text-foreground bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full hover:bg-[var(--glass-chip-bg)] hover:border-[var(--text-on-white)]/20 transition-all duration-200 focus-ring"
             onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
+            aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
+            aria-controls="mobile-navigation-menu"
           >
             {isOpen ? <X size={18} /> : <Menu size={18} />}
-          </motion.button>
+          </button>
         </div>
       </nav>
  
@@ -175,34 +177,28 @@ export default function Navbar() {
         </Link>
       </div>
  
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
+      {isOpen && (
+          <div 
             ref={menuRef}
+            id="mobile-navigation-menu"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] bg-background/98 backdrop-blur-2xl lg:hidden"
+            className="fixed inset-0 z-[60] animate-fade-in bg-background/98 backdrop-blur-2xl lg:hidden"
           >
             <div className="flex flex-col h-full p-6 pt-24 justify-between">
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col gap-1.5">
                   {navItems.map((item, index) => (
-                    <motion.div
+                    <div
                       key={item.name}
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                      whileHover={{ x: 4 }}
-                      whileTap={{ scale: 0.97 }}
+                      style={{ animationDelay: `${index * 35}ms` }}
+                      className="animate-fade-in-up"
                     >
                       <Link
                         href={item.href}
                         onClick={() => setIsOpen(false)}
+                        aria-current={pathname === item.href ? "page" : undefined}
                         className={`text-base font-semibold py-3 px-4 rounded-xl block transition-all duration-200 ${
                           pathname === item.href 
                             ? "text-[#1A6DD6] bg-[#1A6DD6]/5" 
@@ -211,7 +207,7 @@ export default function Navbar() {
                       >
                         {item.name}
                       </Link>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -221,9 +217,10 @@ export default function Navbar() {
                 <span className="text-foreground/40 text-xs font-semibold uppercase tracking-wider">Preferences</span>
                 <div className="flex items-center gap-4">
                   <button
+                    type="button"
                     onClick={() => { setIsOpen(false); setIsSearchOpen(true); }}
                     aria-label="Open search"
-                    className="w-9 h-9 flex items-center justify-center text-foreground/50 hover:text-foreground bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full transition-all duration-200"
+                    className="w-9 h-9 flex items-center justify-center text-foreground/50 hover:text-foreground bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full transition-all duration-200 focus-ring"
                   >
                     <Search size={15} />
                   </button>
@@ -231,11 +228,10 @@ export default function Navbar() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
 
-      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      {isSearchOpen && <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />}
     </>
   );
 }
