@@ -744,6 +744,9 @@ export default function ImageCompressorClient() {
                                   <img
                                     src={fileObj.originalUrl}
                                     alt="Thumbnail"
+                                    loading="lazy"
+                                    width={40}
+                                    height={40}
                                     className="w-full h-full object-cover"
                                   />
                                 </div>
@@ -914,6 +917,7 @@ export default function ImageCompressorClient() {
                               <img
                                 src={activeFile.rotatedOriginalUrl || activeFile.originalUrl}
                                 alt="Original Preview"
+                                loading="lazy"
                                 className="absolute max-h-full max-w-full object-contain pointer-events-none select-none p-1"
                               />
                               <span className="absolute top-4 left-4 z-20 px-2 py-1 bg-black/80 border border-white/10 text-[9px] font-bold text-white uppercase tracking-wider rounded font-mono">
@@ -931,6 +935,7 @@ export default function ImageCompressorClient() {
                                 <img
                                   src={activeFile.compressedUrl || activeFile.rotatedOriginalUrl || activeFile.originalUrl}
                                   alt="Optimized Preview"
+                                  loading="lazy"
                                   className="max-h-full max-w-full object-contain pointer-events-none select-none"
                                 />
                               </div>
@@ -969,6 +974,7 @@ export default function ImageCompressorClient() {
                                 <img
                                   src={activeFile.rotatedOriginalUrl || activeFile.originalUrl}
                                   alt="Original Side-by-Side"
+                                  loading="lazy"
                                   className="max-h-[80%] max-w-full object-contain pointer-events-none select-none"
                                 />
                                 <span className="absolute bottom-2 left-2 z-10 px-2 py-0.5 bg-black/80 border border-white/10 text-[8px] font-bold text-white uppercase tracking-wider rounded font-mono">
@@ -982,6 +988,7 @@ export default function ImageCompressorClient() {
                                 <img
                                   src={activeFile.compressedUrl || activeFile.rotatedOriginalUrl || activeFile.originalUrl}
                                   alt="Optimized Side-by-Side"
+                                  loading="lazy"
                                   className="max-h-[80%] max-w-full object-contain pointer-events-none select-none"
                                 />
                                 <span className="absolute bottom-2 right-2 z-10 px-2 py-0.5 bg-brand-primary text-white border border-white/10 text-[8px] font-bold uppercase tracking-wider rounded font-mono">
@@ -1009,6 +1016,7 @@ export default function ImageCompressorClient() {
                               <img
                                 src={isHovered ? (activeFile.rotatedOriginalUrl || activeFile.originalUrl) : (activeFile.compressedUrl || activeFile.rotatedOriginalUrl || activeFile.originalUrl)}
                                 alt="Toggle Preview"
+                                loading="lazy"
                                 className="max-h-full max-w-full object-contain pointer-events-none"
                               />
 

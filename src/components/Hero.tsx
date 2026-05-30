@@ -86,7 +86,7 @@ export default function Hero() {
         </div>
 
         {/* Floating Glassmorphic Dashboard Showcase */}
-        <div className="w-full max-w-5xl mt-12 md:mt-24 mb-6 relative group px-3 sm:px-6 md:px-0 md:animate-fade-in-up md:[animation-duration:0.8s] md:[animation-delay:500ms] [content-visibility:auto]">
+        <div className="w-full max-w-5xl mt-12 md:mt-24 mb-6 relative group px-3 sm:px-6 md:px-0 md:animate-fade-in-up md:[animation-duration:0.8s] md:[animation-delay:500ms]">
           {/* Neon Ambient Background Glows */}
           <div className="absolute -inset-1 bg-gradient-to-r from-brand-primary/20 to-blue-500/10 rounded-[32px] blur-2xl opacity-45 group-hover:opacity-60 transition duration-1000 group-hover:duration-200 pointer-events-none animate-pulse" />
           <div className="absolute -top-12 -left-12 w-64 h-64 bg-brand-primary/5 rounded-full blur-3xl opacity-20 pointer-events-none" />

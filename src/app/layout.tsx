@@ -195,6 +195,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={cn("antialiased", outfit.variable, jetbrainsMono.variable)}>
       <head>
+        {/* Preconnect to critical third-party origins for faster connection */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+        {/* Preload critical above-the-fold image */}
+        <link rel="preload" as="image" href="/logo-rounded-v2.webp" />
+
         {/* Combined JSON-LD structured data — single @graph for fewer script tags */}
         <script
           type="application/ld+json"
