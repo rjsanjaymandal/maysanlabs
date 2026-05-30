@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import BorderBeam from "@/components/ui/border-beam";
 
-const SparklesCore = dynamic(() => import("@/components/ui/sparkles").then(m => m.SparklesCore));
+const SparklesCore = dynamic(() => import("@/components/ui/sparkles").then(m => m.SparklesCore), { ssr: false });
 
 const benefits = [
   "100% Custom Software (No Templates)",
@@ -51,7 +51,7 @@ export default function Hero() {
         </div>
 
         <div className="mb-5 md:mb-6 md:animate-fade-in-up-lg md:[animation-duration:0.4s] md:[animation-delay:50ms]">
-          <h1 className="heading-xl text-foreground max-w-4xl">
+          <h1 className="font-sans heading-xl text-foreground max-w-4xl">
             Get <span className="text-brand-primary">Custom Software & AI tools</span> <br className="hidden md:block" />
             built to grow <span className="text-brand-primary">your business</span>
           </h1>
