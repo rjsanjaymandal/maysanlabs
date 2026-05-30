@@ -112,6 +112,8 @@ export default function ContactFooter() {
                     alt="Maysan Labs"
                     width={56}
                     height={56}
+                    placeholder="blur"
+                    blurDataURL="data:image/webp;base64,UklGRlYAAABXRUJQVlA4WAoAAAAQAAAAJQAJUAoAAAMR0RQgACD+/BkAg/38AgA="
                     className="h-full w-full object-contain transition-transform group-hover:scale-105" 
                   />
                 </div>

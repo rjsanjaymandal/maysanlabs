@@ -169,6 +169,8 @@ export default function PortfolioShowcase({
                       width={1200}
                       height={1600}
                       sizes="(max-width: 768px) 100vw, 60vw"
+                      placeholder="blur"
+                      blurDataURL="data:image/webp;base64,UklGRlYAAABXRUJQVlA4WAoAAAAQAAAAJQAJUAoAAAMR0RQgACD+/BkAg/38AgA="
                       className="w-full h-auto object-cover object-top"
                     />
                   </div>

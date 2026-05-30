@@ -111,6 +111,8 @@ export default function Navbar() {
                 height={36}
                 priority
                 fetchPriority="high"
+                placeholder="blur"
+                blurDataURL="data:image/webp;base64,UklGRlYAAABXRUJQVlA4WAoAAAAQAAAAJQAJUAoAAAMR0RQgACD+/BkAg/38AgA="
                 className="h-full w-full object-contain" 
               />
             </div>
