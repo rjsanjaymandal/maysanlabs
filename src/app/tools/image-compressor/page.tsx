@@ -3,8 +3,8 @@ import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
 import ImageCompressorClient from "./ImageCompressorClient";
 
 export const metadata: Metadata = generatePageSEO({
-  title: "Free In-Browser Image Compressor | Smart Asset Optimizer | Maysan Labs",
-  description: "Compress and optimize your JPEG, PNG, and WebP images directly in your browser. Scale dimensions, convert formats, and reduce sizes instantly with 100% privacy.",
+  title: "Image Compressor — Free Browser-Based Image Shrinker | Maysan Labs",
+  description: "Shrink images right in your browser — no uploads needed. Compress JPEG, PNG, and WebP files instantly with 100% privacy.",
   path: "/tools/image-compressor",
   keywords: [
     "image compressor",
@@ -25,7 +25,7 @@ export const metadata: Metadata = generatePageSEO({
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Home", url: "/" },
   { name: "Tools", url: "/tools" },
-  { name: "Smart Image Compressor", url: "/tools/image-compressor" },
+  { name: "Image Compressor", url: "/tools/image-compressor" },
 ]);
 
 export default function ImageCompressorPage() {

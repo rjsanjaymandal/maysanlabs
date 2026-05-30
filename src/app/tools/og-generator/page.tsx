@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import OgGeneratorClient from "./OgGeneratorClient";
 
 export const metadata: Metadata = generatePageSEO({
-  title: "Free Social Share Image Editor & Previewer | Maysan Labs",
-  description: "Design and preview exactly how your website looks when shared on social media, and compile customized share graphics.",
+  title: "Link Preview Maker — Free Social Share Image Tool | Maysan Labs",
+  description: "Design how your website looks when shared on WhatsApp, Facebook, or LinkedIn. Preview and download social share images for free.",
   path: "/tools/og-generator",
   keywords: ["social share image editor", "OG image checker", "social link previewer", "Twitter card preview", "LinkedIn post preview", "free marketer tools"]
 });
@@ -12,7 +12,7 @@ export const metadata: Metadata = generatePageSEO({
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Home", url: "/" },
   { name: "Tools", url: "/tools" },
-  { name: "Social Share Image Editor", url: "/tools/og-generator" }
+  { name: "Link Preview Maker", url: "/tools/og-generator" }
 ]);
 
 export default function OgGeneratorPage() {

@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import ScopeEstimatorClient from "./ScopeEstimatorClient";
 
 export const metadata: Metadata = generatePageSEO({
-  title: "Free Software Cost & Scoping Estimator | Maysan Labs",
-  description: "Select the features you want in your custom application to instantly calculate a detailed cost breakdown and delivery timeline.",
+  title: "App Cost Calculator — Free Software Budget Tool | Maysan Labs",
+  description: "Get an instant budget and timeline for your custom app idea. Select features you need and see the estimated cost breakdown in seconds.",
   path: "/tools/scope-estimator",
   keywords: ["software cost estimator", "app budget calculator", "SaaS scoping tool", "development timeline estimator", "Maysan Labs estimator"]
 });
@@ -12,7 +12,7 @@ export const metadata: Metadata = generatePageSEO({
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Home", url: "/" },
   { name: "Tools", url: "/tools" },
-  { name: "Software Cost & Scoping Estimator", url: "/tools/scope-estimator" }
+  { name: "App Cost Calculator", url: "/tools/scope-estimator" }
 ]);
 
 export default function ScopeEstimatorPage() {

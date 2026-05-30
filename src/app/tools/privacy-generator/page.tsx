@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import PrivacyGeneratorClient from "./PrivacyGeneratorClient";
 
 export const metadata: Metadata = generatePageSEO({
-  title: "Free Legal Policy & Terms Generator | Maysan Labs",
-  description: "Instantly draft standard, standard-grade privacy policies and terms of service documents tailored for websites and products.",
+  title: "Policy Generator — Free Privacy Policy & Terms Tool | Maysan Labs",
+  description: "Create privacy policy and terms of service pages for your website in seconds. Free, no signup required.",
   path: "/tools/privacy-generator",
   keywords: ["privacy policy generator", "terms of service generator", "legal documents compiler", "free compliance tool", "SaaS privacy compiler"]
 });
@@ -12,7 +12,7 @@ export const metadata: Metadata = generatePageSEO({
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Home", url: "/" },
   { name: "Tools", url: "/tools" },
-  { name: "Legal Policy & Terms Generator", url: "/tools/privacy-generator" }
+  { name: "Policy Generator", url: "/tools/privacy-generator" }
 ]);
 
 export default function PrivacyGeneratorPage() {

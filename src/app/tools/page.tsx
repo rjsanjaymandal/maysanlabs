@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import ToolsClient from "./ToolsClient";
 
 export const metadata: Metadata = generatePageSEO({
-  title: "Free Developer, Creator & Business Tools | Maysan Labs",
-  description: "Unlock high-performance utilities by Maysan Labs: Sitemap SEO Crawlers, Headless Commerce ROI Calculators, Budget Estimators, OG Card Editors, and Privacy document compilers.",
+  title: "Free Business Tools — Site Checker, Calculators & Generators | Maysan Labs",
+  description: "Free tools to grow your business — check your site health, calculate profits, estimate app costs, create legal pages, and more. No signup needed.",
   path: "/tools",
   keywords: ["developer tools", "free marketing tools", "SaaS estimators", "sitemap crawler", "headless ROI", "OG image previewer", "legal policy generator"]
 });

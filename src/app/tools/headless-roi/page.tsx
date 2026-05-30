@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import HeadlessRoiClient from "./HeadlessRoiClient";
 
 export const metadata: Metadata = generatePageSEO({
-  title: "Free Online Store Profit Calculator | Maysan Labs",
-  description: "See how much more money your store can make by boosting loading speeds, increasing customer sales, and lowering platform fees.",
+  title: "Profit Calculator — Free Store Revenue Tool | Maysan Labs",
+  description: "See how much more your store could earn with a faster website. Calculate potential savings from speed improvements and lower platform fees.",
   path: "/tools/headless-roi",
   keywords: ["online store calculator", "Shopify ROI calculator", "e-commerce profit calculator", "headless Shopify savings", "e-commerce speed calculator"]
 });
@@ -12,7 +12,7 @@ export const metadata: Metadata = generatePageSEO({
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Home", url: "/" },
   { name: "Tools", url: "/tools" },
-  { name: "Online Store Profit Calculator", url: "/tools/headless-roi" }
+  { name: "Profit Calculator", url: "/tools/headless-roi" }
 ]);
 
 export default function HeadlessRoiPage() {

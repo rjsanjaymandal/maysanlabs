@@ -7,61 +7,61 @@ import { ShieldAlert, BadgePercent, LayoutGrid, Sparkles, ArrowRight, Search, Fi
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 
-const categories = ["All", "Website Checkers", "Profit & Price Calculators", "Daily Office Tools"];
+const categories = ["All", "Site Checks", "Business Calculators", "Quick Tools"];
 
 const tools = [
   {
-    title: "SEO & Website Health Checker",
-    desc: "Check Core Web Vitals, Lighthouse scores, sitemap health, meta tags, schema, and broken links in one scan. Get a complete performance + SEO audit report.",
+    title: "Site Checker",
+    desc: "Check your website speed, SEO, and health in one click.",
     href: "/tools/seo-analyzer",
     icon: ShieldAlert,
-    category: "Website Checkers",
-    badge: "SEO + Speed",
+    category: "Site Checks",
+    badge: "Site Health",
     color: "from-emerald-500 to-teal-400",
   },
   {
-    title: "Online Store Profit Calculator",
-    desc: "See how much more money your store can make by boosting loading speeds, increasing customer sales, and lowering platform fees.",
+    title: "Profit Calculator",
+    desc: "See how much more your store could earn with a faster website.",
     href: "/tools/headless-roi",
     icon: BadgePercent,
-    category: "Profit & Price Calculators",
-    badge: "Boost Profit",
+    category: "Business Calculators",
+    badge: "Profit Check",
     color: "from-amber-500 to-orange-400",
   },
   {
-    title: "Software Cost & Scoping Estimator",
-    desc: "Select the features you want in your custom application to instantly calculate a detailed cost breakdown and delivery timeline.",
+    title: "App Cost Calculator",
+    desc: "Get an instant budget and timeline for your custom app idea.",
     href: "/tools/scope-estimator",
     icon: LayoutGrid,
-    category: "Profit & Price Calculators",
-    badge: "Price Finder",
+    category: "Business Calculators",
+    badge: "Cost Finder",
     color: "from-rose-500 to-pink-400",
   },
   {
-    title: "Legal Policy & Terms Generator",
-    desc: "Instantly create standard privacy policy and terms of service documents for your business website or mobile app.",
+    title: "Policy Generator",
+    desc: "Create privacy policy & terms for your website in seconds.",
     href: "/tools/privacy-generator",
     icon: FileText,
-    category: "Daily Office Tools",
-    badge: "Free Legal Docs",
+    category: "Quick Tools",
+    badge: "Legal Docs",
     color: "from-violet-500 to-indigo-400",
   },
   {
-    title: "Social Share Image Editor",
-    desc: "Design and preview how your website links look when shared on WhatsApp, Facebook, or LinkedIn.",
+    title: "Link Preview Maker",
+    desc: "Design how your website looks when shared on social media.",
     href: "/tools/og-generator",
     icon: Share2,
-    category: "Daily Office Tools",
-    badge: "Social Preview",
+    category: "Quick Tools",
+    badge: "Link Preview",
     color: "from-fuchsia-500 to-purple-400",
   },
   {
-    title: "Smart Image Compressor",
-    desc: "Reduce image file sizes instantly inside your browser. Shrink JPEGs, PNGs, and WebPs locally in seconds for faster loading.",
+    title: "Image Compressor",
+    desc: "Shrink images right in your browser — no uploads needed.",
     href: "/tools/image-compressor",
     icon: FileImage,
-    category: "Daily Office Tools",
-    badge: "Optimize Image",
+    category: "Quick Tools",
+    badge: "Compress",
     color: "from-teal-500 to-emerald-400",
   },
 ];
@@ -98,13 +98,13 @@ export default function ToolsClient() {
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
                 <Hammer size={12} className="animate-pulse" />
-                Maysan Labs Tools
+                Free Tools
               </span>
               <h1 className="text-4xl md:text-7xl font-bold tracking-[-0.03em] leading-[1.05] mb-6">
-                Useful Business <span className="bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] bg-clip-text text-transparent">Helper Tools</span>
+                Tools to grow <span className="bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] bg-clip-text text-transparent">your business</span>
               </h1>
               <p className="text-foreground/50 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-                Free, simple, and useful tools built by Maysan Labs to help you manage your business website, estimate project costs, calculate profits, and generate legal documents in seconds.
+                Free, simple tools to check your site health, calculate costs, and create legal pages — no signup needed.
               </p>
             </motion.div>
 
