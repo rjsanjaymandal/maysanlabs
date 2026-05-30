@@ -68,7 +68,7 @@ const comingSoonProducts = [
 
 export default function ProductsClient() {
   return (
-    <main aria-label="Maysan Labs Flagship Products" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
+    <main id="main-content" aria-label="Maysan Labs Flagship Products" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
       <Navbar />
       
       {/* Hero Section */}

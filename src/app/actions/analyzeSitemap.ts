@@ -340,7 +340,7 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
     suggestions.push(`${totalAltMissing} images are missing alt text across sampled pages. Add descriptive alt attributes for accessibility and image search ranking.`);
   }
 
-  if (totalAltMissing > 0) {
+  if (sampleUrls.length > 0) {
     const avgSize = Math.round(totalPageSize / sampleUrls.length);
     if (avgSize > 500) {
       suggestions.push(`Average page weight is ${avgSize}KB across sampled pages. Reduce bundle sizes, lazy-load below-fold content, and enable compression.`);

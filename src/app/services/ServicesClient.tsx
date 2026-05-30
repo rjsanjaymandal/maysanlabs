@@ -56,7 +56,7 @@ const services = [
 
 export default function ServicesClient() {
   return (
-    <main aria-label="Maysan Labs Development Services" className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden">
+    <main id="main-content" aria-label="Maysan Labs Development Services" className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden">
       <Navbar />
       
       <section className="pt-32 pb-20 relative">

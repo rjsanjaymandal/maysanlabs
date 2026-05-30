@@ -34,7 +34,7 @@ const TrustBadges = dynamic(() => import("@/components/TrustBadges"));
 export default function Home() {
 
   return (
-    <main aria-label="Maysan Labs Homepage" className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden text-foreground">
+    <main id="main-content" aria-label="Maysan Labs Homepage" className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden text-foreground">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -108,9 +108,10 @@ export default function Navbar() {
             >
               <Image 
                 src="/logo-rounded-v2.webp" 
-                alt="Maysan Labs"
+                alt="Maysan Labs Logo"
                 width={36}
                 height={36}
+                priority
                 className="h-full w-full object-contain" 
               />
             </motion.div>

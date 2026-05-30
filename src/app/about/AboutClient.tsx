@@ -42,7 +42,7 @@ const values = [
 
 export default function AboutClient() {
   return (
-    <main className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden">
+    <main id="main-content" className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden">
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
         <h1>About Maysan Labs - Scaling Startups & Custom Systems</h1>
