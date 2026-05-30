@@ -110,6 +110,7 @@ export default function Navbar() {
                 width={36}
                 height={36}
                 priority
+                fetchPriority="high"
                 className="h-full w-full object-contain" 
               />
             </div>

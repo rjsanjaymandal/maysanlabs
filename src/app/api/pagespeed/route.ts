@@ -56,9 +56,11 @@ export async function POST(request: NextRequest) {
     params.append("category", "accessibility");
     params.append("category", "best-practices");
 
+    // Multi-category Lighthouse scans via PageSpeed API are intensive and frequently take 20-35s.
+    // Set a robust timeout (90s) to allow slow Google server responses without timing out.
     const psiRes = await fetch(
       `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?${params}`,
-      { signal: AbortSignal.timeout(20000) }
+      { signal: AbortSignal.timeout(90000) }
     );
 
     if (!psiRes.ok) {
