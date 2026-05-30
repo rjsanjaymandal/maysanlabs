@@ -17,9 +17,7 @@ import {
 } from "lucide-react";
 import BorderBeam from "@/components/ui/border-beam";
 
-const SparklesCore = dynamic(() => import("@/components/ui/sparkles").then(m => m.SparklesCore), {
-  ssr: false,
-});
+const SparklesCore = dynamic(() => import("@/components/ui/sparkles").then(m => m.SparklesCore));
 
 const benefits = [
   "100% Custom Software (No Templates)",

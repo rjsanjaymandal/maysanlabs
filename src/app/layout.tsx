@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import ThemeProvider from "@/components/ThemeProvider";
-// UX Audit reference: aria-label / placeholder / <label>
+
+const ScrollProgress = dynamic(() => import("@/components/ScrollProgress"));
 
 import {
   organizationSchema,
@@ -181,11 +183,9 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-import dynamic from "next/dynamic";
-
-const WhatsAppButton = dynamic(() => import("@/components/ui/WhatsAppButton"), { ssr: false });
-const ExitIntentPopup = dynamic(() => import("@/components/ui/ExitIntentPopup"), { ssr: false });
-const CookieConsent = dynamic(() => import("@/components/CookieConsent"), { ssr: false });
+const WhatsAppButton = dynamic(() => import("@/components/ui/WhatsAppButton"));
+const ExitIntentPopup = dynamic(() => import("@/components/ui/ExitIntentPopup"));
+const CookieConsent = dynamic(() => import("@/components/CookieConsent"));
 
 export default function RootLayout({
   children,

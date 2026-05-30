@@ -613,22 +613,6 @@ html, body {
   opacity: 0.2;
 }
 
-/* ─── New Animation Keyframes ─── */
-@keyframes float {
-  0%, 100% { 
-    transform: translateY(0) translateX(0); 
-  }
-  25% { 
-    transform: translateY(-20px) translateX(10px); 
-  }
-  50% { 
-    transform: translateY(-40px) translateX(-5px); 
-  }
-  75% { 
-    transform: translateY(-20px) translateX(15px); 
-  }
-}
-
 @keyframes float-simple {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
@@ -636,17 +620,6 @@ html, body {
 
 .animate-float {
   animation: float-simple 6s ease-in-out infinite;
-}
-
-@keyframes gradient-rotate {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes shimmer {
-  0% { transform: skewX(-20deg) translateX(-150%); }
-  100% { transform: skewX(-20deg) translateX(150%); }
 }
 
 /* ─── Theme Background Patterns ─── */
@@ -677,16 +650,6 @@ html, body {
   background: linear-gradient(180deg, var(--text-on-white) 0%, rgba(var(--text-on-white-rgb), 0.6) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-/* ─── Subtle Animations ─── */
-@keyframes float-subtle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-.animate-float-subtle {
-  animation: float-subtle 6s ease-in-out infinite;
 }
 
 /* Gradient animation for buttons */

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Menu, X, Phone, Search } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import dynamic from "next/dynamic";
-const SearchModal = dynamic(() => import("@/components/SearchModal"), { ssr: false });
+const SearchModal = dynamic(() => import("@/components/SearchModal"));
 
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";

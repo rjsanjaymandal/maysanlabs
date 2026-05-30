@@ -1,20 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import BorderBeam from "@/components/ui/border-beam";
 import { FloatingParticles } from "@/components/ui/particles";
 import { generateIndividualReviewSchemas } from "@/lib/seo/schema";
 import { Zap, Send } from "lucide-react";
-import FadeInScroll from "@/components/FadeInScroll";
-import { ParallaxBackground } from "@/components/ParallaxSection";
-import LogoMarquee from "@/components/LogoMarquee";
-import ArchitectureVisualizer from "@/components/ArchitectureVisualizer";
-import ROICalculator from "@/components/ROICalculator";
-import BuildScaleGrow from "@/components/BuildScaleGrow";
+
+const Navbar = dynamic(() => import("@/components/Navbar"));
+const Hero = dynamic(() => import("@/components/Hero"));
+const FadeInScroll = dynamic(() => import("@/components/FadeInScroll"));
+const ParallaxBackground = dynamic(() => import("@/components/ParallaxSection").then(m => m.ParallaxBackground));
+const LogoMarquee = dynamic(() => import("@/components/LogoMarquee"));
+const ArchitectureVisualizer = dynamic(() => import("@/components/ArchitectureVisualizer"));
+const ROICalculator = dynamic(() => import("@/components/ROICalculator"));
+const BuildScaleGrow = dynamic(() => import("@/components/BuildScaleGrow"));
 
 // Dynamic Imports for performance hardening
 const MultiStepForm = dynamic(() => import("@/components/MultiStepForm"), {
