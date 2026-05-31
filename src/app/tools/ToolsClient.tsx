@@ -44,7 +44,7 @@ const tools = [
     icon: FileText,
     category: "Quick Tools",
     badge: "Legal Docs",
-    color: "from-violet-500 to-indigo-400",
+    color: "from-[#10b981] to-[#14b8a6]",
   },
   {
     title: "Link Preview Maker",
@@ -53,7 +53,7 @@ const tools = [
     icon: Share2,
     category: "Quick Tools",
     badge: "Link Preview",
-    color: "from-fuchsia-500 to-purple-400",
+    color: "from-cyan-500 to-blue-400",
   },
   {
     title: "Image Compressor",

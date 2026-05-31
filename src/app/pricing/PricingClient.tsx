@@ -53,7 +53,7 @@ const plans = [
       "SLA Guarantees",
     ],
     icon: Shield,
-    color: "from-purple-500 to-pink-400",
+    color: "from-[#10b981] to-[#14b8a6]",
   },
 ];
 

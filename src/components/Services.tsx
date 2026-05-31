@@ -27,7 +27,7 @@ const services = [
     desc: "Get rid of manual Excel sheets. We automate your daily billing, receipts, WhatsApp notifications, and customer emails.",
     icon: TrendingUp,
     features: ["GST-ready billing systems", "Automated WhatsApp & SMS alerts", "Automatic invoice generation"],
-    color: "from-purple-500/20 to-purple-600/10",
+    color: "from-[#10b981]/20 to-[#14b8a6]/10",
   },
   {
     title: "Custom Mobile Apps (Android & iOS)",

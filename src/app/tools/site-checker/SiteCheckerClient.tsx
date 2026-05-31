@@ -62,7 +62,19 @@ function OverallScoreCircle({ score, size = 180 }: { score: number; size?: numbe
   
   return (
     <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
-      <svg width={size} height={size} className="transform -rotate-90 absolute">
+      <svg width={size} height={size} className="transform -rotate-90 absolute overflow-visible">
+        <defs>
+          <filter id="scoreGlow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feComponentTransfer in="blur" result="boost">
+              <feFuncA type="linear" slope="0.6"/>
+            </feComponentTransfer>
+            <feMerge>
+              <feMergeNode in="boost" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
         <circle cx={size / 2} cy={size / 2} r={r} stroke="rgba(255,255,255,0.03)" strokeWidth="10" fill="none" />
         <motion.circle 
           cx={size / 2} 
@@ -73,6 +85,7 @@ function OverallScoreCircle({ score, size = 180 }: { score: number; size?: numbe
           fill="none" 
           strokeLinecap="round"
           strokeDasharray={circ} 
+          filter="url(#scoreGlow)"
           initial={{ strokeDashoffset: circ }}
           animate={{ strokeDashoffset: offset }}
           transition={{ duration: 1.5, ease: "easeOut" }}
@@ -136,6 +149,20 @@ function RadarChart({ scores, size = 220 }: { scores: { perf: number; seo: numbe
   return (
     <div className="flex flex-col items-center justify-center p-4">
       <svg width={size} height={size} className="overflow-visible select-none">
+        <defs>
+          <filter id="radarGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="4.5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <linearGradient id="radarFillGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#1A6DD6" stopOpacity="0.32" />
+            <stop offset="100%" stopColor="#00d2ff" stopOpacity="0.04" />
+          </linearGradient>
+        </defs>
+
         {/* Grid polygons */}
         {gridPolygons.map((points, idx) => (
           <polygon
@@ -163,13 +190,14 @@ function RadarChart({ scores, size = 220 }: { scores: { perf: number; seo: numbe
           );
         })}
         
-        {/* Data shape */}
+        {/* Data shape with Glow filter */}
         <polygon
           points={dataPoints}
-          fill="rgba(26, 109, 214, 0.12)"
+          fill="url(#radarFillGrad)"
           stroke="#1A6DD6"
-          strokeWidth="2"
-          className="transition-all duration-1000 ease-in-out"
+          strokeWidth="2.5"
+          filter="url(#radarGlow)"
+          className="transition-all duration-1000 ease-in-out hover:stroke-[#00d2ff] hover:stroke-[3px] cursor-pointer"
         />
         
         {/* Data dots */}
@@ -181,11 +209,11 @@ function RadarChart({ scores, size = 220 }: { scores: { perf: number; seo: numbe
               key={idx}
               cx={x}
               cy={y}
-              r="4"
+              r="4.5"
               fill="#00d2ff"
               stroke="#03050d"
-              strokeWidth="1.5"
-              className="transition-all duration-1000 ease-in-out"
+              strokeWidth="2"
+              className="transition-all duration-1000 ease-in-out shadow-[0_0_8px_#00d2ff]"
             />
           );
         })}
@@ -259,9 +287,16 @@ function ScoreHistoryChart({ overallScore = 72 }: { overallScore?: number }) {
       <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto overflow-visible select-none">
         <defs>
           <linearGradient id="lineGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#1A6DD6" stopOpacity="0.25" />
+            <stop offset="0%" stopColor="#1A6DD6" stopOpacity="0.28" />
             <stop offset="100%" stopColor="#1A6DD6" stopOpacity="0" />
           </linearGradient>
+          <filter id="lineGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="4.5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
         </defs>
         
         {/* Horizontal grid lines */}
@@ -294,6 +329,19 @@ function ScoreHistoryChart({ overallScore = 72 }: { overallScore?: number }) {
         {/* Area under path */}
         <path d={areaPath} fill="url(#lineGrad)" />
         
+        {/* Glowing trace behind */}
+        <motion.path
+          d={linePath}
+          fill="none"
+          stroke="#00d2ff"
+          strokeWidth="3.5"
+          opacity="0.35"
+          filter="url(#lineGlow)"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        />
+
         {/* Main score pathway */}
         <motion.path
           d={linePath}
@@ -316,10 +364,11 @@ function ScoreHistoryChart({ overallScore = 72 }: { overallScore?: number }) {
               <circle
                 cx={cx}
                 cy={cy}
-                r={isLast ? "5" : "3.5"}
+                r={isLast ? "5.5" : "3.5"}
                 fill={isLast ? "#00d2ff" : "#1A6DD6"}
                 stroke="#03050d"
-                strokeWidth="1.5"
+                strokeWidth="2"
+                className="transition-all hover:scale-125"
               />
               
               {isLast && (
@@ -385,18 +434,23 @@ function MiniScoreCard({
   const offset = circ - (score / 100) * circ;
   
   return (
-    <div className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-5 hover:border-white/10 transition-all flex flex-col justify-between aspect-video">
+    <div 
+      className="bg-white/[0.02] border border-white/[0.06] rounded-xl p-5 hover:border-white/15 hover:bg-white/[0.03] transition-all duration-300 flex flex-col justify-between aspect-video group cursor-pointer"
+      style={{
+        boxShadow: "0 0 15px rgba(255, 255, 255, 0.01) inset"
+      }}
+    >
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-2">
-          <div className={`p-1.5 rounded bg-white/[0.03] border border-white/[0.05] ${colorClass}`}>
+          <div className={`p-1.5 rounded bg-white/[0.03] border border-white/[0.05] transition-colors group-hover:border-white/25 ${colorClass}`}>
             <Icon size={14} />
           </div>
           <span className="text-[10px] text-foreground/45 uppercase tracking-widest font-semibold">{title}</span>
         </div>
         
-        {/* Simple mini SVG gauge */}
+        {/* Simple mini SVG gauge with glow effect */}
         <div className="relative inline-flex items-center justify-center w-9 h-9">
-          <svg width="36" height="36" className="transform -rotate-90 absolute">
+          <svg width="36" height="36" className="transform -rotate-90 absolute overflow-visible">
             <circle cx="18" cy="18" r={r} stroke="rgba(255,255,255,0.03)" strokeWidth="3" fill="none" />
             <circle 
               cx="18" 
@@ -408,6 +462,7 @@ function MiniScoreCard({
               strokeLinecap="round"
               strokeDasharray={circ} 
               strokeDashoffset={offset}
+              className="transition-all duration-1000 ease-out"
             />
           </svg>
           <span className="text-[10px] font-bold font-mono text-foreground/90">{score}</span>
@@ -416,7 +471,7 @@ function MiniScoreCard({
       
       <div className="mt-4">
         <p className="text-xl font-bold font-sans text-foreground">{score}<span className="text-xs text-foreground/30 font-light font-mono">/100</span></p>
-        <p className={`text-[10px] font-semibold uppercase tracking-wider mt-0.5 ${colorClass}`}>{status}</p>
+        <p className={`text-[10px] font-semibold uppercase tracking-wider mt-0.5 group-hover:opacity-100 transition-opacity ${colorClass}`}>{status}</p>
       </div>
     </div>
   );
@@ -650,16 +705,33 @@ function SpeedSimulator({ lcp, fcp, ttfb }: { lcp: number; fcp: number; ttfb: nu
               <span>{isPlaying ? "Pause" : "Play Paint Loop"}</span>
             </button>
             
-            <div className="flex-grow space-y-1">
-              <input 
-                type="range" 
-                min={0} 
-                max={3} 
-                step={1}
-                value={step}
-                onChange={(e) => { setStep(parseInt(e.target.value)); setIsPlaying(false); }}
-                className="w-full h-1 bg-white/10 rounded-full appearance-none cursor-pointer accent-[#1A6DD6]" 
-              />
+            <div className="flex-grow space-y-2">
+              <div className="relative pt-1.5 pb-1">
+                <input 
+                  type="range" 
+                  min={0} 
+                  max={3} 
+                  step={1}
+                  value={step}
+                  onChange={(e) => { setStep(parseInt(e.target.value)); setIsPlaying(false); }}
+                  className="w-full h-1.5 bg-white/10 rounded-full appearance-none cursor-pointer accent-[#00d2ff] focus:outline-none [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#00d2ff] [&::-webkit-slider-thumb]:shadow-[0_0_8px_rgba(0,210,255,0.8)] [&::-webkit-slider-thumb]:appearance-none [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-[#00d2ff] [&::-moz-range-thumb]:shadow-[0_0_8px_rgba(0,210,255,0.8)] [&::-moz-range-thumb]:border-0" 
+                />
+                {/* Glowing slider ticks */}
+                <div className="flex justify-between w-full px-1 absolute top-1/2 -translate-y-1/2 pointer-events-none mt-0.5">
+                  {[0, 1, 2, 3].map((tick) => (
+                    <span 
+                      key={tick} 
+                      className={`w-1 h-1 rounded-full ${step >= tick ? "bg-[#00d2ff] shadow-[0_0_4px_#00d2ff]" : "bg-white/20"}`} 
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="flex justify-between text-[7px] text-white/30 font-mono px-1">
+                <span>DNS Check</span>
+                <span>TTFB</span>
+                <span>FCP</span>
+                <span>LCP</span>
+              </div>
             </div>
           </div>
         </div>
@@ -830,31 +902,50 @@ function IndianMarketTelemetryHub({ telemetry }: { telemetry: IndiaTelemetry }) 
           <div className="md:col-span-6 bg-black/40 border border-white/[0.03] rounded-xl p-5 relative overflow-hidden flex flex-col justify-center min-h-[180px]">
             <span className="text-[8px] text-white/20 font-mono absolute top-2 right-3">traceroute-telemetry.bin</span>
             
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 relative z-10">
-                <div className="w-6 h-6 rounded-full bg-[#10b981]/15 border border-[#10b981]/30 flex items-center justify-center shrink-0">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
+            <div className="flex flex-col gap-6 justify-between h-full py-2">
+              {/* Edge Node (India) */}
+              <div className="flex items-center gap-3 relative z-10 text-left">
+                <div className="w-7 h-7 rounded-full bg-[#10b981]/10 border border-[#10b981]/30 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                  <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
                 </div>
                 <div>
-                  <h4 className="text-[10px] font-bold text-foreground font-mono">Indian User Edge (Jio/Airtel POP)</h4>
-                  <p className="text-[8px] text-foreground/45 mt-0.5">Mumbai, New Delhi, Bengaluru</p>
+                  <h4 className="text-[10px] font-bold text-foreground font-mono flex items-center gap-1.5">
+                    Indian User Edge
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-ping" />
+                  </h4>
+                  <p className="text-[8px] text-foreground/45 mt-0.5">Mumbai, New Delhi, Bengaluru POPs</p>
                 </div>
               </div>
 
-              {/* Dotted bridge */}
-              <div className="pl-3 border-l-2 border-dashed border-white/10 h-6 ml-2.5 relative">
-                <span className="absolute left-[-3px] top-1/2 w-1.5 h-1.5 rounded-full bg-[#00d2ff] animate-ping" />
+              {/* Flow Animation SVG Bridge */}
+              <div className="relative pl-3.5 my-1 text-left">
+                <div className="absolute left-[13px] top-[-10px] bottom-[-10px] w-0.5 h-auto pointer-events-none">
+                  <svg className="h-12 w-4 overflow-visible">
+                    <path d="M 0,0 L 0,48" stroke="rgba(255,255,255,0.06)" strokeWidth="2" strokeDasharray="3 3" />
+                    <path d="M 0,0 L 0,48" stroke="#00d2ff" strokeWidth="2" strokeDasharray="6 30" strokeDashoffset="0">
+                      <animate attributeName="strokeDashoffset" values="36;0" dur="1.5s" repeatCount="indefinite" />
+                    </path>
+                  </svg>
+                </div>
+                <span className="text-[8px] font-mono text-foreground/25 uppercase pl-4">Network Hops: {telemetry.isCdn ? "1 Hop (CDN Cached)" : "Multi-Hop Routing"}</span>
               </div>
 
-              <div className="flex items-center gap-3 relative z-10">
-                <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 bg-white/[0.02] border border-white/10 ${telemetry.isCdn ? "text-[#1A6DD6]" : "text-white/35"}`}>
-                  {telemetry.isCdn ? <Zap size={10} className="animate-pulse" /> : <Server size={10} />}
+              {/* Destination Node */}
+              <div className="flex items-center gap-3 relative z-10 text-left">
+                <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${
+                  telemetry.isCdn 
+                    ? "bg-[#1A6DD6]/10 border border-[#1A6DD6]/30 text-[#1A6DD6] shadow-[0_0_15px_rgba(26,109,214,0.15)]" 
+                    : "bg-white/[0.02] border border-white/10 text-white/35"
+                }`}>
+                  {telemetry.isCdn ? <Zap size={11} className="animate-pulse" /> : <Server size={11} />}
                 </div>
                 <div>
                   <h4 className="text-[10px] font-bold text-foreground font-mono">
                     {telemetry.isCdn ? `${telemetry.cdnName} Local Gateway` : "Origin Server Host"}
                   </h4>
-                  <p className="text-[8px] text-foreground/45 mt-0.5">{telemetry.serverCity}, {telemetry.serverCountry} ({telemetry.serverIsp})</p>
+                  <p className="text-[8px] text-foreground/45 mt-0.5 truncate max-w-[240px]">
+                    {telemetry.serverCity}, {telemetry.serverCountry} ({telemetry.serverIsp})
+                  </p>
                 </div>
               </div>
             </div>
@@ -1638,6 +1729,10 @@ export default function SiteCheckerClient() {
 
   return (
     <main id="main-content" className="min-h-screen bg-[#03050d] text-foreground flex flex-col justify-between relative overflow-hidden">
+      {/* Repeating Technical HUD Matrix Grid Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:28px_28px] pointer-events-none z-0 opacity-80" />
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_0)] bg-[size:28px_28px] pointer-events-none z-0" />
+
       {/* Background blurs */}
       <div className="absolute top-1/4 left-1/4 w-[250px] h-[250px] bg-[#1A6DD6]/5 blur-[90px] rounded-full pointer-events-none z-0" />
       <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-[#14b8a6]/4 blur-[110px] rounded-full pointer-events-none z-0" />

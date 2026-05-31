@@ -35,7 +35,7 @@ const scenarios = [
     arpu: 800,
     budget: 800000,
     note: "Multi-vendor, 500 sellers @ ₹800/mo",
-    color: "from-purple-500 to-violet-400",
+    color: "from-cyan-500 to-teal-400",
   },
   {
     name: "Enterprise",
