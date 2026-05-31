@@ -47,7 +47,7 @@ export default function PricingPage() {
       
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Transparent Software Development Pricing & Plans | Maysan Labs</h1>
+        <span>Transparent Software Development Pricing & Plans | Maysan Labs</span>
         <h2>Starter Plan (₹2.5L/mo), Growth Plan (₹5L/mo), & Enterprise Plan (₹12L/mo)</h2>
         <h2>Flexible Scoping Packages for SaaS Startups and Custom Platforms</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>

@@ -62,7 +62,7 @@ export default function CareersLayout({
       />
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Maysan Labs Careers, Software Developer Jobs, and Hiring in Gurgaon</h1>
+        <span>Maysan Labs Careers, Software Developer Jobs, and Hiring in Gurgaon</span>
         <h2>Frontend Architect Openings, Cloud Systems Engineers, and Designer Opportunities</h2>
         <h2>Full-Time Technical Careers, Internship Programs, and Collaborative Workspace Culture</h2>
         <span className="author" rel="author">Written by Maysan Labs People & Culture Team</span>

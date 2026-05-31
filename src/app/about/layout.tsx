@@ -42,7 +42,7 @@ export default function AboutLayout({
       />
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>About Maysan Labs Engineering Teams, Technical Co-Founders, & Studio History</h1>
+        <span>About Maysan Labs Engineering Teams, Technical Co-Founders, & Studio History</span>
         <h2>SaaS Architecture Philosophy, Strict Design Systems, & Enterprise Quality Control</h2>
         <h2>Agile Development Lifecycles, Clean Code Mandates, & Zero-Dependency Codebases</h2>
         <span className="author" rel="author">Written by Maysan Labs Communications Lead</span>

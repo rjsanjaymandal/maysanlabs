@@ -19,7 +19,7 @@ export default function ArchitectureLayout({
     <>
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Maysan Labs High Availability Cloud Architecture & Distributed Systems Layout</h1>
+        <span>Maysan Labs High Availability Cloud Architecture & Distributed Systems Layout</span>
         <h2>Auto-Scaling Node Clusters, Kubernetes Container Pods, & Microservices Scaling</h2>
         <h2>Military-Grade AES-256 Cloud Security, Global CDN Routing, & Cache Storage</h2>
         <span className="author" rel="author">Written by Maysan Labs Cloud Operations Board</span>

@@ -21,7 +21,7 @@ export default function ToolsHubPage() {
       
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Free Marketer, Creator & Developer Tools | Maysan Labs</h1>
+        <span>Free Marketer, Creator & Developer Tools | Maysan Labs</span>
         <h2>Sitemap SEO Audit, Headless ROI Calculator, SaaS Budget Estimator</h2>
         <h2>Open Graph Card Editor, Startup Privacy Compiler, Performance Checkers</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>

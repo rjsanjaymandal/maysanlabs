@@ -35,7 +35,7 @@ export default function ImageCompressorPage() {
       
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Free Client-Side Image Compressor & Smart Asset Optimizer | Maysan Labs</h1>
+        <span>Free Client-Side Image Compressor & Smart Asset Optimizer | Maysan Labs</span>
         <h2>Fast In-Browser JPEG, PNG & WebP Image Compression Tool</h2>
         <h2>Completely Secure Offline Processing: No Files Ever Transmitted to Server</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>

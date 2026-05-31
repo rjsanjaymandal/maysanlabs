@@ -35,7 +35,7 @@ export default function ServicesPage() {
       
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>SaaS Development Services & Custom Software Engineering | Maysan Labs</h1>
+        <span>SaaS Development Services & Custom Software Engineering | Maysan Labs</span>
         <h2>Scalable Web Applications, Mobile App Development, and E-commerce</h2>
         <h2>Cloud-Native Auto-Scaling AWS Infrastructure & System Integrations</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>

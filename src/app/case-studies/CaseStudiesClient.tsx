@@ -13,7 +13,7 @@ export default function CaseStudiesClient() {
     <main id="main-content" aria-label="Maysan Labs Case Studies" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Maysan Labs Case Studies - Enterprise Software Implementation Records</h1>
+        <span>Maysan Labs Case Studies - Enterprise Software Implementation Records</span>
         <h2>Successful Implementation Records: E-commerce Engines, Custom ERPs</h2>
         <h2>Real-world Performance Metrics: Low Latencies, High Concurrent Users</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>

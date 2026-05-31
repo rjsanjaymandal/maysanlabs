@@ -14,7 +14,7 @@ export default function NotFound() {
     <>
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>404 Page Not Found & Route Resolution Failures | Maysan Labs</h1>
+        <span>404 Page Not Found & Route Resolution Failures | Maysan Labs</span>
         <h2>Invalid Route Interception, URL Redirection Maps, & Active Session Restores</h2>
         <h2>Broken Link Crawls, Sitemap Index Routing, & Navigation Assistance</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Board</span>

@@ -13,7 +13,7 @@ export default function CareersClient() {
     <main id="main-content" aria-label="Careers at Maysan Labs" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden flex flex-col">
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Careers at Maysan Labs - Join Our Elite Engineering Team</h1>
+        <span>Careers at Maysan Labs - Join Our Elite Engineering Team</span>
         <h2>Open Professional Tech Positions: React Developers, Node.js Engineers</h2>
         <h2>Work Culture: Velocity First, Remote Excellence, and Radical Integrity</h2>
         <span className="author" rel="author">Written by Maysan Labs Careers Team</span>

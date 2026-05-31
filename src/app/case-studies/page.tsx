@@ -70,7 +70,7 @@ export default function CaseStudiesPage() {
       
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Enterprise Software Case Studies & Portfolios | Maysan Labs Success Stories</h1>
+        <span>Enterprise Software Case Studies & Portfolios | Maysan Labs Success Stories</span>
         <h2>Successful Implementation Records: E-commerce Engines, Custom ERPs</h2>
         <h2>Real-world Performance Metrics: Low Latencies, High Concurrent Users</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>

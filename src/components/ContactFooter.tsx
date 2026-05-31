@@ -25,7 +25,7 @@ export default function ContactFooter() {
     <footer className="bg-[var(--bg-dark)] border-t border-white/5 pb-20 md:pb-0">
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Enterprise Software Development Studio Contact & Inquiries | Maysan Labs</h1>
+        <span>Enterprise Software Development Studio Contact & Inquiries | Maysan Labs</span>
         <h2>SaaS Scoping, RFP Submission Inquiries, & Corporate Consultations</h2>
         <h2>Global Project Delivery Offices, Support Networks, & Client Retainers</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Staff</span>

@@ -55,7 +55,7 @@ export default function Home() {
       
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Maysan Labs - Enterprise SaaS Development Company Gurgaon</h1>
+        <span>Maysan Labs - Enterprise SaaS Development Company Gurgaon</span>
         <h2>Custom Software Engineering & Cloud Infrastructure Services</h2>
         <h2>Scalable Web Applications, React Node.js, and Agile Delivery</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>

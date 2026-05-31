@@ -45,7 +45,7 @@ export default function AboutClient() {
     <main id="main-content" className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden">
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>About Maysan Labs - Scaling Startups & Custom Systems</h1>
+        <span>About Maysan Labs - Scaling Startups & Custom Systems</span>
         <h2>Quality First, Security Focused, and Global Scale Architectural Values</h2>
         <h2>Real Engineering Partner Over Vague Vendor Approaches</h2>
         <span className="author" rel="author">Written by Maysan Labs Team</span>

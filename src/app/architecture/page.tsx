@@ -31,7 +31,7 @@ export default function ArchitecturePage() {
       
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Cloud Architecture & Scalable Enterprise Infrastructure | Maysan Labs</h1>
+        <span>Cloud Architecture & Scalable Enterprise Infrastructure | Maysan Labs</span>
         <h2>Enterprise Microservices, Kubernetes Auto-scaling, & AWS Hybrid Clouds</h2>
         <h2>Global Content Delivery Networks (CDN) & Secure Sub-50ms API Latencies</h2>
         <span className="author" rel="author">Written by Maysan Labs Architecture Board</span>

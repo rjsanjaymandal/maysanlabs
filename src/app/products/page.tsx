@@ -33,7 +33,7 @@ export default function ProductsLandingPage() {
       
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Enterprise Software Products & SaaS Platforms | Maysan Labs</h1>
+        <span>Enterprise Software Products & SaaS Platforms | Maysan Labs</span>
         <h2>EduMaysan: Intelligent LMS & College ERP Management</h2>
         <h2>FlashFashion: Ultra-Fast E-commerce Platform Solutions</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>

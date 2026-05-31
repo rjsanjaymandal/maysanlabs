@@ -27,7 +27,7 @@ export default function AboutPage() {
       
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>About Maysan Labs | Enterprise SaaS & Software Engineering Experts</h1>
+        <span>About Maysan Labs | Enterprise SaaS & Software Engineering Experts</span>
         <h2>Our Core Values: Quality First, Security Focus, Global Scale</h2>
         <h2>The Maysan Story: Custom Systems Built on Trust and Precision</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>

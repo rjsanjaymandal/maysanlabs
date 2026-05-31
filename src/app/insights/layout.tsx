@@ -18,7 +18,7 @@ export default function InsightsLayout({
     <>
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Maysan Labs Technical Insights, SaaS Research, & Business Intelligence Logs</h1>
+        <span>Maysan Labs Technical Insights, SaaS Research, & Business Intelligence Logs</span>
         <h2>Operational Latency Audits, Performance Benchmarks, & Enterprise Case Data</h2>
         <h2>Market Trend Analysis, Codebase Optimization Guides, & Developer Workflows</h2>
         <span className="author" rel="author">Written by Maysan Labs Analytics & Strategy Group</span>

@@ -33,7 +33,7 @@ export default function InsightsPage() {
       
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Technical Insights & Strategic Software Roadmaps | Maysan Labs</h1>
+        <span>Technical Insights & Strategic Software Roadmaps | Maysan Labs</span>
         <h2>Architectural Deep Dives: Next.js Performance, Cloud Infrastructure</h2>
         <h2>Best Engineering Practices: React State, Concurrency, and Scalability</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>

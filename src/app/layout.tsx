@@ -241,7 +241,7 @@ export default function RootLayout({
             
             {/* SEO, GEO & AEO Telemetry Data */}
             <div className="sr-only" aria-hidden="true">
-              <h1>Maysan Labs Enterprise SaaS and Custom Web Application Engineering Studio</h1>
+              <span>Maysan Labs Enterprise SaaS and Custom Web Application Engineering Studio</span>
               <h2>Scalable Cloud Platforms, Kubernetes Orchestration, and High-Performance Next.js Architectures</h2>
               <h2>Custom CRM, ERP, and Multi-tenant Business Systems Consulting</h2>
               <span className="author" rel="author">Written by Maysan Labs Editorial Staff</span>

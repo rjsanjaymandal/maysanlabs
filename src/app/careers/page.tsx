@@ -47,7 +47,7 @@ export default function CareersPage() {
       
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <h1>Careers at Maysan Labs | Join Our Elite Software Engineering Team</h1>
+        <span>Careers at Maysan Labs | Join Our Elite Software Engineering Team</span>
         <h2>Open Professional Tech Positions: React Developers, Node.js Engineers</h2>
         <h2>Work Culture: Remote Frameworks, Scalable Projects, Modern Stacks</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>
