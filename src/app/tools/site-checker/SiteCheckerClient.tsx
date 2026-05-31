@@ -275,7 +275,7 @@ export default function SiteCheckerClient() {
                     value={url}
                     onChange={(e) => { setUrl(e.target.value); setUrlError(null); }}
                     disabled={scanning}
-                    className="w-full bg-white/50 border border-gray-200 dark:bg-white/[0.04] dark:border-white/[0.08] rounded-xl pl-10 pr-4 py-3.5 text-foreground placeholder:text-gray-400 dark:placeholder:text-foreground/30 focus:border-[#1A6DD6]/50 focus:outline-none focus:ring-2 focus:ring-[#1A6DD6]/50 transition-all text-sm disabled:opacity-50 font-mono shadow-sm"
+                    className="w-full bg-white/50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-xl pl-10 pr-4 py-3.5 text-foreground placeholder:text-gray-400 dark:placeholder:text-foreground/30 focus:border-[#1A6DD6]/50 focus:outline-none focus:ring-2 focus:ring-[#1A6DD6]/50 transition-all text-sm disabled:opacity-50 font-mono shadow-sm"
                   />
                 </div>
                 <button
@@ -292,7 +292,7 @@ export default function SiteCheckerClient() {
               </form>
 
               <div className="flex items-center justify-between flex-wrap gap-3">
-                <div className="flex items-center gap-2 p-1 bg-white/[0.02] border-white/[0.06] rounded-lg">
+                <div className="flex items-center gap-2 p-1 bg-gray-100 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-lg">
                   <button type="button" onClick={() => setStrategy("mobile")} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${strategy === "mobile" ? "bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] text-white" : "text-foreground/50 hover:text-foreground"}`}>
                     <Smartphone size={13} /> Mobile
                   </button>
@@ -311,13 +311,13 @@ export default function SiteCheckerClient() {
               </div>
 
               {showHistory && history.length > 0 && (
-                <motion.div initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} className="mt-3 p-3 bg-white/[0.03] rounded-xl border-white/[0.06] max-h-48 overflow-y-auto z-30 relative text-left">
+                <motion.div initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} className="mt-3 p-3 bg-white/50 dark:bg-white/[0.03] rounded-xl border border-gray-200 dark:border-white/[0.06] max-h-48 overflow-y-auto z-30 relative text-left shadow-sm">
                   <div className="flex items-center justify-between mb-2 px-1">
                     <span className="text-[10px] text-foreground/30 font-mono">Scan history</span>
                     <button onClick={clearHistory} className="text-[10px] text-red-400/50 hover:text-red-400 transition-colors">Clear All</button>
                   </div>
                   {history.map((h, i) => (
-                    <div key={i} className="flex items-center justify-between py-1.5 text-xs border-b border-white/[0.03] last:border-0">
+                    <div key={i} className="flex items-center justify-between py-1.5 text-xs border-b border-gray-200/50 dark:border-white/[0.03] last:border-0">
                       <div className="flex items-center gap-2 min-w-0">
                         <span className="text-foreground/40 font-mono truncate max-w-[180px]">{h.url.replace("https://", "")}</span>
                         <span className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${h.overall === "Good" ? "bg-green-500/10 text-green-600 dark:bg-green-400/10 dark:text-green-400" : h.overall === "Needs Work" ? "bg-amber-500/10 text-amber-600 dark:bg-amber-400/10 dark:text-amber-400" : "bg-red-500/10 text-red-600 dark:bg-red-400/10 dark:text-red-400"}`}>{h.overall}</span>
@@ -421,7 +421,7 @@ export default function SiteCheckerClient() {
                           <span>View All Issues</span>
                           <ArrowRight size={11} />
                         </button>
-                        <button onClick={copyResults} className="p-2.5 rounded-lg bg-white/[0.02] border border-white/[0.05] text-foreground/55 hover:text-foreground hover:border-white/20 transition-all text-xs flex items-center gap-1.5 font-bold">
+                        <button onClick={copyResults} className="p-2.5 rounded-lg bg-white/70 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] text-foreground/55 dark:text-foreground/55 hover:text-foreground dark:hover:text-foreground hover:border-gray-300 dark:hover:border-white/20 transition-all text-xs flex items-center gap-1.5 font-bold">
                           {copied ? <><CheckCircle size={12} className="text-[#10b981]" /> Copied</> : <><Share2 size={12} /> Share Report</>}
                         </button>
                       </div>
@@ -459,7 +459,7 @@ export default function SiteCheckerClient() {
                           {perfResults?.suggestions.slice(0, 3).map((s, idx) => (
                             <div key={idx} className="flex items-center justify-between border-b border-white/5 pb-2.5 last:border-0">
                               <span className="text-xs text-foreground/80 font-medium truncate max-w-[280px]">{s}</span>
-                              <span className={`px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider ${idx === 0 ? "bg-red-400/10 text-red-400 border border-red-400/20" : "bg-amber-400/10 text-amber-400 border border-amber-400/20"}`}>
+                              <span className={`px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider ${idx === 0 ? "bg-red-500/10 dark:bg-red-400/10 text-red-600 dark:text-red-400 border border-red-500/20 dark:border-red-400/20" : "bg-amber-500/10 dark:bg-amber-400/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 dark:border-amber-400/20"}`}>
                                 {idx === 0 ? "High" : "Medium"}
                               </span>
                             </div>
@@ -477,7 +477,7 @@ export default function SiteCheckerClient() {
                     </div>
                   </div>
 
-                  <div id="tab-view-section" className="flex items-center gap-2 p-1 bg-white/[0.03] border-white/[0.08] rounded-xl w-fit mx-auto backdrop-blur-xl pt-10">
+                  <div id="tab-view-section" className="flex items-center gap-2 p-1 bg-white/50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] rounded-xl w-fit mx-auto backdrop-blur-xl pt-10">
                     <button onClick={() => setActiveSection("performance")} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all uppercase tracking-wider ${activeSection === "performance" ? "bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] text-white shadow-lg" : "text-foreground/50 hover:text-foreground"}`}>
                       <Zap size={13} /> Performance
                     </button>
@@ -497,7 +497,7 @@ export default function SiteCheckerClient() {
                             <h2 className="text-base font-bold text-foreground">Measured Speed Vitals</h2>
                             <p className="text-xs text-foreground/45">GPU paint schedules and main thread delay checks</p>
                           </div>
-                          <span className={`px-3 py-1 border rounded-full text-xs font-bold font-mono ${overallGrade === "good" ? "bg-[#10b981]/5 border-[#10b981]/20 text-[#10b981]" : overallGrade === "needs-work" ? "bg-amber-400/5 border-amber-400/20 text-amber-400" : "bg-red-400/5 border-red-400/20 text-red-400"}`}>
+                          <span className={`px-3 py-1 border rounded-full text-xs font-bold font-mono ${overallGrade === "good" ? "bg-green-500/10 dark:bg-[#10b981]/5 border-green-500/20 dark:border-[#10b981]/20 text-green-600 dark:text-[#10b981]" : overallGrade === "needs-work" ? "bg-amber-500/10 dark:bg-amber-400/5 border-amber-500/20 dark:border-amber-400/20 text-amber-600 dark:text-amber-400" : "bg-red-500/10 dark:bg-red-400/5 border-red-500/20 dark:border-red-400/20 text-red-600 dark:text-red-400"}`}>
                             {getLabel(overallGrade).toUpperCase()}
                           </span>
                         </div>
@@ -769,7 +769,7 @@ export default function SiteCheckerClient() {
                   )}
 
                   {leadCaptured && (
-                    <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="p-6 bg-white/[0.03] border-[#10b981]/25 rounded-3xl text-center backdrop-blur-xl">
+                    <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="p-6 bg-white/60 dark:bg-white/[0.03] border-green-500/25 dark:border-[#10b981]/25 rounded-3xl text-center backdrop-blur-xl shadow-sm">
                       <CheckCircle className="text-[#10b981] mx-auto mb-3" size={24} />
                       <h4 className="text-sm font-bold text-foreground">SEO Audit PDF Dispatched!</h4>
                       <p className="text-xs text-foreground/45 mt-1 max-w-sm mx-auto font-light">
@@ -784,22 +784,22 @@ export default function SiteCheckerClient() {
             {!scanning && !perfResults && !seoResults && (
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                  <div className="bg-white/[0.02] border-white/[0.06] rounded-3xl p-6 text-center hover:border-[#1A6DD6]/30 transition-colors">
+                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-[#1A6DD6]/40 dark:hover:border-[#1A6DD6]/30 transition-colors">
                     <div className="w-10 h-10 rounded-xl bg-[#1A6DD6]/10 flex items-center justify-center mx-auto mb-3.5"><Gauge size={18} className="text-[#1A6DD6]" /></div>
                     <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">Core Web Vitals</h3>
                     <p className="text-[10px] text-foreground/45 leading-relaxed font-light">Interactive speeds including LCP, INP, CLS, and latency checks.</p>
                   </div>
-                  <div className="bg-white/[0.02] border-white/[0.06] rounded-3xl p-6 text-center hover:border-[#1A6DD6]/30 transition-colors">
+                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-[#1A6DD6]/40 dark:hover:border-[#1A6DD6]/30 transition-colors">
                     <div className="w-10 h-10 rounded-xl bg-[#14b8a6]/10 flex items-center justify-center mx-auto mb-3.5"><BarChart3 size={18} className="text-[#14b8a6]" /></div>
                     <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">PSI / Lighthouse</h3>
                     <p className="text-[10px] text-foreground/45 leading-relaxed font-light">Fidelity grades on Accessibility, Best Practices, and performance audits.</p>
                   </div>
-                  <div className="bg-white/[0.02] border-white/[0.06] rounded-3xl p-6 text-center hover:border-[#1A6DD6]/30 transition-colors">
+                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-[#1A6DD6]/40 dark:hover:border-[#1A6DD6]/30 transition-colors">
                     <div className="w-10 h-10 rounded-xl bg-[#10b981]/10 flex items-center justify-center mx-auto mb-3.5"><FileText size={18} className="text-[#10b981]" /></div>
                     <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">Sitemap Audit</h3>
                     <p className="text-[10px] text-foreground/45 leading-relaxed font-light">Crawls robots and XML sitemaps to verify meta headers and SSL encryption.</p>
                   </div>
-                  <div className="bg-white/[0.02] border-white/[0.06] rounded-3xl p-6 text-center hover:border-[#1A6DD6]/30 transition-colors">
+                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-[#1A6DD6]/40 dark:hover:border-[#1A6DD6]/30 transition-colors">
                     <div className="w-10 h-10 rounded-xl bg-[#1A6DD6]/10 flex items-center justify-center mx-auto mb-3.5"><Shield size={18} className="text-[#1A6DD6]" /></div>
                     <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">Rich Indexation</h3>
                     <p className="text-[10px] text-foreground/45 leading-relaxed font-light">Scans structured JSON-LD schemas and headings outlines required for snippets.</p>
