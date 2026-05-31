@@ -20,6 +20,15 @@ const tools = [
     color: "from-emerald-500 to-teal-400",
   },
   {
+    title: "Image Compressor",
+    desc: "Shrink images right in your browser — no uploads needed.",
+    href: "/tools/image-compressor",
+    icon: FileImage,
+    category: "Quick Tools",
+    badge: "Compress",
+    color: "from-teal-500 to-emerald-400",
+  },
+  {
     title: "Profit Calculator",
     desc: "See how much more your store could earn with a faster website.",
     href: "/tools/headless-roi",
@@ -55,15 +64,6 @@ const tools = [
     badge: "Link Preview",
     color: "from-cyan-500 to-blue-400",
   },
-  {
-    title: "Image Compressor",
-    desc: "Shrink images right in your browser — no uploads needed.",
-    href: "/tools/image-compressor",
-    icon: FileImage,
-    category: "Quick Tools",
-    badge: "Compress",
-    color: "from-teal-500 to-emerald-400",
-  },
 ];
 
 export default function ToolsClient() {
@@ -80,15 +80,14 @@ export default function ToolsClient() {
   }, [activeCategory, searchQuery]);
 
   return (
-    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between">
+    <main id="main-content" className="min-h-screen bg-background text-foreground flex flex-col justify-between relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.03)_1px,transparent_1px)] bg-[size:28px_28px] pointer-events-none z-0 dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(128,128,128,0.04)_1px,transparent_0)] bg-[size:28px_28px] pointer-events-none z-0 dark:bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_0)]" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
       <div>
         <Navbar />
         
         <div className="pt-36 pb-24 px-4 relative overflow-hidden">
-          {/* Ambient light grids */}
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
-          <div className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
-          
           <div className="container-main max-w-5xl mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -109,7 +108,7 @@ export default function ToolsClient() {
             </motion.div>
 
             {/* Filter and Search Bar */}
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 bg-white/[0.02] border border-white/[0.06] rounded-2xl p-4 backdrop-blur-xl">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-4 backdrop-blur-xl shadow-sm">
               <div className="flex flex-wrap gap-2 justify-center">
                 {categories.map((cat) => (
                   <button
@@ -118,7 +117,7 @@ export default function ToolsClient() {
                     className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
                       activeCategory === cat
                         ? "bg-brand-primary text-white shadow-[0_0_20px_rgba(26,109,214,0.3)]"
-                        : "bg-white/[0.03] text-foreground/50 hover:bg-white/[0.08] hover:text-foreground"
+                        : "bg-gray-100 dark:bg-white/[0.03] text-foreground/50 hover:bg-gray-200 dark:hover:bg-white/[0.08] hover:text-foreground"
                     }`}
                   >
                     {cat}
@@ -133,7 +132,7 @@ export default function ToolsClient() {
                   aria-label="Search tools"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-black/5 dark:bg-black/30 border border-black/10 dark:border-white/10 rounded-full pl-10 pr-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all placeholder:text-foreground/40"
+                  className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-full pl-10 pr-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all placeholder:text-gray-400 dark:placeholder:text-foreground/40 shadow-sm"
                 />
               </div>
             </div>
