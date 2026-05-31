@@ -500,7 +500,7 @@ function SchemaMarkupGraph({ hasSchema }: { hasSchema: boolean }) {
   "url": "https://maysanlabs.com",
   "potentialAction": {
     "@type": "SearchAction",
-    "target": "https://maysanlabs.com/tools/seo-analyzer?q={search_term_string}",
+    "target": "https://maysanlabs.com/tools/site-checker?q={search_term_string}",
     "query-input": "required name=search_term_string"
   }
 }`
@@ -778,7 +778,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 }
 
-export default function SeoAnalyzerClient() {
+export default function SiteCheckerClient() {
   const [url, setUrl] = useState("");
   const [strategy, setStrategy] = useState<"mobile" | "desktop">("mobile");
   const [scanning, setScanning] = useState(false);

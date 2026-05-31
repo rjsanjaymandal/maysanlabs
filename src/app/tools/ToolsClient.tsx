@@ -13,7 +13,7 @@ const tools = [
   {
     title: "Site Checker",
     desc: "Check your website speed, SEO, and health in one click.",
-    href: "/tools/seo-analyzer",
+    href: "/tools/site-checker",
     icon: ShieldAlert,
     category: "Site Checks",
     badge: "Site Health",

@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/Skeleton";
 
-export default function SeoAnalyzerLoading() {
+export default function SiteCheckerLoading() {
   return (
     <main id="main-content" className="pt-24">
       <div className="container-main py-20">
