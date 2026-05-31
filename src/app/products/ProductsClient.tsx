@@ -2,7 +2,6 @@
 
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
-import SpotlightCard from "@/components/SpotlightCard";
 import PortfolioShowcase from "@/components/PortfolioShowcase";
 import { ArrowRight, ArrowUpRight, Layers } from "lucide-react";
 import Link from "next/link";
@@ -126,10 +125,10 @@ export default function ProductsClient() {
             <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-[#1A6DD6] uppercase mb-3 block">
               Innovation Pipeline
             </span>
-            <h2 className="text-2xl sm:text-3xl font-semibold text-foreground tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-gray-50 tracking-tight">
               In Active Development
             </h2>
-            <p className="text-foreground/40 text-sm mt-3">
+            <p className="text-gray-400 text-sm mt-3">
               We constantly iterate on new enterprise paradigms. Here are the solutions entering beta testing soon.
             </p>
           </div>
@@ -142,37 +141,37 @@ export default function ProductsClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="h-full"
+                className="group"
               >
-                <SpotlightCard className="maysan-card h-full">
+                <div className="bg-white/[0.02] border border-white/[0.05] backdrop-blur-md rounded-2xl p-6 md:p-8 transition-all duration-300 hover:border-white/[0.1] hover:-translate-y-1 h-full">
                   <div className="flex items-center justify-between mb-5">
-                    <span className="text-xs font-medium text-foreground/30 uppercase tracking-wider">
+                    <span className="text-[11px] font-medium text-gray-500 uppercase tracking-wider">
                       {product.category}
                     </span>
-                    <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white/5 text-foreground/40">
+                    <span className="text-[11px] font-semibold px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] text-gray-400">
                       {product.status}
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">
+                  <h3 className="text-xl font-bold text-gray-50 mb-2 group-hover:text-blue-400 transition-colors">
                     {product.name}
                   </h3>
                   {product.tagline && (
-                    <p className="text-[#1A6DD6] text-xs font-medium mb-3 italic">
+                    <p className="text-blue-400 text-xs font-medium mb-3 italic">
                       {product.tagline}
                     </p>
                   )}
-                  <p className="text-foreground/45 text-sm leading-relaxed">
+                  <p className="text-gray-400 text-sm leading-relaxed">
                     {product.description}
                   </p>
-                </SpotlightCard>
+                </div>
               </motion.div>
             ))}
           </div>
 
           {/* CTA Section */}
           <div className="mt-20 text-center py-12 border-t border-white/[0.06]">
-            <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">Need something custom?</h3>
-            <p className="text-foreground/40 mb-8 max-w-lg mx-auto">We also build tailored solutions for unique business requirements.</p>
+            <h3 className="text-2xl md:text-3xl font-semibold text-gray-50 mb-4">Need something custom?</h3>
+            <p className="text-gray-400 mb-8 max-w-lg mx-auto">We also build tailored solutions for unique business requirements.</p>
             <Link href="/start" className="inline-flex items-center gap-2 px-8 py-4 bg-brand-primary rounded-full font-semibold text-sm text-white hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:scale-105 active:scale-95 transition-all duration-200">
               <span>Talk to us</span>
               <ArrowRight size={16} />

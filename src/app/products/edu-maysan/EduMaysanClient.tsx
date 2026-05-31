@@ -13,7 +13,6 @@ import {
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
-import SpotlightCard from "@/components/SpotlightCard";
 
 export default function EduMaysanClient() {
   const features = [
@@ -95,8 +94,8 @@ export default function EduMaysanClient() {
       <section className="py-16">
         <div className="container-main">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">Platform Capabilities</h2>
-            <p className="text-foreground/40 max-w-xl mx-auto">A comprehensive school management system designed for modern educational institutions.</p>
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-50 mb-4">Platform Capabilities</h2>
+            <p className="text-gray-400 max-w-xl mx-auto">A comprehensive school management system designed for modern educational institutions.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -107,14 +106,15 @@ export default function EduMaysanClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
+                className="group"
               >
-                <SpotlightCard className="maysan-card">
-                  <div className="w-11 h-11 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary mb-4">
+                <div className="bg-white/[0.02] border border-white/[0.05] backdrop-blur-md rounded-2xl p-6 md:p-8 transition-all duration-300 hover:border-white/[0.1] hover:-translate-y-1 h-full">
+                  <div className="w-11 h-11 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-4 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-300">
                     <feature.Icon size={20} />
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{feature.name}</h3>
-                  <p className="text-foreground/45 text-sm">{feature.description}</p>
-                </SpotlightCard>
+                  <h3 className="text-lg font-semibold text-gray-50 mb-2 group-hover:text-blue-400 transition-colors">{feature.name}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">{feature.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -124,9 +124,9 @@ export default function EduMaysanClient() {
       {/* CTA Section */}
       <section className="py-16">
         <div className="container-main">
-          <div className="bg-gradient-to-br from-brand-primary/10 to-transparent border border-brand-primary/20 rounded-2xl p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">Need a similar education platform?</h2>
-            <p className="text-foreground/40 mb-8 max-w-xl mx-auto">We build custom educational solutions tailored to your institution&apos;s requirements.</p>
+          <div className="bg-white/[0.02] border border-white/[0.05] backdrop-blur-md rounded-2xl p-8 md:p-12 text-center">
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-50 mb-4">Need a similar education platform?</h2>
+            <p className="text-gray-400 mb-8 max-w-xl mx-auto">We build custom educational solutions tailored to your institution&apos;s requirements.</p>
             <Link href="/start" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
               Start Your Project <ArrowRight size={16} />
             </Link>
