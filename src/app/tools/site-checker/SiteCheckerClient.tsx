@@ -933,7 +933,7 @@ export default function SiteCheckerClient() {
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, company, source: "seo-analyzer" }),
+        body: JSON.stringify({ email, company, source: "site-checker" }),
       });
       if (res.ok) setLeadCaptured(true);
       else { const d = await res.json(); setLeadError(d.error || "Something went wrong."); }

@@ -24,7 +24,7 @@ const ROUTE_CONFIG: Record<string, { priority: number; changeFrequency: Metadata
   '/terms':        { priority: 0.3, changeFrequency: 'yearly' },
   '/contact':      { priority: 0.7, changeFrequency: 'monthly' },
   '/tools': { priority: 0.8, changeFrequency: 'weekly' },
-  '/tools/seo-analyzer': { priority: 0.8, changeFrequency: 'weekly' },
+  '/tools/site-checker': { priority: 0.8, changeFrequency: 'weekly' },
   '/tools/headless-roi': { priority: 0.7, changeFrequency: 'weekly' },
   '/tools/scope-estimator': { priority: 0.7, changeFrequency: 'weekly' },
   '/tools/privacy-generator': { priority: 0.6, changeFrequency: 'monthly' },

@@ -1,6 +1,6 @@
 import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
 import type { Metadata } from "next";
-import SiteCheckerClient from "./SeoAnalyzerClient";
+import SiteCheckerClient from "./SiteCheckerClient";
 
 export const metadata: Metadata = generatePageSEO({
   title: "Site Checker — Free Website Speed & SEO Tool | Maysan Labs",
