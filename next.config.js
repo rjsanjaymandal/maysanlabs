@@ -9,6 +9,7 @@ const nextConfig = {
   },
   async headers() {
     const staticAssetCache = "public, max-age=31536000, immutable";
+    const htmlCache = "public, max-age=60, s-maxage=3600, stale-while-revalidate=86400";
 
     return [
       {
@@ -22,28 +23,34 @@ const nextConfig = {
       {
         source: "/((?!_next/static|_next/image|.*\\..*).*)",
         headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=60, s-maxage=3600, stale-while-revalidate=86400",
-          },
+          { key: "Cache-Control", value: htmlCache },
+          { key: "Vary", value: "Accept-Encoding" },
+        ],
+      },
+      {
+        source: "/_next/static/:path*",
+        headers: [
+          { key: "Cache-Control", value: staticAssetCache },
+          { key: "Vary", value: "Accept-Encoding" },
         ],
       },
       {
         source: "/:path*(manifest.json|manifest.webmanifest)",
         headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=3600, stale-while-revalidate=86400",
-          },
+          { key: "Cache-Control", value: "public, max-age=3600, stale-while-revalidate=86400" },
         ],
       },
       {
         source: "/:all*(ico|svg|jpg|jpeg|png|gif|webp|avif)",
         headers: [
-          {
-            key: "Cache-Control",
-            value: staticAssetCache,
-          },
+          { key: "Cache-Control", value: staticAssetCache },
+        ],
+      },
+      {
+        source: "/:all*(woff|woff2|ttf|otf|eot)",
+        headers: [
+          { key: "Cache-Control", value: staticAssetCache },
+          { key: "Access-Control-Allow-Origin", value: "*" },
         ],
       },
     ];

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { 
@@ -26,18 +27,27 @@ const benefits = [
 ];
 
 export default function Hero() {
+  const [showParticles, setShowParticles] = useState(false);
+
+  useEffect(() => {
+    const idle = window.requestIdleCallback || ((cb: () => void) => setTimeout(cb, 200));
+    idle(() => setShowParticles(true));
+  }, []);
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-3 sm:px-4 pt-20 md:pt-24 overflow-hidden bg-background">
       <div className="absolute inset-0 w-full h-full">
-        <SparklesCore
-          id="tsparticlesfullpage"
-          background="transparent"
-          minSize={0.4}
-          maxSize={1.2}
-          particleDensity={15}
-          className="w-full h-full"
-          particleColor="#3B82F6"
-        />
+        {showParticles && (
+          <SparklesCore
+            id="tsparticlesfullpage"
+            background="transparent"
+            minSize={0.4}
+            maxSize={1.2}
+            particleDensity={15}
+            className="w-full h-full"
+            particleColor="#3B82F6"
+          />
+        )}
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] sm:w-[500px] h-[240px] sm:h-[500px] bg-brand-primary/4 sm:bg-brand-primary/8 blur-[50px] sm:blur-[100px] rounded-full pointer-events-none" />
       <div className="absolute top-1/4 left-1/4 w-[120px] sm:w-[250px] h-[120px] sm:h-[250px] bg-brand-primary/3 sm:bg-brand-primary/5 blur-[30px] sm:blur-[60px] rounded-full pointer-events-none" />

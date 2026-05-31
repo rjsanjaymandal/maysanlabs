@@ -7,28 +7,19 @@ const Navbar = dynamic(() => import("@/components/Navbar"));
 const Hero = dynamic(() => import("@/components/Hero"));
 const FadeInScroll = dynamic(() => import("@/components/FadeInScroll"));
 const LogoMarquee = dynamic(() => import("@/components/LogoMarquee"));
-const ArchitectureVisualizer = dynamic(() => import("@/components/ArchitectureVisualizer"));
-const ROICalculator = dynamic(() => import("@/components/ROICalculator"));
 const BuildScaleGrow = dynamic(() => import("@/components/BuildScaleGrow"));
 const StatsSection = dynamic(() => import("@/components/StatsSection"));
-const BrandShowroom = dynamic(() => import("@/components/BrandShowroom"));
 
-// Dynamic Imports for performance hardening
-const MultiStepForm = dynamic(() => import("@/components/MultiStepForm"), {
-  loading: () => <div className="min-h-[300px] animate-pulse bg-slate-100 dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/5" />
-});
-
-const ScrollTimeline = dynamic(() => import("@/components/ScrollTimeline"), {
-  loading: () => <div className="min-h-[400px] bg-transparent" />
-});
-
-const Testimonials = dynamic(() => import("@/components/Testimonials"), {
-  loading: () => <div className="min-h-[300px] bg-transparent" />
-});
-
-const ContactFooter = dynamic(() => import("@/components/ContactFooter"));
-const Services = dynamic(() => import("@/components/Services"));
-const FAQ = dynamic(() => import("@/components/FAQ"));
+// Client-wrapped dynamic imports with ssr:false for below-fold heavy components
+const ArchitectureVisualizer = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.ArchitectureVisualizer));
+const BrandShowroom = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.BrandShowroom));
+const ROICalculator = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.ROICalculator));
+const MultiStepForm = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.MultiStepForm));
+const ScrollTimeline = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.ScrollTimeline));
+const Testimonials = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.Testimonials));
+const Services = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.Services));
+const FAQ = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.FAQ));
+const ContactFooter = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.ContactFooter));
 const TrustBadges = dynamic(() => import("@/components/TrustBadges"));
 
 export default function Home() {

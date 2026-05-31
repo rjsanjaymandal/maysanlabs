@@ -203,8 +203,10 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-        {/* Preload critical above-the-fold image */}
+        {/* Preload critical above-the-fold assets */}
         <link rel="preload" as="image" href="/logo-rounded-v2.webp" />
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..900&display=swap" crossOrigin="anonymous" />
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400..700&display=swap" crossOrigin="anonymous" />
 
         {/* Combined JSON-LD structured data — single @graph for fewer script tags */}
         <script
