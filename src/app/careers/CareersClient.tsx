@@ -56,7 +56,7 @@ export default function CareersClient() {
       </section>
 
       {/* Culture/Values Section */}
-      <section className="py-16 border-y border-white/5">
+      <section className="py-16 border-y border-white/5 relative">
         <div className="container-main">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -69,15 +69,18 @@ export default function CareersClient() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="h-full"
               >
-                <div className="w-11 h-11 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-4 border border-brand-primary/20">
-                  {value.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">{value.title}</h3>
-                <p className="text-foreground/45 text-sm leading-relaxed">
-                  {value.desc}
-                </p>
+                <SpotlightCard className="maysan-card flat-dark-card h-full group">
+                  <div className="w-11 h-11 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-4 border border-brand-primary/20 group-hover:scale-110 transition-transform duration-300">
+                    {value.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-brand-primary transition-colors tracking-tight">{value.title}</h3>
+                  <p className="text-foreground/60 text-sm leading-relaxed font-medium">
+                    {value.desc}
+                  </p>
+                </SpotlightCard>
               </motion.div>
             ))}
           </div>
@@ -95,7 +98,7 @@ export default function CareersClient() {
             <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
               Open <span className="text-brand-primary">Roles</span>
             </h2>
-            <p className="text-foreground/40 text-lg">
+            <p className="text-foreground/50 text-lg font-medium">
               Join a team engineering the world&apos;s most resilient enterprise infrastructure.
             </p>
           </div>
@@ -107,30 +110,32 @@ export default function CareersClient() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
               >
                 <Link href={`/careers/apply?role=${job.id}`} className="group block h-full">
-                  <SpotlightCard className="maysan-card h-full group-hover:border-brand-primary/30 group-hover:bg-white/[0.04] transition-all duration-300">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary">
-                        {job.category}
-                      </span>
-                      <span className="text-xs text-foreground/30 font-medium uppercase tracking-wider">
-                        {job.type}
-                      </span>
-                    </div>
-                    <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-brand-primary transition-colors">
-                      {job.title}
-                    </h3>
-                    <p className="text-foreground/45 text-sm leading-relaxed mb-5">
-                      {job.description}
-                    </p>
-                    <div className="flex items-center gap-2 mb-5 pt-4 border-t border-white/5">
-                      <MapPin size={14} className="text-foreground/30" />
-                      <span className="text-sm text-foreground/40">{job.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-brand-primary text-sm font-semibold group-hover:gap-3 transition-all">
-                      Apply now <ArrowRight size={14} />
+                  <SpotlightCard className="maysan-card flat-dark-card h-full">
+                    <div className="flex flex-col h-full">
+                      <div className="flex items-center justify-between mb-5">
+                        <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20">
+                          {job.category}
+                        </span>
+                        <span className="text-xs text-foreground/40 font-semibold uppercase tracking-wider">
+                          {job.type}
+                        </span>
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-semibold text-foreground mb-3 group-hover:text-brand-primary transition-colors tracking-tight">
+                        {job.title}
+                      </h3>
+                      <p className="text-foreground/60 text-sm leading-relaxed mb-6 flex-1 font-medium">
+                        {job.description}
+                      </p>
+                      <div className="flex items-center gap-2 pt-4 border-t border-white/5 mb-5 text-foreground/40 group-hover:text-foreground/60 transition-colors">
+                        <MapPin size={14} className="text-brand-primary shrink-0 animate-pulse" />
+                        <span className="text-sm font-medium">{job.location}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-brand-primary text-sm font-bold group-hover:text-brand-light transition-colors mt-auto">
+                        Apply now <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      </div>
                     </div>
                   </SpotlightCard>
                 </Link>
@@ -139,16 +144,16 @@ export default function CareersClient() {
           </div>
 
           {/* Opportunistic Hire Section */}
-          <div className="mt-16 bg-white/[0.02] border border-white/5 rounded-2xl p-8 md:p-12 text-center">
+          <SpotlightCard className="mt-16 maysan-card flat-dark-card text-center">
             <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">Don&apos;t see a perfect fit?</h3>
-            <p className="text-foreground/40 max-w-xl mx-auto mb-8">
+            <p className="text-foreground/60 max-w-xl mx-auto mb-8 font-medium">
               We&apos;re always looking for exceptional engineers and architects. If you&apos;re building the future, we want to hear from you.
             </p>
-            <Link href="/careers/apply" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-semibold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
+            <Link href="/careers/apply" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-primary to-[#1565d4] rounded-full font-bold text-sm text-black hover:shadow-[0_0_30px_rgba(26,109,214,0.5)] hover:scale-105 active:scale-95 transition-all duration-200">
               <span>Apply for Future Roles</span>
               <ArrowUpRight size={16} />
             </Link>
-          </div>
+          </SpotlightCard>
         </div>
       </section>
 

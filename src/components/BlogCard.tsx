@@ -8,7 +8,7 @@ interface BlogCardProps {
 
 function CardInner({ post, isExternal }: { post: BlogPost; isExternal: boolean }) {
   return (
-    <article className="blog-card h-full">
+    <article data-card-surface="flat-dark" className="blog-card h-full">
       <div className="relative z-10 flex h-full flex-col">
         <div className="mb-5 flex flex-wrap items-center gap-3 text-xs font-medium uppercase tracking-wider">
           <div className="flex items-center gap-2 text-brand-primary">

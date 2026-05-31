@@ -66,52 +66,52 @@ export default function CaseStudiesClient() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Link href={`/case-studies/${study.slug}`} className="group block h-full">
-                  <SpotlightCard className="maysan-card h-full group-hover:border-brand-primary/30 group-hover:bg-white/[0.04] transition-all duration-300">
-                    <div className="flex justify-between items-start mb-5">
-                      <div>
-                        <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
+                  <SpotlightCard className="maysan-card h-full flex flex-col">
+                    <div className="flex justify-between items-start mb-6">
+                      <div className="flex-1 pr-4">
+                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/8 border border-brand-primary/15 text-brand-primary text-[10px] font-bold uppercase tracking-wider mb-4">
                           {study.category}
                         </span>
-                        <h3 className="text-xl font-bold text-foreground group-hover:text-brand-primary transition-colors">
+                        <h3 className="text-xl font-bold text-foreground group-hover:text-brand-primary transition-colors leading-tight">
                           {study.title}
                         </h3>
                       </div>
-                      <div className="w-9 h-9 rounded-full bg-white/[0.03] flex items-center justify-center border border-white/[0.05] text-foreground/40 group-hover:bg-brand-primary group-hover:text-black group-hover:border-brand-primary transition-all duration-300">
-                        <ArrowRight size={14} />
+                      <div className="w-10 h-10 rounded-xl bg-white/[0.02] flex items-center justify-center border border-white/[0.06] text-foreground/30 group-hover:bg-brand-primary group-hover:text-white group-hover:border-brand-primary group-hover:shadow-[0_0_16px_rgba(26,109,214,0.3)] transition-all duration-500 shrink-0">
+                        <ArrowRight size={16} />
                       </div>
                     </div>
 
-                    <p className="text-foreground/45 text-sm leading-relaxed mb-5">
+                    <p className="text-foreground/50 text-sm leading-relaxed mb-6 flex-1">
                       {study.challenge}
                     </p>
 
-                    <div className="grid grid-cols-3 gap-3 mb-5">
+                    <div className="grid grid-cols-3 gap-2.5 mb-6">
                       {study.metrics.map((metric, idx) => (
                         <div
                           key={idx}
-                          className="bg-white/[0.02] rounded-lg p-3 border border-white/[0.04] group-hover:border-brand-primary/10 transition-colors"
+                          className="bg-white/[0.02] rounded-xl p-3.5 border border-white/[0.05] group-hover:border-brand-primary/20 group-hover:bg-brand-primary/[0.03] transition-all duration-500"
                         >
-                          <div className="text-lg font-bold text-brand-primary mb-0.5">
+                          <div className="text-lg font-bold text-brand-primary leading-none mb-1 group-hover:scale-110 group-hover:origin-left transition-transform duration-500">
                             {metric.value}
                           </div>
-                          <div className="text-[9px] uppercase tracking-wider text-foreground/30 font-medium">
+                          <div className="text-[10px] uppercase tracking-wider text-foreground/35 font-semibold leading-tight">
                             {metric.label}
                           </div>
                         </div>
                       ))}
                     </div>
 
-                    <div className="flex flex-wrap gap-2 pt-4 border-t border-white/[0.05]">
+                    <div className="flex flex-wrap gap-2 pt-4 border-t border-white/[0.06]">
                       {study.technologies.slice(0, 4).map((tech) => (
                         <span
                           key={tech}
-                          className="text-xs font-medium px-2.5 py-1 bg-white/[0.02] rounded-full border border-white/[0.04] text-foreground/40"
+                          className="text-[10px] font-semibold px-2.5 py-1 bg-white/[0.02] rounded-full border border-white/[0.05] text-foreground/35 uppercase tracking-wider group-hover:border-brand-primary/15 group-hover:text-foreground/50 transition-colors duration-300"
                         >
                           {tech}
                         </span>
                       ))}
                       {study.technologies.length > 4 && (
-                        <span className="text-xs font-medium px-2 py-1 text-foreground/20">
+                        <span className="text-[10px] font-semibold px-2 py-1 text-foreground/20 uppercase">
                           +{study.technologies.length - 4}
                         </span>
                       )}

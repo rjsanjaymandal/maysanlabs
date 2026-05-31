@@ -68,6 +68,7 @@
     /* ─── Surface & Glass Gradients (for .maysan-card) ─── */
     --surface-gradient: linear-gradient(135deg, rgba(26, 109, 214, 0.04) 0%, rgba(255, 255, 255, 0.8) 100%);
     --glass-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
+    --spotlight-color: rgba(26, 109, 214, 0.05);
 }
 
 /* ─── Light Mode Overrides (softer) ─── */
@@ -152,6 +153,11 @@ html:not(.dark) .text-white\/\[0\.02\] {
     /* ─── Dark Mode Ambient Gradients ─── */
     --bg-soft-glow: radial-gradient(ellipse at 20% 50%, rgba(26, 109, 214, 0.08) 0%, transparent 60%);
     --bg-soft-glow-secondary: radial-gradient(ellipse at 80% 20%, rgba(26, 109, 214, 0.04) 0%, transparent 50%);
+
+    /* ─── Surface & Glass Gradients for dark mode ─── */
+    --surface-gradient: linear-gradient(135deg, rgba(26, 109, 214, 0.06) 0%, rgba(255, 255, 255, 0.03) 100%);
+    --glass-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+    --spotlight-color: transparent;
 }
 
 @layer utilities {
@@ -379,27 +385,64 @@ html, body {
 /* ─── Typography Overrides ─── */
 @layer components {
   .maysan-card {
-    background: hsl(var(--card));
-    background-image: var(--surface-gradient);
-    @apply border border-white/5 rounded-3xl p-8 md:p-12 transition-all duration-700 relative overflow-hidden;
+    background: linear-gradient(135deg, rgba(26, 109, 214, 0.02) 0%, rgba(0, 210, 255, 0.01) 50%, rgba(255, 255, 255, 0.98) 100%);
+    border-color: rgba(26, 109, 214, 0.08) !important;
+    @apply border rounded-3xl p-6 md:p-8 transition-all duration-500 relative overflow-hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   }
 
   .maysan-card::before {
     content: '';
-    @apply absolute inset-0 opacity-0 transition-opacity duration-700 pointer-events-none;
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500 pointer-events-none;
     background: var(--glass-gradient);
   }
 
   .maysan-card:hover {
-    @apply border-brand-primary/20 bg-white/[0.03] -translate-y-1;
+    background: linear-gradient(135deg, rgba(26, 109, 214, 0.05) 0%, rgba(0, 210, 255, 0.03) 50%, rgba(255, 255, 255, 1) 100%);
+    border-color: rgba(26, 109, 214, 0.25) !important;
+    @apply -translate-y-1;
+    box-shadow: 0 12px 30px rgba(26, 109, 214, 0.12), 0 0 15px rgba(0, 210, 255, 0.05);
   }
 
   .maysan-card:hover::before {
     @apply opacity-100;
   }
 
+  .dark .maysan-card {
+    background: #07101a !important;
+    background-image: none !important;
+    border-color: rgba(96, 165, 250, 0.16) !important;
+    box-shadow:
+      0 16px 36px rgba(0, 0, 0, 0.32),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.01);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .dark .maysan-card::before {
+    @apply absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-500;
+    background: none;
+  }
+
+  .dark .maysan-card:hover {
+    border-color: rgba(96, 165, 250, 0.32) !important;
+    background: #0a1521 !important;
+    background-image: none !important;
+    box-shadow:
+      0 20px 44px rgba(0, 0, 0, 0.42),
+      0 0 22px rgba(26, 109, 214, 0.08) !important;
+    transform: translateY(-4px);
+  }
+
+  .dark .maysan-card:hover::before {
+    background: none;
+    @apply opacity-0;
+  }
+
   .blog-card {
-    @apply relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/80 bg-card/95 p-6 shadow-sm transition-[transform,border-color,background-color,box-shadow] duration-200;
+    background: linear-gradient(135deg, rgba(26, 109, 214, 0.02) 0%, rgba(255, 255, 255, 0.98) 100%);
+    border-color: rgba(26, 109, 214, 0.08) !important;
+    @apply relative flex h-full flex-col overflow-hidden rounded-2xl border p-6 shadow-sm transition-[transform,border-color,background-color,box-shadow] duration-200;
     box-shadow: 0 14px 40px rgba(15, 23, 42, 0.05);
   }
 
@@ -409,24 +452,86 @@ html, body {
   }
 
   .group:hover .blog-card {
-    @apply -translate-y-1 border-brand-primary/35 bg-card;
+    background: linear-gradient(135deg, rgba(26, 109, 214, 0.04) 0%, rgba(255, 255, 255, 1) 100%);
+    border-color: rgba(26, 109, 214, 0.25) !important;
+    @apply -translate-y-1;
     box-shadow: 0 18px 45px rgba(15, 23, 42, 0.1);
   }
 
   .dark .blog-card {
-    background:
-      linear-gradient(180deg, rgba(15, 25, 35, 0.94), rgba(13, 17, 23, 0.9)),
-      hsl(var(--card));
-    border-color: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+    background: #07101a !important;
+    background-image: none !important;
+    border-color: rgba(96, 165, 250, 0.16) !important;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
+  }
+
+  .dark .blog-card::before {
+    opacity: 0;
+    background: none;
   }
 
   .dark .group:hover .blog-card {
-    border-color: rgba(var(--brand-primary-rgb), 0.42);
-    background:
-      linear-gradient(180deg, rgba(20, 31, 44, 0.98), rgba(13, 17, 23, 0.92)),
-      hsl(var(--card));
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.38), 0 0 32px rgba(var(--brand-primary-rgb), 0.12);
+    border-color: rgba(96, 165, 250, 0.32) !important;
+    background: #0a1521 !important;
+    background-image: none !important;
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.42), 0 0 22px rgba(26, 109, 214, 0.08);
+  }
+
+  html.dark .maysan-card,
+  html.dark .blog-card,
+  html.dark .blog-card[data-card-surface="flat-dark"] {
+    background-color: #030712 !important;
+    background-image: none !important;
+    border-color: #1e293b !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.36) !important;
+  }
+
+  html.dark .maysan-card::before,
+  html.dark .blog-card::before,
+  html.dark .blog-card[data-card-surface="flat-dark"]::before {
+    opacity: 0 !important;
+    background: none !important;
+    background-image: none !important;
+  }
+
+  html.dark .group:hover .maysan-card,
+  html.dark .group:hover .blog-card,
+  html.dark .group:hover .blog-card[data-card-surface="flat-dark"] {
+    background-color: #06101c !important;
+    background-image: none !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.44) !important;
+  }
+
+  html.dark .flat-dark-card {
+    background: #020617 !important;
+    background-image: none !important;
+    border-color: #1e293b !important;
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.36) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  html.dark .flat-dark-card::before {
+    opacity: 0 !important;
+    background: none !important;
+    background-image: none !important;
+  }
+
+  html.dark .group:hover .flat-dark-card,
+  html.dark .flat-dark-card:hover {
+    background: #030712 !important;
+    background-image: none !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.44) !important;
+  }
+
+  html.dark .flat-dark-subcard,
+  html.dark .flat-dark-chip {
+    background: #030712 !important;
+    background-image: none !important;
+    border-color: #1e293b !important;
+    box-shadow: none !important;
   }
 
   /* ─── Theme Gradients ─── */

@@ -108,7 +108,7 @@ export default function EduMaysanClient() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <SpotlightCard className="maysan-card group-hover:border-brand-primary/30 group-hover:bg-white/[0.04] transition-all duration-300">
+                <SpotlightCard className="maysan-card">
                   <div className="w-11 h-11 bg-brand-primary/10 rounded-xl flex items-center justify-center text-brand-primary mb-4">
                     <feature.Icon size={20} />
                   </div>

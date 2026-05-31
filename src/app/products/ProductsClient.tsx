@@ -144,7 +144,7 @@ export default function ProductsClient() {
                 transition={{ delay: index * 0.1 }}
                 className="h-full"
               >
-                <SpotlightCard className="maysan-card h-full hover:border-[#1A6DD6]/30 hover:bg-white/[0.03] transition-all duration-300">
+                <SpotlightCard className="maysan-card h-full">
                   <div className="flex items-center justify-between mb-5">
                     <span className="text-xs font-medium text-foreground/30 uppercase tracking-wider">
                       {product.category}
