@@ -5,10 +5,10 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],
+    optimizeCss: true,
   },
   async headers() {
     const staticAssetCache = "public, max-age=31536000, immutable";
-    const shortLivedDocumentCache = "public, max-age=0, s-maxage=300, stale-while-revalidate=600, stale-if-error=86400";
 
     return [
       {
@@ -24,7 +24,7 @@ const nextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: shortLivedDocumentCache,
+            value: "public, max-age=60, s-maxage=3600, stale-while-revalidate=86400",
           },
         ],
       },
