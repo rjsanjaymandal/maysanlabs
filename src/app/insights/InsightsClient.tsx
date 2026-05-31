@@ -38,7 +38,11 @@ const insights = [
 
 export default function InsightsClient() {
   return (
-    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
+    <main id="main-content" className="min-h-screen bg-background text-foreground flex flex-col relative overflow-hidden">
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+      {/* Brand Glow */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
       <Navbar />
 
       {/* SEO, GEO & AEO Telemetry Data */}
@@ -114,7 +118,7 @@ export default function InsightsClient() {
             {insights.map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-white/[0.02] border border-white/5 rounded-xl p-6 hover:border-brand-primary/20 hover:bg-white/[0.04] transition-all duration-300 group"
+                className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-6 hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg backdrop-blur-xl shadow-sm transition-all duration-300 group"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -143,7 +147,7 @@ export default function InsightsClient() {
             ))}
           </div>
 
-          <div className="mt-16 p-12 bg-white/[0.02] border border-white/5 rounded-2xl relative overflow-hidden text-center max-w-4xl mx-auto group hover:border-brand-primary/10 transition-all duration-300">
+          <div className="mt-16 p-12 bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl relative overflow-hidden text-center max-w-4xl mx-auto group hover:border-brand-primary/40 dark:hover:border-brand-primary/30 backdrop-blur-xl shadow-sm transition-all duration-300">
             <div className="absolute top-4 right-4">
               <div className="flex items-center gap-2 font-semibold text-xs text-brand-primary uppercase tracking-wider bg-brand-primary/10 px-3 py-1.5 rounded-full">
                 <Activity size={12} className="animate-pulse" />

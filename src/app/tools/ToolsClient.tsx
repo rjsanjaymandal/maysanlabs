@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ShieldAlert, BadgePercent, LayoutGrid, Sparkles, ArrowRight, Search, FileText, Share2, Hammer, FileImage } from "lucide-react";
+import { ShieldAlert, BadgePercent, LayoutGrid, ArrowRight, Search, FileText, Share2, FileImage } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 
@@ -81,43 +81,36 @@ export default function ToolsClient() {
 
   return (
     <main id="main-content" className="min-h-screen bg-background text-foreground flex flex-col justify-between relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.03)_1px,transparent_1px)] bg-[size:28px_28px] pointer-events-none z-0 dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(rgba(128,128,128,0.04)_1px,transparent_0)] bg-[size:28px_28px] pointer-events-none z-0 dark:bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_0)]" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
       <div>
         <Navbar />
         
-        <div className="pt-36 pb-24 px-4 relative overflow-hidden">
+        <div className="pt-28 pb-20 px-4 relative overflow-hidden">
           <div className="container-main max-w-5xl mx-auto relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-16"
+              className="text-center mb-12"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
-                <Hammer size={12} className="animate-pulse" />
-                Free Tools
-              </span>
-              <h1 className="text-4xl md:text-7xl font-bold tracking-[-0.03em] leading-[1.05] mb-6">
-                Tools to grow <span className="bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] bg-clip-text text-transparent">your business</span>
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
+                Free Tools for <span className="text-brand-primary">Your Business</span>
               </h1>
-              <p className="text-foreground/50 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-                Free, simple tools to check your site health, calculate costs, and create legal pages — no signup needed.
+              <p className="text-foreground/60 max-w-xl mx-auto">
+                Check site health, calculate costs, and create legal pages — no signup needed.
               </p>
             </motion.div>
 
-            {/* Filter and Search Bar */}
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10 bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-4 backdrop-blur-xl shadow-sm">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-10">
               <div className="flex flex-wrap gap-2 justify-center">
                 {categories.map((cat) => (
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
+                    className={`px-4 py-2 rounded-full text-xs font-semibold transition-all ${
                       activeCategory === cat
-                        ? "bg-brand-primary text-white shadow-[0_0_20px_rgba(26,109,214,0.3)]"
-                        : "bg-gray-100 dark:bg-white/[0.03] text-foreground/50 hover:bg-gray-200 dark:hover:bg-white/[0.08] hover:text-foreground"
+                        ? "bg-brand-primary text-white"
+                        : "bg-white/80 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 text-foreground hover:bg-gray-100 dark:hover:bg-white/[0.08]"
                     }`}
                   >
                     {cat}
@@ -132,7 +125,7 @@ export default function ToolsClient() {
                   aria-label="Search tools"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-full pl-10 pr-4 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all placeholder:text-gray-400 dark:placeholder:text-foreground/40 shadow-sm"
+                  className="w-full bg-white/80 dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary transition-all placeholder:text-gray-400"
                 />
               </div>
             </div>
@@ -141,7 +134,6 @@ export default function ToolsClient() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {filteredTools.map((tool, idx) => {
                 const Icon = tool.icon;
-                const isOddRow = Math.floor(idx / 2) % 2 === 1;
                 return (
                   <motion.div
                     key={tool.title}
@@ -149,38 +141,36 @@ export default function ToolsClient() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: idx * 0.05 }}
-                    className={`relative overflow-hidden rounded-3xl p-6 md:p-8 flex flex-col justify-between transition-all duration-500 group border backdrop-blur-xl ${
-                      isOddRow && idx % 2 === 0 ? "md:translate-y-4" : ""
-                    } bg-white/60 dark:bg-white/[0.02] border-gray-200 dark:border-white/[0.06] hover:border-brand-primary/40 dark:hover:border-brand-primary/30 shadow-sm hover:shadow-lg`}
+                    className={`bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl backdrop-blur-sm shadow-sm p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-md`}
                   >
                     {/* Glowing Accent */}
                     <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${tool.color} dark:opacity-[0.03] opacity-[0.06] blur-xl group-hover:opacity-10 dark:group-hover:opacity-[0.08] transition-opacity" />
                     
                     <div>
-                      <div className="flex items-center justify-between mb-6">
-                        <div className={`w-12 h-12 rounded-2xl bg-brand-primary/10 dark:bg-brand-primary/10 border border-brand-primary/20 dark:border-brand-primary/20 flex items-center justify-center`}>
-                          <Icon size={22} className="text-brand-primary" />
+                      <div className="flex items-center justify-between mb-4">
+                        <div className={`w-11 h-11 rounded-xl bg-brand-primary/10 flex items-center justify-center`}>
+                          <Icon size={20} className="text-brand-primary" />
                         </div>
-                        <span className="text-[10px] font-bold tracking-widest text-brand-primary uppercase bg-brand-primary/10 dark:bg-brand-primary/5 border border-brand-primary/20 dark:border-brand-primary/10 px-3 py-1 rounded-full shadow-sm">
+                        <span className="text-[10px] font-semibold text-brand-primary bg-brand-primary/10 px-2.5 py-1 rounded-full">
                           {tool.badge}
                         </span>
                       </div>
                       
-                      <h3 className="text-xl md:text-2xl font-bold tracking-tight mb-3 text-foreground group-hover:text-brand-primary transition-colors">
+                      <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-brand-primary transition-colors">
                         {tool.title}
                       </h3>
                       
-                      <p className="text-xs md:text-sm text-foreground/50 leading-relaxed mb-8">
+                      <p className="text-sm text-foreground/60 mb-6">
                         {tool.desc}
                       </p>
                     </div>
 
                     <Link
                       href={tool.href}
-                      className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-foreground/60 dark:text-foreground/70 hover:text-brand-primary transition-colors group/btn"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-brand-primary hover:gap-3 transition-all"
                     >
                       Open Tool
-                      <ArrowRight size={14} className="group-hover/btn:translate-x-1.5 transition-transform text-brand-primary/60 group-hover/btn:text-brand-primary" />
+                      <ArrowRight size={14} />
                     </Link>
                   </motion.div>
                 );
@@ -188,36 +178,30 @@ export default function ToolsClient() {
             </div>
             
             {filteredTools.length === 0 && (
-              <div className="text-center py-20 bg-white/60 dark:bg-white/[0.01] border border-dashed border-gray-300 dark:border-white/10 rounded-2xl">
-                <p className="text-foreground/40 text-sm">No tools found matching your query.</p>
+              <div className="text-center py-16 bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl">
+                <p className="text-foreground/50">No tools found matching your query.</p>
               </div>
             )}
             
-            {/* Enterprise CTA Card */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mt-20 relative overflow-hidden rounded-3xl p-8 md:p-12 border backdrop-blur-xl bg-white/60 dark:bg-white/[0.02] border-brand-primary/20 dark:border-brand-primary/20 shadow-sm"
+              className="mt-16 bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-8 backdrop-blur-sm"
             >
-              <div className="absolute top-0 right-0 w-80 h-80 bg-brand-primary/5 blur-[120px] pointer-events-none" />
-              <div className="max-w-xl relative z-10">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-[10px] font-bold uppercase tracking-wider mb-4">
-                  <Sparkles size={10} />
-                  Custom Solutions
-                </span>
-                <h2 className="text-2xl md:text-4xl font-bold tracking-tight mb-4">
+              <div>
+                <h2 className="text-2xl font-bold mb-3">
                   Need custom business software, mobile apps, or automation?
                 </h2>
-                <p className="text-xs md:text-sm text-foreground/50 leading-relaxed mb-6">
-                  We build high-quality custom systems, mobile apps, WhatsApp automation, and customized business software. Talk to the experts at Maysan Labs to scale up your business operations.
+                <p className="text-foreground/60 mb-6">
+                  We build high-quality custom systems, mobile apps, WhatsApp automation, and customized business software.
                 </p>
                 <Link
                   href="/start"
-                  className="px-6 py-3.5 bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] text-white hover:shadow-[0_0_30px_rgba(26,109,214,0.4)] dark:hover:shadow-[0_0_30px_rgba(26,109,214,0.3)] shadow-[0_0_15px_rgba(26,109,214,0.15)] rounded-full font-bold uppercase text-[10px] tracking-wider transition-all duration-300 inline-flex items-center gap-2 hover:scale-[1.02]"
+                  className="bg-brand-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-brand-primary/90 transition-colors inline-flex items-center gap-2"
                 >
                   Get a Free Project Call
-                  <ArrowRight size={12} />
+                  <ArrowRight size={14} />
                 </Link>
               </div>
             </motion.div>

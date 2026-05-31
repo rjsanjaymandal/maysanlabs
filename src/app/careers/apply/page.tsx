@@ -87,7 +87,7 @@ function ApplyForm() {
   };
 
   return (
-    <div className="bg-card border border-border/50 rounded-xl shadow-2xl p-8 backdrop-blur-sm">
+    <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-8 backdrop-blur-xl shadow-sm">
       {!isSubmitted ? (
         <>
           <div className="mb-8">
@@ -122,7 +122,7 @@ function ApplyForm() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="John Doe"
-                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all text-base"
+                  className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all text-base"
                 />
               </div>
 
@@ -142,7 +142,7 @@ function ApplyForm() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="john@example.com"
-                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all text-base"
+                  className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all text-base"
                 />
               </div>
 
@@ -161,7 +161,7 @@ function ApplyForm() {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="+1 (555) 000-0000"
-                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all text-base"
+                  className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all text-base"
                 />
               </div>
 
@@ -181,7 +181,7 @@ function ApplyForm() {
                   required
                   accept=".pdf,.doc,.docx"
                   onChange={handleFileChange}
-                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-[9px] focus:ring-2 focus:ring-primary/20 outline-none transition-all file:mr-4 file:py-1 file:px-2 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-primary/20 file:text-primary hover:file:bg-primary/30"
+                  className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-[9px] focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all file:mr-4 file:py-1 file:px-2 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-brand-primary/20 file:text-brand-primary hover:file:bg-brand-primary/30"
                 />
               </div>
 
@@ -200,7 +200,7 @@ function ApplyForm() {
                   value={formData.linkedIn}
                   onChange={handleChange}
                   placeholder="https://linkedin.com/in/..."
-                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all text-base"
+                  className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all text-base"
                 />
               </div>
 
@@ -219,7 +219,7 @@ function ApplyForm() {
                   value={formData.portfolio}
                   onChange={handleChange}
                   placeholder="https://github.com/..."
-                  className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all text-base"
+                  className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all text-base"
                 />
               </div>
             </div>
@@ -240,7 +240,7 @@ function ApplyForm() {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Tell us why you're a great fit for Maysan Labs..."
-                className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none text-base"
+                className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 focus:ring-2 focus:ring-brand-primary/20 outline-none transition-all resize-none text-base"
               />
             </div>
 
@@ -305,7 +305,11 @@ function ApplyForm() {
 
 export default function CareerApplyPage() {
   return (
-    <main id="main-content" className="min-h-screen bg-background flex flex-col pt-20">
+    <main id="main-content" className="min-h-screen bg-background flex flex-col relative overflow-hidden pt-20">
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+      {/* Brand Glow */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
       <Navbar />
       <div className="container max-w-3xl flex-1 flex flex-col justify-center py-16 px-4">
         <Suspense

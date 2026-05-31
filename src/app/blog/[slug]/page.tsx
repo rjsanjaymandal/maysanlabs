@@ -48,7 +48,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const blogJSONLD = generateBlogPostJSONLD(post, siteUrl);
 
   return (
-    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
+    <main id="main-content" className="min-h-screen bg-background text-foreground flex flex-col relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -158,7 +160,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Article Content */}
       <section className="py-12">
         <div className="container-main max-w-3xl">
-          <article className="bg-white/[0.01] border border-white/[0.04] rounded-2xl p-8 md:p-12">
+          <article className="bg-white/60 dark:bg-white/[0.01] border border-gray-200 dark:border-white/[0.04] backdrop-blur-xl rounded-3xl p-8 md:p-12 shadow-sm">
             <div className="prose prose-invert max-w-none">
               {post.content.split("\n\n").map((paragraph, index) => (
                 <p key={index} className="text-base md:text-lg text-foreground/70 leading-8 mb-6">
@@ -169,7 +171,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </article>
 
           {/* Inline CTA */}
-          <div className="mt-12 bg-gradient-to-br from-brand-primary/[0.08] to-brand-primary/[0.02] border border-brand-primary/20 rounded-2xl p-8 md:p-10 text-center">
+          <div className="mt-12 bg-brand-primary/10 border border-brand-primary/20 rounded-3xl p-8 md:p-10 text-center">
             <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">Ready to build something great?</h3>
             <p className="text-foreground/60 text-sm mb-6 max-w-md mx-auto">
               Let&apos;s discuss your project. Our team is ready to help you scale.
@@ -181,14 +183,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
 
           {/* Share Section */}
-          <div className="mt-12 pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="mt-12 pt-8 border-t border-gray-200 dark:border-white/[0.06] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <p className="text-sm text-foreground/40 mb-2">Share this article</p>
               <div className="flex gap-2">
-                <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://maysanlabs.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-foreground/50 hover:text-foreground hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all focus-ring">
+                <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://maysanlabs.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.05] rounded-lg text-sm text-foreground/50 hover:text-foreground hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all focus-ring">
                   Twitter
                 </a>
-                <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://maysanlabs.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/[0.03] border border-white/[0.05] rounded-lg text-sm text-foreground/50 hover:text-foreground hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all focus-ring">
+                <a href={`https://www.linkedin.com/shareArticle?mini=true&url=https://maysanlabs.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.05] rounded-lg text-sm text-foreground/50 hover:text-foreground hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all focus-ring">
                   LinkedIn
                 </a>
               </div>
@@ -207,7 +209,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <h3 className="text-base font-semibold text-foreground/60 uppercase tracking-wider mb-6">Continue Reading</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {prevPost && (
-                <Link href={`/blog/${prevPost.slug}`} className="group p-5 bg-white/[0.02] border border-white/[0.04] rounded-xl hover:border-brand-primary/20 hover:bg-white/[0.04] transition-all duration-300">
+                <Link href={`/blog/${prevPost.slug}`} className="group p-5 bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.04] backdrop-blur-xl rounded-2xl hover:border-brand-primary/20 hover:bg-brand-primary/5 transition-all duration-300">
                   <div className="flex items-center gap-2 text-xs text-foreground/40 mb-2">
                     <ArrowLeft size={12} className="group-hover:-translate-x-1 transition-transform" /> Previous Article
                   </div>
@@ -218,7 +220,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 </Link>
               )}
               {nextPost && (
-                <Link href={`/blog/${nextPost.slug}`} className="group p-5 bg-white/[0.02] border border-white/[0.04] rounded-xl hover:border-brand-primary/20 hover:bg-white/[0.04] transition-all duration-300 text-left md:text-right">
+                <Link href={`/blog/${nextPost.slug}`} className="group p-5 bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.04] backdrop-blur-xl rounded-2xl hover:border-brand-primary/20 hover:bg-brand-primary/5 transition-all duration-300 text-left md:text-right">
                   <div className="flex items-center gap-2 text-xs text-foreground/40 mb-2 md:justify-end">
                     Next Article <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
                   </div>

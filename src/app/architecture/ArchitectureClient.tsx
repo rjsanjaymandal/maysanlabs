@@ -35,7 +35,11 @@ export default function ArchitectureClient() {
   ];
 
   return (
-    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col relative overflow-hidden">
+    <main id="main-content" className="min-h-screen bg-background text-foreground flex flex-col relative overflow-hidden">
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+      {/* Brand Glow */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
       <Navbar />
 
       {/* SEO, GEO & AEO Telemetry Data */}
@@ -122,7 +126,7 @@ export default function ArchitectureClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] backdrop-blur-xl rounded-2xl p-8 hover:border-brand-primary/30 hover:bg-[var(--glass-chip-bg)] hover:shadow-[0_0_30px_rgba(26,109,214,0.05)] transition-all duration-300 hover:scale-[1.01]"
+                className="group bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] backdrop-blur-xl rounded-2xl p-8 hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300 hover:scale-[1.01]"
               >
                 <div className="flex justify-between items-start mb-6">
                   <div className="w-12 h-12 bg-[var(--glass-chip-bg)] flex items-center justify-center text-foreground/40 rounded-xl group-hover:bg-brand-primary/10 group-hover:text-brand-primary group-hover:border group-hover:border-brand-primary/20 transition-all duration-300">
@@ -144,7 +148,7 @@ export default function ArchitectureClient() {
       </section>
 
       {/* Technical Deep-Dive Nodes */}
-      <section className="py-16 border-t border-[var(--sec-border)] bg-[var(--sec-bg)]">
+      <section className="py-16 border-t border-gray-200 dark:border-white/[0.06]">
         <div className="container-main">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -158,7 +162,7 @@ export default function ArchitectureClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] backdrop-blur-xl rounded-2xl p-6 hover:border-brand-primary/20 hover:bg-[var(--glass-chip-bg)] hover:shadow-[0_0_20px_rgba(26,109,214,0.02)] transition-all duration-300 group hover:scale-[1.01]"
+                className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] backdrop-blur-xl rounded-2xl p-6 hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300 group hover:scale-[1.01]"
               >
                 <span className="text-xs text-brand-primary/60 font-bold block mb-4 uppercase tracking-widest">Node {node.tag}</span>
                 <h4 className="text-lg font-bold tracking-[-0.015em] text-foreground mb-3 group-hover:text-brand-primary transition-colors">{node.label}</h4>

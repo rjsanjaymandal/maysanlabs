@@ -116,7 +116,7 @@ export default function MultiStepForm() {
       </div>
 
       {/* Step Content */}
-      <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-8">
+      <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-8 backdrop-blur-xl shadow-sm">
         <AnimatePresence mode="wait">
           {currentStep === 1 && (
             <motion.div
@@ -187,7 +187,7 @@ export default function MultiStepForm() {
                 onChange={(e) => updateFormData("description", e.target.value)}
                 placeholder="Describe your project, goals, timeline, and any specific requirements..."
                 rows={6}
-                className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all resize-none"
+                className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all resize-none"
               />
               <p className="text-foreground/30 text-sm mt-3">The more details you provide, the better we can help you.</p>
             </motion.div>
@@ -210,7 +210,7 @@ export default function MultiStepForm() {
                     value={formData.name}
                     onChange={(e) => updateFormData("name", e.target.value)}
                     placeholder="John Doe / Acme Corp"
-                    className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
+                    className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
                   />
                 </div>
                 <div>
@@ -221,7 +221,7 @@ export default function MultiStepForm() {
                     value={formData.email}
                     onChange={(e) => updateFormData("email", e.target.value)}
                     placeholder="john@example.com"
-                    className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
+                    className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
                   />
                 </div>
                 <div>
@@ -232,7 +232,7 @@ export default function MultiStepForm() {
                     value={formData.phone}
                     onChange={(e) => updateFormData("phone", e.target.value)}
                     placeholder="+1 234 567 8900"
-                    className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
+                    className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-foreground/30 focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
                   />
                 </div>
                 

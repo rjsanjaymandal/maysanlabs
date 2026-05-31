@@ -90,12 +90,13 @@ export default function HeadlessRoiClient() {
   }, [email, company]);
 
   return (
-    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between">
+    <main id="main-content" className="min-h-screen bg-background text-foreground flex flex-col justify-between">
       <div>
         <Navbar />
 
         <div className="pt-36 pb-20 px-4 relative overflow-hidden">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
 
           <div className="container-main max-w-4xl mx-auto relative z-10">
             <motion.div
@@ -117,7 +118,7 @@ export default function HeadlessRoiClient() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
               {/* Sliders Box */}
-              <div className="lg:col-span-7 bg-white/[0.02] border border-white/[0.06] rounded-3xl p-6 md:p-8 space-y-6">
+              <div className="lg:col-span-7 bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 md:p-8 space-y-6 backdrop-blur-xl shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg">
                 <div>
                   <label htmlFor="sales-slider" className="flex justify-between text-sm font-semibold mb-2">
                     <span>Monthly Store Revenue</span>
@@ -152,7 +153,7 @@ export default function HeadlessRoiClient() {
                         max={10000}
                         value={aov}
                         onChange={(e) => setAov(Math.max(5, Number(e.target.value)))}
-                        className="w-full bg-black/20 border border-white/10 rounded-xl pl-7 pr-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 font-bold"
+                        className="bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl pl-7 pr-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 font-bold"
                       />
                     </div>
                   </div>
@@ -187,7 +188,7 @@ export default function HeadlessRoiClient() {
                         className={`p-3 rounded-xl text-left border transition-all text-xs ${
                           selectedPlatform === idx
                             ? "bg-brand-primary/10 border-brand-primary/40 text-foreground"
-                            : "bg-black/20 border-white/5 hover:border-white/10 text-foreground/60"
+                            : "bg-white/50 dark:bg-black/30 border-gray-200 dark:border-white/5 hover:border-brand-primary/30 dark:hover:border-white/10 text-foreground/60"
                         }`}
                       >
                         <p className="font-bold">{plat.name}</p>
@@ -201,7 +202,7 @@ export default function HeadlessRoiClient() {
               </div>
 
               {/* Calculations Box */}
-              <div className="lg:col-span-5 bg-white/[0.04] border border-white/[0.1] rounded-3xl p-6 md:p-8 flex flex-col justify-between relative overflow-hidden">
+              <div className="lg:col-span-5 bg-white/60 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.1] rounded-3xl p-6 md:p-8 flex flex-col justify-between relative overflow-hidden backdrop-blur-xl shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 blur-3xl pointer-events-none" />
 
                 <div className="space-y-6 relative z-10">
@@ -325,7 +326,7 @@ export default function HeadlessRoiClient() {
                         placeholder="you@company.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground placeholder:text-foreground/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all"
+                        className="bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground placeholder:text-foreground/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all"
                       />
                       <input
                         type="text"
@@ -334,7 +335,7 @@ export default function HeadlessRoiClient() {
                         placeholder="Company Name"
                         value={company}
                         onChange={(e) => setCompany(e.target.value)}
-                        className="bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground placeholder:text-foreground/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all"
+                        className="bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-xs text-foreground placeholder:text-foreground/30 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all"
                       />
                     </div>
                     {leadError && (

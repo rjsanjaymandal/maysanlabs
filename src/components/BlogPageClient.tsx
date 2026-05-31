@@ -46,7 +46,7 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
         <div
           role="tablist"
           aria-label="Blog article source"
-          className="p-1.5 rounded-full bg-card/80 border border-border/80 dark:bg-white/[0.03] dark:border-white/[0.08] backdrop-blur-xl flex items-center gap-2 shadow-sm"
+          className="p-1.5 rounded-full bg-white/60 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] backdrop-blur-xl flex items-center gap-2 shadow-sm"
         >
           <button
             type="button"
@@ -97,8 +97,8 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
               onClick={() => { setCategoryFilter(cat); setCurrentPage(1); }}
               className={`px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 focus-ring ${
                 categoryFilter === cat
-                  ? "bg-brand-primary text-white"
-                  : "bg-card/70 border border-border/70 text-foreground/55 hover:text-foreground hover:border-brand-primary/30 dark:bg-white/[0.03] dark:border-white/[0.08]"
+                  ? "bg-brand-primary/10 border-brand-primary/20 text-brand-primary"
+                  : "bg-white/50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] text-foreground/55 hover:text-foreground hover:border-brand-primary/30"
               }`}
             >
               {cat === "all" ? "All" : cat}
@@ -115,7 +115,7 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
               <BlogCard key={post.slug} post={post} />
             ))
           ) : (
-            <div className="col-span-full py-20 text-center flex flex-col items-center justify-center border border-border/70 bg-card/70 dark:border-white/[0.06] dark:bg-white/[0.02] rounded-2xl">
+            <div className="col-span-full py-20 text-center flex flex-col items-center justify-center border border-gray-200 dark:border-white/[0.06] bg-white/60 dark:bg-white/[0.02] rounded-3xl">
               <div className="w-12 h-12 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-4">
                 <Globe size={20} />
               </div>
@@ -134,7 +134,7 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
             type="button"
             onClick={() => setCurrentPage((p) => p + 1)}
             aria-label="Load more blog articles"
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-card/75 border border-border/80 rounded-full text-sm font-semibold text-foreground/70 hover:text-foreground hover:border-brand-primary/30 transition-all duration-300 focus-ring dark:bg-white/[0.03] dark:border-white/10"
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-white/50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-full text-sm font-semibold text-foreground/70 hover:text-foreground hover:border-brand-primary/30 transition-all duration-300 focus-ring"
           >
             Load More Articles
             <ChevronRight size={16} />

@@ -42,7 +42,8 @@ const values = [
 
 export default function AboutClient() {
   return (
-    <main id="main-content" className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden">
+    <main id="main-content" className="min-h-screen bg-background text-foreground flex flex-col justify-between relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
         <span>About Maysan Labs - Scaling Startups & Custom Systems</span>
@@ -85,9 +86,9 @@ export default function AboutClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
-                className="bg-white/[0.02] border border-white/5 rounded-xl p-6 hover:border-white/10 transition-all duration-300"
+                className="bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-6 backdrop-blur-sm shadow-sm hover:border-brand-primary/30 transition-colors duration-300"
               >
-                <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-foreground/60 mb-4">
+                <div className="w-10 h-10 bg-white/50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-lg flex items-center justify-center text-foreground/60 mb-4">
                   <value.icon size={18} />
                 </div>
                 <h3 className="text-base font-semibold text-foreground mb-2">{value.title}</h3>

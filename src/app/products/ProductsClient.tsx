@@ -67,17 +67,15 @@ const comingSoonProducts = [
 
 export default function ProductsClient() {
   return (
-    <main id="main-content" aria-label="Maysan Labs Flagship Products" className="min-h-screen bg-[var(--bg-dark)] relative overflow-hidden">
+    <main id="main-content" aria-label="Maysan Labs Flagship Products" className="min-h-screen bg-background text-foreground flex flex-col justify-between relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 via-brand-primary/2 to-transparent" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
-        
-        <div className="container-main relative">
+      <section className="pt-32 pb-16 md:pb-24 relative">
+        <div className="container-main">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 dark:bg-brand-primary/5 border border-brand-primary/20 dark:border-brand-primary/10 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
               <Layers size={12} />
               Our Solutions
             </span>
@@ -87,7 +85,7 @@ export default function ProductsClient() {
             <p className="text-lg md:text-xl text-foreground/50 leading-relaxed mb-8 max-w-2xl">
               Ready-to-deploy products designed to solve real business problems. From education to healthcare, we&apos;ve built platforms that scale.
             </p>
-            <Link href="/start" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary rounded-full font-semibold text-sm text-white hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] hover:scale-105 active:scale-95 transition-all duration-200">
+            <Link href="/start" className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary text-white rounded-full font-semibold hover:bg-brand-primary/90 transition-colors">
               Start Your Project <ArrowUpRight size={16} />
             </Link>
           </div>
@@ -119,7 +117,7 @@ export default function ProductsClient() {
       </section>
 
       {/* Coming Soon Grid */}
-      <section className="py-16 border-t border-white/[0.05] bg-white/[0.01]">
+      <section className="py-16 border-t border-gray-200 dark:border-white/[0.05] bg-background">
         <div className="container-main">
           <div className="max-w-3xl mb-12">
             <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-[#1A6DD6] uppercase mb-3 block">
@@ -143,16 +141,16 @@ export default function ProductsClient() {
                 transition={{ delay: index * 0.1 }}
                 className="group"
               >
-                <div className="bg-white/[0.02] border border-white/[0.05] backdrop-blur-md rounded-2xl p-6 md:p-8 transition-all duration-300 hover:border-white/[0.1] hover:-translate-y-1 h-full">
+                <div className="bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl backdrop-blur-sm shadow-sm p-6 md:p-8 transition-all duration-300 hover:border-brand-primary/30 h-full">
                   <div className="flex items-center justify-between mb-5">
                     <span className="text-[11px] font-medium text-gray-500 uppercase tracking-wider">
                       {product.category}
                     </span>
-                    <span className="text-[11px] font-semibold px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] text-gray-400">
+                    <span className="text-[11px] font-semibold px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-foreground/60">
                       {product.status}
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-50 mb-2 group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-blue-400 transition-colors">
                     {product.name}
                   </h3>
                   {product.tagline && (
@@ -160,7 +158,7 @@ export default function ProductsClient() {
                       {product.tagline}
                     </p>
                   )}
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                     {product.description}
                   </p>
                 </div>
@@ -172,7 +170,7 @@ export default function ProductsClient() {
           <div className="mt-20 text-center py-12 border-t border-white/[0.06]">
             <h3 className="text-2xl md:text-3xl font-semibold text-gray-50 mb-4">Need something custom?</h3>
             <p className="text-gray-400 mb-8 max-w-lg mx-auto">We also build tailored solutions for unique business requirements.</p>
-            <Link href="/start" className="inline-flex items-center gap-2 px-8 py-4 bg-brand-primary rounded-full font-semibold text-sm text-white hover:shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:scale-105 active:scale-95 transition-all duration-200">
+            <Link href="/start" className="inline-flex items-center gap-2 px-8 py-4 bg-brand-primary text-white rounded-full font-semibold hover:bg-brand-primary/90 transition-colors">
               <span>Talk to us</span>
               <ArrowRight size={16} />
             </Link>

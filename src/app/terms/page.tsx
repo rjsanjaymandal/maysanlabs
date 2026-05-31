@@ -14,10 +14,15 @@ const breadcrumbSchema = generateBreadcrumbSchema([
 
 export default function TermsPage() {
   return (
-    <main id="main-content" className="min-h-screen pt-32 pb-20">
+    <main id="main-content" className="min-h-screen bg-background relative overflow-hidden pt-32 pb-20">
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+      {/* Brand Glow */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <div className="container-main max-w-3xl">
-        <h1 className="text-4xl font-bold mb-8">Terms of Service</h1>
+      <div className="container-main max-w-3xl relative">
+        <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-8 md:p-12 backdrop-blur-xl shadow-sm">
+          <h1 className="text-4xl font-bold mb-8">Terms of Service</h1>
         <div className="prose prose-invert max-w-none space-y-6 text-foreground/70">
           <p><strong>Last updated:</strong> May 2026</p>
           <h2 className="text-xl font-semibold text-foreground mt-8">1. Acceptance of Terms</h2>
@@ -30,6 +35,7 @@ export default function TermsPage() {
           <p>Maysan Labs shall not be liable for any indirect, incidental, or consequential damages arising from the use of our services.</p>
           <h2 className="text-xl font-semibold text-foreground mt-8">5. Contact</h2>
           <p>For questions about these terms, contact us at <a href="mailto:business@maysanlabs.com" className="text-brand-primary hover:underline">business@maysanlabs.com</a>.</p>
+        </div>
         </div>
       </div>
     </main>

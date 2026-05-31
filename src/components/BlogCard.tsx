@@ -8,7 +8,7 @@ interface BlogCardProps {
 
 function CardInner({ post, isExternal }: { post: BlogPost; isExternal: boolean }) {
   return (
-    <article data-card-surface="flat-dark" className="blog-card h-full">
+    <article data-card-surface="flat-dark" className="blog-card h-full bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] backdrop-blur-xl rounded-3xl p-6 shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300">
       <div className="relative z-10 flex h-full flex-col">
         <div className="mb-5 flex flex-wrap items-center gap-3 text-xs font-medium uppercase tracking-wider">
           <div className="flex items-center gap-2 text-brand-primary">
@@ -29,7 +29,7 @@ function CardInner({ post, isExternal }: { post: BlogPost; isExternal: boolean }
           {post.excerpt}
         </p>
 
-        <div className="mt-auto flex items-center justify-between gap-4 border-t border-border/70 pt-4 dark:border-white/[0.07]">
+        <div className="mt-auto flex items-center justify-between gap-4 border-t border-gray-200 dark:border-white/[0.07] pt-4">
           <time className="text-xs font-medium text-foreground/45" dateTime={post.date}>
             {post.date}
           </time>

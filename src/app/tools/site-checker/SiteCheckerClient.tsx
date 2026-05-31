@@ -19,7 +19,7 @@ import { SpeedSimulator } from "./components/speed-simulator";
 import { HeadingsHierarchyMap, SchemaMarkupGraph, CrawlerRadar, GoogleSearchPreview } from "./components/seo-widgets";
 import { ActionItemCard } from "./components/action-item-card";
 import { IndianMarketTelemetryHub } from "./components/india-telemetry";
-import { RadarChart, ScoreHistoryChart } from "./components/charts";
+import { RadarChart } from "./components/charts";
 import { ScanRecord, perfSteps, seoSteps, metricInfo, HISTORY_KEY, MAX_HISTORY, loadHistory, getLabel } from "./components/constants";
 
 export default function SiteCheckerClient() {
@@ -240,32 +240,25 @@ export default function SiteCheckerClient() {
 
   return (
     <main id="main-content" className="min-h-screen bg-background text-foreground flex flex-col justify-between relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.03)_1px,transparent_1px)] bg-[size:28px_28px] pointer-events-none z-0 dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(rgba(128,128,128,0.04)_1px,transparent_0)] bg-[size:28px_28px] pointer-events-none z-0 dark:bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_0)]" />
-      
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
       
       <div className="relative z-10 flex-grow">
         <Navbar />
         
-        <div className="pt-32 pb-20 px-4">
-          <div className="container-main max-w-6xl mx-auto">
+        <div className="pt-28 pb-16 px-4">
+          <div className="container-main max-w-4xl mx-auto">
             
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-10">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
-                <Zap size={12} />
-                Free Site Health Audit Tool
-              </span>
-              <h1 className="text-4xl md:text-5xl font-black mb-4 tracking-[-0.02em] font-sans">
-                SEO & Website <span className="bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] bg-clip-text text-transparent drop-shadow-sm">Health Checker</span>
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
+              <h1 className="text-4xl md:text-5xl font-bold mb-3">
+                Website <span className="text-brand-primary">Health Checker</span>
               </h1>
-              <p className="text-foreground/50 max-w-2xl mx-auto text-sm md:text-base leading-relaxed font-light">
-                One click connects and runs a full-fidelity analysis of Core Web Vitals, sitemap indexes, headings hierarchy, JSON-LD schemas, and crawler indexability.
+              <p className="text-foreground/60 max-w-xl mx-auto">
+                Check your website speed, SEO, and health in one click.
               </p>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} className="bg-white/[0.03] border-white/[0.08] rounded-3xl p-6 md:p-8 mb-8 backdrop-blur-xl relative">
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 mb-4">
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} className="bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-6 mb-6 backdrop-blur-sm">
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
                 <div className="relative flex-1">
                   <Globe size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-foreground/30" />
                   <input
@@ -275,13 +268,13 @@ export default function SiteCheckerClient() {
                     value={url}
                     onChange={(e) => { setUrl(e.target.value); setUrlError(null); }}
                     disabled={scanning}
-                    className="w-full bg-white/50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-xl pl-10 pr-4 py-3.5 text-foreground placeholder:text-gray-400 dark:placeholder:text-foreground/30 focus:border-[#1A6DD6]/50 focus:outline-none focus:ring-2 focus:ring-[#1A6DD6]/50 transition-all text-sm disabled:opacity-50 font-mono shadow-sm"
+                    className="w-full bg-white/80 dark:bg-black/20 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 text-foreground placeholder:text-gray-400 focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary transition-all text-sm disabled:opacity-50"
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={scanning}
-                  className="px-6 py-3.5 bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] rounded-xl font-bold text-sm text-white hover:shadow-[0_0_30px_rgba(26,109,214,0.35)] shadow-[0_0_15px_rgba(26,109,214,0.15)] hover:scale-[1.01] transition-all flex items-center justify-center gap-2 disabled:opacity-50 shrink-0 uppercase tracking-widest"
+                  className="bg-brand-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-brand-primary/90 transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   {scanning ? (
                     <><Loader2 size={16} className="animate-spin" /> Scanning...</>
@@ -291,91 +284,84 @@ export default function SiteCheckerClient() {
                 </button>
               </form>
 
-              <div className="flex items-center justify-between flex-wrap gap-3">
+              <div className="flex items-center justify-between flex-wrap gap-3 mt-4">
                 <div className="flex items-center gap-2 p-1 bg-gray-100 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-lg">
-                  <button type="button" onClick={() => setStrategy("mobile")} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${strategy === "mobile" ? "bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] text-white" : "text-foreground/50 hover:text-foreground"}`}>
+                  <button type="button" onClick={() => setStrategy("mobile")} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${strategy === "mobile" ? "bg-brand-primary text-white" : "text-foreground/50 hover:text-foreground"}`}>
                     <Smartphone size={13} /> Mobile
                   </button>
-                  <button type="button" onClick={() => setStrategy("desktop")} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${strategy === "desktop" ? "bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] text-white" : "text-foreground/50 hover:text-foreground"}`}>
+                  <button type="button" onClick={() => setStrategy("desktop")} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${strategy === "desktop" ? "bg-brand-primary text-white" : "text-foreground/50 hover:text-foreground"}`}>
                     <Monitor size={13} /> Desktop
                   </button>
                 </div>
                 
-                <div className="flex items-center gap-2 text-xs text-foreground/30 font-medium">
-                  {history.length > 0 && (
-                    <button type="button" onClick={() => setShowHistory(!showHistory)} className="flex items-center gap-1 text-foreground/40 hover:text-foreground/70 transition-all">
-                      <History size={13} /> History ({history.length}) {showHistory ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
-                    </button>
-                  )}
-                </div>
+                {history.length > 0 && (
+                  <button type="button" onClick={() => setShowHistory(!showHistory)} className="flex items-center gap-1 text-xs text-foreground/50 hover:text-foreground transition-all">
+                    <History size={13} /> History ({history.length})
+                  </button>
+                )}
               </div>
 
               {showHistory && history.length > 0 && (
-                <motion.div initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} className="mt-3 p-3 bg-white/50 dark:bg-white/[0.03] rounded-xl border border-gray-200 dark:border-white/[0.06] max-h-48 overflow-y-auto z-30 relative text-left shadow-sm">
-                  <div className="flex items-center justify-between mb-2 px-1">
-                    <span className="text-[10px] text-foreground/30 font-mono">Scan history</span>
-                    <button onClick={clearHistory} className="text-[10px] text-red-400/50 hover:text-red-400 transition-colors">Clear All</button>
+                <motion.div initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} className="mt-4 p-4 bg-white/80 dark:bg-white/[0.03] rounded-xl border border-gray-200 dark:border-white/[0.06] max-h-48 overflow-y-auto">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs text-foreground/50">Scan history</span>
+                    <button onClick={clearHistory} className="text-xs text-red-400/60 hover:text-red-400 transition-colors">Clear All</button>
                   </div>
                   {history.map((h, i) => (
-                    <div key={i} className="flex items-center justify-between py-1.5 text-xs border-b border-gray-200/50 dark:border-white/[0.03] last:border-0">
-                      <div className="flex items-center gap-2 min-w-0">
-                        <span className="text-foreground/40 font-mono truncate max-w-[180px]">{h.url.replace("https://", "")}</span>
-                        <span className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${h.overall === "Good" ? "bg-green-500/10 text-green-600 dark:bg-green-400/10 dark:text-green-400" : h.overall === "Needs Work" ? "bg-amber-500/10 text-amber-600 dark:bg-amber-400/10 dark:text-amber-400" : "bg-red-500/10 text-red-600 dark:bg-red-400/10 dark:text-red-400"}`}>{h.overall}</span>
+                    <div key={i} className="flex items-center justify-between py-2 text-sm border-b border-gray-200/50 dark:border-white/[0.03] last:border-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-foreground/60 truncate max-w-[180px]">{h.url.replace("https://", "")}</span>
+                        <span className={`px-2 py-0.5 rounded text-xs font-semibold ${h.overall === "Good" ? "bg-green-500/10 text-green-600" : h.overall === "Needs Work" ? "bg-amber-500/10 text-amber-600" : "bg-red-500/10 text-red-600"}`}>{h.overall}</span>
                       </div>
-                      <div className="flex items-center gap-2 shrink-0">
-                        <span className="text-foreground/30">P:{h.perf}</span>
-                        {h.seoScore > 0 && <span className="text-foreground/30">SEO:{h.seoScore}</span>}
-                        <span className="text-foreground/30">{h.strategy === "mobile" ? <Smartphone size={10} /> : <Monitor size={10} />}</span>
-                        <button onClick={() => { setUrl(h.url); setStrategy(h.strategy as "mobile" | "desktop"); setShowHistory(false); }} className="text-[#1A6DD6] hover:underline font-semibold">Re-scan</button>
-                      </div>
+                      <button onClick={() => { setUrl(h.url); setStrategy(h.strategy as "mobile" | "desktop"); setShowHistory(false); }} className="text-brand-primary hover:underline font-medium">Re-scan</button>
                     </div>
                   ))}
                 </motion.div>
               )}
 
-              {urlError && <p className="text-red-400 text-xs mt-2 font-mono text-left">{urlError}</p>}
+              {urlError && <p className="text-red-400 text-sm mt-2">{urlError}</p>}
             </motion.div>
 
             {scanning && (
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-white/[0.03] border-white/[0.08] rounded-3xl p-6 md:p-8 mb-8 backdrop-blur-xl text-left">
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-6 mb-6 backdrop-blur-sm">
                 <div className="flex items-center gap-3 mb-4">
                   <Loader2 size={18} className="text-brand-primary animate-spin" />
-                  <span className="text-sm font-semibold text-foreground/70">Running deep telemetry scan on <span className="text-[#1A6DD6] font-mono">{url.startsWith("http") ? url : `https://${url}`}</span></span>
+                  <span className="text-sm font-medium text-foreground/70">Running scan on <span className="text-brand-primary font-semibold">{url.startsWith("http") ? url : `https://${url}`}</span></span>
                 </div>
                 <div className="space-y-4">
                   <div>
-                    <div className="flex items-center gap-1.5 text-xs mb-1.5">
-                      <Zap size={11} className="text-[#1A6DD6]" />
-                      <span className="text-foreground/50">Performance & Core Web Vitals (Google PSI)</span>
-                      {perfStep === "PageSpeed report ready!" && <span className="text-[#10b981] text-[10px] ml-auto font-bold font-mono">Done</span>}
+                    <div className="flex items-center gap-2 text-sm mb-2">
+                      <Zap size={12} className="text-brand-primary" />
+                      <span className="text-foreground/60">Performance & Core Web Vitals</span>
+                      {perfStep === "PageSpeed report ready!" && <span className="text-green-500 text-xs ml-auto font-semibold">Done</span>}
                     </div>
-                    <div className="w-full h-1.5 bg-white/[0.04] rounded-full overflow-hidden">
-                      <motion.div animate={{ x: ["-100%", "200%"] }} transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }} className="w-1/2 h-full rounded-full bg-gradient-to-r from-transparent via-[#1A6DD6] to-transparent" />
+                    <div className="w-full h-2 bg-gray-100 dark:bg-white/[0.05] rounded-full overflow-hidden">
+                      <motion.div animate={{ x: ["-100%", "200%"] }} transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }} className="w-1/2 h-full rounded-full bg-brand-primary" />
                     </div>
-                    <p className="text-[10px] text-foreground/30 font-mono mt-1">{perfStep}</p>
+                    <p className="text-xs text-foreground/40 mt-1">{perfStep}</p>
                   </div>
                   <div>
-                    <div className="flex items-center gap-1.5 text-xs mb-1.5">
-                      <FileText size={11} className="text-[#14b8a6]" />
-                      <span className="text-foreground/50">SEO & Sitemap Node Audit (XML Parser)</span>
-                      {seoStep === "SEO audit complete!" && <span className="text-[#10b981] text-[10px] ml-auto font-bold font-mono">Done</span>}
+                    <div className="flex items-center gap-2 text-sm mb-2">
+                      <FileText size={12} className="text-teal-500" />
+                      <span className="text-foreground/60">SEO & Sitemap Audit</span>
+                      {seoStep === "SEO audit complete!" && <span className="text-green-500 text-xs ml-auto font-semibold">Done</span>}
                     </div>
-                    <div className="w-full h-1.5 bg-white/[0.04] rounded-full overflow-hidden">
-                      <motion.div animate={{ x: ["-100%", "200%"] }} transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }} className="w-1/2 h-full rounded-full bg-gradient-to-r from-transparent via-[#14b8a6] to-transparent" />
+                    <div className="w-full h-2 bg-gray-100 dark:bg-white/[0.05] rounded-full overflow-hidden">
+                      <motion.div animate={{ x: ["-100%", "200%"] }} transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }} className="w-1/2 h-full rounded-full bg-teal-500" />
                     </div>
-                    <p className="text-[10px] text-foreground/30 font-mono mt-1">{seoStep || "Waiting for thread connection..."}</p>
+                    <p className="text-xs text-foreground/40 mt-1">{seoStep || "Waiting..."}</p>
                   </div>
                 </div>
               </motion.div>
             )}
 
             {scanError && !scanning && (
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-white/[0.03] border-red-500/25 rounded-3xl p-6 md:p-8 mb-6 text-left">
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-red-500/10 border border-red-500/25 rounded-2xl p-6 mb-6">
                 <div className="flex items-start gap-3">
-                  <AlertTriangle size={20} className="text-red-400 shrink-0 mt-0.5" />
+                  <AlertTriangle size={20} className="text-red-400 shrink-0" />
                   <div>
-                    <h3 className="text-sm font-bold text-foreground">Health Scan Aborted</h3>
-                    <p className="text-xs text-foreground/50 mt-1 leading-relaxed">{scanError}</p>
+                    <h3 className="text-sm font-bold text-foreground">Health Scan Failed</h3>
+                    <p className="text-sm text-foreground/60 mt-1">{scanError}</p>
                   </div>
                 </div>
               </motion.div>
@@ -384,23 +370,22 @@ export default function SiteCheckerClient() {
             <AnimatePresence>
               {(perfResults || seoResults) && !scanning && (
                 <motion.div ref={resultsRef} initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="space-y-6">
-                  <div className="flex items-center justify-between p-3.5 bg-white/50 dark:bg-white/[0.01] border-green-500/20 dark:border-[#10b981]/20 rounded-xl text-left">
+                  <div className="flex items-center justify-between p-4 bg-green-500/10 border border-green-500/20 rounded-xl">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-5 h-5 rounded-full bg-[#10b981]/10 flex items-center justify-center border border-[#10b981]/20">
-                        <Check size={11} className="text-[#10b981]" />
+                      <div className="w-5 h-5 rounded-full bg-green-500/10 flex items-center justify-center">
+                        <Check size={11} className="text-green-500" />
                       </div>
                       <div>
-                        <h4 className="text-xs font-bold text-foreground">Website Audit Completed</h4>
-                        <p className="text-[9px] text-foreground/45 font-medium">All diagnostic parameters resolved successfully</p>
+                        <h4 className="text-sm font-bold text-foreground">Website Audit Completed</h4>
+                        <p className="text-xs text-foreground/50">All diagnostic parameters resolved</p>
                       </div>
                     </div>
-                    <span className="text-[9px] font-mono text-foreground/35">Just now</span>
+                    <span className="text-xs text-foreground/40">Just now</span>
                   </div>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-                    <div className="lg:col-span-6 bg-white/[0.03] border-white/[0.08] rounded-3xl p-6 md:p-8 flex flex-col items-center justify-center text-center relative overflow-hidden backdrop-blur-xl">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#1A6DD6]/5 blur-2xl rounded-full pointer-events-none" />
-                      <span className="text-[10px] text-foreground/45 uppercase tracking-widest font-semibold absolute top-5 left-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div className="bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-6 text-center backdrop-blur-sm">
+                      <span className="text-xs text-foreground/50 uppercase tracking-wider font-semibold block mb-4">
                         Overall Website Score
                       </span>
                       
@@ -408,28 +393,31 @@ export default function SiteCheckerClient() {
                         <OverallScoreCircle score={combinedScore} />
                       </div>
                       
-                      <p className="text-xs text-foreground/50 max-w-sm leading-relaxed font-light mt-2">
+                      <p className="text-sm text-foreground/60 mb-6">
                         {combinedScore >= 80
-                          ? "Your website is in excellent shape! Core metrics are fully optimized."
+                          ? "Your website is in excellent shape!"
                           : combinedScore >= 60
-                          ? "Your website is good, but there's room for improvement. Fix the highlighted issues."
-                          : "Critical structural issues are affecting page experience. Optimize assets immediately."}
+                          ? "Good, but there's room for improvement."
+                          : "Critical issues affecting page experience."}
                       </p>
 
-                      <div className="flex items-center gap-3 mt-6 flex-wrap justify-center">
-                        <button onClick={() => scrollToSection("seo")} className="px-4 py-2 bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] rounded-lg font-bold text-xs text-white hover:shadow-[0_0_15px_rgba(26,109,214,0.3)] hover:scale-[1.01] transition-all flex items-center gap-1 uppercase tracking-wider">
-                          <span>View All Issues</span>
-                          <ArrowRight size={11} />
+                      <div className="flex items-center gap-3 flex-wrap justify-center">
+<button
+                          onClick={() => scrollToSection("seo")}
+                          className="bg-brand-primary text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-brand-primary/90 transition-colors flex items-center gap-2"
+                        >
+                          View All Issues
+                          <ArrowRight size={14} />
                         </button>
-                        <button onClick={copyResults} className="p-2.5 rounded-lg bg-white/70 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.05] text-foreground/55 dark:text-foreground/55 hover:text-foreground dark:hover:text-foreground hover:border-gray-300 dark:hover:border-white/20 transition-all text-xs flex items-center gap-1.5 font-bold">
-                          {copied ? <><CheckCircle size={12} className="text-[#10b981]" /> Copied</> : <><Share2 size={12} /> Share Report</>}
+                        <button onClick={copyResults} className="bg-white/80 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 text-foreground px-6 py-3 rounded-full font-semibold text-sm hover:bg-gray-100 dark:hover:bg-white/[0.08] transition-colors flex items-center gap-2">
+                          {copied ? <><CheckCircle size={14} className="text-green-500" /> Copied</> : <><Share2 size={14} /> Share Report</>}
                         </button>
                       </div>
                     </div>
 
-                    <div className="lg:col-span-6 bg-white/[0.03] border-white/[0.08] rounded-3xl p-6 md:p-8 flex flex-col items-center justify-center relative overflow-hidden backdrop-blur-xl">
-                      <span className="text-[10px] text-foreground/45 uppercase tracking-widest font-semibold absolute top-5 left-6">
-                        Performance Radar Analysis
+                    <div className="bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-6 text-center backdrop-blur-sm">
+                      <span className="text-xs text-foreground/50 uppercase tracking-wider font-semibold block mb-4">
+                        Performance Radar
                       </span>
                       <RadarChart 
                         scores={{
@@ -444,48 +432,22 @@ export default function SiteCheckerClient() {
                   </div>
 
                   <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                    <MiniScoreCard title="Performance" score={perfResults?.performance ?? 0} status={perfResults && perfResults.performance >= 75 ? "Good" : "Needs Work"} icon={Zap} colorClass="text-[#1A6DD6]" />
-                    <MiniScoreCard title="SEO Check" score={seoResults?.seoScore ?? 0} status={seoResults && seoResults.seoScore >= 80 ? "Good" : "Needs Work"} icon={Search} colorClass="text-[#14b8a6]" />
-                    <MiniScoreCard title="Security" score={seoResults?.urlsList[0]?.https ? 95 : 45} status={seoResults?.urlsList[0]?.https ? "Good" : "Needs Work"} icon={Shield} colorClass="text-[#1A6DD6]" />
-                    <MiniScoreCard title="Mobile" score={perfResults?.mobile ?? 0} status={perfResults && perfResults.mobile >= 75 ? "Good" : "Needs Work"} icon={Smartphone} colorClass="text-[#10b981]" />
-                    <MiniScoreCard title="UX Index" score={perfResults?.accessibility ?? 75} status={(perfResults?.accessibility ?? 75) >= 80 ? "Good" : "Needs Work"} icon={User} colorClass="text-amber-400" />
+                    <MiniScoreCard title="Performance" score={perfResults?.performance ?? 0} status={perfResults && perfResults.performance >= 75 ? "Good" : "Needs Work"} icon={Zap} colorClass="text-brand-primary" />
+                    <MiniScoreCard title="SEO Check" score={seoResults?.seoScore ?? 0} status={seoResults && seoResults.seoScore >= 80 ? "Good" : "Needs Work"} icon={Search} colorClass="text-teal-500" />
+                    <MiniScoreCard title="Security" score={seoResults?.urlsList[0]?.https ? 95 : 45} status={seoResults?.urlsList[0]?.https ? "Good" : "Needs Work"} icon={Shield} colorClass="text-brand-primary" />
+                    <MiniScoreCard title="Mobile" score={perfResults?.mobile ?? 0} status={perfResults && perfResults.mobile >= 75 ? "Good" : "Needs Work"} icon={Smartphone} colorClass="text-green-500" />
+                    <MiniScoreCard title="UX Index" score={perfResults?.accessibility ?? 75} status={(perfResults?.accessibility ?? 75) >= 80 ? "Good" : "Needs Work"} icon={User} colorClass="text-amber-500" />
                   </div>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 text-left items-start">
-                    <div className="lg:col-span-6 bg-white/[0.03] border-white/[0.08] rounded-3xl p-6 md:p-8 flex flex-col justify-between backdrop-blur-xl min-h-[220px]">
-                      <div>
-                        <span className="text-[10px] text-foreground/45 uppercase tracking-widest font-semibold block mb-4">Top Issues Found</span>
-                        <div className="space-y-3">
-                          {perfResults?.suggestions.slice(0, 3).map((s, idx) => (
-                            <div key={idx} className="flex items-center justify-between border-b border-white/5 pb-2.5 last:border-0">
-                              <span className="text-xs text-foreground/80 font-medium truncate max-w-[280px]">{s}</span>
-                              <span className={`px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-wider ${idx === 0 ? "bg-red-500/10 dark:bg-red-400/10 text-red-600 dark:text-red-400 border border-red-500/20 dark:border-red-400/20" : "bg-amber-500/10 dark:bg-amber-400/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 dark:border-amber-400/20"}`}>
-                                {idx === 0 ? "High" : "Medium"}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      <button onClick={() => scrollToSection("seo")} className="text-[#1A6DD6] hover:underline text-xs font-bold flex items-center gap-1 mt-6 w-fit uppercase tracking-wider">
-                        <span>View All Issues</span>
-                        <ArrowRight size={12} />
-                      </button>
-                    </div>
-
-                    <div className="lg:col-span-6 bg-white/[0.03] border-white/[0.08] rounded-3xl p-6 md:p-8 backdrop-blur-xl">
-                      <ScoreHistoryChart overallScore={combinedScore} />
-                    </div>
-                  </div>
-
-                  <div id="tab-view-section" className="flex items-center gap-2 p-1 bg-white/50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] rounded-xl w-fit mx-auto backdrop-blur-xl pt-10">
-                    <button onClick={() => setActiveSection("performance")} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all uppercase tracking-wider ${activeSection === "performance" ? "bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] text-white shadow-lg" : "text-foreground/50 hover:text-foreground"}`}>
+                  <div id="tab-view-section" className="flex items-center gap-2 p-1 bg-white/80 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] rounded-xl w-fit mx-auto backdrop-blur-xl pt-12">
+                    <button onClick={() => setActiveSection("performance")} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${activeSection === "performance" ? "bg-brand-primary text-white" : "text-foreground/50 hover:text-foreground"}`}>
                       <Zap size={13} /> Performance
                     </button>
-                    <button onClick={() => setActiveSection("seo")} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all uppercase tracking-wider ${activeSection === "seo" ? "bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] text-white shadow-lg" : "text-foreground/50 hover:text-foreground"}`}>
+                    <button onClick={() => setActiveSection("seo")} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${activeSection === "seo" ? "bg-brand-primary text-white" : "text-foreground/50 hover:text-foreground"}`}>
                       <FileText size={13} /> SEO & Sitemap
                     </button>
-                    <button onClick={() => setActiveSection("india")} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all uppercase tracking-wider ${activeSection === "india" ? "bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] text-white shadow-lg" : "text-foreground/50 hover:text-foreground"}`}>
-                      🇮🇳 India
+                    <button onClick={() => setActiveSection("india")} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${activeSection === "india" ? "bg-brand-primary text-white" : "text-foreground/50 hover:text-foreground"}`}>
+                      India
                     </button>
                   </div>
 

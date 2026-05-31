@@ -491,17 +491,13 @@ export default function ImageCompressorClient() {
     : 0;
 
   return (
-    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between selection:bg-brand-primary selection:text-black">
+    <main id="main-content" className="min-h-screen bg-background text-foreground flex flex-col justify-between selection:bg-brand-primary selection:text-black">
       <div>
         <Navbar />
 
         <div className="pt-36 pb-24 px-4 relative overflow-hidden">
-          {/* Ambient visual flows and tech grids */}
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
-          <div className="absolute bottom-20 left-20 w-[300px] h-[300px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
-          
-          {/* Background grid wireframe overlay */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_40%,transparent_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
 
           <div className="container-main max-w-5xl mx-auto relative z-10">
             {/* Header section with geometric elements */}
@@ -573,7 +569,7 @@ export default function ImageCompressorClient() {
                     <p className="text-xs text-foreground/40 max-w-sm mx-auto leading-relaxed mb-4">
                       Supports PNG, JPEG, and WebP formats. Upload multiple files at once.
                     </p>
-                    <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white/[0.04] hover:bg-white/[0.08] text-xs font-semibold text-white tracking-wide rounded-full border border-white/[0.06] transition-all">
+                    <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white/50 dark:bg-white/[0.03] hover:bg-white/80 dark:hover:bg-white/[0.08] text-xs font-semibold text-foreground dark:text-white tracking-wide rounded-full border border-gray-200 dark:border-white/[0.06] transition-all">
                       Browse Files
                     </span>
                   </label>
@@ -596,7 +592,7 @@ export default function ImageCompressorClient() {
                   <motion.div
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="grid grid-cols-3 gap-4 bg-white/[0.02] border border-white/[0.06] rounded-2xl p-4 backdrop-blur-xl"
+                    className="grid grid-cols-3 gap-4 bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-4 backdrop-blur-xl shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg"
                   >
                     <div className="text-center py-2 relative">
                       <div className="absolute right-0 top-1/4 bottom-1/4 w-[1px] bg-white/[0.08]" />
@@ -615,7 +611,7 @@ export default function ImageCompressorClient() {
                   </motion.div>
 
                   {/* Settings HUD Box */}
-                  <div className="glass-strong border border-white/[0.06] rounded-3xl p-6 relative overflow-hidden">
+                  <div className="glass-strong border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 relative overflow-hidden backdrop-blur-xl shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 blur-3xl pointer-events-none" />
                     
                     <div className="flex items-center gap-2 mb-6">
@@ -656,7 +652,7 @@ export default function ImageCompressorClient() {
                           <select
                             value={format}
                             onChange={(e) => setFormat(e.target.value as typeof format)}
-                            className="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-foreground focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
+                            className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-3 py-2.5 text-xs text-foreground focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
                           >
                             <option value="original">Original Format</option>
                             <option value="image/jpeg">JPEG (.jpg)</option>
@@ -671,7 +667,7 @@ export default function ImageCompressorClient() {
                           <select
                             value={scale}
                             onChange={(e) => setScale(parseInt(e.target.value))}
-                            className="w-full bg-black/40 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-foreground focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
+                            className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-3 py-2.5 text-xs text-foreground focus:border-brand-primary/50 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 transition-all"
                           >
                             <option value="100">100% (Original Dimensions)</option>
                             <option value="75">75% (Scale Down)</option>
@@ -684,7 +680,7 @@ export default function ImageCompressorClient() {
                   </div>
 
                   {/* Upload queue list */}
-                  <div className="glass-strong border border-white/[0.06] rounded-3xl p-6">
+                  <div className="glass-strong border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 backdrop-blur-xl shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg">
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center gap-2">
                         <Layers size={16} className="text-brand-primary" />
@@ -839,7 +835,7 @@ export default function ImageCompressorClient() {
 
                 {/* Right Side Panel: Before/After Comparison Preview Slider (5 Columns) */}
                 <div className="lg:col-span-5">
-                  <div className="glass-strong border border-white/[0.06] rounded-3xl p-6 sticky top-36">
+                  <div className="glass-strong border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 sticky top-36 backdrop-blur-xl shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg">
                     <div className="flex items-center gap-2 mb-6 justify-between">
                       <div className="flex items-center gap-2">
                         <Maximize2 size={16} className="text-brand-primary" />

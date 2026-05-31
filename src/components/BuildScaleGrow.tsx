@@ -23,9 +23,9 @@ const BuildCanvas = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const layers = [
-    { title: "Client Layer", desc: "Next.js & React Router", color: "from-blue-500 to-cyan-400" },
-    { title: "API Gateway", desc: "Edge Nodes & Auth Middleware", color: "from-[#1A6DD6] to-blue-500" },
-    { title: "Database Layer", desc: "PostgreSQL & Vector Indexes", color: "from-[#00b0ff] to-[#1A6DD6]" },
+    { title: "Your Website", desc: "Fast, custom design", color: "from-blue-500 to-cyan-400" },
+    { title: "Business Tools", desc: "Customer portals & logins", color: "from-[#1A6DD6] to-blue-500" },
+    { title: "Secure Storage", desc: "Safe, lightning-fast database", color: "from-[#00b0ff] to-[#1A6DD6]" },
   ];
 
   return (
@@ -92,9 +92,9 @@ const ScaleCanvas = () => {
   const [activeNode, setActiveNode] = useState<string | null>(null);
 
   const nodes = [
-    { id: "edge", label: "Edge CDN", x: "15%", y: "75%", color: "rgba(16, 185, 129, 0.8)", icon: Globe },
-    { id: "gateway", label: "App Router", x: "50%", y: "30%", color: "rgba(20, 184, 166, 0.8)", icon: Activity },
-    { id: "db", label: "Global DB", x: "85%", y: "75%", color: "rgba(16, 185, 129, 0.8)", icon: Server },
+    { id: "edge", label: "Fast Worldwide", x: "15%", y: "75%", color: "rgba(16, 185, 129, 0.8)", icon: Globe },
+    { id: "gateway", label: "Smart Traffic", x: "50%", y: "30%", color: "rgba(20, 184, 166, 0.8)", icon: Activity },
+    { id: "db", label: "Secure Backups", x: "85%", y: "75%", color: "rgba(16, 185, 129, 0.8)", icon: Server },
   ];
 
   return (
@@ -303,14 +303,14 @@ export default function BuildScaleGrow() {
       features: [
         {
           name: "Custom Software",
-          description: "Tailored React, Next.js, and Node.js architectures precision-built for your business model.",
+          description: "Bespoke, premium websites and custom tools designed specifically for your unique business goals.",
           Icon: Cpu,
           href: "/services",
           cta: "Build With Us",
         },
         {
           name: "MVP Engineering",
-          description: "From idea to working product in weeks. Lean development with production-grade foundations.",
+          description: "Launch your product idea in weeks. We build a simple, working version to test with your real clients.",
           Icon: Rocket,
           href: "/start",
           cta: "Start Building",
@@ -328,14 +328,14 @@ export default function BuildScaleGrow() {
       features: [
         {
           name: "Cloud Infrastructure",
-          description: "Auto-scaling AWS, Kubernetes, and edge-deployed infrastructure with 99.99% uptime.",
+          description: "Secure, reliable cloud hosting with automatic daily backups. Your website is always open and fast.",
           Icon: Layers,
           href: "/architecture",
           cta: "Scale Up",
         },
         {
           name: "Enterprise Scale",
-          description: "Multi-region deployments, read replicas, edge caching — architecture for millions of users.",
+          description: "Built to handle millions of visitors smoothly. Fast loading times no matter where your customers are.",
           Icon: ShieldCheck,
           href: "/services",
           cta: "Enterprise Plan",
@@ -353,14 +353,14 @@ export default function BuildScaleGrow() {
       features: [
         {
           name: "Growth Advisory",
-          description: "Technical strategy, architecture reviews, and roadmaps to accelerate your product-market fit.",
+          description: "Expert strategy, roadmap planning, and reviews to help you scale your business and find more customers.",
           Icon: TrendingUp,
           href: "/insights",
           cta: "Grow Faster",
         },
         {
           name: "Fast Delivery",
-          description: "Bi-weekly sprints, CI/CD pipelines, and transparent progress tracking. Ship with confidence.",
+          description: "Fast updates, transparent progress tracking, and bi-weekly checkpoints. We keep you involved at every step.",
           Icon: Zap,
           href: "/start",
           cta: "Start Project",

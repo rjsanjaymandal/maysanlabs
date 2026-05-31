@@ -56,7 +56,9 @@ const services = [
 
 export default function ServicesClient() {
   return (
-    <main id="main-content" aria-label="Maysan Labs Development Services" className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden">
+    <main id="main-content" aria-label="Maysan Labs Development Services" className="min-h-screen bg-background text-foreground flex flex-col justify-between relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
       <Navbar />
       
       <section className="pt-32 pb-20 relative">
@@ -70,7 +72,7 @@ export default function ServicesClient() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl"
           >
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 dark:bg-brand-primary/5 border border-brand-primary/20 dark:border-brand-primary/10 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
               <Code2 size={12} />
               Services
             </span>
@@ -80,7 +82,7 @@ export default function ServicesClient() {
             <p className="text-base md:text-lg text-foreground/60 leading-relaxed mb-8 max-w-2xl font-medium">
               We build scalable, high-performance software solutions for enterprises and fast-growing startups.
             </p>
-            <Link href="/start" className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-[#1A6DD6] rounded-full font-bold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02]">
+            <Link href="/start" className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] rounded-full font-bold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02]">
               <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative z-10">Start a Project</span>
               <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
@@ -95,13 +97,13 @@ export default function ServicesClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.06 }}
-                className="group relative rounded-2xl border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] p-6 hover:bg-[var(--glass-chip-bg)] hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-2xl overflow-hidden text-left"
+                className="group relative rounded-2xl border border-gray-200 dark:border-white/[0.06] bg-white/60 dark:bg-white/[0.02] backdrop-blur-xl p-6 hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-2xl shadow-sm overflow-hidden text-left"
               >
                 {/* Custom Gradient Neon Border on card hover */}
                 <div className={`absolute -inset-px bg-gradient-to-br ${service.color} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none -z-10`} />
-                <div className="absolute inset-[1px] bg-[var(--bg-dark)] rounded-2xl -z-10" />
+                <div className="absolute inset-[1px] bg-background rounded-2xl -z-10" />
 
-                <div className="w-12 h-12 bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-xl flex items-center justify-center text-foreground/50 mb-5 group-hover:bg-brand-primary/15 group-hover:text-brand-primary transition-all duration-300">
+                <div className="w-12 h-12 bg-white/50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-xl flex items-center justify-center text-foreground/50 mb-5 group-hover:bg-brand-primary/15 group-hover:text-brand-primary transition-all duration-300">
                   <service.icon size={20} className="group-hover:scale-110 transition-transform duration-300" />
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-brand-primary transition-colors duration-300">

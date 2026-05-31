@@ -70,7 +70,7 @@ const colorMap: Record<string, { bg: string; text: string; hover: string }> = {
 export default function Services() {
   return (
     <section id="services" className="py-16 md:py-24 relative overflow-hidden bg-background">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/[0.015] to-transparent" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
 
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
@@ -126,7 +126,7 @@ export default function Services() {
             viewport={{ once: true }}
             className="mb-4"
           >
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-primary/10 dark:bg-brand-primary/5 border border-brand-primary/20 dark:border-brand-primary/10 text-brand-primary text-xs font-medium">
               <Zap size={12} />
               Services
             </span>
@@ -163,7 +163,7 @@ export default function Services() {
                 transition={{ delay: index * 0.06 }}
                 className="group"
               >
-                <div className="bg-white/[0.02] border border-white/[0.05] backdrop-blur-md rounded-2xl p-6 transition-all duration-300 hover:border-white/[0.1] hover:-translate-y-1 h-full">
+                <div className="bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-6 backdrop-blur-sm shadow-sm hover:-translate-y-1 transition-transform duration-300 h-full">
                   <div className={`w-10 h-10 ${colors.bg} rounded-lg flex items-center justify-center ${colors.text} mb-4 group-hover:scale-110 transition-transform duration-300`}>
                     <service.icon size={18} />
                   </div>

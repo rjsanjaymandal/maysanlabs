@@ -117,12 +117,13 @@ export default function ScopeEstimatorClient() {
   }, [email, company, selectedApp, selectedFeatures, selectedInfra, acceleratedTimeline]);
 
   return (
-    <main id="main-content" className="min-h-screen bg-[var(--bg-dark)] text-foreground flex flex-col justify-between">
+    <main id="main-content" className="min-h-screen bg-background text-foreground flex flex-col justify-between">
       <div>
         <Navbar />
 
         <div className="pt-36 pb-20 px-4 relative overflow-hidden">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
 
           <div className="container-main max-w-4xl mx-auto relative z-10">
             <motion.div
@@ -162,7 +163,7 @@ export default function ScopeEstimatorClient() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
               {/* Stepper Area */}
-              <div className="lg:col-span-7 bg-white/[0.02] border border-white/[0.06] rounded-3xl p-6 md:p-8 min-h-[400px] flex flex-col justify-between">
+              <div className="lg:col-span-7 bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 md:p-8 min-h-[400px] flex flex-col justify-between backdrop-blur-xl shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg">
                 <AnimatePresence mode="wait">
                   {currentStep === 1 && (
                     <motion.div
@@ -262,7 +263,7 @@ export default function ScopeEstimatorClient() {
                         </div>
 
                         {/* accelerated Timeline option */}
-                        <div className="p-4 bg-white/[0.02] border border-white/5 rounded-xl flex items-center justify-between">
+                        <div className="p-4 bg-white/50 dark:bg-white/[0.02] border border-gray-200 dark:border-white/5 rounded-xl flex items-center justify-between">
                           <div>
                             <span className="text-xs font-bold text-foreground block">Accelerate Timeline Delivery</span>
                             <span className="text-[10px] text-foreground/40 leading-relaxed block max-w-sm">
@@ -326,7 +327,7 @@ export default function ScopeEstimatorClient() {
                                 placeholder="you@company.com"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all"
+                                className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all"
                               />
                             </div>
                             <div>
@@ -338,7 +339,7 @@ export default function ScopeEstimatorClient() {
                                 placeholder="Acme Corp"
                                 value={company}
                                 onChange={(e) => setCompany(e.target.value)}
-                                className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all"
+                                className="w-full bg-white/50 dark:bg-black/30 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all"
                               />
                             </div>
                             {leadError && (
@@ -385,7 +386,7 @@ export default function ScopeEstimatorClient() {
                   {currentStep < 4 ? (
                     <button
                       onClick={() => setCurrentStep((prev) => prev + 1)}
-                      className="px-5 py-2.5 bg-white/[0.04] border border-white/10 hover:border-white/20 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5 transition-all"
+                      className="px-5 py-2.5 bg-white/50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 hover:border-brand-primary/40 dark:hover:border-brand-primary/30 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5 transition-all shadow-sm hover:shadow-lg"
                     >
                       Next
                       <ChevronRight size={16} />
@@ -397,7 +398,7 @@ export default function ScopeEstimatorClient() {
               </div>
 
               {/* Calculator Live Ticker Area */}
-              <div className="lg:col-span-5 bg-white/[0.04] border border-white/[0.1] rounded-3xl p-6 md:p-8 flex flex-col justify-between relative overflow-hidden">
+              <div className="lg:col-span-5 bg-white/60 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.1] rounded-3xl p-6 md:p-8 flex flex-col justify-between relative overflow-hidden backdrop-blur-xl shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 blur-3xl pointer-events-none" />
 
                 <div className="space-y-6 relative z-10">

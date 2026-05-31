@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import { FloatingParticles } from "@/components/ui/particles";
 import { generateIndividualReviewSchemas } from "@/lib/seo/schema";
 import { Zap, Send } from "lucide-react";
 
@@ -25,7 +24,7 @@ const TrustBadges = dynamic(() => import("@/components/TrustBadges"));
 export default function Home() {
 
   return (
-    <main id="main-content" aria-label="Maysan Labs Homepage" className="bg-[var(--bg-dark)] min-h-screen relative overflow-hidden text-foreground">
+    <main id="main-content" aria-label="Maysan Labs Homepage" className="min-h-screen relative overflow-hidden text-foreground">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -59,7 +58,7 @@ export default function Home() {
         </p>
       </div>
 
-      <FloatingParticles count={25} minSize={1} maxSize={4} color="rgba(59, 130, 246, 0.12)" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
       <Navbar />
       <Hero />
       
@@ -85,9 +84,9 @@ export default function Home() {
             </span>
           </FadeInScroll>
           <h2 className="heading-lg sm:heading-xl tracking-[-0.02em] text-foreground text-center">
-            <span className="bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(26,109,214,0.15)] dark:drop-shadow-[0_0_20px_rgba(26,109,214,0.3)]">Build</span>.{" "}
-            <span className="bg-gradient-to-r from-[#10b981] to-[#14b8a6] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(16,185,129,0.15)] dark:drop-shadow-[0_0_20px_rgba(16,185,129,0.3)]">Scale</span>.{" "}
-            <span className="bg-gradient-to-r from-[#f97316] to-[#facc15] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(249,115,22,0.15)] dark:drop-shadow-[0_0_20px_rgba(249,115,22,0.3)] italic">Grow.</span>
+            <span className="bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(26,109,214,0.2)] dark:drop-shadow-[0_0_20px_rgba(26,109,214,0.4)]">Build</span>.{" "}
+            <span className="bg-gradient-to-r from-[#10b981] to-[#14b8a6] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(16,185,129,0.2)] dark:drop-shadow-[0_0_20px_rgba(16,185,129,0.4)]">Scale</span>.{" "}
+            <span className="bg-gradient-to-r from-[#f97316] to-[#facc15] bg-clip-text text-transparent italic drop-shadow-[0_0_15px_rgba(249,115,22,0.2)] dark:drop-shadow-[0_0_20px_rgba(249,115,22,0.4)]">Grow.</span>
           </h2>
           <p className="text-foreground/60 text-sm md:text-base max-w-2xl mx-auto mt-6 leading-relaxed font-medium text-center">
             Three core engineering pillars that define every custom platform we architect — from initial requirements scoping to global enterprise scale.
@@ -128,24 +127,24 @@ export default function Home() {
       {/* Start Your Project / Get Started Section */}
       <FadeInScroll>
         <section id="start" className="py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 via-brand-primary/2 to-transparent pointer-events-none" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[50%] rounded-full blur-[130px] bg-brand-primary/5 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 via-brand-primary/2 to-transparent dark:from-brand-primary/10 dark:via-brand-primary/5 dark:to-transparent pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[50%] rounded-full blur-[130px] bg-brand-primary/5 dark:bg-brand-primary/10 pointer-events-none" />
           
           <div className="container-main max-w-2xl mx-auto relative z-10">
             <div className="text-center mb-12">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 dark:bg-white/[0.03] border border-brand-primary/20 dark:border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
                 <Send size={12} className="text-brand-primary animate-pulse" />
                 Let&apos;s Build
               </span>
-              <h2 className="text-3xl md:text-5xl font-black tracking-[-0.02em] text-slate-800 dark:text-white mb-4">
+              <h2 className="text-3xl md:text-5xl font-black tracking-[-0.02em] text-foreground mb-4">
                 Start Your <span className="text-brand-primary">Project</span>
               </h2>
-              <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base max-w-lg mx-auto leading-relaxed font-medium">
+              <p className="text-foreground/60 text-sm md:text-base max-w-lg mx-auto leading-relaxed font-medium">
                 Answer a few quick questions about your project scope, budget, and timeline to receive an engineered blueprint scoping estimate within 24 hours.
               </p>
             </div>
 
-            <div className="bg-white/90 dark:bg-slate-900/60 border border-slate-200 dark:border-white/[0.06] rounded-2xl p-6 sm:p-8 backdrop-blur-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+            <div className="bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-6 sm:p-8 backdrop-blur-sm shadow-sm">
               <MultiStepForm />
             </div>
           </div>
@@ -158,14 +157,14 @@ export default function Home() {
 
       <FadeInScroll>
       <section className="py-16 border-t border-[var(--sec-border)] bg-[var(--sec-bg-alt)] relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[150px] sm:h-[300px] bg-brand-primary/5 blur-[80px] sm:blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[150px] sm:h-[300px] bg-brand-primary/5 dark:bg-brand-primary/10 blur-[80px] sm:blur-[120px] rounded-full pointer-events-none" />
         <div className="container-main text-center relative z-10">
           <p className="text-brand-primary/60 text-[10px] font-bold uppercase tracking-[0.25em] mb-8">Empowered by Industry Standards</p>
           <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-3xl mx-auto">
             {["Next.js", "React", "Node.js", "TypeScript", "PostgreSQL", "AWS", "Docker", "Supabase", "Tailwind CSS", "Framer Motion", "GraphQL", "Redis"].map((tech) => (
               <span 
                 key={tech} 
-                className="px-4 py-2 text-xs md:text-sm font-semibold text-[var(--text-secondary)] bg-[var(--surface-elevated)] border border-[var(--border-subtle)] rounded-full hover:text-[var(--text-primary)] hover:border-brand-primary/30 hover:bg-brand-primary/5 hover:-translate-y-0.5 transition-all duration-300 cursor-default shadow-sm dark:shadow-none"
+                className="px-4 py-2 text-xs md:text-sm font-semibold text-foreground/60 dark:text-foreground/70 bg-white/60 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.06] rounded-full hover:text-brand-primary hover:border-brand-primary/30 dark:hover:bg-brand-primary/5 hover:-translate-y-0.5 transition-all duration-300 cursor-default shadow-sm hover:shadow-md"
               >
                 {tech}
               </span>
