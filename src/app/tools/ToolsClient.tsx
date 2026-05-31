@@ -149,24 +149,24 @@ export default function ToolsClient() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: idx * 0.05 }}
-                    className={`glass-strong border border-white/[0.06] rounded-3xl p-6 md:p-8 flex flex-col justify-between hover:border-brand-primary/30 transition-all duration-500 relative group overflow-hidden ${
+                    className={`relative overflow-hidden rounded-3xl p-6 md:p-8 flex flex-col justify-between transition-all duration-500 group border backdrop-blur-xl ${
                       isOddRow && idx % 2 === 0 ? "md:translate-y-4" : ""
-                    }`}
+                    } bg-white/60 dark:bg-white/[0.02] border-gray-200 dark:border-white/[0.06] hover:border-brand-primary/40 dark:hover:border-brand-primary/30 shadow-sm hover:shadow-lg`}
                   >
                     {/* Glowing Accent */}
-                    <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${tool.color} opacity-[0.03] blur-xl group-hover:opacity-[0.08] transition-opacity`} />
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${tool.color} dark:opacity-[0.03] opacity-[0.06] blur-xl group-hover:opacity-10 dark:group-hover:opacity-[0.08] transition-opacity" />
                     
                     <div>
                       <div className="flex items-center justify-between mb-6">
-                        <div className={`w-12 h-12 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center`}>
+                        <div className={`w-12 h-12 rounded-2xl bg-brand-primary/10 dark:bg-brand-primary/10 border border-brand-primary/20 dark:border-brand-primary/20 flex items-center justify-center`}>
                           <Icon size={22} className="text-brand-primary" />
                         </div>
-                        <span className="text-[10px] font-bold tracking-widest text-brand-primary uppercase bg-brand-primary/5 border border-brand-primary/10 px-3 py-1 rounded-full">
+                        <span className="text-[10px] font-bold tracking-widest text-brand-primary uppercase bg-brand-primary/10 dark:bg-brand-primary/5 border border-brand-primary/20 dark:border-brand-primary/10 px-3 py-1 rounded-full shadow-sm">
                           {tool.badge}
                         </span>
                       </div>
                       
-                      <h3 className="text-xl md:text-2xl font-bold tracking-tight mb-3 group-hover:text-brand-primary transition-colors">
+                      <h3 className="text-xl md:text-2xl font-bold tracking-tight mb-3 text-foreground group-hover:text-brand-primary transition-colors">
                         {tool.title}
                       </h3>
                       
@@ -177,10 +177,10 @@ export default function ToolsClient() {
 
                     <Link
                       href={tool.href}
-                      className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-foreground hover:text-brand-primary transition-colors group/btn"
+                      className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-foreground/60 dark:text-foreground/70 hover:text-brand-primary transition-colors group/btn"
                     >
                       Open Tool
-                      <ArrowRight size={14} className="group-hover/btn:translate-x-1.5 transition-transform" />
+                      <ArrowRight size={14} className="group-hover/btn:translate-x-1.5 transition-transform text-brand-primary/60 group-hover/btn:text-brand-primary" />
                     </Link>
                   </motion.div>
                 );
@@ -188,7 +188,7 @@ export default function ToolsClient() {
             </div>
             
             {filteredTools.length === 0 && (
-              <div className="text-center py-20 bg-white/[0.01] border border-dashed border-white/10 rounded-2xl">
+              <div className="text-center py-20 bg-white/60 dark:bg-white/[0.01] border border-dashed border-gray-300 dark:border-white/10 rounded-2xl">
                 <p className="text-foreground/40 text-sm">No tools found matching your query.</p>
               </div>
             )}
@@ -198,7 +198,7 @@ export default function ToolsClient() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mt-20 glass-strong border border-brand-primary/20 rounded-3xl p-8 md:p-12 relative overflow-hidden"
+              className="mt-20 relative overflow-hidden rounded-3xl p-8 md:p-12 border backdrop-blur-xl bg-white/60 dark:bg-white/[0.02] border-brand-primary/20 dark:border-brand-primary/20 shadow-sm"
             >
               <div className="absolute top-0 right-0 w-80 h-80 bg-brand-primary/5 blur-[120px] pointer-events-none" />
               <div className="max-w-xl relative z-10">
@@ -214,7 +214,7 @@ export default function ToolsClient() {
                 </p>
                 <Link
                   href="/start"
-                  className="px-6 py-3.5 bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] text-white hover:shadow-[0_0_30px_rgba(26,109,214,0.3)] shadow-[0_0_15px_rgba(26,109,214,0.15)] rounded-full font-bold uppercase text-[10px] tracking-wider transition-all duration-300 inline-flex items-center gap-2 hover:scale-[1.02]"
+                  className="px-6 py-3.5 bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] text-white hover:shadow-[0_0_30px_rgba(26,109,214,0.4)] dark:hover:shadow-[0_0_30px_rgba(26,109,214,0.3)] shadow-[0_0_15px_rgba(26,109,214,0.15)] rounded-full font-bold uppercase text-[10px] tracking-wider transition-all duration-300 inline-flex items-center gap-2 hover:scale-[1.02]"
                 >
                   Get a Free Project Call
                   <ArrowRight size={12} />
