@@ -240,10 +240,10 @@ export default function SiteCheckerClient() {
 
   return (
     <main id="main-content" className="min-h-screen bg-background text-foreground flex flex-col justify-between relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:28px_28px] pointer-events-none z-0 opacity-80 dark:opacity-100" />
-      <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.03)_1px,transparent_0)] bg-[size:28px_28px] pointer-events-none z-0 dark:bg-[radial-gradient(rgba(255,255,255,0.04)_1px,transparent_0)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.03)_1px,transparent_1px)] bg-[size:28px_28px] pointer-events-none z-0 dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(128,128,128,0.04)_1px,transparent_0)] bg-[size:28px_28px] pointer-events-none z-0 dark:bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_0)]" />
       
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none z-0" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none z-0" />
       
       <div className="relative z-10 flex-grow">
         <Navbar />
@@ -275,7 +275,7 @@ export default function SiteCheckerClient() {
                     value={url}
                     onChange={(e) => { setUrl(e.target.value); setUrlError(null); }}
                     disabled={scanning}
-                    className="w-full bg-white/[0.02] border-white/[0.06] rounded-xl pl-10 pr-4 py-3.5 text-foreground placeholder:text-foreground/30 focus:border-[#1A6DD6]/50 focus:outline-none focus:ring-2 focus:ring-[#1A6DD6]/50 transition-all text-sm disabled:opacity-50 font-mono"
+                    className="w-full bg-white/50 border border-gray-200 dark:bg-white/[0.04] dark:border-white/[0.08] rounded-xl pl-10 pr-4 py-3.5 text-foreground placeholder:text-gray-400 dark:placeholder:text-foreground/30 focus:border-[#1A6DD6]/50 focus:outline-none focus:ring-2 focus:ring-[#1A6DD6]/50 transition-all text-sm disabled:opacity-50 font-mono shadow-sm"
                   />
                 </div>
                 <button
@@ -320,7 +320,7 @@ export default function SiteCheckerClient() {
                     <div key={i} className="flex items-center justify-between py-1.5 text-xs border-b border-white/[0.03] last:border-0">
                       <div className="flex items-center gap-2 min-w-0">
                         <span className="text-foreground/40 font-mono truncate max-w-[180px]">{h.url.replace("https://", "")}</span>
-                        <span className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${h.overall === "Good" ? "bg-green-400/10 text-green-400" : h.overall === "Needs Work" ? "bg-amber-400/10 text-amber-400" : "bg-red-400/10 text-red-400"}`}>{h.overall}</span>
+                        <span className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${h.overall === "Good" ? "bg-green-500/10 text-green-600 dark:bg-green-400/10 dark:text-green-400" : h.overall === "Needs Work" ? "bg-amber-500/10 text-amber-600 dark:bg-amber-400/10 dark:text-amber-400" : "bg-red-500/10 text-red-600 dark:bg-red-400/10 dark:text-red-400"}`}>{h.overall}</span>
                       </div>
                       <div className="flex items-center gap-2 shrink-0">
                         <span className="text-foreground/30">P:{h.perf}</span>
@@ -384,7 +384,7 @@ export default function SiteCheckerClient() {
             <AnimatePresence>
               {(perfResults || seoResults) && !scanning && (
                 <motion.div ref={resultsRef} initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="space-y-6">
-                  <div className="flex items-center justify-between p-3.5 bg-white/[0.01] border border-[#10b981]/20 rounded-xl bg-gradient-to-r from-[#10b981]/5 to-transparent text-left">
+                  <div className="flex items-center justify-between p-3.5 bg-white/50 dark:bg-white/[0.01] border-green-500/20 dark:border-[#10b981]/20 rounded-xl text-left">
                     <div className="flex items-center gap-2.5">
                       <div className="w-5 h-5 rounded-full bg-[#10b981]/10 flex items-center justify-center border border-[#10b981]/20">
                         <Check size={11} className="text-[#10b981]" />
