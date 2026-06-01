@@ -4,7 +4,7 @@ const nextConfig = {
   compress: true,
   reactStrictMode: true,
   experimental: {
-    optimizePackageImports: ["lucide-react", "framer-motion"],
+    optimizePackageImports: ["framer-motion"],
     optimizeCss: true,
   },
   async headers() {
@@ -24,13 +24,6 @@ const nextConfig = {
         source: "/((?!_next/static|_next/image|.*\\..*).*)",
         headers: [
           { key: "Cache-Control", value: htmlCache },
-          { key: "Vary", value: "Accept-Encoding" },
-        ],
-      },
-      {
-        source: "/_next/static/:path*",
-        headers: [
-          { key: "Cache-Control", value: staticAssetCache },
           { key: "Vary", value: "Accept-Encoding" },
         ],
       },
