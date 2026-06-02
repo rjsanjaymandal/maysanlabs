@@ -33,7 +33,7 @@ const stats = [
 
 export default function TrustBadges() {
   return (
-    <section className="py-16 border-t border-[var(--sec-border)] bg-[var(--sec-bg)]">
+    <section className="py-16 border-t border-gray-100 dark:border-white/[0.06]">
       <div className="container-main">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -41,7 +41,7 @@ export default function TrustBadges() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/70 dark:bg-white/[0.03] border border-gray-100 dark:border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
             <CheckCircle size={12} />
             Trusted & Certified
           </span>
@@ -58,7 +58,7 @@ export default function TrustBadges() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-xl p-4 sm:p-5 hover:border-white/10 transition-all group text-center"
+              className="bg-white/70 dark:bg-white/[0.03] border border-gray-100 dark:border-white/[0.06] rounded-xl p-4 sm:p-5 hover:border-brand-primary/30 transition-all group text-center"
             >
               <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${badge.color} flex items-center justify-center mb-3 sm:mb-4 shadow-lg mx-auto`}>
                 <badge.icon size={18} className="text-white" />
@@ -69,7 +69,7 @@ export default function TrustBadges() {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-8 border-t border-[var(--sec-border)]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-8 border-t border-gray-100 dark:border-white/[0.06]">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}

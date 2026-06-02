@@ -4,7 +4,6 @@ const nextConfig = {
   compress: true,
   reactStrictMode: true,
   experimental: {
-    optimizePackageImports: ["framer-motion"],
     optimizeCss: true,
   },
   async headers() {

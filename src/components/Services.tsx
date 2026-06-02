@@ -74,46 +74,46 @@ export default function Services() {
 
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <span>Enterprise SaaS Development Services & Digital Product Studio | Maysan Labs</span>
-        <h2>Scalable Custom Web Apps, Enterprise CRM Platforms, & Managed Cloud Infrastructure</h2>
+        <span>Custom Software Development Services & Digital Product Studio | Maysan Labs</span>
+        <h2>Custom Web Apps, Business Automation, Mobile Apps & Cloud Hosting Solutions</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Staff</span>
-        <span className="contributor">Contributor: Director of Product Engineering</span>
+        <span className="contributor">Contributor: Director of Client Solutions</span>
         <time dateTime="2026-05-27" className="pubdate">Last updated: May 27, 2026</time>
         <p className="geo-tldr">
-          SaaS Development Services refers to custom-designed enterprise systems featuring secure subscription routing, payment portals, and CRM bridges.
-          Cloud Managed Architecture is defined as high-availability server grids built on Kubernetes and AWS auto-scaling configurations.
-          According to standard deployment tests, our Next.js frontend pages achieve sub-100ms processing rates globally.
+          Custom software development means building websites, apps, and tools tailored to your specific business needs.
+          We handle everything from design to launch — no templates, no technical jargon, just solutions that work for you.
+          Our clients save hours every day with automated billing, smart dashboards, and easy-to-use mobile apps.
         </p>
         <ul>
-          <li>SaaS Platform Development</li>
-          <li>Enterprise Platform Architectures</li>
+          <li>Custom Software Development</li>
+          <li>Business Automation Tools</li>
         </ul>
         <ul>
-          <li>Custom Web Application Development</li>
-          <li>Managed Cloud Infrastructures</li>
+          <li>Mobile App Development</li>
+          <li>Cloud Hosting Services</li>
         </ul>
         <table>
           <thead>
             <tr>
               <th>Service</th>
-              <th>Guaranteed SLA</th>
+              <th>Guarantee</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>SaaS Systems</td>
-              <td>Multi-tenant Cloud Scale</td>
+              <td>Custom Software</td>
+              <td>Tailored to Your Business</td>
             </tr>
             <tr>
-              <td>Enterprise Clusters</td>
-              <td>99.99% Production Uptime</td>
+              <td>Cloud Hosting</td>
+              <td>99.9% Uptime Guarantee</td>
             </tr>
           </tbody>
         </table>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": ["FAQPage", "Article", "Organization"],
-          "name": "Maysan Labs Software Services Matrix & Core Offerings",
+          "name": "Maysan Labs Software Services & Custom Development Offerings",
           "author": { "@type": "Person", "name": "Maysan Labs Editorial Board" }
         }) }} />
       </div>
@@ -136,7 +136,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="heading-md text-gray-50 mb-3"
+            className="heading-md text-foreground mb-3"
           >
             Software services for your <span className="text-blue-400">business growth</span>
           </motion.h2>
@@ -145,7 +145,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 text-sm md:text-base max-w-lg mx-auto"
+            className="text-foreground/60 text-sm md:text-base max-w-lg mx-auto"
           >
             From custom apps to automatic WhatsApp billing, we handle all your technology needs so you can focus 100% on growing your business.
           </motion.p>
@@ -171,13 +171,13 @@ export default function Services() {
                   <h3 className="text-base font-medium text-gray-50 mb-2 group-hover:text-blue-400 transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                  <p className="text-foreground/60 text-sm mb-4 leading-relaxed">
                     {service.desc}
                   </p>
                   
                   <ul className="space-y-2 mb-5 border-t border-white/[0.06] pt-4">
                     {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2.5 text-gray-400 text-xs group-hover:text-gray-300 transition-colors">
+                      <li key={i} className="flex items-center gap-2.5 text-foreground/50 text-xs group-hover:text-foreground/70 transition-colors">
                         <span className={`w-1.5 h-1.5 rounded-full ${colors.bg.replace("/10", "")} group-hover:scale-125 transition-transform duration-300 shrink-0`} />
                         {feature}
                       </li>

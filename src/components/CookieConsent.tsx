@@ -57,33 +57,35 @@ export default function CookieConsent() {
     <div
       role="region"
       aria-label="Cookie preferences"
-      className="fixed bottom-24 left-1/2 z-[200] w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 animate-fade-in-up md:bottom-6"
+      className="fixed bottom-4 left-0 right-0 z-[200] flex justify-center animate-fade-in-up md:bottom-6"
     >
-      <div className="glass-strong rounded-2xl p-4 shadow-2xl shadow-black/30 sm:p-5">
-        <div className="mb-3 flex items-start gap-3">
-          <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-primary/10 text-brand-primary">
-            <Cookie size={16} />
+      <div className="w-[calc(100%-2rem)] max-w-lg">
+        <div className="glass-strong rounded-2xl p-4 shadow-2xl shadow-black/30 sm:p-5">
+          <div className="mb-3 flex items-start gap-3">
+            <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-primary/10 text-brand-primary">
+              <Cookie size={16} />
+            </div>
+            <p className="text-xs leading-relaxed text-foreground/80 sm:text-sm">
+              We use cookies to improve your experience. By continuing, you
+              agree to our use of cookies.
+            </p>
           </div>
-          <p className="text-xs leading-relaxed text-foreground/80 sm:text-sm">
-            We use cookies to improve your experience. By continuing, you
-            agree to our use of cookies.
-          </p>
-        </div>
-        <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={handleAccept}
-            className="flex-1 rounded-full bg-brand-primary px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition-all duration-200 hover:shadow-glow-sm hover:brightness-110 focus-ring active:scale-[0.97]"
-          >
-            Accept All
-          </button>
-          <button
-            type="button"
-            onClick={handleDecline}
-            className="flex-1 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-foreground/70 transition-all duration-200 hover:bg-white/10 focus-ring active:scale-[0.97]"
-          >
-            Decline
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={handleAccept}
+              className="flex-1 rounded-full bg-brand-primary px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition-all duration-200 hover:shadow-glow-sm hover:brightness-110 focus-ring active:scale-[0.97]"
+            >
+              Accept All
+            </button>
+            <button
+              type="button"
+              onClick={handleDecline}
+              className="flex-1 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-foreground/70 transition-all duration-200 hover:bg-white/10 focus-ring active:scale-[0.97]"
+            >
+              Decline
+            </button>
+          </div>
         </div>
       </div>
     </div>

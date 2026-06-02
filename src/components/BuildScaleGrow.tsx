@@ -1,7 +1,5 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { 
   Cpu, 
   Layers, 
@@ -9,284 +7,77 @@ import {
   ShieldCheck, 
   TrendingUp, 
   Rocket, 
-  ArrowRight,
-  Server,
-  Activity,
-  Globe
+  ArrowRight
 } from "lucide-react";
 import Link from "next/link";
 
 // ==========================================
-// PILLAR 1: BUILD - INTERACTIVE CANVASES
+// PILLAR 1: BUILD — SIMPLE LAYERED VISUAL
 // ==========================================
-const BuildCanvas = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  const layers = [
-    { title: "Your Website", desc: "Fast, custom design", color: "from-blue-500 to-cyan-400" },
-    { title: "Business Tools", desc: "Customer portals & logins", color: "from-[#1A6DD6] to-blue-500" },
-    { title: "Secure Storage", desc: "Safe, lightning-fast database", color: "from-[#00b0ff] to-[#1A6DD6]" },
-  ];
-
-  return (
-    <div className="relative w-full h-[180px] rounded-lg bg-slate-900/50 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] p-4 flex flex-col justify-end overflow-hidden group/canvas">
-      {/* Background wireframe lines */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(26,109,214,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(26,109,214,0.03)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-40 group-hover/canvas:opacity-75 transition-opacity duration-500" />
-      
-      <div className="relative z-10 flex flex-col gap-2.5">
-        {layers.map((layer, index) => {
-          const isHovered = hoveredIndex === index;
-          const isAnyHovered = hoveredIndex !== null;
-          
-          return (
-            <motion.div
-              key={index}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              animate={{
-                y: isHovered ? -6 : isAnyHovered ? 2 : 0,
-                scale: isHovered ? 1.02 : 1,
-                z: isHovered ? 30 : 0
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 18 }}
-              className={`relative cursor-pointer p-2.5 rounded border transition-all duration-300 ${
-                isHovered
-                  ? "bg-slate-100 dark:bg-slate-800/80 border-blue-400 dark:border-blue-500/50 shadow-md"
-                  : "bg-white/80 dark:bg-slate-900/60 border-slate-200 dark:border-white/[0.06]"
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${layer.color} shadow-sm`} />
-                  <span className="text-[10px] md:text-xs font-bold text-slate-800 dark:text-slate-200">{layer.title}</span>
-                </div>
-                <span className="text-[8px] md:text-[9px] font-medium text-slate-400 dark:text-slate-500">{layer.desc}</span>
-              </div>
-
-              {/* Expandable element mock logic */}
-              <AnimatePresence>
-                {isHovered && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    className="mt-1.5 pt-1.5 border-t border-slate-200 dark:border-white/5 flex gap-1"
-                  >
-                    <span className="text-[7px] md:text-[8px] font-mono px-1.5 py-0.5 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400 uppercase">ACTIVE</span>
-                    <span className="text-[7px] md:text-[8px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 uppercase">Latency: 1ms</span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          );
-        })}
+const BuildCanvas = () => (
+  <div className="relative w-full h-[180px] rounded-lg bg-slate-900/50 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] overflow-hidden">
+    <div className="absolute inset-0 bg-[linear-gradient(rgba(26,109,214,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(26,109,214,0.03)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-40" />
+    <div className="relative z-10 flex flex-col justify-center h-full gap-2.5 px-4">
+      <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-white/[0.06]">
+        <span className="w-2 h-2 rounded-full bg-blue-500" />
+        <span className="text-xs font-semibold text-slate-800 dark:text-slate-200">Your Website</span>
+      </div>
+      <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-white/[0.06]">
+        <span className="w-2 h-2 rounded-full bg-cyan-500" />
+        <span className="text-xs font-semibold text-slate-800 dark:text-slate-200">Business Dashboard</span>
+      </div>
+      <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-white/[0.06]">
+        <span className="w-2 h-2 rounded-full bg-indigo-500" />
+        <span className="text-xs font-semibold text-slate-800 dark:text-slate-200">Secure Database</span>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 // ==========================================
-// PILLAR 2: SCALE - INTERACTIVE CANVASES
+// PILLAR 2: SCALE — SIMPLE NODE VISUAL
 // ==========================================
-const ScaleCanvas = () => {
-  const [activeNode, setActiveNode] = useState<string | null>(null);
-
-  const nodes = [
-    { id: "edge", label: "Fast Worldwide", x: "15%", y: "75%", color: "rgba(16, 185, 129, 0.8)", icon: Globe },
-    { id: "gateway", label: "Smart Traffic", x: "50%", y: "30%", color: "rgba(20, 184, 166, 0.8)", icon: Activity },
-    { id: "db", label: "Secure Backups", x: "85%", y: "75%", color: "rgba(16, 185, 129, 0.8)", icon: Server },
-  ];
-
-  return (
-    <div className="relative w-full h-[180px] rounded-lg bg-slate-900/50 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] p-4 flex flex-col justify-between overflow-hidden group/canvas">
-      {/* Topology Ambient Lines */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M 15 75 L 50 30 L 85 75" stroke="rgba(16, 185, 129, 0.15)" strokeWidth="1" fill="none" />
-        <path d="M 15 75 L 85 75" stroke="rgba(16, 185, 129, 0.08)" strokeWidth="0.5" fill="none" strokeDasharray="2 2" />
-        
-        {/* Pulsing Edge Particle stream */}
-        <motion.circle
-          r="1.5"
-          fill="#10b981"
-          animate={{
-            cx: [15, 50, 85],
-            cy: [75, 30, 75]
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        
-        <motion.circle
-          r="1.25"
-          fill="#14b8a6"
-          animate={{
-            cx: [85, 50, 15],
-            cy: [75, 30, 75]
-          }}
-          transition={{
-            duration: 3.5,
-            repeat: Infinity,
-            delay: 1.5,
-            ease: "easeInOut"
-          }}
-        />
-      </svg>
-
-      {/* Topology Nodes */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none">
-        {nodes.map((node) => {
-          const NodeIcon = node.icon;
-          const isActive = activeNode === node.id;
-          return (
-            <div
-              key={node.id}
-              style={{
-                position: "absolute",
-                left: node.x,
-                top: node.y,
-                transform: "translate(-50%, -50%)"
-              }}
-              onMouseEnter={() => setActiveNode(node.id)}
-              onMouseLeave={() => setActiveNode(null)}
-              className="flex flex-col items-center cursor-pointer group/node pointer-events-auto"
-            >
-              {/* Outer halo */}
-              <motion.div
-                animate={{
-                  scale: isActive ? [1, 1.4, 1] : 1,
-                  opacity: isActive ? 0.4 : 0.15
-                }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-                className="absolute w-10 h-10 rounded-full bg-emerald-500/20 border border-emerald-400 pointer-events-none"
-              />
-
-              <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 relative z-10 ${
-                isActive 
-                  ? "bg-slate-100 border-emerald-400 text-emerald-500 dark:bg-slate-800 dark:border-emerald-500" 
-                  : "bg-white border-slate-200 text-slate-500 dark:bg-slate-900 dark:border-white/10 dark:text-slate-400"
-              }`}>
-                <NodeIcon size={14} className={isActive ? "animate-pulse" : ""} />
-              </div>
-
-              <span className={`text-[8px] md:text-[9px] mt-1.5 font-bold uppercase tracking-wider transition-colors duration-300 ${
-                isActive ? "text-emerald-500" : "text-slate-400 dark:text-slate-500"
-              }`}>
-                {node.label}
-              </span>
-            </div>
-          );
-        })}
+const ScaleCanvas = () => (
+  <div className="relative w-full h-[180px] rounded-lg bg-slate-900/50 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] overflow-hidden">
+    <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-40" />
+    <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 200 140" preserveAspectRatio="xMidYMid meet">
+      <polygon points="100,25 30,110 170,110" stroke="rgba(16,185,129,0.15)" strokeWidth="1.5" fill="none" strokeDasharray="4 3" />
+    </svg>
+    <div className="absolute inset-0">
+      <div className="absolute top-[18px] left-1/2 -translate-x-1/2 flex flex-col items-center">
+        <div className="w-7 h-7 rounded-full bg-emerald-500/10 border border-emerald-400/30" />
+        <span className="text-[9px] font-bold text-slate-400 dark:text-slate-500 mt-1">Smart Traffic</span>
       </div>
-
-      {/* Latency Live Telemetry Overlay */}
-      <div className="absolute bottom-2 left-2 right-2 flex justify-between items-center px-2 py-1 rounded bg-white/95 dark:bg-slate-900/90 border border-slate-200 dark:border-white/5 backdrop-blur-md">
-        <div className="flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
-          <span className="text-[8px] md:text-[9px] font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide">Edge Routing</span>
-        </div>
-        <div className="text-[8px] md:text-[9px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold">
-          {activeNode === "edge" && "Latency: 1.8ms • Hit 98.4%"}
-          {activeNode === "gateway" && "Routing: edge-optimized"}
-          {activeNode === "db" && "Uptime: 99.999% • Sync active"}
-          {!activeNode && "Global RTT: 2.1ms • Healthy"}
-        </div>
+      <div className="absolute bottom-5 left-[15%] flex flex-col items-center">
+        <div className="w-7 h-7 rounded-full bg-emerald-500/10 border border-emerald-400/30" />
+        <span className="text-[9px] font-bold text-slate-400 dark:text-slate-500 mt-1">Fast Worldwide</span>
+      </div>
+      <div className="absolute bottom-5 right-[15%] flex flex-col items-center">
+        <div className="w-7 h-7 rounded-full bg-emerald-500/10 border border-emerald-400/30" />
+        <span className="text-[9px] font-bold text-slate-400 dark:text-slate-500 mt-1">Secure Backups</span>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 // ==========================================
-// PILLAR 3: GROW - INTERACTIVE CANVASES
+// PILLAR 3: GROW — SIMPLE BAR CHART VISUAL
 // ==========================================
-const GrowCanvas = () => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <div 
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className="relative w-full h-[180px] rounded-lg bg-slate-900/50 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] p-4 flex flex-col justify-between overflow-hidden group/canvas cursor-default"
-    >
-      {/* Analytics Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(249,115,22,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(249,115,22,0.02)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-40 group-hover/canvas:opacity-75 transition-opacity duration-500" />
-
-      {/* SVG Path Curve Warper */}
-      <div className="relative w-full h-[80px] mt-4">
-        <svg className="w-full h-full overflow-visible" viewBox="0 0 230 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="curveGradient" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#f97316" />
-              <stop offset="100%" stopColor="#facc15" />
-            </linearGradient>
-            <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="rgba(249,115,22,0.12)" />
-              <stop offset="100%" stopColor="rgba(249,115,22,0)" />
-            </linearGradient>
-          </defs>
-
-          {/* Shaded Area underneath the curve */}
-          <motion.path
-            d={isHovered ? "M 0 60 Q 75 10 230 4 Z" : "M 0 60 Q 75 45 230 35 Z"}
-            fill="url(#areaGradient)"
-            animate={{
-              d: isHovered 
-                ? "M 0 60 Q 75 10 230 4 L 230 80 L 0 80 Z" 
-                : "M 0 60 Q 75 45 230 35 L 230 80 L 0 80 Z"
-            }}
-            transition={{ type: "spring", stiffness: 180, damping: 15 }}
-          />
-
-          {/* Stroke line */}
-          <motion.path
-            d={isHovered ? "M 0 60 Q 75 10 230 4" : "M 0 60 Q 75 45 230 35"}
-            fill="none"
-            stroke="url(#curveGradient)"
-            strokeWidth="3.5"
-            strokeLinecap="round"
-            animate={{
-              d: isHovered ? "M 0 60 Q 75 10 230 4" : "M 0 60 Q 75 45 230 35"
-            }}
-            transition={{ type: "spring", stiffness: 180, damping: 15 }}
-          />
-
-          {/* Glowing cursor pointer */}
-          <motion.circle
-            r="5"
-            fill="#facc15"
-            stroke="#f97316"
-            strokeWidth="2"
-            animate={{
-              cx: 230,
-              cy: isHovered ? 4 : 35
-            }}
-            transition={{ type: "spring", stiffness: 180, damping: 15 }}
-            className="shadow-lg"
-          />
-        </svg>
-      </div>
-
-      {/* Analytics Counter metrics */}
-      <div className="flex justify-between items-center mt-2 pt-2 border-t border-slate-200 dark:border-white/5">
-        <div>
-          <span className="block text-[8px] md:text-[9px] text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider">Conversion Boost</span>
-          <motion.span className="text-sm md:text-base font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-400">
-            {isHovered ? "12.4x Growth" : "1.0x Baseline"}
-          </motion.span>
-        </div>
-
-        <div className="text-right">
-          <span className="block text-[8px] md:text-[9px] text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider">Sprints Complete</span>
-          <span className="text-xs md:text-sm font-black text-slate-700 dark:text-slate-300">
-            {isHovered ? "Bi-Weekly (100% On-time)" : "14 Days Dev Cycle"}
-          </span>
-        </div>
-      </div>
+const GrowCanvas = () => (
+  <div className="relative w-full h-[180px] rounded-lg bg-slate-900/50 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] overflow-hidden">
+    <div className="absolute inset-0 bg-[linear-gradient(rgba(249,115,22,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(249,115,22,0.03)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-40" />
+    <div className="relative z-10 flex items-end justify-center h-full gap-3 pb-8">
+      <div className="w-10 h-[40%] rounded-t-lg bg-gradient-to-t from-orange-500/20 to-orange-400/10 border border-orange-500/10" />
+      <div className="w-10 h-[65%] rounded-t-lg bg-gradient-to-t from-orange-500/30 to-orange-400/15 border border-orange-500/15" />
+      <div className="w-10 h-[90%] rounded-t-lg bg-gradient-to-t from-orange-500/40 to-orange-400/20 border border-orange-500/20" />
     </div>
-  );
-};
+    <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-3">
+      <span className="text-[8px] text-slate-400 dark:text-slate-500 w-10 text-center font-medium">Start</span>
+      <span className="text-[8px] text-slate-400 dark:text-slate-500 w-10 text-center font-medium">Growth</span>
+      <span className="text-[8px] text-slate-400 dark:text-slate-500 w-10 text-center font-medium">Scale</span>
+    </div>
+  </div>
+);
 
 // ==========================================
 // CORE EXPORT COMPONENT
@@ -377,12 +168,8 @@ export default function BuildScaleGrow() {
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 items-stretch relative z-10 pt-8 pb-12">
         {pillars.map((pillar) => (
-          <motion.div
+          <div
             key={pillar.id}
-            initial={{ opacity: 0, y: 35 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, type: "spring", stiffness: 100, damping: 15 }}
             className={`flex flex-col justify-between overflow-hidden rounded-[4px] border ${pillar.shadow} ${pillar.translateY} bg-white dark:bg-[#080d1a] backdrop-blur-xl p-6 hover:shadow-2xl transition-shadow duration-300 relative group`}
           >
             {/* Ambient inner panel highlight */}
@@ -449,7 +236,7 @@ export default function BuildScaleGrow() {
                 })}
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

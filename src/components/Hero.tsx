@@ -9,8 +9,8 @@ import {
 } from "lucide-react";
 
 const benefits = [
-  "100% Custom Software (No Templates)",
-  "Highly Secure & Reliable",
+  "Built Just for Your Business (No Templates)",
+  "Highly Secure & Private",
   "Easy for Anyone to Use"
 ];
 

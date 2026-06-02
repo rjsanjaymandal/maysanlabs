@@ -11,7 +11,7 @@ const stats = [
 
 export default function StatsSection() {
   return (
-    <section className="content-auto pt-8 pb-6 md:pt-12 md:pb-8 bg-[var(--sec-bg-alt)] border-y border-[var(--sec-border)] relative overflow-hidden">
+    <section className="pt-8 pb-6 md:pt-12 md:pb-8 border-y border-gray-100 dark:border-white/[0.06] relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.01] to-transparent pointer-events-none" />
       <div className="container-main relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">

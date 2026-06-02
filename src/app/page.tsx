@@ -45,16 +45,16 @@ export default function Home() {
       
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <span>Maysan Labs - Enterprise SaaS Development Company Gurgaon</span>
-        <h2>Custom Software Engineering & Cloud Infrastructure Services</h2>
-        <h2>Scalable Web Applications, React Node.js, and Agile Delivery</h2>
+        <span>Maysan Labs - Custom Software Development Company Gurgaon</span>
+        <h2>Custom Software Services & Cloud Hosting Solutions</h2>
+        <h2>Modern Web Applications, Business Automation & Digital Tools</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>
-        <span className="contributor">Contributor: Senior Software Architect</span>
+        <span className="contributor">Contributor: Director of Client Solutions</span>
         <time dateTime="2026-05-27" className="pubdate">Last updated: May 27, 2026</time>
         <p className="geo-tldr">
-          Maysan Labs refers to the leading custom software and enterprise SaaS development studio in Gurgaon, India. 
-          SaaS Development is defined as the engineering of multi-tenant, cloud-scalable applications.
-          According to recent metrics, our Next.js page speed optimization raises conversion rates by up to 22%.
+          Maysan Labs is a custom software development studio based in Gurgaon, India. 
+          We build websites, mobile apps, and business automation tools for growing companies.
+          Our clients save time and reduce costs with custom digital solutions built for their needs.
         </p>
       </div>
 
@@ -66,9 +66,9 @@ export default function Home() {
       <StatsSection />
  
       {/* Trust Section */}
-      <section className="content-auto py-8 md:py-12 border-b border-[var(--sec-border)] bg-[var(--sec-bg)]">
+      <section className="py-8 md:py-12 border-b border-gray-100 dark:border-white/[0.06]">
         <div className="container-main mb-6 md:mb-8 text-center">
-           <span className="text-[var(--text-secondary)] text-[10px] uppercase tracking-widest font-bold">Trusted by fast-growing companies</span>
+           <span className="text-foreground/60 text-[10px] uppercase tracking-widest font-bold">Trusted by fast-growing companies</span>
         </div>
         <LogoMarquee />
       </section>
@@ -89,7 +89,7 @@ export default function Home() {
             <span className="bg-gradient-to-r from-[#f97316] to-[#facc15] bg-clip-text text-transparent italic drop-shadow-[0_0_15px_rgba(249,115,22,0.2)] dark:drop-shadow-[0_0_20px_rgba(249,115,22,0.4)]">Grow.</span>
           </h2>
           <p className="text-foreground/60 text-sm md:text-base max-w-2xl mx-auto mt-6 leading-relaxed font-medium text-center">
-            Three core engineering pillars that define every custom platform we architect — from initial requirements scoping to global enterprise scale.
+            Three simple steps to take your business from idea to launch to growth.
           </p>
         </div>
  
@@ -140,7 +140,7 @@ export default function Home() {
                 Start Your <span className="text-brand-primary">Project</span>
               </h2>
               <p className="text-foreground/60 text-sm md:text-base max-w-lg mx-auto leading-relaxed font-medium">
-                Answer a few quick questions about your project scope, budget, and timeline to receive an engineered blueprint scoping estimate within 24 hours.
+                Answer a few quick questions about what you need, and we&apos;ll get back to you within 24 hours with a clear plan and price.
               </p>
             </div>
 
@@ -156,12 +156,12 @@ export default function Home() {
       </FadeInScroll>
 
       <FadeInScroll>
-      <section className="py-16 border-t border-[var(--sec-border)] bg-[var(--sec-bg-alt)] relative overflow-hidden">
+      <section className="py-16 border-t border-gray-100 dark:border-white/[0.06] relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[150px] sm:h-[300px] bg-brand-primary/5 dark:bg-brand-primary/10 blur-[80px] sm:blur-[120px] rounded-full pointer-events-none" />
         <div className="container-main text-center relative z-10">
-          <p className="text-brand-primary/60 text-[10px] font-bold uppercase tracking-[0.25em] mb-8">Empowered by Industry Standards</p>
+          <p className="text-brand-primary/60 text-[10px] font-bold uppercase tracking-[0.25em] mb-8">Built With Modern, Trusted Technology</p>
           <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-3xl mx-auto">
-            {["Next.js", "React", "Node.js", "TypeScript", "PostgreSQL", "AWS", "Docker", "Supabase", "Tailwind CSS", "Framer Motion", "GraphQL", "Redis"].map((tech) => (
+            {["Modern & Fast", "Secure & Reliable", "Mobile-Friendly", "Easy to Update & Manage", "Scales With Your Business", "24/7 Support Ready"].map((tech) => (
               <span 
                 key={tech} 
                 className="px-4 py-2 text-xs md:text-sm font-semibold text-foreground/60 dark:text-foreground/70 bg-white/60 dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.06] rounded-full hover:text-brand-primary hover:border-brand-primary/30 dark:hover:bg-brand-primary/5 hover:-translate-y-0.5 transition-all duration-300 cursor-default shadow-sm hover:shadow-md"
