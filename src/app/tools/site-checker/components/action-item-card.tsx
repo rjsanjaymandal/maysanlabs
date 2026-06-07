@@ -80,7 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       <div onClick={() => setIsOpen(!isOpen)} className="p-4 flex items-center justify-between cursor-pointer select-none">
         <div className="flex items-start gap-3 min-w-0 pr-4">
           <span className="mt-0.5 shrink-0 text-[#10b981]">
-            <CheckCircle size={14} className="text-[#1A6DD6]" />
+            <CheckCircle size={14} className="text-brand-primary" />
           </span>
           <span className="text-xs text-foreground/80 font-medium text-left leading-relaxed">{suggestion}</span>
         </div>

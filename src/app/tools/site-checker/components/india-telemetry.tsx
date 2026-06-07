@@ -10,11 +10,11 @@ export function IndianMarketTelemetryHub({ telemetry }: { telemetry: IndiaTeleme
   return (
     <div className="space-y-6 text-left">
       <div className="bg-slate-950/60 border border-white/10 rounded-3xl p-6 md:p-8 relative overflow-hidden backdrop-blur-xl">
-        <div className="absolute top-0 right-0 w-36 h-36 bg-[#1A6DD6]/5 blur-3xl rounded-full pointer-events-none" />
+        <div className="absolute top-0 right-0 w-36 h-36 bg-brand-primary/5 blur-3xl rounded-full pointer-events-none" />
         <div className="flex items-center justify-between mb-6 border-b border-white/5 pb-4 flex-wrap gap-3">
           <div>
             <h3 className="text-base font-bold text-foreground flex items-center gap-2">
-              <MapPin size={16} className="text-[#1A6DD6]" />
+              <MapPin size={16} className="text-brand-primary" />
               Indian Edge DNS & CDN Telemetry
             </h3>
             <p className="text-xs text-foreground/45 font-light">Resolving server node origins and calculations of packet travel to Indian hubs</p>
@@ -86,7 +86,7 @@ export function IndianMarketTelemetryHub({ telemetry }: { telemetry: IndiaTeleme
               </div>
 
               <div className="flex items-center gap-3 relative z-10 text-left">
-                <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${telemetry.isCdn ? "bg-[#1A6DD6]/10 border border-[#1A6DD6]/30 text-[#1A6DD6] shadow-[0_0_15px_rgba(26,109,214,0.15)]" : "bg-white/[0.02] border border-white/10 text-foreground/40"}`}>
+                <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${telemetry.isCdn ? "bg-brand-primary/10 border border-brand-primary/30 text-brand-primary shadow-[0_0_15px_rgba(26,109,214,0.15)]" : "bg-white/[0.02] border border-white/10 text-foreground/40"}`}>
                   {telemetry.isCdn ? <Zap size={11} className="animate-pulse" /> : <Server size={11} />}
                 </div>
                 <div>

@@ -120,7 +120,7 @@ export function SchemaMarkupGraph({ hasSchema }: { hasSchema: boolean }) {
             <div className="flex flex-col items-center gap-6 relative">
               <span className="absolute top-6 bottom-6 w-px bg-white/10 z-0" />
               <div onClick={() => setActiveSchema("WebSite")}
-                className={`px-4 py-2.5 rounded-lg border z-10 cursor-pointer transition-all duration-300 font-mono text-[11px] ${activeSchema === "WebSite" ? "bg-[#1A6DD6]/10 border-[#1A6DD6]/30 text-[#1a73e8]" : "bg-white/[0.02] border-white/5 text-foreground/50 hover:border-white/20"}`}>
+                className={`px-4 py-2.5 rounded-lg border z-10 cursor-pointer transition-all duration-300 font-mono text-[11px] ${activeSchema === "WebSite" ? "bg-brand-primary/10 border-brand-primary/30 text-[#1a73e8]" : "bg-white/[0.02] border-white/5 text-foreground/50 hover:border-white/20"}`}>
                 WebSite Schema
               </div>
               <div onClick={() => setActiveSchema("Organization")}
@@ -165,7 +165,7 @@ export function CrawlerRadar({ hasViewport, hasHtmlLang, https, isNoindex }: { h
     <div className="bg-white/[0.01] border border-white/[0.05] rounded-3xl p-6 mb-6">
       <div className="mb-5 border-b border-white/5 pb-4 text-left">
         <h3 className="text-base font-bold text-foreground flex items-center gap-2">
-          <Shield size={16} className="text-[#1A6DD6]" />
+          <Shield size={16} className="text-brand-primary" />
           Crawler Indexability Radar
         </h3>
         <p className="text-xs text-foreground/40">Verify access controls and standards tags required for search visibility</p>
@@ -177,8 +177,8 @@ export function CrawlerRadar({ hasViewport, hasHtmlLang, https, isNoindex }: { h
             <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_60%,rgba(26,109,214,0.12))] animate-spin-slow pointer-events-none rounded-full" />
             <div className="absolute w-32 h-32 rounded-full border border-white/5" />
             <div className="absolute w-20 h-20 rounded-full border border-white/5" />
-            <div className="w-4 h-4 rounded-full bg-[#1A6DD6] shadow-[0_0_15px_#1A6DD6] animate-ping" />
-            <div className="w-3.5 h-3.5 rounded-full bg-[#1A6DD6] absolute" />
+            <div className="w-4 h-4 rounded-full bg-brand-primary shadow-[0_0_15px_#1A6DD6] animate-ping" />
+            <div className="w-3.5 h-3.5 rounded-full bg-brand-primary absolute" />
           </div>
         </div>
 
@@ -207,7 +207,7 @@ export function GoogleSearchPreview({ url, title, description }: { url: string; 
     <div className="bg-slate-950/60 border border-white/10 rounded-3xl p-6 md:p-8 backdrop-blur-xl">
       <div className="mb-4">
         <h3 className="text-base font-bold text-foreground flex items-center gap-2">
-          <Globe size={15} className="text-[#1A6DD6]" />
+          <Globe size={15} className="text-brand-primary" />
           Google Search Preview Snippet
         </h3>
         <p className="text-xs text-foreground/45">Examine how your primary page exposes title and description nodes to indexers</p>

@@ -578,7 +578,7 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
 
                         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
                           <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-3 text-center">
-                            <span className="text-[10px] text-[#1A6DD6] font-bold uppercase tracking-wider block mb-1">Sitemap Score</span>
+                            <span className="text-[10px] text-brand-primary font-bold uppercase tracking-wider block mb-1">Sitemap Score</span>
                             <p className="text-xl font-black text-foreground">{seoResults.seoScore}<span className="text-xs text-foreground/40 font-normal">/100</span></p>
                           </div>
                           <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-3 text-center">
@@ -748,7 +748,7 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
                   )}
 
                   {!leadCaptured && showLeadForm && (
-                    <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="bg-gradient-to-tr from-[#1A6DD6]/10 to-[#14b8a6]/10 border border-white/[0.08] rounded-3xl p-6 md:p-8 backdrop-blur-xl relative text-left">
+                    <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="bg-gradient-to-tr from-brand-primary/10 to-[#14b8a6]/10 border border-white/[0.08] rounded-3xl p-6 md:p-8 backdrop-blur-xl relative text-left">
                       <div className="absolute top-3 right-4">
                         <button type="button" onClick={() => setShowLeadForm(false)} className="text-foreground/45 hover:text-foreground text-xs font-mono">Dismiss</button>
                       </div>
@@ -763,12 +763,12 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
                         
                         <form onSubmit={handleLeadSubmit} className="flex flex-col sm:flex-row gap-3">
                           <div className="flex-1">
-                            <input type="email" required placeholder="Business Email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-white/[0.04] border-white/[0.08] rounded-xl px-4 py-3 text-xs focus:border-[#1A6DD6]/50 focus:outline-none" />
+                            <input type="email" required placeholder="Business Email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-white/80 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-4 py-3 text-xs text-foreground placeholder:text-foreground/40 focus:border-brand-primary/50 focus:outline-none focus:ring-1 focus:ring-brand-primary/20" />
                           </div>
-                          <div className="flex-grow">
-                            <input type="text" required placeholder="Company Name" value={company} onChange={(e) => setCompany(e.target.value)} className="w-full bg-white/[0.04] border-white/[0.08] rounded-xl px-4 py-3 text-xs focus:border-[#1A6DD6]/50 focus:outline-none" />
+                          <div className="flex-1">
+                            <input type="text" required placeholder="Company Name" value={company} onChange={(e) => setCompany(e.target.value)} className="w-full bg-white/80 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-4 py-3 text-xs text-foreground placeholder:text-foreground/40 focus:border-brand-primary/50 focus:outline-none focus:ring-1 focus:ring-brand-primary/20" />
                           </div>
-                          <button type="submit" disabled={leadSubmitting} className="px-5 py-3 bg-[#1A6DD6] hover:bg-[#1A6DD6]/90 transition-all font-bold text-xs uppercase tracking-wider text-white rounded-xl disabled:opacity-50 shrink-0">
+                          <button type="submit" disabled={leadSubmitting} className="px-5 py-3 bg-brand-primary hover:bg-brand-primary/90 transition-all font-bold text-xs uppercase tracking-wider text-white rounded-xl disabled:opacity-50 shrink-0">
                             {leadSubmitting ? "Generating..." : "Get PDF Blueprint"}
                           </button>
                         </form>
@@ -779,7 +779,7 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
 
                   {!showLeadForm && (
                     <div className="text-center pt-4">
-                      <button onClick={() => setShowLeadForm(true)} className="px-8 py-4 bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] hover:shadow-[0_0_35px_rgba(26,109,214,0.4)] shadow-[0_0_15px_rgba(26,109,214,0.2)] rounded-full font-bold text-sm tracking-widest text-white transition-all duration-300 hover:scale-[1.02] inline-flex items-center gap-2 uppercase">
+                      <button onClick={() => setShowLeadForm(true)} className="px-8 py-4 bg-gradient-to-r from-brand-primary to-[#00d2ff] hover:shadow-[0_0_35px_rgba(26,109,214,0.4)] shadow-[0_0_15px_rgba(26,109,214,0.2)] rounded-full font-bold text-sm tracking-widest text-white transition-all duration-300 hover:scale-[1.02] inline-flex items-center gap-2 uppercase">
                         <Download size={14} />
                         Export Full Audit Report
                       </button>
@@ -802,23 +802,23 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
             {!scanning && !perfResults && !seoResults && (
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-[#1A6DD6]/40 dark:hover:border-[#1A6DD6]/30 transition-colors">
-                    <div className="w-10 h-10 rounded-xl bg-[#1A6DD6]/10 flex items-center justify-center mx-auto mb-3.5"><Gauge size={18} className="text-[#1A6DD6]" /></div>
+                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-brand-primary/40 dark:hover:border-brand-primary/30 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center mx-auto mb-3.5"><Gauge size={18} className="text-brand-primary" /></div>
                     <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">Core Web Vitals</h3>
                     <p className="text-[10px] text-foreground/45 leading-relaxed font-light">Interactive speeds including LCP, INP, CLS, and latency checks.</p>
                   </div>
-                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-[#1A6DD6]/40 dark:hover:border-[#1A6DD6]/30 transition-colors">
+                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-brand-primary/40 dark:hover:border-brand-primary/30 transition-colors">
                     <div className="w-10 h-10 rounded-xl bg-[#14b8a6]/10 flex items-center justify-center mx-auto mb-3.5"><BarChart3 size={18} className="text-[#14b8a6]" /></div>
                     <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">PSI / Lighthouse</h3>
                     <p className="text-[10px] text-foreground/45 leading-relaxed font-light">Fidelity grades on Accessibility, Best Practices, and performance audits.</p>
                   </div>
-                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-[#1A6DD6]/40 dark:hover:border-[#1A6DD6]/30 transition-colors">
+                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-brand-primary/40 dark:hover:border-brand-primary/30 transition-colors">
                     <div className="w-10 h-10 rounded-xl bg-[#10b981]/10 flex items-center justify-center mx-auto mb-3.5"><FileText size={18} className="text-[#10b981]" /></div>
                     <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">Sitemap Audit</h3>
                     <p className="text-[10px] text-foreground/45 leading-relaxed font-light">Crawls robots and XML sitemaps to verify meta headers and SSL encryption.</p>
                   </div>
-                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-[#1A6DD6]/40 dark:hover:border-[#1A6DD6]/30 transition-colors">
-                    <div className="w-10 h-10 rounded-xl bg-[#1A6DD6]/10 flex items-center justify-center mx-auto mb-3.5"><Shield size={18} className="text-[#1A6DD6]" /></div>
+                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-brand-primary/40 dark:hover:border-brand-primary/30 transition-colors">
+                    <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center mx-auto mb-3.5"><Shield size={18} className="text-brand-primary" /></div>
                     <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">Rich Indexation</h3>
                     <p className="text-[10px] text-foreground/45 leading-relaxed font-light">Scans structured JSON-LD schemas and headings outlines required for snippets.</p>
                   </div>

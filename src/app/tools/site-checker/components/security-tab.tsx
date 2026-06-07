@@ -37,8 +37,8 @@ export function SecurityTab({ security }: SecurityTabProps) {
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
           <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-3 text-center">
-            <Shield size={16} className="mx-auto mb-1.5 text-[#1A6DD6]" />
-            <span className="text-[10px] text-[#1A6DD6] font-bold uppercase tracking-wider block mb-1">Security Score</span>
+            <Shield size={16} className="mx-auto mb-1.5 text-brand-primary" />
+            <span className="text-[10px] text-brand-primary font-bold uppercase tracking-wider block mb-1">Security Score</span>
             <p className="text-xl font-black text-foreground">{security.score}<span className="text-xs text-foreground/40 font-normal">/100</span></p>
           </div>
           <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-3 text-center">

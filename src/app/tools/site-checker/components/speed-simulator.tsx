@@ -41,12 +41,12 @@ export function SpeedSimulator({ lcp, fcp, ttfb }: { lcp: number; fcp: number; t
       <div className="flex items-center justify-between mb-6 border-b border-white/5 pb-4">
         <div>
           <h3 className="text-base font-bold text-foreground flex items-center gap-2">
-            <Smartphone size={16} className="text-[#1A6DD6]" />
+            <Smartphone size={16} className="text-brand-primary" />
             Above-the-Fold Speed Paint Simulator
           </h3>
           <p className="text-xs text-foreground/40">Visualize what users actually see at each milestone</p>
         </div>
-        <button onClick={handlePlayPause} className="flex items-center gap-1.5 px-3 py-1.5 bg-[#1A6DD6]/10 border border-[#1A6DD6]/20 text-[#1A6DD6] hover:bg-[#1A6DD6]/20 transition-all rounded-lg text-xs font-semibold">
+        <button onClick={handlePlayPause} className="flex items-center gap-1.5 px-3 py-1.5 bg-brand-primary/10 border border-brand-primary/20 text-brand-primary hover:bg-brand-primary/20 transition-all rounded-lg text-xs font-semibold">
           {isPlaying ? <><Pause size={12} /> Pause</> : <><Play size={12} /> Play Load Simulation</>}
         </button>
       </div>
@@ -57,10 +57,10 @@ export function SpeedSimulator({ lcp, fcp, ttfb }: { lcp: number; fcp: number; t
             {steps.map((s, idx) => (
               <div key={idx} onClick={() => { setStep(idx); setIsPlaying(false); }}
                 className={`p-3 rounded-xl border transition-all duration-300 cursor-pointer ${
-                  step === idx ? "bg-[#1A6DD6]/5 border-[#1A6DD6]/30 shadow-lg shadow-[#1A6DD6]/5" : "bg-transparent border-transparent hover:bg-white/[0.02]"
+                  step === idx ? "bg-brand-primary/5 border-brand-primary/30 shadow-lg shadow-brand-primary/5" : "bg-transparent border-transparent hover:bg-white/[0.02]"
                 }`}>
                 <div className="flex items-center justify-between">
-                  <span className={`text-xs font-bold font-mono ${step === idx ? "text-[#1A6DD6]" : "text-foreground/50"}`}>{s.label}</span>
+                  <span className={`text-xs font-bold font-mono ${step === idx ? "text-brand-primary" : "text-foreground/50"}`}>{s.label}</span>
                     <span className="text-[9px] font-mono text-foreground/30">Step {idx + 1}</span>
                 </div>
                 <p className="text-xs text-foreground/45 mt-1 leading-relaxed">{s.desc}</p>
@@ -75,7 +75,7 @@ export function SpeedSimulator({ lcp, fcp, ttfb }: { lcp: number; fcp: number; t
             </div>
             <input type="range" min={0} max={3} step={1} value={step}
               onChange={(e) => { setStep(parseInt(e.target.value)); setIsPlaying(false); }}
-              className="w-full h-1 bg-white/10 rounded-full appearance-none cursor-pointer accent-[#1A6DD6]" />
+              className="w-full h-1 bg-white/10 rounded-full appearance-none cursor-pointer accent-brand-primary" />
           </div>
         </div>
 
@@ -96,7 +96,7 @@ export function SpeedSimulator({ lcp, fcp, ttfb }: { lcp: number; fcp: number; t
                     <div className="w-12 h-2 bg-white/10 rounded" />
                   </div>
                   <div className="flex-1 border border-white/[0.04] rounded-lg p-2 bg-white/[0.01] flex flex-col justify-center items-center">
-                    <Server size={20} className="text-[#1A6DD6]/30 animate-pulse" />
+                    <Server size={20} className="text-brand-primary/30 animate-pulse" />
                     <span className="text-[8px] text-white/20 mt-2 font-mono">TTFB resolved</span>
                   </div>
                 </div>
@@ -104,7 +104,7 @@ export function SpeedSimulator({ lcp, fcp, ttfb }: { lcp: number; fcp: number; t
               {step === 2 && (
                 <div className="absolute inset-0 bg-[#03050d] flex flex-col p-2 space-y-3">
                   <div className="w-full h-6 bg-white/[0.03] border border-white/[0.04] rounded flex items-center px-1.5 justify-between">
-                    <div className="w-6 h-2 bg-[#1A6DD6]/20 rounded" />
+                    <div className="w-6 h-2 bg-brand-primary/20 rounded" />
                     <div className="flex gap-1.5"><div className="w-8 h-2 bg-white/10 rounded" /><div className="w-8 h-2 bg-white/10 rounded" /></div>
                   </div>
                   <div className="flex-grow flex flex-col space-y-2 p-1">
@@ -118,8 +118,8 @@ export function SpeedSimulator({ lcp, fcp, ttfb }: { lcp: number; fcp: number; t
               )}
               {step === 3 && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="absolute inset-0 bg-[#03050d] flex flex-col p-2 space-y-3">
-                  <div className="w-full h-6 bg-white/[0.03] border border-[#1A6DD6]/20 rounded flex items-center px-1.5 justify-between">
-                    <div className="w-10 h-2 bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] rounded" />
+                  <div className="w-full h-6 bg-white/[0.03] border border-brand-primary/20 rounded flex items-center px-1.5 justify-between">
+                    <div className="w-10 h-2 bg-gradient-to-r from-brand-primary to-[#00d2ff] rounded" />
                     <div className="flex gap-1.5"><div className="w-8 h-2 bg-white/20 rounded" /><div className="w-8 h-2 bg-white/20 rounded" /></div>
                   </div>
                   <div className="flex-grow flex flex-col space-y-2 p-1 text-left">
@@ -128,12 +128,12 @@ export function SpeedSimulator({ lcp, fcp, ttfb }: { lcp: number; fcp: number; t
                       <div className="w-full h-3 bg-white/30 rounded" />
                       <div className="w-4/5 h-2.5 bg-white/20 rounded" />
                     </div>
-                    <div className="w-full h-24 bg-gradient-to-b from-[#1A6DD6]/10 to-transparent border border-white/10 rounded-lg p-2 flex flex-col justify-between">
+                    <div className="w-full h-24 bg-gradient-to-b from-brand-primary/10 to-transparent border border-white/10 rounded-lg p-2 flex flex-col justify-between">
                       <div className="flex justify-between items-center border-b border-white/5 pb-1">
                         <span className="text-[6px] text-white/40">Maysan Labs Studio</span>
                         <span className="text-[6px] text-[#10b981] font-bold">99.9%</span>
                       </div>
-                      <div className="w-full h-5 bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] rounded flex items-center justify-center font-bold text-white text-[6px]">EXPLORE STUDIO</div>
+                      <div className="w-full h-5 bg-gradient-to-r from-brand-primary to-[#00d2ff] rounded flex items-center justify-center font-bold text-white text-[6px]">EXPLORE STUDIO</div>
                     </div>
                   </div>
                 </motion.div>
