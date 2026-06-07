@@ -1,6 +1,7 @@
 "use server";
 
 import dns from "dns";
+import tls from "tls";
 import { assertSafeFetchUrl, isDeniedIp, safeFetch, SsrfError } from "@/lib/security/ssrf";
 import type { SafeFetchInit } from "@/lib/security/ssrf";
 
@@ -25,6 +26,17 @@ export interface CheckedPage {
   wordCount: number;
   pageSize: number;
   https: boolean;
+  hasHsts: boolean;
+  hstsMaxAge: number | null;
+  hasCsp: boolean;
+  hasXFrameOptions: boolean;
+  xFrameOptionsValue: string | null;
+  hasXContentTypeOptions: boolean;
+  hasReferrerPolicy: boolean;
+  hasPermissionsPolicy: boolean;
+  mixedContentCount: number;
+  formCount: number;
+  insecureFormCount: number;
 }
 
 export interface IndiaTelemetry {
@@ -41,6 +53,41 @@ export interface IndiaTelemetry {
   dpdpPrivacy: boolean;
   dpdpCookie: boolean;
   dpdpReference: boolean;
+}
+
+export interface PageSecurity {
+  hasHsts: boolean;
+  hstsMaxAge: number | null;
+  hasCsp: boolean;
+  hasXFrameOptions: boolean;
+  xFrameOptionsValue: string | null;
+  hasXContentTypeOptions: boolean;
+  hasReferrerPolicy: boolean;
+  hasPermissionsPolicy: boolean;
+  mixedContentCount: number;
+  formCount: number;
+  insecureFormCount: number;
+}
+
+export interface SslCertInfo {
+  valid: boolean;
+  issuer: string;
+  subject: string;
+  validFrom: string;
+  validTo: string;
+  daysRemaining: number;
+  tlsVersion: string;
+}
+
+export interface SecurityAudit {
+  score: number;
+  grade: "good" | "needs-work" | "poor";
+  httpsAllPages: boolean;
+  missingHeaders: string[];
+  mixedContentCount: number;
+  insecureFormCount: number;
+  sslCert: SslCertInfo | null;
+  suggestions: string[];
 }
 
 export interface SeoAuditResult {
@@ -65,8 +112,40 @@ export interface SeoAuditResult {
   sitemapFetched: boolean;
   urlsList: CheckedPage[];
   indiaTelemetry?: IndiaTelemetry;
+  security: SecurityAudit;
 }
 
+
+async function checkSslCertificate(hostname: string): Promise<SslCertInfo | null> {
+  try {
+    return await new Promise((resolve) => {
+      const socket = tls.connect(443, hostname, {
+        servername: hostname,
+        rejectUnauthorized: false,
+      }, () => {
+        const cert = socket.getPeerCertificate();
+        const validFrom = new Date(cert.valid_from);
+        const validTo = new Date(cert.valid_to);
+        const daysRemaining = Math.round((validTo.getTime() - Date.now()) / (1000 * 60 * 60 * 24));
+        const tlsVersion = socket.getProtocol() || "";
+        socket.end();
+        resolve({
+          valid: daysRemaining > 0 && !socket.authorizationError,
+          issuer: String(cert.issuer?.O || cert.issuer?.CN || "Unknown"),
+          subject: String(cert.subject?.CN || "Unknown"),
+          validFrom: validFrom.toISOString().split("T")[0],
+          validTo: validTo.toISOString().split("T")[0],
+          daysRemaining,
+          tlsVersion,
+        });
+      });
+      socket.on("error", () => { socket.destroy(); resolve(null); });
+      setTimeout(() => { socket.destroy(); resolve(null); }, 5000);
+    });
+  } catch {
+    return null;
+  }
+}
 
 async function resolveGeoLocation(ip: string): Promise<{ country: string; city: string; isp: string } | null> {
   try {
@@ -222,6 +301,16 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
       ],
       sitemapFetched: false,
       urlsList: [],
+      security: {
+        score: 0,
+        grade: "poor",
+        httpsAllPages: false,
+        missingHeaders: [],
+        mixedContentCount: 0,
+        insecureFormCount: 0,
+        sslCert: null,
+        suggestions: ["Unable to audit security — target URL is not reachable."],
+      },
     };
   }
 
@@ -291,6 +380,17 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
       let wordCount = 0;
       let pageSize = 0;
       let https = true;
+      let hasHsts = false;
+      let hstsMaxAge: number | null = null;
+      let hasCsp = false;
+      let hasXFrameOptions = false;
+      let xFrameOptionsValue: string | null = null;
+      let hasXContentTypeOptions = false;
+      let hasReferrerPolicy = false;
+      let hasPermissionsPolicy = false;
+      let mixedContentCount = 0;
+      let formCount = 0;
+      let insecureFormCount = 0;
 
       try {
         const pageRes = await safeFetchWithRetry(url, {
@@ -302,6 +402,17 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
 
         status = pageRes.status;
         https = pageRes.url.startsWith("https");
+
+        const h = pageRes.headers;
+        hasHsts = h.has("strict-transport-security");
+        const hstsVal = h.get("strict-transport-security");
+        hstsMaxAge = hstsVal ? parseInt(hstsVal.match(/max-age=(\d+)/i)?.[1] || "0", 10) : null;
+        hasCsp = h.has("content-security-policy");
+        hasXFrameOptions = h.has("x-frame-options");
+        xFrameOptionsValue = h.get("x-frame-options");
+        hasXContentTypeOptions = h.get("x-content-type-options")?.toLowerCase() === "nosniff";
+        hasReferrerPolicy = h.has("referrer-policy");
+        hasPermissionsPolicy = h.has("permissions-policy");
 
         if (pageRes.ok) {
           const html = await pageRes.text();
@@ -384,6 +495,15 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
           totalWordCount += wordCount;
           totalPageSize += pageSize;
 
+          if (https) {
+            const mixedPattern = /<(?:script|img|link|iframe|video|audio|source|object|embed)\s[^>]+(?:src|href|data)\s*=\s*["']http:\/\//gi;
+            mixedContentCount = (html.match(mixedPattern) || []).length;
+          }
+          formCount = (html.match(/<form[^>]*>/gi) || []).length;
+          if (formCount > 0 && https) {
+            insecureFormCount = (html.match(/<form[^>]+action=["']http:\/\//gi) || []).length;
+          }
+
           if (!title || !description) missingMeta++;
           if (!hasSchema) missingSchemas++;
         } else {
@@ -401,10 +521,77 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
         hasCanonical, canonical, isNoindex,
         hasOgTitle, hasOgDesc, hasOgImage,
         hasTwitterCard, hasViewport, hasHtmlLang,
-        missingAltCount, wordCount, pageSize, https
+        missingAltCount, wordCount, pageSize, https,
+        hasHsts, hstsMaxAge, hasCsp, hasXFrameOptions, xFrameOptionsValue,
+        hasXContentTypeOptions, hasReferrerPolicy, hasPermissionsPolicy,
+        mixedContentCount, formCount, insecureFormCount,
       });
     })
   );
+
+  // --- Security Audit ---
+  const secHostname = (() => {
+    try { return new URL(targetUrl).hostname; } catch { return ""; }
+  })();
+
+  const sslCert = secHostname ? await checkSslCertificate(secHostname).catch(() => null) : null;
+
+  const allPagesHttps = urlsList.length > 0 && urlsList.every(p => p.https);
+  const totalMixed = urlsList.reduce((s, p) => s + p.mixedContentCount, 0);
+  const totalInsecureForms = urlsList.reduce((s, p) => s + p.insecureFormCount, 0);
+  const allHsts = urlsList.length > 0 && urlsList.every(p => p.hasHsts && (p.hstsMaxAge ?? 0) >= 31536000);
+  const anyCsp = urlsList.some(p => p.hasCsp);
+  const allXfo = urlsList.length > 0 && urlsList.every(p => p.hasXFrameOptions && (p.xFrameOptionsValue?.toUpperCase() === "DENY" || p.xFrameOptionsValue?.toUpperCase() === "SAMEORIGIN"));
+  const allXcto = urlsList.length > 0 && urlsList.every(p => p.hasXContentTypeOptions);
+  const allRp = urlsList.length > 0 && urlsList.every(p => p.hasReferrerPolicy);
+  const anyPp = urlsList.some(p => p.hasPermissionsPolicy);
+
+  let securityScore = 0;
+  if (allPagesHttps) securityScore += 15;
+  if (allHsts) securityScore += 15;
+  if (anyCsp) securityScore += 15;
+  if (allXfo) securityScore += 10;
+  if (allXcto) securityScore += 10;
+  if (allRp) securityScore += 10;
+  if (totalMixed === 0) securityScore += 10;
+  if (anyPp) securityScore += 5;
+  if (totalInsecureForms === 0) securityScore += 5;
+  if (sslCert?.valid && sslCert.daysRemaining > 30) securityScore += 5;
+
+  const missingHeaders: string[] = [];
+  if (!allHsts) missingHeaders.push("Strict-Transport-Security");
+  if (!anyCsp) missingHeaders.push("Content-Security-Policy");
+  if (!allXfo) missingHeaders.push("X-Frame-Options");
+  if (!allXcto) missingHeaders.push("X-Content-Type-Options");
+  if (!allRp) missingHeaders.push("Referrer-Policy");
+  if (!anyPp) missingHeaders.push("Permissions-Policy");
+
+  const secGrade: "good" | "needs-work" | "poor" = securityScore >= 80 ? "good" : securityScore >= 50 ? "needs-work" : "poor";
+
+  const secSuggestions: string[] = [];
+  if (!allPagesHttps) secSuggestions.push("Some pages are still served over HTTP. Migrate all pages to HTTPS to prevent data interception and boost search rankings.");
+  if (!allHsts) secSuggestions.push("HTTP Strict-Transport-Security (HSTS) header is missing or has insufficient max-age. Add `Strict-Transport-Security: max-age=31536000; includeSubDomains` to enforce HTTPS.");
+  if (!anyCsp) secSuggestions.push("Content-Security-Policy (CSP) header is missing. Implement a CSP to mitigate XSS and data injection attacks. Start with `default-src 'self'` and refine.");
+  if (!allXfo) secSuggestions.push("X-Frame-Options header is missing or misconfigured. Set `X-Frame-Options: DENY` (or `SAMEORIGIN` if framing is needed) to prevent clickjacking.");
+  if (!allXcto) secSuggestions.push("X-Content-Type-Options: nosniff header is missing. Add it to prevent MIME-type sniffing attacks.");
+  if (!allRp) secSuggestions.push("Referrer-Policy header is missing. Set `Referrer-Policy: strict-origin-when-cross-origin` to control referrer information leakage.");
+  if (!anyPp) secSuggestions.push("Permissions-Policy header is missing. Restrict browser feature access (camera, microphone, geolocation) by adding a Permissions-Policy header.");
+  if (totalMixed > 0) secSuggestions.push(`Found ${totalMixed} mixed content resource(s) on HTTPS pages. Update all http:// resource URLs to https:// to prevent browser warnings and broken functionality.`);
+  if (totalInsecureForms > 0) secSuggestions.push(`Found ${totalInsecureForms} form(s) on HTTPS pages submitting to HTTP endpoints. All form actions must use HTTPS to protect user data.`);
+  if (!sslCert) secSuggestions.push("Could not validate the SSL certificate. Ensure the server has a valid, trusted certificate installed.");
+  else if (!sslCert.valid) secSuggestions.push("SSL certificate validation failed. The certificate may be expired, self-signed, or issued by an untrusted authority.");
+  else if (sslCert.daysRemaining <= 30) secSuggestions.push(`SSL certificate expires in ${sslCert.daysRemaining} days (${sslCert.validTo}). Renew before expiry to avoid browser trust warnings.`);
+
+  const security: SecurityAudit = {
+    score: securityScore,
+    grade: secGrade,
+    httpsAllPages: allPagesHttps,
+    missingHeaders,
+    mixedContentCount: totalMixed,
+    insecureFormCount: totalInsecureForms,
+    sslCert,
+    suggestions: secSuggestions,
+  };
 
   const totalUrls = sitemapFetched ? urls.length : 1;
   const checksPerPage = 12;
@@ -692,6 +879,7 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
     suggestions,
     sitemapFetched,
     urlsList,
-    indiaTelemetry
+    indiaTelemetry,
+    security,
   };
 }

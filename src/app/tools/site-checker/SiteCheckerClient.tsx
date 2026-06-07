@@ -19,6 +19,7 @@ import { SpeedSimulator } from "./components/speed-simulator";
 import { HeadingsHierarchyMap, SchemaMarkupGraph, CrawlerRadar, GoogleSearchPreview } from "./components/seo-widgets";
 import { ActionItemCard } from "./components/action-item-card";
 import { IndianMarketTelemetryHub } from "./components/india-telemetry";
+import { SecurityTab } from "./components/security-tab";
 import { RadarChart } from "./components/charts";
 import { ScanRecord, perfSteps, seoSteps, metricInfo, HISTORY_KEY, MAX_HISTORY, loadHistory, getLabel } from "./components/constants";
 
@@ -44,7 +45,7 @@ export default function SiteCheckerClient() {
   const [showDetailed, setShowDetailed] = useState(false);
   const [scanError, setScanError] = useState<string | null>(null);
   const [seoAuditError, setSeoAuditError] = useState<string | null>(null);
-  const [activeSection, setActiveSection] = useState<"performance" | "seo" | "india">("performance");
+  const [activeSection, setActiveSection] = useState<"performance" | "seo" | "india" | "security">("performance");
   const resultsRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
 
@@ -256,7 +257,7 @@ export default function SiteCheckerClient() {
     }).catch(() => {});
   };
 
-  const scrollToSection = (tab: "performance" | "seo" | "india") => {
+  const scrollToSection = (tab: "performance" | "seo" | "india" | "security") => {
     setActiveSection(tab);
     setTimeout(() => {
       document.getElementById("tab-view-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -453,7 +454,7 @@ export default function SiteCheckerClient() {
                         scores={{
                           perf: perfResults?.performance ?? 50,
                           seo: seoResults?.seoScore ?? 50,
-                          sec: seoResults?.urlsList[0]?.https ? 90 : 50,
+                          sec: seoResults?.security?.score ?? 50,
                           mob: perfResults?.mobile ?? 50,
                           ux: perfResults?.bestPractices ?? 50
                         }} 
@@ -464,7 +465,7 @@ export default function SiteCheckerClient() {
                   <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                     <MiniScoreCard title="Performance" score={perfResults?.performance ?? 0} status={perfResults && perfResults.performance >= 75 ? "Good" : "Needs Work"} icon={Zap} colorClass="text-brand-primary" />
                     <MiniScoreCard title="SEO Check" score={seoResults?.seoScore ?? 0} status={seoResults && seoResults.seoScore >= 80 ? "Good" : "Needs Work"} icon={Search} colorClass="text-teal-500" />
-                    <MiniScoreCard title="Security" score={seoResults?.urlsList[0]?.https ? 95 : 45} status={seoResults?.urlsList[0]?.https ? "Good" : "Needs Work"} icon={Shield} colorClass="text-brand-primary" />
+                    <MiniScoreCard title="Security" score={seoResults?.security?.score ?? 0} status={seoResults?.security && seoResults.security.score >= 80 ? "Good" : "Needs Work"} icon={Shield} colorClass="text-brand-primary" />
                     <MiniScoreCard title="Mobile" score={perfResults?.mobile ?? 0} status={perfResults && perfResults.mobile >= 75 ? "Good" : "Needs Work"} icon={Smartphone} colorClass="text-green-500" />
                     <MiniScoreCard title="UX Index" score={perfResults?.accessibility ?? 75} status={(perfResults?.accessibility ?? 75) >= 80 ? "Good" : "Needs Work"} icon={User} colorClass="text-amber-500" />
                   </div>
@@ -478,6 +479,9 @@ export default function SiteCheckerClient() {
                     </button>
                     <button onClick={() => setActiveSection("india")} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${activeSection === "india" ? "bg-brand-primary text-white" : "text-foreground/50 hover:text-foreground"}`}>
                       India
+                    </button>
+                    <button onClick={() => setActiveSection("security")} className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold transition-all ${activeSection === "security" ? "bg-brand-primary text-white" : "text-foreground/50 hover:text-foreground"}`}>
+                      <Shield size={13} /> Security
                     </button>
                   </div>
 
@@ -732,6 +736,10 @@ export default function SiteCheckerClient() {
                         </div>
                       </div>
                     </motion.div>
+                  )}
+
+                  {seoResults?.security && activeSection === "security" && (
+                    <SecurityTab security={seoResults.security} />
                   )}
 
                   {!leadCaptured && showLeadForm && (

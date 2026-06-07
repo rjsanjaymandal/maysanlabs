@@ -17,6 +17,7 @@ const MultiStepForm = dynamic(() => import("@/components/dynamic/ClientImports")
 const ScrollTimeline = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.ScrollTimeline));
 const Testimonials = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.Testimonials));
 const Services = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.Services));
+const ToolsShowcase = dynamic(() => import("@/components/ToolsShowcase"));
 const FAQ = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.FAQ));
 const ContactFooter = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.ContactFooter));
 const TrustBadges = dynamic(() => import("@/components/TrustBadges"));
@@ -111,6 +112,8 @@ export default function Home() {
       <FadeInScroll delay={0.1}>
       <Services />
       </FadeInScroll>
+
+      <ToolsShowcase />
 
       <FadeInScroll delay={0.1}>
       <ROICalculator />
