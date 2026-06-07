@@ -3,7 +3,7 @@ import type { WebVitalResult } from "@/lib/pagespeed-types";
 
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT_WINDOW_MS = 60 * 1000;
-const RATE_LIMIT_MAX_REQUESTS = 5;
+const RATE_LIMIT_MAX_REQUESTS = 10;
 
 const cacheMap = new Map<string, { data: unknown; expiry: number }>();
 const CACHE_TTL_MS = 5 * 60 * 1000;
@@ -23,7 +23,7 @@ function isRateLimited(ip: string): boolean {
 export async function POST(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
   if (isRateLimited(ip)) {
-    return NextResponse.json({ error: "Too many requests. Please wait a moment." }, { status: 429 });
+    return NextResponse.json({ error: "Too many requests. Please wait a moment." }, { status: 429, headers: { "Retry-After": "60" } });
   }
 
   try {

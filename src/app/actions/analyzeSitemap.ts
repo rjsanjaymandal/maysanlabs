@@ -2,6 +2,7 @@
 
 import dns from "dns";
 import { assertSafeFetchUrl, isDeniedIp, safeFetch, SsrfError } from "@/lib/security/ssrf";
+import type { SafeFetchInit } from "@/lib/security/ssrf";
 
 export interface CheckedPage {
   url: string;
@@ -67,6 +68,120 @@ export interface SeoAuditResult {
 }
 
 
+async function resolveGeoLocation(ip: string): Promise<{ country: string; city: string; isp: string } | null> {
+  try {
+    const res = await fetch(`https://ip-api.com/json/${ip}`, { signal: AbortSignal.timeout(3000) });
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.status === "success") {
+        return { country: data.country || "Unknown", city: data.city || "Unknown", isp: data.isp || "Unknown" };
+      }
+    }
+  } catch { /* fall through */ }
+
+  try {
+    const res = await fetch(`https://ipwho.is/${ip}`, { signal: AbortSignal.timeout(3000) });
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.success) {
+        return { country: data.country || "Unknown", city: data.city || "Unknown", isp: data.connection?.isp || "Unknown" };
+      }
+    }
+  } catch { /* give up */ }
+
+  return null;
+}
+
+async function safeFetchWithRetry(url: string, init: SafeFetchInit, retries = 1): Promise<Response> {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      return await safeFetch(url, init);
+    } catch (err) {
+      if (attempt < retries) {
+        await new Promise(r => setTimeout(r, 1000));
+      } else {
+        throw err;
+      }
+    }
+  }
+  throw new Error("Unreachable");
+}
+
+async function tryFetchSitemap(baseUrl: string): Promise<{ text: string; url: string } | null> {
+  let parsed: URL;
+  try {
+    parsed = new URL(baseUrl);
+  } catch {
+    return null;
+  }
+  const origin = parsed.origin;
+
+  const candidates: string[] = [];
+
+  // If baseUrl itself looks like a sitemap, try it first
+  if (baseUrl.includes("sitemap") || baseUrl.endsWith(".xml") || baseUrl.endsWith(".xml.gz")) {
+    candidates.push(baseUrl);
+  }
+
+  candidates.push(
+    `${origin}/sitemap.xml`,
+    `${origin}/sitemap_index.xml`,
+    `${origin}/sitemap.php`,
+    `${origin}/sitemap.xml.gz`,
+  );
+
+  // Also try the base URL as a fallback
+  const isUnique = (url: string) => !candidates.some(c => c === url);
+  if (isUnique(baseUrl)) {
+    candidates.push(baseUrl);
+  }
+
+  for (const url of candidates) {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        const res = await safeFetch(url, {
+          headers: { "Accept": "application/xml, text/xml, */*" },
+          maxMs: 6000,
+        });
+        if (res.ok) {
+          const text = await res.text();
+          if (/<loc>/i.test(text) || /<urlset/i.test(text) || /<sitemapindex/i.test(text)) {
+            return { text, url };
+          }
+        }
+      } catch {
+        // transient failure, retry
+      }
+      if (attempt === 0) await new Promise(r => setTimeout(r, 1000));
+    }
+  }
+
+  // Fallback: check robots.txt for Sitemap directive
+  try {
+    const robotsRes = await safeFetch(`${origin}/robots.txt`, { maxMs: 5000 });
+    if (robotsRes.ok) {
+      const robotsText = await robotsRes.text();
+      const sitemapMatch = robotsText.match(/^Sitemap:\s*(\S+)/im);
+      if (sitemapMatch) {
+        const res = await safeFetch(sitemapMatch[1], {
+          headers: { "Accept": "application/xml, text/xml, */*" },
+          maxMs: 6000,
+        });
+        if (res.ok) {
+          const text = await res.text();
+          if (/<loc>/i.test(text) || /<urlset/i.test(text) || /<sitemapindex/i.test(text)) {
+            return { text, url: sitemapMatch[1] };
+          }
+        }
+      }
+    }
+  } catch {
+    // robots.txt not accessible
+  }
+
+  return null;
+}
+
 export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult> {
   let targetUrl = sitemapUrl.trim();
 
@@ -115,35 +230,13 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
   const urls: string[] = [];
 
   try {
-    let fetchUrl = targetUrl;
-    try {
-      const parsed = new URL(targetUrl);
-      if (!parsed.pathname || parsed.pathname === "/") {
-        fetchUrl = `${parsed.origin}/sitemap.xml`;
-      }
-    } catch {
-      // Use as is
-    }
-
-    const res = await safeFetch(fetchUrl, {
-      headers: {
-        "Accept": "application/xml, text/xml, */*",
-      },
-      maxMs: 6000,
-    });
-
-    if (res.ok) {
-      xmlText = await res.text();
-    } else if (fetchUrl !== targetUrl) {
-      const secondRes = await safeFetch(targetUrl, {
-        maxMs: 5000,
-      });
-      if (secondRes.ok) {
-        xmlText = await secondRes.text();
-      }
+    const sitemapResult = await tryFetchSitemap(targetUrl);
+    if (sitemapResult) {
+      xmlText = sitemapResult.text;
+      sitemapFetched = true;
     }
   } catch (e) {
-    console.error("Sitemap fetch failed:", e);
+    console.error("Sitemap discovery failed:", e);
   }
 
   if (xmlText) {
@@ -200,11 +293,11 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
       let https = true;
 
       try {
-        const pageRes = await safeFetch(url, {
+        const pageRes = await safeFetchWithRetry(url, {
           headers: {
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9",
           },
-          maxMs: 5000,
+          maxMs: 8000,
         });
 
         status = pageRes.status;
@@ -427,18 +520,11 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
       if (isDeniedIp(ipAddress)) {
         ipAddress = "Unknown";
       } else {
-        // Geolocation check using ip-api.com
-        const geoRes = await fetch(`https://ip-api.com/json/${ipAddress}`, {
-          signal: AbortSignal.timeout(3000)
-        }).catch(() => null);
-
-        if (geoRes && geoRes.ok) {
-          const geoData = await geoRes.json();
-          if (geoData && geoData.status === "success") {
-            serverCountry = geoData.country || "Unknown";
-            serverCity = geoData.city || "Unknown";
-            serverIsp = geoData.isp || "Unknown";
-          }
+        const geo = await resolveGeoLocation(ipAddress);
+        if (geo) {
+          serverCountry = geo.country;
+          serverCity = geo.city;
+          serverIsp = geo.isp;
         }
       }
     }

@@ -43,6 +43,7 @@ export default function SiteCheckerClient() {
   const [copied, setCopied] = useState(false);
   const [showDetailed, setShowDetailed] = useState(false);
   const [scanError, setScanError] = useState<string | null>(null);
+  const [seoAuditError, setSeoAuditError] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<"performance" | "seo" | "india">("performance");
   const resultsRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
@@ -70,6 +71,7 @@ export default function SiteCheckerClient() {
 
     setScanning(true);
     setScanError(null);
+    setSeoAuditError(null);
     setPerfResults(null);
     setSeoResults(null);
     setShowLeadForm(false);
@@ -91,12 +93,20 @@ export default function SiteCheckerClient() {
       }
     }, 600);
 
+    const perfController = new AbortController();
+    const perfTimeoutId = setTimeout(() => perfController.abort(), 100000);
+    signal.addEventListener("abort", () => {
+      clearTimeout(perfTimeoutId);
+      perfController.abort();
+    }, { once: true });
+
     const perfPromise = fetch("/api/pagespeed", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url: fullUrl, strategy }),
-      signal,
+      signal: perfController.signal,
     }).then(async (res) => {
+      clearTimeout(perfTimeoutId);
       clearInterval(perfInterval);
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -104,6 +114,9 @@ export default function SiteCheckerClient() {
       }
       const result: WebVitalResult = await res.json();
       return result;
+    }).catch((err) => {
+      clearTimeout(perfTimeoutId);
+      throw err;
     });
 
     let seoStepIdx = 1;
@@ -125,23 +138,40 @@ export default function SiteCheckerClient() {
     });
 
     try {
-      const [perf, seo] = await Promise.all([perfPromise, seoPromise]);
+      const [perfSettled, seoSettled] = await Promise.allSettled([perfPromise, seoPromise]);
 
       clearInterval(perfInterval);
       clearInterval(seoInterval);
 
-      if (perf) {
+      let perfError: string | null = null;
+      let perf: WebVitalResult | null = null;
+      let seo: SeoAuditResult | null = null;
+
+      if (perfSettled.status === "fulfilled") {
+        perf = perfSettled.value;
         setPerfStep("PageSpeed report ready!");
         setPerfResults(perf);
+      } else {
+        perfError = perfSettled.reason instanceof Error ? perfSettled.reason.message : "Performance scan failed";
+        console.error("[SiteChecker] Perf scan failed:", perfSettled.reason);
       }
 
-      if (seo) {
+      if (seoSettled.status === "fulfilled" && seoSettled.value) {
+        seo = seoSettled.value;
         setSeoResults(seo);
         setSeoStep("SEO audit complete!");
+      } else {
+        const message = "SEO audit returned no data. The site may not have a sitemap or may be unreachable.";
+        setSeoAuditError(message);
       }
 
       setTimeout(() => {
         setScanning(false);
+
+        if (!perf && !seo) {
+          setScanError(perfError || "Both scans failed. Please try again.");
+          return;
+        }
 
         const m = perf ? [perf.lcp, perf.inp, perf.cls, perf.ttfb] : [];
         const poor = m.filter((x) => x.grade === "poor").length;
@@ -506,6 +536,19 @@ export default function SiteCheckerClient() {
                     </motion.div>
                   )}
 
+                  {seoAuditError && !seoResults && activeSection === "seo" && (
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+                      <div className="bg-amber-500/10 border border-amber-500/25 rounded-2xl p-6">
+                        <div className="flex items-start gap-3">
+                          <AlertTriangle size={20} className="text-amber-400 shrink-0" />
+                          <div>
+                            <h3 className="text-sm font-bold text-foreground">SEO Audit Unavailable</h3>
+                            <p className="text-sm text-foreground/60 mt-1">{seoAuditError}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
                   {seoResults && activeSection === "seo" && (
                     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6 text-left">
                       <div className="bg-white/[0.03] border-white/[0.08] rounded-3xl p-6 md:p-8">
