@@ -5,7 +5,7 @@ export const localBusinessSchema = {
   "@type": "LocalBusiness",
   "@id": `${SITE_URL}/#business`,
   name: "Maysan Labs",
-  image: `${SITE_URL}/logo.png`,
+  image: `${SITE_URL}/logo.webp`,
   address: {
     "@type": "PostalAddress",
     streetAddress: "Sector 44",
@@ -197,7 +197,7 @@ export const organizationSchema = {
     "Maysan Software"
   ],
   "url": SITE_URL,
-  "logo": `${SITE_URL}/logo.png`,
+  "logo": `${SITE_URL}/logo.webp`,
   "description": "Maysan Labs is a leading enterprise SaaS development company in Gurgaon, India. Expert developers building custom software, web applications, and cloud solutions using MERN stack, React, and Node.js. Trusted by enterprises worldwide for scalable digital transformation.",
   "foundingDate": "2020",
   "numberOfEmployees": {

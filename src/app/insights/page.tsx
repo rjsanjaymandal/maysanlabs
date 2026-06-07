@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description: "Explore our latest technical insights, architectural deep dives, and scaling strategies for modern SaaS products.",
     url: "https://maysanlabs.com/insights",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Technical Insights - Maysan Labs" }],
+    images: [{ url: "/og-image.webp", width: 1200, height: 630, alt: "Technical Insights - Maysan Labs" }],
   },
   alternates: { 
     canonical: "https://maysanlabs.com/insights",

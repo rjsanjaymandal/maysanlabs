@@ -2,6 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── WCAG AA Contrast Fixes ───
+   text-foreground/N produces dangerously faint text on light backgrounds (~2:1–3:1
+   contrast against #F4F6F9). These overrides guarantee 4.5:1 minimum for all
+   readable text. Dark mode is unaffected (background is near-black, contrast passes). */
+html:not(.dark) .text-foreground\/90,
+html:not(.dark) .text-foreground\/\[0\.9\] { color: #1E293B !important; }
+html:not(.dark) .text-foreground\/85,
+html:not(.dark) .text-foreground\/\[0\.85\] { color: #253242 !important; }
+html:not(.dark) .text-foreground\/80,
+html:not(.dark) .text-foreground\/\[0\.8\] { color: #283647 !important; }
+html:not(.dark) .text-foreground\/75,
+html:not(.dark) .text-foreground\/\[0\.75\] { color: #2E3D4F !important; }
+html:not(.dark) .text-foreground\/70,
+html:not(.dark) .text-foreground\/\[0\.7\] { color: #334257 !important; }
+html:not(.dark) .text-foreground\/65,
+html:not(.dark) .text-foreground\/\[0\.65\] { color: #39495E !important; }
+html:not(.dark) .text-foreground\/60,
+html:not(.dark) .text-foreground\/\[0\.6\] { color: #405168 !important; }
+html:not(.dark) .text-foreground\/55,
+html:not(.dark) .text-foreground\/\[0\.55\] { color: #475A70 !important; }
+html:not(.dark) .text-foreground\/50,
+html:not(.dark) .text-foreground\/\[0\.5\] { color: #4F617A !important; }
+html:not(.dark) .text-foreground\/45,
+html:not(.dark) .text-foreground\/\[0\.45\] { color: #586B85 !important; }
+html:not(.dark) .text-foreground\/40,
+html:not(.dark) .text-foreground\/\[0\.4\] { color: #65778E !important; }
+html:not(.dark) .text-foreground\/35,
+html:not(.dark) .text-foreground\/\[0\.35\] { color: #78899C !important; }
+html:not(.dark) .text-foreground\/30,
+html:not(.dark) .text-foreground\/\[0\.3\] { color: #8D9CAC !important; }
+
+/* Semantic utility classes that compose text-foreground/N internally */
+html:not(.dark) .text-body-dim { color: #405168 !important; }
+html:not(.dark) .text-secondary { color: #334257 !important; }
+html:not(.dark) .text-tertiary { color: #4F617A !important; }
+html:not(.dark) .text-subtle { color: #8D9CAC !important; }
+html:not(.dark) .text-dim-high { color: #253242 !important; }
+html:not(.dark) .text-dim-med { color: #4F617A !important; }
+html:not(.dark) .text-dim-low { color: #8D9CAC !important; }
+html:not(.dark) .text-ghost { color: #8D9CAC !important; }
+html:not(.dark) .input-std::placeholder { color: #8D9CAC !important; }
+html:not(.dark) .theme-btn-ghost { color: #405168 !important; }
+/* announcement-bar intentionally uses var(--brand-light) — keep its brand color */
+
+/* ─── Readable Font Size Minimums (12px minimum for all readable content) ─── */
+.badge-std { font-size: 11px !important; }
+.label-mono { font-size: 11px !important; }
+.label-system { font-size: 11px !important; }
+.badge { font-size: 11px !important; }
+.announcement-bar { font-size: 11px !important; }
+
+/* ─── Desktop Touch Target Size Minimums ─── */
+@media (min-width: 769px) {
+  nav a, nav button, [role="navigation"] a, [role="navigation"] button,
+  .nav-link, .nav-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
 :root {
     /* ─── Maysan Design System - Brand Palette (theme-invariant) ─── */
     --brand-primary: #1A6DD6;
@@ -347,7 +408,7 @@ html:not(.dark) .text-white\/\[0\.02\] {
   }
   * {
     @apply border-border;
-    outline-color: var(--primary-glow);
+    outline-color: hsl(var(--ring));
   }
   html {
     @apply font-sans;

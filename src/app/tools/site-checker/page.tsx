@@ -15,11 +15,12 @@ const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Site Checker", url: "/tools/site-checker" }
 ]);
 
-export default function SiteCheckerPage() {
+export default async function SiteCheckerPage(props: { searchParams: Promise<{ url?: string }> }) {
+  const { url } = await props.searchParams;
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <SiteCheckerClient />
+      <SiteCheckerClient initialUrl={url} />
     </>
   );
 }

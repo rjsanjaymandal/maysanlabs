@@ -38,7 +38,7 @@ const liveProducts = [
       "Real-time academic performance analytics",
       "Advanced biometric and dynamic attendance tracking"
     ],
-    imageUrl: "/og-image.png",
+    imageUrl: "/og-image.webp",
     iframeUrl: "https://edumaysan.maysanlabs.com/",
     ctaHref: "/products/edu-maysan",
     ctaText: "Explore Product Details",

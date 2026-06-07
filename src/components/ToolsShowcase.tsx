@@ -39,7 +39,7 @@ export default function ToolsShowcase() {
 
   const handleCheck = (e: React.FormEvent) => {
     e.preventDefault();
-    const cleanUrl = url.trim().replace(/^https?:\/\//, "").replace(/\/.*$/, "").toLowerCase();
+    const cleanUrl = url.trim();
     if (cleanUrl) {
       router.push(`/tools/site-checker?url=${encodeURIComponent(cleanUrl)}`);
     }

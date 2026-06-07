@@ -63,7 +63,7 @@ export function generateBlogPostSEO(post: BlogPost, siteUrl: string): Metadata {
       section: post.category,
       images: [
         {
-          url: `/og-image.png`,
+          url: `/og-image.webp`,
           width: 1200,
           height: 630,
           alt: post.title
@@ -74,7 +74,7 @@ export function generateBlogPostSEO(post: BlogPost, siteUrl: string): Metadata {
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
-      images: [`/og-image.png`]
+      images: [`/og-image.webp`]
     },
     alternates: {
       canonical: `${siteUrl}/blog/${post.slug}`
@@ -115,7 +115,7 @@ export function generateBlogPostJSONLD(post: BlogPost, siteUrl: string) {
       name: "Maysan Labs",
       logo: {
         "@type": "ImageObject",
-        url: `${siteUrl}/logo.png`
+        url: `${siteUrl}/logo.webp`
       }
     },
     url: `${siteUrl}/blog/${post.slug}`,
@@ -165,7 +165,7 @@ export function generateCaseStudySEO(study: CaseStudy, siteUrl: string): Metadat
       publishedTime: typeof study.date === 'string' ? study.date : undefined,
       images: [
         {
-          url: `/og-image.png`,
+          url: `/og-image.webp`,
           width: 1200,
           height: 630,
           alt: study.title
@@ -176,7 +176,7 @@ export function generateCaseStudySEO(study: CaseStudy, siteUrl: string): Metadat
       card: "summary_large_image",
       title: study.title,
       description: study.excerpt,
-      images: [`/og-image.png`]
+      images: [`/og-image.webp`]
     },
     alternates: {
       canonical: `${siteUrl}/case-studies/${study.slug}`
@@ -246,7 +246,7 @@ export function generateProductSEO(product: ProductInfo, _siteUrl: string): Meta
       type: "website",
       images: [
         {
-          url: `/og-image.png`,
+          url: `/og-image.webp`,
           width: 1200,
           height: 630,
           alt: product.name
@@ -257,7 +257,7 @@ export function generateProductSEO(product: ProductInfo, _siteUrl: string): Meta
       card: "summary_large_image",
       title: product.name,
       description: product.description,
-      images: [`/og-image.png`]
+      images: [`/og-image.webp`]
     },
     alternates: {
       canonical: product.url
@@ -291,7 +291,7 @@ export function generateBaseSEO(siteUrl: string): Metadata {
       description: "Maysan Labs is a leading enterprise SaaS development company offering custom software development, cloud infrastructure services, and scalable web applications.",
       images: [
         {
-          url: "/og-image.png",
+          url: "/og-image.webp",
           width: 1200,
           height: 630,
           alt: "Maysan Labs - Enterprise SaaS Development Company"
@@ -302,7 +302,7 @@ export function generateBaseSEO(siteUrl: string): Metadata {
       card: "summary_large_image",
       title: "Maysan Labs | Enterprise SaaS Development Company",
       description: "Maysan Labs - Enterprise SaaS development company offering custom software, cloud infrastructure, and scalable web applications.",
-      images: ["/og-image.png"],
+      images: ["/og-image.webp"],
       creator: "@maysanlabs",
       site: "@maysanlabs"
     },
@@ -332,7 +332,7 @@ export function generatePageSEO({
   description,
   path,
   keywords = [],
-  image = "/og-image.png",
+  image = "/og-image.webp",
   siteUrl = "https://maysanlabs.com"
 }: PageSEOProps): Metadata {
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
@@ -600,7 +600,7 @@ export function generateBrandSchema(siteUrl: string = "https://maysanlabs.com") 
     "alternateName": "Maysan",
     "description": "Maysan Labs is a leading enterprise SaaS development company in Gurgaon, India, specializing in custom software, web applications, and cloud solutions.",
     "url": siteUrl,
-    "logo": `${siteUrl}/logo.png`,
+    "logo": `${siteUrl}/logo.webp`,
     "sameAs": [
       "https://www.facebook.com/maysanlabs",
       "https://www.instagram.com/maysanlabs",

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     description: "Apply to join Maysan Labs - a leading enterprise SaaS development company.",
     url: "https://maysanlabs.com/careers/apply",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Apply to Maysan Labs" }],
+    images: [{ url: "/og-image.webp", width: 1200, height: 630, alt: "Apply to Maysan Labs" }],
   },
   alternates: { 
     canonical: "https://maysanlabs.com/careers/apply",

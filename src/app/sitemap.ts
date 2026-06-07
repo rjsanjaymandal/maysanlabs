@@ -113,7 +113,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(study.year),
       changeFrequency: 'monthly',
       priority: 0.8,
-      images: [`${BASE_URL}/og-image.png`],
+      images: [`${BASE_URL}/og-image.webp`],
     })
   })
 
@@ -128,7 +128,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: p.lastmod,
       changeFrequency: 'monthly',
       priority: 0.8,
-      images: [`${BASE_URL}/og-image.png`],
+      images: [`${BASE_URL}/og-image.webp`],
     })
   })
 

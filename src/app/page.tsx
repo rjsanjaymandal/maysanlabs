@@ -4,7 +4,7 @@ import { Zap, Send } from "lucide-react";
 
 const Navbar = dynamic(() => import("@/components/Navbar"));
 const Hero = dynamic(() => import("@/components/Hero"));
-const FadeInScroll = dynamic(() => import("@/components/FadeInScroll"));
+const ScrollReveal = dynamic(() => import("@/components/ScrollReveal"));
 const LogoMarquee = dynamic(() => import("@/components/LogoMarquee"));
 const BuildScaleGrow = dynamic(() => import("@/components/BuildScaleGrow"));
 const StatsSection = dynamic(() => import("@/components/StatsSection"));
@@ -75,15 +75,15 @@ export default function Home() {
       </section>
  
       {/* Bento Grid Section */}
-      <FadeInScroll>
+      <ScrollReveal className="content-auto-wide">
         <section className="sec-xl container-main relative">
           <div className="mb-16">
-          <FadeInScroll y={20} className="mb-6">
+          <ScrollReveal y={20} className="mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider">
               <Zap size={12} />
               Why Choose Us
             </span>
-          </FadeInScroll>
+          </ScrollReveal>
           <h2 className="heading-lg sm:heading-xl tracking-[-0.02em] text-foreground text-center">
             <span className="bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(26,109,214,0.2)] dark:drop-shadow-[0_0_20px_rgba(26,109,214,0.4)]">Build</span>.{" "}
             <span className="bg-gradient-to-r from-[#10b981] to-[#14b8a6] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(16,185,129,0.2)] dark:drop-shadow-[0_0_20px_rgba(16,185,129,0.4)]">Scale</span>.{" "}
@@ -96,39 +96,39 @@ export default function Home() {
  
         <BuildScaleGrow />
       </section>
-      </FadeInScroll>
+      </ScrollReveal>
 
-      <FadeInScroll>
+      <ScrollReveal className="content-auto-wide">
       <ArchitectureVisualizer />
-      </FadeInScroll>
+      </ScrollReveal>
 
       {/* Immersive Panoramic Brand Showroom */}
       <BrandShowroom />
 
-      <FadeInScroll>
+      <ScrollReveal className="content-auto-wide">
       <ScrollTimeline />
-      </FadeInScroll>
+      </ScrollReveal>
 
-      <FadeInScroll delay={0.1}>
+      <ScrollReveal delay={0.1} className="content-auto-wide">
       <Services />
-      </FadeInScroll>
+      </ScrollReveal>
 
       <ToolsShowcase />
 
-      <FadeInScroll delay={0.1}>
+      <ScrollReveal delay={0.1} className="content-auto-wide">
       <ROICalculator />
-      </FadeInScroll>
+      </ScrollReveal>
 
-      <FadeInScroll delay={0.2}>
+      <ScrollReveal delay={0.2} className="content-auto-wide">
       <Testimonials />
-      </FadeInScroll>
+      </ScrollReveal>
 
-      <FadeInScroll delay={0.1}>
+      <ScrollReveal delay={0.1} className="content-auto">
       <FAQ />
-      </FadeInScroll>
+      </ScrollReveal>
 
       {/* Start Your Project / Get Started Section */}
-      <FadeInScroll>
+      <ScrollReveal className="content-auto-wide">
         <section id="start" className="py-24 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 via-brand-primary/2 to-transparent dark:from-brand-primary/10 dark:via-brand-primary/5 dark:to-transparent pointer-events-none" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[50%] rounded-full blur-[130px] bg-brand-primary/5 dark:bg-brand-primary/10 pointer-events-none" />
@@ -152,13 +152,13 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </FadeInScroll>
+      </ScrollReveal>
 
-      <FadeInScroll>
+      <ScrollReveal>
       <TrustBadges />
-      </FadeInScroll>
+      </ScrollReveal>
 
-      <FadeInScroll>
+      <ScrollReveal>
       <section className="py-16 border-t border-gray-100 dark:border-white/[0.06] relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[150px] sm:h-[300px] bg-brand-primary/5 dark:bg-brand-primary/10 blur-[80px] sm:blur-[120px] rounded-full pointer-events-none" />
         <div className="container-main text-center relative z-10">
@@ -175,11 +175,11 @@ export default function Home() {
           </div>
         </div>
       </section>
-      </FadeInScroll>
+      </ScrollReveal>
 
-      <FadeInScroll delay={0.2}>
+      <ScrollReveal delay={0.2}>
       <ContactFooter />
-      </FadeInScroll>
+      </ScrollReveal>
     </main>
   );
 }

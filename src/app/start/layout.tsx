@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     description: "Ready to build your enterprise SaaS solution? Contact Maysan Labs for a free consultation.",
     url: "https://maysanlabs.com/start",
     type: "website",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Contact Maysan Labs" }],
+    images: [{ url: "/og-image.webp", width: 1200, height: 630, alt: "Contact Maysan Labs" }],
   },
   alternates: { 
     canonical: "https://maysanlabs.com/start",

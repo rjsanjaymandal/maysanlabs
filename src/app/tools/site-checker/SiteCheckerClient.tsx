@@ -23,8 +23,8 @@ import { SecurityTab } from "./components/security-tab";
 import { RadarChart } from "./components/charts";
 import { ScanRecord, perfSteps, seoSteps, metricInfo, HISTORY_KEY, MAX_HISTORY, loadHistory, getLabel } from "./components/constants";
 
-export default function SiteCheckerClient() {
-  const [url, setUrl] = useState("");
+export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string }) {
+  const [url, setUrl] = useState(initialUrl ?? "");
   const [strategy, setStrategy] = useState<"mobile" | "desktop">("mobile");
   const [scanning, setScanning] = useState(false);
 
@@ -48,11 +48,16 @@ export default function SiteCheckerClient() {
   const [activeSection, setActiveSection] = useState<"performance" | "seo" | "india" | "security">("performance");
   const resultsRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
+  const autoScanned = useRef(false);
 
   useEffect(() => {
     setHistory(loadHistory());
+    if (initialUrl && !autoScanned.current) {
+      autoScanned.current = true;
+      startScan();
+    }
     return () => abortRef.current?.abort();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const validateUrl = (input: string): string | null => {
     if (!input.trim()) return "Please enter a URL";

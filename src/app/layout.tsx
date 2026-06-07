@@ -133,7 +133,7 @@ export const metadata: Metadata = {
       "Maysan Labs is a leading enterprise SaaS development company offering custom software development, cloud infrastructure, and scalable web applications. Trusted by global enterprises for MERN stack, React, and Node.js development. Contact Maysan Labs at maysanlabs.com.",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Maysan Labs - Enterprise SaaS Development Company",
@@ -145,7 +145,7 @@ export const metadata: Metadata = {
     title: "Maysan Labs | Enterprise SaaS Development Company",
     description:
       "Maysan Labs - Enterprise SaaS development company in Gurgaon, India offering custom software, cloud infrastructure, and scalable web applications. Contact Maysan Labs at maysanlabs.com.",
-    images: ["/og-image.png"],
+    images: ["/og-image.webp"],
     creator: "@maysanlabs",
     site: "@maysanlabs",
   },
@@ -196,17 +196,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={cn("antialiased", outfit.variable, jetbrainsMono.variable)}>
 <head>
         {/* Preconnect to critical third-party origins for faster connection */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
         {/* Preload critical above-the-fold assets */}
         <link rel="preload" as="image" href="/logo-rounded-v2.webp" />
-        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..900&display=swap" crossOrigin="anonymous" />
-        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400..700&display=swap" crossOrigin="anonymous" />
 
         {/* Combined JSON-LD structured data — single @graph for fewer script tags */}
         <script
