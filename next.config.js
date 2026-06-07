@@ -16,7 +16,25 @@ const nextConfig = {
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
+          {
+            key: "Content-Security-Policy",
+            value:
+              "default-src 'self'; " +
+              "script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline' 'unsafe-eval'; " +
+              "style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; " +
+              "img-src 'self' data: blob: https:; " +
+              "font-src 'self' https://fonts.gstatic.com data:; " +
+              "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://ip-api.com https://ipwho.is https://www.googleapis.com http://localhost:* https://o*.ingest.sentry.io; " +
+              "frame-src 'self' https://www.googletagmanager.com; " +
+              "frame-ancestors 'self'; " +
+              "base-uri 'self'; " +
+              "form-action 'self'; " +
+              "manifest-src 'self'; " +
+              "upgrade-insecure-requests",
+          },
         ],
       },
       {
