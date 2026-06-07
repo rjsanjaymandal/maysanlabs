@@ -800,7 +800,7 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
             </AnimatePresence>
 
             {!scanning && !perfResults && !seoResults && (
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+              <div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                   <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-brand-primary/40 dark:hover:border-brand-primary/30 transition-colors">
                     <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center mx-auto mb-3.5"><Gauge size={18} className="text-brand-primary" /></div>
@@ -826,7 +826,7 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
                 <div className="text-center">
                   <p className="text-[10px] text-foreground/35 font-medium uppercase tracking-[0.2em]">Engineered and Maintained by Maysan Labs Studio</p>
                 </div>
-              </motion.div>
+              </div>
             )}
           </div>
         </div>
