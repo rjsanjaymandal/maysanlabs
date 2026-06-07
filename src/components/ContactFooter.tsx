@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Mail, MapPin, Twitter, Linkedin, Send, Instagram, Facebook } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Send } from "lucide-react";
+import { Twitter, Linkedin, Instagram, Facebook } from "@/components/ui/brand-icons";
 
 const links = [
   { name: "Services", href: "/services" },

@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Linkedin, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import { Linkedin } from "@/components/ui/brand-icons";
 
 const team = [
   {

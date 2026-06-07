@@ -1,6 +1,8 @@
 "use server";
 
 import nodemailer from "nodemailer";
+import { escapeHtml, safeHref, textForEmail, multilineHtml } from "@/lib/security/escape";
+import { validateResume, ResumeValidationError } from "@/lib/security/resume";
 
 export async function applyJob(formData: FormData) {
   // Honeypot check: if the hidden field is filled, it's likely a bot
@@ -10,7 +12,7 @@ export async function applyJob(formData: FormData) {
     // Return success to avoid tipping off bots, but don't process the form
     return { success: true, message: "Application submitted successfully" };
   }
-  
+
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const phone = formData.get("phone") as string;
@@ -19,11 +21,23 @@ export async function applyJob(formData: FormData) {
   const linkedIn = formData.get("linkedIn") as string;
   const portfolio = formData.get("portfolio") as string;
   const message = formData.get("message") as string;
-  const resume = formData.get("resume") as File;
+  const resumeRaw = formData.get("resume");
 
-  if (!name || !email || !resume) {
+  if (!name || !email || !resumeRaw) {
     return { success: false, message: "Missing required fields (Name, Email, Resume)" };
-}
+  }
+
+  let validatedResume;
+  try {
+    validatedResume = await validateResume(resumeRaw);
+  } catch (err) {
+    if (err instanceof ResumeValidationError) {
+      return { success: false, message: err.message };
+    }
+    throw err;
+  }
+  const resume = validatedResume.file;
+  const resumeFilename = validatedResume.safeName;
 
   // Check for missing SMTP configuration
   const smtpConfigured =
@@ -50,7 +64,7 @@ export async function applyJob(formData: FormData) {
       pass: process.env.SMTP_PASS,
     },
     tls: {
-      rejectUnauthorized: false,
+      rejectUnauthorized: process.env.SMTP_REJECT_UNAUTHORIZED !== "false",
       minVersion: "TLSv1.2",
     },
   });
@@ -60,6 +74,9 @@ export async function applyJob(formData: FormData) {
     const arrayBuffer = await resume.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
+    const linkedInHref = safeHref(linkedIn);
+    const portfolioHref = safeHref(portfolio);
+
     // 1. Send Email Notification to Team
     const mailPromise = transporter.sendMail({
       from: `"Maysan Labs Talent" <${process.env.SMTP_USER}>`,
@@ -67,36 +84,36 @@ export async function applyJob(formData: FormData) {
       subject: `New Application: ${jobTitle} - ${name}`,
       text: `
         New Job Application Received
-        
+
         Position: ${jobTitle} (${jobId})
         Candidate: ${name}
         Email: ${email}
         Phone: ${phone || "N/A"}
         LinkedIn: ${linkedIn || "N/A"}
         Portfolio: ${portfolio || "N/A"}
-        
+
         Cover Letter / Message:
-        ${message || "No message provided."}
+        ${textForEmail(message) || "No message provided."}
       `,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; line-height: 1.6;">
           <h2 style="color: #000;">New Job Application Received</h2>
-          <p><strong>Position:</strong> ${jobTitle} (${jobId})</p>
-          <p><strong>Candidate:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone || "N/A"}</p>
-          <p><strong>LinkedIn:</strong> <a href="${linkedIn}">${linkedIn || "N/A"}</a></p>
-          <p><strong>Portfolio:</strong> <a href="${portfolio}">${portfolio || "N/A"}</a></p>
+          <p><strong>Position:</strong> ${escapeHtml(jobTitle)} (${escapeHtml(jobId)})</p>
+          <p><strong>Candidate:</strong> ${escapeHtml(name)}</p>
+          <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+          <p><strong>Phone:</strong> ${escapeHtml(phone) || "N/A"}</p>
+          <p><strong>LinkedIn:</strong> <a href="${escapeHtml(linkedInHref)}">${escapeHtml(linkedIn) || "N/A"}</a></p>
+          <p><strong>Portfolio:</strong> <a href="${escapeHtml(portfolioHref)}">${escapeHtml(portfolio) || "N/A"}</a></p>
           <hr />
           <h3>Cover Letter / Message:</h3>
-          <p style="white-space: pre-wrap; background: #f9f9f9; padding: 15px; border-radius: 8px;">${message || "No message provided."}</p>
+          <p style="white-space: pre-wrap; background: #f9f9f9; padding: 15px; border-radius: 8px;">${multilineHtml(message) || "No message provided."}</p>
           <hr />
           <p><small>Resume is attached to this email.</small></p>
         </div>
       `,
       attachments: [
         {
-          filename: resume.name,
+          filename: resumeFilename,
           content: buffer,
         }
       ]
@@ -134,6 +151,6 @@ export async function applyJob(formData: FormData) {
   } catch (error) {
     const errMsg = error instanceof Error ? error.message : String(error);
     console.error("Application processing error:", errMsg);
-    return { success: false, message: "Application submission failed. Please email us at careers@maysanlabs.com", error: errMsg };
+    return { success: false, message: "Application submission failed. Please email us at careers@maysanlabs.com" };
   }
 }

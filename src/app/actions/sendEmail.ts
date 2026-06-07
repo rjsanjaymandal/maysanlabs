@@ -1,6 +1,7 @@
 "use server";
 
 import nodemailer from "nodemailer";
+import { escapeHtml, textForEmail, multilineHtml } from "@/lib/security/escape";
 
 export async function sendEmail(formData: FormData) {
   const honeypot = formData.get("website") as string;
@@ -46,7 +47,7 @@ export async function sendEmail(formData: FormData) {
       pass: process.env.SMTP_PASS,
     },
     tls: {
-      rejectUnauthorized: false,
+      rejectUnauthorized: process.env.SMTP_REJECT_UNAUTHORIZED !== "false",
       minVersion: "TLSv1.2",
     },
   });
@@ -65,15 +66,15 @@ export async function sendEmail(formData: FormData) {
         Contact: ${contact}
 
         Requirements:
-        ${requirements}
+        ${textForEmail(requirements)}
       `,
       html: `
         <h2>New Project Initialization Request</h2>
-        <p><strong>Company:</strong> ${companyName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Contact:</strong> ${contact}</p>
+        <p><strong>Company:</strong> ${escapeHtml(companyName)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Contact:</strong> ${escapeHtml(contact)}</p>
         <h3>Requirements:</h3>
-        <p style="white-space: pre-wrap;">${requirements}</p>
+        <p style="white-space: pre-wrap;">${multilineHtml(requirements)}</p>
       `,
     });
 
@@ -110,6 +111,6 @@ export async function sendEmail(formData: FormData) {
   } catch (error: unknown) {
     const errMsg = error instanceof Error ? error.message : String(error);
     console.error("Notification Error:", errMsg);
-    return { success: false, message: "Email delivery failed. Please contact us directly at business@maysanlabs.com", error: errMsg };
+    return { success: false, message: "Email delivery failed. Please contact us directly at business@maysanlabs.com" };
   }
 }
