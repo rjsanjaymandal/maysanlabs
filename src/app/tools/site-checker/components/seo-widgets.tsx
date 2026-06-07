@@ -51,11 +51,11 @@ export function HeadingsHierarchyMap({ h1Count, h2Count, title }: { h1Count: num
             <span className="text-[9px] text-[#10b981] font-bold uppercase tracking-wider block mb-1">Heading Telemetry</span>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <span className="text-xs text-white/40 font-medium">H1 Tags</span>
+                    <span className="text-xs text-foreground/40 font-medium">H1 Tags</span>
                 <p className={`text-xl font-bold font-mono ${h1Count === 1 ? "text-[#10b981]" : "text-amber-400"}`}>{h1Count}</p>
               </div>
               <div>
-                <span className="text-xs text-white/40 font-medium">H2 Tags</span>
+                <span className="text-xs text-foreground/40 font-medium">H2 Tags</span>
                 <p className="text-xl font-bold font-mono text-[#14b8a6]">{h2Count}</p>
               </div>
             </div>

@@ -521,7 +521,7 @@ export default function ImageCompressorClient() {
               <div className="inline-flex items-center gap-2.5 px-4 py-3 bg-white/[0.01] border border-white/[0.06] backdrop-blur-xl text-foreground/70 max-w-2xl mx-auto text-[11px] text-left leading-normal rounded-xl">
                 <ShieldCheck size={16} className="text-brand-primary shrink-0" />
                 <span>
-                  <strong className="text-white">Strict Privacy Architecture</strong>: Compression is 100% local. Your files are never uploaded to any server. Refreshing or closing this page instantly and permanently purges all active files from memory.
+                  <strong className="text-foreground">Strict Privacy Architecture</strong>: Compression is 100% local. Your files are never uploaded to any server. Refreshing or closing this page instantly and permanently purges all active files from memory.
                 </span>
               </div>
             </motion.div>
@@ -563,7 +563,7 @@ export default function ImageCompressorClient() {
                     <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center mx-auto mb-6 group-hover:scale-105 group-hover:border-brand-primary/30 transition-all duration-300">
                       <Upload size={24} className="text-foreground/50 group-hover:text-brand-primary transition-colors" />
                     </div>
-                    <h3 className="text-lg font-bold mb-2 group-hover:text-white transition-colors">
+                    <h3 className="text-lg font-bold mb-2 group-hover:text-foreground transition-colors">
                       Drag & Drop Images Here
                     </h3>
                     <p className="text-xs text-foreground/40 max-w-sm mx-auto leading-relaxed mb-4">
@@ -597,7 +597,7 @@ export default function ImageCompressorClient() {
                     <div className="text-center py-2 relative">
                       <div className="absolute right-0 top-1/4 bottom-1/4 w-[1px] bg-white/[0.08]" />
                       <p className="text-[10px] font-bold text-foreground/40 uppercase tracking-wider mb-1">Queue</p>
-                      <p className="text-2xl font-bold font-mono text-white">{files.length}</p>
+                      <p className="text-2xl font-bold font-mono text-foreground">{files.length}</p>
                     </div>
                     <div className="text-center py-2 relative">
                       <div className="absolute right-0 top-1/4 bottom-1/4 w-[1px] bg-white/[0.08]" />
@@ -616,7 +616,7 @@ export default function ImageCompressorClient() {
                     
                     <div className="flex items-center gap-2 mb-6">
                       <Settings size={16} className="text-brand-primary" />
-                      <h2 className="text-xs font-bold uppercase tracking-widest text-white">Global Compression Configuration</h2>
+                      <h2 className="text-xs font-bold uppercase tracking-widest text-foreground">Global Compression Configuration</h2>
                     </div>
 
                     <div className="space-y-6">
@@ -625,7 +625,7 @@ export default function ImageCompressorClient() {
                       <div>
                         <div className="flex items-center justify-between mb-2">
                           <label className="text-xs font-bold text-foreground/70 uppercase tracking-wider">Compression Quality</label>
-                          <span className="text-xs font-mono font-bold text-white bg-white/[0.05] border border-white/[0.08] px-2.5 py-0.5 rounded-md">
+                          <span className="text-xs font-mono font-bold text-foreground/90 bg-white/[0.05] border border-white/[0.08] px-2.5 py-0.5 rounded-md">
                             {Math.round(quality * 100)}%
                           </span>
                         </div>
@@ -684,7 +684,7 @@ export default function ImageCompressorClient() {
                     <div className="flex items-center justify-between mb-6">
                       <div className="flex items-center gap-2">
                         <Layers size={16} className="text-brand-primary" />
-                        <h2 className="text-xs font-bold uppercase tracking-widest text-white">Active Queue ({files.length})</h2>
+                        <h2 className="text-xs font-bold uppercase tracking-widest text-foreground">Active Queue ({files.length})</h2>
                       </div>
                       <div className="flex items-center gap-2">
                         {files.some(f => f.status === "idle") && (
@@ -699,7 +699,7 @@ export default function ImageCompressorClient() {
                         {files.every(f => f.status === "success") && (
                           <button
                             onClick={downloadAll}
-                            className="px-3.5 py-1.5 bg-white/[0.03] hover:bg-white/[0.08] text-white border border-white/[0.08] rounded-lg font-bold text-[10px] uppercase tracking-wider transition-all inline-flex items-center gap-1.5"
+                            className="px-3.5 py-1.5 bg-white/40 dark:bg-white/[0.03] hover:bg-white/60 dark:hover:bg-white/[0.08] text-foreground dark:text-white border border-gray-200 dark:border-white/[0.08] rounded-lg font-bold text-[10px] uppercase tracking-wider transition-all inline-flex items-center gap-1.5"
                           >
                             <FileDown size={11} />
                             Download All
@@ -747,7 +747,7 @@ export default function ImageCompressorClient() {
                                   />
                                 </div>
                                 <div className="overflow-hidden">
-                                  <p className="text-xs font-bold text-white truncate max-w-[150px] sm:max-w-[200px]">{fileObj.name}</p>
+                                  <p className="text-xs font-bold text-foreground/90 truncate max-w-[150px] sm:max-w-[200px]">{fileObj.name}</p>
                                   <div className="flex items-center gap-2 mt-0.5 text-[10px] text-foreground/40 font-mono">
                                     <span>{formatBytes(fileObj.originalSize)}</span>
                                     {fileObj.originalWidth && (
@@ -818,7 +818,7 @@ export default function ImageCompressorClient() {
 
                     {/* Drag Zone Fallback overlay */}
                     <div className="mt-4 pt-4 border-t border-white/[0.04] text-center">
-                      <label htmlFor="file-input-extra" className="text-[10px] text-foreground/50 hover:text-white cursor-pointer transition-colors">
+                      <label htmlFor="file-input-extra" className="text-[10px] text-foreground/50 hover:text-foreground cursor-pointer transition-colors">
                         + Add more files to queue
                       </label>
                       <input
@@ -839,7 +839,7 @@ export default function ImageCompressorClient() {
                     <div className="flex items-center gap-2 mb-6 justify-between">
                       <div className="flex items-center gap-2">
                         <Maximize2 size={16} className="text-brand-primary" />
-                        <h2 className="text-xs font-bold uppercase tracking-widest text-white">Visual Quality Audit</h2>
+                        <h2 className="text-xs font-bold uppercase tracking-widest text-foreground">Visual Quality Audit</h2>
                       </div>
                       {activeFile && activeFile.status === "idle" && (
                         <button
@@ -871,7 +871,7 @@ export default function ImageCompressorClient() {
                               className={`p-1.5 rounded-lg transition-all duration-200 ${
                                 comparisonMode === "slider"
                                   ? "bg-brand-primary text-white shadow-[0_0_10px_rgba(26,109,214,0.3)]"
-                                  : "text-foreground/50 hover:text-white hover:bg-white/[0.04]"
+                                  : "text-foreground/50 hover:text-foreground hover:bg-white/[0.04]"
                               }`}
                               aria-label="Slider Mode"
                             >
@@ -882,7 +882,7 @@ export default function ImageCompressorClient() {
                               className={`p-1.5 rounded-lg transition-all duration-200 ${
                                 comparisonMode === "side-by-side"
                                   ? "bg-brand-primary text-white shadow-[0_0_10px_rgba(26,109,214,0.3)]"
-                                  : "text-foreground/50 hover:text-white hover:bg-white/[0.04]"
+                                  : "text-foreground/50 hover:text-foreground hover:bg-white/[0.04]"
                               }`}
                               aria-label="Side by Side Mode"
                             >
@@ -893,7 +893,7 @@ export default function ImageCompressorClient() {
                               className={`p-1.5 rounded-lg transition-all duration-200 ${
                                 comparisonMode === "toggle"
                                   ? "bg-brand-primary text-white shadow-[0_0_10px_rgba(26,109,214,0.3)]"
-                                  : "text-foreground/50 hover:text-white hover:bg-white/[0.04]"
+                                  : "text-foreground/50 hover:text-foreground hover:bg-white/[0.04]"
                               }`}
                               aria-label="Quick Toggle Mode"
                             >
@@ -1038,11 +1038,11 @@ export default function ImageCompressorClient() {
                         <div className="bg-white/[0.02] border border-white/[0.06] rounded-2xl p-4 space-y-3 font-mono text-[11px]">
                           <div className="flex items-center justify-between text-foreground/50 border-b border-white/[0.04] pb-2">
                             <span>Filename</span>
-                            <span className="text-white truncate max-w-[200px]">{activeFile.name}</span>
+                            <span className="text-foreground truncate max-w-[200px]">{activeFile.name}</span>
                           </div>
                           <div className="flex items-center justify-between text-foreground/50 border-b border-white/[0.04] pb-2">
                             <span>Original Dimensions</span>
-                            <span className="text-white">
+                            <span className="text-foreground">
                               {activeFile.originalWidth ? `${activeFile.originalWidth}x${activeFile.originalHeight}px` : "Reading..."}
                             </span>
                           </div>
@@ -1051,7 +1051,7 @@ export default function ImageCompressorClient() {
                             <>
                               <div className="flex items-center justify-between text-foreground/50 border-b border-white/[0.04] pb-2">
                                 <span>Optimized Dimensions</span>
-                                <span className="text-white">
+                                <span className="text-foreground">
                                   {activeFile.compressedWidth}x{activeFile.compressedHeight}px
                                 </span>
                               </div>

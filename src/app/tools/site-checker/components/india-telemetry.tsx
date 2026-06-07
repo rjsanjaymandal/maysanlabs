@@ -58,7 +58,7 @@ export function IndianMarketTelemetryHub({ telemetry }: { telemetry: IndiaTeleme
           </div>
 
           <div className="md:col-span-6 bg-black/40 border border-white/[0.03] rounded-xl p-5 relative overflow-hidden flex flex-col justify-center min-h-[180px]">
-            <span className="text-[8px] text-white/20 font-mono absolute top-2 right-3">traceroute-telemetry.bin</span>
+            <span className="text-[8px] text-foreground/30 font-mono absolute top-2 right-3">traceroute-telemetry.bin</span>
             <div className="flex flex-col gap-6 justify-between h-full py-2">
               <div className="flex items-center gap-3 relative z-10 text-left">
                 <div className="w-7 h-7 rounded-full bg-[#10b981]/10 border border-[#10b981]/30 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(16,185,129,0.15)]">
@@ -86,7 +86,7 @@ export function IndianMarketTelemetryHub({ telemetry }: { telemetry: IndiaTeleme
               </div>
 
               <div className="flex items-center gap-3 relative z-10 text-left">
-                <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${telemetry.isCdn ? "bg-[#1A6DD6]/10 border border-[#1A6DD6]/30 text-[#1A6DD6] shadow-[0_0_15px_rgba(26,109,214,0.15)]" : "bg-white/[0.02] border border-white/10 text-white/35"}`}>
+                <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 ${telemetry.isCdn ? "bg-[#1A6DD6]/10 border border-[#1A6DD6]/30 text-[#1A6DD6] shadow-[0_0_15px_rgba(26,109,214,0.15)]" : "bg-white/[0.02] border border-white/10 text-foreground/40"}`}>
                   {telemetry.isCdn ? <Zap size={11} className="animate-pulse" /> : <Server size={11} />}
                 </div>
                 <div>

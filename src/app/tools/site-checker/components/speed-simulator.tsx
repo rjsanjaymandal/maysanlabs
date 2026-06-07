@@ -61,7 +61,7 @@ export function SpeedSimulator({ lcp, fcp, ttfb }: { lcp: number; fcp: number; t
                 }`}>
                 <div className="flex items-center justify-between">
                   <span className={`text-xs font-bold font-mono ${step === idx ? "text-[#1A6DD6]" : "text-foreground/50"}`}>{s.label}</span>
-                  <span className="text-[9px] font-mono text-white/30">Step {idx + 1}</span>
+                    <span className="text-[9px] font-mono text-foreground/30">Step {idx + 1}</span>
                 </div>
                 <p className="text-xs text-foreground/45 mt-1 leading-relaxed">{s.desc}</p>
               </div>
@@ -69,7 +69,7 @@ export function SpeedSimulator({ lcp, fcp, ttfb }: { lcp: number; fcp: number; t
           </div>
 
           <div className="space-y-2 pt-2">
-            <div className="flex justify-between text-[10px] text-white/35 font-mono">
+            <div className="flex justify-between text-[10px] text-foreground/30 font-mono">
               <span>Start</span>
               <span>Interactive ({lcp.toFixed(1)}s)</span>
             </div>

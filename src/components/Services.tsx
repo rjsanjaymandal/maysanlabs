@@ -168,7 +168,7 @@ export default function Services() {
                     <service.icon size={18} />
                   </div>
                   
-                  <h3 className="text-base font-medium text-gray-50 mb-2 group-hover:text-blue-400 transition-colors">
+                  <h3 className="text-base font-medium text-foreground mb-2 group-hover:text-blue-400 transition-colors">
                     {service.title}
                   </h3>
                   <p className="text-foreground/60 text-sm mb-4 leading-relaxed">

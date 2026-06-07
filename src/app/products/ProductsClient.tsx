@@ -123,7 +123,7 @@ export default function ProductsClient() {
             <span className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] text-[#1A6DD6] uppercase mb-3 block">
               Innovation Pipeline
             </span>
-            <h2 className="text-2xl sm:text-3xl font-semibold text-gray-50 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-foreground tracking-tight">
               In Active Development
             </h2>
             <p className="text-gray-400 text-sm mt-3">
@@ -168,7 +168,7 @@ export default function ProductsClient() {
 
           {/* CTA Section */}
           <div className="mt-20 text-center py-12 border-t border-white/[0.06]">
-            <h3 className="text-2xl md:text-3xl font-semibold text-gray-50 mb-4">Need something custom?</h3>
+            <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">Need something custom?</h3>
             <p className="text-gray-400 mb-8 max-w-lg mx-auto">We also build tailored solutions for unique business requirements.</p>
             <Link href="/start" className="inline-flex items-center gap-2 px-8 py-4 bg-brand-primary text-white rounded-full font-semibold hover:bg-brand-primary/90 transition-colors">
               <span>Talk to us</span>
