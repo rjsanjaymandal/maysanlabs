@@ -138,7 +138,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
               <button
                 onClick={onClose}
                 aria-label="Close search"
-                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-slate-500 dark:text-foreground/50 transition-colors hover:bg-slate-100 dark:hover:bg-white/10 hover:text-slate-800 dark:hover:text-foreground"
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-slate-600 dark:text-foreground/50 transition-colors hover:bg-slate-100 dark:hover:bg-white/10 hover:text-slate-800 dark:hover:text-foreground"
               >
                 <X size={14} />
               </button>
@@ -170,7 +170,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="rounded-full border border-slate-200 dark:border-white/5 bg-slate-100 dark:bg-white/[0.03] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-foreground/30">
+                          <span className="rounded-full border border-slate-200 dark:border-white/5 bg-slate-100 dark:bg-white/[0.03] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-slate-600 dark:text-foreground/30">
                             {item.category}
                           </span>
                           <ArrowRight

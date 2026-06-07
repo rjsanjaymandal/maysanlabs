@@ -85,7 +85,7 @@ export default function BrandShowroom() {
             </div>
 
             {/* Viewport content */}
-            <div className="relative min-h-[380px] sm:min-h-[420px] md:min-h-0 md:aspect-[21/9] w-full overflow-hidden bg-black/45 backdrop-blur-md flex flex-col justify-between select-none">
+            <div className="relative min-h-[380px] sm:min-h-[420px] md:min-h-0 md:aspect-[21/9] w-full overflow-hidden bg-[#0A0F1A] dark:bg-black/45 backdrop-blur-md flex flex-col justify-between select-none">
               <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/[0.04] via-transparent to-blue-500/[0.02] z-0 pointer-events-none" />
               
               {activeTab === "identity" ? (
@@ -98,7 +98,7 @@ export default function BrandShowroom() {
                   className="w-full h-full relative z-10 flex flex-col p-4 sm:p-6 justify-between flex-grow"
                 >
                   {/* Top status bar */}
-                  <div className="flex items-center justify-between border-b border-white/5 pb-4">
+                  <div className="flex items-center justify-between border-b border-white/10 dark:border-white/5 pb-4">
                     <span className="text-[10px] text-white/40 uppercase tracking-widest font-semibold font-mono">
                       [DESIGN STANDARD] EST. 2026
                     </span>
@@ -120,7 +120,7 @@ export default function BrandShowroom() {
                     </div>
                     
                     {/* Right Column: Premium Color & Layout specs */}
-                    <div className="border-l border-white/5 pl-6 space-y-4 font-mono">
+                    <div className="border-l border-white/10 dark:border-white/5 pl-6 space-y-4 font-mono">
                       <div className="space-y-1">
                         <span className="text-[8px] text-brand-primary uppercase tracking-wider block">01 / BRAND COLOR CANVAS</span>
                         <div className="flex items-center gap-2">
@@ -145,7 +145,7 @@ export default function BrandShowroom() {
                   </div>
 
                   {/* Bottom Status bar */}
-                  <div className="flex items-center justify-between border-t border-white/5 pt-4 text-[9px] font-mono text-white/30 uppercase tracking-widest">
+                  <div className="flex items-center justify-between border-t border-white/10 dark:border-white/5 pt-4 text-[9px] font-mono text-white/30 uppercase tracking-widest">
                     <span>MAYSAN IDENTITY REGISTER v1.0</span>
                     <span className="text-brand-primary font-bold">VERIFIED</span>
                   </div>
@@ -160,9 +160,9 @@ export default function BrandShowroom() {
                   className="w-full h-full relative z-10 flex flex-col p-4 sm:p-6 justify-between flex-grow"
                 >
                   {/* Top status bar */}
-                  <div className="flex items-center justify-between border-b border-white/5 pb-4">
-                    <span className="text-[10px] text-white/40 uppercase tracking-widest font-semibold font-mono">
-                      [STRATEGIC PRINCIPLES]
+                    <div className="flex items-center justify-between border-b border-white/10 dark:border-white/5 pb-4">
+                      <span className="text-[10px] text-white/40 uppercase tracking-widest font-semibold font-mono">
+                        [STRATEGIC PRINCIPLES]
                     </span>
                     <span className="text-[10px] text-brand-primary uppercase tracking-widest font-bold font-mono">
                       03 / THREE EXECUTION PILLARS
@@ -172,7 +172,7 @@ export default function BrandShowroom() {
                   {/* Three strategic Columns Cards */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-auto py-6 text-left">
                     {/* Pillar 1: Speed */}
-                    <div className="bg-white/[0.01] border border-white/5 rounded-2xl p-6 flex flex-col justify-between min-h-[140px] hover:border-brand-primary/20 transition-all duration-300">
+                    <div className="bg-white/[0.03] dark:bg-white/[0.01] border border-white/10 dark:border-white/5 rounded-2xl p-6 flex flex-col justify-between min-h-[140px] hover:border-brand-primary/20 transition-all duration-300">
                       <div className="text-[10px] font-mono text-white/30 font-bold tracking-wider mb-2">
                         [01] SPEED
                       </div>
@@ -183,7 +183,7 @@ export default function BrandShowroom() {
                     </div>
 
                     {/* Pillar 2: Scale */}
-                    <div className="bg-white/[0.01] border border-white/5 rounded-2xl p-6 flex flex-col justify-between min-h-[140px] hover:border-brand-primary/20 transition-all duration-300">
+                    <div className="bg-white/[0.03] dark:bg-white/[0.01] border border-white/10 dark:border-white/5 rounded-2xl p-6 flex flex-col justify-between min-h-[140px] hover:border-brand-primary/20 transition-all duration-300">
                       <div className="text-[10px] font-mono text-white/30 font-bold tracking-wider mb-2">
                         [02] SCALE
                       </div>
@@ -194,7 +194,7 @@ export default function BrandShowroom() {
                     </div>
 
                     {/* Pillar 3: Security */}
-                    <div className="bg-white/[0.01] border border-white/5 rounded-2xl p-6 flex flex-col justify-between min-h-[140px] hover:border-brand-primary/20 transition-all duration-300">
+                    <div className="bg-white/[0.03] dark:bg-white/[0.01] border border-white/10 dark:border-white/5 rounded-2xl p-6 flex flex-col justify-between min-h-[140px] hover:border-brand-primary/20 transition-all duration-300">
                       <div className="text-[10px] font-mono text-white/30 font-bold tracking-wider mb-2">
                         [03] STABILITY
                       </div>
@@ -206,7 +206,7 @@ export default function BrandShowroom() {
                   </div>
 
                   {/* Bottom Status bar */}
-                  <div className="flex items-center justify-between border-t border-white/5 pt-4 text-[9px] font-mono text-white/30 uppercase tracking-widest">
+                  <div className="flex items-center justify-between border-t border-white/10 dark:border-white/5 pt-4 text-[9px] font-mono text-white/30 uppercase tracking-widest">
                     <span>MAYSAN STRATEGY MATRIX v1.0</span>
                     <span className="text-brand-primary font-bold">SECURE</span>
                   </div>
@@ -218,23 +218,23 @@ export default function BrandShowroom() {
             </div>
 
             {/* Console Dashboard Footer */}
-            <div className="p-6 bg-white/[0.01] border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+            <div className="p-6 bg-[#0A0F1A]/85 dark:bg-white/[0.01] border-t border-white/10 dark:border-white/5 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
               {activeTab === "identity" ? (
                 <>
                   <div className="flex flex-col gap-1.5">
                     <span className="text-[10px] text-brand-primary font-bold uppercase tracking-wider">Brand Name</span>
                     <h3 className="text-base font-bold text-white">MAYSAN LABS</h3>
-                    <p className="text-white/40 text-xs leading-relaxed">The high-contrast design system reflecting zero-latency enterprise solutions.</p>
+                    <p className="text-white/50 dark:text-white/40 text-xs leading-relaxed">The high-contrast design system reflecting zero-latency enterprise solutions.</p>
                   </div>
                   <div className="flex flex-col gap-1.5 border-y md:border-y-0 md:border-x border-white/5 py-4 md:py-0 md:px-6">
                     <span className="text-[10px] text-brand-primary font-bold uppercase tracking-wider">Corporate Motto</span>
                     <h3 className="text-base font-bold text-white">BUILD • SCALE • GROW</h3>
-                    <p className="text-white/40 text-xs leading-relaxed">A unified three-phase engineering standard applied to all customer products.</p>
+                    <p className="text-white/50 dark:text-white/40 text-xs leading-relaxed">A unified three-phase engineering standard applied to all customer products.</p>
                   </div>
                   <div className="flex flex-col gap-1.5 md:pl-6">
                     <span className="text-[10px] text-brand-primary font-bold uppercase tracking-wider">Core Standard</span>
                     <h3 className="text-base font-bold text-white">Engineering First</h3>
-                    <p className="text-white/40 text-xs leading-relaxed">Focused on clean TypeScript architecture, high concurrency, and uptime.</p>
+                    <p className="text-white/50 dark:text-white/40 text-xs leading-relaxed">Focused on clean TypeScript architecture, high concurrency, and uptime.</p>
                   </div>
                 </>
               ) : (
@@ -242,17 +242,17 @@ export default function BrandShowroom() {
                   <div className="flex flex-col gap-1.5">
                     <span className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">Pillar 01</span>
                     <h3 className="text-base font-bold text-white">Custom Solutions</h3>
-                     <p className="text-white/40 text-xs leading-relaxed">Precision-built React, Next.js, and Node.js architectures tailored to your business model.</p>
+                     <p className="text-white/50 dark:text-white/40 text-xs leading-relaxed">Precision-built React, Next.js, and Node.js architectures tailored to your business model.</p>
                    </div>
                    <div className="flex flex-col gap-1.5 border-y md:border-y-0 md:border-x border-white/5 py-4 md:py-0 md:px-6">
                      <span className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">Pillar 02</span>
                      <h3 className="text-base font-bold text-white">Scalable Growth</h3>
-                     <p className="text-white/40 text-xs leading-relaxed">High-performance structures configured to handle heavy, rapid user growth with zero bottlenecks.</p>
+                     <p className="text-white/50 dark:text-white/40 text-xs leading-relaxed">High-performance structures configured to handle heavy, rapid user growth with zero bottlenecks.</p>
                    </div>
                    <div className="flex flex-col gap-1.5 md:pl-6">
                      <span className="text-[10px] text-blue-400 font-bold uppercase tracking-wider">Pillar 03</span>
-                     <h3 className="text-base font-bold text-white">Cloud & DevOps</h3>
-                    <p className="text-white/40 text-xs leading-relaxed">Autonomous deployment pipelines, secure AWS frameworks, and persistent container management.</p>
+                    <h3 className="text-base font-bold text-white">Cloud & DevOps</h3>
+                     <p className="text-white/50 dark:text-white/40 text-xs leading-relaxed">Autonomous deployment pipelines, secure AWS frameworks, and persistent container management.</p>
                   </div>
                 </>
               )}

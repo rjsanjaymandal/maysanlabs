@@ -15,7 +15,7 @@ import Link from "next/link";
 // PILLAR 1: BUILD — SIMPLE LAYERED VISUAL
 // ==========================================
 const BuildCanvas = () => (
-  <div className="relative w-full h-[180px] rounded-lg bg-slate-900/50 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] overflow-hidden">
+  <div className="relative w-full h-[180px] rounded-lg bg-slate-950/70 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] overflow-hidden">
     <div className="absolute inset-0 bg-[linear-gradient(rgba(26,109,214,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(26,109,214,0.03)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-40" />
     <div className="relative z-10 flex flex-col justify-center h-full gap-2.5 px-4">
       <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-white/[0.06]">
@@ -38,7 +38,7 @@ const BuildCanvas = () => (
 // PILLAR 2: SCALE — SIMPLE NODE VISUAL
 // ==========================================
 const ScaleCanvas = () => (
-  <div className="relative w-full h-[180px] rounded-lg bg-slate-900/50 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] overflow-hidden">
+  <div className="relative w-full h-[180px] rounded-lg bg-slate-950/70 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] overflow-hidden">
     <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-40" />
     <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 200 140" preserveAspectRatio="xMidYMid meet">
       <polygon points="100,25 30,110 170,110" stroke="rgba(16,185,129,0.15)" strokeWidth="1.5" fill="none" strokeDasharray="4 3" />
@@ -46,15 +46,15 @@ const ScaleCanvas = () => (
     <div className="absolute inset-0">
       <div className="absolute top-[18px] left-1/2 -translate-x-1/2 flex flex-col items-center">
         <div className="w-7 h-7 rounded-full bg-emerald-500/10 border border-emerald-400/30" />
-        <span className="text-[9px] font-bold text-slate-400 dark:text-slate-500 mt-1">Smart Traffic</span>
+        <span className="text-[9px] font-bold text-slate-200 dark:text-slate-400 mt-1">Smart Traffic</span>
       </div>
       <div className="absolute bottom-5 left-[15%] flex flex-col items-center">
         <div className="w-7 h-7 rounded-full bg-emerald-500/10 border border-emerald-400/30" />
-        <span className="text-[9px] font-bold text-slate-400 dark:text-slate-500 mt-1">Fast Worldwide</span>
+        <span className="text-[9px] font-bold text-slate-200 dark:text-slate-400 mt-1">Fast Worldwide</span>
       </div>
       <div className="absolute bottom-5 right-[15%] flex flex-col items-center">
         <div className="w-7 h-7 rounded-full bg-emerald-500/10 border border-emerald-400/30" />
-        <span className="text-[9px] font-bold text-slate-400 dark:text-slate-500 mt-1">Secure Backups</span>
+        <span className="text-[9px] font-bold text-slate-200 dark:text-slate-400 mt-1">Secure Backups</span>
       </div>
     </div>
   </div>
@@ -64,7 +64,7 @@ const ScaleCanvas = () => (
 // PILLAR 3: GROW — SIMPLE BAR CHART VISUAL
 // ==========================================
 const GrowCanvas = () => (
-  <div className="relative w-full h-[180px] rounded-lg bg-slate-900/50 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] overflow-hidden">
+  <div className="relative w-full h-[180px] rounded-lg bg-slate-950/70 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] overflow-hidden">
     <div className="absolute inset-0 bg-[linear-gradient(rgba(249,115,22,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(249,115,22,0.03)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-40" />
     <div className="relative z-10 flex items-end justify-center h-full gap-3 pb-8">
       <div className="w-10 h-[40%] rounded-t-lg bg-gradient-to-t from-orange-500/20 to-orange-400/10 border border-orange-500/10" />
@@ -72,9 +72,9 @@ const GrowCanvas = () => (
       <div className="w-10 h-[90%] rounded-t-lg bg-gradient-to-t from-orange-500/40 to-orange-400/20 border border-orange-500/20" />
     </div>
     <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-3">
-      <span className="text-[8px] text-slate-400 dark:text-slate-500 w-10 text-center font-medium">Start</span>
-      <span className="text-[8px] text-slate-400 dark:text-slate-500 w-10 text-center font-medium">Growth</span>
-      <span className="text-[8px] text-slate-400 dark:text-slate-500 w-10 text-center font-medium">Scale</span>
+      <span className="text-[8px] text-slate-200 dark:text-slate-400 w-10 text-center font-medium">Start</span>
+      <span className="text-[8px] text-slate-200 dark:text-slate-400 w-10 text-center font-medium">Growth</span>
+      <span className="text-[8px] text-slate-200 dark:text-slate-400 w-10 text-center font-medium">Scale</span>
     </div>
   </div>
 );
