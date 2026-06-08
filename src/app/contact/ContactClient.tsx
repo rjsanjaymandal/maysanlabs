@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, ArrowRight, CheckCircle, Send } from "lucide-react";
 import { sendEmail } from "@/app/actions/sendEmail";
 import { generateBreadcrumbSchema } from "@/lib/seo/helpers";
+import Navbar from "@/components/Navbar";
 
 const contactSchema = {
   "@context": "https://schema.org",
@@ -101,8 +102,7 @@ export default function ContactClient() {
         }) }} />
       </div>
 
-      {/* Navbar placeholder — the real Navbar renders from layout */}
-      <div className="h-20" />
+      <Navbar />
 
       {/* Hero */}
       <section className="pt-16 pb-16 relative">
