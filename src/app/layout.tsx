@@ -198,6 +198,8 @@ export default function RootLayout({
         {/* Preconnect to critical third-party origins for faster connection */}
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 
         {/* Preload critical above-the-fold assets */}
         <link rel="preload" as="image" href="/logo-rounded-v2.webp" />

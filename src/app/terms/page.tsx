@@ -1,23 +1,26 @@
 import type { Metadata } from "next";
 import { generateBreadcrumbSchema } from "@/lib/seo/helpers";
 
+const ogImage = (t: string, d?: string) =>
+  `/api/og?title=${encodeURIComponent(t.slice(0, 100))}${d ? `&description=${encodeURIComponent(d.slice(0, 160))}` : ""}`;
+
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "Maysan Labs Terms of Service — terms and conditions for using our website and services.",
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Terms of Service | Maysan Labs",
+    title: "Terms of Service",
     description: "Maysan Labs Terms of Service — terms and conditions for using our website and services.",
     url: "https://maysanlabs.com/terms",
     type: "website",
     siteName: "Maysan Labs",
-    images: [{ url: "/og-image.webp", width: 1200, height: 630 }],
+    images: [{ url: ogImage("Terms of Service | Maysan Labs", "Terms and conditions for using Maysan Labs website and services."), width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Terms of Service | Maysan Labs",
+    title: "Terms of Service",
     description: "Maysan Labs Terms of Service — terms and conditions for using our website and services.",
-    images: ["/og-image.webp"],
+    images: [ogImage("Terms of Service | Maysan Labs", "Terms and conditions for using Maysan Labs website and services.")],
   },
   alternates: {
     canonical: "https://maysanlabs.com/terms",

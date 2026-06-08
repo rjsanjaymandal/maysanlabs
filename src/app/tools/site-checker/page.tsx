@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import SiteCheckerClient from "./SiteCheckerClient";
 
 export const metadata: Metadata = generatePageSEO({
-  title: "Site Checker — Free Website Speed & SEO Tool | Maysan Labs",
+  title: "Site Checker — Free Website Speed & SEO Tool",
   description: "Check your website speed, SEO, and health in one click. Get a free audit of Core Web Vitals, Lighthouse scores, meta tags, and broken links.",
   path: "/tools/site-checker",
   keywords: ["site checker", "website health checker", "Core Web Vitals test", "page speed test", "sitemap analyzer", "broken link checker", "meta tags scanner", "schema markup checker", "free SEO tool", "technical SEO audit"]

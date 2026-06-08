@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { Search, X, ArrowRight } from "lucide-react";
+import { blogPosts } from "@/lib/blog-data";
+import { caseStudies } from "@/lib/case-studies-data";
 
 interface SearchItem {
   title: string;
@@ -18,16 +20,26 @@ interface SearchModalProps {
   onClose: () => void;
 }
 
-const searchableItems: SearchItem[] = [
+const staticItems: SearchItem[] = [
   { title: "Services", description: "Custom software development services", url: "/services", category: "page" },
   { title: "Products", description: "Our SaaS products", url: "/products", category: "page" },
   { title: "Case Studies", description: "Client success stories", url: "/case-studies", category: "page" },
   { title: "Blog", description: "Technical insights and articles", url: "/blog", category: "page" },
+  { title: "Insights", description: "Live dashboard with latest posts and trends", url: "/insights", category: "page" },
   { title: "Careers", description: "Join our team", url: "/careers", category: "page" },
   { title: "Architecture", description: "Our technical approach", url: "/architecture", category: "page" },
   { title: "About", description: "About Maysan Labs", url: "/about", category: "page" },
   { title: "Pricing", description: "Pricing plans", url: "/pricing", category: "page" },
-  { title: "Init", description: "Start a project", url: "/start", category: "cta" },
+  { title: "Contact", description: "Get in touch with our team", url: "/contact", category: "page" },
+  { title: "Privacy Policy", description: "How we handle your data", url: "/privacy", category: "page" },
+  { title: "Terms of Service", description: "Terms and conditions", url: "/terms", category: "page" },
+  { title: "Start a Project", description: "Kick off your next project with us", url: "/start", category: "cta" },
+  { title: "Site Checker", description: "Free website SEO & performance audit tool", url: "/tools/site-checker", category: "tool" },
+  { title: "Image Compressor", description: "Shrink PNG, JPEG, and WebP files in-browser", url: "/tools/image-compressor", category: "tool" },
+  { title: "App Cost Estimator", description: "Estimate custom software development costs", url: "/tools/scope-estimator", category: "tool" },
+  { title: "Profit Calculator", description: "Calculate headless CMS ROI for your business", url: "/tools/headless-roi", category: "tool" },
+  { title: "Policy Generator", description: "Create privacy policy and terms of service pages", url: "/tools/privacy-generator", category: "tool" },
+  { title: "Link Preview Maker", description: "Design how your site looks when shared on social media", url: "/tools/og-generator", category: "tool" },
 ];
 
 export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
@@ -35,18 +47,34 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const allItems = useMemo<SearchItem[]>(() => [
+    ...staticItems,
+    ...blogPosts.map((post) => ({
+      title: post.title,
+      description: post.excerpt,
+      url: `/blog/${post.slug}`,
+      category: "blog",
+    })),
+    ...caseStudies.map((study) => ({
+      title: study.title,
+      description: `${study.client} — ${study.challenge.slice(0, 120)}`,
+      url: `/case-studies/${study.slug}`,
+      category: "case-study",
+    })),
+  ], []);
+
   const fuse = useMemo(
     () =>
-      new Fuse(searchableItems, {
+      new Fuse(allItems, {
         keys: ["title", "description", "category"],
         threshold: 0.4,
         includeScore: true,
       }),
-    [],
+    [allItems],
   );
 
   const results = useMemo(() => {
-    if (!query.trim()) return searchableItems;
+    if (!query.trim()) return allItems;
     return fuse.search(query).map((r) => r.item);
   }, [query, fuse]);
 
@@ -105,9 +133,6 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           <div
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={onClose}
-            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClose(); } }}
-            role="button"
-            tabIndex={-1}
             aria-label="Close search"
           />
 
@@ -131,8 +156,8 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search pages..."
-                aria-label="Search pages"
+                placeholder="Search pages, blog posts, tools..."
+                aria-label="Search pages, blog posts, tools"
                 className="flex-1 bg-transparent text-sm text-slate-800 dark:text-foreground placeholder-slate-400 dark:placeholder-foreground/30 outline-none"
               />
               <button
@@ -170,8 +195,12 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="rounded-full border border-slate-200 dark:border-white/5 bg-slate-100 dark:bg-white/[0.03] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-slate-600 dark:text-foreground/30">
-                            {item.category}
+                          <span className="rounded-full border border-slate-200 dark:border-white/5 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest bg-slate-100 dark:bg-white/[0.03] text-slate-600 dark:text-foreground/30">
+                            {item.category === "blog" ? "article" :
+                             item.category === "case-study" ? "case study" :
+                             item.category === "tool" ? "tool" :
+                             item.category === "cta" ? "action" :
+                             "page"}
                           </span>
                           <ArrowRight
                             size={14}

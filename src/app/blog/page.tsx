@@ -9,8 +9,11 @@ import { generateBreadcrumbSchema } from "@/lib/seo/helpers";
 
 export const revalidate = 3600;
 
+const ogImage = (t: string, d?: string) =>
+  `/api/og?title=${encodeURIComponent(t.slice(0, 100))}${d ? `&description=${encodeURIComponent(d.slice(0, 160))}` : ""}`;
+
 export const metadata: Metadata = {
-  title: "Blog | Business Growth & Digital Strategy | Maysan Labs",
+  title: "Blog | Business Growth & Digital Strategy",
   description: "Practical insights on custom software, digital transformation, and business growth from Maysan Labs. Learn how modern technology helps businesses of all sizes compete and win.",
   keywords: ["Maysan Labs blog", "business technology", "digital transformation", "custom software insights", "SME technology", "business growth strategy"],
   openGraph: {
@@ -18,7 +21,7 @@ export const metadata: Metadata = {
     description: "Practical insights on custom software, digital transformation, and business growth.",
     url: "https://maysanlabs.com/blog",
     type: "website",
-    images: [{ url: "/og-image.webp", width: 1200, height: 630, alt: "Maysan Labs Blog" }],
+    images: [{ url: ogImage("Maysan Labs Blog", "Practical insights on custom software, digital transformation, and business growth."), width: 1200, height: 630, alt: "Maysan Labs Blog" }],
   },
   alternates: { 
     canonical: "https://maysanlabs.com/blog",

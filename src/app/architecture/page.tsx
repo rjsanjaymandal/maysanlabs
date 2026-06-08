@@ -3,7 +3,7 @@ import ArchitectureClient from "./ArchitectureClient";
 import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
 
 export const metadata: Metadata = generatePageSEO({
-  title: "Cloud Architecture | Enterprise Infrastructure | Maysan Labs",
+  title: "Cloud Architecture | Enterprise Infrastructure",
   description: "Maysan Labs designs highly available, distributed cloud architecture for enterprise SaaS products. AWS, Azure, GCP, Kubernetes, microservices, and scalable infrastructure.",
   path: "/architecture",
   keywords: [

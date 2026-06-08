@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
 
 export const metadata: Metadata = generatePageSEO({
-  title: "About Us | Maysan Labs - Enterprise SaaS Development Company",
+  title: "About Us - Enterprise SaaS Development Company",
   description: "Learn about Maysan Labs - a leading enterprise SaaS development company. Our team of experts builds scalable web applications, cloud infrastructure, and custom software solutions for global enterprises.",
   path: "/about",
   keywords: [

@@ -40,7 +40,14 @@ interface ProductInfo {
 /**
  * Generate SEO metadata for blog posts
  */
+function ogImageUrl(title: string, description?: string): string {
+  const t = encodeURIComponent(title.slice(0, 100));
+  const d = description ? encodeURIComponent(description.slice(0, 160)) : "";
+  return `/api/og?title=${t}${d ? `&description=${d}` : ""}`;
+}
+
 export function generateBlogPostSEO(post: BlogPost, siteUrl: string): Metadata {
+  const og = ogImageUrl(post.title, post.excerpt);
   return {
     title: `${post.title} | Maysan Labs Blog`,
     description: post.excerpt,
@@ -63,7 +70,7 @@ export function generateBlogPostSEO(post: BlogPost, siteUrl: string): Metadata {
       section: post.category,
       images: [
         {
-          url: `/og-image.webp`,
+          url: og,
           width: 1200,
           height: 630,
           alt: post.title
@@ -74,7 +81,7 @@ export function generateBlogPostSEO(post: BlogPost, siteUrl: string): Metadata {
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
-      images: [`/og-image.webp`]
+      images: [og]
     },
     alternates: {
       canonical: `${siteUrl}/blog/${post.slug}`
@@ -147,6 +154,7 @@ export function generateBlogPostJSONLD(post: BlogPost, siteUrl: string) {
  * Generate SEO metadata for case studies
  */
 export function generateCaseStudySEO(study: CaseStudy, siteUrl: string): Metadata {
+  const og = ogImageUrl(study.title, study.excerpt);
   return {
     title: `${study.title} | Maysan Labs Case Studies`,
     description: study.excerpt,
@@ -165,7 +173,7 @@ export function generateCaseStudySEO(study: CaseStudy, siteUrl: string): Metadat
       publishedTime: typeof study.date === 'string' ? study.date : undefined,
       images: [
         {
-          url: `/og-image.webp`,
+          url: og,
           width: 1200,
           height: 630,
           alt: study.title
@@ -176,7 +184,7 @@ export function generateCaseStudySEO(study: CaseStudy, siteUrl: string): Metadat
       card: "summary_large_image",
       title: study.title,
       description: study.excerpt,
-      images: [`/og-image.webp`]
+      images: [og]
     },
     alternates: {
       canonical: `${siteUrl}/case-studies/${study.slug}`
@@ -228,6 +236,7 @@ export function generateCaseStudyJSONLD(study: CaseStudy, siteUrl: string) {
  */
 export function generateProductSEO(product: ProductInfo, _siteUrl: string): Metadata {
   void _siteUrl;
+  const og = ogImageUrl(product.name, product.description);
 
   return {
     title: `${product.name} | Maysan Labs Products`,
@@ -246,7 +255,7 @@ export function generateProductSEO(product: ProductInfo, _siteUrl: string): Meta
       type: "website",
       images: [
         {
-          url: `/og-image.webp`,
+          url: og,
           width: 1200,
           height: 630,
           alt: product.name
@@ -257,7 +266,7 @@ export function generateProductSEO(product: ProductInfo, _siteUrl: string): Meta
       card: "summary_large_image",
       title: product.name,
       description: product.description,
-      images: [`/og-image.webp`]
+      images: [og]
     },
     alternates: {
       canonical: product.url
@@ -332,11 +341,12 @@ export function generatePageSEO({
   description,
   path,
   keywords = [],
-  image = "/og-image.webp",
+  image,
   siteUrl = "https://maysanlabs.com"
 }: PageSEOProps): Metadata {
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
   const fullUrl = cleanPath === "/" ? siteUrl : `${siteUrl}${cleanPath}`;
+  const ogImg = image || ogImageUrl(title, description);
   
   const baseKeywords = [
     "maysanlabs",
@@ -437,7 +447,7 @@ export function generatePageSEO({
       description,
       images: [
         {
-          url: image,
+          url: ogImg,
           width: 1200,
           height: 630,
           alt: title
@@ -448,7 +458,7 @@ export function generatePageSEO({
       card: "summary_large_image",
       title: title,
       description,
-      images: [image],
+      images: [ogImg],
       creator: "@maysanlabs",
       site: "@maysanlabs"
     },

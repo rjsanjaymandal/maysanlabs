@@ -32,6 +32,7 @@ const ROUTE_CONFIG: Record<string, { priority: number; changeFrequency: Metadata
   '/tools/scope-estimator': { priority: 0.7, changeFrequency: 'weekly' },
   '/tools/privacy-generator': { priority: 0.6, changeFrequency: 'monthly' },
   '/tools/og-generator': { priority: 0.6, changeFrequency: 'monthly' },
+  '/tools/image-compressor': { priority: 0.6, changeFrequency: 'monthly' },
 }
 
 const DEFAULT_CONFIG = { priority: 0.6, changeFrequency: 'monthly' as const }

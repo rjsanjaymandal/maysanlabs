@@ -3,7 +3,7 @@ import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
 import PricingClient from "./PricingClient";
 
 export const metadata: Metadata = generatePageSEO({
-  title: "Pricing | Maysan Labs - SaaS Development Packages & Plans",
+  title: "Pricing - SaaS Development Packages & Plans",
   description: "Explore Maysan Labs pricing plans: Starter (₹2,50,000/mo), Growth (₹5,00,000/mo), and Enterprise (₹12,00,000/mo). Transparent pricing for SaaS, web, and custom software development.",
   path: "/pricing",
   keywords: [

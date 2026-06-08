@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ShieldAlert, FileImage, LayoutGrid, ArrowRight, Search, Sparkles, Wrench } from "lucide-react";
+import { ShieldAlert, FileImage, LayoutGrid, ArrowRight, Search, Sparkles, Wrench, BadgePercent, FileText, Share2 } from "lucide-react";
 
 const tools = [
   {
@@ -31,6 +31,30 @@ const tools = [
     gradient: "from-rose-500 to-pink-400",
     badge: "Cost Finder",
   },
+  {
+    icon: BadgePercent,
+    title: "Profit Calculator",
+    desc: "See how much more your store could earn with a faster site.",
+    href: "/tools/headless-roi",
+    gradient: "from-amber-500 to-orange-400",
+    badge: "Profit Check",
+  },
+  {
+    icon: FileText,
+    title: "Policy Generator",
+    desc: "Create privacy policy & terms for your website in seconds.",
+    href: "/tools/privacy-generator",
+    gradient: "from-emerald-500 to-teal-400",
+    badge: "Legal Docs",
+  },
+  {
+    icon: Share2,
+    title: "Link Preview Maker",
+    desc: "Design how your website looks when shared on social media.",
+    href: "/tools/og-generator",
+    gradient: "from-cyan-500 to-blue-400",
+    badge: "Link Preview",
+  },
 ];
 
 export default function ToolsShowcase() {
@@ -44,6 +68,10 @@ export default function ToolsShowcase() {
       router.push(`/tools/site-checker?url=${encodeURIComponent(cleanUrl)}`);
     }
   };
+
+  const heroTool = tools[0];
+  const sideTools = tools.slice(1, 3);
+  const bottomTools = tools.slice(3, 6);
 
   return (
     <section className="py-16 md:py-24 relative overflow-hidden bg-background">
@@ -79,7 +107,6 @@ export default function ToolsShowcase() {
           >
             <div className="absolute -inset-px bg-gradient-to-br from-emerald-500/20 via-teal-500/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500" />
             <div className="relative bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl backdrop-blur-sm shadow-sm p-6 md:p-8 h-full">
-              {/* Glow accent */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-emerald-500/10 to-teal-400/5 blur-2xl pointer-events-none" />
 
               <div className="flex items-center justify-between mb-5">
@@ -138,9 +165,9 @@ export default function ToolsShowcase() {
             </div>
           </motion.div>
 
-          {/* Side cards column */}
+          {/* Side cards */}
           <div className="flex flex-col gap-6">
-            {[tools[1], tools[2]].map((tool, idx) => {
+            {sideTools.map((tool, idx) => {
               const Icon = tool.icon;
               return (
                 <motion.div
@@ -153,7 +180,7 @@ export default function ToolsShowcase() {
                 >
                   <div className="relative bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl backdrop-blur-sm shadow-sm p-5 h-full hover:-translate-y-0.5 transition-transform duration-300">
                     <div className="flex items-center justify-between mb-3">
-                      <div className={`w-9 h-9 rounded-lg bg-brand-primary/10 flex items-center justify-center`}>
+                      <div className="w-9 h-9 rounded-lg bg-brand-primary/10 flex items-center justify-center">
                         <Icon size={16} className="text-brand-primary" />
                       </div>
                       <span className="text-[9px] font-semibold text-foreground/40 bg-foreground/5 px-2 py-0.5 rounded-full">
@@ -176,6 +203,50 @@ export default function ToolsShowcase() {
             })}
           </div>
         </div>
+
+        {/* Bottom row — remaining 3 tools */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-6"
+        >
+          {bottomTools.map((tool, idx) => {
+            const Icon = tool.icon;
+            return (
+              <motion.div
+                key={tool.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 + idx * 0.08 }}
+                className="relative group"
+              >
+                <div className="relative bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl backdrop-blur-sm shadow-sm p-5 h-full hover:-translate-y-0.5 transition-transform duration-300">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="w-9 h-9 rounded-lg bg-brand-primary/10 flex items-center justify-center">
+                      <Icon size={16} className="text-brand-primary" />
+                    </div>
+                    <span className="text-[9px] font-semibold text-foreground/40 bg-foreground/5 px-2 py-0.5 rounded-full">
+                      {tool.badge}
+                    </span>
+                  </div>
+
+                  <h3 className="text-sm font-bold text-foreground mb-1">{tool.title}</h3>
+                  <p className="text-xs text-foreground/60 mb-4 leading-relaxed">{tool.desc}</p>
+
+                  <Link
+                    href={tool.href}
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-brand-primary hover:gap-2 transition-all"
+                  >
+                    Open Tool <ArrowRight size={10} />
+                  </Link>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
 
         {/* View All CTA */}
         <motion.div

@@ -3,7 +3,7 @@ import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
 import ImageCompressorClient from "./ImageCompressorClient";
 
 export const metadata: Metadata = generatePageSEO({
-  title: "Image Compressor — Free Browser-Based Image Shrinker | Maysan Labs",
+  title: "Image Compressor — Free Browser-Based Image Shrinker",
   description: "Shrink images right in your browser — no uploads needed. Compress JPEG, PNG, and WebP files instantly with 100% privacy.",
   path: "/tools/image-compressor",
   keywords: [

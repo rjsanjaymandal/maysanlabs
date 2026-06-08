@@ -2,13 +2,18 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Maysan Labs",
-    short_name: "Maysan",
-    description: "Architecting the future of global commerce. Scalable SaaS infrastructure, precision MERN stacks, and autonomous operational tools for modern enterprises.",
+    name: "Maysan Labs — Enterprise SaaS Development Company",
+    short_name: "Maysan Labs",
+    description: "Enterprise SaaS development, custom software, cloud infrastructure, and AI integration for modern businesses. Based in Gurgaon, India.",
     start_url: "/",
     display: "standalone",
-    background_color: "#000000",
-    theme_color: "#000000",
+    display_override: ["window-controls-overlay", "standalone"],
+    orientation: "portrait-primary",
+    scope: "/",
+    lang: "en-US",
+    categories: ["business", "productivity", "development"],
+    background_color: "#0a0f1a",
+    theme_color: "#0a0f1a",
     icons: [
       {
         src: "/icon-192x192-v4.png",

@@ -1,23 +1,26 @@
 import type { Metadata } from "next";
 import { generateBreadcrumbSchema } from "@/lib/seo/helpers";
 
+const ogImage = (t: string, d?: string) =>
+  `/api/og?title=${encodeURIComponent(t.slice(0, 100))}${d ? `&description=${encodeURIComponent(d.slice(0, 160))}` : ""}`;
+
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Maysan Labs Privacy Policy — how we collect, use, and protect your data.",
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Privacy Policy | Maysan Labs",
+    title: "Privacy Policy",
     description: "Maysan Labs Privacy Policy — how we collect, use, and protect your data.",
     url: "https://maysanlabs.com/privacy",
     type: "website",
     siteName: "Maysan Labs",
-    images: [{ url: "/og-image.webp", width: 1200, height: 630 }],
+    images: [{ url: ogImage("Privacy Policy | Maysan Labs", "How we collect, use, and protect your data."), width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Privacy Policy | Maysan Labs",
+    title: "Privacy Policy",
     description: "Maysan Labs Privacy Policy — how we collect, use, and protect your data.",
-    images: ["/og-image.webp"],
+    images: [ogImage("Privacy Policy | Maysan Labs", "How we collect, use, and protect your data.")],
   },
   alternates: {
     canonical: "https://maysanlabs.com/privacy",

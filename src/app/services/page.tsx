@@ -4,7 +4,7 @@ import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
 import { serviceSchema, serviceFAQs, softwareDevFAQs, cloudFAQs, generateFAQPageSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = generatePageSEO({
-  title: "SaaS Development Services | Custom Software Development | Maysan Labs",
+  title: "SaaS Development Services | Custom Software Development",
   description: "Maysan Labs offers comprehensive SaaS development services including web development, mobile apps, e-commerce, cloud infrastructure, custom software, and AI automation. Build scalable enterprise solutions.",
   path: "/services",
   keywords: [
