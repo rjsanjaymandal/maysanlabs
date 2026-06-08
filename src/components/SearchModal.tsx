@@ -76,7 +76,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const results = useMemo(() => {
     if (!query.trim()) return allItems;
     return fuse.search(query).map((r) => r.item);
-  }, [query, fuse]);
+  }, [query, fuse, allItems]);
 
   // Focus trap
   const handleKeyDown = useCallback(

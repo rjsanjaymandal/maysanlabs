@@ -69,7 +69,6 @@ export default function ToolsShowcase() {
     }
   };
 
-  const heroTool = tools[0];
   const sideTools = tools.slice(1, 3);
   const bottomTools = tools.slice(3, 6);
 

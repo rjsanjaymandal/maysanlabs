@@ -139,7 +139,7 @@ async function checkSslCertificate(hostname: string): Promise<SslCertInfo | null
           tlsVersion,
         });
       });
-      socket.on("error", (err) => {
+      socket.on("error", () => {
         socket.destroy();
         resolve({
           valid: false,
@@ -151,7 +151,6 @@ async function checkSslCertificate(hostname: string): Promise<SslCertInfo | null
           tlsVersion: "",
         });
       });
-      socket.on("error", () => { socket.destroy(); resolve(null); });
       setTimeout(() => { socket.destroy(); resolve(null); }, 5000);
     });
   } catch {

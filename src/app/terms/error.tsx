@@ -7,7 +7,6 @@ import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 
 export default function Error({
-  error,
   reset,
 }: {
   error: Error & { digest?: string };

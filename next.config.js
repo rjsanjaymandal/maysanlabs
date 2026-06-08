@@ -27,12 +27,13 @@ const nextConfig = {
               "style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; " +
               "img-src 'self' data: blob: https:; " +
               "font-src 'self' https://fonts.gstatic.com data:; " +
-              "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://ip-api.com https://ipwho.is https://www.googleapis.com http://localhost:* https://o*.ingest.sentry.io; " +
+              "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://ip-api.com https://ipwho.is https://www.googleapis.com http://localhost:*; " +
               "frame-src 'self' https://www.googletagmanager.com; " +
               "frame-ancestors 'self'; " +
               "base-uri 'self'; " +
               "form-action 'self'; " +
               "manifest-src 'self'; " +
+              "worker-src 'self'; " +
               "upgrade-insecure-requests",
           },
         ],

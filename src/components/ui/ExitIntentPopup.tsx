@@ -5,34 +5,34 @@ import { ArrowRight, CheckCircle2, Download, Mail, X } from "lucide-react";
 
 export default function ExitIntentPopup() {
   const [isVisible, setIsVisible] = useState(false);
-  const [hasShown, setHasShown] = useState(false);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [emailError, setEmailError] = useState("");
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const alreadyShown = useRef(false);
 
   const closePopup = useCallback(() => setIsVisible(false), []);
 
   useEffect(() => {
+    try {
+      const saved = localStorage.getItem("exitIntentShown");
+      if (saved) {
+        alreadyShown.current = true;
+        return;
+      }
+    } catch {}
+
     const handleExitIntent = (event: MouseEvent) => {
-      if (event.clientY <= 0 && !hasShown) {
+      if (event.clientY <= 0 && !alreadyShown.current) {
         setIsVisible(true);
-        setHasShown(true);
+        alreadyShown.current = true;
         localStorage.setItem("exitIntentShown", "true");
       }
     };
 
-    const saved = localStorage.getItem("exitIntentShown");
-    if (saved) {
-      const timeout = setTimeout(() => {
-        setHasShown(true);
-      }, 0);
-      return () => clearTimeout(timeout);
-    }
-
     document.addEventListener("mouseleave", handleExitIntent);
     return () => document.removeEventListener("mouseleave", handleExitIntent);
-  }, [hasShown]);
+  }, []);
 
   useEffect(() => {
     if (!isVisible) return;
