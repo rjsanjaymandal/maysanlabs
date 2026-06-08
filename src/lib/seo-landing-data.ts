@@ -131,5 +131,83 @@ export const seoLandingPages: SeoLandingPage[] = [
         answer: "Yes, custom SaaS development with payment integrations, user dashboards, and role-based permissions is our core specialty."
       }
     ]
+  },
+  {
+    slug: "saas-development-company-gurgaon",
+    roleName: "SaaS Development Company",
+    title: "SaaS Development Company in Gurgaon | Maysan Labs",
+    description: "Maysan Labs is a premier SaaS development company in Gurgaon. We engineer scalable, secure, and multi-tenant SaaS products with optimized databases and payment integration.",
+    location: "Gurgaon, Haryana, India",
+    skills: [
+      "Multi-tenant database architectures (shared DB, schema-per-tenant, or separate DB)",
+      "Subscription billing pipelines and payment gateways (Stripe, Razorpay)",
+      "Serverless and containerized deployments (AWS, Docker, Kubernetes)",
+      "High-availability setup with 99.9% uptime SLAs",
+      "Modern admin dashboards with detailed usage metrics and analytics"
+    ],
+    techStack: ["React", "Next.js", "Node.js", "MongoDB", "PostgreSQL", "AWS", "Kubernetes"],
+    features: [
+      {
+        title: "Multi-Tenant Security",
+        desc: "Robust tenant isolation strategies preventing cross-tenant data leaks at the database level."
+      },
+      {
+        title: "Automated Billing",
+        desc: "Flexible monthly/annual subscription grids, metered billing, and coupon logic integrations."
+      },
+      {
+        title: "Enterprise Readiness",
+        desc: "Single Sign-On (SSO), SAML integration, detailed audit logs, and SOC 2 readiness."
+      }
+    ],
+    faqs: [
+      {
+        question: "How does Maysan Labs handle tenant isolation?",
+        answer: "We implement tenant isolation either logically (tenant-key filtering in a shared database) or physically (separate databases/schemas per tenant) based on your compliance, security, and scalability requirements."
+      },
+      {
+        question: "Do you assist with scaling a SaaS platform post-launch?",
+        answer: "Yes, we offer ongoing DevOps and infrastructure optimization packages, managing Kubernetes clusters, load balancers, and database replication to support scaling user bases."
+      }
+    ]
+  },
+  {
+    slug: "custom-software-development-gurgaon",
+    roleName: "Custom Software Development",
+    title: "Custom Software Development Company in Gurgaon | Maysan Labs",
+    description: "Hire top custom software development company in Gurgaon. Maysan Labs builds custom CRM, ERP, business automation tools, and mobile apps tailored for startup and enterprise needs.",
+    location: "Gurgaon, Haryana, India",
+    skills: [
+      "Custom enterprise resource planning (ERP) & dashboard engineering",
+      "Customer relationship management (CRM) integrations",
+      "Workflow automation (WhatsApp APIs, SMS, automated emails)",
+      "API integration, ETL data pipelines, and legacy migration",
+      "High performance web applications & native mobile apps"
+    ],
+    techStack: ["React", "Next.js", "Node.js", "Express", "PostgreSQL", "MongoDB", "Tailwind CSS", "TypeScript"],
+    features: [
+      {
+        title: "Tailored Workflows",
+        desc: "We design business software around your unique operational processes, avoiding the constraints of off-the-shelf software."
+      },
+      {
+        title: "Automated Notifications",
+        desc: "Seamless integrations with Twilio, WhatsApp Business API, and automated email services to keep your customers engaged."
+      },
+      {
+        title: "Legacy System Migration",
+        desc: "Refactor, migrate, or build API bridges around legacy systems to unlock modern web capabilities without disrupting operations."
+      }
+    ],
+    faqs: [
+      {
+        question: "Can you integrate legacy systems into new custom software?",
+        answer: "Yes, we specialize in building custom API middleware and ETL pipelines to sync data between your legacy systems and modern web applications."
+      },
+      {
+        question: "How does custom software development compare to off-the-shelf SaaS?",
+        answer: "Custom software has no recurring per-user licensing fees, scales exactly with your business requirements, and provides a proprietary competitive advantage because you own the source code."
+      }
+    ]
   }
 ];
