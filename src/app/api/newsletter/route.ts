@@ -36,8 +36,8 @@ export async function POST(request: NextRequest) {
 
     const apiKey = process.env.RESEND_API_KEY;
 
-    if (!apiKey || apiKey.startsWith("re_")) {
-      console.log("[Newsletter] Dev mode — new subscription:", { email, company, source });
+    if (!apiKey || !apiKey.startsWith("re_")) {
+      console.log("[Newsletter] Dev mode — no valid RESEND_API_KEY configured");
       return NextResponse.json({ success: true, message: "Subscribed (dev mode)" });
     }
 

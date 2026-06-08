@@ -110,6 +110,10 @@ function inCidrV6(ip: bigint, network: bigint, prefix: number): boolean {
 }
 
 export function isDeniedIp(ip: string): boolean {
+  const v4Mapped = ipv4MappedToV4(ip);
+  if (v4Mapped) {
+    return isDeniedIp(v4Mapped);
+  }
   if (ip.includes(":")) {
     const big = ipv6ToBigInt(ip);
     if (big === null) return true;

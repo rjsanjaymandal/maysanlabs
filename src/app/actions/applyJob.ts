@@ -142,7 +142,10 @@ export async function applyJob(formData: FormData) {
           ],
         }),
       });
-      await Promise.allSettled([mailPromise, discordPromise]);
+      const [mailResult] = await Promise.allSettled([mailPromise, discordPromise]);
+      if (mailResult.status === "rejected") {
+        throw mailResult.reason;
+      }
     } else {
       await mailPromise;
     }

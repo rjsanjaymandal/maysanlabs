@@ -102,7 +102,10 @@ export async function sendEmail(formData: FormData) {
       });
       // We don't await discord here to avoid blocking mail if discord fails, 
       // but let's await both for reliability since it's a server action.
-      await Promise.allSettled([mailPromise, discordPromise]);
+      const [mailResult] = await Promise.allSettled([mailPromise, discordPromise]);
+      if (mailResult.status === "rejected") {
+        throw mailResult.reason;
+      }
     } else {
       await mailPromise;
     }

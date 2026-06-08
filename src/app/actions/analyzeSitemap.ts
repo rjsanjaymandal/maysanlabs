@@ -121,7 +121,7 @@ async function checkSslCertificate(hostname: string): Promise<SslCertInfo | null
     return await new Promise((resolve) => {
       const socket = tls.connect(443, hostname, {
         servername: hostname,
-        rejectUnauthorized: false,
+        rejectUnauthorized: true,
       }, () => {
         const cert = socket.getPeerCertificate();
         const validFrom = new Date(cert.valid_from);
@@ -130,13 +130,25 @@ async function checkSslCertificate(hostname: string): Promise<SslCertInfo | null
         const tlsVersion = socket.getProtocol() || "";
         socket.end();
         resolve({
-          valid: daysRemaining > 0 && !socket.authorizationError,
+          valid: daysRemaining > 0 && socket.authorized,
           issuer: String(cert.issuer?.O || cert.issuer?.CN || "Unknown"),
           subject: String(cert.subject?.CN || "Unknown"),
           validFrom: validFrom.toISOString().split("T")[0],
           validTo: validTo.toISOString().split("T")[0],
           daysRemaining,
           tlsVersion,
+        });
+      });
+      socket.on("error", (err) => {
+        socket.destroy();
+        resolve({
+          valid: false,
+          issuer: "Unknown",
+          subject: hostname,
+          validFrom: "",
+          validTo: "",
+          daysRemaining: 0,
+          tlsVersion: "",
         });
       });
       socket.on("error", () => { socket.destroy(); resolve(null); });
@@ -264,7 +276,7 @@ async function tryFetchSitemap(baseUrl: string): Promise<{ text: string; url: st
 export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult> {
   let targetUrl = sitemapUrl.trim();
 
-  if (!targetUrl.startsWith("http")) {
+  if (!targetUrl.toLowerCase().startsWith("http")) {
     targetUrl = `https://${targetUrl}`;
   }
 
@@ -345,6 +357,20 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
   const urlsList: CheckedPage[] = [];
   let homePageHtml = "";
 
+  // Fetch homepage HTML separately to avoid race condition in parallel processing
+  const homepageUrl = sampleUrls.length > 0 ? sampleUrls[0] : targetUrl;
+  try {
+    const homeRes = await safeFetchWithRetry(homepageUrl, {
+      headers: { "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9" },
+      maxMs: 8000,
+    });
+    if (homeRes.ok) {
+      homePageHtml = await homeRes.text();
+    }
+  } catch {
+    // Non-critical; telemetry analysis will skip if empty
+  }
+
   let missingMeta = 0;
   let brokenLinks = 0;
   let missingSchemas = 0;
@@ -379,7 +405,7 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
       let missingAltCount = 0;
       let wordCount = 0;
       let pageSize = 0;
-      let https = true;
+      let https = false;
       let hasHsts = false;
       let hstsMaxAge: number | null = null;
       let hasCsp = false;
@@ -416,9 +442,6 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
 
         if (pageRes.ok) {
           const html = await pageRes.text();
-          if (url === sampleUrls[0]) {
-            homePageHtml = html;
-          }
           pageSize = Math.round(Buffer.byteLength(html, "utf8") / 1024);
 
           // Title
@@ -595,7 +618,7 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
 
   const totalUrls = sitemapFetched ? urls.length : 1;
   const checksPerPage = 12;
-  const totalChecks = sampleUrls.length * checksPerPage;
+  const maxPossibleScore = 12 * checksPerPage;
   const passed =
     (sitemapFetched ? checksPerPage : 0) +
     (brokenLinks === 0 ? checksPerPage : 0) +
@@ -610,7 +633,7 @@ export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult
     (totalAltMissing === 0 ? checksPerPage : Math.max(0, Math.floor(checksPerPage * (1 - totalAltMissing / Math.max(totalAltMissing, sampleUrls.length * 2))))) +
     (urlsList.every(p => p.h1Count === 1) ? checksPerPage : Math.max(0, Math.floor(checksPerPage * (1 - urlsList.filter(p => p.h1Count !== 1).length / sampleUrls.length))));
 
-  const seoScore = Math.min(100, Math.round((passed / Math.max(totalChecks, 1)) * 100));
+  const seoScore = Math.min(100, Math.round((passed / maxPossibleScore) * 100));
   const indexability = seoScore >= 85 ? "healthy" : seoScore >= 65 ? "action-required" : "poor";
 
   const suggestions: string[] = [];

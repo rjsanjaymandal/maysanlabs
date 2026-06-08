@@ -11,7 +11,7 @@ export function escapeHtml(value: unknown): string {
   return String(value).replace(/[&<>"']/g, (c) => HTML_ESCAPES[c]);
 }
 
-const SAFE_HREF_PROTOCOLS = new Set(["https:", "mailto:"]);
+const SAFE_HREF_PROTOCOLS = new Set(["https:", "mailto:", "tel:"]);
 
 export function safeHref(raw: unknown, fallback: string = "#"): string {
   if (typeof raw !== "string" || raw.trim() === "") return fallback;
