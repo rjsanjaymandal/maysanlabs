@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { jobPositions } from "@/lib/careers-data";
 
 export const metadata: Metadata = {
-  title: "Careers | Join Maysan Labs | SaaS Engineering Jobs Gurgaon",
+  title: "Careers",
   description:
     "Join Maysan Labs and build high-performance enterprise SaaS infrastructure. Explore open roles in engineering, design, and marketing at Maysan Labs in Gurgaon, India.",
   keywords: [

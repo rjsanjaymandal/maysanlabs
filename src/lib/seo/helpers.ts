@@ -49,7 +49,7 @@ function ogImageUrl(title: string, description?: string): string {
 export function generateBlogPostSEO(post: BlogPost, siteUrl: string): Metadata {
   const og = ogImageUrl(post.title, post.excerpt);
   return {
-    title: `${post.title} | Maysan Labs Blog`,
+    title: `${post.title} | Blog`,
     description: post.excerpt,
     keywords: [
       post.title.toLowerCase(),
@@ -156,7 +156,7 @@ export function generateBlogPostJSONLD(post: BlogPost, siteUrl: string) {
 export function generateCaseStudySEO(study: CaseStudy, siteUrl: string): Metadata {
   const og = ogImageUrl(study.title, study.excerpt);
   return {
-    title: `${study.title} | Maysan Labs Case Studies`,
+    title: `${study.title} | Case Studies`,
     description: study.excerpt,
     keywords: [
       study.title.toLowerCase(),
@@ -239,7 +239,7 @@ export function generateProductSEO(product: ProductInfo, _siteUrl: string): Meta
   const og = ogImageUrl(product.name, product.description);
 
   return {
-    title: `${product.name} | Maysan Labs Products`,
+    title: `${product.name} | Products`,
     description: product.description,
     keywords: [
       product.name.toLowerCase(),

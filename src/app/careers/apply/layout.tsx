@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Apply Now | Join Maysan Labs - Enterprise Software Development",
+  title: "Apply Now",
   description: "Apply to join Maysan Labs - a leading enterprise SaaS development company. We're looking for talented engineers, developers, and designers to build next-generation software solutions.",
   keywords: ["apply Maysan Labs", "maysanlabs apply", "Maysan Labs careers", "Maysan Labs hiring", "software engineer jobs Gurgaon", "SaaS development jobs", "job application", "join our team", "tech jobs India"],
   openGraph: {
