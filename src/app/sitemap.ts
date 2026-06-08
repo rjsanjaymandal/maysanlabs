@@ -34,6 +34,9 @@ const ROUTE_CONFIG: Record<string, { priority: number; changeFrequency: Metadata
   '/tools/privacy-generator': { priority: 0.6, changeFrequency: 'monthly' },
   '/tools/og-generator': { priority: 0.6, changeFrequency: 'monthly' },
   '/tools/image-compressor': { priority: 0.6, changeFrequency: 'monthly' },
+  '/services/web': { priority: 0.8, changeFrequency: 'weekly' },
+  '/services/cloud': { priority: 0.8, changeFrequency: 'weekly' },
+  '/services/ai': { priority: 0.8, changeFrequency: 'weekly' },
 }
 
 const DEFAULT_CONFIG = { priority: 0.6, changeFrequency: 'monthly' as const }
@@ -53,6 +56,9 @@ const ROUTE_DEPENDENCIES: Record<string, string[]> = {
   '/contact': ['src/app/contact/page.tsx', 'src/app/layout.tsx'],
   '/start': ['src/app/start/page.tsx', 'src/app/layout.tsx'],
   '/tools': ['src/app/tools/page.tsx', 'src/app/layout.tsx'],
+  '/services/web': ['src/app/services/web/page.tsx', 'src/app/layout.tsx'],
+  '/services/cloud': ['src/app/services/cloud/page.tsx', 'src/app/layout.tsx'],
+  '/services/ai': ['src/app/services/ai/page.tsx', 'src/app/layout.tsx'],
 }
 
 // Get the latest modification time from a list of files

@@ -8,6 +8,7 @@ import { Clock, ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
 import { generateBlogPostSEO, generateBlogPostJSONLD } from "@/lib/seo/helpers";
+import CaseStudyCallout from "@/components/CaseStudyCallout";
 
 export const revalidate = 3600;
 export const dynamicParams = true;
@@ -159,6 +160,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     ))}
                   </div>
                 )}
+
+                <CaseStudyCallout blogCategory={post.category} currentSlug={post.slug} />
 
                 <div className="mt-6 lg:hidden">
                   <p className="text-xs text-foreground/30 mb-3">Share this article</p>

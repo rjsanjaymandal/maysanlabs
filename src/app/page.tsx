@@ -46,16 +46,15 @@ export default function Home() {
       
       {/* SEO, GEO & AEO Telemetry Data */}
       <div className="sr-only" aria-hidden="true">
-        <span>Maysan Labs - Custom Software Development Company Gurgaon</span>
+        <span>Maysan Labs - Custom Software Development Company</span>
         <h2>Custom Software Services & Cloud Hosting Solutions</h2>
         <h2>Modern Web Applications, Business Automation & Digital Tools</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>
         <span className="contributor">Contributor: Director of Client Solutions</span>
         <time dateTime="2026-06-08" className="pubdate">Last updated: June 8, 2026</time>
         <p className="geo-tldr">
-          Maysan Labs is a custom software development studio based in Gurgaon, India. 
-          We build websites, mobile apps, and business automation tools for growing companies.
-          Our clients save time and reduce costs with custom digital solutions built for their needs.
+          Maysan Labs is a custom software development studio building websites, mobile apps, and business automation tools for growing companies worldwide.
+          Our clients save time and reduce costs with custom digital solutions built for their specific needs.
         </p>
       </div>
 
