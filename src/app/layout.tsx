@@ -6,6 +6,7 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 import ThemeProvider from "@/components/ThemeProvider";
 
 const ScrollProgress = dynamic(() => import("@/components/ScrollProgress"));
+const BackToTop = dynamic(() => import("@/components/BackToTop"));
 
 import {
   organizationSchema,
@@ -279,6 +280,7 @@ export default function RootLayout({
             </div>
 
             {children}
+            <BackToTop />
             <WhatsAppButton />
             <ExitIntentPopup />
             <CookieConsent />

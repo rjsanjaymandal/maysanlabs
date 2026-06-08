@@ -3,7 +3,7 @@ import { blogPosts } from "@/lib/blog-data";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 import ReadingProgress from "@/components/ReadingProgress";
-import BackToTop from "@/components/BackToTop";
+import ShareArticle from "@/components/ShareArticle";
 import { Clock, ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -65,7 +65,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <>
       <ReadingProgress />
-      <BackToTop />
       <main id="main-content" className="min-h-screen bg-background text-foreground flex flex-col relative">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.015)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJSONLD) }} />
@@ -133,6 +132,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(siteUrl + "/blog/" + post.slug)}`} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/80 dark:bg-white/[0.05] border border-gray-100 dark:border-white/10 flex items-center justify-center text-foreground/40 hover:text-brand-primary hover:border-brand-primary/30 transition-all text-[10px] font-bold">
                   in
                 </a>
+                <ShareArticle url={`${siteUrl}/blog/${post.slug}`} title={post.title} variant="desktop" />
               </div>
 
               {/* Content */}
@@ -161,13 +161,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 {/* Mobile share */}
                 <div className="mt-6 lg:hidden">
                   <p className="text-xs text-foreground/30 mb-2">Share this article</p>
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(siteUrl + "/blog/" + post.slug)}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/80 dark:bg-white/[0.05] border border-gray-100 dark:border-white/10 rounded-lg text-sm font-medium text-foreground/50 hover:text-brand-primary hover:border-brand-primary/30 transition-colors">
                       Twitter
                     </a>
                     <a href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(siteUrl + "/blog/" + post.slug)}`} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-white/80 dark:bg-white/[0.05] border border-gray-100 dark:border-white/10 rounded-lg text-sm font-medium text-foreground/50 hover:text-brand-primary hover:border-brand-primary/30 transition-colors">
                       LinkedIn
                     </a>
+                    <ShareArticle url={`${siteUrl}/blog/${post.slug}`} title={post.title} />
                   </div>
                 </div>
 

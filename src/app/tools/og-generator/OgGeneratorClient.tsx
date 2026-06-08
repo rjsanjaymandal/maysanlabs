@@ -2,7 +2,8 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Share2, Image as ImageIcon, Download, Mail, Loader2 } from "lucide-react";
+import Link from "next/link";
+import { Share2, Image as ImageIcon, Download, Mail, Loader2, ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 
@@ -190,7 +191,14 @@ export default function OgGeneratorClient() {
       <div>
         <Navbar />
 
-        <div className="pt-36 pb-20 px-4 relative overflow-hidden">
+        <Link href="/tools" className="block container-main max-w-4xl mx-auto pt-24 pb-0">
+          <span className="inline-flex items-center gap-1.5 text-[11px] text-foreground/40 hover:text-brand-primary transition-colors">
+            <ArrowLeft size={12} />
+            Back to All Tools
+          </span>
+        </Link>
+
+        <div className="pb-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
 
