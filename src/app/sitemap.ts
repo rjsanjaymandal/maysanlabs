@@ -3,6 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import { blogPosts } from '@/lib/blog-data'
 import { caseStudies } from '@/lib/case-studies-data'
+import { seoLandingPages } from '@/lib/seo-landing-data'
 
 const BASE_URL = 'https://maysanlabs.com'
 
@@ -170,6 +171,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
       images: [`${BASE_URL}/og-image.webp`],
+    })
+  })
+
+  // Add programmatic hire landing pages
+  seoLandingPages.forEach(page => {
+    const deps = [
+      'src/app/hire/[slug]/page.tsx',
+      'src/app/layout.tsx',
+      'src/lib/seo-landing-data.ts'
+    ]
+    const lastModDate = getMaxMTime(deps) || new Date()
+    
+    routes.push({
+      url: `${BASE_URL}/hire/${page.slug}`,
+      lastModified: lastModDate,
+      changeFrequency: 'weekly',
+      priority: 0.8,
     })
   })
 
