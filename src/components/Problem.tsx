@@ -1,96 +1,97 @@
 "use client";
 
-import { Cpu, ShieldAlert, Activity, ArrowUpRight } from "lucide-react";
+import { Cpu, ShieldCheck, Rocket, Smartphone, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+
+const architectures = [
+  {
+    id: "AUTOMATED_SYSTEMS",
+    title: "Manual Spreadsheets to Automated Systems",
+    text: "Stop copying details between Excel sheets. We replace manual tasks with custom software, linking automated WhatsApp alerts, email billing, and inventory tracking.",
+    icon: Cpu,
+    href: "/services",
+  },
+  {
+    id: "MODERN_WEB_APPS",
+    title: "Legacy Software to Modern Websites & Portals",
+    text: "Refactor old, slow legacy systems. We build lightning-fast, secure Next.js websites and web applications featuring role-based logins, custom dashboards, and encrypted cloud storage.",
+    icon: ShieldCheck,
+    href: "/services/web",
+  },
+  {
+    id: "STARTUP_MVPS",
+    title: "Unfinished Ideas to Working MVPs & Sites",
+    text: "Launch your custom website or app in weeks, not months. We engineer lightweight, high-performance MVPs so you can gather real feedback and scale securely.",
+    icon: Rocket,
+    href: "/start",
+  },
+  {
+    id: "MOBILE_APPS",
+    title: "Websites to Cross-Platform Mobile Apps",
+    text: "Extend your web presence with native iOS and Android apps. We build cross-platform mobile apps that sync seamlessly with your website and backend systems.",
+    icon: Smartphone,
+    href: "/services",
+  },
+];
 
 export default function Problem() {
-  const architectures = [
-    {
-      id: "AI_RELIABLE",
-      title: "Reliable AI",
-      text: "AI that follows your rules and delivers every time.",
-      icon: <Cpu size={24} />,
-    },
-    {
-      id: "DATA_SECURE",
-      title: "Safe Data",
-      text: "Your data. Your control. Fully secure.",
-      icon: <ShieldAlert size={24} />,
-    },
-    {
-      id: "SPEED_SCALE",
-      title: "Build Faster",
-      text: "Modern apps that ship fast and scale bigger.",
-      icon: <Activity size={24} />,
-    },
-  ];
-
   return (
-    <section id="architecture" className="sec-xl relative overflow-hidden bg-background">
+    <section id="architecture" className="py-16 md:py-20 border-t border-gray-100 dark:border-white/[0.05] relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.01] to-transparent pointer-events-none" />
       <div className="container-main relative z-10">
-        <div className="flex flex-col lg:flex-row items-baseline justify-between mb-32 gap-12">
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-4xl"
-          >
-            <div className="label-mono !mb-8 inline-flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-brand-primary rounded-full" />
-              What we solve
-            </div>
-            <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.8] mb-12 uppercase">
-              Old code <br />
-              <span className="text-brand-primary italic">slows you down.</span>
-            </h2>
-            <p className="text-2xl text-foreground/50 font-medium mb-12 tracking-tight">
-              We build fast, modern apps that help your team move faster.
-            </p>
-          </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="lg:max-w-xs border-l border-white/5 pl-8"
-          >
-            <p className="text-sm font-medium text-foreground/30 leading-loose uppercase tracking-widest">
-              Reliable systems built for what comes next.
-            </p>
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mb-12"
+        >
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-5">
+            What We Solve
+          </span>
+          <h2 className="text-3xl md:text-5xl font-semibold tracking-[-0.02em] text-foreground mb-4">
+            Outdated websites, spreadsheets & old code <span className="text-brand-primary">slow you down</span>
+          </h2>
+          <p className="text-foreground/50 text-base md:text-lg leading-relaxed max-w-2xl">
+            We design and build custom websites, internal tools, and full-scale applications that replace outdated systems and launch new ideas.
+          </p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          {architectures.map((arch, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="maysan-card group flex flex-col justify-between !p-12 hover:bg-white/[0.04] transition-all duration-700"
-            >
-              <div>
-                <div className="flex justify-between items-start mb-16">
-                  <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-brand-primary border border-white/5 group-hover:bg-brand-primary group-hover:text-black transition-all duration-700 shadow-2xl">
-                    {arch.icon}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {architectures.map((arch, index) => {
+            const Icon = arch.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+              >
+                <Link
+                  href={arch.href}
+                  className="group flex flex-col h-full bg-white dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] hover:border-brand-primary/30 rounded-xl p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-5 group-hover:bg-brand-primary group-hover:text-white transition-all duration-300">
+                    <Icon size={20} />
                   </div>
-                </div>
-                
-                <h3 className="text-4xl font-black mb-8 tracking-tighter uppercase leading-none text-foreground group-hover:text-brand-primary transition-colors duration-700 italic">
-                  {arch.title}
-                </h3>
-                <p className="text-foreground/50 text-lg leading-relaxed font-medium group-hover:text-foreground/80 transition-colors duration-700">
-                  {arch.text}
-                </p>
-              </div>
 
-              <div className="mt-16 pt-12 border-t border-white/5 flex items-center justify-between">
-                 <ArrowUpRight size={24} className="text-brand-primary/20 group-hover:text-brand-primary transition-all duration-700" />
-              </div>
-            </motion.div>
-          ))}
+                  <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-brand-primary transition-colors duration-300">
+                    {arch.title}
+                  </h3>
+                  <p className="text-foreground/50 text-sm leading-relaxed flex-1 group-hover:text-foreground/70 transition-colors duration-300">
+                    {arch.text}
+                  </p>
+
+                  <div className="flex items-center gap-1.5 mt-6 text-sm font-semibold text-brand-primary/50 group-hover:text-brand-primary transition-colors duration-300">
+                    <span>Learn more</span>
+                    <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

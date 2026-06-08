@@ -22,13 +22,15 @@ import {
 const outfit = Outfit({
   variable: "--font-sans",
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {

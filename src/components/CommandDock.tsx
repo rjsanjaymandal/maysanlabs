@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useLenis } from "lenis/react";
+
 import {
   LayoutGrid,
   Shield,
@@ -44,8 +44,6 @@ export default function CommandDock() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isTerminalPage]);
 
-  const lenis = useLenis();
-
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
@@ -54,8 +52,8 @@ export default function CommandDock() {
       e.preventDefault();
       const targetId = href.replace("/#", "");
       const element = document.getElementById(targetId);
-      if (element && lenis) {
-        lenis.scrollTo(element, { offset: -80 });
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
   };
