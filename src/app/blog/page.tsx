@@ -72,26 +72,30 @@ export default async function BlogListingPage() {
         <Navbar />
 
         {/* Hero */}
-        <section className="pt-32 pb-12 md:pb-16 relative overflow-hidden">
+        <section className="pt-32 pb-14 md:pb-18 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.03] via-transparent to-transparent" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] max-sm:w-[300px] max-sm:h-[200px] bg-brand-primary/[0.05] blur-[150px] rounded-full pointer-events-none" />
-          <div className="absolute top-10 right-0 w-64 h-64 bg-brand-primary/[0.02] blur-[80px] rounded-full pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] max-sm:w-[300px] max-sm:h-[200px] bg-brand-primary/[0.06] blur-[180px] rounded-full pointer-events-none" />
+          <div className="absolute top-12 right-0 w-72 h-72 bg-brand-primary/[0.03] blur-[100px] rounded-full pointer-events-none" />
           <div className="container-main relative">
             <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-brand-primary text-[11px] font-semibold uppercase tracking-widest mb-5">
-                Insights & Strategy
-              </span>
-              <h1 className="text-4xl md:text-5xl font-semibold text-foreground mb-4 leading-tight">
-                Articles
+              <div className="flex items-center gap-3 mb-5">
+                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/5 border border-brand-primary/10 text-brand-primary text-[11px] font-semibold uppercase tracking-widest">
+                  Insights & Strategy
+                </span>
+                <span className="text-[11px] text-foreground/30 font-medium">
+                  {blogPosts.length} articles
+                </span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-semibold text-foreground mb-4 leading-tight tracking-tight">
+                Our Blog
               </h1>
-              <p className="text-lg text-foreground/50 leading-relaxed max-w-xl">
+              <p className="text-base md:text-lg text-foreground/50 leading-relaxed max-w-xl">
                 Practical insights on custom software, digital growth, and building technology that works for your business.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Blog Posts */}
         <section className="pb-16 md:pb-24">
           <div className="container-main">
             <BlogPageClient localPosts={blogPosts} externalPosts={externalPosts} />

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { ChevronRight, ExternalLink, Clock, User, Sparkles, Search } from "lucide-react";
+import { ChevronRight, ExternalLink, Clock, ArrowUpRight, Search } from "lucide-react";
 import Link from "next/link";
 import { BlogPost } from "@/lib/blog-data";
 
@@ -12,23 +12,23 @@ interface BlogPageClientProps {
   externalPosts: BlogPost[];
 }
 
-const categoryAccents: Record<string, { bg: string; text: string; border: string; hex: string }> = {
-  "Strategy":        { bg: "bg-blue-50 dark:bg-blue-500/10", text: "text-blue-600 dark:text-blue-400", border: "border-blue-400/30", hex: "#3b82f6" },
-  "Infrastructure":  { bg: "bg-emerald-50 dark:bg-emerald-500/10", text: "text-emerald-600 dark:text-emerald-400", border: "border-emerald-400/30", hex: "#10b981" },
-  "Methodology":      { bg: "bg-purple-50 dark:bg-purple-500/10", text: "text-purple-600 dark:text-purple-400", border: "border-purple-400/30", hex: "#a855f7" },
-  "AI & ML":          { bg: "bg-orange-50 dark:bg-orange-500/10", text: "text-orange-600 dark:text-orange-400", border: "border-orange-400/30", hex: "#f97316" },
-  "Security":         { bg: "bg-red-50 dark:bg-red-500/10", text: "text-red-600 dark:text-red-400", border: "border-red-400/30", hex: "#ef4444" },
-  "Performance":      { bg: "bg-cyan-50 dark:bg-cyan-500/10", text: "text-cyan-600 dark:text-cyan-400", border: "border-cyan-400/30", hex: "#06b6d4" },
-  "Business":         { bg: "bg-amber-50 dark:bg-amber-500/10", text: "text-amber-600 dark:text-amber-400", border: "border-amber-400/30", hex: "#f59e0b" },
-  "Architecture":     { bg: "bg-indigo-50 dark:bg-indigo-500/10", text: "text-indigo-600 dark:text-indigo-400", border: "border-indigo-400/30", hex: "#6366f1" },
-  "Design":           { bg: "bg-pink-50 dark:bg-pink-500/10", text: "text-pink-600 dark:text-pink-400", border: "border-pink-400/30", hex: "#ec4899" },
-  "Transformation":   { bg: "bg-teal-50 dark:bg-teal-500/10", text: "text-teal-600 dark:text-teal-400", border: "border-teal-400/30", hex: "#14b8a6" },
-  "Insights":         { bg: "bg-slate-50 dark:bg-slate-500/10", text: "text-slate-600 dark:text-slate-400", border: "border-slate-400/30", hex: "#64748b" },
-  "Optimization":     { bg: "bg-lime-50 dark:bg-lime-500/10", text: "text-lime-600 dark:text-lime-400", border: "border-lime-400/30", hex: "#84cc16" },
+const categoryAccents: Record<string, { bg: string; text: string; dot: string }> = {
+  "Strategy":        { bg: "bg-blue-500/10", text: "text-blue-500", dot: "bg-blue-500" },
+  "Infrastructure":  { bg: "bg-emerald-500/10", text: "text-emerald-500", dot: "bg-emerald-500" },
+  "Methodology":     { bg: "bg-purple-500/10", text: "text-purple-500", dot: "bg-purple-500" },
+  "AI & ML":         { bg: "bg-orange-500/10", text: "text-orange-500", dot: "bg-orange-500" },
+  "Security":        { bg: "bg-red-500/10", text: "text-red-500", dot: "bg-red-500" },
+  "Performance":     { bg: "bg-cyan-500/10", text: "text-cyan-500", dot: "bg-cyan-500" },
+  "Business":        { bg: "bg-amber-500/10", text: "text-amber-500", dot: "bg-amber-500" },
+  "Architecture":    { bg: "bg-indigo-500/10", text: "text-indigo-500", dot: "bg-indigo-500" },
+  "Design":          { bg: "bg-pink-500/10", text: "text-pink-500", dot: "bg-pink-500" },
+  "Transformation":  { bg: "bg-teal-500/10", text: "text-teal-500", dot: "bg-teal-500" },
+  "Insights":        { bg: "bg-slate-500/10", text: "text-slate-500", dot: "bg-slate-500" },
+  "Optimization":    { bg: "bg-lime-500/10", text: "text-lime-500", dot: "bg-lime-500" },
 };
 
 function getAccent(category: string) {
-  return categoryAccents[category] || { bg: "bg-gray-50 dark:bg-gray-500/10", text: "text-gray-600 dark:text-gray-400", border: "border-gray-400/30", hex: "#6b7280" };
+  return categoryAccents[category] || { bg: "bg-gray-500/10", text: "text-gray-500", dot: "bg-gray-500" };
 }
 
 function getInitials(name: string): string {
@@ -56,79 +56,81 @@ function PostCard({ post }: { post: BlogPost }) {
   const accent = getAccent(post.category);
 
   return wrapCard(post, (
-    <article className={`h-full bg-white/70 dark:bg-white/[0.02] border ${accent.border} dark:border-white/[0.06] rounded-xl overflow-hidden hover:shadow-md hover:brightness-[1.02] transition-all duration-300 flex flex-col border-l-2`}>
-        <div className="p-5 flex flex-col flex-1">
-          <div className="flex items-center justify-between mb-3">
-            <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-semibold uppercase tracking-wider ${accent.bg} ${accent.text}`}>
-              <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: accent.hex }} />
-              {post.category}
-            </span>
-            {isExternal && (
-              <span className="flex items-center gap-1 text-[10px] text-foreground/30 font-medium">
-                <ExternalLink size={10} />
-                External
-              </span>
-            )}
-          </div>
-
-          <h3 className="text-base font-semibold text-foreground leading-snug mb-2 group-hover:text-brand-primary transition-colors">
-            {post.title}
-          </h3>
-
-          <p className="text-sm text-foreground/50 leading-relaxed line-clamp-2 mb-4 flex-1">
-            {post.excerpt}
-          </p>
-
-          <div className="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-white/[0.05]">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary text-[8px] font-bold">
-                {getInitials(post.author)}
-              </div>
-              <span className="text-xs text-foreground/40 truncate max-w-[120px]">{post.author}</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-[10px] text-foreground/30">
-              <Clock size={10} />
-              {post.readTime}
-            </div>
-          </div>
+    <article className="h-full bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-xl overflow-hidden transition-all duration-300 hover:shadow-md hover:shadow-black/[0.03] dark:hover:shadow-black/20 hover:border-gray-200 dark:hover:border-white/10 hover:-translate-y-0.5 flex flex-col">
+      <div className="p-5 flex flex-col flex-1">
+        <div className="flex items-center justify-between mb-3">
+          <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-semibold uppercase tracking-wider ${accent.bg} ${accent.text}`}>
+            <span className={`w-1.5 h-1.5 rounded-full ${accent.dot}`} />
+            {post.category}
+          </span>
+          <span className="flex items-center gap-1 text-[10px] text-foreground/30">
+            <Clock size={10} />
+            {post.readTime}
+          </span>
         </div>
-      </article>
-    ));
+
+        <h3 className="text-[15px] font-semibold text-foreground leading-snug mb-2 group-hover:text-brand-primary transition-colors">
+          {post.title}
+        </h3>
+
+        <p className="text-sm text-foreground/50 leading-relaxed line-clamp-2 mb-4 flex-1">
+          {post.excerpt}
+        </p>
+
+        <div className="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-white/[0.04]">
+          <div className="flex items-center gap-2 min-w-0">
+            <div className="w-6 h-6 shrink-0 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary text-[8px] font-bold">
+              {getInitials(post.author)}
+            </div>
+            <span className="text-xs text-foreground/40 truncate">{post.author}</span>
+          </div>
+          {isExternal && (
+            <span className="flex items-center gap-1 text-[10px] text-foreground/30 shrink-0">
+              <ExternalLink size={10} />
+              External
+            </span>
+          )}
+        </div>
+      </div>
+    </article>
+  ));
 }
 
 function FeaturedCard({ post }: { post: BlogPost }) {
   const accent = getAccent(post.category);
   return (
     <Link href={`/blog/${post.slug}`} className="group block">
-      <article className="relative overflow-hidden rounded-xl bg-gradient-to-br from-brand-primary/5 via-brand-primary/[0.02] to-transparent border border-brand-primary/10 hover:border-brand-primary/20 transition-all duration-300 p-6 md:p-8">
-        <div className="absolute top-0 right-0 w-48 h-48 bg-brand-primary/[0.04] rounded-full blur-[60px] pointer-events-none" />
+      <article className="relative overflow-hidden rounded-xl bg-gradient-to-br from-brand-primary/[0.06] via-brand-primary/[0.02] to-transparent border border-brand-primary/15 hover:border-brand-primary/25 transition-all duration-300 p-6 md:p-8">
+        <div className="absolute top-0 right-0 w-56 h-56 bg-brand-primary/[0.06] rounded-full blur-[80px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-40 h-40 bg-brand-primary/[0.03] rounded-full blur-[60px] pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-5">
           <div className="flex-1">
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex items-center gap-3 mb-3">
               <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-semibold uppercase tracking-wider ${accent.bg} ${accent.text}`}>
-                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: accent.hex }} />
+                <span className={`w-1.5 h-1.5 rounded-full ${accent.dot}`} />
                 {post.category}
               </span>
-              <span className="flex items-center gap-1 text-[10px] text-foreground/30">
-                <Sparkles size={10} />
-                Featured
+              <span className="text-[10px] text-foreground/30 flex items-center gap-1">
+                <Clock size={10} />
+                {post.readTime}
               </span>
             </div>
-            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2 group-hover:text-brand-primary transition-colors">
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2 group-hover:text-brand-primary transition-colors leading-tight">
               {post.title}
             </h2>
-            <p className="text-sm text-foreground/50 leading-relaxed mb-3 max-w-lg">
+            <p className="text-sm text-foreground/50 leading-relaxed mb-4 max-w-lg">
               {post.excerpt}
             </p>
-            <div className="flex items-center gap-3 text-xs text-foreground/35">
-              <span className="flex items-center gap-1.5"><User size={11} />{post.author}</span>
-              <span>·</span>
-              <span className="flex items-center gap-1.5"><Clock size={11} />{post.readTime}</span>
+            <div className="flex items-center gap-2 text-xs text-foreground/35">
+              <span className="w-5 h-5 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary text-[7px] font-bold">{getInitials(post.author)}</span>
+              {post.author}
             </div>
           </div>
-          <div className="flex shrink-0 items-center gap-2 px-5 py-2.5 bg-brand-primary text-white rounded-full text-sm font-semibold group-hover:bg-brand-primary/90 transition-colors">
-            Read
-            <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+          <div className="shrink-0">
+            <span className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-primary text-white rounded-lg text-sm font-semibold group-hover:bg-brand-primary/90 group-hover:shadow-[0_0_20px_rgba(26,109,214,0.3)] transition-all">
+              Read article
+              <ArrowUpRight size={14} />
+            </span>
           </div>
         </div>
       </article>
@@ -178,51 +180,46 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
   const hasMore = currentPage < totalPages;
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-      {/* Main Content */}
+    <div className="flex flex-col lg:flex-row gap-10 lg:gap-14">
       <div className="flex-1 min-w-0">
-        {/* Featured */}
-        {featuredPost && categoryFilter === "all" && (
-          <div className="mb-8">
+        {featuredPost && categoryFilter === "all" && !searchQuery.trim() && (
+          <div className="mb-10">
             <FeaturedCard post={featuredPost} />
           </div>
         )}
 
-        {/* Search + filter bar */}
-        <div className="flex flex-col sm:flex-row gap-3 mb-8">
-          <div className="relative flex-1">
-            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/30 pointer-events-none" />
+        <div className="flex flex-col gap-4 mb-10">
+          <div className="relative">
+            <Search size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-foreground/30 pointer-events-none" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
               placeholder="Search articles..."
               aria-label="Search articles"
-              className="w-full bg-white/80 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl pl-9 pr-4 py-2.5 text-xs text-foreground placeholder:text-foreground/35 focus:border-brand-primary/50 focus:outline-none focus:ring-1 focus:ring-brand-primary/20 transition-all"
+              className="w-full bg-white/80 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl pl-10 pr-4 py-2.5 text-sm text-foreground placeholder:text-foreground/35 focus:border-brand-primary/50 focus:outline-none focus:ring-1 focus:ring-brand-primary/20 transition-all"
             />
+          </div>
+
+          <div className="flex flex-wrap gap-1.5">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => { setCategoryFilter(cat); setCurrentPage(1); }}
+                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  categoryFilter === cat
+                    ? "bg-brand-primary text-white shadow-sm"
+                    : "text-foreground/45 hover:text-foreground hover:bg-white/[0.04]"
+                }`}
+              >
+                {cat === "all" ? "All Posts" : cat}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Category filter */}
-        <div className="flex flex-wrap gap-1.5 mb-8">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              type="button"
-              onClick={() => { setCategoryFilter(cat); setCurrentPage(1); }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                categoryFilter === cat
-                  ? "bg-brand-primary text-white shadow-sm"
-                  : "bg-white/60 dark:bg-white/[0.03] border border-gray-100 dark:border-white/[0.06] text-foreground/50 hover:text-foreground hover:border-brand-primary/20"
-              }`}
-            >
-              {cat === "all" ? "All Posts" : cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Posts grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {paginatedPosts.length > 0 ? (
             paginatedPosts.map((post) => (
               <PostCard key={post.slug} post={post} />
@@ -230,21 +227,20 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
           ) : (
             <div className="col-span-full py-16 text-center">
               <p className="text-foreground/40 text-sm">
-              {searchQuery.trim()
-                ? `No articles match "${searchQuery}"`
-                : "No posts found for this category."}
-            </p>
+                {searchQuery.trim()
+                  ? `No articles match "${searchQuery}"`
+                  : "No posts found for this category."}
+              </p>
             </div>
           )}
         </div>
 
-        {/* Load more */}
         {hasMore && (
-          <div className="mt-8 text-center">
+          <div className="mt-10 text-center">
             <button
               type="button"
               onClick={() => setCurrentPage((p) => p + 1)}
-              className="px-6 py-2.5 bg-white/80 dark:bg-white/[0.05] border border-gray-100 dark:border-white/10 rounded-full text-sm font-medium text-foreground/60 hover:text-foreground hover:border-brand-primary/30 transition-all"
+              className="px-6 py-2.5 bg-white/80 dark:bg-white/[0.05] border border-gray-100 dark:border-white/10 rounded-xl text-sm font-medium text-foreground/50 hover:text-foreground hover:border-brand-primary/30 hover:shadow-sm transition-all"
             >
               Load more articles
             </button>
@@ -255,9 +251,7 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
         )}
       </div>
 
-      {/* Sidebar */}
       <aside className="w-full lg:w-64 shrink-0 space-y-6">
-        {/* Recent posts */}
         <div className="bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-xl p-5">
           <h3 className="text-xs font-bold uppercase tracking-widest text-foreground/40 mb-4">Recent Articles</h3>
           <div className="space-y-3">
@@ -265,7 +259,7 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
               const accent = getAccent(post.category);
               return (
                 <Link key={post.slug} href={`/blog/${post.slug}`} className="flex gap-3 group">
-                  <span className="w-0.5 shrink-0 rounded-full opacity-40 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: accent.hex }} />
+                  <span className={`w-0.5 shrink-0 rounded-full opacity-40 group-hover:opacity-100 transition-opacity ${accent.dot}`} />
                   <div className="min-w-0">
                     <p className="text-sm font-medium text-foreground/70 group-hover:text-brand-primary transition-colors line-clamp-2 leading-snug">
                       {post.title}
@@ -278,7 +272,6 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
           </div>
         </div>
 
-        {/* Categories */}
         <div className="bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-xl p-5">
           <h3 className="text-xs font-bold uppercase tracking-widest text-foreground/40 mb-4">Topics</h3>
           <div className="flex flex-wrap gap-1.5">
@@ -302,13 +295,12 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
           </div>
         </div>
 
-        {/* CTA */}
         <div className="bg-gradient-to-br from-brand-primary/5 to-transparent border border-brand-primary/10 rounded-xl p-5 text-center">
           <h3 className="text-sm font-semibold text-foreground mb-2">Have a project in mind?</h3>
           <p className="text-xs text-foreground/40 mb-4">Let&apos;s talk about how we can help you grow.</p>
           <Link
             href="/start"
-            className="inline-flex items-center gap-1.5 px-4 py-2 bg-brand-primary text-white rounded-full text-xs font-semibold hover:bg-brand-primary/90 transition-colors"
+            className="inline-flex items-center gap-1.5 px-5 py-2 bg-brand-primary text-white rounded-lg text-xs font-semibold hover:bg-brand-primary/90 transition-all hover:shadow-[0_0_15px_rgba(26,109,214,0.25)]"
           >
             Get in touch <ChevronRight size={12} />
           </Link>
