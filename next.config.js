@@ -66,7 +66,14 @@ const nextConfig = {
     ];
   },
   images: {
-    remotePatterns: [{ protocol: "https", hostname: "**" }],
+    remotePatterns: [
+      { protocol: "https", hostname: "www.googletagmanager.com" },
+      { protocol: "https", hostname: "www.google-analytics.com" },
+      { protocol: "https", hostname: "ip-api.com" },
+      { protocol: "https", hostname: "ipwho.is" },
+      { protocol: "https", hostname: "fonts.googleapis.com" },
+      { protocol: "https", hostname: "fonts.gstatic.com" },
+    ],
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },

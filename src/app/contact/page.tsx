@@ -7,6 +7,19 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact Maysan Labs",
     description: "Start your software project with a free consultation.",
+    url: "https://maysanlabs.com/contact",
+    type: "website",
+    siteName: "Maysan Labs",
+    images: [{ url: "/og-image.webp", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Maysan Labs",
+    description: "Start your software project with a free consultation.",
+    images: ["/og-image.webp"],
+  },
+  alternates: {
+    canonical: "https://maysanlabs.com/contact",
   },
 };
 

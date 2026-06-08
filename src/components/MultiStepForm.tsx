@@ -152,8 +152,8 @@ export default function MultiStepForm() {
                 ))}
               </div>
               <div className="mt-6">
-                <p className="text-foreground/40 text-sm mb-3">Budget Range</p>
-                <div className="flex flex-wrap gap-2">
+                <label id="budget-label" className="text-foreground/40 text-sm mb-3 block">Budget Range</label>
+                <div className="flex flex-wrap gap-2" role="group" aria-labelledby="budget-label">
                   {budgets.map((budget) => (
                     <button
                       key={budget}

@@ -5,6 +5,24 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Maysan Labs Privacy Policy — how we collect, use, and protect your data.",
   robots: { index: true, follow: true },
+  openGraph: {
+    title: "Privacy Policy | Maysan Labs",
+    description: "Maysan Labs Privacy Policy — how we collect, use, and protect your data.",
+    url: "https://maysanlabs.com/privacy",
+    type: "website",
+    siteName: "Maysan Labs",
+    images: [{ url: "/og-image.webp", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | Maysan Labs",
+    description: "Maysan Labs Privacy Policy — how we collect, use, and protect your data.",
+    images: ["/og-image.webp"],
+  },
+  alternates: {
+    canonical: "https://maysanlabs.com/privacy",
+    languages: { en: "https://maysanlabs.com/privacy" },
+  },
 };
 
 const breadcrumbSchema = generateBreadcrumbSchema([

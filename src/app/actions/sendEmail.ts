@@ -1,6 +1,8 @@
 "use server";
 
 import nodemailer from "nodemailer";
+import { headers } from "next/headers";
+import { checkRateLimit } from "@/lib/rate-limit";
 import { escapeHtml, textForEmail, multilineHtml } from "@/lib/security/escape";
 
 export async function sendEmail(formData: FormData) {
@@ -12,7 +14,14 @@ export async function sendEmail(formData: FormData) {
     // Return success to avoid tipping off bots, but don't process the form
     return { success: true, message: "Inquiry received successfully" };
   }
-  
+
+  const headersList = await headers();
+  const ip = headersList.get("x-forwarded-for")?.split(",")[0]?.trim() || headersList.get("x-real-ip") || "unknown";
+  const rateCheck = checkRateLimit(`sendEmail:${ip}`, 5, 60 * 1000);
+  if (!rateCheck.allowed) {
+    return { success: false, message: "Too many requests. Please try again later." };
+  }
+
   const companyName = formData.get("companyName") as string;
   const requirements = formData.get("requirements") as string;
   const email = formData.get("email") as string;

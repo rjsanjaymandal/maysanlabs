@@ -6,13 +6,13 @@ export const metadata: Metadata = {
     "Learn about Maysan Labs - a leading enterprise SaaS development company in Gurgaon, India. Our team builds scalable web applications, cloud infrastructure, and custom software for global enterprises. Contact Maysan Labs.",
   keywords: ["about Maysan Labs", "maysanlabs about", "Maysan Labs team", "Maysan Labs Gurgaon", "enterprise software company", "SaaS development company", "custom software development", "Maysan Labs founders"],
   alternates: {
-    canonical: "/about",
+    canonical: "https://maysanlabs.com/about",
   },
   openGraph: {
     title: "About Maysan Labs — Enterprise SaaS Development Company",
     description:
       "Learn about Maysan Labs - enterprise SaaS development company in Gurgaon, India building scalable software solutions for global enterprises.",
-    url: "/about",
+    url: "https://maysanlabs.com/about",
   },
 };
 

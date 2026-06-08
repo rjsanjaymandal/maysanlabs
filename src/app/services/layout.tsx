@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "SaaS Development Services | Custom Software | Maysan Labs",
-  description:
-    "Maysan Labs offers enterprise SaaS development services - custom software, web development, cloud infrastructure, and AI integration for modern businesses. Contact Maysan Labs for scalable solutions.",
-  keywords: ["Maysan Labs services", "maysanlabs development", "SaaS development services", "custom software development", "web development company", "cloud infrastructure", "enterprise software development"],
   alternates: {
-    canonical: "/services",
+    canonical: "https://maysanlabs.com/services",
   },
 };
 

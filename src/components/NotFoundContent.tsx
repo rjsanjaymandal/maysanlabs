@@ -9,7 +9,7 @@ const quickLinks = [
   { name: "Blog", href: "/blog" },
   { name: "Case Studies", href: "/case-studies" },
   { name: "Contact", href: "/start" },
-  { name: "Init", href: "/start" },
+  { name: "Pricing", href: "/pricing" },
 ];
 
 export default function NotFoundContent() {

@@ -61,7 +61,7 @@ export default function CommandDock() {
   };
 
   const dockItems = [
-    { icon: <LayoutGrid size={20} />, label: "Process", href: "/#process" },
+    { icon: <LayoutGrid size={20} />, label: "Process", href: "/services" },
     { icon: <Shield size={20} />, label: "Philosophy", href: "/about" },
     { icon: <Rss size={20} />, label: "Insights", href: "/insights" },
     { icon: <Terminal size={20} />, label: "INIT", href: "/start" },

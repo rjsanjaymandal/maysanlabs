@@ -1,6 +1,8 @@
 "use server";
 
 import nodemailer from "nodemailer";
+import { headers } from "next/headers";
+import { checkRateLimit } from "@/lib/rate-limit";
 import { escapeHtml, safeHref, textForEmail, multilineHtml } from "@/lib/security/escape";
 import { validateResume, ResumeValidationError } from "@/lib/security/resume";
 
@@ -11,6 +13,13 @@ export async function applyJob(formData: FormData) {
     console.warn("[Form Security] Honeypot triggered - potential bot submission");
     // Return success to avoid tipping off bots, but don't process the form
     return { success: true, message: "Application submitted successfully" };
+  }
+
+  const headersList = await headers();
+  const ip = headersList.get("x-forwarded-for")?.split(",")[0]?.trim() || headersList.get("x-real-ip") || "unknown";
+  const rateCheck = checkRateLimit(`applyJob:${ip}`, 5, 60 * 1000);
+  if (!rateCheck.allowed) {
+    return { success: false, message: "Too many requests. Please try again later." };
   }
 
   const name = formData.get("name") as string;

@@ -425,8 +425,8 @@ html, body {
 
 /* Skip to content link - visually hidden until focused */
 .skip-link {
-  position: absolute;
-  top: -100%;
+  position: fixed;
+  top: -9999px;
   left: 50%;
   z-index: 10000;
   transform: translateX(-50%);
@@ -441,6 +441,7 @@ html, body {
 }
 .skip-link:focus {
   top: 0;
+  left: 50%;
 }
 
 /* ─── Typography Overrides ─── */

@@ -37,9 +37,13 @@ export default function CaseStudyPerformanceToggle({
   return (
     <div>
       <div className="flex justify-center mb-8">
-        <div className="inline-flex bg-white/[0.03] border border-white/[0.06] rounded-full p-1">
+        <div className="inline-flex bg-white/[0.03] border border-white/[0.06] rounded-full p-1" role="tablist" aria-label="Performance comparison">
           <button
             onClick={() => setView("before")}
+            role="tab"
+            aria-selected={view === "before"}
+            id="tab-before"
+            aria-controls="tabpanel-before"
             className={`relative px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
               view === "before"
                 ? "bg-red-500/20 text-red-400 border border-red-500/20"
@@ -51,6 +55,10 @@ export default function CaseStudyPerformanceToggle({
           </button>
           <button
             onClick={() => setView("after")}
+            role="tab"
+            aria-selected={view === "after"}
+            id="tab-after"
+            aria-controls="tabpanel-after"
             className={`relative px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
               view === "after"
                 ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/20"
@@ -68,6 +76,9 @@ export default function CaseStudyPerformanceToggle({
           <AnimatePresence mode="wait">
             <motion.div
               key={view}
+              role="tabpanel"
+              id={view === "before" ? "tabpanel-before" : "tabpanel-after"}
+              aria-labelledby={view === "before" ? "tab-before" : "tab-after"}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}

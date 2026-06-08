@@ -7,7 +7,7 @@ import { caseStudies } from '@/lib/case-studies-data'
 const BASE_URL = 'https://maysanlabs.com'
 
 // Pages that should be excluded from the sitemap
-const EXCLUDED_ROUTES = new Set(['/_not-found', '/global-error', '/error', '/start', '/careers/apply'])
+const EXCLUDED_ROUTES = new Set(['/_not-found', '/global-error', '/error', '/careers/apply'])
 
 const ROUTE_CONFIG: Record<string, { priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }> = {
   '/':             { priority: 1.0, changeFrequency: 'weekly' },
@@ -25,6 +25,7 @@ const ROUTE_CONFIG: Record<string, { priority: number; changeFrequency: Metadata
   '/privacy':      { priority: 0.3, changeFrequency: 'yearly' },
   '/terms':        { priority: 0.3, changeFrequency: 'yearly' },
   '/contact':      { priority: 0.7, changeFrequency: 'monthly' },
+  '/start':        { priority: 0.8, changeFrequency: 'weekly' },
   '/tools': { priority: 0.8, changeFrequency: 'weekly' },
   '/tools/site-checker': { priority: 0.8, changeFrequency: 'weekly' },
   '/tools/headless-roi': { priority: 0.7, changeFrequency: 'weekly' },
