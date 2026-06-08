@@ -200,7 +200,7 @@ export default function OgGeneratorClient() {
 
         <div className="pb-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] max-sm:w-[300px] max-sm:h-[300px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
 
           <div className="container-main max-w-4xl mx-auto relative z-10">
             <motion.div
@@ -279,7 +279,7 @@ export default function OgGeneratorClient() {
                         }`}
                       >
                         <div className={`w-full h-3 rounded bg-gradient-to-r ${th.from === "#1A6DD6" ? "from-[#1A6DD6] to-[#00d2ff]" : th.from === "#10b981" ? "from-[#10b981] to-[#14b8a6]" : "from-[#f97316] to-[#facc15]"} mb-1`} />
-                        <span className="text-[8px] font-bold tracking-tight block leading-none">{th.name.split(" ")[1]}</span>
+                        <span className="text-[8px] sm:text-[9px] font-bold tracking-tight block leading-none">{th.name.split(" ")[1]}</span>
                       </button>
                     ))}
                   </div>
@@ -290,7 +290,7 @@ export default function OgGeneratorClient() {
 
                 <button
                   onClick={handleDownloadTrigger}
-                  className="w-full py-3 bg-brand-primary text-black rounded-xl font-bold uppercase text-[10px] tracking-wider transition-all flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(26,109,214,0.4)]"
+                  className="w-full py-3 bg-brand-primary text-black rounded-xl font-bold uppercase text-[10px] sm:text-xs md:text-sm tracking-wider transition-all flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(26,109,214,0.4)]"
                 >
                   <Download size={14} />
                   Download High-Res PNG
@@ -339,7 +339,7 @@ export default function OgGeneratorClient() {
                           <div className="w-9 h-9 rounded-full bg-brand-primary/20 flex items-center justify-center font-bold text-xs text-brand-primary">ML</div>
                           <div>
                             <p className="text-xs font-bold text-foreground">Maysan Labs</p>
-                            <p className="text-[9px] text-foreground/30">Enterprise Tech Scoping</p>
+                            <p className="text-[9px] sm:text-[10px] text-foreground/30">Enterprise Tech Scoping</p>
                           </div>
                         </div>
                         <p className="text-xs text-foreground/75 leading-relaxed">
@@ -351,13 +351,13 @@ export default function OgGeneratorClient() {
                           <div className="aspect-[1.91/1] w-full bg-[#03050d] p-6 relative overflow-hidden flex flex-col justify-between">
                             <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${theme.from === "#1A6DD6" ? "from-[#1A6DD6] to-[#00d2ff]" : theme.from === "#10b981" ? "from-[#10b981] to-[#14b8a6]" : "from-[#f97316] to-[#facc15]"} opacity-[0.05] blur-xl`} />
                             <div className={`w-full h-1 bg-gradient-to-r ${theme.from === "#1A6DD6" ? "from-[#1A6DD6] to-[#00d2ff]" : theme.from === "#10b981" ? "from-[#10b981] to-[#14b8a6]" : "from-[#f97316] to-[#facc15]"}`} />
-                            <span className="text-[9px] font-bold text-brand-primary font-mono tracking-wider">{domain.toUpperCase()}</span>
+                            <span className="text-[9px] sm:text-[10px] font-bold text-brand-primary font-mono tracking-wider">{domain.toUpperCase()}</span>
                             <h4 className="text-base font-black text-white leading-tight pr-6">{title}</h4>
                             <p className="text-[10px] text-white/50 leading-relaxed pr-6 line-clamp-2">{description}</p>
-                            <span className="text-[8px] font-bold text-white/20 text-right">BY MAYSAN LABS</span>
+                            <span className="text-[8px] sm:text-[9px] font-bold text-white/20 text-right">BY MAYSAN LABS</span>
                           </div>
                           <div className="bg-[#f3f6f8] dark:bg-[#1b1f24] p-3 border-t border-black/5 dark:border-white/5 flex flex-col gap-0.5">
-                            <span className="text-[9px] text-foreground/40 font-mono">{domain}</span>
+                            <span className="text-[9px] sm:text-[10px] text-foreground/40 font-mono">{domain}</span>
                             <span className="text-[11px] text-foreground/70 font-semibold truncate">{title}</span>
                           </div>
                         </div>
@@ -376,7 +376,7 @@ export default function OgGeneratorClient() {
                           <div className="w-9 h-9 rounded-full bg-brand-primary/20 flex items-center justify-center font-bold text-xs text-brand-primary">ML</div>
                           <div>
                             <p className="text-xs font-bold text-foreground">Maysan Labs <span className="text-foreground/30 font-normal">@maysanlabs</span></p>
-                            <p className="text-[9px] text-foreground/30">Just now</p>
+                            <p className="text-[9px] sm:text-[10px] text-foreground/30">Just now</p>
                           </div>
                         </div>
                         <p className="text-xs text-foreground/75 leading-relaxed">
@@ -388,15 +388,15 @@ export default function OgGeneratorClient() {
                           <div className="aspect-[1.91/1] w-full bg-[#03050d] p-6 relative overflow-hidden flex flex-col justify-between">
                             <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${theme.from === "#1A6DD6" ? "from-[#1A6DD6] to-[#00d2ff]" : theme.from === "#10b981" ? "from-[#10b981] to-[#14b8a6]" : "from-[#f97316] to-[#facc15]"} opacity-[0.05] blur-xl`} />
                             <div className={`w-full h-1 bg-gradient-to-r ${theme.from === "#1A6DD6" ? "from-[#1A6DD6] to-[#00d2ff]" : theme.from === "#10b981" ? "from-[#10b981] to-[#14b8a6]" : "from-[#f97316] to-[#facc15]"}`} />
-                            <span className="text-[9px] font-bold text-brand-primary font-mono tracking-wider">{domain.toUpperCase()}</span>
+                            <span className="text-[9px] sm:text-[10px] font-bold text-brand-primary font-mono tracking-wider">{domain.toUpperCase()}</span>
                             <h4 className="text-base font-black text-white leading-tight pr-6">{title}</h4>
                             <p className="text-[10px] text-white/50 leading-relaxed pr-6 line-clamp-2">{description}</p>
-                            <span className="text-[8px] font-bold text-white/20 text-right">BY MAYSAN LABS</span>
+                            <span className="text-[8px] sm:text-[9px] font-bold text-white/20 text-right">BY MAYSAN LABS</span>
                           </div>
                           <div className="bg-[#f5f8fa] dark:bg-[#15181c] p-3 border-t border-black/5 dark:border-white/10 flex flex-col gap-0.5">
-                            <span className="text-[9px] text-foreground/40 font-mono">{domain}</span>
+                            <span className="text-[9px] sm:text-[10px] text-foreground/40 font-mono">{domain}</span>
                             <span className="text-[11px] text-foreground/70 font-semibold truncate">{title}</span>
-                            <span className="text-[9px] text-foreground/40 line-clamp-1">{description}</span>
+                            <span className="text-[9px] sm:text-[10px] text-foreground/40 line-clamp-1">{description}</span>
                           </div>
                         </div>
                       </motion.div>
@@ -405,7 +405,7 @@ export default function OgGeneratorClient() {
                 </div>
 
                 <div className="mt-4 text-center">
-                  <p className="text-[9px] text-foreground/30 leading-relaxed">
+                  <p className="text-[9px] sm:text-[10px] text-foreground/30 leading-relaxed">
                     Designed in perfect accordance with modern 1.91:1 widescreen landscape graphic dimensions (1200 x 630 pixels).
                   </p>
                 </div>
@@ -485,7 +485,7 @@ export default function OgGeneratorClient() {
                     <button
                       type="submit"
                       disabled={leadSubmitting}
-                      className="flex-1 py-2.5 bg-brand-primary text-black rounded-xl font-bold uppercase text-[10px] tracking-wider transition-all flex items-center justify-center gap-1.5 hover:shadow-[0_0_20px_rgba(26,109,214,0.4)]"
+                      className="flex-1 py-2.5 bg-brand-primary text-black rounded-xl font-bold uppercase text-[10px] sm:text-xs tracking-wider transition-all flex items-center justify-center gap-1.5 hover:shadow-[0_0_20px_rgba(26,109,214,0.4)]"
                     >
                       {leadSubmitting ? (
                         <>
@@ -502,7 +502,7 @@ export default function OgGeneratorClient() {
                   </div>
                 </form>
 
-                <p className="text-[8px] text-foreground/20 text-center leading-relaxed">
+                <p className="text-[8px] sm:text-[9px] text-foreground/20 text-center leading-relaxed">
                   We respect your privacy. Submitting will unlock premium downloads across all Maysan Labs micro-tools.
                 </p>
               </div>

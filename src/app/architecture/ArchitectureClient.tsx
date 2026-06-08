@@ -39,7 +39,7 @@ export default function ArchitectureClient() {
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
       {/* Brand Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] max-sm:w-[300px] max-sm:h-[300px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
       <Navbar />
 
       {/* SEO, GEO & AEO Telemetry Data */}
@@ -91,7 +91,7 @@ export default function ArchitectureClient() {
       {/* Hero Header */}
       <section className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 via-brand-primary/2 to-transparent" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] max-sm:w-[300px] max-sm:h-[200px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
         
         <div className="container-main relative">
           <div className="max-w-3xl">
@@ -106,7 +106,7 @@ export default function ArchitectureClient() {
             <p className="text-lg md:text-xl text-foreground/50 leading-relaxed mb-8 max-w-2xl font-medium">
               A look at the strong engineering that keeps your software fast and secure across the world.
             </p>
-            <Link href="/start" className="group relative inline-flex items-center gap-2.5 px-7 py-3.5 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-extrabold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/20 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02] hover:brightness-110 active:scale-95">
+            <Link href="/start" className="group relative inline-flex items-center gap-2.5 px-7 py-3.5 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-extrabold text-[10px] sm:text-xs md:text-sm uppercase tracking-widest text-white shadow-lg shadow-blue-500/20 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02] hover:brightness-110 active:scale-95">
               <span className="relative z-10 flex items-center gap-2">
                 Start Your Project <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
               </span>

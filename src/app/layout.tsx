@@ -284,6 +284,22 @@ export default function RootLayout({
             <WhatsAppButton />
             <ExitIntentPopup />
             <CookieConsent />
+            <script dangerouslySetInnerHTML={{ __html: "if('serviceWorker' in navigator&&location.hostname!=='localhost'){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(e){console.warn('SW registration failed:',e)})})}" }} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+(function() {
+  if ('serviceWorker' in navigator && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+    try {
+      navigator.serviceWorker.register('/sw.js');
+    } catch (e) {
+      console.warn('SW registration failed:', e);
+    }
+  }
+})();
+`,
+              }}
+            />
           </ThemeProvider>
         </body>
     </html>

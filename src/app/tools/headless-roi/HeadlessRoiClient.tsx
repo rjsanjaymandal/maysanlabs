@@ -103,7 +103,7 @@ export default function HeadlessRoiClient() {
 
         <div className="pb-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] max-sm:w-[300px] max-sm:h-[300px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
 
           <div className="container-main max-w-4xl mx-auto relative z-10">
             <motion.div
@@ -199,7 +199,7 @@ export default function HeadlessRoiClient() {
                         }`}
                       >
                         <p className="font-bold">{plat.name}</p>
-                        <p className="text-[9px] text-foreground/40 mt-0.5">
+                        <p className="text-[9px] sm:text-[10px] text-foreground/40 mt-0.5">
                           {plat.feePct > 0 ? `${plat.feePct}% transaction fee` : "No transaction fees"}
                         </p>
                       </button>
@@ -254,12 +254,12 @@ export default function HeadlessRoiClient() {
 
                   {/* Horizontal Bar Chart styled in CSS */}
                   <div className="space-y-2 pt-2">
-                    <div className="text-[9px] text-foreground/40 font-bold uppercase tracking-wider">Estimated Tech Costs Comparison</div>
+                    <div className="text-[9px] sm:text-[10px] text-foreground/40 font-bold uppercase tracking-wider">Estimated Tech Costs Comparison</div>
                     <div className="space-y-1">
                       <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden">
                         <div className="bg-red-400 h-full rounded-full" style={{ width: "100%" }} />
                       </div>
-                      <div className="flex justify-between text-[8px] text-foreground/30">
+                      <div className="flex justify-between text-[8px] sm:text-[9px] text-foreground/30">
                         <span>Current Stack Costs</span>
                         <span>100%</span>
                       </div>
@@ -268,7 +268,7 @@ export default function HeadlessRoiClient() {
                       <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden">
                         <div className="bg-green-400 h-full rounded-full" style={{ width: `${Math.max(10, (calculations.totalHeadlessCostMonthly / calculations.totalPlatformCostMonthly) * 100)}%` }} />
                       </div>
-                      <div className="flex justify-between text-[8px] text-foreground/30">
+                      <div className="flex justify-between text-[8px] sm:text-[9px] text-foreground/30">
                         <span>Headless Jamstack Costs</span>
                         <span>{Math.round((calculations.totalHeadlessCostMonthly / calculations.totalPlatformCostMonthly) * 100)}%</span>
                       </div>
@@ -351,7 +351,7 @@ export default function HeadlessRoiClient() {
                     <button
                       type="submit"
                       disabled={leadSubmitting}
-                      className="w-full py-2.5 bg-brand-primary text-black hover:shadow-[0_0_20px_rgba(26,109,214,0.4)] rounded-xl font-bold uppercase text-[10px] tracking-wider transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                      className="w-full py-2.5 bg-brand-primary text-black hover:shadow-[0_0_20px_rgba(26,109,214,0.4)] rounded-xl font-bold uppercase text-[10px] sm:text-xs md:text-sm tracking-wider transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                       {leadSubmitting ? (
                         <>

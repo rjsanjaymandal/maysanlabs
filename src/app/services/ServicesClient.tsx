@@ -58,12 +58,12 @@ export default function ServicesClient() {
   return (
     <main id="main-content" aria-label="Maysan Labs Development Services" className="min-h-screen bg-background text-foreground flex flex-col justify-between relative overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] max-sm:w-[300px] max-sm:h-[300px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
       <Navbar />
       
       <section className="pt-32 pb-20 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 via-brand-primary/2 to-transparent" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] max-sm:w-[300px] max-sm:h-[200px] bg-brand-primary/10 blur-[100px] rounded-full pointer-events-none" />
         
         <div className="container-main relative">
           <motion.div 
@@ -82,7 +82,7 @@ export default function ServicesClient() {
             <p className="text-base md:text-lg text-foreground/60 leading-relaxed mb-8 max-w-2xl font-medium">
               We build scalable, high-performance software solutions for enterprises and fast-growing startups.
             </p>
-            <Link href="/start" className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] rounded-full font-bold text-[10px] uppercase tracking-widest text-white shadow-lg shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02]">
+            <Link href="/start" className="group relative inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] rounded-full font-bold text-[10px] sm:text-xs md:text-sm uppercase tracking-widest text-white shadow-lg shadow-blue-500/25 overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-[1.02]">
               <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative z-10">Start a Project</span>
               <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />

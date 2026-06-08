@@ -151,7 +151,7 @@ export default function ToolsClient() {
                         <div className={`w-11 h-11 rounded-xl bg-brand-primary/10 flex items-center justify-center`}>
                           <Icon size={20} className="text-brand-primary" />
                         </div>
-                        <span className="text-[10px] font-semibold text-brand-primary bg-brand-primary/10 px-2.5 py-1 rounded-full">
+                        <span className="text-[10px] sm:text-xs font-semibold text-brand-primary bg-brand-primary/10 px-2.5 py-1 rounded-full">
                           {tool.badge}
                         </span>
                       </div>

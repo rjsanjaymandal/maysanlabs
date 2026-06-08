@@ -130,7 +130,7 @@ export default function ScopeEstimatorClient() {
 
         <div className="pb-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] max-sm:w-[300px] max-sm:h-[300px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
 
           <div className="container-main max-w-4xl mx-auto relative z-10">
             <motion.div
@@ -151,7 +151,7 @@ export default function ScopeEstimatorClient() {
             </motion.div>
 
             {/* Stepper Progress Bar */}
-            <div className="flex items-center justify-between max-w-md mx-auto mb-10">
+            <div className="flex items-center justify-between max-w-full sm:max-w-md mx-auto mb-10">
               {[1, 2, 3, 4].map((step) => (
                 <div key={step} className="flex items-center">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
@@ -195,7 +195,7 @@ export default function ScopeEstimatorClient() {
                           >
                             <div className="flex justify-between items-center mb-1">
                               <span className="font-bold text-sm">{app.name}</span>
-                              <span className="text-[10px] text-brand-primary font-mono bg-brand-primary/5 px-2 py-0.5 rounded">
+                              <span className="text-[10px] sm:text-xs text-brand-primary font-mono bg-brand-primary/5 px-2 py-0.5 rounded">
                                 Base ~₹{app.baseCost.toLocaleString()}
                               </span>
                             </div>
@@ -227,7 +227,7 @@ export default function ScopeEstimatorClient() {
                           >
                             <div className="flex justify-between items-center mb-1">
                               <span className="font-bold text-sm">{feat.name}</span>
-                              <span className="text-[10px] text-brand-primary font-mono bg-brand-primary/5 px-2 py-0.5 rounded">
+                              <span className="text-[10px] sm:text-xs text-brand-primary font-mono bg-brand-primary/5 px-2 py-0.5 rounded">
                                 +₹{feat.cost.toLocaleString()}
                               </span>
                             </div>
@@ -260,7 +260,7 @@ export default function ScopeEstimatorClient() {
                             >
                               <div className="flex justify-between items-center mb-1">
                                 <span className="font-bold text-sm">{inf.name}</span>
-                                <span className="text-[10px] text-brand-primary font-mono bg-brand-primary/5 px-2 py-0.5 rounded">
+                                <span className="text-[10px] sm:text-xs text-brand-primary font-mono bg-brand-primary/5 px-2 py-0.5 rounded">
                                   +₹{inf.cost.toLocaleString()}
                                 </span>
                               </div>
@@ -308,7 +308,7 @@ export default function ScopeEstimatorClient() {
                           </p>
                           <Link
                             href="/start"
-                            className="px-6 py-3.5 bg-brand-primary text-black rounded-full font-bold uppercase text-[10px] tracking-wider transition-all inline-flex items-center gap-2"
+                            className="px-6 py-3.5 bg-brand-primary text-black rounded-full font-bold uppercase text-[10px] sm:text-xs md:text-sm tracking-wider transition-all inline-flex items-center gap-2"
                           >
                             <Sparkles size={12} />
                             Schedule Requirements Audit Call
@@ -355,7 +355,7 @@ export default function ScopeEstimatorClient() {
                             <button
                               type="submit"
                               disabled={leadSubmitting}
-                              className="w-full py-3 bg-brand-primary text-black rounded-xl font-bold uppercase text-[10px] tracking-wider transition-all flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(26,109,214,0.4)]"
+                              className="w-full py-3 bg-brand-primary text-black rounded-xl font-bold uppercase text-[10px] sm:text-xs md:text-sm tracking-wider transition-all flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(26,109,214,0.4)]"
                             >
                               {leadSubmitting ? (
                                 <>
@@ -450,7 +450,7 @@ export default function ScopeEstimatorClient() {
                 </div>
 
                 <div className="mt-8 relative z-10 text-center">
-                  <p className="text-[9px] text-foreground/30 leading-relaxed">
+                  <p className="text-[9px] sm:text-[10px] text-foreground/30 leading-relaxed">
                     Custom scoping estimates configured live utilizing standard industry software development matrix parameters.
                   </p>
                 </div>

@@ -69,7 +69,7 @@ export default function Home() {
       {/* Trust Section */}
       <section className="py-8 md:py-12 border-b border-gray-100 dark:border-white/[0.06]">
         <div className="container-main mb-6 md:mb-8 text-center">
-           <span className="text-foreground/60 text-[10px] uppercase tracking-widest font-bold">Trusted by fast-growing companies</span>
+           <span className="text-foreground/60 text-[10px] sm:text-xs uppercase tracking-widest font-bold">Trusted by fast-growing companies</span>
         </div>
         <LogoMarquee />
       </section>
@@ -162,7 +162,7 @@ export default function Home() {
       <section className="py-16 border-t border-gray-100 dark:border-white/[0.06] relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[150px] sm:h-[300px] bg-brand-primary/5 dark:bg-brand-primary/10 blur-[80px] sm:blur-[120px] rounded-full pointer-events-none" />
         <div className="container-main text-center relative z-10">
-          <p className="text-brand-primary/60 text-[10px] font-bold uppercase tracking-[0.25em] mb-8">Built With Modern, Trusted Technology</p>
+          <p className="text-brand-primary/60 text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] mb-8">Built With Modern, Trusted Technology</p>
           <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-3xl mx-auto">
             {["Modern & Fast", "Secure & Reliable", "Mobile-Friendly", "Easy to Update & Manage", "Scales With Your Business", "24/7 Support Ready"].map((tech) => (
               <span 

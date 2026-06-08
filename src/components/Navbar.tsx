@@ -189,7 +189,7 @@ export default function Navbar() {
             aria-label="Navigation menu"
             className="fixed inset-0 z-[60] animate-fade-in bg-background/98 backdrop-blur-2xl lg:hidden"
           >
-            <div className="flex flex-col h-full p-6 pt-24 justify-between">
+            <div className="flex flex-col h-full p-6 pt-24 justify-between overflow-y-auto">
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col gap-1.5">
                   {navItems.map((item, index) => (
@@ -202,7 +202,7 @@ export default function Navbar() {
                         href={item.href}
                         onClick={() => setIsOpen(false)}
                         aria-current={pathname === item.href ? "page" : undefined}
-                        className={`text-base font-semibold py-3 px-4 rounded-xl block transition-all duration-200 ${
+                        className={`text-base font-semibold py-3.5 px-5 rounded-xl block transition-all duration-200 active:scale-[0.98] ${
                           pathname === item.href 
                             ? "text-[#1A6DD6] bg-[#1A6DD6]/5" 
                             : "text-foreground/60 hover:text-foreground hover:bg-[var(--text-on-white)]/[0.03]"

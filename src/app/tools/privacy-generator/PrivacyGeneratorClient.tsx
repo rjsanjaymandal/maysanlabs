@@ -134,7 +134,7 @@ If you have any queries regarding any of our terms, please contact us at: ${supp
 
         <div className="pb-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] max-sm:w-[300px] max-sm:h-[300px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
 
           <div className="container-main max-w-4xl mx-auto relative z-10">
             <motion.div
@@ -304,7 +304,7 @@ If you have any queries regarding any of our terms, please contact us at: ${supp
                 </div>
 
                 <div className="mt-4 text-center">
-                  <p className="text-[9px] text-foreground/30 leading-relaxed">
+                  <p className="text-[9px] sm:text-[10px] text-foreground/30 leading-relaxed">
                     Disclaimer: These legal boilerplates represent general templates. Consult professional counsel for complete customized local statutory compliances.
                   </p>
                 </div>
@@ -374,7 +374,7 @@ If you have any queries regarding any of our terms, please contact us at: ${supp
                     <button
                       type="submit"
                       disabled={leadSubmitting}
-                      className="w-full py-2.5 bg-brand-primary text-black hover:shadow-[0_0_20px_rgba(26,109,214,0.4)] rounded-xl font-bold uppercase text-[10px] tracking-wider transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                      className="w-full py-2.5 bg-brand-primary text-black hover:shadow-[0_0_20px_rgba(26,109,214,0.4)] rounded-xl font-bold uppercase text-[10px] sm:text-xs md:text-sm tracking-wider transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                       {leadSubmitting ? (
                         <>

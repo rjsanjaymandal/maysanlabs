@@ -74,7 +74,7 @@ export default async function BlogListingPage() {
         {/* Hero */}
         <section className="pt-32 pb-12 md:pb-16 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.03] via-transparent to-transparent" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-brand-primary/[0.05] blur-[150px] rounded-full pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] max-sm:w-[300px] max-sm:h-[200px] bg-brand-primary/[0.05] blur-[150px] rounded-full pointer-events-none" />
           <div className="absolute top-10 right-0 w-64 h-64 bg-brand-primary/[0.02] blur-[80px] rounded-full pointer-events-none" />
           <div className="container-main relative">
             <div className="max-w-2xl">

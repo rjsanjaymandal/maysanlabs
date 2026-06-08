@@ -84,7 +84,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             <header>
               <div className="flex flex-wrap items-center gap-3 mb-5">
-                <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-semibold uppercase tracking-wider ${accent.bg} ${accent.text}`}>
+                <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] sm:text-xs font-semibold uppercase tracking-wider ${accent.bg} ${accent.text}`}>
                   <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: accent.hex }} />
                   {post.category}
                 </span>
@@ -104,12 +104,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
               <div className="flex items-center gap-4 pt-5 border-t border-gray-100 dark:border-white/[0.05]">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary text-[9px] font-bold border border-brand-primary/15">
+                  <div className="w-8 h-8 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary text-[9px] sm:text-xs font-bold border border-brand-primary/15">
                     {getInitials(post.author)}
                   </div>
                   <div>
                     <p className="text-xs font-medium text-foreground/70">{post.author}</p>
-                    <time className="text-[10px] text-foreground/35" dateTime={post.date}>
+                    <time className="text-[10px] sm:text-xs text-foreground/35" dateTime={post.date}>
                       {new Date(post.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
                     </time>
                   </div>

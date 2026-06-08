@@ -10,7 +10,7 @@ export default function CaseStudiesClient() {
   return (
     <main id="main-content" aria-label="Maysan Labs Case Studies" className="min-h-screen bg-background relative overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] max-sm:w-[300px] max-sm:h-[300px] bg-brand-primary/5 rounded-full blur-[140px] pointer-events-none" />
 
       <Navbar />
       
@@ -64,7 +64,7 @@ export default function CaseStudiesClient() {
                     {study.challenge}
                   </p>
 
-                  <div className="grid grid-cols-3 gap-3 mb-6">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
                     {study.metrics.map((metric, idx) => (
                       <div
                         key={idx}
@@ -73,7 +73,7 @@ export default function CaseStudiesClient() {
                         <div className="text-xl font-bold text-brand-primary leading-none mb-2">
                           {metric.value}
                         </div>
-                        <div className="text-[10px] uppercase text-foreground/50 tracking-widest font-medium">
+                        <div className="text-[10px] sm:text-xs uppercase text-foreground/50 tracking-widest font-medium">
                           {metric.label}
                         </div>
                       </div>

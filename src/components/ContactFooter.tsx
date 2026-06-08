@@ -1,17 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Mail, MapPin, Send } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone, Send } from "lucide-react";
 import { Twitter, Linkedin, Instagram, Facebook } from "@/components/ui/brand-icons";
 
 const links = [
   { name: "Services", href: "/services" },
   { name: "Products", href: "/products" },
+  { name: "Tools", href: "/tools" },
+  { name: "Pricing", href: "/pricing" },
   { name: "Case Studies", href: "/case-studies" },
   { name: "Blog", href: "/blog" },
-  { name: "Careers", href: "/careers" },
-  { name: "About", href: "/about" },
-  { name: "Architecture", href: "/architecture" },
   { name: "Insights", href: "/insights" },
+  { name: "About", href: "/about" },
+  { name: "Careers", href: "/careers" },
+  { name: "Architecture", href: "/architecture" },
 ];
 
 const socialLinks = [
@@ -71,10 +73,10 @@ export default function ContactFooter() {
         }) }} />
       </div>
       {/* CTA Section */}
-      <section className="py-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.08] via-brand-primary/[0.03] to-transparent" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] sm:w-[500px] h-[240px] sm:h-[500px] bg-brand-primary/5 sm:bg-brand-primary/10 blur-[40px] sm:blur-[80px] rounded-full pointer-events-none" />
-        <div className="container-main">
+      <section className="py-16 md:py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.10] via-brand-primary/[0.03] to-transparent" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-brand-primary/8 blur-[60px] sm:blur-[100px] rounded-full pointer-events-none" />
+        <div className="container-main relative z-10">
           <div className="text-center">
             <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
               <Send size={12} />
@@ -92,9 +94,9 @@ export default function ContactFooter() {
                 <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform duration-300" />
               </Link>
               
-              <Link href="mailto:business@maysanlabs.com" className="px-8 py-3.5 rounded-full border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] text-foreground/70 font-semibold text-sm transition-all duration-300 hover:bg-white/[0.05] hover:text-foreground hover:border-white/20 flex items-center gap-2.5 shadow-md">
-                  <Mail size={14} />
-                  <span>Contact Us</span>
+              <Link href="tel:+919660641530" className="px-8 py-3.5 rounded-full border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] text-foreground/70 font-semibold text-sm transition-all duration-300 hover:bg-white/[0.05] hover:text-foreground hover:border-white/20 flex items-center gap-2.5 shadow-md">
+                  <Phone size={14} />
+                  <span>Call Us</span>
               </Link>
             </div>
           </div>
@@ -106,7 +108,7 @@ export default function ContactFooter() {
         <div className="container-main">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
             <div className="md:col-span-2">
-              <Link href="/" className="flex items-center gap-4 mb-5 group">
+              <Link href="/" className="flex items-center gap-4 mb-5 group justify-center md:justify-start">
                 <div className="relative h-14 w-14 transition-all duration-300 rounded-full overflow-hidden flex items-center justify-center">
                   <Image 
                     src="/logo-rounded-v2.webp" 
@@ -127,20 +129,20 @@ export default function ContactFooter() {
                   </span>
                 </div>
               </Link>
-              <p className="text-foreground/70 text-sm mb-6 max-w-sm leading-relaxed">
+              <p className="text-foreground/70 text-sm mb-6 max-w-sm leading-relaxed text-center md:text-left">
                  Enterprise SaaS development studio building scalable applications for businesses that demand precision.
               </p>
-              <div className="flex gap-3.5">
+              <div className="flex gap-3.5 justify-center md:justify-start">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-xl border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] flex items-center justify-center text-foreground/40 hover:text-[#1A6DD6] hover:border-[#1A6DD6]/30 hover:bg-[#1A6DD6]/5 hover:-translate-y-0.5 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-blue-500/10"
+                    className="w-11 h-11 rounded-xl border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] flex items-center justify-center text-foreground/40 hover:text-[#1A6DD6] hover:border-[#1A6DD6]/30 hover:bg-[#1A6DD6]/5 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-blue-500/10"
                     aria-label={social.name}
                   >
-                    <social.icon size={18} />
+                    <social.icon size={20} />
                   </a>
                 ))}
               </div>
@@ -148,12 +150,12 @@ export default function ContactFooter() {
 
             <div className="flex flex-col">
               <h3 className="text-xs font-semibold text-foreground/70 uppercase tracking-widest mb-5">Company</h3>
-              <div className="flex flex-col gap-2.5">
+              <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
                 {links.map((link) => (
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="text-foreground/60 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-x-1 inline-block w-fit"
+                    className="text-foreground/60 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-x-1 w-fit"
                   >
                     {link.name}
                   </Link>
@@ -165,15 +167,22 @@ export default function ContactFooter() {
               <h3 className="text-xs font-semibold text-foreground/70 uppercase tracking-widest mb-5">Contact</h3>
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-3 text-foreground/60 text-sm group">
-                  <div className="w-8 h-8 rounded-lg bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] flex items-center justify-center text-foreground/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300">
-                    <MapPin size={14} />
+                  <div className="w-9 h-9 rounded-lg bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] flex items-center justify-center text-foreground/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300 shrink-0">
+                    <MapPin size={15} />
                   </div>
                   <span>Gurgaon, India</span>
                 </div>
                 
+                <a href="tel:+919660641530" className="flex items-center gap-3 text-foreground/60 text-sm group">
+                  <div className="w-9 h-9 rounded-lg bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] flex items-center justify-center text-foreground/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300 shrink-0">
+                    <Phone size={15} />
+                  </div>
+                  <span className="group-hover:text-foreground transition-colors duration-300">+91 96606 41530</span>
+                </a>
+
                 <Link href="/contact" className="flex items-center gap-3 text-foreground/60 text-sm group">
-                  <div className="w-8 h-8 rounded-lg bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] flex items-center justify-center text-foreground/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300">
-                    <Mail size={14} />
+                  <div className="w-9 h-9 rounded-lg bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] flex items-center justify-center text-foreground/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300 shrink-0">
+                    <Mail size={15} />
                   </div>
                   <span className="text-brand-primary group-hover:text-foreground transition-colors duration-300">business@maysanlabs.com</span>
                 </Link>
@@ -181,13 +190,13 @@ export default function ContactFooter() {
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-3">
-            <p className="text-foreground/60 text-sm">
+          <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-foreground/60 text-xs sm:text-sm text-center md:text-left">
               © {new Date().getFullYear()} Maysan Labs. All rights reserved.
             </p>
-            <div className="flex gap-5">
-              <Link href="/privacy" className="text-foreground/65 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-y-[-1px]">Privacy Policy</Link>
-              <Link href="/terms" className="text-foreground/65 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-y-[-1px]">Terms of Service</Link>
+            <div className="flex gap-6">
+              <Link href="/privacy" className="text-foreground/65 hover:text-brand-primary text-xs sm:text-sm transition-all duration-300 py-2">Privacy Policy</Link>
+              <Link href="/terms" className="text-foreground/65 hover:text-brand-primary text-xs sm:text-sm transition-all duration-300 py-2">Terms of Service</Link>
             </div>
           </div>
         </div>

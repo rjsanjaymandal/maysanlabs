@@ -506,7 +506,7 @@ export default function ImageCompressorClient() {
 
         <div className="pb-24 px-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] max-sm:w-[300px] max-sm:h-[300px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
 
           <div className="container-main max-w-5xl mx-auto relative z-10">
             {/* Header section with geometric elements */}
@@ -605,16 +605,16 @@ export default function ImageCompressorClient() {
                   >
                     <div className="text-center py-2 relative">
                       <div className="absolute right-0 top-1/4 bottom-1/4 w-[1px] bg-white/[0.08]" />
-                      <p className="text-[10px] font-bold text-foreground/40 uppercase tracking-wider mb-1">Queue</p>
+                      <p className="text-[10px] sm:text-xs font-bold text-foreground/40 uppercase tracking-wider mb-1">Queue</p>
                       <p className="text-2xl font-bold font-mono text-foreground">{files.length}</p>
                     </div>
                     <div className="text-center py-2 relative">
                       <div className="absolute right-0 top-1/4 bottom-1/4 w-[1px] bg-white/[0.08]" />
-                      <p className="text-[10px] font-bold text-foreground/40 uppercase tracking-wider mb-1">Average Savings</p>
+                      <p className="text-[10px] sm:text-xs font-bold text-foreground/40 uppercase tracking-wider mb-1">Average Savings</p>
                       <p className="text-2xl font-bold font-mono text-green-400">{averageReduction}%</p>
                     </div>
                     <div className="text-center py-2">
-                      <p className="text-[10px] font-bold text-foreground/40 uppercase tracking-wider mb-1">Total Freed</p>
+                      <p className="text-[10px] sm:text-xs font-bold text-foreground/40 uppercase tracking-wider mb-1">Total Freed</p>
                       <p className="text-2xl font-bold font-mono text-cyan-400">{formatBytes(totalSavedSize)}</p>
                     </div>
                   </motion.div>
@@ -647,7 +647,7 @@ export default function ImageCompressorClient() {
                           onChange={(e) => setQuality(parseFloat(e.target.value))}
                           className="w-full h-1 bg-white/[0.08] rounded-full appearance-none cursor-pointer accent-brand-primary outline-none"
                         />
-                        <div className="flex justify-between text-[10px] text-foreground/30 font-mono mt-1.5">
+                        <div className="flex justify-between text-[10px] sm:text-xs text-foreground/30 font-mono mt-1.5">
                           <span>Max Compress</span>
                           <span>Balanced</span>
                           <span>High Quality</span>
@@ -700,7 +700,7 @@ export default function ImageCompressorClient() {
                           <button
                             onClick={() => processCompression()}
                             disabled={isProcessingAll}
-                            className="px-3.5 py-1.5 bg-gradient-to-r from-brand-primary to-brand-light text-white rounded-lg font-bold text-[10px] uppercase tracking-wider hover:shadow-[0_0_20px_rgba(26,109,214,0.3)] transition-all disabled:opacity-50"
+                            className="px-3.5 py-1.5 bg-gradient-to-r from-brand-primary to-brand-light text-white rounded-lg font-bold text-[10px] sm:text-xs uppercase tracking-wider hover:shadow-[0_0_20px_rgba(26,109,214,0.3)] transition-all disabled:opacity-50"
                           >
                             Compress All
                           </button>
@@ -708,7 +708,7 @@ export default function ImageCompressorClient() {
                         {files.every(f => f.status === "success") && (
                           <button
                             onClick={downloadAll}
-                            className="px-3.5 py-1.5 bg-white/40 dark:bg-white/[0.03] hover:bg-white/60 dark:hover:bg-white/[0.08] text-foreground dark:text-white border border-gray-200 dark:border-white/[0.08] rounded-lg font-bold text-[10px] uppercase tracking-wider transition-all inline-flex items-center gap-1.5"
+                            className="px-3.5 py-1.5 bg-white/40 dark:bg-white/[0.03] hover:bg-white/60 dark:hover:bg-white/[0.08] text-foreground dark:text-white border border-gray-200 dark:border-white/[0.08] rounded-lg font-bold text-[10px] sm:text-xs uppercase tracking-wider transition-all inline-flex items-center gap-1.5"
                           >
                             <FileDown size={11} />
                             Download All
@@ -716,7 +716,7 @@ export default function ImageCompressorClient() {
                         )}
                         <button
                           onClick={clearAll}
-                          className="px-3.5 py-1.5 bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500/20 rounded-lg font-bold text-[10px] uppercase tracking-wider transition-all"
+                          className="px-3.5 py-1.5 bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500/20 rounded-lg font-bold text-[10px] sm:text-xs uppercase tracking-wider transition-all"
                         >
                           Clear
                         </button>
@@ -771,20 +771,20 @@ export default function ImageCompressorClient() {
 
                               <div className="flex items-center gap-3 shrink-0">
                                 {fileObj.status === "idle" && (
-                                  <span className="text-[9px] font-bold tracking-wider text-foreground/40 uppercase bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded">
+                                  <span className="text-[9px] sm:text-[10px] font-bold tracking-wider text-foreground/40 uppercase bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded">
                                     Idle
                                   </span>
                                 )}
                                 
                                 {fileObj.status === "compressing" && (
-                                  <span className="text-[9px] font-bold tracking-wider text-brand-primary uppercase bg-brand-primary/10 border border-brand-primary/20 px-2.5 py-1 rounded flex items-center gap-1">
+                                  <span className="text-[9px] sm:text-[10px] font-bold tracking-wider text-brand-primary uppercase bg-brand-primary/10 border border-brand-primary/20 px-2.5 py-1 rounded flex items-center gap-1">
                                     <RefreshCw size={8} className="animate-spin" />
                                     Optimizing
                                   </span>
                                 )}
 
                                 {fileObj.status === "error" && (
-                                  <span className="text-[9px] font-bold tracking-wider text-red-400 uppercase bg-red-400/10 border border-red-400/20 px-2.5 py-1 rounded">
+                                  <span className="text-[9px] sm:text-[10px] font-bold tracking-wider text-red-400 uppercase bg-red-400/10 border border-red-400/20 px-2.5 py-1 rounded">
                                     Failed
                                   </span>
                                 )}
@@ -793,7 +793,7 @@ export default function ImageCompressorClient() {
                                   <div className="flex items-center gap-2">
                                     <div className="text-right">
                                       <p className="text-xs font-bold font-mono text-[#10b981]">{formatBytes(fileObj.compressedSize || 0)}</p>
-                                      <p className="text-[9px] font-bold font-mono text-green-400">-{fileObj.reduction}%</p>
+                                      <p className="text-[9px] sm:text-[10px] font-bold font-mono text-green-400">-{fileObj.reduction}%</p>
                                     </div>
                                     <button
                                       onClick={(e) => {
@@ -853,7 +853,7 @@ export default function ImageCompressorClient() {
                       {activeFile && activeFile.status === "idle" && (
                         <button
                           onClick={() => processCompression(activeFile.id)}
-                          className="px-2.5 py-1 bg-brand-primary/10 border border-brand-primary/20 hover:bg-brand-primary/20 text-brand-primary rounded-lg font-bold text-[9px] uppercase tracking-wider transition-all"
+                          className="px-2.5 py-1 bg-brand-primary/10 border border-brand-primary/20 hover:bg-brand-primary/20 text-brand-primary rounded-lg font-bold text-[9px] sm:text-[10px] uppercase tracking-wider transition-all"
                         >
                           Compress Single
                         </button>
@@ -868,7 +868,7 @@ export default function ImageCompressorClient() {
                           <button
                             onClick={() => rotateFile(activeFile.id)}
                             aria-label="Rotate Image 90° Clockwise"
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-bold text-foreground/70 hover:text-brand-primary bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.08] hover:border-brand-primary/30 rounded-xl transition-all duration-300"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] sm:text-xs font-bold text-foreground/70 hover:text-brand-primary bg-white/[0.02] hover:bg-white/[0.06] border border-white/[0.08] hover:border-brand-primary/30 rounded-xl transition-all duration-300"
                           >
                             <RotateCw size={12} className="animate-hover-spin" />
                             Rotate 90°
@@ -925,7 +925,7 @@ export default function ImageCompressorClient() {
                                 loading="lazy"
                                 className="absolute max-h-full max-w-full object-contain pointer-events-none select-none p-1"
                               />
-                              <span className="absolute top-4 left-4 z-20 px-2 py-1 bg-black/80 border border-white/10 text-[9px] font-bold text-white uppercase tracking-wider rounded font-mono">
+                              <span className="absolute top-4 left-4 z-20 px-2 py-1 bg-black/80 border border-white/10 text-[9px] sm:text-[10px] font-bold text-white uppercase tracking-wider rounded font-mono">
                                 Before ({formatBytes(activeFile.originalSize)})
                               </span>
 
@@ -944,7 +944,7 @@ export default function ImageCompressorClient() {
                                   className="max-h-full max-w-full object-contain pointer-events-none select-none"
                                 />
                               </div>
-                              <span className="absolute top-4 right-4 z-20 px-2 py-1 bg-brand-primary text-white border border-white/10 text-[9px] font-bold uppercase tracking-wider rounded font-mono">
+                              <span className="absolute top-4 right-4 z-20 px-2 py-1 bg-brand-primary text-white border border-white/10 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider rounded font-mono">
                                 After ({activeFile.compressedSize ? formatBytes(activeFile.compressedSize) : "Waiting"})
                               </span>
 
@@ -982,7 +982,7 @@ export default function ImageCompressorClient() {
                                   loading="lazy"
                                   className="max-h-[80%] max-w-full object-contain pointer-events-none select-none"
                                 />
-                                <span className="absolute bottom-2 left-2 z-10 px-2 py-0.5 bg-black/80 border border-white/10 text-[8px] font-bold text-white uppercase tracking-wider rounded font-mono">
+                                <span className="absolute bottom-2 left-2 z-10 px-2 py-0.5 bg-black/80 border border-white/10 text-[8px] sm:text-[9px] font-bold text-white uppercase tracking-wider rounded font-mono">
                                   Before ({formatBytes(activeFile.originalSize)})
                                 </span>
                               </div>
@@ -996,7 +996,7 @@ export default function ImageCompressorClient() {
                                   loading="lazy"
                                   className="max-h-[80%] max-w-full object-contain pointer-events-none select-none"
                                 />
-                                <span className="absolute bottom-2 right-2 z-10 px-2 py-0.5 bg-brand-primary text-white border border-white/10 text-[8px] font-bold uppercase tracking-wider rounded font-mono">
+                                <span className="absolute bottom-2 right-2 z-10 px-2 py-0.5 bg-brand-primary text-white border border-white/10 text-[8px] sm:text-[9px] font-bold uppercase tracking-wider rounded font-mono">
                                   After ({activeFile.compressedSize ? formatBytes(activeFile.compressedSize) : "Waiting"})
                                 </span>
                               </div>
@@ -1026,7 +1026,7 @@ export default function ImageCompressorClient() {
                               />
 
                               <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5">
-                                <span className={`px-2 py-1 border text-[9px] font-bold uppercase tracking-wider rounded font-mono transition-all duration-300 ${
+                                <span className={`px-2 py-1 border text-[9px] sm:text-[10px] font-bold uppercase tracking-wider rounded font-mono transition-all duration-300 ${
                                   isHovered
                                     ? "bg-black/80 border-white/10 text-white"
                                     : "bg-brand-primary border-brand-primary/20 text-white shadow-[0_0_15px_rgba(26,109,214,0.3)]"
@@ -1035,7 +1035,7 @@ export default function ImageCompressorClient() {
                                 </span>
                               </div>
 
-                              <div className="absolute bottom-4 right-4 z-20 px-2.5 py-1 bg-black/80 border border-white/10 text-[8px] text-foreground/50 tracking-wider rounded font-mono uppercase group-hover:text-white transition-colors">
+                              <div className="absolute bottom-4 right-4 z-20 px-2.5 py-1 bg-black/80 border border-white/10 text-[8px] sm:text-[9px] text-foreground/50 tracking-wider rounded font-mono uppercase group-hover:text-white transition-colors">
                                 Hover / Tap to Toggle
                               </div>
                             </div>
