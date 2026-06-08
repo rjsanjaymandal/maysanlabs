@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { generateBreadcrumbSchema } from "@/lib/seo/helpers";
+import Navbar from "@/components/Navbar";
 
 const ogImage = (t: string, d?: string) =>
   `/api/og?title=${encodeURIComponent(t.slice(0, 100))}${d ? `&description=${encodeURIComponent(d.slice(0, 160))}` : ""}`;
@@ -35,13 +36,14 @@ const breadcrumbSchema = generateBreadcrumbSchema([
 
 export default function PrivacyPage() {
   return (
-    <main id="main-content" className="min-h-screen bg-background relative overflow-hidden pt-32 pb-20">
+    <main id="main-content" className="min-h-screen bg-background relative overflow-hidden">
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
       {/* Brand Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-primary/5 dark:bg-brand-primary/10 rounded-full blur-[140px] pointer-events-none" />
+      <Navbar />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <div className="container-main max-w-3xl relative">
+      <div className="container-main max-w-3xl relative pt-32 pb-20">
         <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-8 md:p-12 backdrop-blur-xl shadow-sm">
           <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
         <div className="prose prose-invert max-w-none space-y-6 text-foreground/70">
