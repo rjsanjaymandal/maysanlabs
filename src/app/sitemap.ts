@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
+import { blogPosts } from '@/lib/blog-data'
+import { caseStudies } from '@/lib/case-studies-data'
 
 const BASE_URL = 'https://maysanlabs.com'
 
@@ -88,9 +90,6 @@ function discoverRoutes(dir: string, basePath: string = ''): MetadataRoute.Sitem
 
   return entries
 }
-
-import { blogPosts } from '@/lib/blog-data'
-import { caseStudies } from '@/lib/case-studies-data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const appDir = path.join(process.cwd(), 'src', 'app')

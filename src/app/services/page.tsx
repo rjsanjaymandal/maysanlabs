@@ -24,7 +24,7 @@ const breadcrumbSchema = generateBreadcrumbSchema([
 ]);
 
 const allFAQs = [...serviceFAQs, ...softwareDevFAQs, ...cloudFAQs];
-const faqPageSchema = generateFAQPageSchema(allFAQs, "/services");
+const faqPageSchema = generateFAQPageSchema(allFAQs);
 
 export default function ServicesPage() {
   return (

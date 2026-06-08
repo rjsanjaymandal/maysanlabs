@@ -362,9 +362,7 @@ export const cloudFAQs = [
   }
 ];
 
-export function generateFAQPageSchema(faqs: { question: string; answer: string }[], _pageUrl: string) {
-  void _pageUrl;
-
+export function generateFAQPageSchema(faqs: { question: string; answer: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
