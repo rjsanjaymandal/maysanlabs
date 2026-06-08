@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Phone, Search } from "lucide-react";
+import { Menu, X, Phone, Search, ChevronRight } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import dynamic from "next/dynamic";
 const SearchModal = dynamic(() => import("@/components/SearchModal"), {
@@ -36,7 +36,6 @@ export default function Navbar() {
     };
   }, []);
 
-  // Keyboard shortcut: Cmd/Ctrl+K opens search
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -48,7 +47,6 @@ export default function Navbar() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Focus trap when mobile menu is open
   useEffect(() => {
     if (!isOpen || !menuRef.current) return;
     const firstFocusable = menuRef.current.querySelector<HTMLElement>("a, button, [tabindex]:not([tabindex='-1'])");
@@ -73,7 +71,6 @@ export default function Navbar() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -85,7 +82,6 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
-  // Close mobile menu on resize to desktop
   useEffect(() => {
     const onResize = () => {
       if (window.innerWidth >= 1024) setIsOpen(false);
@@ -103,16 +99,18 @@ export default function Navbar() {
     { name: "Careers", href: "/careers" },
   ];
 
+  const isActive = (href: string) => pathname === href;
+
   return (
     <>
-      <nav aria-label="Main navigation" className={`fixed top-0 left-0 right-0 z-[100] transition-[background-color,padding,box-shadow] duration-200 ${
-        mounted && scrolled ? "bg-[var(--bg-dark)]/90 backdrop-blur-xl py-2 md:py-3 shadow-lg shadow-black/20" : "bg-transparent py-4 md:py-5"
+      <nav aria-label="Main navigation" className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+        mounted && scrolled
+          ? "bg-[var(--bg-dark)]/80 backdrop-blur-xl py-3 shadow-[0_1px_0_rgba(255,255,255,0.05)]"
+          : "bg-transparent py-4 md:py-5"
       }`}>
         <div className="container-main flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 group">
-            <div 
-              className="relative h-9 w-9 rounded-full overflow-hidden flex items-center justify-center border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] transition-transform duration-200 group-hover:-rotate-3 group-hover:scale-105 group-hover:shadow-[0_0_20px_rgba(26,109,214,0.35)]"
-            >
+          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+            <div className="relative h-8 w-8 md:h-9 md:w-9 rounded-xl overflow-hidden flex items-center justify-center border border-white/10 bg-white/5 transition-all duration-300 group-hover:border-brand-primary/30 group-hover:shadow-[0_0_15px_rgba(26,109,214,0.2)]">
               <Image 
                 src="/logo-rounded-v2.webp" 
                 alt="Maysan Labs Logo"
@@ -125,47 +123,51 @@ export default function Navbar() {
                 className="h-full w-full object-contain" 
               />
             </div>
-            <span className="text-xs sm:text-sm font-semibold tracking-[0.22em] text-foreground/90 transition-colors duration-300 group-hover:text-foreground uppercase">
-              Maysan <span className="text-[#1A6DD6] group-hover:text-blue-400 transition-colors duration-300">Labs</span>
+            <span className="text-sm font-semibold tracking-wide text-foreground/90 transition-colors duration-300 group-hover:text-foreground">
+              Maysan <span className="text-brand-primary">Labs</span>
             </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                aria-current={pathname === item.href ? "page" : undefined}
-                className={`text-[11px] uppercase tracking-widest font-semibold transition-all duration-300 relative group py-1.5 ${
-                   pathname === item.href ? "text-brand-primary" : "text-foreground/45 hover:text-foreground"
-                 }`}
+                aria-current={isActive(item.href) ? "page" : undefined}
+                className={`relative px-3.5 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                  isActive(item.href)
+                    ? "text-brand-primary bg-brand-primary/10"
+                    : "text-foreground/50 hover:text-foreground hover:bg-white/[0.04]"
+                }`}
               >
                 {item.name}
-                <span className={`absolute -bottom-0.5 left-0 h-[1.5px] bg-brand-primary transition-all duration-300 ${pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
               </Link>
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center gap-4">
-            <ThemeToggle />
+          <div className="hidden lg:flex items-center gap-3">
             <button
               type="button"
               onClick={() => setIsSearchOpen(true)}
-              aria-label="Open search"
+              aria-label="Open search (Cmd+K)"
               aria-keyshortcuts="Control+K Meta+K"
-              className="w-9 h-9 flex items-center justify-center text-foreground/50 hover:text-foreground bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full transition-all duration-200 hover:border-[var(--text-on-white)]/20 focus-ring"
+              className="w-9 h-9 flex items-center justify-center text-foreground/40 hover:text-foreground rounded-lg hover:bg-white/[0.04] transition-all duration-200 focus-ring"
             >
-              <Search size={15} />
+              <Search size={16} />
             </button>
-            <Link href="/start" className="group relative px-6 py-2.5 bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full font-bold text-[10px] uppercase tracking-widest text-foreground/90 shadow-lg shadow-black/10 overflow-hidden transition-all duration-300 hover:bg-[#1A6DD6] hover:border-[#1A6DD6] hover:text-white hover:shadow-blue-500/20 hover:scale-105 active:scale-95">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="relative z-10">Book a Call</span>
+            <ThemeToggle />
+            <Link
+              href="/start"
+              className="inline-flex items-center gap-1.5 px-5 py-2 bg-brand-primary rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-primary/90 hover:shadow-[0_0_20px_rgba(26,109,214,0.3)] hover:-translate-y-0.5 active:translate-y-0 focus-ring"
+            >
+              Book a Call
+              <ChevronRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5" />
             </Link>
           </div>
 
           <button 
             type="button"
-            className="lg:hidden w-11 h-11 flex items-center justify-center text-foreground/50 hover:text-foreground bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full hover:bg-[var(--glass-chip-bg)] hover:border-[var(--text-on-white)]/20 transition-all duration-200 focus-ring"
+            className="lg:hidden w-10 h-10 flex items-center justify-center text-foreground/50 hover:text-foreground rounded-lg hover:bg-white/[0.04] transition-all duration-200 focus-ring"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
@@ -177,15 +179,13 @@ export default function Navbar() {
       </nav>
  
       {/* Sticky Mobile CTA */}
-      <div className={`fixed bottom-0 left-0 right-0 z-[90] lg:hidden px-4 pb-4 transition-opacity duration-200 ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+      <div className={`fixed bottom-0 left-0 right-0 z-[90] lg:hidden px-4 pb-4 transition-all duration-300 ${isOpen ? 'opacity-0 translate-y-2 pointer-events-none' : 'opacity-100 translate-y-0'}`}>
         <Link 
           href="/start"
-          className="group relative flex items-center justify-center gap-2.5 w-full py-4 bg-[#1A6DD6] rounded-2xl font-bold text-[10px] uppercase tracking-widest text-white shadow-xl shadow-blue-500/30 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-[1.02] active:scale-[0.98]"
+          className="flex items-center justify-center gap-2.5 w-full py-3.5 bg-brand-primary rounded-xl font-semibold text-sm text-white shadow-lg shadow-brand-primary/25 transition-all duration-200 hover:shadow-xl hover:shadow-brand-primary/30 active:scale-[0.98]"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1A6DD6] via-[#2563EB] to-[#1D4ED8] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          <Phone size={15} className="relative z-10" />
-          <span className="relative z-10">Book a Call</span>
+          <Phone size={15} />
+          Book a Call
         </Link>
       </div>
  
@@ -196,57 +196,57 @@ export default function Navbar() {
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
-            className="fixed inset-0 z-[60] animate-fade-in bg-background/98 backdrop-blur-2xl lg:hidden"
+            className="fixed inset-0 z-[60] lg:hidden"
           >
-            <div className="flex flex-col h-full p-6 pt-24 justify-between overflow-y-auto">
-              <div className="flex flex-col gap-6">
-                <div className="flex flex-col gap-1.5">
-                  {navItems.map((item, index) => (
-                    <div
-                      key={item.name}
-                      style={{ animationDelay: `${index * 35}ms` }}
-                      className="animate-fade-in-up"
+            <div className="absolute inset-0 bg-background/95 backdrop-blur-2xl" />
+            <div className="relative flex flex-col h-full p-5 pt-20 justify-between overflow-y-auto">
+              <div className="flex flex-col gap-1">
+                {navItems.map((item, index) => (
+                  <div
+                    key={item.name}
+                    style={{ animationDelay: `${index * 40}ms` }}
+                    className="animate-fade-in-up"
+                  >
+                    <Link
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      aria-current={isActive(item.href) ? "page" : undefined}
+                      className={`flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium transition-all duration-200 ${
+                        isActive(item.href)
+                          ? "text-brand-primary bg-brand-primary/10"
+                          : "text-foreground/60 hover:text-foreground hover:bg-white/[0.03]"
+                      }`}
                     >
-                      <Link
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        aria-current={pathname === item.href ? "page" : undefined}
-                        className={`text-base font-semibold py-3.5 px-5 rounded-xl block transition-all duration-200 active:scale-[0.98] ${
-                          pathname === item.href 
-                            ? "text-[#1A6DD6] bg-[#1A6DD6]/5" 
-                            : "text-foreground/60 hover:text-foreground hover:bg-[var(--text-on-white)]/[0.03]"
-                        }`}
-                      >
-                        {item.name}
-                      </Link>
-                    </div>
-                  ))}
-                </div>
+                      {item.name}
+                      <ChevronRight size={16} className="text-foreground/20" />
+                    </Link>
+                  </div>
+                ))}
               </div>
 
-              {/* Mobile CTA */}
-              <Link
-                href="/start"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2.5 w-full py-4 bg-[#1A6DD6] rounded-2xl font-bold text-xs uppercase tracking-widest text-white shadow-xl shadow-blue-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50 active:scale-[0.98]"
-              >
-                <Phone size={15} />
-                Book a Call
-              </Link>
+              <div className="space-y-4 pt-4">
+                <Link
+                  href="/start"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center gap-2.5 w-full py-3.5 bg-brand-primary rounded-xl font-semibold text-sm text-white shadow-lg shadow-brand-primary/20 transition-all duration-200 active:scale-[0.98]"
+                >
+                  <Phone size={15} />
+                  Book a Call
+                </Link>
 
-              {/* Mobile Actions: Preferences */}
-              <div className="flex items-center justify-between border-t border-[var(--sec-border)] pt-6 mt-6">
-                <span className="text-foreground/40 text-xs font-semibold uppercase tracking-wider">Preferences</span>
-                <div className="flex items-center gap-4">
-                  <button
-                    type="button"
-                    onClick={() => { setIsOpen(false); setIsSearchOpen(true); }}
-                    aria-label="Open search"
-                    className="w-9 h-9 flex items-center justify-center text-foreground/50 hover:text-foreground bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full transition-all duration-200 focus-ring"
-                  >
-                    <Search size={15} />
-                  </button>
-                  <ThemeToggle />
+                <div className="flex items-center justify-between border-t border-white/[0.06] pt-4">
+                  <span className="text-foreground/30 text-xs font-medium">Preferences</span>
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => { setIsOpen(false); setIsSearchOpen(true); }}
+                      aria-label="Open search"
+                      className="w-9 h-9 flex items-center justify-center text-foreground/40 hover:text-foreground rounded-lg hover:bg-white/[0.04] transition-all duration-200 focus-ring"
+                    >
+                      <Search size={16} />
+                    </button>
+                    <ThemeToggle />
+                  </div>
                 </div>
               </div>
             </div>
