@@ -6,8 +6,9 @@ import {
   Globe, Search, CheckCircle, AlertTriangle, XCircle, Download, 
   BarChart3, Gauge, Loader2, Sparkles, Smartphone, Monitor, Clock, 
   Share2, History, ChevronDown, ChevronUp, Zap, 
-  FileText, Shield, ArrowRight, User, Check
+  FileText, Shield, ArrowLeft, ArrowRight, User, Check
 } from "lucide-react";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 import { analyzeSitemap } from "@/app/actions/analyzeSitemap";
@@ -281,17 +282,13 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
       <div className="relative z-10 flex-grow">
         <Navbar />
         
-        <div className="pt-28 pb-16 px-4">
+        <div className="pt-24 pb-16 px-4">
           <div className="container-main max-w-4xl mx-auto">
             
-            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
-              <h1 className="text-4xl md:text-5xl font-bold mb-3">
-                Website <span className="text-brand-primary">Health Checker</span>
-              </h1>
-              <p className="text-foreground/60 max-w-xl mx-auto">
-                Check your website speed, SEO, and health in one click.
-              </p>
-            </motion.div>
+            <Link href="/tools" className="inline-flex items-center gap-1.5 text-[11px] text-foreground/40 hover:text-brand-primary mb-6 transition-colors">
+              <ArrowLeft size={12} />
+              Back to All Tools
+            </Link>
 
             <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} className="bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-6 mb-6 backdrop-blur-sm">
               <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">

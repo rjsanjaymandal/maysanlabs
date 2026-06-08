@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { ChevronRight, ExternalLink, Clock, User, Sparkles } from "lucide-react";
+import { ChevronRight, ExternalLink, Clock, User, Sparkles, Search } from "lucide-react";
 import Link from "next/link";
 import { BlogPost } from "@/lib/blog-data";
 
@@ -138,6 +138,7 @@ function FeaturedCard({ post }: { post: BlogPost }) {
 
 export default function BlogPageClient({ localPosts, externalPosts }: BlogPageClientProps) {
   const [categoryFilter, setCategoryFilter] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
   const allPosts = useMemo(() => {
@@ -155,9 +156,22 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
   const recentPosts = useMemo(() => getRecentPosts(localPosts), [localPosts]);
 
   const filteredPosts = useMemo(() => {
-    if (categoryFilter === "all") return allPosts;
-    return allPosts.filter((p) => p.category === categoryFilter);
-  }, [allPosts, categoryFilter]);
+    let posts = allPosts;
+    if (categoryFilter !== "all") {
+      posts = posts.filter((p) => p.category === categoryFilter);
+    }
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      posts = posts.filter(
+        (p) =>
+          p.title.toLowerCase().includes(q) ||
+          p.excerpt.toLowerCase().includes(q) ||
+          p.author.toLowerCase().includes(q) ||
+          p.tags?.some((t) => t.toLowerCase().includes(q))
+      );
+    }
+    return posts;
+  }, [allPosts, categoryFilter, searchQuery]);
 
   const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
   const paginatedPosts = filteredPosts.slice(0, currentPage * POSTS_PER_PAGE);
@@ -173,6 +187,21 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
             <FeaturedCard post={featuredPost} />
           </div>
         )}
+
+        {/* Search + filter bar */}
+        <div className="flex flex-col sm:flex-row gap-3 mb-8">
+          <div className="relative flex-1">
+            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-foreground/30 pointer-events-none" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => { setSearchQuery(e.target.value); setCurrentPage(1); }}
+              placeholder="Search articles..."
+              aria-label="Search articles"
+              className="w-full bg-white/80 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl pl-9 pr-4 py-2.5 text-xs text-foreground placeholder:text-foreground/35 focus:border-brand-primary/50 focus:outline-none focus:ring-1 focus:ring-brand-primary/20 transition-all"
+            />
+          </div>
+        </div>
 
         {/* Category filter */}
         <div className="flex flex-wrap gap-1.5 mb-8">
@@ -200,7 +229,11 @@ export default function BlogPageClient({ localPosts, externalPosts }: BlogPageCl
             ))
           ) : (
             <div className="col-span-full py-16 text-center">
-              <p className="text-foreground/40 text-sm">No posts found for this category.</p>
+              <p className="text-foreground/40 text-sm">
+              {searchQuery.trim()
+                ? `No articles match "${searchQuery}"`
+                : "No posts found for this category."}
+            </p>
             </div>
           )}
         </div>
