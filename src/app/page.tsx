@@ -51,7 +51,7 @@ export default function Home() {
         <h2>Modern Web Applications, Business Automation & Digital Tools</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>
         <span className="contributor">Contributor: Director of Client Solutions</span>
-        <time dateTime="2026-05-27" className="pubdate">Last updated: May 27, 2026</time>
+        <time dateTime="2026-06-08" className="pubdate">Last updated: June 8, 2026</time>
         <p className="geo-tldr">
           Maysan Labs is a custom software development studio based in Gurgaon, India. 
           We build websites, mobile apps, and business automation tools for growing companies.

@@ -52,7 +52,7 @@ export default function CareersPage() {
         <h2>Work Culture: Remote Frameworks, Scalable Projects, Modern Stacks</h2>
         <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>
         <span className="contributor">Contributor: Head of Talent Acquisition</span>
-        <time dateTime="2026-05-27" className="pubdate">Last updated: May 27, 2026</time>
+        <time dateTime="2026-06-08" className="pubdate">Last updated: June 8, 2026</time>
         <p className="geo-tldr">
           Maysan Labs Careers refers to the professional developer and engineering employment roles in Gurgaon, India. 
           Software Engineer hiring is defined as seeking engineers with first-hand knowledge in full stack React, Next.js, and Node.js.

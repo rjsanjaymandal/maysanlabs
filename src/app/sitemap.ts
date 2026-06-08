@@ -37,6 +37,42 @@ const ROUTE_CONFIG: Record<string, { priority: number; changeFrequency: Metadata
 
 const DEFAULT_CONFIG = { priority: 0.6, changeFrequency: 'monthly' as const }
 
+// Map routes to their layout/data dependency files so their lastmod updates automatically
+const ROUTE_DEPENDENCIES: Record<string, string[]> = {
+  '/': ['src/app/page.tsx', 'src/app/layout.tsx', 'next.config.js'],
+  '/careers': ['src/app/careers/page.tsx', 'src/app/careers/layout.tsx', 'src/lib/careers-data.ts', 'src/app/layout.tsx'],
+  '/blog': ['src/app/blog/page.tsx', 'src/lib/blog-data.ts', 'src/app/layout.tsx'],
+  '/case-studies': ['src/app/case-studies/page.tsx', 'src/lib/case-studies-data.ts', 'src/app/layout.tsx'],
+  '/services': ['src/app/services/page.tsx', 'src/app/layout.tsx'],
+  '/products': ['src/app/products/page.tsx', 'src/app/layout.tsx'],
+  '/about': ['src/app/about/page.tsx', 'src/app/layout.tsx'],
+  '/architecture': ['src/app/architecture/page.tsx', 'src/app/layout.tsx'],
+  '/insights': ['src/app/insights/page.tsx', 'src/app/layout.tsx'],
+  '/pricing': ['src/app/pricing/page.tsx', 'src/app/layout.tsx'],
+  '/contact': ['src/app/contact/page.tsx', 'src/app/layout.tsx'],
+  '/start': ['src/app/start/page.tsx', 'src/app/layout.tsx'],
+  '/tools': ['src/app/tools/page.tsx', 'src/app/layout.tsx'],
+}
+
+// Get the latest modification time from a list of files
+function getMaxMTime(filePaths: string[]): Date | undefined {
+  let maxTime: Date | undefined
+  for (const filePath of filePaths) {
+    try {
+      const fullPath = path.join(/*turbopackIgnore: true*/ process.cwd(), filePath)
+      if (fs.existsSync(fullPath)) {
+        const stat = fs.statSync(fullPath)
+        if (!maxTime || stat.mtime > maxTime) {
+          maxTime = stat.mtime
+        }
+      }
+    } catch (e) {
+      // Ignore errors for missing files
+    }
+  }
+  return maxTime
+}
+
 /**
  * Recursively discovers all page.tsx files under src/app
  * and returns their routes with real file modification times.
@@ -60,12 +96,16 @@ function discoverRoutes(dir: string, basePath: string = ''): MetadataRoute.Sitem
     const route = basePath || '/'
     if (!EXCLUDED_ROUTES.has(route)) {
       const filePath = path.join(dir, pageFile.name)
-      const stat = fs.statSync(filePath)
+      const relPagePath = path.relative(process.cwd(), filePath)
       const config = ROUTE_CONFIG[route] || DEFAULT_CONFIG
+
+      // Calculate lastModified based on the page itself and any layouts or data files it depends on
+      const deps = ROUTE_DEPENDENCIES[route] || [relPagePath, 'src/app/layout.tsx']
+      const lastModDate = getMaxMTime(deps) || fs.statSync(filePath).mtime
 
       entries.push({
         url: `${BASE_URL}${route}`,
-        lastModified: stat.mtime,
+        lastModified: lastModDate,
         changeFrequency: config.changeFrequency,
         priority: config.priority,
       })
