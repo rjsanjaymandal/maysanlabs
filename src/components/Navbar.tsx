@@ -85,6 +85,15 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setIsOpen(false);
+    };
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   const navItems = [
     { name: "Services", href: "/services" },
     { name: "Products", href: "/products" },
@@ -97,7 +106,7 @@ export default function Navbar() {
   return (
     <>
       <nav aria-label="Main navigation" className={`fixed top-0 left-0 right-0 z-[100] transition-[background-color,padding,box-shadow] duration-200 ${
-        mounted && scrolled ? "bg-[var(--bg-dark)] py-2 md:py-3 shadow-lg shadow-black/20" : "bg-transparent py-4 md:py-5"
+        mounted && scrolled ? "bg-[var(--bg-dark)]/90 backdrop-blur-xl py-2 md:py-3 shadow-lg shadow-black/20" : "bg-transparent py-4 md:py-5"
       }`}>
         <div className="container-main flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group">
@@ -127,9 +136,9 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 aria-current={pathname === item.href ? "page" : undefined}
-                className={`text-[10px] uppercase tracking-widest font-semibold transition-all duration-300 relative group py-1.5 ${
-                  pathname === item.href ? "text-brand-primary" : "text-foreground/45 hover:text-foreground"
-                }`}
+                className={`text-[11px] uppercase tracking-widest font-semibold transition-all duration-300 relative group py-1.5 ${
+                   pathname === item.href ? "text-brand-primary" : "text-foreground/45 hover:text-foreground"
+                 }`}
               >
                 {item.name}
                 <span className={`absolute -bottom-0.5 left-0 h-[1.5px] bg-brand-primary transition-all duration-300 ${pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
@@ -137,7 +146,7 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <ThemeToggle />
             <button
               type="button"
@@ -148,7 +157,7 @@ export default function Navbar() {
             >
               <Search size={15} />
             </button>
-            <Link href="/start" className="group relative px-6 py-2.5 bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full font-bold text-[9px] uppercase tracking-widest text-foreground/90 shadow-lg shadow-black/10 overflow-hidden transition-all duration-300 hover:bg-[#1A6DD6] hover:border-[#1A6DD6] hover:text-white hover:shadow-blue-500/20 hover:scale-105 active:scale-95">
+            <Link href="/start" className="group relative px-6 py-2.5 bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] rounded-full font-bold text-[10px] uppercase tracking-widest text-foreground/90 shadow-lg shadow-black/10 overflow-hidden transition-all duration-300 hover:bg-[#1A6DD6] hover:border-[#1A6DD6] hover:text-white hover:shadow-blue-500/20 hover:scale-105 active:scale-95">
               <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-white/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative z-10">Book a Call</span>
             </Link>
@@ -168,7 +177,7 @@ export default function Navbar() {
       </nav>
  
       {/* Sticky Mobile CTA */}
-      <div className="fixed bottom-0 left-0 right-0 z-[90] md:hidden px-4 pb-4">
+      <div className={`fixed bottom-0 left-0 right-0 z-[90] lg:hidden px-4 pb-4 transition-opacity duration-200 ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
         <Link 
           href="/start"
           className="group relative flex items-center justify-center gap-2.5 w-full py-4 bg-[#1A6DD6] rounded-2xl font-bold text-[10px] uppercase tracking-widest text-white shadow-xl shadow-blue-500/30 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50 hover:scale-[1.02] active:scale-[0.98]"
@@ -215,8 +224,18 @@ export default function Navbar() {
                 </div>
               </div>
 
+              {/* Mobile CTA */}
+              <Link
+                href="/start"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center justify-center gap-2.5 w-full py-4 bg-[#1A6DD6] rounded-2xl font-bold text-xs uppercase tracking-widest text-white shadow-xl shadow-blue-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/50 active:scale-[0.98]"
+              >
+                <Phone size={15} />
+                Book a Call
+              </Link>
+
               {/* Mobile Actions: Preferences */}
-              <div className="flex items-center justify-between border-t border-[var(--sec-border)] pt-6 mt-6 pb-20">
+              <div className="flex items-center justify-between border-t border-[var(--sec-border)] pt-6 mt-6">
                 <span className="text-foreground/40 text-xs font-semibold uppercase tracking-wider">Preferences</span>
                 <div className="flex items-center gap-4">
                   <button
