@@ -38,7 +38,7 @@ export default function CareersLayout({
       "@type": "Organization",
       name: "Maysan Labs",
       sameAs: "https://maysanlabs.com",
-      logo: "https://maysanlabs.com/favicon.png",
+      logo: "https://maysanlabs.com/favicon-v2.png",
     },
     jobLocation: {
       "@type": "Place",

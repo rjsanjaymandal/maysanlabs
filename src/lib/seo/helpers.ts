@@ -470,11 +470,11 @@ export function generatePageSEO({
     },
     icons: {
       icon: [
-        { url: "/favicon.png?v=100" },
+        { url: "/favicon-v2.png" },
         { url: "/icon-192x192-v4.png", sizes: "192x192", type: "image/png" },
         { url: "/icon-512x512-v4.png", sizes: "512x512", type: "image/png" },
       ],
-      shortcut: "/favicon.png?v=100",
+      shortcut: "/favicon-v2.png",
       apple: [
         { url: "/icon-rounded-v2.png?v=100" },
         { url: "/icon-192x192-v4.png", sizes: "192x192", type: "image/png" },
