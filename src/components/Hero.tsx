@@ -147,12 +147,12 @@ export default function Hero() {
                 className="grid grid-cols-1 md:grid-cols-4 gap-6 items-start"
               >
                 <div className="md:col-span-3">
-                  <h3 className="text-base sm:text-lg font-bold text-foreground mb-2 flex items-center gap-2">
+                  <h2 className="text-base sm:text-lg font-bold text-foreground mb-2 flex items-center gap-2">
                     <div className="w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-primary">
                       <GoalIcon size={16} />
                     </div>
                     {currentGoal.title}
-                  </h3>
+                  </h2>
                   <p className="text-xs sm:text-sm text-foreground/60 leading-relaxed font-medium">
                     {currentGoal.desc}
                   </p>
