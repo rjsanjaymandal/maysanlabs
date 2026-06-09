@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Activity, Database, TrendingUp, Shield, BarChart3, ArrowRight, BookOpen, Briefcase, Code2, LineChart, Clock, User, Tag, Layers, Zap, Cpu } from "lucide-react";
-import Link from "next/link";
+import { SafeLink } from "@/components/ui/SafeLink";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 import { blogPosts } from "@/lib/blog-data";
@@ -64,8 +64,8 @@ const topTech = Object.entries(techCount)
 
 const categoryColors: Record<string, string> = {
   "Strategy": "bg-blue-500/20 text-blue-400",
-  "Infrastructure": "bg-purple-500/20 text-purple-400",
-  "Methodology": "bg-green-500/20 text-green-400",
+  "Infrastructure": "bg-emerald-500/20 text-emerald-400",
+  "Methodology": "bg-rose-500/20 text-rose-400",
   "AI & ML": "bg-cyan-500/20 text-cyan-400",
   "Security": "bg-red-500/20 text-red-400",
   "Performance": "bg-amber-500/20 text-amber-400",
@@ -172,12 +172,12 @@ export default function InsightsClient() {
                 Recent <span className="text-brand-primary">Insights</span>
               </h2>
             </div>
-            <Link
+            <SafeLink
               href="/blog"
               className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-primary/10 text-brand-primary text-sm font-semibold hover:bg-brand-primary/20 transition-all"
             >
               View all articles <ArrowRight size={16} />
-            </Link>
+            </SafeLink>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -189,7 +189,7 @@ export default function InsightsClient() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Link
+                <SafeLink
                   href={`/blog/${post.slug}`}
                   className="block bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-6 h-full hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg backdrop-blur-xl shadow-sm transition-all duration-300 group"
                 >
@@ -217,18 +217,18 @@ export default function InsightsClient() {
                       <span className="text-xs text-foreground/30">{post.date}</span>
                     </div>
                   </div>
-                </Link>
+                </SafeLink>
               </motion.div>
             ))}
           </div>
 
           <div className="mt-8 text-center md:hidden">
-            <Link
+            <SafeLink
               href="/blog"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-primary/10 text-brand-primary text-sm font-semibold hover:bg-brand-primary/20 transition-all"
             >
               View all articles <ArrowRight size={16} />
-            </Link>
+            </SafeLink>
           </div>
         </div>
       </section>
@@ -250,12 +250,12 @@ export default function InsightsClient() {
                 Proven <span className="text-brand-primary">Results</span>
               </h2>
             </div>
-            <Link
+            <SafeLink
               href="/case-studies"
               className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-primary/10 text-brand-primary text-sm font-semibold hover:bg-brand-primary/20 transition-all"
             >
               View all cases <ArrowRight size={16} />
-            </Link>
+            </SafeLink>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -267,7 +267,7 @@ export default function InsightsClient() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Link
+                <SafeLink
                   href={`/case-studies/${study.slug}`}
                   className="block bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-6 h-full hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg backdrop-blur-xl shadow-sm transition-all duration-300 group"
                 >
@@ -310,18 +310,18 @@ export default function InsightsClient() {
                       </div>
                     )}
                   </div>
-                </Link>
+                </SafeLink>
               </motion.div>
             ))}
           </div>
 
           <div className="mt-8 text-center md:hidden">
-            <Link
+            <SafeLink
               href="/case-studies"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-primary/10 text-brand-primary text-sm font-semibold hover:bg-brand-primary/20 transition-all"
             >
               View all cases <ArrowRight size={16} />
-            </Link>
+            </SafeLink>
           </div>
         </div>
       </section>
@@ -427,7 +427,7 @@ export default function InsightsClient() {
             {[
               { icon: <BookOpen size={18} />, label: "Articles Published", value: blogPosts.length.toString(), color: "text-brand-primary" },
               { icon: <Briefcase size={18} />, label: "Case Studies", value: caseStudies.length.toString(), color: "text-emerald-400" },
-              { icon: <Tag size={18} />, label: "Categories", value: Object.keys(categoryCount).length.toString(), color: "text-purple-400" },
+              { icon: <Tag size={18} />, label: "Categories", value: Object.keys(categoryCount).length.toString(), color: "text-pink-400" },
               { icon: <Cpu size={18} />, label: "Technologies Used", value: Object.keys(techCount).length.toString(), color: "text-cyan-400" },
             ].map((stat, i) => (
               <div
@@ -466,18 +466,18 @@ export default function InsightsClient() {
                 Get the latest architectural deep dives, scaling strategies, and best practices delivered to your inbox.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
-                <Link
+                <SafeLink
                   href="/blog"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-brand-primary text-white text-sm font-semibold hover:bg-brand-primary/90 transition-all"
                 >
                   Browse All Articles <ArrowRight size={16} />
-                </Link>
-                <Link
+                </SafeLink>
+                <SafeLink
                   href="/case-studies"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-white/[0.04] border border-white/[0.1] text-foreground text-sm font-semibold hover:bg-white/[0.08] transition-all"
                 >
                   View Case Studies <ArrowRight size={16} />
-                </Link>
+                </SafeLink>
               </div>
             </div>
           </motion.div>

@@ -41,13 +41,13 @@ const categoryIcons: Record<string, string> = {
   'Development': '💻', 'Technology': '📡', 'Business': '📊', 'Architecture': '🏗️',
 };
 
-export default function TechNewsFeed() {
-  const [news, setNews] = useState<NewsItem[]>(FALLBACK_NEWS);
+export default function TechNewsFeed({ initialNews }: { initialNews?: NewsItem[] } = {}) {
+  const [news, setNews] = useState<NewsItem[]>(initialNews || FALLBACK_NEWS);
   const [loading, setLoading] = useState(false);
   const [visibleCount, setVisibleCount] = useState(4);
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
-
+ 
   const fetchNews = async () => {
     setLoading(true);
     try {
@@ -56,12 +56,12 @@ export default function TechNewsFeed() {
           fetch(feed.url).then(r => r.json()).then(feed.parser)
         )
       );
-
+ 
       const items: NewsItem[] = [];
       for (const result of results) {
         if (result.status === 'fulfilled') items.push(...result.value);
       }
-
+ 
       if (items.length > 0) {
         items.sort((a, b) => new Date(b.published).getTime() - new Date(a.published).getTime());
         setNews(items.slice(0, 20));
@@ -73,12 +73,15 @@ export default function TechNewsFeed() {
       setLoading(false);
     }
   };
-
+ 
   useEffect(() => {
     setMounted(true);
-    fetchNews();
+    if (!initialNews || initialNews.length === 0) {
+      fetchNews();
+    }
     const interval = setInterval(fetchNews, 30 * 60 * 1000);
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!mounted) return null;

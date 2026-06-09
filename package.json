@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build && node scripts/ping-indexing.js",
     "generate-content": "node scripts/content-generator.mjs",
+    "generate-blog": "npx tsx scripts/generate-blog.ts",
     "generate-seo": "node scripts/generate-seo-pages.mjs",
     "generate-all": "node scripts/run-all.mjs",
     "start": "next start",

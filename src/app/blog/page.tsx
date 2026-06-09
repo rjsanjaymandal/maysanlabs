@@ -39,7 +39,7 @@ const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Blog", url: "/blog" }
 ]);
 
-const blogSchema = {
+const getBlogSchema = (posts: typeof blogPosts) => ({
   "@context": "https://schema.org",
   "@type": "Blog",
   name: "Maysan Labs Blog",
@@ -50,7 +50,7 @@ const blogSchema = {
     name: "Maysan Labs",
     url: "https://maysanlabs.com"
   },
-  blogPost: blogPosts.slice(0, 6).map((post) => ({
+  blogPost: posts.slice(0, 6).map((post) => ({
     "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
@@ -61,15 +61,18 @@ const blogSchema = {
       name: post.author
     }
   }))
-};
+});
 
 export default async function BlogListingPage() {
   const externalPosts = await fetchExternalTechBlogs();
+  const visiblePosts = blogPosts.filter(
+    (post) => process.env.NODE_ENV !== "production" || !post.draft
+  );
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(getBlogSchema(visiblePosts)) }} />
       <main id="main-content" className="min-h-screen bg-background text-foreground flex flex-col">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
         <Navbar />
@@ -86,7 +89,7 @@ export default async function BlogListingPage() {
                   Insights & Strategy
                 </span>
                 <span className="text-[11px] text-foreground/30 font-medium">
-                  {blogPosts.length} articles
+                  {visiblePosts.length} articles
                 </span>
               </div>
               <h1 className="text-4xl md:text-5xl font-semibold text-foreground mb-4 leading-tight tracking-tight">
@@ -101,7 +104,7 @@ export default async function BlogListingPage() {
 
         <section className="pb-16 md:pb-24">
           <div className="container-main">
-            <BlogPageClient localPosts={blogPosts} externalPosts={externalPosts} />
+            <BlogPageClient localPosts={visiblePosts} externalPosts={externalPosts} />
           </div>
         </section>
 

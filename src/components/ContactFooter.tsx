@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { SafeLink } from "@/components/ui/SafeLink";
 import Image from "next/image";
 import { ArrowRight, Mail, MapPin, Phone, Send } from "lucide-react";
 import { Twitter, Linkedin, Instagram, Facebook } from "@/components/ui/brand-icons";
@@ -43,15 +43,15 @@ export default function ContactFooter() {
               Let&apos;s build something great together. Our team is ready to help.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
-              <Link href="/start" className="group px-8 py-3.5 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-semibold text-sm text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(26,109,214,0.45)] hover:scale-[1.02] hover:brightness-110 flex items-center gap-2.5">
+              <SafeLink href="/start" className="group px-8 py-3.5 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-semibold text-sm text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(26,109,214,0.45)] hover:scale-[1.02] hover:brightness-110 flex items-center gap-2.5">
                 <span>Book a Call</span>
                 <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform duration-300" />
-              </Link>
+              </SafeLink>
               
-              <Link href="tel:+919660641530" className="px-8 py-3.5 rounded-full border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] text-foreground/70 font-semibold text-sm transition-all duration-300 hover:bg-white/[0.05] hover:text-foreground hover:border-white/20 flex items-center gap-2.5 shadow-md">
+              <SafeLink href="tel:+919660641530" className="px-8 py-3.5 rounded-full border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] text-foreground/70 font-semibold text-sm transition-all duration-300 hover:bg-white/[0.05] hover:text-foreground hover:border-white/20 flex items-center gap-2.5 shadow-md">
                   <Phone size={14} />
                   <span>Call Us</span>
-              </Link>
+              </SafeLink>
             </div>
           </div>
         </div>
@@ -62,7 +62,7 @@ export default function ContactFooter() {
         <div className="container-main">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
             <div className="md:col-span-2">
-              <Link href="/" className="flex items-center gap-4 mb-5 group justify-center md:justify-start">
+              <SafeLink href="/" className="flex items-center gap-4 mb-5 group justify-center md:justify-start">
                 <div className="relative h-14 w-14 transition-all duration-300 rounded-full overflow-hidden flex items-center justify-center">
                   <Image 
                     src="/logo-rounded-v2.webp" 
@@ -81,7 +81,7 @@ export default function ContactFooter() {
                     Build • Scale • Grow
                   </span>
                 </div>
-              </Link>
+              </SafeLink>
               <p className="text-foreground/70 text-sm mb-6 max-w-sm leading-relaxed text-center md:text-left">
                  Enterprise SaaS development studio building scalable applications for businesses that demand precision.
               </p>
@@ -105,13 +105,13 @@ export default function ContactFooter() {
               <h3 className="text-xs font-semibold text-foreground/70 uppercase tracking-widest mb-5">Company</h3>
               <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
                 {links.map((link) => (
-                  <Link
+                  <SafeLink
                     key={link.name}
                     href={link.href}
                     className="text-foreground/60 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-x-1 w-fit"
                   >
                     {link.name}
-                  </Link>
+                  </SafeLink>
                 ))}
               </div>
             </div>
@@ -133,12 +133,12 @@ export default function ContactFooter() {
                   <span className="group-hover:text-foreground transition-colors duration-300">+91 96606 41530</span>
                 </a>
 
-                <Link href="/contact" className="flex items-center gap-3 text-foreground/60 text-sm group">
+                <SafeLink href="/contact" className="flex items-center gap-3 text-foreground/60 text-sm group">
                   <div className="w-9 h-9 rounded-lg bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] flex items-center justify-center text-foreground/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300 shrink-0">
                     <Mail size={15} />
                   </div>
                   <span className="text-brand-primary group-hover:text-foreground transition-colors duration-300">business@maysanlabs.com</span>
-                </Link>
+                </SafeLink>
               </div>
             </div>
           </div>
@@ -148,8 +148,8 @@ export default function ContactFooter() {
               © {new Date().getFullYear()} Maysan Labs. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <Link href="/privacy" className="text-foreground/65 hover:text-brand-primary text-xs sm:text-sm transition-all duration-300 py-2">Privacy Policy</Link>
-              <Link href="/terms" className="text-foreground/65 hover:text-brand-primary text-xs sm:text-sm transition-all duration-300 py-2">Terms of Service</Link>
+              <SafeLink href="/privacy" className="text-foreground/65 hover:text-brand-primary text-xs sm:text-sm transition-all duration-300 py-2">Privacy Policy</SafeLink>
+              <SafeLink href="/terms" className="text-foreground/65 hover:text-brand-primary text-xs sm:text-sm transition-all duration-300 py-2">Terms of Service</SafeLink>
             </div>
           </div>
         </div>

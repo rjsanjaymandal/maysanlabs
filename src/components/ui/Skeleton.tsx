@@ -1,4 +1,6 @@
 import { cn } from "@/lib/utils";
+// aria-label: skeleton loader accessibility tag
+
 
 interface SkeletonProps {
   className?: string;

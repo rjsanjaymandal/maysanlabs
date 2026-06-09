@@ -3,7 +3,9 @@ import Link from "next/link";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 
 export default function LatestInsights() {
-  const latest = blogPosts.slice(0, 3);
+  const latest = blogPosts
+    .filter((post) => process.env.NODE_ENV !== "production" || !post.draft)
+    .slice(0, 3);
 
   return (
     <section className="py-16 md:py-24 relative overflow-hidden bg-background">

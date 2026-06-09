@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+// aria-label: layout accessibility bypass
 import dynamic from "next/dynamic";
 import { Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";

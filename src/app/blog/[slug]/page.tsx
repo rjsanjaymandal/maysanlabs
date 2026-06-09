@@ -5,7 +5,7 @@ import ContactFooter from "@/components/ContactFooter";
 import ReadingProgress from "@/components/ReadingProgress";
 import ShareArticle from "@/components/ShareArticle";
 import { Clock, ArrowLeft, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { SafeLink } from "@/components/ui/SafeLink";
 import { Metadata } from "next";
 import { generateBlogPostSEO, generateBlogPostJSONLD } from "@/lib/seo/helpers";
 import CaseStudyCallout from "@/components/CaseStudyCallout";
@@ -24,7 +24,7 @@ function getInitials(name: string): string {
 const catStyles: Record<string, { bg: string; text: string; dot: string }> = {
   "Strategy":        { bg: "bg-blue-500/10", text: "text-blue-500", dot: "bg-blue-500" },
   "Infrastructure":  { bg: "bg-emerald-500/10", text: "text-emerald-500", dot: "bg-emerald-500" },
-  "Methodology":     { bg: "bg-purple-500/10", text: "text-purple-500", dot: "bg-purple-500" },
+  "Methodology":     { bg: "bg-rose-500/10", text: "text-rose-500", dot: "bg-rose-500" },
   "AI & ML":         { bg: "bg-orange-500/10", text: "text-orange-500", dot: "bg-orange-500" },
   "Security":        { bg: "bg-red-500/10", text: "text-red-500", dot: "bg-red-500" },
   "Performance":     { bg: "bg-cyan-500/10", text: "text-cyan-500", dot: "bg-cyan-500" },
@@ -83,13 +83,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <section className="pt-28 pb-8 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-brand-primary/[0.04] blur-[120px] rounded-full pointer-events-none" />
           <div className="container-main relative max-w-3xl mx-auto px-4 sm:px-6">
-            <Link
+            <SafeLink
               href="/blog"
               className="inline-flex items-center gap-1.5 text-sm text-foreground/30 hover:text-brand-primary transition-colors mb-6 group"
             >
               <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
               Back to articles
-            </Link>
+            </SafeLink>
 
             <header>
               <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -154,9 +154,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 {post.tags && post.tags.length > 0 && (
                   <div className="mt-6 flex flex-wrap gap-2">
                     {post.tags.map((tag) => (
-                      <Link key={tag} href="/blog" className="px-3 py-1 rounded-lg text-[11px] font-medium bg-white/70 dark:bg-white/[0.03] border border-gray-100 dark:border-white/[0.06] text-foreground/45 hover:text-brand-primary hover:border-brand-primary/20 transition-colors">
+                      <SafeLink key={tag} href="/blog" className="px-3 py-1 rounded-lg text-[11px] font-medium bg-white/70 dark:bg-white/[0.03] border border-gray-100 dark:border-white/[0.06] text-foreground/45 hover:text-brand-primary hover:border-brand-primary/20 transition-colors">
                         #{tag}
-                      </Link>
+                      </SafeLink>
                     ))}
                   </div>
                 )}
@@ -179,9 +179,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <div className="mt-10 bg-gradient-to-br from-brand-primary/[0.06] to-transparent border border-brand-primary/15 rounded-xl p-6 sm:p-8 text-center">
                   <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">Ready to build something great?</h3>
                   <p className="text-sm text-foreground/40 mb-5 max-w-sm mx-auto">Let&apos;s discuss your project. Our team is ready to help.</p>
-                  <Link href="/start" className="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-primary text-white rounded-lg text-sm font-semibold hover:bg-brand-primary/90 hover:shadow-[0_0_20px_rgba(26,109,214,0.3)] transition-all">
+                  <SafeLink href="/start" className="inline-flex items-center gap-2 px-6 py-2.5 bg-brand-primary text-white rounded-lg text-sm font-semibold hover:bg-brand-primary/90 hover:shadow-[0_0_20px_rgba(26,109,214,0.3)] transition-all">
                     Start a project <ArrowRight size={14} />
-                  </Link>
+                  </SafeLink>
                 </div>
               </article>
             </div>
@@ -196,7 +196,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 {relatedPosts.map((rp) => {
                   const rpStyle = getCatStyle(rp.category);
                   return (
-                    <Link key={rp.slug} href={`/blog/${rp.slug}`} className="group bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-xl p-5 transition-all duration-200 hover:border-brand-primary/20 hover:shadow-md hover:-translate-y-0.5">
+                    <SafeLink key={rp.slug} href={`/blog/${rp.slug}`} className="group bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-xl p-5 transition-all duration-200 hover:border-brand-primary/20 hover:shadow-md hover:-translate-y-0.5">
                       <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[9px] font-semibold uppercase tracking-wider ${rpStyle.bg} ${rpStyle.text} mb-2.5`}>
                         <span className={`w-1 h-1 rounded-full ${rpStyle.dot}`} />
                         {rp.category}
@@ -205,7 +205,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         {rp.title}
                       </h4>
                       <p className="text-xs text-foreground/35 mt-2 line-clamp-2">{rp.excerpt}</p>
-                    </Link>
+                    </SafeLink>
                   );
                 })}
               </div>
@@ -218,22 +218,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <div className="container-main max-w-5xl mx-auto px-4 sm:px-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {prevPost ? (
-                  <Link href={`/blog/${prevPost.slug}`} className="group bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-xl p-5 transition-all duration-200 hover:border-brand-primary/20 hover:shadow-sm">
+                  <SafeLink href={`/blog/${prevPost.slug}`} className="group bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-xl p-5 transition-all duration-200 hover:border-brand-primary/20 hover:shadow-sm">
                     <div className="flex items-center gap-1.5 text-[10px] text-foreground/30 mb-2">
                       <ArrowLeft size={10} className="group-hover:-translate-x-0.5 transition-transform" />
                       Previous article
                     </div>
                     <p className="text-sm font-medium text-foreground group-hover:text-brand-primary transition-colors line-clamp-2 leading-snug">{prevPost.title}</p>
-                  </Link>
+                  </SafeLink>
                 ) : <div />}
                 {nextPost && (
-                  <Link href={`/blog/${nextPost.slug}`} className="group bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-xl p-5 transition-all duration-200 hover:border-brand-primary/20 hover:shadow-sm sm:text-right">
+                  <SafeLink href={`/blog/${nextPost.slug}`} className="group bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-xl p-5 transition-all duration-200 hover:border-brand-primary/20 hover:shadow-sm sm:text-right">
                     <div className="flex items-center gap-1.5 text-[10px] text-foreground/30 mb-2 sm:justify-end">
                       Next article
                       <ArrowRight size={10} className="group-hover:translate-x-0.5 transition-transform" />
                     </div>
                     <p className="text-sm font-medium text-foreground group-hover:text-brand-primary transition-colors line-clamp-2 leading-snug">{nextPost.title}</p>
-                  </Link>
+                  </SafeLink>
                 )}
               </div>
             </div>

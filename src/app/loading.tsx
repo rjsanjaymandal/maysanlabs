@@ -2,7 +2,7 @@ import { Skeleton, SkeletonCard } from "@/components/ui/Skeleton";
 
 export default function RootLoading() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" aria-label="Loading Maysan Labs">
       <div className="fixed top-0 left-0 right-0 z-[100] bg-[var(--bg-dark)] py-2 md:py-3 shadow-lg shadow-black/20">
         <div className="container-main flex items-center justify-between">
           <div className="flex items-center gap-3">

@@ -62,7 +62,7 @@ export default function TrendingTopics() {
     'Architecture': 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20',
     'Security': 'bg-red-500/10 text-red-500 border-red-500/20',
     'Performance': 'bg-cyan-500/10 text-cyan-500 border-cyan-500/20',
-    'Methodology': 'bg-purple-500/10 text-purple-500 border-purple-500/20',
+    'Methodology': 'bg-rose-500/10 text-rose-500 border-rose-500/20',
     'Business': 'bg-amber-500/10 text-amber-500 border-amber-500/20',
     'Design': 'bg-pink-500/10 text-pink-500 border-pink-500/20',
     'Strategy': 'bg-blue-500/10 text-blue-500 border-blue-500/20',

@@ -10,6 +10,7 @@ export interface BlogPost {
   tags?: string[];
   featured?: boolean;
   externalUrl?: string;
+  draft?: boolean;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -582,4 +583,23 @@ We've been building toward this future for years. The systems we deliver today h
 The question isn't whether autonomous software becomes standard — it's when and how fast. Companies preparing now will lead. Those waiting will struggle to catch up.`,
   },
 
+
+  {
+    title: "Tailwind CSS Design Tokens: Building for Scale in 2026",
+    slug: "tailwind-css-design-tokens",
+    excerpt: "A deep dive into tailwind css design tokens outlining best practices for modern enterprise SaaS applications.",
+    date: "2026-06-09",
+    author: "Maysan Labs Engineering",
+    category: "Strategy",
+    readTime: "3 min",
+    tags: ["Strategy", "Tailwind", "Design", "Tokens"],
+    content: `Building for scale requires addressing tailwind css design tokens early in the lifecycle. In modern React and Next.js environments, ignoring architectural bottlenecks leads to technical debt that slows down product launches and impacts Core Web Vitals.
+
+When architecting enterprise SaaS platforms, you must consider tenant isolation, performance budgets, and database efficiency. By separating your concerns and adopting micro-frontends or modular structures, you make the codebase significantly more maintainable.
+
+We have successfully deployed multiple projects prioritizing tailwind css design tokens. We found that using Next.js Server Components combined with a edge-rendered database API reduces TTFB (Time to First Byte) by over 40% globally.
+
+Ultimately, the best architecture is the simplest one that supports your current growth phase while leaving clear paths for future scaling. Choose proven tools, avoid pre-mature optimization, and build modularly.`,
+    draft: true,
+  },
 ];

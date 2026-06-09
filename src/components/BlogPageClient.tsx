@@ -15,7 +15,7 @@ interface BlogPageClientProps {
 const categoryAccents: Record<string, { bg: string; text: string; dot: string }> = {
   "Strategy":        { bg: "bg-blue-500/10", text: "text-blue-500", dot: "bg-blue-500" },
   "Infrastructure":  { bg: "bg-emerald-500/10", text: "text-emerald-500", dot: "bg-emerald-500" },
-  "Methodology":     { bg: "bg-purple-500/10", text: "text-purple-500", dot: "bg-purple-500" },
+  "Methodology":     { bg: "bg-rose-500/10", text: "text-rose-500", dot: "bg-rose-500" },
   "AI & ML":         { bg: "bg-orange-500/10", text: "text-orange-500", dot: "bg-orange-500" },
   "Security":        { bg: "bg-red-500/10", text: "text-red-500", dot: "bg-red-500" },
   "Performance":     { bg: "bg-cyan-500/10", text: "text-cyan-500", dot: "bg-cyan-500" },

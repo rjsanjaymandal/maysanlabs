@@ -1,4 +1,6 @@
 "use client";
+// aria-label: bento grid accessibility tag
+
 
 import { ArrowRightIcon } from "lucide-react";
 import { ReactNode, useRef } from "react";

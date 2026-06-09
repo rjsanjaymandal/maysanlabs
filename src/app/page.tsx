@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ScrollReveal from "@/components/ScrollReveal";
 import LatestInsights from "@/components/LatestInsights";
+import { fetchTechNewsServer } from "@/lib/news-fetcher";
 const LogoMarquee = dynamic(() => import("@/components/LogoMarquee"));
 const Problem = dynamic(() => import("@/components/Problem"));
 const BuildScaleGrow = dynamic(() => import("@/components/BuildScaleGrow"));
@@ -24,9 +25,15 @@ const ContactFooter = dynamic(() => import("@/components/dynamic/ClientImports")
 const TechNewsFeed = dynamic(() => import("@/components/TechNewsFeed"));
 const TrendingTopics = dynamic(() => import("@/components/TrendingTopics"));
 
-export default function Home() {
+export const revalidate = 3600;
+
+export default async function Home() {
+  const news = await fetchTechNewsServer();
   const today = new Date().toISOString().split("T")[0];
-  const latestPosts = blogPosts.slice(0, 3).map((post, i) => ({
+  const visibleBlogPosts = blogPosts.filter(
+    (post) => process.env.NODE_ENV !== "production" || !post.draft
+  );
+  const latestPosts = visibleBlogPosts.slice(0, 3).map((post, i) => ({
     "@type": "ListItem",
     position: i + 1,
     item: {
@@ -181,7 +188,7 @@ export default function Home() {
         </section>
       </ScrollReveal>
 
-      <TechNewsFeed />
+      <TechNewsFeed initialNews={news} />
 
       <ScrollReveal delay={0.2}>
         <ContactFooter />

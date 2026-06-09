@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import SaaSNodeVisual from "@/components/SaaSNodeVisual";
 import { 
   ArrowRight, 
   Play, 
@@ -89,7 +90,7 @@ export default function Hero() {
           className="mb-6"
         >
           <h1 className="font-sans heading-xl text-foreground max-w-4xl tracking-tight leading-[1.1]">
-            We build the <span className="text-brand-primary">custom apps, websites & dashboards</span> that run your business
+            We build the <span className="bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(26,109,214,0.25)] dark:drop-shadow-[0_0_20px_rgba(26,109,214,0.4)]">custom apps, websites & dashboards</span> that run your business
           </h1>
         </motion.div>
 
@@ -110,62 +111,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.25 }}
           className="mt-8 mb-8 w-full max-w-4xl"
         >
-          <div className="relative bg-white dark:bg-[#0c1125] border border-gray-200 dark:border-white/[0.08] rounded-2xl shadow-xl overflow-hidden">
-            <div className="flex items-center gap-1.5 px-4 py-3 border-b border-gray-100 dark:border-white/[0.06] bg-gray-50/50 dark:bg-white/[0.02]">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
-              <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-              <span className="w-2.5 h-2.5 rounded-full bg-green-400" />
-              <span className="ml-3 text-[10px] text-foreground/30 font-medium">Business Dashboard — Demo View</span>
-            </div>
-            <div className="flex md:grid md:grid-cols-3 gap-3 p-4 overflow-x-auto md:overflow-visible scroll-smooth snap-x snap-mandatory scrollbar-hide">
-              <div className="space-y-3 snap-start shrink-0 w-[85vw] md:w-auto md:col-span-2">
-                <div className="flex gap-3">
-                  <div className="flex-1 p-3 rounded-lg bg-brand-primary/5 border border-brand-primary/10">
-                    <p className="text-[10px] text-foreground/40 font-medium uppercase tracking-wider">Revenue</p>
-                    <p className="text-xl font-bold text-foreground mt-0.5">₹128.4k</p>
-                    <p className="text-[10px] text-emerald-500 font-semibold">+12.3% vs last month</p>
-                  </div>
-                  <div className="flex-1 p-3 rounded-lg bg-brand-primary/5 border border-brand-primary/10">
-                    <p className="text-[10px] text-foreground/40 font-medium uppercase tracking-wider">Orders</p>
-                    <p className="text-xl font-bold text-foreground mt-0.5">1,842</p>
-                    <p className="text-[10px] text-emerald-500 font-semibold">+8.1% vs last month</p>
-                  </div>
-                  <div className="flex-1 p-3 rounded-lg bg-brand-primary/5 border border-brand-primary/10">
-                    <p className="text-[10px] text-foreground/40 font-medium uppercase tracking-wider">Customers</p>
-                    <p className="text-xl font-bold text-foreground mt-0.5">892</p>
-                    <p className="text-[10px] text-emerald-500 font-semibold">+5.7% vs last month</p>
-                  </div>
-                </div>
-                <div className="p-3 rounded-lg bg-brand-primary/5 border border-brand-primary/10">
-                  <p className="text-[10px] text-foreground/40 font-medium uppercase tracking-wider mb-2">Weekly Sales</p>
-                  <div className="flex items-end gap-2 h-16">
-                    {[35, 55, 42, 70, 60, 85, 65].map((h, i) => (
-                      <div key={i} className="flex-1 rounded-t bg-gradient-to-t from-brand-primary/30 to-brand-primary/10" style={{ height: `${h}%` }} />
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-3 snap-start shrink-0 w-[85vw] md:w-auto">
-                <div className="p-3 rounded-lg bg-brand-primary/5 border border-brand-primary/10">
-                  <p className="text-[10px] text-foreground/40 font-medium uppercase tracking-wider mb-2">Recent Orders</p>
-                  {["Alice K.", "Bob M.", "Carol S."].map((name, i) => (
-                    <div key={i} className="flex items-center gap-2 py-1.5 border-b border-gray-100 dark:border-white/[0.04] last:border-0">
-                      <span className="w-5 h-5 rounded-full bg-brand-primary/20 text-brand-primary text-[8px] font-bold flex items-center justify-center">{name[0]}</span>
-                      <span className="text-[10px] text-foreground/60 font-medium">{name}</span>
-                      <span className="ml-auto text-[9px] text-emerald-500 font-semibold">₹{[240, 180, 320][i]}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="p-3 rounded-lg bg-brand-primary/5 border border-brand-primary/10 flex flex-col items-center justify-center h-full">
-                  <div className="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-1">
-                    <CheckCircle2 size={18} />
-                  </div>
-                  <p className="text-[10px] text-foreground/40 font-medium text-center">All Systems<br />Operational</p>
-                </div>
-              </div>
-            <div className="md:hidden absolute right-0 top-[43px] bottom-0 w-16 bg-gradient-to-l from-background via-background/80 to-transparent pointer-events-none z-10" />
-            </div>
-          </div>
+          <SaaSNodeVisual />
         </motion.div>
 
         <motion.div
