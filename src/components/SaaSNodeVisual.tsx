@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Server, Database, Smartphone, Cpu, Activity } from "lucide-react";
+import { Server, Database, Smartphone, Cpu, Activity, ShieldCheck } from "lucide-react";
 
 // aria-label: accessibility bypass for design linter
 
@@ -22,46 +22,46 @@ interface Node {
 const NODES: Node[] = [
   {
     id: "client",
-    label: "Client App",
+    label: "Web Interface",
     x: 80,
     y: 150,
-    tech: "CLN",
+    tech: "WEB",
     metric: "Next.js",
     icon: Smartphone,
     color: "#1A6DD6",
     glow: "rgba(26,109,214,0.4)",
     status: "Active",
-    details: "Next.js client interface running at 60fps with Outfit geometry font."
+    details: "Responsive web interface optimized for fast page loads, organic search ranking, and seamless navigation."
   },
   {
     id: "edge",
     label: "Edge Routing",
     x: 220,
     y: 150,
-    tech: "EDG",
-    metric: "12ms",
+    tech: "RTE",
+    metric: "Global",
     icon: Activity,
     color: "#00d2ff",
     glow: "rgba(0,210,255,0.4)",
     status: "Optimal",
-    details: "Vercel Edge runtime middleware for rapid geo-location request routing."
+    details: "Intelligent routing layer that delivers your application content from the nearest server to minimize latency."
   },
   {
     id: "security",
-    label: "Zero Trust Auth",
+    label: "Access Control",
     x: 320,
     y: 150,
     tech: "SEC",
-    metric: "JWT",
-    icon: Server,
+    metric: "Secure",
+    icon: ShieldCheck,
     color: "#14b8a6",
     glow: "rgba(20,184,166,0.4)",
-    status: "Secure",
-    details: "Stateless JSON Web Token auth gate with strict Row-Level Security mapping."
+    status: "Encrypted",
+    details: "Robust security gate guarding session credentials and ensuring safe data transmission across all layers."
   },
   {
     id: "db",
-    label: "Database Node",
+    label: "Cloud Database",
     x: 420,
     y: 70,
     tech: "DB",
@@ -70,20 +70,20 @@ const NODES: Node[] = [
     color: "#10b981",
     glow: "rgba(16,185,129,0.4)",
     status: "Synced",
-    details: "Relational PostgreSQL database utilizing RLS context for enterprise isolation."
+    details: "Secure, highly isolated relational database designed for high availability and private business records."
   },
   {
     id: "ai",
-    label: "AI Pipeline",
+    label: "AI Automation",
     x: 420,
     y: 230,
     tech: "AI",
-    metric: "Gemini",
+    metric: "Automated",
     icon: Cpu,
     color: "#f97316",
     glow: "rgba(249,115,22,0.4)",
     status: "Active",
-    details: "Autonomous Gemini API models for auto-generated SEO insights and blogs."
+    details: "Autonomous background agent that generates SEO insights and updates automatically to keep search rankings high."
   }
 ];
 
@@ -93,6 +93,12 @@ const CONNECTIONS = [
   { from: "security", to: "db", path: "M 320 150 L 420 70" },
   { from: "security", to: "ai", path: "M 320 150 L 420 230" }
 ];
+
+// Helper to get flat-topped hexagon coordinate points
+function getHexPoints(cx: number, cy: number, r: number) {
+  const h = r * 0.866;
+  return `${cx + r},${cy} ${cx + r/2},${cy + h} ${cx - r/2},${cy + h} ${cx - r},${cy} ${cx - r/2},${cy - h} ${cx + r/2},${cy - h}`;
+}
 
 export default function SaaSNodeVisual() {
   const [activeNode, setActiveNode] = useState<Node | null>(NODES[0]);
@@ -108,12 +114,12 @@ export default function SaaSNodeVisual() {
         <div className="flex items-center gap-2">
           <Activity size={14} className="text-brand-primary animate-pulse" />
           <span className="text-[10px] text-foreground/40 font-bold uppercase tracking-wider">
-            SaaS Infrastructure & Node Status
+            SaaS Infrastructure Map
           </span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-          <span className="text-[10px] text-emerald-500 font-semibold uppercase">Live Logs</span>
+          <span className="text-[10px] text-emerald-500 font-semibold uppercase">System Online</span>
         </div>
       </div>
 
@@ -122,8 +128,8 @@ export default function SaaSNodeVisual() {
         <svg viewBox="0 0 500 300" className="w-full h-full relative z-10 pointer-events-auto">
           {/* Definitions for gradients/glow filters */}
           <defs>
-            <filter id="glow-heavy" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="8" result="blur" />
+            <filter id="glow-heavy" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="6" result="blur" />
               <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
             
@@ -131,15 +137,11 @@ export default function SaaSNodeVisual() {
             <pattern id="tech-grid" width="20" height="20" patternUnits="userSpaceOnUse">
               <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.015)" strokeWidth="1" />
             </pattern>
-            
+
             {/* Connection line linear gradients */}
             <linearGradient id="grad-client-edge" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#1A6DD6" stopOpacity="0.4" />
               <stop offset="100%" stopColor="#00d2ff" stopOpacity="0.4" />
-            </linearGradient>
-            <linearGradient id="grad-edge-sec" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#00d2ff" stopOpacity="0.4" />
-              <stop offset="100%" stopColor="#14b8a6" stopOpacity="0.4" />
             </linearGradient>
           </defs>
 
@@ -187,15 +189,13 @@ export default function SaaSNodeVisual() {
                 className="cursor-pointer group/node"
                 onMouseEnter={() => setActiveNode(node)}
               >
-                {/* Glowing Outer Circle */}
-                <circle
-                  cx={node.x}
-                  cy={node.y}
-                  r="20"
+                {/* Glowing Outer Hexagon */}
+                <polygon
+                  points={getHexPoints(node.x, node.y, 20)}
                   fill="none"
                   stroke={node.color}
                   strokeWidth="2.5"
-                  opacity={isActive ? 0.85 : 0.2}
+                  opacity={isActive ? 0.9 : 0.25}
                   className="transition-all duration-300"
                   style={{
                     filter: isActive ? 'url(#glow-heavy)' : 'none',
@@ -203,23 +203,19 @@ export default function SaaSNodeVisual() {
                 />
                 
                 {/* Pulse Ring */}
-                <circle
-                  cx={node.x}
-                  cy={node.y}
-                  r={isActive ? 25 : 20}
+                <polygon
+                  points={getHexPoints(node.x, node.y, isActive ? 26 : 20)}
                   fill="none"
                   stroke={node.color}
                   strokeWidth="1"
-                  opacity={isActive ? 0.35 : 0}
+                  opacity={isActive ? 0.4 : 0}
                   className="animate-ping"
                   style={{ transformOrigin: `${node.x}px ${node.y}px` }}
                 />
 
-                {/* Inner Solid Circle */}
-                <circle
-                  cx={node.x}
-                  cy={node.y}
-                  r="15"
+                {/* Inner Solid Hexagon */}
+                <polygon
+                  points={getHexPoints(node.x, node.y, 15)}
                   fill="#030611"
                   stroke={isActive ? node.color : 'rgba(255,255,255,0.08)'}
                   strokeWidth="1.5"
@@ -231,7 +227,7 @@ export default function SaaSNodeVisual() {
                   x={node.x}
                   y={node.y + 3.5}
                   textAnchor="middle"
-                  fill={isActive ? node.color : 'rgba(255,255,255,0.4)'}
+                  fill={isActive ? node.color : 'rgba(255,255,255,0.45)'}
                   className="text-[8px] font-mono font-bold select-none transition-colors duration-300"
                 >
                   {node.tech}
@@ -242,7 +238,7 @@ export default function SaaSNodeVisual() {
                   x={node.x}
                   y={node.y + 35}
                   textAnchor="middle"
-                  fill={isActive ? '#ffffff' : 'rgba(255,255,255,0.35)'}
+                  fill={isActive ? '#ffffff' : 'rgba(255,255,255,0.4)'}
                   className="text-[8px] font-mono font-bold tracking-wider uppercase select-none transition-colors duration-300"
                 >
                   {node.label}
@@ -253,7 +249,7 @@ export default function SaaSNodeVisual() {
                   x={node.x}
                   y={node.y + 44}
                   textAnchor="middle"
-                  fill={isActive ? node.color : 'rgba(255,255,255,0.18)'}
+                  fill={isActive ? node.color : 'rgba(255,255,255,0.22)'}
                   className="text-[7px] font-mono uppercase tracking-widest select-none transition-colors duration-300"
                 >
                   {node.metric}
@@ -262,7 +258,7 @@ export default function SaaSNodeVisual() {
                 {/* Small active status indicator dot */}
                 <circle
                   cx={node.x + 13}
-                  cy={node.y - 10}
+                  cy={node.y - 12}
                   r="2.5"
                   fill={node.color}
                   opacity={isActive ? 1 : 0.6}
