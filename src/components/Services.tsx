@@ -16,10 +16,10 @@ import Link from "next/link";
 const services = [
   {
     title: "Custom Software & Web Apps",
-    desc: "Beautiful, customized software built exactly for your business. Manage your customers, sales, and daily operations in one clean portal.",
+    desc: "Beautiful, customized software built exactly for your business. Includes headless commerce (Medusa) stores, customer portals, and daily operations dashboards.",
     icon: Cloud,
     href: "/services/web",
-    features: ["Custom design (no templates)", "Simple customer/staff logins", "Highly secure database"],
+    features: ["Custom design (no templates)", "Headless commerce with Medusa", "Simple customer/staff logins", "Highly secure database"],
   },
   {
     title: "Business Automation Tools",
@@ -51,10 +51,10 @@ const services = [
   },
   {
     title: "Integration with Popular Tools",
-    desc: "Connect your custom software with WhatsApp Business APIs, SMS services, Razorpay, Paytm, Tally, or Google Sheets.",
+    desc: "Connect your custom software with WhatsApp Business APIs, SMS services, Razorpay, Paytm, Tally, Google Sheets, or Medusa commerce APIs.",
     icon: BarChart3,
     href: "/services/web",
-    features: ["Razorpay & UPI payment setup", "Tally & Zoho ledgers sync", "WhatsApp Business API links"],
+    features: ["Razorpay & UPI payment setup", "Medusa commerce API integration", "Tally & Zoho ledgers sync", "WhatsApp Business API links"],
   },
 ];
 

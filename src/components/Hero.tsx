@@ -26,7 +26,7 @@ const goals = [
     tabText: "Build a SaaS",
     title: "Custom SaaS & Product Engineering",
     icon: Cpu,
-    desc: "We build fully functional, multi-tenant SaaS products complete with secure database isolation, stripe/razorpay billing integration, and customizable client dashboards.",
+    desc: "We build fully functional, multi-tenant SaaS products complete with secure database isolation, stripe/razorpay billing integration, headless commerce (Medusa), and customizable client dashboards.",
     metric: "99.9% Uptime SLA",
     detail: "Built using optimized Next.js + Node.js structures for fast loading speeds."
   },
