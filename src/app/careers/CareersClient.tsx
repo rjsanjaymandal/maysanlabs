@@ -34,7 +34,7 @@ export default function CareersClient() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 border-y border-gray-100 relative">
+      <section className="py-16 md:py-24 border-y border-gray-100 dark:border-white/[0.06] relative">
         <div className="container-main">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
@@ -96,7 +96,7 @@ export default function CareersClient() {
                     <p className="text-foreground/60 text-sm leading-relaxed mb-6 flex-1">
                       {job.description}
                     </p>
-                    <div className="flex items-center gap-2 pt-4 border-t border-gray-100 mb-5">
+                    <div className="flex items-center gap-2 pt-4 border-t border-gray-100 dark:border-white/[0.06] mb-5">
                       <MapPin size={14} className="text-brand-primary shrink-0" />
                       <span className="text-sm text-foreground/60">{job.location}</span>
                     </div>

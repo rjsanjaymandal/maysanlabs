@@ -83,7 +83,6 @@ export default function CommandDock() {
             className={styles.dock}
           >
             <div className={styles.dockContent}>
-              <div className={styles.dockLeft}></div>
 
               <div className={styles.navGroup}>
                 {dockItems.map((item) => (

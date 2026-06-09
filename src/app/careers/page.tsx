@@ -3,7 +3,7 @@ import CareersClient from "./CareersClient";
 import { generateBreadcrumbSchema, generateJobPostingSchema, generatePageSEO } from "@/lib/seo/helpers";
 
 export const metadata: Metadata = generatePageSEO({
-  title: "Careers",
+  title: "Careers | Join the Engineering Team at Maysan Labs",
   description: "Join our team of elite engineers and designers to build next-generation enterprise SaaS services. We offer competitive salaries, remote work, and cutting-edge projects.",
   path: "/careers",
   keywords: [

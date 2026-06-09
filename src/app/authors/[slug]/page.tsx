@@ -26,6 +26,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `${author.name} - ${author.role} at Maysan Labs`,
       description: author.bio,
     },
+    alternates: {
+      canonical: `https://maysanlabs.com/authors/${slug}`,
+    },
   };
 }
 

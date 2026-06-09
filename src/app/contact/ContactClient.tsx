@@ -166,7 +166,7 @@ export default function ContactClient() {
                 </p>
                 <Link
                   href="/start"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-bold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-[1.02] transition-all duration-300"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-bold text-sm text-white hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-[1.02] transition-all duration-300"
                 >
                   Book a Call
                   <ArrowRight size={14} />
@@ -261,7 +261,7 @@ export default function ContactClient() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full flex items-center justify-center gap-2 py-3.5 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-bold text-sm text-black hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] transition-all duration-300 disabled:opacity-50"
+                      className="w-full flex items-center justify-center gap-2 py-3.5 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-bold text-sm text-white hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] transition-all duration-300 disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <>

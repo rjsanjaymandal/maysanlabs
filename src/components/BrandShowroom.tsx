@@ -12,7 +12,7 @@ export default function BrandShowroom() {
   const [activeTab, setActiveTab] = useState<"identity" | "pillars">("identity");
 
   return (
-    <section className="py-24 border-y border-slate-200/50 dark:border-white/5 bg-slate-50 dark:bg-[#0B1120] relative overflow-hidden">
+    <section className="py-24 border-y border-slate-200/50 dark:border-white/5 bg-slate-50 dark:bg-[#03050d] relative overflow-hidden">
       {/* Dynamic Color Reflective Ambient Glow backdrops */}
       <ParallaxBackground speed={0.2} className="bg-gradient-to-b from-brand-primary/5 via-transparent to-transparent" />
       <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] sm:w-[600px] h-[180px] sm:h-[400px] rounded-full blur-[50px] sm:blur-[140px] pointer-events-none transition-all duration-1000 ${
@@ -85,7 +85,7 @@ export default function BrandShowroom() {
             </div>
 
             {/* Viewport content */}
-            <div className="relative min-h-[380px] sm:min-h-[420px] md:min-h-0 md:aspect-[21/9] w-full overflow-hidden bg-[#0A0F1A] dark:bg-black/45 backdrop-blur-md flex flex-col justify-between select-none">
+            <div className="relative min-h-fit md:min-h-0 md:aspect-[21/9] w-full overflow-visible md:overflow-hidden bg-[#0A0F1A] dark:bg-black/45 backdrop-blur-md flex flex-col justify-between select-none p-4 md:p-0">
               <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/[0.04] via-transparent to-blue-500/[0.02] z-0 pointer-events-none" />
               
               {activeTab === "identity" ? (

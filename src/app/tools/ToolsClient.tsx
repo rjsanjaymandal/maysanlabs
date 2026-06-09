@@ -107,7 +107,7 @@ export default function ToolsClient() {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-4 py-2 rounded-full text-xs font-semibold transition-all ${
+                    className={`px-4 py-2 rounded-[2px] text-xs font-semibold transition-all ${
                       activeCategory === cat
                         ? "bg-brand-primary text-white"
                         : "bg-white/80 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 text-foreground hover:bg-gray-100 dark:hover:bg-white/[0.08]"
@@ -141,7 +141,7 @@ export default function ToolsClient() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: idx * 0.05 }}
-                    className={`bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl backdrop-blur-sm shadow-sm p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-md`}
+                    className={`bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-[2px] backdrop-blur-sm shadow-sm p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-md`}
                   >
                     {/* Glowing Accent */}
                     <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${tool.color} dark:opacity-[0.03] opacity-[0.06] blur-xl group-hover:opacity-10 dark:group-hover:opacity-[0.08] transition-opacity`} />
@@ -178,7 +178,7 @@ export default function ToolsClient() {
             </div>
             
             {filteredTools.length === 0 && (
-              <div className="text-center py-16 bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl">
+              <div className="text-center py-16 bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-[2px]">
                 <p className="text-foreground/50">No tools found matching your query.</p>
               </div>
             )}
@@ -187,12 +187,12 @@ export default function ToolsClient() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="mt-16 bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-8 backdrop-blur-sm"
+              className="mt-16 bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-[2px] p-8 backdrop-blur-sm"
             >
               <div>
-                <h2 className="text-2xl font-bold mb-3">
+                <h3 className="text-2xl font-bold mb-3">
                   Need custom business software, mobile apps, or automation?
-                </h2>
+                </h3>
                 <p className="text-foreground/60 mb-6">
                   We build high-quality custom systems, mobile apps, WhatsApp automation, and customized business software.
                 </p>

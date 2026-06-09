@@ -50,7 +50,7 @@
 }
 
 .statusText {
-  font-family: var(--font-geist-mono);
+  font-family: var(--font-mono);
   font-size: 0.65rem;
   font-weight: 700;
   color: hsl(var(--primary));

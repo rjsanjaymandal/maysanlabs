@@ -72,6 +72,9 @@ export default function ArchitectureClient() {
       {/* Architecture Layers */}
       <section className="py-20">
         <div className="container-main">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-12 text-left">
+            Core Architecture Principles
+          </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {layers.map((layer, index) => (
               <motion.div
@@ -104,6 +107,9 @@ export default function ArchitectureClient() {
       {/* Technical Deep-Dive Nodes */}
       <section className="py-16 border-t border-gray-200 dark:border-white/[0.06]">
         <div className="container-main">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-12 text-left">
+            Infrastructure & Scaling Nodes
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { tag: "01", label: "Building Blocks", text: "A modular system that allows us to add new features quickly as you grow." },
@@ -119,7 +125,7 @@ export default function ArchitectureClient() {
                 className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] backdrop-blur-xl rounded-2xl p-6 hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300 group hover:scale-[1.01]"
               >
                 <span className="text-xs text-brand-primary/60 font-bold block mb-4 uppercase tracking-widest">Node {node.tag}</span>
-                <h4 className="text-lg font-bold tracking-[-0.015em] text-foreground mb-3 group-hover:text-brand-primary transition-colors">{node.label}</h4>
+                <h3 className="text-lg font-bold tracking-[-0.015em] text-foreground mb-3 group-hover:text-brand-primary transition-colors">{node.label}</h3>
                 <p className="text-sm leading-relaxed text-foreground/50 font-medium">{node.text}</p>
               </motion.div>
             ))}

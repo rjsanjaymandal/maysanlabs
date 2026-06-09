@@ -59,7 +59,7 @@ export default function TrendingTopics() {
   const catColors: Record<string, string> = {
     'AI & ML': 'bg-orange-500/10 text-orange-500 border-orange-500/20',
     'Infrastructure': 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20',
-    'Architecture': 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20',
+    'Architecture': 'bg-cyan-500/10 text-cyan-500 border-cyan-500/20',
     'Security': 'bg-red-500/10 text-red-500 border-red-500/20',
     'Performance': 'bg-cyan-500/10 text-cyan-500 border-cyan-500/20',
     'Methodology': 'bg-rose-500/10 text-rose-500 border-rose-500/20',

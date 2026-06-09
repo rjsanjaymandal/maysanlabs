@@ -178,12 +178,12 @@ html:not(.dark) .text-white\/\[0\.02\] {
 
 /* ─── Dark Mode Override ─── */
 .dark {
-    --bg-dark: #0D1117;
-    --bg-base: #0F1923;
+    --bg-dark: #000000;
+    --bg-base: #03050d;
     
-    --surface-elevated: #0D1117;
-    --surface-base: #0F1923;
-    --surface-subtle: #1A2535;
+    --surface-elevated: #000000;
+    --surface-base: #03050d;
+    --surface-subtle: #0a0f1a;
     
     --text-primary: #E2F0FF;
     --text-secondary: #B0CCE8;

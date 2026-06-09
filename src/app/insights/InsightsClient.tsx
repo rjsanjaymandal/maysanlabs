@@ -71,7 +71,7 @@ const categoryColors: Record<string, string> = {
   "Performance": "bg-amber-500/20 text-amber-400",
   "Business": "bg-emerald-500/20 text-emerald-400",
   "Design": "bg-pink-500/20 text-pink-400",
-  "Architecture": "bg-indigo-500/20 text-indigo-400",
+  "Architecture": "bg-cyan-500/20 text-cyan-400",
   "Optimization": "bg-teal-500/20 text-teal-400",
   "Transformation": "bg-orange-500/20 text-orange-400",
   "Insights": "bg-brand-primary/20 text-brand-primary",

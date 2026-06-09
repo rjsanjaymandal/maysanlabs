@@ -37,11 +37,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://maysanlabs.com"),
   title: {
-    default: "Maysan Labs | Enterprise SaaS Development Company | Custom Software Solutions",
+    default: "Maysan Labs | Enterprise SaaS & Custom Software Company",
     template: "%s | Maysan Labs",
   },
   description:
-    "Maysan Labs is an enterprise SaaS development company building custom software, cloud infrastructure, and scalable web applications for global businesses. Expert React, Node.js, MERN stack engineers.",
+    "Maysan Labs builds enterprise SaaS, custom software, and scalable cloud solutions. Expert full-stack engineers engineering secure web & mobile products.",
   keywords: [
     "Maysan Labs",
     "enterprise SaaS development company",
@@ -131,14 +131,14 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon-v2.png" },
-      { url: "/icon-192x192-v4.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512x512-v4.png", sizes: "512x512", type: "image/png" },
+      { url: "/icon-192x192-v3.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512x512-v3.png", sizes: "512x512", type: "image/png" },
     ],
     shortcut: "/favicon-v2.png",
     apple: [
       { url: "/icon-rounded-v2.png?v=100" },
-      { url: "/icon-192x192-v4.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512x512-v4.png", sizes: "512x512", type: "image/png" },
+      { url: "/icon-192x192-v3.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512x512-v3.png", sizes: "512x512", type: "image/png" },
     ],
   },
   manifest: "/manifest.json?v=100",

@@ -228,7 +228,8 @@ export default function SaaSNodeVisual() {
                   y={node.y + 3.5}
                   textAnchor="middle"
                   fill={isActive ? node.color : 'rgba(255,255,255,0.45)'}
-                  className="text-[8px] font-mono font-bold select-none transition-colors duration-300"
+                  fontSize="10"
+                  className="font-mono font-bold select-none transition-colors duration-300"
                 >
                   {node.tech}
                 </text>
@@ -239,7 +240,8 @@ export default function SaaSNodeVisual() {
                   y={node.y + 35}
                   textAnchor="middle"
                   fill={isActive ? '#ffffff' : 'rgba(255,255,255,0.4)'}
-                  className="text-[8px] font-mono font-bold tracking-wider uppercase select-none transition-colors duration-300"
+                  fontSize="10"
+                  className="font-mono font-bold tracking-wider uppercase select-none transition-colors duration-300"
                 >
                   {node.label}
                 </text>
@@ -250,7 +252,8 @@ export default function SaaSNodeVisual() {
                   y={node.y + 44}
                   textAnchor="middle"
                   fill={isActive ? node.color : 'rgba(255,255,255,0.22)'}
-                  className="text-[7px] font-mono uppercase tracking-widest select-none transition-colors duration-300"
+                  fontSize="9"
+                  className="font-mono uppercase tracking-widest select-none transition-colors duration-300"
                 >
                   {node.metric}
                 </text>

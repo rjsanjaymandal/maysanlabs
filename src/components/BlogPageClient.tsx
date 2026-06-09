@@ -20,7 +20,7 @@ const categoryAccents: Record<string, { bg: string; text: string; dot: string }>
   "Security":        { bg: "bg-red-500/10", text: "text-red-500", dot: "bg-red-500" },
   "Performance":     { bg: "bg-cyan-500/10", text: "text-cyan-500", dot: "bg-cyan-500" },
   "Business":        { bg: "bg-amber-500/10", text: "text-amber-500", dot: "bg-amber-500" },
-  "Architecture":    { bg: "bg-indigo-500/10", text: "text-indigo-500", dot: "bg-indigo-500" },
+  "Architecture":    { bg: "bg-cyan-500/10", text: "text-cyan-500", dot: "bg-cyan-500" },
   "Design":          { bg: "bg-pink-500/10", text: "text-pink-500", dot: "bg-pink-500" },
   "Transformation":  { bg: "bg-teal-500/10", text: "text-teal-500", dot: "bg-teal-500" },
   "Insights":        { bg: "bg-slate-500/10", text: "text-slate-500", dot: "bg-slate-500" },

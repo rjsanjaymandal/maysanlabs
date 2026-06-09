@@ -290,6 +290,19 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
               Back to All Tools
             </Link>
 
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center mb-8"
+            >
+              <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+                Speed <span className="text-brand-primary">Auditor</span>
+              </h1>
+              <p className="text-xs text-foreground/50 mt-2">
+                Audit your website speed, Core Web Vitals, and technical SEO factors in real-time.
+              </p>
+            </motion.div>
+
             <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} className="bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-6 mb-6 backdrop-blur-sm">
               <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
                 <div className="relative flex-1">
@@ -530,7 +543,7 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
 
                       <div className="bg-white/[0.03] border-white/[0.08] rounded-3xl p-6 md:p-8">
                         <div className="mb-4">
-                          <h3 className="text-base font-bold text-foreground">Prioritized Action Items</h3>
+                          <h2 className="text-base font-bold text-foreground">Prioritized Action Items</h2>
                           <p className="text-xs text-foreground/45">Resolve these metrics to accelerate page load thresholds</p>
                         </div>
                         <div className="space-y-3">
@@ -644,7 +657,7 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
                       {seoResults.urlsList.length > 0 && (
                         <div className="bg-white/[0.03] border-white/[0.08] rounded-3xl p-6 md:p-8 overflow-hidden">
                           <div className="mb-4">
-                            <h3 className="text-base font-bold text-foreground">Sitemap URL Audit Sample</h3>
+                            <h2 className="text-base font-bold text-foreground">Sitemap URL Audit Sample</h2>
                             <p className="text-xs text-foreground/45">Detailed parameter checklist on crawled sitemap routes</p>
                           </div>
                           <div className="overflow-x-auto">
@@ -693,7 +706,7 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
 
                       <div className="bg-white/[0.03] border-white/[0.08] rounded-3xl p-6 md:p-8">
                         <div className="mb-4">
-                          <h3 className="text-base font-bold text-foreground">Sitemap Action Recommendations</h3>
+                          <h2 className="text-base font-bold text-foreground">Sitemap Action Recommendations</h2>
                           <p className="text-xs text-foreground/45">Inject these semantic and indexation fixes to solidify SEO health</p>
                         </div>
                         <div className="space-y-3">
@@ -750,10 +763,10 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
                         <button type="button" onClick={() => setShowLeadForm(false)} className="text-foreground/45 hover:text-foreground text-xs font-mono">Dismiss</button>
                       </div>
                       <div className="max-w-xl">
-                        <h3 className="text-base font-bold text-foreground mb-1.5 flex items-center gap-2">
+                        <h2 className="text-base font-bold text-foreground mb-1.5 flex items-center gap-2">
                           <Sparkles size={16} className="text-[#00d2ff]" />
                           Download Premium SEO Audit Blueprint
-                        </h3>
+                        </h2>
                         <p className="text-xs text-foreground/50 mb-5 leading-relaxed font-light">
                           Get a detailed custom PDF outlining a complete diagnostic strategy for your domain, optimized for Indian network scaling and DPDP legislation.
                         </p>

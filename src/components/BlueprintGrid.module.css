@@ -57,7 +57,7 @@
 }
 
 .title {
-  font-family: var(--font-geist-mono);
+  font-family: var(--font-mono);
   font-size: 0.85rem;
   font-weight: 800;
   color: hsl(var(--foreground));

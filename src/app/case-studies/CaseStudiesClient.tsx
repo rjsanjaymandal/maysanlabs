@@ -147,6 +147,9 @@ export default function CaseStudiesClient() {
               <motion.span variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 text-brand-primary text-[10px] font-semibold uppercase tracking-wider mb-4">
                 Featured Project
               </motion.span>
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-6 text-left">
+                Featured Innovation
+              </h2>
               <motion.div variants={fadeUp} className="relative group">
                 <Link
                   href={`/case-studies/${featured.slug}`}
@@ -198,6 +201,9 @@ export default function CaseStudiesClient() {
       <section className={`pb-16 md:pb-24 relative ${activeCategory === "All" && !searchQuery ? "" : "pt-16 md:pt-20"}`}>
         <div className="container-main">
           <div className="max-w-5xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-8 text-left">
+              Engineering Case Studies
+            </h2>
             <AnimatePresence mode="wait">
               {filtered.length === 0 ? (
                 <motion.div
@@ -290,9 +296,9 @@ export default function CaseStudiesClient() {
             variants={fadeUp}
             className="mt-16 text-center py-12 border-t border-gray-100 dark:border-white/[0.06]"
           >
-            <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
               Ready for your <span className="text-brand-primary">transformation</span>?
-            </h3>
+            </h2>
             <p className="text-foreground/60 mb-8 max-w-lg mx-auto">
               Let&apos;s discuss how we can help solve your challenges.
             </p>

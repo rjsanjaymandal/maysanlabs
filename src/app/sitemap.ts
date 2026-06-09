@@ -126,6 +126,8 @@ function discoverRoutes(dir: string, basePath: string = ''): MetadataRoute.Sitem
       !item.name.startsWith('_') &&
       !item.name.startsWith('.') &&
       !item.name.startsWith('(') && // route groups
+      !item.name.includes('[') &&
+      !item.name.includes(']') &&
       item.name !== 'api' &&
       item.name !== 'actions'
     ) {
