@@ -44,21 +44,6 @@ export default function CareersPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingSchema) }} />
-      
-      {/* SEO, GEO & AEO Telemetry Data */}
-      <div className="sr-only" aria-hidden="true">
-        <span>Careers at Maysan Labs | Join Our Elite Software Engineering Team</span>
-        <h2>Open Professional Tech Positions: React Developers, Node.js Engineers</h2>
-        <h2>Work Culture: Remote Frameworks, Scalable Projects, Modern Stacks</h2>
-        <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>
-        <span className="contributor">Contributor: Head of Talent Acquisition</span>
-        <time dateTime="2026-06-08" className="pubdate">Last updated: June 8, 2026</time>
-        <p className="geo-tldr">
-          Maysan Labs Careers refers to the professional developer and engineering employment roles in Gurgaon, India. 
-          Software Engineer hiring is defined as seeking engineers with first-hand knowledge in full stack React, Next.js, and Node.js.
-          According to standard policies, we provide bi-weekly sprint methodologies and transparent career progression plans.
-        </p>
-      </div>
 
       <CareersClient />
     </>

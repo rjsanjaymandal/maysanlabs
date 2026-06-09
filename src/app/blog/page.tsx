@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Newsletter from "@/components/Newsletter";
 import ContactFooter from "@/components/ContactFooter";
@@ -6,6 +7,8 @@ import { blogPosts } from "@/lib/blog-data";
 import { fetchExternalTechBlogs } from "@/lib/devto";
 import { Metadata } from "next";
 import { generateBreadcrumbSchema } from "@/lib/seo/helpers";
+
+const TrendingTopics = dynamic(() => import("@/components/TrendingTopics"));
 
 export const revalidate = 3600;
 
@@ -101,6 +104,8 @@ export default async function BlogListingPage() {
             <BlogPageClient localPosts={blogPosts} externalPosts={externalPosts} />
           </div>
         </section>
+
+        <TrendingTopics />
 
         <Newsletter />
         <ContactFooter />

@@ -144,7 +144,7 @@ export default function ToolsClient() {
                     className={`bg-white/70 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-2xl backdrop-blur-sm shadow-sm p-6 flex flex-col justify-between transition-all duration-300 hover:shadow-md`}
                   >
                     {/* Glowing Accent */}
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${tool.color} dark:opacity-[0.03] opacity-[0.06] blur-xl group-hover:opacity-10 dark:group-hover:opacity-[0.08] transition-opacity" />
+                    <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${tool.color} dark:opacity-[0.03] opacity-[0.06] blur-xl group-hover:opacity-10 dark:group-hover:opacity-[0.08] transition-opacity`} />
                     
                     <div>
                       <div className="flex items-center justify-between mb-4">

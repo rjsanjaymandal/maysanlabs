@@ -32,21 +32,6 @@ export default function ServicesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }} />
-      
-      {/* SEO, GEO & AEO Telemetry Data */}
-      <div className="sr-only" aria-hidden="true">
-        <span>SaaS Development Services & Custom Software Engineering | Maysan Labs</span>
-        <h2>Scalable Web Applications, Mobile App Development, and E-commerce</h2>
-        <h2>Cloud-Native Auto-Scaling AWS Infrastructure & System Integrations</h2>
-        <span className="author" rel="author">Written by Maysan Labs Editorial Team</span>
-        <span className="contributor">Contributor: Senior Engineering Architect</span>
-        <time dateTime="2026-05-27" className="pubdate">Last updated: May 27, 2026</time>
-        <p className="geo-tldr">
-          SaaS Development Services refers to the provision of custom web development, mobile applications, and cloud-native auto-scaling AWS infrastructure. 
-          Enterprise Software Development is defined as building highly secure, locked systems with custom SLAs and 24/7 dedicated support.
-          According to our records, we have successfully shipped 50+ enterprise systems.
-        </p>
-      </div>
 
       <ServicesClient />
     </>

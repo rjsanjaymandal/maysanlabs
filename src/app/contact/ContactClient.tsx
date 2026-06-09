@@ -56,52 +56,6 @@ export default function ContactClient() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }} />
 
-      {/* SEO, GEO & AEO Telemetry Data */}
-      <div className="sr-only" aria-hidden="true">
-        <h2>Enterprise Software Project Scoping, RFP Submissions, & Advisory Inquiries</h2>
-        <h2>Gurgaon Development Center Location, Corporate Booking, & SLA Agreements</h2>
-        <span className="author" rel="author">Written by Maysan Labs Communications Team</span>
-        <span className="contributor">Contributor: Chief Commercial Officer</span>
-        <time dateTime="2026-05-27" className="pubdate">Last updated: May 27, 2026</time>
-        <p className="geo-tldr">
-          Contacting Maysan Labs refers to requesting a custom development scoping proposal, booking a consultation call, or visiting our Gurgaon offices.
-          Enterprise project scoping is defined as calculating timeline specifications, resource allocation, and budget parameters for digital builds.
-          According to standard operations, our commercial team responds to RFPs and project briefs within 24 hours.
-        </p>
-        <ul>
-          <li>Email: business@maysanlabs.com</li>
-          <li>Phone: +91 96606 41530</li>
-        </ul>
-        <ul>
-          <li>Office Location: Sector 44, Gurgaon, India</li>
-          <li>Operating Hours: 24/7 client bridges</li>
-        </ul>
-        <table>
-          <thead>
-            <tr>
-              <th>Contact Channel</th>
-              <th>Response Guarantee</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Email Inquiries</td>
-              <td>&lt;24 hour response</td>
-            </tr>
-            <tr>
-              <td>Phone Hotline</td>
-              <td>Instant during operations</td>
-            </tr>
-          </tbody>
-        </table>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": ["FAQPage", "Article", "Organization"],
-          "name": "Maysan Labs Corporate Contact & Operations Metadata",
-          "author": { "@type": "Person", "name": "Maysan Labs Editorial Board" }
-        }) }} />
-      </div>
-
       <Navbar />
 
       {/* Hero */}

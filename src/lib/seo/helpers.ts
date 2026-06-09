@@ -1,9 +1,3 @@
-import { 
-  organizationSchema, 
-  websiteSchema, 
-  getNavigationSchema,
-  localBusinessSchema
-} from "./schema";
 import type { Metadata } from "next";
 
 interface BlogPost {
@@ -151,51 +145,6 @@ export function generateBlogPostJSONLD(post: BlogPost, siteUrl: string) {
   };
 }
 
-/**
- * Generate SEO metadata for case studies
- */
-export function generateCaseStudySEO(study: CaseStudy, siteUrl: string): Metadata {
-  const og = ogImageUrl(study.title, study.excerpt);
-  return {
-    title: `${study.title} | Case Studies`,
-    description: study.excerpt,
-    keywords: [
-      study.title.toLowerCase(),
-      study.industry.toLowerCase(),
-      "case study",
-      "Maysan Labs",
-      study.client.toLowerCase()
-    ].filter(Boolean),
-    openGraph: {
-      title: study.title,
-      description: study.excerpt,
-      url: `${siteUrl}/case-studies/${study.slug}`,
-      type: "article",
-      publishedTime: typeof study.date === 'string' ? study.date : undefined,
-      images: [
-        {
-          url: og,
-          width: 1200,
-          height: 630,
-          alt: study.title
-        }
-      ]
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: study.title,
-      description: study.excerpt,
-      images: [og]
-    },
-    alternates: {
-      canonical: `${siteUrl}/case-studies/${study.slug}`
-    }
-  };
-}
-
-/**
- * Generate JSON-LD for case study
- */
 export function generateCaseStudyJSONLD(study: CaseStudy, siteUrl: string) {
   return {
     "@context": "https://schema.org",
@@ -235,8 +184,7 @@ export function generateCaseStudyJSONLD(study: CaseStudy, siteUrl: string) {
 /**
  * Generate SEO metadata for product pages
  */
-export function generateProductSEO(product: ProductInfo, _siteUrl: string): Metadata {
-  void _siteUrl;
+export function generateProductSEO(product: ProductInfo): Metadata {
   const og = ogImageUrl(product.name, product.description);
 
   return {
@@ -271,56 +219,6 @@ export function generateProductSEO(product: ProductInfo, _siteUrl: string): Meta
     },
     alternates: {
       canonical: product.url
-    }
-  };
-}
-
-/**
- * Generate base SEO metadata for site-wide usage
- */
-export function generateBaseSEO(siteUrl: string): Metadata {
-  return {
-    title: "Maysan Labs | Enterprise SaaS Development Company",
-    description: "Maysan Labs is a leading enterprise SaaS development company offering custom software development, cloud infrastructure services, and scalable web applications.",
-    keywords: [
-      "SaaS development company",
-      "custom software development company",
-      "enterprise SaaS development",
-      "cloud infrastructure services",
-      "custom web application development",
-      "MERN stack developers",
-      "React development company",
-      "Node.js backend development"
-    ],
-    openGraph: {
-      type: "website",
-      locale: "en_US",
-      url: siteUrl,
-      siteName: "Maysan Labs",
-      title: "Maysan Labs | Enterprise SaaS Development Company",
-      description: "Maysan Labs is a leading enterprise SaaS development company offering custom software development, cloud infrastructure services, and scalable web applications.",
-      images: [
-        {
-          url: "/og-image.webp",
-          width: 1200,
-          height: 630,
-          alt: "Maysan Labs - Enterprise SaaS Development Company"
-        }
-      ]
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Maysan Labs | Enterprise SaaS Development Company",
-      description: "Maysan Labs - Enterprise SaaS development company offering custom software, cloud infrastructure, and scalable web applications.",
-      images: ["/og-image.webp"],
-      creator: "@maysanlabs",
-      site: "@maysanlabs"
-    },
-    alternates: {
-      canonical: siteUrl,
-      languages: {
-        en: `${siteUrl}`,
-      }
     }
   };
 }
@@ -457,49 +355,6 @@ export function generatePageSEO({
 /**
  * Generate all JSON-LD scripts for a page
  */
-export function generateJSONLDScripts(
-  baseData: {
-    organization: typeof organizationSchema;
-    website: typeof websiteSchema;
-    navigation: ReturnType<typeof getNavigationSchema>;
-    localBusiness: typeof localBusinessSchema;
-  },
-  additionalData?: Record<string, unknown>
-): { type: string; content: object }[] {
-  const scripts: { type: string; content: object }[] = [
-    {
-      type: "application/ld+json",
-      content: baseData.organization
-    },
-    {
-      type: "application/ld+json",
-      content: baseData.website
-    },
-    {
-      type: "application/ld+json",
-      content: baseData.navigation
-    },
-    {
-      type: "application/ld+json",
-      content: baseData.localBusiness
-    }
-  ];
-
-  // Add additional schemas if provided
-  if (additionalData) {
-    Object.values(additionalData).forEach((value) => {
-      if (value && typeof value === 'object') {
-        scripts.push({
-          type: "application/ld+json",
-          content: value as object
-        });
-      }
-    });
-  }
-
-  return scripts;
-}
-
 export interface FAQItem {
   question: string;
   answer: string;
@@ -567,83 +422,4 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[],
   };
 }
 
-/**
- * Generate Brand schema for Google rich results
- */
-export function generateBrandSchema(siteUrl: string = "https://maysanlabs.com") {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Brand",
-    "name": "Maysan Labs",
-    "alternateName": "Maysan",
-    "description": "Maysan Labs is an enterprise SaaS development company specializing in custom software, web applications, and cloud solutions for global businesses.",
-    "url": siteUrl,
-    "logo": `${siteUrl}/logo.webp`,
-    "sameAs": [
-      "https://www.facebook.com/maysanlabs",
-      "https://www.instagram.com/maysanlabs",
-      "https://in.linkedin.com/company/maysanlabs",
-      "https://x.com/maysanlabs"
-    ],
-    "areaServed": [
-      { "@type": "Country", "name": "United States" },
-      { "@type": "Country", "name": "United Kingdom" },
-      { "@type": "Country", "name": "Canada" },
-      { "@type": "Country", "name": "Australia" },
-      { "@type": "Country", "name": "Singapore" },
-      { "@type": "Country", "name": "India" }
-    ],
-    "serviceType": [
-      "SaaS Development",
-      "Custom Software Development",
-      "Web Application Development",
-      "Cloud Infrastructure",
-      "Mobile App Development"
-    ]
-  };
-}
 
-/**
- * Generate local SEO with proper NAP (Name, Address, Phone)
- */
-export function generateLocalSeoSchema(siteUrl: string = "https://maysanlabs.com") {
-  return {
-    "@context": "https://schema.org",
-    "@type": "SoftwareDevelopment",
-    "name": "Maysan Labs",
-    "description": "Maysan Labs - Enterprise software development company building scalable web applications, SaaS products, and enterprise solutions for global clients.",
-    "url": siteUrl,
-    "telephone": "+919660641530",
-    "email": "business@maysanlabs.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Sector 44",
-      "addressLocality": "Gurgaon",
-      "addressRegion": "Haryana",
-      "postalCode": "122001",
-      "addressCountry": "IN"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "28.4647",
-      "longitude": "77.0300"
-    },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "09:00",
-      "closes": "18:00"
-    },
-    "priceRange": "$$$",
-    "areaServed": {
-      "@type": "Country",
-      "name": "India"
-    },
-    "serviceType": [
-      "Software Development",
-      "Web Development",
-      "SaaS Development",
-      "Cloud Solutions"
-    ]
-  };
-}

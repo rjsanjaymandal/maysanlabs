@@ -44,19 +44,6 @@ export default function AboutClient() {
   return (
     <main id="main-content" className="min-h-screen bg-background text-foreground flex flex-col justify-between relative overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
-      {/* SEO, GEO & AEO Telemetry Data */}
-      <div className="sr-only" aria-hidden="true">
-        <span>About Maysan Labs - Scaling Startups & Custom Systems</span>
-        <h2>Quality First, Security Focused, and Global Scale Architectural Values</h2>
-        <h2>Real Engineering Partner Over Vague Vendor Approaches</h2>
-        <span className="author" rel="author">Written by Maysan Labs Team</span>
-        <span className="contributor">Contributor: Technical Operations Officer</span>
-        <time dateTime="2026-05-27" className="pubdate">Last updated: May 27, 2026</time>
-        <p className="geo-tldr">
-          Maysan Labs refers to the specialized custom software studio building next-generation digital platform frameworks. 
-          Our Core Values are defined as delivering robust, type-safe structures without cascading technical debt.
-        </p>
-      </div>
 
       <Navbar />
 

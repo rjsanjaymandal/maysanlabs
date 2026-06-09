@@ -477,17 +477,17 @@ Three non-negotiables for enterprise architecture: observability (distributed tr
     category: "Business",
     readTime: "7 min",
     tags: ["Cost", "Budget", "Custom Software", "ROI", "Planning"],
-    content: `"How much does custom software cost?" is the first question every business asks — and the hardest to answer without context. After delivering 50+ projects across budgets ranging from $20K to $2M+, here's our transparent breakdown.
+    content: `"How much does custom software cost?" is the first question every business asks — and the hardest to answer without context. After delivering 50+ projects across budgets ranging from ₹20K to ₹2M+, here's our transparent breakdown.
 
-Custom software costs fall into four brackets. A simple MVP or prototype (one platform, basic auth, 3-5 core screens) runs $15K-$40K. A production-ready application (full auth, payment integration, admin dashboard, API) runs $50K-$150K. A complex enterprise system (multi-tenant, multiple integrations, role-based access, analytics) runs $150K-$500K+. And a platform-scale system (microservices, real-time data, AI/ML, global infrastructure) starts at $500K.
+Custom software costs fall into four brackets. A simple MVP or prototype (one platform, basic auth, 3-5 core screens) runs ₹15K-₹40K. A production-ready application (full auth, payment integration, admin dashboard, API) runs ₹50K-₹150K. A complex enterprise system (multi-tenant, multiple integrations, role-based access, analytics) runs ₹150K-₹500K+. And a platform-scale system (microservices, real-time data, AI/ML, global infrastructure) starts at ₹500K.
 
-The biggest cost driver isn't features — it's team composition. A solo freelancer in South Asia might charge $30-50/hour. A specialized agency in Eastern Europe charges $50-80/hour. A US-based development firm charges $150-250/hour. An enterprise consultancy charges $200-400/hour. Each tier brings different quality, reliability, and communication standards.
+The biggest cost driver isn't features — it's team composition. A solo freelancer in South Asia might charge ₹30-50/hour. A specialized agency in Eastern Europe charges ₹50-80/hour. A US-based development firm charges ₹150-250/hour. An enterprise consultancy charges ₹200-400/hour. Each tier brings different quality, reliability, and communication standards.
 
 What determines value: product discovery (30-60 hours upfront saves months of rework), code quality (well-tested, documented code costs more upfront but drastically less in maintenance), and infrastructure (cloud costs are 5-10% of total build cost but determine scalability).
 
-The biggest mistake companies make is optimizing for hourly rate instead of total cost of ownership. A $30/hour developer who produces buggy, undocumented code that requires $100K in rewrites is far more expensive than a $150/hour agency that delivers clean, maintainable software on schedule.
+The biggest mistake companies make is optimizing for hourly rate instead of total cost of ownership. A ₹30/hour developer who produces buggy, undocumented code that requires ₹100K in rewrites is far more expensive than a ₹150/hour agency that delivers clean, maintainable software on schedule.
 
-For international clients, expect $50K-$150K for a solid production application with a reputable development partner. Anything below $30K should raise red flags unless it's a very constrained MVP.`,
+For international clients, expect ₹50K-₹150K for a solid production application with a reputable development partner. Anything below ₹30K should raise red flags unless it's a very constrained MVP.`,
   },
   {
     title: "Legacy to Cloud Migration: Step-by-Step Playbook for Enterprise Teams",
@@ -521,13 +521,13 @@ Post-migration: decommission old infrastructure immediately (saving 30-50% on ho
     category: "Business",
     readTime: "7 min",
     tags: ["Hiring", "Remote Teams", "Offshore", "US", "UK", "Management"],
-    content: `Hiring a dedicated development team is one of the most impactful decisions a company makes. Get it right, and you extend your engineering capacity overnight. Get it wrong, and you lose six months and $100K+.
+    content: `Hiring a dedicated development team is one of the most impactful decisions a company makes. Get it right, and you extend your engineering capacity overnight. Get it wrong, and you lose six months and ₹100K+.
 
 After working with clients across the US, UK, Canada, and Australia — both as a development partner and as a consultant evaluating other teams — here's our guide to hiring right.
 
 Step 1: Define the engagement model. Staff augmentation (you manage, they code) works when you have strong technical leadership. Dedicated team (they manage themselves within your specs) works when you need a complete squad. Project-based (fixed scope, fixed price) works for well-defined, short-term work. Most successful long-term engagements use a hybrid: dedicated team with weekly sprint reviews.
 
-Step 2: Choose your sourcing geography. Nearshore (Latin America for US, Eastern Europe for UK) offers good timezone overlap at $40-70/hour. Offshore (India, Southeast Asia) offers cost efficiency at $25-50/hour with timezone differences to manage. Onshore (US/UK) offers easiest collaboration at $120-200/hour. The trend in 2026 is "bestshore" — hiring where the best talent for your specific tech stack lives, regardless of location.
+Step 2: Choose your sourcing geography. Nearshore (Latin America for US, Eastern Europe for UK) offers good timezone overlap at ₹40-70/hour. Offshore (India, Southeast Asia) offers cost efficiency at ₹25-50/hour with timezone differences to manage. Onshore (US/UK) offers easiest collaboration at ₹120-200/hour. The trend in 2026 is "bestshore" — hiring where the best talent for your specific tech stack lives, regardless of location.
 
 Step 3: Evaluate technical capability. Do not rely on resumes. Run a paid trial project — two weeks, real work, with your team reviewing the output. We've found that 60% of teams that look good on paper fail a real trial. The ones that pass deliver 3-5x more value over the engagement.
 
@@ -552,7 +552,7 @@ The dominant model in 2026 is hybrid: a base tier with per-seat pricing, then us
 
 Enterprise customers expect three things from pricing: predictability, flexibility, and transparency. Predictability means they know what next quarter's bill will look like within 10%. Flexibility means they can add or remove users without penalty. Transparency means no hidden fees, no "call for pricing" on the website (which 78% of enterprise buyers say is their #1 frustration).
 
-Effective price anchoring works. Show the enterprise plan first with full features, then the growth plan as a value option, then the starter plan. Customers who see the $1,000/month plan first perceive the $300/month plan as reasonable. We've seen this simple change increase average deal size by 30%.
+Effective price anchoring works. Show the enterprise plan first with full features, then the growth plan as a value option, then the starter plan. Customers who see the ₹1,000/month plan first perceive the ₹300/month plan as reasonable. We've seen this simple change increase average deal size by 30%.
 
 Annual contracts with monthly payment are the sweet spot. Monthly-only billing churns faster. Annual-only billing scares away small buyers. Offering both with a 15-20% discount for annual creates the right incentive structure.
 
@@ -581,4 +581,5 @@ We've been building toward this future for years. The systems we deliver today h
 
 The question isn't whether autonomous software becomes standard — it's when and how fast. Companies preparing now will lead. Those waiting will struggle to catch up.`,
   },
+
 ];

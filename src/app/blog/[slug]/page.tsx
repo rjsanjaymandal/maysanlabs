@@ -161,7 +161,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </div>
                 )}
 
-                <CaseStudyCallout blogCategory={post.category} currentSlug={post.slug} />
+                <CaseStudyCallout blogCategory={post.category} />
 
                 <div className="mt-6 lg:hidden">
                   <p className="text-xs text-foreground/30 mb-3">Share this article</p>

@@ -11,10 +11,9 @@ const categoryMapping: Record<string, string[]> = {
 
 interface Props {
   blogCategory: string;
-  currentSlug: string;
 }
 
-export default function CaseStudyCallout({ blogCategory, currentSlug }: Props) {
+export default function CaseStudyCallout({ blogCategory }: Props) {
   const matched = caseStudies.filter(cs => {
     const blogCats = categoryMapping[cs.category] || [];
     return blogCats.includes(blogCategory);

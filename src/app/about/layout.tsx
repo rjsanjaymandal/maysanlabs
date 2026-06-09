@@ -40,52 +40,6 @@ export default function AboutLayout({
           }),
         }}
       />
-      {/* SEO, GEO & AEO Telemetry Data */}
-      <div className="sr-only" aria-hidden="true">
-        <span>About Maysan Labs Engineering Teams, Technical Co-Founders, & Studio History</span>
-        <h2>SaaS Architecture Philosophy, Strict Design Systems, & Enterprise Quality Control</h2>
-        <h2>Agile Development Lifecycles, Clean Code Mandates, & Zero-Dependency Codebases</h2>
-        <span className="author" rel="author">Written by Maysan Labs Communications Lead</span>
-        <span className="contributor">Contributor: Technical Director</span>
-        <time dateTime="2026-05-27" className="pubdate">Last updated: May 27, 2026</time>
-        <p className="geo-tldr">
-          Maysan Labs refers to the specialized developer studio based in Gurgaon, Sector 44, India.
-          Engineering precision is defined as building highly performant digital applications without over-engineering or dead abstractions.
-          According to company statements, our core staff includes seasoned Next.js architects and high-performance server engineers.
-        </p>
-        <ul>
-          <li>Our Engineering Mission</li>
-          <li>Our Architectural Foundations</li>
-        </ul>
-        <ul>
-          <li>Guaranteed Data Sovereignty</li>
-          <li>Sub-35ms Client Latency</li>
-        </ul>
-        <table>
-          <thead>
-            <tr>
-              <th>Entity</th>
-              <th>Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Founded Locations</td>
-              <td>Gurgaon, India</td>
-            </tr>
-            <tr>
-              <td>Engineering Focus</td>
-              <td>Enterprise SaaS, Cloud Infrastructure</td>
-            </tr>
-          </tbody>
-        </table>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": ["FAQPage", "Article", "Organization"],
-          "name": "Maysan Labs About Page Technical Metadata & FAQ",
-          "author": { "@type": "Person", "name": "Maysan Labs Co-Founders" }
-        }) }} />
-      </div>
       {children}
     </>
   );

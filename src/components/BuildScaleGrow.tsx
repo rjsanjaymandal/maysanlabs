@@ -15,20 +15,20 @@ import Link from "next/link";
 // PILLAR 1: BUILD — SIMPLE LAYERED VISUAL
 // ==========================================
 const BuildCanvas = () => (
-  <div className="relative w-full h-[180px] rounded-lg bg-slate-950/70 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] overflow-hidden">
+  <div className="relative w-full h-[180px] rounded-lg bg-white/80 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] overflow-hidden">
     <div className="absolute inset-0 bg-[linear-gradient(rgba(26,109,214,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(26,109,214,0.03)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-40" />
     <div className="relative z-10 flex flex-col justify-center h-full gap-2.5 px-4">
       <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-white/[0.06]">
         <span className="w-2 h-2 rounded-full bg-blue-500" />
-        <span className="text-xs font-semibold text-slate-800 dark:text-slate-200">Your Website</span>
+        <span className="text-xs font-semibold text-foreground dark:text-slate-200">Your Website</span>
       </div>
       <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-white/[0.06]">
         <span className="w-2 h-2 rounded-full bg-cyan-500" />
-        <span className="text-xs font-semibold text-slate-800 dark:text-slate-200">Business Dashboard</span>
+        <span className="text-xs font-semibold text-foreground dark:text-slate-200">Business Dashboard</span>
       </div>
       <div className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-white/80 dark:bg-slate-900/60 border border-slate-200 dark:border-white/[0.06]">
         <span className="w-2 h-2 rounded-full bg-indigo-500" />
-        <span className="text-xs font-semibold text-slate-800 dark:text-slate-200">Secure Database</span>
+        <span className="text-xs font-semibold text-foreground dark:text-slate-200">Secure Database</span>
       </div>
     </div>
   </div>
@@ -38,7 +38,7 @@ const BuildCanvas = () => (
 // PILLAR 2: SCALE — SIMPLE NODE VISUAL
 // ==========================================
 const ScaleCanvas = () => (
-  <div className="relative w-full h-[180px] rounded-lg bg-slate-950/70 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] overflow-hidden">
+  <div className="relative w-full h-[180px] rounded-lg bg-white/80 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] overflow-hidden">
     <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-40" />
     <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 200 140" preserveAspectRatio="xMidYMid meet">
       <polygon points="100,25 30,110 170,110" stroke="rgba(16,185,129,0.15)" strokeWidth="1.5" fill="none" strokeDasharray="4 3" />
@@ -46,15 +46,15 @@ const ScaleCanvas = () => (
     <div className="absolute inset-0">
       <div className="absolute top-[18px] left-1/2 -translate-x-1/2 flex flex-col items-center">
         <div className="w-7 h-7 rounded-full bg-emerald-500/10 border border-emerald-400/30" />
-        <span className="text-[9px] font-bold text-slate-200 dark:text-slate-400 mt-1">Smart Traffic</span>
+        <span className="text-[9px] font-bold text-slate-500 dark:text-slate-400 mt-1">Smart Traffic</span>
       </div>
       <div className="absolute bottom-5 left-[15%] flex flex-col items-center">
         <div className="w-7 h-7 rounded-full bg-emerald-500/10 border border-emerald-400/30" />
-        <span className="text-[9px] font-bold text-slate-200 dark:text-slate-400 mt-1">Fast Worldwide</span>
+        <span className="text-[9px] font-bold text-slate-500 dark:text-slate-400 mt-1">Fast Worldwide</span>
       </div>
       <div className="absolute bottom-5 right-[15%] flex flex-col items-center">
         <div className="w-7 h-7 rounded-full bg-emerald-500/10 border border-emerald-400/30" />
-        <span className="text-[9px] font-bold text-slate-200 dark:text-slate-400 mt-1">Secure Backups</span>
+        <span className="text-[9px] font-bold text-slate-500 dark:text-slate-400 mt-1">Secure Backups</span>
       </div>
     </div>
   </div>
@@ -64,7 +64,7 @@ const ScaleCanvas = () => (
 // PILLAR 3: GROW — SIMPLE BAR CHART VISUAL
 // ==========================================
 const GrowCanvas = () => (
-  <div className="relative w-full h-[180px] rounded-lg bg-slate-950/70 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] overflow-hidden">
+  <div className="relative w-full h-[180px] rounded-lg bg-white/80 dark:bg-slate-950/40 border border-slate-200/50 dark:border-white/[0.04] overflow-hidden">
     <div className="absolute inset-0 bg-[linear-gradient(rgba(249,115,22,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(249,115,22,0.03)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none opacity-40" />
     <div className="relative z-10 flex items-end justify-center h-full gap-3 pb-8">
       <div className="w-10 h-[40%] rounded-t-lg bg-gradient-to-t from-orange-500/20 to-orange-400/10 border border-orange-500/10" />
@@ -72,9 +72,9 @@ const GrowCanvas = () => (
       <div className="w-10 h-[90%] rounded-t-lg bg-gradient-to-t from-orange-500/40 to-orange-400/20 border border-orange-500/20" />
     </div>
     <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-3">
-      <span className="text-[8px] text-slate-200 dark:text-slate-400 w-10 text-center font-medium">Start</span>
-      <span className="text-[8px] text-slate-200 dark:text-slate-400 w-10 text-center font-medium">Growth</span>
-      <span className="text-[8px] text-slate-200 dark:text-slate-400 w-10 text-center font-medium">Scale</span>
+      <span className="text-[8px] text-slate-500 dark:text-slate-400 w-10 text-center font-medium">Start</span>
+      <span className="text-[8px] text-slate-500 dark:text-slate-400 w-10 text-center font-medium">Growth</span>
+      <span className="text-[8px] text-slate-500 dark:text-slate-400 w-10 text-center font-medium">Scale</span>
     </div>
   </div>
 );
@@ -170,18 +170,18 @@ export default function BuildScaleGrow() {
         {pillars.map((pillar) => (
           <div
             key={pillar.id}
-            className={`flex flex-col justify-between overflow-hidden rounded-[4px] border ${pillar.shadow} ${pillar.translateY} bg-white dark:bg-[#080d1a] backdrop-blur-xl p-6 hover:shadow-2xl transition-shadow duration-300 relative group`}
+            className={`flex flex-col justify-between overflow-hidden rounded-[4px] border ${pillar.shadow} ${pillar.translateY} bg-white/70 dark:bg-white/[0.02] backdrop-blur-xl p-6 hover:shadow-2xl transition-shadow duration-300 relative group`}
           >
             {/* Ambient inner panel highlight */}
             <div className={`absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10 blur-xl ${pillar.accentGlow}`} />
 
             <div className="flex flex-col gap-6">
               {/* Header Title */}
-              <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-white/5">
+              <div className="flex items-center justify-between pb-4 border-b border-white/10">
                 <h3 className={`text-3xl font-black tracking-[-0.03em] font-sans bg-clip-text text-transparent bg-gradient-to-r ${pillar.gradient}`}>
                   {pillar.title}.
                 </h3>
-                <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-white/20" />
+                <span className="w-1.5 h-1.5 rounded-full bg-foreground/20" />
               </div>
 
               {/* Dynamic Interactive SVG Canvas */}
@@ -207,10 +207,10 @@ export default function BuildScaleGrow() {
                         </div>
 
                         <div className="flex-1">
-                          <h4 className="text-[14px] font-bold text-slate-800 dark:text-slate-100 transition-colors duration-300 group-hover/item:text-[var(--brand-primary)]">
+                          <h4 className="text-[14px] font-bold text-foreground transition-colors duration-300 group-hover/item:text-brand-primary">
                             {feature.name}
                           </h4>
-                          <p className="text-[11.5px] leading-relaxed text-slate-500 dark:text-slate-400 mt-1 font-medium">
+                          <p className="text-[11.5px] leading-relaxed text-foreground/60 mt-1 font-medium">
                             {feature.description}
                           </p>
                         </div>

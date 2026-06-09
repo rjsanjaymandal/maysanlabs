@@ -1,0 +1,85 @@
+name: Autonomous Content Scheduler
+
+on:
+  schedule:
+    # Generate new content 3x per week: Mon, Wed, Fri at 6 AM UTC
+    - cron: '0 6 * * 1,3,5'
+  workflow_dispatch:
+    inputs:
+      blog_count:
+        description: 'Number of blog posts to generate'
+        required: false
+        default: '1'
+      skip_seo:
+        description: 'Skip SEO page generation'
+        type: boolean
+        default: false
+      skip_blog:
+        description: 'Skip blog generation'
+        type: boolean
+        default: false
+
+jobs:
+  generate-content:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate AI Content
+        run: node scripts/content-generator.mjs ${{ github.event.inputs.blog_count || '1' }}
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_API_URL: ${{ secrets.AI_API_URL || 'https://api.openai.com/v1/chat/completions' }}
+          AI_MODEL: ${{ secrets.AI_MODEL || 'gpt-4o-mini' }}
+
+      - name: Generate SEO Landing Pages
+        if: ${{ !github.event.inputs.skip_seo }}
+        run: node scripts/generate-seo-pages.mjs
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+
+      - name: Check for Changes
+        id: git-check
+        run: |
+          git diff --quiet src/lib/ || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and Push Changes
+        if: steps.git-check.outputs.changed == 'true'
+        run: |
+          git config user.name "Maysan Content Bot"
+          git config user.email "content-bot@maysanlabs.com"
+          git add src/lib/ scripts/
+          git commit -m "auto: generate fresh content [skip ci]"
+          git push
+
+      - name: Build and Deploy (Vercel)
+        if: steps.git-check.outputs.changed == 'true'
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://maysanlabs.com' }}
+
+      - name: Ping Search Engines
+        if: steps.git-check.outputs.changed == 'true'
+        run: node scripts/ping-indexing.js
+
+  refresh-dynamic-content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Content Refresh API
+        run: |
+          curl -s -X GET "${{ vars.SITE_URL || 'https://maysanlabs.com' }}/api/content" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            -H "User-Agent: MaysanLabs-CronBot/1.0"

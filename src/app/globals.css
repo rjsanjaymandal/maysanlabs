@@ -908,6 +908,15 @@ label {
   contain: layout;
 }
 
+/* ─── Hide scrollbar for Apple-style horizontal scroll sections ─── */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* ─── Mobile LCP: Ensure hero dashboard frame has stable size before paint ─── */
 .hero-dashboard {
   min-height: 400px;

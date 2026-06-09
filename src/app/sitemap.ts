@@ -73,7 +73,7 @@ function getMaxMTime(filePaths: string[]): Date | undefined {
           maxTime = stat.mtime
         }
       }
-    } catch (e) {
+    } catch {
       // Ignore errors for missing files
     }
   }
@@ -180,22 +180,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   })
 
-  // Add programmatic hire landing pages
-  seoLandingPages.forEach(page => {
-    const deps = [
-      'src/app/hire/[slug]/page.tsx',
-      'src/app/layout.tsx',
-      'src/lib/seo-landing-data.ts'
-    ]
-    const lastModDate = getMaxMTime(deps) || new Date()
-    
-    routes.push({
-      url: `${BASE_URL}/hire/${page.slug}`,
-      lastModified: lastModDate,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    })
-  })
+  // Add programmatic hire landing pages (supports hundreds of location/role pages)
+  const SLUG_BATCH_SIZE = 100;
+  const hireSlugs = seoLandingPages.map(p => p.slug);
+  for (let i = 0; i < hireSlugs.length; i += SLUG_BATCH_SIZE) {
+    const batch = hireSlugs.slice(i, i + SLUG_BATCH_SIZE);
+    batch.forEach(slug => {
+      routes.push({
+        url: `${BASE_URL}/hire/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.8,
+      });
+    });
+  }
 
   // Sort by priority descending for cleaner output
   routes.sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0))

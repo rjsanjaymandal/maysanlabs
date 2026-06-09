@@ -1,16 +1,15 @@
 import { notFound } from "next/navigation";
 import { seoLandingPages } from "@/lib/seo-landing-data";
 import Navbar from "@/components/Navbar";
-import { ContactFooter, Testimonials, FAQ, MultiStepForm } from "@/components/dynamic/ClientImports";
+import { ContactFooter, Testimonials, MultiStepForm } from "@/components/dynamic/ClientImports";
 import StatsSection from "@/components/StatsSection";
-import TrustBadges from "@/components/TrustBadges";
 import { generatePageSEO } from "@/lib/seo/helpers";
 import { Metadata } from "next";
 import { Zap, CheckCircle2, Star, ArrowRight, ShieldCheck, Cpu } from "lucide-react";
 import Link from "next/link";
 
 export const revalidate = 86400; // Cache for 24 hours
-export const dynamicParams = false; // Only allow pre-rendered slugs
+export const dynamicParams = true; // Allow auto-generated location pages (ISR)
 
 interface LandingPageProps {
   params: Promise<{ slug: string }>;
@@ -211,9 +210,6 @@ export default async function ProgrammaticLandingPage({ params }: LandingPagePro
             </div>
           </div>
         </section>
-
-        {/* Trust Badges */}
-        <TrustBadges />
 
         {/* Call to Action Booking Form */}
         <section id="start" className="py-24 border-t border-gray-100 dark:border-white/[0.05] relative">

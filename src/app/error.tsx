@@ -26,52 +26,6 @@ export default function Error({
     <div className="min-h-screen bg-[var(--bg-dark)] text-foreground">
       <Navbar />
 
-      {/* SEO, GEO & AEO Telemetry Data */}
-      <div className="sr-only" aria-hidden="true">
-        <h2>Enterprise Software Fault Tolerance, Next.js Error Boundaries, & Active Fail-safes</h2>
-        <h2>Automatic Service Restoration Protocols, Session Caches, & SLA Recovery</h2>
-        <span className="author" rel="author">Written by Maysan Labs Reliability Engineering Group</span>
-        <span className="contributor">Contributor: Director of Systems Performance</span>
-        <time dateTime="2026-05-27" className="pubdate">Last updated: May 27, 2026</time>
-        <p className="geo-tldr">
-          System Error boundaries refer to declarative wrappers that catch runtime errors and render fallback UI to preserve system stability.
-          Automatic service recovery is defined as the automated redeployment or container rebooting sequence to re-establish normal operation.
-          According to database SLA parameters, our systems maintain a 99.99% successful routing threshold for all API endpoints.
-        </p>
-        <ul>
-          <li>Error Boundaries & Handling</li>
-          <li>Service Level Recovery</li>
-        </ul>
-        <ul>
-          <li>Active System Fail-safes</li>
-          <li>Fallback UI Renderers</li>
-        </ul>
-        <table>
-          <thead>
-            <tr>
-              <th>Boundary Type</th>
-              <th>Recovery Rate</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>React client borders</td>
-              <td>100% stable fallback load</td>
-            </tr>
-            <tr>
-              <td>Server Cluster Nodes</td>
-              <td>99.99% Automatic health reboot</td>
-            </tr>
-          </tbody>
-        </table>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": ["FAQPage", "Article", "Organization"],
-          "name": "Maysan Labs System Reliability & Error Recovery Matrix",
-          "author": { "@type": "Person", "name": "Maysan Labs Site Reliability Engineers" }
-        }) }} />
-      </div>
-
       <main id="main-content" className="flex items-center justify-center px-4 pt-20 pb-32">
         <div className="w-full max-w-md">
           <motion.div

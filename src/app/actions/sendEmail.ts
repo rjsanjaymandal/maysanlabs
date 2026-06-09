@@ -40,10 +40,7 @@ export async function sendEmail(formData: FormData) {
     !process.env.SMTP_PASS.includes("your-app");
 
   if (!smtpConfigured) {
-    console.warn("SMTP not configured. Logging inquiry to console instead.");
-    console.log("=== New Project Inquiry ===");
-    console.log({ companyName, email, contact, requirements });
-    console.log("===========================");
+    console.warn("SMTP not configured. Inquiry received (details omitted for security).");
     return { success: true, message: "Inquiry received successfully" };
   }
 

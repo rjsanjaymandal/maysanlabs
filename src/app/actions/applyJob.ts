@@ -57,10 +57,7 @@ export async function applyJob(formData: FormData) {
     !process.env.SMTP_PASS.includes("your-app");
 
   if (!smtpConfigured) {
-    console.warn("SMTP not configured. Logging application to console instead.");
-    console.log("=== New Job Application ===");
-    console.log({ name, email, phone, jobId, jobTitle, linkedIn, portfolio, message });
-    console.log("===========================");
+    console.warn("SMTP not configured. Application received (details omitted for security).");
     return { success: true, message: "Application submitted successfully" };
   }
 

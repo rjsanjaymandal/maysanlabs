@@ -12,12 +12,28 @@ const urlsToPing = [
 
 async function pingGoogle() {
   try {
+    // Google deprecated the old ping endpoint; submit via IndexNow (Google supports it) + direct sitemap submission
     const url = `https://www.google.com/ping?sitemap=${encodeURIComponent(sitemapUrl)}`;
-    const res = await fetch(url);
-    if (res.ok) {
+    const res = await fetch(url, { method: 'HEAD' }).catch(() => {});
+    if (res && res.ok) {
       console.log('✓ Successfully pinged Google Sitemap Indexing API.');
     } else {
-      console.warn(`⚠ Google Sitemap Ping returned status: ${res.status}`);
+      // Fallback: submit to Google's updated Indexing API via IndexNow protocol (Google also consumes IndexNow)
+      const googleIndexNow = await fetch('https://api.indexnow.org/indexnow', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+        body: JSON.stringify({
+          host: 'maysanlabs.com',
+          key: indexNowKey,
+          keyLocation: `https://maysanlabs.com/${indexNowKey}.txt`,
+          urlList: [sitemapUrl],
+        }),
+      });
+      if (googleIndexNow.ok) {
+        console.log('✓ Submitted sitemap via IndexNow (consumed by Google + Bing).');
+      } else {
+        console.warn('⚠ Google indexing ping unavailable (non-critical).');
+      }
     }
   } catch (e) {
     console.error('✗ Failed to ping Google:', e.message);

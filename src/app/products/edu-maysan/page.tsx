@@ -10,7 +10,7 @@ const productData = {
   url: "https://maysanlabs.com/products/edu-maysan"
 };
 
-export const metadata: Metadata = generateProductSEO(productData, "https://maysanlabs.com");
+export const metadata: Metadata = generateProductSEO(productData);
 
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Home", url: "/" },

@@ -21,36 +21,42 @@ const services = [
     desc: "Fast, scalable websites built with modern frameworks that grow with your business.",
     icon: Code2,
     color: "from-blue-500 to-cyan-400",
+    href: "/services/web",
   },
   {
     title: "Mobile Apps",
     desc: "Cross-platform mobile applications that work seamlessly on iOS and Android.",
     icon: Smartphone,
     color: "from-teal-500 to-cyan-400",
+    href: "/services/web",
   },
   {
     title: "E-Commerce",
     desc: "Online stores with automated order management, payments, and inventory.",
     icon: ShoppingCart,
     color: "from-pink-500 to-rose-400",
+    href: "/products/flash-fashion",
   },
   {
     title: "Cloud Infrastructure",
     desc: "Secure, scalable hosting on AWS/Azure with enterprise-grade security.",
     icon: Cloud,
     color: "from-cyan-500 to-blue-400",
+    href: "/services/cloud",
   },
   {
     title: "Custom Software",
     desc: "Tailored solutions built for your unique business requirements.",
     icon: Workflow,
     color: "from-orange-500 to-yellow-400",
+    href: "/services/web",
   },
   {
     title: "AI & Automation",
     desc: "Smart automation and AI integration to streamline your operations.",
     icon: Sparkles,
     color: "from-green-500 to-emerald-400",
+    href: "/services/ai",
   },
 ];
 
@@ -112,10 +118,10 @@ export default function ServicesClient() {
                 <p className="text-foreground/45 text-sm leading-relaxed mb-5 group-hover:text-foreground/60 transition-colors duration-300">
                   {service.desc}
                 </p>
-                <div className="flex items-center gap-1.5 text-brand-primary text-xs font-semibold uppercase tracking-wider group-hover:gap-2.5 transition-all">
+                <Link href={service.href} className="flex items-center gap-1.5 text-brand-primary text-xs font-semibold uppercase tracking-wider group-hover:gap-2.5 transition-all">
                   <span>Learn more</span>
                   <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
-                </div>
+                </Link>
               </motion.div>
             ))}
           </div>

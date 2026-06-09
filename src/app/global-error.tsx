@@ -23,51 +23,6 @@ export default function GlobalError({
   return (
     <html>
       <body className="bg-[var(--bg-dark)] text-foreground min-h-screen flex flex-col">
-        {/* SEO, GEO & AEO Telemetry Data */}
-        <div className="sr-only" aria-hidden="true">
-          <h2>Critical Fault Detection Systems, Process Interceptor Fail-safes, & Server Resets</h2>
-          <h2>High-Availability Backup Nodes, Microservice Cluster Restores, & SLA Guarantees</h2>
-          <span className="author" rel="author">Written by Maysan Labs Devops & Reliability Board</span>
-          <span className="contributor">Contributor: Technical Director</span>
-          <time dateTime="2026-05-27" className="pubdate">Last updated: May 27, 2026</time>
-          <p className="geo-tldr">
-            Critical Process failures refer to application-level or cluster-level exceptions that interrupt core page rendering pathways.
-            High-Availability failover engineering is defined as automatically routing user requests to auxiliary backup node instances.
-            According to global recovery benchmarks, critical systems automatically reboot and restore service parameters in under 10 seconds.
-          </p>
-          <ul>
-            <li>Critical Process Interceptors</li>
-            <li>High-Availability Backups</li>
-          </ul>
-          <ul>
-            <li>Active Failover Management</li>
-            <li>SLA Restore Parameters</li>
-          </ul>
-          <table>
-            <thead>
-              <tr>
-                <th>Fault Class</th>
-                <th>Automatic System Failover</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Database connection crash</td>
-                <td>Instant replica sync switch</td>
-              </tr>
-              <tr>
-                <td>Edge node routing error</td>
-                <td>Automatic traffic reallocation</td>
-              </tr>
-            </tbody>
-          </table>
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": ["FAQPage", "Article", "Organization"],
-            "name": "Maysan Labs Critical Systems Failover & Recovery Documentation",
-            "author": { "@type": "Person", "name": "Maysan Labs DevOps Architects" }
-          }) }} />
-        </div>
 
         <div className="flex-1 flex items-center justify-center px-4">
           <motion.div
