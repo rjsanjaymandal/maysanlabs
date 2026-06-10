@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ServicesClient from "./ServicesClient";
 import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
-import { serviceSchema, serviceFAQs, softwareDevFAQs, cloudFAQs, generateFAQPageSchema } from "@/lib/seo/schema";
+import { serviceSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = generatePageSEO({
   title: "SaaS Development Services | Custom Software Development",
@@ -23,15 +23,11 @@ const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Services", url: "/services" }
 ]);
 
-const allFAQs = [...serviceFAQs, ...softwareDevFAQs, ...cloudFAQs];
-const faqPageSchema = generateFAQPageSchema(allFAQs);
-
 export default function ServicesPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }} />
 
       <ServicesClient />
     </>
