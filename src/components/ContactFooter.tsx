@@ -68,7 +68,7 @@ export default function ContactFooter() {
                 <div className="relative h-14 w-14 transition-all duration-300 rounded-full overflow-hidden flex items-center justify-center">
                   <Image 
                     src="/logo-rounded-v2.webp" 
-                    alt="Maysan Labs"
+                    alt="maysanlabs - Maysan Labs"
                     width={56}
                     height={56}
                     sizes="56px"
@@ -147,9 +147,9 @@ export default function ContactFooter() {
           </div>
 
           <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-foreground/60 text-xs sm:text-sm text-center md:text-left">
-              © {new Date().getFullYear()} Maysan Labs. All rights reserved.
-            </p>
+              <p className="text-foreground/60 text-xs sm:text-sm text-center md:text-left">
+                © {new Date().getFullYear()} maysanlabs. All rights reserved.
+              </p>
             <div className="flex gap-6">
               <SafeLink href="/privacy" className="text-foreground/65 hover:text-brand-primary text-xs sm:text-sm transition-all duration-300 py-2">Privacy Policy</SafeLink>
               <SafeLink href="/terms" className="text-foreground/65 hover:text-brand-primary text-xs sm:text-sm transition-all duration-300 py-2">Terms of Service</SafeLink>

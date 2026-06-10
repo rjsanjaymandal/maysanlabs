@@ -44,6 +44,7 @@ export const metadata: Metadata = {
     "Maysan Labs builds enterprise SaaS, custom software, and scalable cloud solutions. Expert full-stack engineers engineering secure web & mobile products.",
   keywords: [
     "Maysan Labs",
+    "maysanlabs",
     "enterprise SaaS development company",
     "custom software development company",
     "custom web application development",
@@ -125,6 +126,9 @@ export const metadata: Metadata = {
     languages: {
       en: "https://maysanlabs.com",
     },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
   },
   category: "technology",
   classification: "SaaS Development Company",

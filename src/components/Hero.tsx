@@ -79,7 +79,7 @@ export default function Hero() {
         >
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-white/70 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 text-foreground/70 text-xs sm:text-sm font-medium shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-primary" />
-            <span>Trusted by 50+ business leaders globally</span>
+            <span>maysanlabs — trusted by 50+ business leaders globally</span>
           </span>
         </motion.div>
 
@@ -90,6 +90,7 @@ export default function Hero() {
           className="mb-6"
         >
           <h1 className="font-sans heading-xl text-foreground max-w-4xl tracking-tight leading-[1.1]">
+            <span className="text-foreground/60 text-base sm:text-lg font-semibold block mb-2">Maysan Labs</span>
             We build the <span className="bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(26,109,214,0.25)] dark:drop-shadow-[0_0_20px_rgba(26,109,214,0.4)]">custom apps, websites & dashboards</span> that run your business
           </h1>
         </motion.div>
@@ -101,7 +102,7 @@ export default function Hero() {
           className="max-w-2xl mx-auto"
         >
           <p className="text-foreground/60 text-sm sm:text-base md:text-lg leading-relaxed font-medium">
-            You focus on growing your business. We design, build, and ship the software — from internal dashboards and automated workflows to customer-facing apps and websites. No coding required from you.
+            maysanlabs is a software development studio. You focus on growing your business. We design, build, and ship the software — from internal dashboards and automated workflows to customer-facing apps and websites. No coding required from you.
           </p>
         </motion.div>
 

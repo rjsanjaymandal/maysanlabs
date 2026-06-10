@@ -185,6 +185,7 @@ export const organizationSchema = {
   "@type": "Organization",
   "name": "Maysan Labs",
   "alternateName": [
+    "maysanlabs",
     "Maysan", 
     "MaysanLabs", 
     "Mayson Labs", 
