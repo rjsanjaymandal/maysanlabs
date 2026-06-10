@@ -26,6 +26,10 @@ export default function ServicesLayout({
             },
             description:
               "High-performance MERN stack architecture and autonomous operational layers for modern enterprises.",
+            areaServed: [
+              { "@type": "City", name: "Gurgaon" },
+              { "@type": "Country", name: "India" },
+            ],
             hasOfferCatalog: {
               "@type": "OfferCatalog",
               name: "Enterprise Services",

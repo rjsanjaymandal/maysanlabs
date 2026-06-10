@@ -176,7 +176,7 @@ export default function OgGeneratorClient() {
         setIsSubmitted(true);
         triggerDownload();
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: "tool_lead", tool: "og-generator" });
+        window.dataLayer.push({ event: "tool_lead", tool: "og-generator", email: email.trim().toLowerCase() });
       } else {
         const data = await res.json();
         setLeadError(data.error || "Something went wrong.");

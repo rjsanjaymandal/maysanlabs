@@ -313,6 +313,10 @@ export const serviceSchema = {
   "name": "Enterprise SaaS Development",
   "description": "Maysan Labs offers enterprise SaaS development, custom software development, web application development, cloud infrastructure services, API development, and mobile app development for global enterprises.",
   "provider": { "@type": "Organization", "name": "Maysan Labs" },
+  "areaServed": [
+    { "@type": "City", "name": "Gurgaon" },
+    { "@type": "Country", "name": "India" }
+  ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Development Services",

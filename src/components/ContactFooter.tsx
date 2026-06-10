@@ -72,6 +72,7 @@ export default function ContactFooter() {
                     width={56}
                     height={56}
                     sizes="56px"
+                    loading="lazy"
                     className="h-full w-full object-contain transition-transform group-hover:scale-105" 
                   />
                 </div>

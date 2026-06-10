@@ -220,7 +220,7 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
       if (res.ok) {
         setLeadCaptured(true);
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: "tool_lead", tool: "site-checker" });
+        window.dataLayer.push({ event: "tool_lead", tool: "site-checker", email: email.trim().toLowerCase() });
       } else { const d = await res.json(); setLeadError(d.error || "Something went wrong."); }
     } catch { setLeadError("Network error. Please try again."); }
     finally { setLeadSubmitting(false); }
