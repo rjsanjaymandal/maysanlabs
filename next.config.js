@@ -25,10 +25,10 @@ const nextConfig = {
               "default-src 'self'; " +
               "script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'unsafe-inline' 'unsafe-eval'; " +
               "style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; " +
-              "img-src 'self' data: blob: https:; " +
+               "img-src 'self' data: blob: https: https://www.googleadservices.com; " +
               "font-src 'self' https://fonts.gstatic.com data:; " +
-              "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://ip-api.com https://ipwho.is https://www.googleapis.com http://localhost:*; " +
-              "frame-src 'self' https://www.googletagmanager.com; " +
+              "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://adservice.google.com https://www.googleadservices.com https://ip-api.com https://ipwho.is https://www.googleapis.com http://localhost:*; " +
+              "frame-src 'self' https://www.googletagmanager.com https://td.doubleclick.net; " +
               "frame-ancestors 'self'; " +
               "base-uri 'self'; " +
               "form-action 'self'; " +
