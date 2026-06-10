@@ -16,6 +16,8 @@ const links = [
   { name: "About", href: "/about" },
   { name: "Careers", href: "/careers" },
   { name: "Architecture", href: "/architecture" },
+  { name: "Contact", href: "/contact" },
+  { name: "Start", href: "/start" },
 ];
 
 const socialLinks = [

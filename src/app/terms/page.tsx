@@ -7,7 +7,7 @@ const ogImage = (t: string, d?: string) =>
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Maysan Labs Terms of Service — terms and conditions for using our website and services.",
+  description: "Maysan Labs Terms of Service — read the terms and conditions governing your use of our website, software development, and consulting services.",
   robots: { index: true, follow: true },
   openGraph: {
     title: "Terms of Service",

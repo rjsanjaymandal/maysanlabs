@@ -1,13 +1,39 @@
-import { ImageResponse } from "next/og";
+import satori from "satori";
+import sharp from "sharp";
 
-export const runtime = "edge";
+let fontRegular: Buffer | null = null;
+let fontBold: Buffer | null = null;
+
+async function getFont(weight: number): Promise<Buffer> {
+  const cached = weight === 400 ? fontRegular : fontBold;
+  if (cached) return cached;
+
+  const css = await (
+    await fetch(
+      `https://fonts.googleapis.com/css2?family=Outfit:wght@${weight}&display=swap`
+    )
+  ).text();
+  const match = css.match(/url\(([^)]+)\)/);
+  if (!match) throw new Error("Font URL not found");
+  const data = Buffer.from(await (await fetch(match[1])).arrayBuffer());
+
+  if (weight === 400) fontRegular = data;
+  if (weight === 700) fontBold = data;
+  return data;
+}
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get("title") || "Maysan Labs";
-  const description = searchParams.get("description") || "Enterprise SaaS Development Company";
+  const description =
+    searchParams.get("description") || "Enterprise SaaS Development Company";
 
-  return new ImageResponse(
+  const [font400, font700] = await Promise.all([
+    getFont(400),
+    getFont(700),
+  ]);
+
+  const svg = await satori(
     (
       <div
         style={{
@@ -15,8 +41,9 @@ export async function GET(request: Request) {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          background: "linear-gradient(135deg, #0a0f1a 0%, #0f1923 50%, #1a2a3a 100%)",
-          fontFamily: '"Outfit", "Inter", "Segoe UI", "Helvetica Neue", sans-serif',
+          background:
+            "linear-gradient(135deg, #0a0f1a 0%, #0f1923 50%, #1a2a3a 100%)",
+          fontFamily: "Outfit",
           position: "relative",
           overflow: "hidden",
         }}
@@ -28,7 +55,8 @@ export async function GET(request: Request) {
             right: "-20%",
             width: "60%",
             height: "100%",
-            background: "radial-gradient(circle, rgba(26,109,214,0.15) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, rgba(26,109,214,0.15) 0%, transparent 70%)",
             borderRadius: "50%",
           }}
         />
@@ -39,7 +67,8 @@ export async function GET(request: Request) {
             left: "-10%",
             width: "50%",
             height: "60%",
-            background: "radial-gradient(circle, rgba(0,210,255,0.08) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, rgba(0,210,255,0.08) 0%, transparent 70%)",
             borderRadius: "50%",
           }}
         />
@@ -50,7 +79,8 @@ export async function GET(request: Request) {
             left: "10%",
             width: "2px",
             height: "60%",
-            background: "linear-gradient(to bottom, transparent, rgba(26,109,214,0.3), transparent)",
+            background:
+              "linear-gradient(to bottom, transparent, rgba(26,109,214,0.3), transparent)",
           }}
         />
         <div
@@ -60,7 +90,8 @@ export async function GET(request: Request) {
             right: "8%",
             width: "2px",
             height: "40%",
-            background: "linear-gradient(to top, transparent, rgba(0,210,255,0.2), transparent)",
+            background:
+              "linear-gradient(to top, transparent, rgba(0,210,255,0.2), transparent)",
           }}
         />
 
@@ -83,8 +114,15 @@ export async function GET(request: Request) {
           >
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
               <rect width="32" height="32" rx="8" fill="#1A6DD6" />
-              <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" fill="white" fillOpacity="0.2" />
-              <path d="M12 14L16 12L20 14V18L16 20L12 18V14Z" fill="white" />
+              <path
+                d="M8 12L16 8L24 12V20L16 24L8 20V12Z"
+                fill="white"
+                fillOpacity="0.2"
+              />
+              <path
+                d="M12 14L16 12L20 14V18L16 20L12 18V14Z"
+                fill="white"
+              />
             </svg>
             <span
               style={{
@@ -106,10 +144,6 @@ export async function GET(request: Request) {
               lineHeight: 1.2,
               margin: 0,
               maxWidth: "90%",
-              display: "-webkit-box",
-              WebkitLineClamp: 3,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
             }}
           >
             {title}
@@ -122,10 +156,6 @@ export async function GET(request: Request) {
               lineHeight: 1.4,
               margin: "16px 0 0 0",
               maxWidth: "85%",
-              display: "-webkit-box",
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: "vertical",
-              overflow: "hidden",
             }}
           >
             {description}
@@ -188,6 +218,19 @@ export async function GET(request: Request) {
     {
       width: 1200,
       height: 630,
+      fonts: [
+        { name: "Outfit", data: font400, weight: 400, style: "normal" },
+        { name: "Outfit", data: font700, weight: 700, style: "normal" },
+      ],
     }
   );
+
+  const png = await sharp(Buffer.from(svg)).png().toBuffer();
+
+  return new Response(new Uint8Array(png), {
+    headers: {
+      "Content-Type": "image/png",
+      "Cache-Control": "public, max-age=31536000, immutable",
+    },
+  });
 }

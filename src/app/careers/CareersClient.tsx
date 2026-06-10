@@ -49,7 +49,7 @@ export default function CareersClient() {
                 <div className="w-11 h-11 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-4">
                   {value.icon}
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-3 tracking-tight">{value.title}</h3>
+                <h2 className="text-lg font-semibold text-foreground mb-3 tracking-tight">{value.title}</h2>
                 <p className="text-foreground/60 text-sm leading-relaxed">
                   {value.desc}
                 </p>

@@ -138,12 +138,12 @@ export default function InsightsClient() {
                     <span className="text-xs text-foreground/20 font-bold uppercase tracking-widest">{item.id}</span>
                   </div>
                   <div>
-                    <h3 className="text-4xl font-bold text-foreground mb-3 group-hover:text-brand-primary transition-colors">
+                    <div className="text-4xl font-bold text-foreground mb-3 group-hover:text-brand-primary transition-colors">
                       {item.value}
-                    </h3>
-                    <h4 className="text-xs font-bold text-foreground/40 mb-4 uppercase tracking-wider">
+                    </div>
+                    <h3 className="text-xs font-bold text-foreground/40 mb-4 uppercase tracking-wider">
                       {item.title}
-                    </h4>
+                    </h3>
                     <p className="text-sm leading-relaxed text-foreground/45">
                       {item.desc}
                     </p>

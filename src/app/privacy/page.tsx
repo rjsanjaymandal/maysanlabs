@@ -7,7 +7,7 @@ const ogImage = (t: string, d?: string) =>
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Maysan Labs Privacy Policy — how we collect, use, and protect your data.",
+  description: "Maysan Labs Privacy Policy explains how we collect, use, and protect your personal data when you use our website and services.",
   robots: { index: true, follow: true },
   openGraph: {
     title: "Privacy Policy",

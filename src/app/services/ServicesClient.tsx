@@ -112,9 +112,9 @@ export default function ServicesClient() {
                 <div className="w-12 h-12 bg-white/50 dark:bg-white/[0.03] border border-gray-200 dark:border-white/10 rounded-[2px] flex items-center justify-center text-foreground/50 mb-5 group-hover:bg-brand-primary/15 group-hover:text-brand-primary transition-all duration-300">
                   <service.icon size={20} className="group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-brand-primary transition-colors duration-300">
+                <h2 className="text-xl font-bold text-foreground mb-2 group-hover:text-brand-primary transition-colors duration-300">
                   {service.title}
-                </h3>
+                </h2>
                 <p className="text-foreground/45 text-sm leading-relaxed mb-5 group-hover:text-foreground/60 transition-colors duration-300">
                   {service.desc}
                 </p>
