@@ -190,7 +190,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto px-4 sm:px-0"
         >
-          <Link href="/start" className="w-full sm:w-auto bg-brand-primary text-white px-7 py-3 rounded-[2px] font-bold hover:bg-brand-primary/90 hover:shadow-lg hover:shadow-brand-primary/20 transition-all flex items-center justify-center gap-2 text-sm">
+          <Link href="/start" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "hero_discovery_call" }); }} className="w-full sm:w-auto bg-brand-primary text-white px-7 py-3 rounded-[2px] font-bold hover:bg-brand-primary/90 hover:shadow-lg hover:shadow-brand-primary/20 transition-all flex items-center justify-center gap-2 text-sm">
             <span>Book a free 30-min discovery call</span>
             <ArrowRight size={14} className="shrink-0" />
           </Link>

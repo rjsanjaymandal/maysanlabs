@@ -78,6 +78,8 @@ export default function HeadlessRoiClient() {
 
       if (res.ok) {
         setIsSubmitted(true);
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "tool_lead", tool: "headless-roi" });
       } else {
         const data = await res.json();
         setLeadError(data.error || "Something went wrong.");

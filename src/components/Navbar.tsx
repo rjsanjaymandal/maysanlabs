@@ -157,6 +157,7 @@ export default function Navbar() {
             <ThemeToggle />
             <Link
               href="/start"
+              onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "navbar_desktop" }); }}
               className="inline-flex items-center gap-1.5 px-5 py-2 bg-brand-primary rounded-[2px] text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-primary/90 hover:shadow-[0_0_20px_rgba(26,109,214,0.3)] hover:-translate-y-0.5 active:translate-y-0 focus-ring"
             >
               Book a Call
@@ -181,6 +182,7 @@ export default function Navbar() {
       <div className={`fixed bottom-0 left-0 right-0 z-[90] lg:hidden px-4 pb-4 transition-all duration-300 ${isOpen ? 'opacity-0 translate-y-2 pointer-events-none' : 'opacity-100 translate-y-0'}`}>
         <Link 
           href="/start"
+          onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "navbar_sticky_mobile" }); }}
           className="flex items-center justify-center gap-2.5 w-full py-3.5 bg-brand-primary rounded-[2px] font-semibold text-sm text-white shadow-lg shadow-brand-primary/25 transition-all duration-200 hover:shadow-xl hover:shadow-brand-primary/30 active:scale-[0.98]"
         >
           <Phone size={15} />
@@ -226,7 +228,7 @@ export default function Navbar() {
               <div className="space-y-4 pt-4">
                 <Link
                   href="/start"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => { setIsOpen(false); window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "navbar_mobile_menu" }); }}
                   className="flex items-center justify-center gap-2.5 w-full py-3.5 bg-brand-primary rounded-[2px] font-semibold text-sm text-white shadow-lg shadow-brand-primary/20 transition-all duration-200 active:scale-[0.98]"
                 >
                   <Phone size={15} />

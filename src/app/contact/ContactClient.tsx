@@ -38,8 +38,11 @@ export default function ContactClient() {
     data.append("requirements", formData.message);
     try {
       const result = await sendEmail(data);
-      if (result.success) setIsSubmitted(true);
-      else setError(result.message || "Something went wrong.");
+      if (result.success) {
+        setIsSubmitted(true);
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "contact_form_submit" });
+      } else setError(result.message || "Something went wrong.");
     } catch {
       setError("Failed to send message. Please try again.");
     } finally {
@@ -117,7 +120,7 @@ export default function ContactClient() {
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-foreground/40 uppercase tracking-widest mb-1">Phone</p>
-                    <a href="tel:+919660641530" className="text-foreground hover:text-brand-primary transition-colors text-sm font-medium">
+                    <a href="tel:+919660641530" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "phone_call_click", label: "contact_phone" }); }} className="text-foreground hover:text-brand-primary transition-colors text-sm font-medium">
                       +91 96606 41530
                     </a>
                   </div>
@@ -166,6 +169,7 @@ export default function ContactClient() {
                 </p>
                 <Link
                   href="/start"
+                  onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "contact_cta_card" }); }}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-bold text-sm text-white hover:shadow-[0_0_25px_rgba(26,109,214,0.5)] hover:scale-[1.02] transition-all duration-300"
                 >
                   Book a Call

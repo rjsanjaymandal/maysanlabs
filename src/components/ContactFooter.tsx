@@ -1,3 +1,5 @@
+"use client";
+
 import { SafeLink } from "@/components/ui/SafeLink";
 import Image from "next/image";
 import { ArrowRight, Mail, MapPin, Phone, Send } from "lucide-react";
@@ -43,12 +45,12 @@ export default function ContactFooter() {
               Let&apos;s build something great together. Our team is ready to help.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
-              <SafeLink href="/start" className="group px-8 py-3.5 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-semibold text-sm text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(26,109,214,0.45)] hover:scale-[1.02] hover:brightness-110 flex items-center gap-2.5">
+              <SafeLink href="/start" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "footer_book_a_call" }); }} className="group px-8 py-3.5 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-semibold text-sm text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(26,109,214,0.45)] hover:scale-[1.02] hover:brightness-110 flex items-center gap-2.5">
                 <span>Book a Call</span>
                 <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform duration-300" />
               </SafeLink>
               
-              <SafeLink href="tel:+919660641530" className="px-8 py-3.5 rounded-full border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] text-foreground/70 font-semibold text-sm transition-all duration-300 hover:bg-white/[0.05] hover:text-foreground hover:border-white/20 flex items-center gap-2.5 shadow-md">
+              <SafeLink href="tel:+919660641530" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "phone_call_click", label: "footer_call_us" }); }} className="px-8 py-3.5 rounded-full border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] text-foreground/70 font-semibold text-sm transition-all duration-300 hover:bg-white/[0.05] hover:text-foreground hover:border-white/20 flex items-center gap-2.5 shadow-md">
                   <Phone size={14} />
                   <span>Call Us</span>
               </SafeLink>
@@ -126,7 +128,7 @@ export default function ContactFooter() {
                   <span>Gurgaon, India</span>
                 </div>
                 
-                <a href="tel:+919660641530" className="flex items-center gap-3 text-foreground/60 text-sm group">
+                <a href="tel:+919660641530" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "phone_call_click", label: "footer_phone_contact" }); }} className="flex items-center gap-3 text-foreground/60 text-sm group">
                   <div className="w-9 h-9 rounded-lg bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] flex items-center justify-center text-foreground/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300 shrink-0">
                     <Phone size={15} />
                   </div>

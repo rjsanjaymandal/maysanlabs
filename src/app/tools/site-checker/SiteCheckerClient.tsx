@@ -217,8 +217,11 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, company, source: "site-checker" }),
       });
-      if (res.ok) setLeadCaptured(true);
-      else { const d = await res.json(); setLeadError(d.error || "Something went wrong."); }
+      if (res.ok) {
+        setLeadCaptured(true);
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "tool_lead", tool: "site-checker" });
+      } else { const d = await res.json(); setLeadError(d.error || "Something went wrong."); }
     } catch { setLeadError("Network error. Please try again."); }
     finally { setLeadSubmitting(false); }
   }, [email, company]);

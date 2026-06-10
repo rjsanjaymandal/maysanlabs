@@ -109,6 +109,8 @@ If you have any queries regarding any of our terms, please contact us at: ${supp
 
       if (res.ok) {
         setIsSubmitted(true);
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "tool_lead", tool: "privacy-generator" });
       } else {
         const data = await res.json();
         setLeadError(data.error || "Something went wrong.");
