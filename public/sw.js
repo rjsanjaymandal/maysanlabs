@@ -67,8 +67,11 @@ function cacheFirstThenNetwork(request) {
   return caches.match(request).then(function(cached) {
     if (cached) return cached;
     return fetch(request).then(function(response) {
-      if (response.ok) {
-        caches.open(DYNAMIC_CACHE).then(function(cache) { cache.put(request, response.clone()); });
+      if (response.ok && response.body) {
+        var cloned = response.clone();
+        caches.open(DYNAMIC_CACHE).then(function(cache) {
+          try { cache.put(request, cloned); } catch (e) {}
+        });
       }
       return response;
     }).catch(function() {
@@ -79,8 +82,11 @@ function cacheFirstThenNetwork(request) {
 
 function networkFirstWithFallback(request) {
   return fetch(request).then(function(response) {
-    if (response.ok) {
-      caches.open(DYNAMIC_CACHE).then(function(cache) { cache.put(request, response.clone()); });
+    if (response.ok && response.body) {
+      var cloned = response.clone();
+      caches.open(DYNAMIC_CACHE).then(function(cache) {
+        try { cache.put(request, cloned); } catch (e) {}
+      });
     }
     return response;
   }).catch(function() {
