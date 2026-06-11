@@ -9,6 +9,7 @@ import { SafeLink } from "@/components/ui/SafeLink";
 import { Metadata } from "next";
 import { generateBlogPostSEO, generateBlogPostJSONLD } from "@/lib/seo/helpers";
 import CaseStudyCallout from "@/components/CaseStudyCallout";
+import Newsletter from "@/components/Newsletter";
 
 export const revalidate = 3600;
 export const dynamicParams = true;
@@ -240,6 +241,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </section>
         )}
 
+        <Newsletter />
         <ContactFooter />
       </main>
     </>

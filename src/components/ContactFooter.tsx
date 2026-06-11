@@ -4,6 +4,7 @@ import { SafeLink } from "@/components/ui/SafeLink";
 import Image from "next/image";
 import { ArrowRight, Mail, MapPin, Phone, Send } from "lucide-react";
 import { Twitter, Linkedin, Instagram, Facebook } from "@/components/ui/brand-icons";
+import Newsletter from "@/components/Newsletter";
 
 const links = [
   { name: "Services", href: "/services" },
@@ -60,6 +61,8 @@ export default function ContactFooter() {
           </div>
         </div>
       </section>
+
+      <Newsletter />
 
       {/* Links Section */}
       <section className="py-16 border-t border-white/5">

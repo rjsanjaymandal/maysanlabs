@@ -8,6 +8,7 @@ import Hero from "@/components/Hero";
 import ScrollReveal from "@/components/ScrollReveal";
 import LatestInsights from "@/components/LatestInsights";
 import { fetchTechNewsServer } from "@/lib/news-fetcher";
+import Newsletter from "@/components/Newsletter";
 const LogoMarquee = dynamic(() => import("@/components/LogoMarquee"));
 const Problem = dynamic(() => import("@/components/Problem"));
 const BuildScaleGrow = dynamic(() => import("@/components/BuildScaleGrow"));
@@ -189,6 +190,8 @@ export default async function Home() {
       </ScrollReveal>
 
       <TechNewsFeed initialNews={news} />
+
+      <Newsletter />
 
       <ScrollReveal delay={0.2}>
         <ContactFooter />
