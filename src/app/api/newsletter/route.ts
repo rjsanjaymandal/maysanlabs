@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
@@ -20,6 +21,28 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
+function createTransporter() {
+  const smtpConfigured =
+    process.env.SMTP_HOST &&
+    process.env.SMTP_USER &&
+    process.env.SMTP_PASS &&
+    !process.env.SMTP_USER.includes("your-email") &&
+    !process.env.SMTP_PASS.includes("your-app");
+
+  if (!smtpConfigured) return null;
+
+  return nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT) || 587,
+    secure: Number(process.env.SMTP_PORT) === 465,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+    tls: { rejectUnauthorized: process.env.SMTP_REJECT_UNAUTHORIZED !== "false", minVersion: "TLSv1.2" },
+  });
+}
+
 export async function POST(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
   if (isRateLimited(ip)) {
@@ -34,36 +57,22 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
     }
 
-    const apiKey = process.env.RESEND_API_KEY;
-
-    if (!apiKey || !apiKey.startsWith("re_")) {
-      console.log("[Newsletter] Dev mode — no valid RESEND_API_KEY configured");
+    const transporter = createTransporter();
+    if (!transporter) {
+      console.log("[Newsletter] Dev mode — SMTP not configured");
       return NextResponse.json({ success: true, message: "Subscribed (dev mode)" });
     }
 
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-        "User-Agent": "maysanlabs.com/1.0",
-      },
-      body: JSON.stringify({
-        from: "Maysan Labs <onboarding@resend.dev>",
-        to: ["business@maysanlabs.com"],
-        subject: `New newsletter subscriber: ${email}`,
-        html: `<p><strong>New newsletter subscription</strong></p>
-               <p>Email: ${email}</p>
-               ${company ? `<p>Company: ${company}</p>` : ""}
-               ${source ? `<p>Source: ${source}</p>` : ""}`,
-      }),
+    await transporter.sendMail({
+      from: `"Maysan Labs Newsletter" <${process.env.SMTP_USER}>`,
+      to: "business@maysanlabs.com",
+      subject: `New newsletter subscriber: ${email}`,
+      text: `New newsletter subscription\n\nEmail: ${email}${company ? `\nCompany: ${company}` : ""}${source ? `\nSource: ${source}` : ""}`,
+      html: `<p><strong>New newsletter subscription</strong></p>
+             <p>Email: ${email}</p>
+             ${company ? `<p>Company: ${company}</p>` : ""}
+             ${source ? `<p>Source: ${source}</p>` : ""}`,
     });
-
-    if (!res.ok) {
-      const errText = await res.text();
-      console.error("[Newsletter] Resend API error:", errText);
-      return NextResponse.json({ error: "Failed to subscribe. Please try again." }, { status: 500 });
-    }
 
     return NextResponse.json({ success: true, message: "Subscribed successfully!" });
   } catch (error) {
