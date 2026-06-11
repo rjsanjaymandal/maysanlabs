@@ -602,4 +602,24 @@ We have successfully deployed multiple projects prioritizing tailwind css design
 Ultimately, the best architecture is the simplest one that supports your current growth phase while leaving clear paths for future scaling. Choose proven tools, avoid pre-mature optimization, and build modularly.`,
     draft: true,
   },
+
+  {
+    title: "Cloud Cost Optimization: What You Need to Know",
+    slug: "cloud-cost-optimization",
+    excerpt: "A practical guide to cloud cost optimization — what works, what doesn't, and how to get started.",
+    date: "2026-06-10",
+    author: "Maysan Engineering Team",
+    category: "Transformation",
+    readTime: "2 min",
+    tags: ["Transformation", "cloud", "cost", "optimization"],
+    content: `The landscape of cloud cost optimization is evolving rapidly. Companies that adapt early gain a significant competitive advantage in their markets.
+
+Understanding the core principles behind cloud cost optimization helps teams make better architectural decisions. Let's break down what actually matters.
+
+We've worked with dozens of companies implementing solutions around cloud cost optimization. Here are the patterns that consistently deliver results.
+
+The key is to start small and iterate. Focus on solving one problem well rather than trying to address everything at once.
+
+As the ecosystem matures, we expect to see more standardized approaches emerge, making it easier for teams to adopt best practices without reinventing the wheel.`,
+  },
 ];
