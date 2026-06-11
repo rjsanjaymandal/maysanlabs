@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const CRON_SECRET = process.env.CRON_SECRET || '';
+const CRON_SECRET = process.env.CRON_SECRET;
 
 interface ContentResult {
   source: string;
@@ -9,7 +9,7 @@ interface ContentResult {
 
 export async function GET(request: Request) {
   const auth = request.headers.get('authorization')?.replace('Bearer ', '');
-  if (CRON_SECRET && auth !== CRON_SECRET) {
+  if (!CRON_SECRET || !auth || auth !== CRON_SECRET) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -40,24 +40,32 @@ export async function GET(request: Request) {
   // Trigger rebuild notification via Vercel deploy hook if configured
   const deployHook = process.env.VERCEL_DEPLOY_HOOK_URL;
   if (deployHook) {
-    fetch(deployHook, { method: 'POST' }).catch(() => {});
+    try {
+      await fetch(deployHook, { method: 'POST' });
+    } catch {
+      // Deploy hook notification is best-effort
+    }
   }
 
   // Ping search engines
   const sitemapUrl = `${siteUrl}/sitemap.xml`;
-  Promise.allSettled([
-    fetch(`https://www.google.com/ping?sitemap=${encodeURIComponent(sitemapUrl)}`),
-    fetch('https://api.indexnow.org/indexnow', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        host: new URL(siteUrl).host,
-        key: process.env.INDEXNOW_KEY || '',
-        keyLocation: `${siteUrl}/${process.env.INDEXNOW_KEY || ''}.txt`,
-        urlList: [`${siteUrl}/`, `${siteUrl}/blog`, `${siteUrl}/sitemap.xml`],
+  try {
+    await Promise.allSettled([
+      fetch(`https://www.google.com/ping?sitemap=${encodeURIComponent(sitemapUrl)}`),
+      fetch('https://api.indexnow.org/indexnow', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          host: new URL(siteUrl).host,
+          key: process.env.INDEXNOW_KEY || '',
+          keyLocation: `${siteUrl}/${process.env.INDEXNOW_KEY || ''}.txt`,
+          urlList: [`${siteUrl}/`, `${siteUrl}/blog`, `${siteUrl}/sitemap.xml`],
+        }),
       }),
-    }),
-  ]).catch(() => {});
+    ]);
+  } catch {
+    // Search engine pings are best-effort
+  }
 
   return NextResponse.json({
     success: true,

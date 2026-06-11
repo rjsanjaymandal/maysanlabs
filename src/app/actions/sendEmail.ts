@@ -7,7 +7,7 @@ import { escapeHtml, textForEmail, multilineHtml } from "@/lib/security/escape";
 
 export async function sendEmail(formData: FormData) {
   const honeypot = formData.get("website") as string;
-  
+
   // Honeypot check: if the hidden field is filled, it's likely a bot
   if (honeypot && honeypot.trim() !== "") {
     console.warn("[Form Security] Honeypot triggered - potential bot submission");
@@ -40,8 +40,8 @@ export async function sendEmail(formData: FormData) {
     !process.env.SMTP_PASS.includes("your-app");
 
   if (!smtpConfigured) {
-    console.warn("SMTP not configured. Inquiry received (details omitted for security).");
-    return { success: true, message: "Inquiry received successfully" };
+    console.warn("SMTP not configured. Inquiry received but email not sent (details omitted for security).");
+    return { success: false, message: "Inquiry received, but email delivery is not configured. Please contact us directly at business@maysanlabs.com" };
   }
 
   const transporter = nodemailer.createTransport({
@@ -106,7 +106,7 @@ export async function sendEmail(formData: FormData) {
           ],
         }),
       });
-      // We don't await discord here to avoid blocking mail if discord fails, 
+      // We don't await discord here to avoid blocking mail if discord fails,
       // but let's await both for reliability since it's a server action.
       const [mailResult] = await Promise.allSettled([mailPromise, discordPromise]);
       if (mailResult.status === "rejected") {

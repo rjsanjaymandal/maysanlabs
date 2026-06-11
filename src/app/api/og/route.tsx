@@ -8,18 +8,27 @@ async function getFont(weight: number): Promise<Buffer> {
   const cached = weight === 400 ? fontRegular : fontBold;
   if (cached) return cached;
 
-  const css = await (
-    await fetch(
-      `https://fonts.googleapis.com/css2?family=Outfit:wght@${weight}&display=swap`
-    )
-  ).text();
-  const match = css.match(/url\(([^)]+)\)/);
-  if (!match) throw new Error("Font URL not found");
-  const data = Buffer.from(await (await fetch(match[1])).arrayBuffer());
+  try {
+    const cssRes = await fetch(
+      `https://fonts.googleapis.com/css2?family=Outfit:wght@${weight}&display=swap`,
+      { signal: AbortSignal.timeout(5000) }
+    );
+    if (!cssRes.ok) throw new Error(`Google Fonts CSS returned ${cssRes.status}`);
+    const css = await cssRes.text();
+    const match = css.match(/url\(([^)]+)\)/);
+    if (!match) throw new Error("Font URL not found");
+    const fontRes = await fetch(match[1], { signal: AbortSignal.timeout(5000) });
+    if (!fontRes.ok) throw new Error(`Font file returned ${fontRes.status}`);
+    const data = Buffer.from(await fontRes.arrayBuffer());
 
-  if (weight === 400) fontRegular = data;
-  if (weight === 700) fontBold = data;
-  return data;
+    if (weight === 400) fontRegular = data;
+    if (weight === 700) fontBold = data;
+    return data;
+  } catch (err) {
+    console.error(`[OG Image] Font fetch failed for weight ${weight}:`, err);
+    // Return an empty buffer as fallback — satori will use system fallback
+    return Buffer.alloc(0);
+  }
 }
 
 export async function GET(request: Request) {

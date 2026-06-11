@@ -500,35 +500,3 @@ export const personSchema = {
     "https://x.com/maysanlabs"
   ]
 };
-
-export const geoSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": `${SITE_URL}/#webpage`,
-      "about": {
-        "@id": `${SITE_URL}/#organization`
-      },
-      "mentions": [
-        { "@type": "Service", "name": "SaaS Development" },
-        { "@type": "Service", "name": "Custom Software Development" },
-        { "@type": "Service", "name": "Cloud Infrastructure" },
-        { "@type": "Service", "name": "Web Application Development" }
-      ]
-    },
-    {
-      "@type": "Organization",
-      "@id": `${SITE_URL}/#organization`,
-      "description": "Enterprise SaaS development company in Gurgaon, India",
-      "knowsAbout": [
-        "SaaS Development",
-        "Cloud Computing",
-        "Enterprise Software",
-        "React.js",
-        "Node.js",
-        "AWS Cloud Services"
-      ]
-    }
-  ]
-};

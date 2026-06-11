@@ -1,29 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
+import { checkRateLimit } from "@/lib/rate-limit";
 import type { WebVitalResult } from "@/lib/pagespeed-types";
-
-const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
-const RATE_LIMIT_WINDOW_MS = 60 * 1000;
-const RATE_LIMIT_MAX_REQUESTS = 10;
 
 const cacheMap = new Map<string, { data: unknown; expiry: number }>();
 const CACHE_TTL_MS = 5 * 60 * 1000;
 
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const record = rateLimitMap.get(ip);
-  if (!record || now > record.resetTime) {
-    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
-    return false;
-  }
-  if (record.count >= RATE_LIMIT_MAX_REQUESTS) return true;
-  record.count += 1;
-  return false;
-}
-
 export async function POST(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
-  if (isRateLimited(ip)) {
-    return NextResponse.json({ error: "Too many requests. Please wait a moment." }, { status: 429, headers: { "Retry-After": "60" } });
+  const rateCheck = checkRateLimit(`pagespeed:${ip}`, 10, 60 * 1000);
+  if (!rateCheck.allowed) {
+    return NextResponse.json({ error: "Too many requests. Please wait a moment." }, { status: 429, headers: { "Retry-After": String(rateCheck.retryAfter) } });
   }
 
   try {
