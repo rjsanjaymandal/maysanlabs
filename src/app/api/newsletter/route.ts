@@ -41,19 +41,22 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true, message: "Subscribed (dev mode)" });
     }
 
-    const audienceId = process.env.RESEND_AUDIENCE_ID;
-    if (!audienceId) {
-      console.log("[Newsletter] Dev mode (no RESEND_AUDIENCE_ID) — new subscription:", { email, company, source });
-      return NextResponse.json({ success: true, message: "Subscribed (dev mode)" });
-    }
-
-    const res = await fetch(`https://api.resend.com/audiences/${audienceId}/contacts`, {
+    const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
+        "User-Agent": "maysanlabs.com/1.0",
       },
-      body: JSON.stringify({ email, first_name: company || "" }),
+      body: JSON.stringify({
+        from: "Maysan Labs <onboarding@resend.dev>",
+        to: ["business@maysanlabs.com"],
+        subject: `New newsletter subscriber: ${email}`,
+        html: `<p><strong>New newsletter subscription</strong></p>
+               <p>Email: ${email}</p>
+               ${company ? `<p>Company: ${company}</p>` : ""}
+               ${source ? `<p>Source: ${source}</p>` : ""}`,
+      }),
     });
 
     if (!res.ok) {
