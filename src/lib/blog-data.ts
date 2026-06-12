@@ -622,4 +622,24 @@ The key is to start small and iterate. Focus on solving one problem well rather 
 
 As the ecosystem matures, we expect to see more standardized approaches emerge, making it easier for teams to adopt best practices without reinventing the wheel.`,
   },
+
+  {
+    title: "Progressive Web Apps: What You Need to Know",
+    slug: "progressive-web-apps",
+    excerpt: "A practical guide to progressive web apps — what works, what doesn't, and how to get started.",
+    date: "2026-06-12",
+    author: "Maysan Engineering Team",
+    category: "Strategy",
+    readTime: "2 min",
+    tags: ["Strategy", "progressive", "apps"],
+    content: `The landscape of progressive web apps is evolving rapidly. Companies that adapt early gain a significant competitive advantage in their markets.
+
+Understanding the core principles behind progressive web apps helps teams make better architectural decisions. Let's break down what actually matters.
+
+We've worked with dozens of companies implementing solutions around progressive web apps. Here are the patterns that consistently deliver results.
+
+The key is to start small and iterate. Focus on solving one problem well rather than trying to address everything at once.
+
+As the ecosystem matures, we expect to see more standardized approaches emerge, making it easier for teams to adopt best practices without reinventing the wheel.`,
+  },
 ];
