@@ -9,6 +9,7 @@ import {
   Code2,
   Database,
   Cloud,
+  Mail,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -55,6 +56,13 @@ const services = [
     icon: BarChart3,
     href: "/services/web",
     features: ["Razorpay & UPI payment setup", "Medusa commerce API integration", "Tally & Zoho ledgers sync", "WhatsApp Business API links"],
+  },
+  {
+    title: "MaysanMails",
+    desc: "Scale your email marketing infinitely with MaysanMails, our powerful self-hosted bulk email product. Avoid expensive monthly SaaS subscriptions while maintaining top-tier deliverability.",
+    icon: Mail,
+    href: "/services/web",
+    features: ["Zero recurring subscriber fees", "Complete data privacy & control", "High-deliverability SMTP routing", "Advanced campaign automation"],
   },
 ];
 

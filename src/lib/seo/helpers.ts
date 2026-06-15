@@ -249,7 +249,15 @@ export function generatePageSEO({
   
   const baseKeywords = [
     "Maysan Labs",
+    "maysan labs",
+    "maysanlabs",
+    "Maysan Labs Gurugram",
+    "enterprise software development firm",
+    "B2B SaaS development company Gurgaon",
     "enterprise SaaS development company",
+    "hire custom software developers India",
+    "software outsourcing services Gurgaon",
+    "dedicated software development team",
     "custom software development company",
     "custom web application development",
     "cloud-native application development",
