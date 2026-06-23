@@ -129,6 +129,9 @@ export const metadata: Metadata = {
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: {
+      "facebook-domain-verification": "kddfm7y16fybs8lb3qi91hb81rbd1e",
+    },
   },
   category: "technology",
   classification: "SaaS Development Company",
