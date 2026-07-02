@@ -29,7 +29,7 @@ Old-school business software works on a simple idea: if something happens, do th
 
 This isn't about adding a chatbot to your website. It's about rebuilding your core business logic around smart decision-making. The companies winning today aren't just automating tasks — they're building systems that think.
 
-We've seen this shift across every industry we work in. From finance to logistics, these smart systems are delivering ten times the value of basic automation. The goal isn't to remove humans — it's to free your team to focus on what matters while software handles the complexity.`,
+We've seen this shift across every industry we work in. From finance to logistics, these [custom software solutions](/services) are delivering ten times the value of basic automation. The goal isn't to remove humans — it's to free your team to focus on what matters while software handles the complexity.`,
   },
   {
     title: "Deploy Updates in Minutes, Not Weeks",
@@ -48,7 +48,7 @@ The benefits go beyond speed. Your development, testing, and production environm
 
 But the real win is safety. Every change goes through review and testing before it goes live. Need to roll back? It's as simple as clicking a button.
 
-We've helped companies go from weeks-long deployment cycles to same-day releases. The transformation isn't just technical — it changes how teams think about shipping software.`,
+We've helped companies go from weeks-long deployment cycles to same-day releases using our [cloud infrastructure services](/services/cloud). The transformation isn't just technical — it changes how teams think about shipping software.`,
   },
   {
     title: "Why Modular Beats Monolithic",
@@ -67,7 +67,7 @@ The solution? Break your system into smaller, independent pieces. Each piece han
 
 The benefits are huge. Teams work independently without stepping on each other. Deployments become low-risk events. You only scale the parts that need it.
 
-We've helped many companies break apart old, bloated systems into clean, modular ones. It takes effort, but the agility it unlocks is worth every step.`,
+We've helped many companies break apart old, bloated systems into clean, modular ones through our [architecture consulting](/architecture). It takes effort, but the agility it unlocks is worth every step.`,
   },
   {
     title: "AI That Actually Makes Money",
@@ -86,7 +86,7 @@ We've worked with businesses adding AI across their operations. The ones that su
 
 The opportunity is real. Companies getting real results from AI aren't just playing around — they've built clear processes for finding where AI creates value, weaving it into their workflows, and measuring the impact.
 
-It's not about having the fanciest technology. It's about having the right solution for your specific problem, built into your product where it actually moves the needle.`,
+It's not about having the fanciest technology. It's about having the right [AI integration](/services/ai) for your specific problem, built into your product where it actually moves the needle.`,
   },
   {
     title: "Security That's Built In, Not Bolted On",

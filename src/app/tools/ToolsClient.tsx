@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ShieldAlert, BadgePercent, LayoutGrid, ArrowRight, Search, FileText, Share2, FileImage } from "lucide-react";
+import { ShieldAlert, BadgePercent, LayoutGrid, ArrowRight, Search, FileText, Share2, FileImage, Presentation } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ContactFooter from "@/components/ContactFooter";
 
@@ -63,6 +63,15 @@ const tools = [
     category: "Quick Tools",
     badge: "Link Preview",
     color: "from-cyan-500 to-blue-400",
+  },
+  {
+    title: "Presentation Engine",
+    desc: "Convert raw data, reports, and legacy code into branded PowerPoint decks.",
+    href: "/tools/presentation-engine",
+    icon: Presentation,
+    category: "Quick Tools",
+    badge: "PPT Generator",
+    color: "from-violet-500 to-indigo-400",
   },
 ];
 

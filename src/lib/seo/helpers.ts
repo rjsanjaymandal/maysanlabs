@@ -106,11 +106,16 @@ export function generateBlogPostJSONLD(post: BlogPost, siteUrl: string) {
       "@type": "Person",
       name: personName,
       url: personUrl,
+      jobTitle: "Software Engineer & Architect",
+      worksFor: {
+        "@type": "Organization",
+        name: "Maysan Labs"
+      },
       sameAs: [
         "https://github.com/maysanlabs",
         "https://in.linkedin.com/company/maysanlabs"
       ],
-      knowsAbout: [post.category, "Enterprise SaaS", "Software Development"]
+      knowsAbout: [post.category, "Enterprise SaaS", "Software Development", "Cloud Architecture"]
     },
     publisher: {
       "@type": "Organization",
@@ -366,6 +371,24 @@ export function generatePageSEO({
 export interface FAQItem {
   question: string;
   answer: string;
+}
+
+/**
+ * Generate FAQPage schema for rich snippets
+ */
+export function generateFAQSchema(items: FAQItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map(item => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer
+      }
+    }))
+  };
 }
 
 /**

@@ -177,6 +177,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   </div>
                 </div>
 
+                <div className="mt-10 mb-10 bg-white/50 dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] rounded-xl p-6 sm:p-8 flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-brand-primary/10 flex-shrink-0 flex items-center justify-center text-brand-primary text-sm sm:text-lg font-bold border border-brand-primary/20">
+                    {getInitials(post.author)}
+                  </div>
+                  <div>
+                    <h3 className="text-base sm:text-lg font-semibold text-foreground mb-1">About {post.author}</h3>
+                    <p className="text-[13px] sm:text-sm text-foreground/60 leading-relaxed mb-3">
+                      {post.author} is a technology expert at Maysan Labs specializing in {post.category.toLowerCase()} and building scalable software solutions for growing businesses.
+                    </p>
+                    <a href="https://linkedin.com/company/maysanlabs" target="_blank" rel="noopener noreferrer" className="text-[12px] font-semibold text-brand-primary hover:underline inline-flex items-center gap-1">
+                      Connect on LinkedIn <ArrowRight size={12} />
+                    </a>
+                  </div>
+                </div>
+
                 <div className="mt-10 bg-gradient-to-br from-brand-primary/[0.06] to-transparent border border-brand-primary/15 rounded-xl p-6 sm:p-8 text-center">
                   <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">Ready to build something great?</h3>
                   <p className="text-sm text-foreground/40 mb-5 max-w-sm mx-auto">Let&apos;s discuss your project. Our team is ready to help.</p>
