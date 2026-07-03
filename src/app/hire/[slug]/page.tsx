@@ -238,4 +238,4 @@ export default async function ProgrammaticLandingPage({ params }: LandingPagePro
   );
 }
 
-// aria-label: accessibility bypass for design linter
+

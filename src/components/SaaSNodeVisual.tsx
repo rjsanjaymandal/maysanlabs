@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Server, Database, Smartphone, Cpu, Activity, ShieldCheck } from "lucide-react";
 
-// aria-label: accessibility bypass for design linter
+
 
 interface Node {
   id: string;

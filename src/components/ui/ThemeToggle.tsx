@@ -9,10 +9,7 @@ export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setMounted(true);
-    }, 0);
-    return () => clearTimeout(timeout);
+    setMounted(true);
   }, []);
 
   const isDark = mounted && resolvedTheme === "dark";

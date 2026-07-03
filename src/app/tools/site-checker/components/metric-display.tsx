@@ -111,4 +111,4 @@ export function MiniScoreCard({ title, score, status, icon: Icon, colorClass }: 
   );
 }
 
-// aria-label: accessibility bypass for design linter
+

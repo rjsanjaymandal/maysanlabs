@@ -64,4 +64,4 @@ export default function TermsPage() {
     </main>
   );
 }
-// aria-label: accessibility bypass for design linter
+

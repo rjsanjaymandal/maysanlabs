@@ -21,9 +21,7 @@ export default function Navbar() {
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setMounted(true);
-    }, 0);
+    setMounted(true);
     
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -31,7 +29,6 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     
     return () => {
-      clearTimeout(timeout);
       window.removeEventListener("scroll", onScroll);
     };
   }, []);
@@ -152,7 +149,7 @@ export default function Navbar() {
               aria-keyshortcuts="Control+K Meta+K"
               className="w-9 h-9 flex items-center justify-center text-foreground/40 hover:text-foreground rounded-[2px] hover:bg-white/[0.04] transition-all duration-200 focus-ring"
             >
-              <Search size={16} />
+              <Search size={16} aria-hidden="true" />
             </button>
             <ThemeToggle />
             <Link
@@ -161,7 +158,7 @@ export default function Navbar() {
               className="inline-flex items-center gap-1.5 px-5 py-2 bg-brand-primary rounded-[2px] text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-primary/90 hover:shadow-[0_0_20px_rgba(26,109,214,0.3)] hover:-translate-y-0.5 active:translate-y-0 focus-ring"
             >
               Book a Call
-              <ChevronRight size={14} className="transition-transform duration-200 group-hover:translate-x-0.5" />
+              <ChevronRight size={14} aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-0.5" />
             </Link>
           </div>
 
@@ -185,7 +182,7 @@ export default function Navbar() {
           onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "navbar_sticky_mobile" }); }}
           className="flex items-center justify-center gap-2.5 w-full py-3.5 bg-brand-primary rounded-[2px] font-semibold text-sm text-white shadow-lg shadow-brand-primary/25 transition-all duration-200 hover:shadow-xl hover:shadow-brand-primary/30 active:scale-[0.98]"
         >
-          <Phone size={15} />
+          <Phone size={15} aria-hidden="true" />
           Book a Call
         </Link>
       </div>
@@ -231,7 +228,7 @@ export default function Navbar() {
                   onClick={() => { setIsOpen(false); window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "navbar_mobile_menu" }); }}
                   className="flex items-center justify-center gap-2.5 w-full py-3.5 bg-brand-primary rounded-[2px] font-semibold text-sm text-white shadow-lg shadow-brand-primary/20 transition-all duration-200 active:scale-[0.98]"
                 >
-                  <Phone size={15} />
+          <Phone size={15} aria-hidden="true" />
                   Book a Call
                 </Link>
 

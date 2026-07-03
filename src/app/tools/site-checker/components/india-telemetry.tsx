@@ -171,4 +171,4 @@ export function IndianMarketTelemetryHub({ telemetry }: { telemetry: IndiaTeleme
   );
 }
 
-// aria-label: accessibility bypass for design linter
+

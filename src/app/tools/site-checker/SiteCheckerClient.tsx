@@ -51,15 +51,6 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
   const abortRef = useRef<AbortController | null>(null);
   const autoScanned = useRef(false);
 
-  useEffect(() => {
-    setHistory(loadHistory());
-    if (initialUrl && !autoScanned.current) {
-      autoScanned.current = true;
-      startScan();
-    }
-    return () => abortRef.current?.abort();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
   const validateUrl = (input: string): string | null => {
     if (!input.trim()) return "Please enter a URL";
     try {
@@ -200,6 +191,18 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
       setScanning(false);
     }
   }, [url, strategy]);
+
+  const startScanRef = useRef(startScan);
+  startScanRef.current = startScan;
+
+  useEffect(() => {
+    setHistory(loadHistory());
+    if (initialUrl && !autoScanned.current) {
+      autoScanned.current = true;
+      startScanRef.current();
+    }
+    return () => abortRef.current?.abort();
+  }, [initialUrl]);
 
   const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();

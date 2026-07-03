@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowRight, CheckCircle2, Download, Mail, X } from "lucide-react";
 
 export default function ExitIntentPopup() {
@@ -11,7 +11,7 @@ export default function ExitIntentPopup() {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const alreadyShown = useRef(false);
 
-  const closePopup = useCallback(() => setIsVisible(false), []);
+  const closePopup = () => setIsVisible(false);
 
   useEffect(() => {
     try {

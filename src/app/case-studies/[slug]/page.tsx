@@ -86,4 +86,4 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
   );
 }
 
-// aria-label: accessibility bypass for design linter
+

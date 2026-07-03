@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
 interface GlitchTextProps {
   text: string;
@@ -15,6 +15,8 @@ export default function GlitchText({
   className = "",
   glitchInterval = 3000,
 }: GlitchTextProps) {
+  const textRef = useRef(text);
+  textRef.current = text;
   const [displayText, setDisplayText] = useState(text);
   const [isGlitching, setIsGlitching] = useState(false);
 
@@ -23,25 +25,30 @@ export default function GlitchText({
     let iterations = 0;
 
     const interval = setInterval(() => {
-      setDisplayText((prev) =>
-        prev
+      const currentText = textRef.current;
+      setDisplayText(() =>
+        currentText
           .split("")
           .map((char, index) => {
-            if (index < iterations) return text[index];
+            if (index < iterations) return currentText[index];
             return CHARS[Math.floor(Math.random() * CHARS.length)];
           })
           .join(""),
       );
 
-      iterations += text.length > 20 ? 2 : 1; // Faster for long strings
-      if (iterations > text.length) {
+      iterations += currentText.length > 20 ? 2 : 1;
+      if (iterations > currentText.length) {
         clearInterval(interval);
-        setDisplayText(text);
+        setDisplayText(currentText);
         setIsGlitching(false);
       }
     }, 40);
 
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    setDisplayText(text);
   }, [text]);
 
   useEffect(() => {

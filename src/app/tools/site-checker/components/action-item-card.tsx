@@ -105,4 +105,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 }
 
-// aria-label: accessibility bypass for design linter
+

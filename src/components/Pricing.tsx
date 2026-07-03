@@ -137,4 +137,4 @@ export default function Pricing() {
   );
 }
 
-// aria-label: accessibility bypass for design linter
+

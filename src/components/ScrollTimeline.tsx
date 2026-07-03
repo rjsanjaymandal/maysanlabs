@@ -192,4 +192,4 @@ export default function ScrollTimeline() {
   );
 }
 
-// aria-label: accessibility bypass for design linter
+

@@ -73,4 +73,4 @@ export default function CaseStudiesPage() {
   );
 }
 
-// aria-label: accessibility bypass for design linter
+
