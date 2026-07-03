@@ -22,7 +22,7 @@ import {
   type AdvancedDeck,
   type AdvancedSlide,
 } from "@/utils/maysanPptEngine";
-import { parseStructuredData, type ParseMode } from "@/utils/clientParser";
+import { parseStructuredData } from "@/utils/clientParser";
 
 class AiNotConfiguredError extends Error {
   constructor() {

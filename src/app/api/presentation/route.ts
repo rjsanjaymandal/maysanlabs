@@ -208,7 +208,7 @@ export async function POST(request: Request) {
       );
     }
 
-    parsed.slides = parsed.slides.map((slide: any, index: number) => ({
+    parsed.slides = parsed.slides.map((slide: Record<string, unknown>, index: number) => ({
       ...slide,
       slideNumber: index + 1,
     }));

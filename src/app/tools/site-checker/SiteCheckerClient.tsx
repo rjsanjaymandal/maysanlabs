@@ -3,8 +3,8 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Globe, Search, CheckCircle, AlertTriangle, XCircle, Download, 
-  BarChart3, Gauge, Loader2, Sparkles, Smartphone, Monitor, Clock, 
+  Globe, Search, CheckCircle, AlertTriangle, 
+  BarChart3, Gauge, Loader2, Smartphone, Monitor, Clock, 
   Share2, History, ChevronDown, ChevronUp, Zap, 
   FileText, Shield, ArrowLeft, ArrowRight, User, Check
 } from "lucide-react";
@@ -17,8 +17,7 @@ import type { WebVitalResult } from "@/lib/pagespeed-types";
 
 import {
   ActionItemCard, RadarChart, SpeedSimulator, OverallScoreCircle, MetricBadge, MiniScoreCard,
-  HeadingsHierarchyMap, SchemaMarkupGraph, CrawlerRadar, GoogleSearchPreview,
-  IndianMarketTelemetryHub, SecurityTab,
+  IndianMarketTelemetryHub, SecurityTab, SeoTabError, SeoTabContent, LeadForm,
   ScanRecord, perfSteps, seoSteps, metricInfo, HISTORY_KEY, MAX_HISTORY, loadHistory, getLabel,
 } from "./components";
 
@@ -560,166 +559,10 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
                   )}
 
                   {seoAuditError && !seoResults && activeSection === "seo" && (
-                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-                      <div className="bg-amber-500/10 border border-amber-500/25 rounded-2xl p-6">
-                        <div className="flex items-start gap-3">
-                          <AlertTriangle size={20} className="text-amber-400 shrink-0" />
-                          <div>
-                            <h3 className="text-sm font-bold text-foreground">SEO Audit Unavailable</h3>
-                            <p className="text-sm text-foreground/60 mt-1">{seoAuditError}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
+                    <SeoTabError error={seoAuditError} />
                   )}
                   {seoResults && activeSection === "seo" && (
-                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6 text-left">
-                      <div className="bg-white/[0.03] border-white/[0.08] rounded-3xl p-6 md:p-8">
-                        <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
-                          <div>
-                            <h2 className="text-base font-bold text-foreground mb-1">Indexation & Core Tag Analysis</h2>
-                            <div className="flex items-center gap-2">
-                              <span className="text-[10px] text-foreground/45">Sitemap endpoint audit sample</span>
-                              <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider border ${seoResults.sitemapFetched ? "bg-[#10b981]/10 border-[#10b981]/20 text-[#10b981]" : "bg-amber-400/10 border-amber-400/20 text-amber-400"}`}>
-                                {seoResults.sitemapFetched ? "Sitemap Exposed" : "Missing Sitemap"}
-                              </span>
-                            </div>
-                          </div>
-                          <span className={`px-3 py-1 border rounded-full text-xs font-bold font-mono ${seoResults.indexability === "healthy" ? "bg-[#10b981]/5 border-[#10b981]/20 text-[#10b981]" : "bg-amber-400/5 border-amber-400/20 text-amber-400"}`}>
-                            {seoResults.indexability === "healthy" ? "CRAWL HEALTHY" : "NEEDS ACTION"}
-                          </span>
-                        </div>
-
-                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-6">
-                          <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-3 text-center">
-                            <span className="text-[10px] text-brand-primary font-bold uppercase tracking-wider block mb-1">Sitemap Score</span>
-                            <p className="text-xl font-black text-foreground">{seoResults.seoScore}<span className="text-xs text-foreground/40 font-normal">/100</span></p>
-                          </div>
-                          <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-3 text-center">
-                            <span className="text-[10px] text-foreground/45 font-semibold block mb-1">Audited Pages</span>
-                            <p className="text-xl font-bold text-foreground font-mono">{seoResults.totalUrls}</p>
-                          </div>
-                          <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-3 text-center">
-                            <span className="text-[10px] text-foreground/45 font-semibold block mb-1">Missing Meta</span>
-                            <p className={`text-xl font-bold font-mono ${seoResults.missingMeta > 0 ? "text-amber-400" : "text-[#10b981]"}`}>{seoResults.missingMeta}</p>
-                          </div>
-                          <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-3 text-center">
-                            <span className="text-[10px] text-foreground/45 font-semibold block mb-1">Broken Links</span>
-                            <p className={`text-xl font-bold font-mono ${seoResults.brokenLinks > 0 ? "text-red-400" : "text-[#10b981]"}`}>{seoResults.brokenLinks}</p>
-                          </div>
-                          <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-3 text-center">
-                            <span className="text-[10px] text-foreground/45 font-semibold block mb-1">Missing Schema</span>
-                            <p className={`text-xl font-bold font-mono ${seoResults.missingSchemas > 0 ? "text-amber-400" : "text-[#10b981]"}`}>{seoResults.missingSchemas}</p>
-                          </div>
-                          <div className="bg-white/[0.02] border border-white/[0.05] rounded-xl p-3 text-center">
-                            <span className="text-[10px] text-foreground/45 font-semibold block mb-1">Avg Page Weight</span>
-                            <p className="text-xl font-bold text-foreground font-mono">{seoResults.urlsList.length > 0 ? Math.round(seoResults.totalPageSize / seoResults.urlsList.length) : 0}<span className="text-xs text-foreground/40 font-normal">KB</span></p>
-                          </div>
-                        </div>
-
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                          <div className="bg-white/[0.02] border-white/[0.06] rounded-xl p-3 flex justify-between items-center">
-                            <span className="text-[10px] text-foreground/45 uppercase tracking-wider font-medium">Canonical</span>
-                            <span className={`text-[10px] font-bold font-mono ${seoResults.missingCanonical > 0 ? "text-amber-400" : "text-[#10b981]"}`}>{seoResults.missingCanonical > 0 ? `${seoResults.missingCanonical} Missing` : "Verified"}</span>
-                          </div>
-                          <div className="bg-white/[0.02] border-white/[0.06] rounded-xl p-3 flex justify-between items-center">
-                            <span className="text-[10px] text-foreground/45 uppercase tracking-wider font-medium">OpenGraph Tags</span>
-                            <span className={`text-[10px] font-bold font-mono ${seoResults.missingOgTags > 0 ? "text-amber-400" : "text-[#10b981]"}`}>{seoResults.missingOgTags > 0 ? `${seoResults.missingOgTags} Incomplete` : "Healthy"}</span>
-                          </div>
-                          <div className="bg-white/[0.02] border-white/[0.06] rounded-xl p-3 flex justify-between items-center">
-                            <span className="text-[10px] text-foreground/45 uppercase tracking-wider font-medium">Twitter Cards</span>
-                            <span className={`text-[10px] font-bold font-mono ${seoResults.missingTwitterCard > 0 ? "text-amber-400" : "text-[#10b981]"}`}>{seoResults.missingTwitterCard > 0 ? "Missing" : "Verified"}</span>
-                          </div>
-                          <div className="bg-white/[0.02] border-white/[0.06] rounded-xl p-3 flex justify-between items-center">
-                            <span className="text-[10px] text-foreground/45 uppercase tracking-wider font-medium">Missing Alt Text</span>
-                            <span className={`text-[10px] font-bold font-mono ${seoResults.totalAltMissing > 0 ? "text-amber-400" : "text-[#10b981]"}`}>{seoResults.totalAltMissing > 0 ? `${seoResults.totalAltMissing} Elements` : "All Present"}</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <CrawlerRadar 
-                        hasViewport={!seoResults.urlsList.some(p => !p.hasViewport)}
-                        hasHtmlLang={!seoResults.urlsList.some(p => !p.hasHtmlLang)}
-                        https={!seoResults.urlsList.some(p => !p.https)}
-                        isNoindex={seoResults.noindexPages > 0}
-                      />
-
-                      <HeadingsHierarchyMap 
-                        h1Count={seoResults.urlsList[0]?.h1Count ?? 1}
-                        h2Count={seoResults.urlsList[0]?.h2Count ?? 3}
-                        title={seoResults.urlsList[0]?.title ?? ""}
-                      />
-
-                      <SchemaMarkupGraph hasSchema={!seoResults.urlsList.some(p => !p.hasSchema)} />
-
-                      <GoogleSearchPreview 
-                        url={seoResults.url} 
-                        title={seoResults.urlsList[0]?.title ?? ""} 
-                        description={seoResults.urlsList[0]?.description ?? ""} 
-                      />
-
-                      {seoResults.urlsList.length > 0 && (
-                        <div className="bg-white/[0.03] border-white/[0.08] rounded-3xl p-6 md:p-8 overflow-hidden">
-                          <div className="mb-4">
-                            <h2 className="text-base font-bold text-foreground">Sitemap URL Audit Sample</h2>
-                            <p className="text-xs text-foreground/45">Detailed parameter checklist on crawled sitemap routes</p>
-                          </div>
-                          <div className="overflow-x-auto">
-                            <table className="w-full text-left border-collapse text-xs">
-                              <thead>
-                                <tr className="border-b border-white/[0.08] text-foreground/40 font-mono text-[9px] uppercase tracking-wider">
-                                  <th className="py-3 pr-4 font-bold">Audited Endpoint</th>
-                                  <th className="py-3 px-3 text-center font-bold">Score</th>
-                                  <th className="py-3 px-3 text-center font-bold">Status</th>
-                                  <th className="py-3 px-3 text-center font-bold">Title</th>
-                                  <th className="py-3 px-3 text-center font-bold">Meta Description</th>
-                                  <th className="py-3 px-3 text-center font-bold">Headings</th>
-                                  <th className="py-3 pl-3 text-center font-bold">Schema</th>
-                                </tr>
-                              </thead>
-                              <tbody className="divide-y divide-white/5 font-mono text-[11px] text-foreground/80">
-                                {seoResults.urlsList.map((page, index) => {
-                                  let displayPath = page.url;
-                                  try { const parsed = new URL(page.url); displayPath = parsed.pathname === "/" ? "/" : parsed.pathname; } catch { }
-                                  const checks = [!!page.title, !!page.description, page.h1Count === 1, page.status === 200, page.hasSchema];
-                                  const passed = checks.filter(Boolean).length;
-                                  const pageScore = Math.round((passed / checks.length) * 100);
-                                  return (
-                                    <tr key={index} className="hover:bg-white/[0.01] transition-colors">
-                                      <td className="py-3.5 pr-4 truncate max-w-[200px] text-foreground/90 font-medium" title={page.url}>{displayPath}</td>
-                                      <td className="py-3.5 px-3 text-center">
-                                        <span className={`inline-flex items-center justify-center w-8 h-8 rounded-full text-[10px] font-bold ${pageScore >= 80 ? "bg-[#10b981]/10 text-[#10b981]" : pageScore >= 50 ? "bg-amber-400/10 text-amber-400" : "bg-red-400/10 text-red-400"}`}>{pageScore}</span>
-                                      </td>
-                                      <td className="py-3.5 px-3 text-center">
-                                        <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] font-bold ${page.status === 200 ? "bg-[#10b981]/15 text-[#10b981]" : "bg-red-500/15 text-red-400"}`}>{page.status}</span>
-                                      </td>
-                                      <td className="py-3.5 px-3 text-center">{page.title ? <CheckCircle size={13} className="text-[#10b981] mx-auto" /> : <XCircle size={13} className="text-red-400 mx-auto" />}</td>
-                                      <td className="py-3.5 px-3 text-center">{page.description ? <CheckCircle size={13} className="text-[#10b981] mx-auto" /> : <XCircle size={13} className="text-amber-400 mx-auto" />}</td>
-                                      <td className="py-3.5 px-3 text-center text-foreground/45 text-[10px]">H1:{page.h1Count} / H2:{page.h2Count}</td>
-                                      <td className="py-3.5 pl-3 text-center">
-                                        <span className={`inline-block px-2 py-0.5 rounded text-[9px] ${page.hasSchema ? "bg-[#14b8a6]/15 text-[#14b8a6]" : "bg-white/[0.03] text-foreground/35 border border-white/5"}`}>{page.hasSchema ? "JSON-LD" : "None"}</span>
-                                      </td>
-                                    </tr>
-                                  );
-                                })}
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
-                      )}
-
-                      <div className="bg-white/[0.03] border-white/[0.08] rounded-3xl p-6 md:p-8">
-                        <div className="mb-4">
-                          <h2 className="text-base font-bold text-foreground">Sitemap Action Recommendations</h2>
-                          <p className="text-xs text-foreground/45">Inject these semantic and indexation fixes to solidify SEO health</p>
-                        </div>
-                        <div className="space-y-3">
-                          {seoResults.suggestions.map((s, idx) => (
-                            <ActionItemCard key={idx} suggestion={s} />
-                          ))}
-                        </div>
-                      </div>
-                    </motion.div>
+                    <SeoTabContent seoResults={seoResults} />
                   )}
 
                   {seoResults?.indiaTelemetry && activeSection === "india" && (
@@ -761,54 +604,18 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
                     <SecurityTab security={seoResults.security} />
                   )}
 
-                  {!leadCaptured && showLeadForm && (
-                    <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="bg-gradient-to-tr from-brand-primary/10 to-[#14b8a6]/10 border border-white/[0.08] rounded-3xl p-6 md:p-8 backdrop-blur-xl relative text-left">
-                      <div className="absolute top-3 right-4">
-                        <button type="button" onClick={() => setShowLeadForm(false)} className="text-foreground/45 hover:text-foreground text-xs font-mono">Dismiss</button>
-                      </div>
-                      <div className="max-w-xl">
-                        <h2 className="text-base font-bold text-foreground mb-1.5 flex items-center gap-2">
-                          <Sparkles size={16} className="text-[#00d2ff]" />
-                          Download Premium SEO Audit Blueprint
-                        </h2>
-                        <p className="text-xs text-foreground/50 mb-5 leading-relaxed font-light">
-                          Get a detailed custom PDF outlining a complete diagnostic strategy for your domain, optimized for Indian network scaling and DPDP legislation.
-                        </p>
-                        
-                        <form onSubmit={handleLeadSubmit} className="flex flex-col sm:flex-row gap-3">
-                          <div className="flex-1">
-                            <input type="email" required placeholder="Business Email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full bg-white/80 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-4 py-3 text-xs text-foreground placeholder:text-foreground/40 focus:border-brand-primary/50 focus:outline-none focus:ring-1 focus:ring-brand-primary/20" />
-                          </div>
-                          <div className="flex-1">
-                            <input type="text" required placeholder="Company Name" value={company} onChange={(e) => setCompany(e.target.value)} className="w-full bg-white/80 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.08] rounded-xl px-4 py-3 text-xs text-foreground placeholder:text-foreground/40 focus:border-brand-primary/50 focus:outline-none focus:ring-1 focus:ring-brand-primary/20" />
-                          </div>
-                          <button type="submit" disabled={leadSubmitting} className="px-5 py-3 bg-brand-primary hover:bg-brand-primary/90 transition-all font-bold text-xs uppercase tracking-wider text-white rounded-xl disabled:opacity-50 shrink-0">
-                            {leadSubmitting ? "Generating..." : "Get PDF Blueprint"}
-                          </button>
-                        </form>
-                        {leadError && <p className="text-red-400 text-[10px] mt-2 font-mono">{leadError}</p>}
-                      </div>
-                    </motion.div>
-                  )}
-
-                  {!showLeadForm && (
-                    <div className="text-center pt-4">
-                      <button onClick={() => setShowLeadForm(true)} className="px-8 py-4 bg-gradient-to-r from-brand-primary to-[#00d2ff] hover:shadow-[0_0_35px_rgba(26,109,214,0.4)] shadow-[0_0_15px_rgba(26,109,214,0.2)] rounded-full font-bold text-sm tracking-widest text-white transition-all duration-300 hover:scale-[1.02] inline-flex items-center gap-2 uppercase">
-                        <Download size={14} />
-                        Export Full Audit Report
-                      </button>
-                    </div>
-                  )}
-
-                  {leadCaptured && (
-                    <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="p-6 bg-white/60 dark:bg-white/[0.03] border-green-500/25 dark:border-[#10b981]/25 rounded-3xl text-center backdrop-blur-xl shadow-sm">
-                      <CheckCircle className="text-[#10b981] mx-auto mb-3" size={24} />
-                      <h4 className="text-sm font-bold text-foreground">SEO Audit PDF Dispatched!</h4>
-                      <p className="text-xs text-foreground/45 mt-1 max-w-sm mx-auto font-light">
-                        We have dispatched your custom technical audit blueprint to {email}. Please review your inbox folder shortly.
-                      </p>
-                    </motion.div>
-                  )}
+                  <LeadForm
+                    leadCaptured={leadCaptured}
+                    showLeadForm={showLeadForm}
+                    setShowLeadForm={setShowLeadForm}
+                    email={email}
+                    setEmail={setEmail}
+                    company={company}
+                    setCompany={setCompany}
+                    leadSubmitting={leadSubmitting}
+                    handleLeadSubmit={handleLeadSubmit}
+                    leadError={leadError}
+                  />
                 </motion.div>
               )}
             </AnimatePresence>

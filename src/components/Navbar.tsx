@@ -21,7 +21,7 @@ export default function Navbar() {
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   useEffect(() => {
-    setMounted(true);
+    setTimeout(() => setMounted(true), 0);
     
     const onScroll = () => {
       setScrolled(window.scrollY > 50);

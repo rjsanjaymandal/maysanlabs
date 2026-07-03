@@ -16,7 +16,9 @@ export default function GlitchText({
   glitchInterval = 3000,
 }: GlitchTextProps) {
   const textRef = useRef(text);
-  textRef.current = text;
+  useEffect(() => {
+    textRef.current = text;
+  }, [text]);
   const [displayText, setDisplayText] = useState(text);
   const [isGlitching, setIsGlitching] = useState(false);
 

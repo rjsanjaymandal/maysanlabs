@@ -73,7 +73,7 @@ function cacheFirstThenNetwork(request) {
           caches.open(DYNAMIC_CACHE).then(function(cache) {
             cache.put(request, cloned).catch(function() {});
           });
-        } catch (e) {}
+        } catch {}
       }
       return response;
     }).catch(function() {
@@ -90,7 +90,7 @@ function networkFirstWithFallback(request) {
         caches.open(DYNAMIC_CACHE).then(function(cache) {
           cache.put(request, cloned).catch(function() {});
         });
-      } catch (e) {}
+      } catch {}
     }
     return response;
   }).catch(function() {

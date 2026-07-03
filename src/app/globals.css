@@ -43,15 +43,11 @@ html:not(.dark) .text-dim-med { color: #4F617A !important; }
 html:not(.dark) .text-dim-low { color: #8D9CAC !important; }
 html:not(.dark) .text-ghost { color: #8D9CAC !important; }
 html:not(.dark) .input-std::placeholder { color: #8D9CAC !important; }
-html:not(.dark) .theme-btn-ghost { color: #405168 !important; }
+
 /* announcement-bar intentionally uses var(--brand-light) — keep its brand color */
 
 /* ─── Readable Font Size Minimums (12px minimum for all readable content) ─── */
-.badge-std { font-size: 11px !important; }
 .label-mono { font-size: 11px !important; }
-.label-system { font-size: 11px !important; }
-.badge { font-size: 11px !important; }
-.announcement-bar { font-size: 11px !important; }
 
 /* ─── Desktop Touch Target Size Minimums ─── */
 @media (min-width: 769px) {
@@ -271,11 +267,6 @@ html:not(.dark) .text-white\/\[0\.02\] {
   /* ─── Standardized Border ─── */
   .border-std { @apply border border-white/10; }
   .border-std-hover { @apply hover:border-white/20; }
-
-  /* ─── Standardized Section Label ─── */
-  .label-section {
-    @apply inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider;
-  }
 
   /* ─── Glass Card Surfaces ─── */
   .card-glass { @apply bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] backdrop-blur-xl shadow-sm; }

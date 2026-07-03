@@ -14,7 +14,6 @@ const PALETTE = {
   BORDER: "D1D5DB",
 };
 
-const SLIDE_W = 13.333;
 const CONTENT_W = 12.333;
 const CONTENT_X = 0.5;
 const HEADER_H = 1.1;
@@ -180,9 +179,9 @@ function renderDataMatrix(pptx: pptxgen, slide: pptxgen.Slide, slideData: DataMa
           align: (isHeader || cIdx === 0 || /^[$€£\d%]/.test(cell) ? "center" : "left") as "left" | "center",
           fontSize: isHeader ? 9 : 8.5,
           fontFace: "Arial",
-          margin: [2, 4, 2, 4] as [number, number, number, number],
+          margin: [2, 4, 2, 4],
           shrinkText: true,
-          valign: "middle" as "middle",
+          valign: "middle" as const,
         },
       };
     });

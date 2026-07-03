@@ -45,7 +45,7 @@ function isNumeric(val: string): boolean {
   return /^[$€£]?\d[\d,.]*\s*[%KkMmBb]?$/.test(val.trim());
 }
 
-function inferTitle(headers: string[], firstRow: string[]): string {
+function inferTitle(headers: string[]): string {
   const h = headers.map((h) => h.toLowerCase());
   if (h.includes("metric") || h.includes("kpi")) return "Key Metrics";
   if (h.includes("revenue") || h.includes("sales")) return "Revenue Report";
@@ -109,7 +109,7 @@ function tryParseCSV(raw: string): ParseSuccess | null {
   const dataRows = lines.slice(1).map((l) => splitCSVLine(l, delimiter)).filter((r) => r.length >= 2);
   if (dataRows.length === 0) return null;
 
-  const label = inferTitle(headers, dataRows[0]);
+  const label = inferTitle(headers);
   const allRows = [headers, ...dataRows];
   const colW = smartColWidths(allRows);
 
@@ -150,7 +150,7 @@ function tryParseMarkdownTable(raw: string): ParseSuccess | null {
   const dataRows = tableLines.slice(separatorIdx + 1).map(parseRow).filter((r) => r.length >= 2);
   if (dataRows.length === 0) return null;
 
-  const label = inferTitle(headers, dataRows[0] || []);
+  const label = inferTitle(headers);
   const allRows = [headers, ...dataRows];
   const colW = smartColWidths(allRows);
 
