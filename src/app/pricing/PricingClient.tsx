@@ -67,7 +67,7 @@ export default function PricingClient() {
       <section className="pt-32 pb-20 relative">
         <div className="container-main relative">
           <div className="max-w-5xl mx-auto">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+            <span className="badge-section mb-6">
               <IndianRupee size={12} />
               Pricing
             </span>

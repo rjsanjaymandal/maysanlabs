@@ -127,7 +127,7 @@ export default function HeadlessRoiClient() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
               {/* Sliders Box */}
-              <div className="lg:col-span-7 bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 md:p-8 space-y-6 backdrop-blur-xl shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg">
+              <div className="lg:col-span-7 card-glass rounded-3xl p-6 md:p-8 space-y-6 card-hover">
                 <div>
                   <label htmlFor="sales-slider" className="flex justify-between text-sm font-semibold mb-2">
                     <span>Monthly Store Revenue</span>
@@ -211,7 +211,7 @@ export default function HeadlessRoiClient() {
               </div>
 
               {/* Calculations Box */}
-              <div className="lg:col-span-5 bg-white/60 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.1] rounded-3xl p-6 md:p-8 flex flex-col justify-between relative overflow-hidden backdrop-blur-xl shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg">
+              <div className="lg:col-span-5 card-glass-accent rounded-3xl p-6 md:p-8 flex flex-col justify-between relative overflow-hidden card-hover">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 blur-3xl pointer-events-none" />
 
                 <div className="space-y-6 relative z-10">

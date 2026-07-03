@@ -17,7 +17,7 @@ export default function CareersClient() {
       <section className="pt-32 pb-20 relative">
         <div className="container-main relative">
           <div className="max-w-5xl mx-auto">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+            <span className="badge-section mb-6">
               <Rocket size={12} />
               Join the Lab
             </span>
@@ -62,7 +62,7 @@ export default function CareersClient() {
       <section id="openings" className="py-16 md:py-24">
         <div className="container-main">
           <div className="mb-12 max-w-5xl mx-auto">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
+            <span className="badge-section mb-4">
               <Target size={12} />
               Opportunities
             </span>

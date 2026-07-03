@@ -61,7 +61,7 @@ export default function EduMaysanClient() {
             className="max-w-3xl"
           >
             <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider">
+              <span className="badge-section">
                 <GraduationCap size={12} />
                 Live Product
               </span>

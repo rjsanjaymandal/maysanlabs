@@ -44,7 +44,7 @@ export default function PrivacyPage() {
       <Navbar />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div className="container-main max-w-3xl relative pt-32 pb-20">
-        <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-8 md:p-12 backdrop-blur-xl shadow-sm">
+        <div className="card-glass rounded-3xl p-8 md:p-12">
           <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
         <div className="prose prose-invert max-w-none space-y-6 text-foreground/70">
           <p><strong>Last updated:</strong> May 2026</p>

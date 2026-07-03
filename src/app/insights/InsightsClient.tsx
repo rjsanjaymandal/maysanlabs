@@ -103,7 +103,7 @@ export default function InsightsClient() {
         
         <div className="container-main relative">
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+            <span className="badge-section mb-6">
               <Activity size={12} />
               Business Data
             </span>
@@ -123,8 +123,8 @@ export default function InsightsClient() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {insights.map((item, index) => (
               <motion.div
-                key={index}
-                className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-6 hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg backdrop-blur-xl shadow-sm transition-all duration-300 group"
+                key={item.id}
+                className="card-glass rounded-2xl p-6 card-hover group"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -164,7 +164,7 @@ export default function InsightsClient() {
             className="flex items-center justify-between mb-12"
           >
             <div>
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
+              <span className="badge-section mb-4">
                 <BookOpen size={12} />
                 Latest Articles
               </span>
@@ -191,7 +191,7 @@ export default function InsightsClient() {
               >
                 <SafeLink
                   href={`/blog/${post.slug}`}
-                  className="block bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-6 h-full hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg backdrop-blur-xl shadow-sm transition-all duration-300 group"
+                  className="block card-glass rounded-2xl p-6 h-full card-hover group"
                 >
                   <div className="flex flex-col h-full gap-4">
                     <div className="flex items-center gap-3 flex-wrap">
@@ -242,7 +242,7 @@ export default function InsightsClient() {
             className="flex items-center justify-between mb-12"
           >
             <div>
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
+              <span className="badge-section mb-4">
                 <Briefcase size={12} />
                 Case Studies
               </span>
@@ -269,7 +269,7 @@ export default function InsightsClient() {
               >
                 <SafeLink
                   href={`/case-studies/${study.slug}`}
-                  className="block bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-6 h-full hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg backdrop-blur-xl shadow-sm transition-all duration-300 group"
+                  className="block card-glass rounded-2xl p-6 h-full card-hover group"
                 >
                   <div className="flex flex-col h-full gap-4">
                     <div className="flex items-center justify-between">
@@ -334,7 +334,7 @@ export default function InsightsClient() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
+            <span className="badge-section mb-4">
               <LineChart size={12} />
               Analytics Dashboard
             </span>
@@ -351,7 +351,7 @@ export default function InsightsClient() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-6 backdrop-blur-xl shadow-sm"
+              className="card-glass rounded-2xl p-6"
             >
               <div className="flex items-center gap-2 mb-6">
                 <Layers size={16} className="text-brand-primary" />
@@ -386,7 +386,7 @@ export default function InsightsClient() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-6 backdrop-blur-xl shadow-sm"
+              className="card-glass rounded-2xl p-6"
             >
               <div className="flex items-center gap-2 mb-6">
                 <Code2 size={16} className="text-brand-primary" />
@@ -432,7 +432,7 @@ export default function InsightsClient() {
             ].map((stat, i) => (
               <div
                 key={i}
-                className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-xl p-4 text-center backdrop-blur-xl shadow-sm"
+                className="card-glass rounded-xl p-4 text-center"
               >
                 <div className={`inline-flex items-center justify-center w-9 h-9 rounded-lg bg-white/[0.03] ${stat.color} mb-2`}>
                   {stat.icon}

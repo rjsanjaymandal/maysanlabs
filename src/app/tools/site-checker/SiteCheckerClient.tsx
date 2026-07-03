@@ -15,14 +15,12 @@ import { analyzeSitemap } from "@/app/actions/analyzeSitemap";
 import type { SeoAuditResult } from "@/app/actions/analyzeSitemap";
 import type { WebVitalResult } from "@/lib/pagespeed-types";
 
-import { OverallScoreCircle, MetricBadge, MiniScoreCard } from "./components/metric-display";
-import { SpeedSimulator } from "./components/speed-simulator";
-import { HeadingsHierarchyMap, SchemaMarkupGraph, CrawlerRadar, GoogleSearchPreview } from "./components/seo-widgets";
-import { ActionItemCard } from "./components/action-item-card";
-import { IndianMarketTelemetryHub } from "./components/india-telemetry";
-import { SecurityTab } from "./components/security-tab";
-import { RadarChart } from "./components/charts";
-import { ScanRecord, perfSteps, seoSteps, metricInfo, HISTORY_KEY, MAX_HISTORY, loadHistory, getLabel } from "./components/constants";
+import {
+  ActionItemCard, RadarChart, SpeedSimulator, OverallScoreCircle, MetricBadge, MiniScoreCard,
+  HeadingsHierarchyMap, SchemaMarkupGraph, CrawlerRadar, GoogleSearchPreview,
+  IndianMarketTelemetryHub, SecurityTab,
+  ScanRecord, perfSteps, seoSteps, metricInfo, HISTORY_KEY, MAX_HISTORY, loadHistory, getLabel,
+} from "./components";
 
 export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string }) {
   const [url, setUrl] = useState(initialUrl ?? "");
@@ -818,22 +816,22 @@ export default function SiteCheckerClient({ initialUrl }: { initialUrl?: string 
             {!scanning && !perfResults && !seoResults && (
               <div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-brand-primary/40 dark:hover:border-brand-primary/30 transition-colors">
+                  <div className="card-glass rounded-3xl p-6 text-center card-hover">
                     <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center mx-auto mb-3.5"><Gauge size={18} className="text-brand-primary" /></div>
                     <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">Core Web Vitals</h3>
                     <p className="text-[10px] text-foreground/45 leading-relaxed font-light">Interactive speeds including LCP, INP, CLS, and latency checks.</p>
                   </div>
-                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-brand-primary/40 dark:hover:border-brand-primary/30 transition-colors">
+                  <div className="card-glass rounded-3xl p-6 text-center card-hover">
                     <div className="w-10 h-10 rounded-xl bg-[#14b8a6]/10 flex items-center justify-center mx-auto mb-3.5"><BarChart3 size={18} className="text-[#14b8a6]" /></div>
                     <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">PSI / Lighthouse</h3>
                     <p className="text-[10px] text-foreground/45 leading-relaxed font-light">Fidelity grades on Accessibility, Best Practices, and performance audits.</p>
                   </div>
-                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-brand-primary/40 dark:hover:border-brand-primary/30 transition-colors">
+                  <div className="card-glass rounded-3xl p-6 text-center card-hover">
                     <div className="w-10 h-10 rounded-xl bg-[#10b981]/10 flex items-center justify-center mx-auto mb-3.5"><FileText size={18} className="text-[#10b981]" /></div>
                     <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">Sitemap Audit</h3>
                     <p className="text-[10px] text-foreground/45 leading-relaxed font-light">Crawls robots and XML sitemaps to verify meta headers and SSL encryption.</p>
                   </div>
-                  <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 text-center hover:border-brand-primary/40 dark:hover:border-brand-primary/30 transition-colors">
+                  <div className="card-glass rounded-3xl p-6 text-center card-hover">
                     <div className="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center mx-auto mb-3.5"><Shield size={18} className="text-brand-primary" /></div>
                     <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-1">Rich Indexation</h3>
                     <p className="text-[10px] text-foreground/45 leading-relaxed font-light">Scans structured JSON-LD schemas and headings outlines required for snippets.</p>

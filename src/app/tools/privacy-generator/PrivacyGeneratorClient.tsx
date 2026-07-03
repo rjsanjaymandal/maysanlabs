@@ -158,7 +158,7 @@ If you have any queries regarding any of our terms, please contact us at: ${supp
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
               {/* Form Config Block */}
-              <div className="lg:col-span-5 bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 space-y-4 backdrop-blur-xl shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg">
+              <div className="lg:col-span-5 card-glass rounded-3xl p-6 space-y-4 card-hover">
                 <h3 className="text-sm font-bold text-foreground mb-2 flex items-center gap-2">
                   <FileSignature size={16} className="text-brand-primary" />
                   Legal Parameters
@@ -253,7 +253,7 @@ If you have any queries regarding any of our terms, please contact us at: ${supp
               </div>
 
               {/* Dynamic Preview Area */}
-              <div className="lg:col-span-7 bg-white/60 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.1] rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden backdrop-blur-xl shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg">
+              <div className="lg:col-span-7 card-glass-accent rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden card-hover">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 blur-3xl pointer-events-none" />
 
                 <div>

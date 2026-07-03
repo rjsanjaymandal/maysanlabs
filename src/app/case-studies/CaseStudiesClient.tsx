@@ -7,23 +7,7 @@ import ContactFooter from "@/components/ContactFooter";
 import { caseStudies, aggregateStats, categories } from "@/lib/case-studies-data";
 import { ArrowRight, Briefcase, Search, X, Shield, Zap, Building2, ChevronRight } from "lucide-react";
 import Link from "next/link";
-
-const ease = [0.25, 0.46, 0.45, 0.94] as const;
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
-};
+import { staggerContainer, fadeUpHeavy as cardVariants, fadeUp } from "@/lib/motion-variants";
 
 const stats = [
   { icon: Briefcase, label: "Projects Delivered", value: aggregateStats.totalProjects.toString() },
@@ -66,7 +50,7 @@ export default function CaseStudiesClient() {
       <section className="pt-32 pb-16 md:pb-20 relative">
         <div className="container-main relative">
           <motion.div className="max-w-4xl mx-auto text-center" initial="hidden" animate="visible" variants={fadeUp}>
-            <motion.span variants={fadeUp} className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+            <motion.span variants={fadeUp} className="badge-section mb-6">
               <Briefcase size={12} />
               Real-World Impact
             </motion.span>
@@ -122,7 +106,7 @@ export default function CaseStudiesClient() {
         className="py-10 border-y border-white/[0.06] bg-white/[0.01]"
       >
         <div className="container-main">
-          <motion.div variants={containerVariants} className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <motion.div variants={staggerContainer} className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {stats.map((stat) => (
               <motion.div key={stat.label} variants={fadeUp} className="text-center">
                 <stat.icon size={20} className="text-brand-primary mx-auto mb-2" />
@@ -226,7 +210,7 @@ export default function CaseStudiesClient() {
               ) : (
                 <motion.div
                   key={`${activeCategory}-${searchQuery}`}
-                  variants={containerVariants}
+                  variants={staggerContainer}
                   initial="hidden"
                   animate="visible"
                   className="grid grid-cols-1 md:grid-cols-2 gap-6"

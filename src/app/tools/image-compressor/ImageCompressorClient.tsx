@@ -601,7 +601,7 @@ export default function ImageCompressorClient() {
                   <motion.div
                     initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="grid grid-cols-3 gap-4 bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-4 backdrop-blur-xl shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg"
+                    className="grid grid-cols-3 gap-4 card-glass rounded-2xl p-4 card-hover"
                   >
                     <div className="text-center py-2 relative">
                       <div className="absolute right-0 top-1/4 bottom-1/4 w-[1px] bg-white/[0.08]" />

@@ -172,7 +172,7 @@ export default function ScopeEstimatorClient() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
               {/* Stepper Area */}
-              <div className="lg:col-span-7 bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-6 md:p-8 min-h-[400px] flex flex-col justify-between backdrop-blur-xl shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg">
+              <div className="lg:col-span-7 card-glass rounded-3xl p-6 md:p-8 min-h-[400px] flex flex-col justify-between card-hover">
                 <AnimatePresence mode="wait">
                   {currentStep === 1 && (
                     <motion.div
@@ -407,7 +407,7 @@ export default function ScopeEstimatorClient() {
               </div>
 
               {/* Calculator Live Ticker Area */}
-              <div className="lg:col-span-5 bg-white/60 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.1] rounded-3xl p-6 md:p-8 flex flex-col justify-between relative overflow-hidden backdrop-blur-xl shadow-sm hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg">
+              <div className="lg:col-span-5 card-glass-accent rounded-3xl p-6 md:p-8 flex flex-col justify-between relative overflow-hidden card-hover">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-primary/5 blur-3xl pointer-events-none" />
 
                 <div className="space-y-6 relative z-10">

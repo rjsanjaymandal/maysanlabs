@@ -78,12 +78,12 @@ export default function ArchitectureClient() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {layers.map((layer, index) => (
               <motion.div
-                key={index}
+                key={layer.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] backdrop-blur-xl rounded-2xl p-8 hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300 hover:scale-[1.01]"
+                className="group card-glass rounded-2xl p-8 card-hover hover:scale-[1.01]"
               >
                 <div className="flex justify-between items-start mb-6">
                   <div className="w-12 h-12 bg-[var(--glass-chip-bg)] flex items-center justify-center text-foreground/40 rounded-xl group-hover:bg-brand-primary/10 group-hover:text-brand-primary group-hover:border group-hover:border-brand-primary/20 transition-all duration-300">
@@ -122,7 +122,7 @@ export default function ArchitectureClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] backdrop-blur-xl rounded-2xl p-6 hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300 group hover:scale-[1.01]"
+                className="card-glass rounded-2xl p-6 card-hover group hover:scale-[1.01]"
               >
                 <span className="text-xs text-brand-primary/60 font-bold block mb-4 uppercase tracking-widest">Node {node.tag}</span>
                 <h3 className="text-lg font-bold tracking-[-0.015em] text-foreground mb-3 group-hover:text-brand-primary transition-colors">{node.label}</h3>

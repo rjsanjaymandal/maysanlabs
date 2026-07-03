@@ -124,17 +124,7 @@ const beforeAfterData: Record<string, {
   },
 };
 
-const ease = [0.25, 0.46, 0.45, 0.94] as const;
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
-};
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
-};
+import { fadeUp, staggerContainer as stagger } from "@/lib/motion-variants";
 
 function SocialShare({ url, title }: { url: string; title: string }) {
   const encoded = encodeURIComponent(url);
@@ -203,7 +193,7 @@ export default function CaseStudyDetailClient({ study }: { study: CaseStudy }) {
 
           <motion.div className="max-w-3xl" initial="hidden" animate="visible" variants={fadeUp}>
             <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider">
+              <span className="badge-section">
                 {study.category}
               </span>
               <span className="text-foreground/30">&bull;</span>

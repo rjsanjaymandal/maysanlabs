@@ -72,7 +72,7 @@ export default function StartClient() {
                 transition={{ duration: 0.6 }}
                 className="text-center mb-10"
               >
-                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+                <span className="badge-section mb-6">
                   <Send size={12} />
                   Get in Touch
                 </span>

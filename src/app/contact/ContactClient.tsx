@@ -72,7 +72,7 @@ export default function ContactClient() {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+            <span className="badge-section mb-6">
               <Send size={12} />
               Get in Touch
             </span>
@@ -162,7 +162,7 @@ export default function ContactClient() {
               </div>
 
               {/* CTA */}
-              <div className="mt-12 p-6 rounded-2xl bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] backdrop-blur-xl shadow-sm">
+              <div className="mt-12 card-glass rounded-2xl p-6">
                 <h3 className="text-foreground font-bold mb-2">Ready to start?</h3>
                 <p className="text-foreground/50 text-sm mb-4">
                   Get a detailed proposal with timeline and competitive pricing.
@@ -185,7 +185,7 @@ export default function ContactClient() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-8 backdrop-blur-xl shadow-sm">
+              <div className="card-glass rounded-2xl p-8">
                 <h2 className="text-xl font-semibold text-foreground mb-6">Send a Message</h2>
 
                 {isSubmitted ? (

@@ -87,7 +87,7 @@ function ApplyForm() {
   };
 
   return (
-    <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-3xl p-8 backdrop-blur-xl shadow-sm">
+    <div className="card-glass rounded-3xl p-8">
       {!isSubmitted ? (
         <>
           <div className="mb-8">

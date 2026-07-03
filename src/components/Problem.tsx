@@ -63,7 +63,7 @@ export default function Problem() {
             const Icon = arch.icon;
             return (
               <motion.div
-                key={index}
+                key={arch.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

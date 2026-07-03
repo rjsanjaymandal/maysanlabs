@@ -118,7 +118,7 @@ export default function MultiStepForm() {
       </div>
 
       {/* Step Content */}
-      <div className="bg-white/60 dark:bg-white/[0.02] border border-gray-200 dark:border-white/[0.06] rounded-2xl p-8 backdrop-blur-xl shadow-sm">
+      <div className="card-glass rounded-2xl p-8">
         <AnimatePresence mode="wait">
           {currentStep === 1 && (
             <motion.div
