@@ -261,6 +261,14 @@ html:not(.dark) .text-white\/\[0\.02\] {
   .r-radius-md { border-radius: var(--radius-md); }
   .r-radius-lg { border-radius: var(--radius-lg); }
 
+  /* ─── Grid Pattern Background (replaces inline bg-[linear-gradient...] boilerplate) ─── */
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(128,128,128,0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(128,128,128,0.02) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
   /* ─── Standardized Card ─── */
   .card-std {
     @apply bg-white/[0.02] border border-white/5 rounded-2xl p-6 md:p-8 transition-all duration-500;
@@ -304,6 +312,11 @@ html:not(.dark) .text-white\/\[0\.02\] {
   .border-std { @apply border border-white/10; }
   .border-std-hover { @apply hover:border-white/20; }
   .border-accent { @apply border-brand-primary/30; }
+
+  /* ─── Standardized Section Label ─── */
+  .label-section {
+    @apply inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider;
+  }
 
   /* ─── Standardized Input ─── */
   .input-std {
@@ -803,16 +816,6 @@ html, body {
   pointer-events: none;
   z-index: -1;
   opacity: 0.3;
-}
-
-/* ─── Global Brand Vignette Override ─── */
-.brand-vignette {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  pointer-events: none;
-  box-shadow: inset 0 0 150px var(--primary-glow);
-  opacity: 0.2;
 }
 
 @keyframes float-simple {

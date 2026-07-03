@@ -90,7 +90,7 @@ export default function TechNewsFeed({ initialNews }: { initialNews?: NewsItem[]
 
   return (
     <section className="py-16 relative overflow-hidden bg-background">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0" />
       <div className="container-main relative z-10">
         <div className="flex items-center justify-between mb-8">
           <div>

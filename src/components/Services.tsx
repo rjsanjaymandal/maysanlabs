@@ -69,7 +69,7 @@ const services = [
 export default function Services() {
   return (
     <section id="services" className="py-16 md:py-24 relative overflow-hidden bg-background">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0" />
       
       <div className="container-main relative">
         <div className="text-center mb-12 md:mb-16">

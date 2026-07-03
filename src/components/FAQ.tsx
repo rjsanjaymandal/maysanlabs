@@ -106,7 +106,7 @@ export default function FAQ() {
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 aria-expanded={openIndex === index}
                 aria-controls={`faq-panel-${index}`}
-                className={`w-full text-left rounded-[2px] p-5 md:p-6 transition-all duration-300 relative overflow-hidden group border ${
+                className={`w-full text-left rounded-xl p-5 md:p-6 transition-all duration-300 relative overflow-hidden group border ${
                   openIndex === index 
                     ? "bg-brand-primary/[0.02] border-brand-primary/30 shadow-lg shadow-brand-primary/5" 
                     : "bg-[var(--glass-chip-bg)] border-[var(--glass-chip-border)] hover:border-white/15"

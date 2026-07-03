@@ -57,7 +57,7 @@ export default function CaseStudiesClient() {
 
   return (
     <main id="main-content" aria-label="Maysan Labs Case Studies" className="min-h-screen bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-brand-primary/5 rounded-full blur-[180px] pointer-events-none" />
 
       <Navbar />

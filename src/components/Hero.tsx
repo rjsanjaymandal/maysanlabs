@@ -67,7 +67,7 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-24 pb-16 overflow-hidden bg-background">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[140px] pointer-events-none" />
       
       <div className="container-main relative z-10 flex flex-col items-center text-center max-w-6xl mx-auto">
@@ -77,7 +77,7 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
           className="mb-6"
         >
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[2px] bg-white/70 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 text-foreground/70 text-xs sm:text-sm font-medium shadow-sm">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/70 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 text-foreground/70 text-xs sm:text-sm font-medium shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-brand-primary" />
             <span>maysanlabs — trusted by 50+ business leaders globally</span>
           </span>
@@ -119,14 +119,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="mb-8 w-full max-w-3xl bg-white/50 dark:bg-white/[0.01] border border-gray-100 dark:border-white/[0.06] rounded-[2px] p-4 sm:p-6 backdrop-blur-md shadow-sm"
+          className="mb-8 w-full max-w-3xl bg-white/50 dark:bg-white/[0.01] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-4 sm:p-6 backdrop-blur-md shadow-sm"
         >
-          <div className="inline-flex flex-wrap items-center justify-center gap-1.5 p-1.5 bg-gray-100/50 dark:bg-white/[0.02] border border-gray-200/50 dark:border-white/[0.05] rounded-[2px] mb-6">
+          <div className="inline-flex flex-wrap items-center justify-center gap-1.5 p-1.5 bg-gray-100/50 dark:bg-white/[0.02] border border-gray-200/50 dark:border-white/[0.05] rounded-xl mb-6">
             {goals.map((g) => (
               <button
                 key={g.id}
                 onClick={() => setActiveGoal(g.id)}
-                className={`px-5 py-2.5 rounded-[2px] text-xs sm:text-sm font-semibold transition-all duration-200 ${
+                className={`px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 ${
                   activeGoal === g.id
                     ? "bg-brand-primary text-white shadow-lg shadow-brand-primary/25 scale-[1.01]"
                     : "text-foreground/50 hover:text-foreground hover:bg-white/[0.03]"
@@ -149,7 +149,7 @@ export default function Hero() {
               >
                 <div className="md:col-span-3">
                   <h2 className="text-base sm:text-lg font-bold text-foreground mb-2 flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-[2px] bg-brand-primary/10 flex items-center justify-center text-brand-primary">
+                    <div className="w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-primary">
                       <GoalIcon size={16} />
                     </div>
                     {currentGoal.title}
@@ -159,7 +159,7 @@ export default function Hero() {
                   </p>
                 </div>
 
-                <div className="p-4 rounded-[2px] bg-brand-primary/[0.03] border border-brand-primary/10 text-center flex flex-col justify-center h-full">
+                <div className="p-4 rounded-xl bg-brand-primary/[0.03] border border-brand-primary/10 text-center flex flex-col justify-center h-full">
                   <span className="text-xs font-bold text-brand-primary uppercase tracking-wider block mb-1">Impact</span>
                   <span className="text-sm sm:text-base font-black text-foreground">{currentGoal.metric}</span>
                   <span className="text-[10px] text-foreground/45 mt-1 leading-snug font-medium block">
@@ -178,7 +178,7 @@ export default function Hero() {
           className="flex flex-wrap justify-center gap-2.5 mb-8"
         >
           {benefits.map((benefit, i) => (
-            <div key={i} className="flex items-center gap-1.5 md:gap-2 text-foreground/60 text-[11px] sm:text-xs md:text-sm px-3.5 py-1.5 bg-white/70 dark:bg-white/[0.04] rounded-[2px] shadow-sm border border-gray-100 dark:border-white/10 font-medium">
+            <div key={i} className="flex items-center gap-1.5 md:gap-2 text-foreground/60 text-[11px] sm:text-xs md:text-sm px-3.5 py-1.5 bg-white/70 dark:bg-white/[0.04] rounded-full shadow-sm border border-gray-100 dark:border-white/10 font-medium">
               <CheckCircle2 size={12} className="text-brand-primary shrink-0" />
               {benefit}
             </div>
@@ -191,12 +191,12 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto px-4 sm:px-0"
         >
-          <Link href="/start" onClick={() => { if (typeof window !== "undefined") { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "hero_discovery_call" }); } }} className="w-full sm:w-auto bg-brand-primary text-white px-7 py-3 rounded-[2px] font-bold hover:bg-brand-primary/90 hover:shadow-lg hover:shadow-brand-primary/20 transition-all flex items-center justify-center gap-2 text-sm">
+          <Link href="/start" onClick={() => { if (typeof window !== "undefined") { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "hero_discovery_call" }); } }} className="w-full sm:w-auto bg-brand-primary text-white px-7 py-3 rounded-full font-bold hover:bg-brand-primary/90 hover:shadow-lg hover:shadow-brand-primary/20 transition-all flex items-center justify-center gap-2 text-sm">
             <span>Book a free 30-min discovery call</span>
             <ArrowRight size={14} className="shrink-0" />
           </Link>
           
-          <Link href="/case-studies" className="w-full sm:w-auto bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] text-foreground px-6 py-3 rounded-[2px] font-bold hover:bg-gray-50 dark:hover:bg-white/[0.08] hover:border-brand-primary/30 dark:hover:border-brand-primary/30 hover:text-brand-primary hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2 shadow-sm text-sm">
+          <Link href="/case-studies" className="w-full sm:w-auto bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] text-foreground px-6 py-3 rounded-full font-bold hover:bg-gray-50 dark:hover:bg-white/[0.08] hover:border-brand-primary/30 dark:hover:border-brand-primary/30 hover:text-brand-primary hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2 shadow-sm text-sm">
             <Play size={10} fill="currentColor" className="shrink-0" />
             <span>View Our Work</span>
           </Link>

@@ -40,7 +40,7 @@ export default function EduMaysanClient() {
 
   return (
     <main id="main-content" aria-label="Edu-Maysan LMS Product Information" className="min-h-screen bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0" />
       <Navbar />
       
       {/* Hero Section */}

@@ -90,7 +90,7 @@ export default async function ProgrammaticLandingPage({ params }: LandingPagePro
 
       <main id="main-content" className="min-h-screen bg-background text-foreground flex flex-col relative overflow-hidden">
         {/* Background Grid Pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.015)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0" />
         <Navbar />
 
         {/* Hero Section */}

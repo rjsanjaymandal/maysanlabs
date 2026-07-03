@@ -59,7 +59,7 @@ const plans = [
 export default function PricingClient() {
   return (
     <main id="main-content" aria-label="Maysan Labs Pricing" className="bg-background min-h-screen relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.02)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0" />
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] max-sm:w-[300px] max-sm:h-[300px] bg-brand-primary/5 rounded-full blur-[140px] pointer-events-none" />
       
       <Navbar />
@@ -89,7 +89,7 @@ export default function PricingClient() {
               return (
                 <div
                   key={plan.name}
-                  className={`bg-white/70 dark:bg-white/[0.02] border rounded-[2px] p-8 flex flex-col h-full relative transition-all duration-300 backdrop-blur-sm shadow-sm hover:shadow-md ${
+                  className={`bg-white/70 dark:bg-white/[0.02] border rounded-2xl p-8 flex flex-col h-full relative transition-all duration-300 backdrop-blur-sm shadow-sm hover:shadow-md ${
                     plan.featured
                       ? "border-brand-primary/40 bg-brand-primary/[0.03] lg:-mt-8 shadow-lg"
                       : "border-gray-100 dark:border-white/[0.06]"
@@ -103,7 +103,7 @@ export default function PricingClient() {
                     </div>
                   )}
 
-                  <div className={`w-12 h-12 rounded-[2px] flex items-center justify-center mb-6 bg-gradient-to-br ${plan.color}`}>
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 bg-gradient-to-br ${plan.color}`}>
                     <Icon size={20} className="text-white" />
                   </div>
 
@@ -118,7 +118,7 @@ export default function PricingClient() {
                   <ul className="space-y-3.5 mb-10 flex-1">
                     {plan.features.map((f, i) => (
                       <li key={i} className="flex items-start gap-3 text-sm text-foreground/70">
-                        <div className="w-5 h-5 rounded-[2px] bg-brand-primary/10 flex items-center justify-center text-brand-primary shrink-0 mt-0.5">
+                        <div className="w-5 h-5 rounded-md bg-brand-primary/10 flex items-center justify-center text-brand-primary shrink-0 mt-0.5">
                           <Check size={10} />
                         </div>
                         {f}
@@ -128,7 +128,7 @@ export default function PricingClient() {
 
                   <Link
                     href="/start"
-                    className={`flex items-center justify-center gap-2 w-full py-3 rounded-[2px] font-semibold transition-colors ${
+                    className={`flex items-center justify-center gap-2 w-full py-3 rounded-lg font-semibold transition-colors ${
                       plan.featured
                         ? "bg-brand-primary text-white hover:bg-brand-primary/90"
                         : "bg-white/80 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 text-foreground hover:bg-white dark:hover:bg-white/[0.08]"
