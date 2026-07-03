@@ -1,14 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import SaaSNodeVisual from "@/components/SaaSNodeVisual";
+import { motion } from "framer-motion";
 import { 
   ArrowRight, 
   Play, 
-  CheckCircle2, 
-  ArrowDown,
   Cpu,
   TrendingUp,
   Smartphone,
@@ -61,156 +57,101 @@ const goals = [
 ];
 
 export default function Hero() {
-  const [activeGoal, setActiveGoal] = useState("saas");
-  const currentGoal = goals.find((g) => g.id === activeGoal) || goals[0];
-  const GoalIcon = currentGoal.icon;
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-24 pb-16 overflow-hidden bg-background">
-      <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[140px] pointer-events-none" />
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-background border-b border-white/[0.02]">
+      {/* Broken Grid Background - Asymmetrical */}
+      <div className="absolute inset-y-0 left-0 w-[90%] bg-grid-pattern pointer-events-none z-0 opacity-40" />
       
-      <div className="container-main relative z-10 flex flex-col items-center text-center max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-6"
-        >
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/70 dark:bg-white/[0.05] border border-gray-200 dark:border-white/10 text-foreground/70 text-xs sm:text-sm font-medium shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-primary" />
-            <span>maysanlabs — trusted by 50+ business leaders globally</span>
-          </span>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-6"
-        >
-          <h1 className="font-sans heading-xl text-foreground max-w-4xl tracking-tight leading-[1.1]">
-            <span className="text-foreground/60 text-base sm:text-lg font-semibold block mb-2">Maysan Labs</span>
-            We build the <span className="bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(26,109,214,0.25)] dark:drop-shadow-[0_0_20px_rgba(26,109,214,0.4)]">custom apps, websites & dashboards</span> that run your business
-          </h1>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-2xl mx-auto"
-        >
-          <p className="text-foreground/60 text-sm sm:text-base md:text-lg leading-relaxed font-medium">
-            maysanlabs is a software development studio. You focus on growing your business. We design, build, and ship the software — from internal dashboards and automated workflows to customer-facing apps and websites. No coding required from you.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25 }}
-          className="mt-8 mb-8 w-full max-w-4xl"
-        >
-          <SaaSNodeVisual />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.35 }}
-          className="mb-8 w-full max-w-3xl bg-white/50 dark:bg-white/[0.01] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-4 sm:p-6 backdrop-blur-md shadow-sm"
-        >
-          <div className="inline-flex flex-wrap items-center justify-center gap-1.5 p-1.5 bg-gray-100/50 dark:bg-white/[0.02] border border-gray-200/50 dark:border-white/[0.05] rounded-xl mb-6">
-            {goals.map((g) => (
-              <button
-                key={g.id}
-                onClick={() => setActiveGoal(g.id)}
-                className={`px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 ${
-                  activeGoal === g.id
-                    ? "bg-brand-primary text-white shadow-lg shadow-brand-primary/25 scale-[1.01]"
-                    : "text-foreground/50 hover:text-foreground hover:bg-white/[0.03]"
-                }`}
-              >
-                {g.tabText}
-              </button>
-            ))}
-          </div>
-
-          <div className="mt-6 text-left min-h-[170px] flex flex-col justify-between">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeGoal}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 10 }}
-                transition={{ duration: 0.25 }}
-                className="grid grid-cols-1 md:grid-cols-4 gap-6 items-start"
-              >
-                <div className="md:col-span-3">
-                  <h2 className="text-base sm:text-lg font-bold text-foreground mb-2 flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center text-brand-primary">
-                      <GoalIcon size={16} />
-                    </div>
-                    {currentGoal.title}
-                  </h2>
-                  <p className="text-xs sm:text-sm text-foreground/60 leading-relaxed font-medium">
-                    {currentGoal.desc}
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-xl bg-brand-primary/[0.03] border border-brand-primary/10 text-center flex flex-col justify-center h-full">
-                  <span className="text-xs font-bold text-brand-primary uppercase tracking-wider block mb-1">Impact</span>
-                  <span className="text-sm sm:text-base font-black text-foreground">{currentGoal.metric}</span>
-                  <span className="text-[10px] text-foreground/45 mt-1 leading-snug font-medium block">
-                    {currentGoal.detail}
-                  </span>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.45 }}
-          className="flex flex-wrap justify-center gap-2.5 mb-8"
-        >
-          {benefits.map((benefit, i) => (
-            <div key={i} className="flex items-center gap-1.5 md:gap-2 text-foreground/60 text-[11px] sm:text-xs md:text-sm px-3.5 py-1.5 bg-white/70 dark:bg-white/[0.04] rounded-full shadow-sm border border-gray-100 dark:border-white/10 font-medium">
-              <CheckCircle2 size={12} className="text-brand-primary shrink-0" />
-              {benefit}
-            </div>
-          ))}
-        </motion.div>
-  
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto px-4 sm:px-0"
-        >
-          <Link href="/start" onClick={() => { if (typeof window !== "undefined") { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "hero_discovery_call" }); } }} className="w-full sm:w-auto bg-brand-primary text-white px-7 py-3 rounded-full font-bold hover:bg-brand-primary/90 hover:shadow-lg hover:shadow-brand-primary/20 transition-all flex items-center justify-center gap-2 text-sm">
-            <span>Book a free 30-min discovery call</span>
-            <ArrowRight size={14} className="shrink-0" />
-          </Link>
+      {/* Aggressive Right-Side Tension Gradient */}
+      <div className="absolute top-0 right-0 w-[30vw] h-full bg-gradient-to-l from-brand-primary/[0.15] to-transparent blur-[120px] pointer-events-none z-0" />
+      
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 md:px-12 grid grid-cols-12 gap-8 pt-32 pb-24">
+        {/* The 90% Block - Extreme Left Alignment */}
+        <div className="col-span-12 lg:col-span-11 xl:col-span-10 flex flex-col items-start text-left">
           
-          <Link href="/case-studies" className="w-full sm:w-auto bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] text-foreground px-6 py-3 rounded-full font-bold hover:bg-gray-50 dark:hover:bg-white/[0.08] hover:border-brand-primary/30 dark:hover:border-brand-primary/30 hover:text-brand-primary hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2 shadow-sm text-sm">
-            <Play size={10} fill="currentColor" className="shrink-0" />
-            <span>View Our Work</span>
-          </Link>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-8"
+          >
+            <span className="inline-flex items-center gap-3 px-0 py-1 border-l-2 border-brand-primary pl-4 text-foreground/60 text-xs font-bold tracking-[0.2em] uppercase">
+              <span className="w-1.5 h-1.5 rounded-none bg-brand-primary animate-pulse" />
+              Maysan Labs / Enterprise Engineering
+            </span>
+          </motion.div>
 
-        <div className="mt-12 md:mt-16">
-          <Link href="#services" className="text-foreground/45 text-xs hover:text-foreground/75 transition-colors flex flex-col items-center gap-1.5 font-bold uppercase tracking-wider">
-            <span>Explore Services</span>
-            <ArrowDown size={12} className="animate-bounce" />
-          </Link>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            className="mb-10 w-full"
+          >
+            <h1 className="font-sans text-[clamp(2.5rem,7vw,7rem)] font-black text-foreground tracking-[-0.04em] leading-[0.9] w-full">
+              WE BUILD SYSTEMS<br/>
+              <span className="bg-gradient-to-r from-[#1A6DD6] via-[#00d2ff] to-[#10b981] bg-clip-text text-transparent opacity-90 mix-blend-screen">NOT TEMPLATES.</span>
+            </h1>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-2xl border-l border-white/10 pl-6 mb-12"
+          >
+            <p className="text-foreground/60 text-sm sm:text-base md:text-lg leading-relaxed font-medium">
+              You focus on growing your business. We architect the severe, high-performance software that runs it. From isolated SaaS environments to ruthless workflow automation.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-start gap-4 w-full sm:w-auto"
+          >
+            <Link 
+              href="/start" 
+              className="group relative px-8 py-4 bg-foreground text-background font-black text-sm uppercase tracking-widest hover:bg-brand-primary transition-colors duration-300 flex items-center justify-center gap-4 overflow-hidden"
+            >
+              <span className="relative z-10">Initiate Protocol</span>
+              <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            
+            <Link 
+              href="/case-studies" 
+              className="group px-8 py-4 border border-white/10 text-foreground font-black text-sm uppercase tracking-widest hover:border-brand-primary/50 transition-colors duration-300 flex items-center justify-center gap-3 bg-white/[0.01]"
+            >
+              <Play size={12} className="text-brand-primary" />
+              <span>View Archives</span>
+            </Link>
+          </motion.div>
+
+          {/* Fragmented Benefits List */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="mt-16 pt-8 border-t border-white/[0.04] w-full max-w-4xl grid grid-cols-1 sm:grid-cols-3 gap-6"
+          >
+            {benefits.map((benefit, i) => (
+              <div key={i} className="flex flex-col gap-2">
+                <span className="text-[10px] font-black text-brand-primary">0{i + 1}</span>
+                <span className="text-foreground/50 text-xs font-semibold leading-tight">{benefit}</span>
+              </div>
+            ))}
+          </motion.div>
+
+        </div>
+        
+        {/* The 10% Empty Tension Zone (Right Column) */}
+        <div className="hidden lg:block lg:col-span-1 xl:col-span-2 relative h-full border-l border-white/[0.02]">
+          <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 rotate-90 text-[10px] font-mono tracking-[0.3em] text-foreground/20 uppercase whitespace-nowrap">
+            Maysan_Labs_Core_Engine_v3.0
+          </div>
         </div>
       </div>
-
-      <div className="absolute bottom-0 left-0 w-full h-20 md:h-28 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   );
 }
