@@ -179,7 +179,7 @@ function renderDataMatrix(pptx: pptxgen, slide: pptxgen.Slide, slideData: DataMa
           align: (isHeader || cIdx === 0 || /^[$€£\d%]/.test(cell) ? "center" : "left") as "left" | "center",
           fontSize: isHeader ? 9 : 8.5,
           fontFace: "Arial",
-          margin: [2, 4, 2, 4] as [number, number, number, number],
+          margin: [2, 4, 2, 4],
           shrinkText: true,
           valign: "middle" as const,
         },

@@ -100,25 +100,27 @@ export default function Navbar() {
 
   return (
     <>
-      <nav aria-label="Main navigation" className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 border-b ${
+      <nav aria-label="Main navigation" className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
         mounted && scrolled
-          ? "bg-background/95 backdrop-blur-xl py-2 border-white/[0.08]"
-          : "bg-transparent py-4 md:py-6 border-transparent"
+          ? "bg-[var(--bg-dark)]/80 backdrop-blur-xl py-3 shadow-[0_1px_0_rgba(255,255,255,0.05)]"
+          : "bg-transparent py-4 md:py-5"
       }`}>
-        <div className="w-full max-w-[1600px] mx-auto px-6 md:px-12 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="relative h-8 w-8 overflow-hidden flex items-center justify-center border border-white/20 bg-foreground transition-all duration-500 group-hover:scale-95">
+        <div className="container-main flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+            <div className="relative h-8 w-8 md:h-9 md:w-9 rounded-[2px] overflow-hidden flex items-center justify-center border border-white/10 bg-white/5 transition-all duration-300 group-hover:border-brand-primary/30 group-hover:shadow-[0_0_15px_rgba(26,109,214,0.2)]">
               <Image 
                 src="/logo-rounded-v2.webp" 
-                alt="maysanlabs"
+                alt="maysanlabs - Maysan Labs Logo"
                 width={36}
                 height={36}
                 priority
-                className="h-full w-full object-contain filter invert dark:invert-0" 
+                fetchPriority="high"
+                sizes="36px"
+                className="h-full w-full object-contain" 
               />
             </div>
-            <span className="text-sm font-black tracking-[0.2em] uppercase text-foreground/90 transition-colors duration-300 group-hover:text-foreground">
-              Maysan<span className="text-brand-primary">_</span>Labs
+            <span className="text-sm font-semibold tracking-wide text-foreground/90 transition-colors duration-300 group-hover:text-foreground">
+              Maysan <span className="text-brand-primary">Labs</span>
             </span>
           </Link>
 
@@ -128,10 +130,10 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 aria-current={isActive(item.href) ? "page" : undefined}
-                className={`relative px-4 py-2 text-[11px] font-black uppercase tracking-widest transition-all duration-300 border-b-2 ${
+                className={`relative px-3.5 py-2 text-sm font-medium rounded-[2px] transition-all duration-200 ${
                   isActive(item.href)
-                    ? "text-brand-primary border-brand-primary"
-                    : "text-foreground/50 border-transparent hover:text-foreground hover:border-white/20"
+                    ? "text-brand-primary bg-brand-primary/10"
+                    : "text-foreground/50 hover:text-foreground hover:bg-white/[0.04]"
                 }`}
               >
                 {item.name}
@@ -139,29 +141,34 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
             <button
               type="button"
               onClick={() => setIsSearchOpen(true)}
               aria-label="Open search (Cmd+K)"
-              className="text-foreground/40 hover:text-foreground transition-all duration-300"
+              aria-keyshortcuts="Control+K Meta+K"
+              className="w-9 h-9 flex items-center justify-center text-foreground/40 hover:text-foreground rounded-[2px] hover:bg-white/[0.04] transition-all duration-200 focus-ring"
             >
-              <Search size={16} />
+              <Search size={16} aria-hidden="true" />
             </button>
             <ThemeToggle />
             <Link
               href="/start"
-              className="px-6 py-2.5 bg-brand-primary text-background text-[11px] font-black uppercase tracking-widest hover:bg-brand-light transition-all duration-300 flex items-center gap-2"
+              onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "navbar_desktop" }); }}
+              className="inline-flex items-center gap-1.5 px-5 py-2 bg-brand-primary rounded-[2px] text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-primary/90 hover:shadow-[0_0_20px_rgba(26,109,214,0.3)] hover:-translate-y-0.5 active:translate-y-0 focus-ring"
             >
-              Initialize
-              <ChevronRight size={14} className="group-hover:translate-x-1" />
+              Book a Call
+              <ChevronRight size={14} aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-0.5" />
             </Link>
           </div>
 
           <button 
             type="button"
-            className="lg:hidden w-10 h-10 flex items-center justify-center text-foreground/50 hover:text-foreground border border-white/10 transition-all duration-300"
+            className="lg:hidden w-10 h-10 flex items-center justify-center text-foreground/50 hover:text-foreground rounded-[2px] hover:bg-white/[0.04] transition-all duration-200 focus-ring"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation-menu"
           >
             {isOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
