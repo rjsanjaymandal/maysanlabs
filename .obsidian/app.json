@@ -1,0 +1,31 @@
+{
+  "promptDelete": false,
+  "newFileLocation": "current",
+  "newFileFolderPath": "docs",
+  "attachmentFolderPath": "docs/assets",
+  "useMarkdownLinks": true,
+  "showUnsupportedFiles": false,
+  "defaultViewMode": "source",
+  "livePreview": true,
+  "showLineNumber": false,
+  "trashOption": "local",
+  "alwaysUpdateLinks": true,
+  "readableLineLength": false,
+  "showInlineTitle": true,
+  "foldHeading": true,
+  "foldIndent": true,
+  "spellcheck": true,
+  "spellcheckLanguages": ["en-US"],
+  "strictLineBreaks": false,
+  "userIgnoreFilters": [
+    "node_modules/",
+    ".next/",
+    ".git/",
+    "packages/",
+    "scripts/",
+    "public/",
+    ".commandcode/",
+    ".agent/.shared/",
+    ".agent/scripts/__pycache__/"
+  ]
+}

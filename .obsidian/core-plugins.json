@@ -1,0 +1,37 @@
+{
+  "core-plugins": [
+    "file-explorer",
+    "global-search",
+    "switcher",
+    "graph",
+    "backlink",
+    "canvas",
+    "outgoing-link",
+    "tag-pane",
+    "properties",
+    "page-preview",
+    "daily-notes",
+    "templates",
+    "note-composer",
+    "command-palette",
+    "editor-status",
+    "bookmarks",
+    "outline",
+    "word-count",
+    "file-recovery",
+    "sync",
+    "bases"
+  ],
+  "core-plugin-disabled": [
+    "footnotes",
+    "slash-command",
+    "markdown-importer",
+    "zk-prefixer",
+    "random-note",
+    "slides",
+    "audio-recorder",
+    "workspaces",
+    "publish",
+    "webviewer"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "accentColor": "#1A6DD6",
+  "baseFontSize": 16,
+  "cssTheme": "",
+  "theme": "moonstone",
+  "translucency": false,
+  "interfaceFontFamily": "Inter, -apple-system, sans-serif",
+  "textFontFamily": "Inter, -apple-system, sans-serif",
+  "monospaceFontFamily": "JetBrains Mono, monospace",
+  "enabledCssSnippets": [],
+  "showViewHeader": true,
+  "nativeMenus": false
+}
