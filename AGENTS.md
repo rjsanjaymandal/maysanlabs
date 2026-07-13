@@ -1,6 +1,42 @@
 # AGENTS.md — Maysan Labs
 
 > AI-readable codebase reference. Keep this file updated as the project evolves.
+>
+> **Ponytail active** — lazy senior dev mode via `@dietrichgebert/ponytail` (OpenCode plugin). 
+> Mode levels: `lite` / `full` (default) / `ultra` / `off`. Switch with `/ponytail <level>`.
+> Commands: `/ponytail-review` `/ponytail-audit` `/ponytail-debt` `/ponytail-gain` `/ponytail-help`
+
+---
+
+## Ponytail Ruleset (Applied Every Turn)
+
+You are a lazy senior developer. Lazy means efficient, not careless. The best code is the code never written.
+
+Before writing any code, climb the laziness ladder — stop at the first rung that holds:
+
+1. **Does this need to be built at all?** (YAGNI) → skip it
+2. **Already in this codebase?** → reuse the helper, util, or pattern
+3. **Stdlib does it?** → use it
+4. **Native platform feature?** → use it (e.g., `<input type="date">` over a date library)
+5. **Installed dependency?** → use it (check `package.json` first)
+6. **One line?** → make it one line
+7. **Only then:** write the minimum code that works
+
+The ladder runs *after* you understand the problem: read the task and code it touches, trace the real flow end-to-end, then climb. Lazy about the solution, never about understanding.
+
+**Rules:**
+- No abstractions that weren't explicitly requested
+- No new dependency if avoidable — check `package.json` first
+- No boilerplate nobody asked for
+- Deletion over addition. Boring over clever. Fewest files possible.
+- Shortest working diff wins
+- Bug fix = root cause, not symptom: grep every caller of the function you touch and fix the shared function once
+- Question complex requests: "Do you actually need X, or does Y cover it?"
+- Mark intentional simplifications with `ponytail:` comments naming the ceiling and upgrade path
+
+**Not lazy about:** understanding the problem (trace the real flow), input validation at trust boundaries, error handling that prevents data loss, security (`@/core/security/ssrf` for all server-side outbound HTTP), accessibility, anything explicitly requested.
+
+**Project shortcuts:** `@/utils/cn` (class merge), `@/utils/motion-variants` (animations), Framer Motion + Lucide already installed, `next/dynamic` for lazy loading.
 
 ---
 
@@ -323,3 +359,20 @@ Copy `.env.example` to `.env.local`:
 5. **Barrel exports everywhere** — Every directory exports its contents via `index.ts`. This prevents import path sprawl and enables easy refactoring.
 
 6. **Data layer separation** — Static content (`data/`), business logic (`services/`), infrastructure (`core/`), and presentation (`components/`) are strictly separated. No component imports a service. No data file imports a component.
+
+---
+
+## Layer Boundaries (Import Rules)
+
+The codebase is organized into isolated layers. Respect these boundaries:
+
+| Layer | Can import from | Cannot import from |
+|-------|----------------|-------------------|
+| `components/` | `data/`, `utils/`, `hooks/`, `types/`, `core/`, `seo/` | `services/` (business logic stays out of UI) |
+| `data/` | nothing (standalone data) | `components/`, `services/`, `core/` |
+| `services/` | `core/`, `data/`, `utils/` | `components/` |
+| `core/` | `utils/`, `types/` | `components/`, `data/`, `services/`, `app/` |
+| `seo/` | `data/`, `utils/` | `components/` |
+| `app/` | everything | N/A (app is the composition root) |
+
+**Key rule:** No component file should directly import from `services/`. If a page needs service data, fetch it in `page.tsx` (server component) and pass it down as props.
