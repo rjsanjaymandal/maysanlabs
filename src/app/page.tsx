@@ -93,9 +93,7 @@ export default async function Home() {
       {/* LogoMarquee Section */}
       <section className="py-8 md:py-12 border-b border-gray-100 dark:border-white/[0.06]">
         <div className="container-main mb-6 md:mb-8 text-center">
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider">
-            Trusted by fast-growing companies
-          </span>
+          <span className="badge-section">Trusted by fast-growing companies</span>
         </div>
         <LogoMarquee />
       </section>
@@ -118,9 +116,7 @@ export default async function Home() {
         <section className="sec-xl container-main relative">
           <div className="mb-16">
           <div className="mb-6">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider">
-              Why Choose Us
-            </span>
+            <span className="badge-section">Why Choose Us</span>
           </div>
           <h2 className="heading-lg sm:heading-xl tracking-[-0.02em] text-foreground text-center">
             <span className="bg-gradient-to-r from-brand-primary to-brand-light bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(26,109,214,0.2)] dark:drop-shadow-[0_0_20px_rgba(26,109,214,0.4)]">Build</span>.{" "}
@@ -171,8 +167,8 @@ export default async function Home() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[50%] rounded-full blur-[130px] bg-brand-primary/5 dark:bg-brand-primary/10 pointer-events-none" />
           <div className="container-main max-w-2xl mx-auto relative z-10">
             <div className="text-center mb-12">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 dark:bg-white/[0.03] border border-brand-primary/20 dark:border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
-                <Send size={12} className="text-brand-primary" />
+              <span className="badge-section gap-2">
+                <Send size={12} />
                 Let&apos;s Build
               </span>
               <h2 className="text-3xl md:text-5xl font-black tracking-[-0.02em] text-foreground mb-4">

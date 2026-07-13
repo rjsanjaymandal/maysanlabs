@@ -47,7 +47,7 @@ export default function Problem() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mb-12"
         >
-          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-5">
+          <span className="badge-section mb-5">
             What We Solve
           </span>
           <h2 className="text-3xl md:text-5xl font-semibold tracking-[-0.02em] text-foreground mb-4">

@@ -164,9 +164,7 @@ export default function Hero() {
                 <div className="p-4 rounded-xl bg-brand-primary/[0.03] border border-brand-primary/10 text-center flex flex-col justify-center h-full">
                   <span className="text-xs font-bold text-brand-primary uppercase tracking-wider block mb-1">Impact</span>
                   <span className="text-sm sm:text-base font-black text-foreground">{currentGoal.metric}</span>
-                  <span className="text-[10px] text-foreground/45 mt-1 leading-snug font-medium block">
-                    {currentGoal.detail}
-                  </span>
+                  <span className="text-xs text-foreground/45 mt-1.5 leading-snug font-medium block">{currentGoal.detail}</span>
                 </div>
               </motion.div>
             </AnimatePresence>

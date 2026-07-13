@@ -82,7 +82,7 @@ export default function RoiCalculator() {
       <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.03] via-transparent to-brand-primary/[0.03] pointer-events-none" />
       <div className="container-main relative z-10">
         <div className="mb-14 text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
+          <span className="badge-section mb-4">
             <Calculator size={12} />
             Interactive ROI Calculator
           </span>

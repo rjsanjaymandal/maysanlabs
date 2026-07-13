@@ -37,7 +37,7 @@ export default function ContactFooter() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-brand-primary/8 blur-[60px] sm:blur-[100px] rounded-full pointer-events-none" />
         <div className="container-main relative z-10">
           <div className="text-center">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+            <span className="badge-section mb-6">
               <Send size={12} />
               Get Started
             </span>

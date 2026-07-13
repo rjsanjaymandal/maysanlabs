@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -140,7 +140,7 @@ export default function ScopeEstimatorClient() {
               animate={{ opacity: 1, y: 0 }}
               className="text-center mb-12"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
+              <span className="badge-section mb-4">
                 <Calculator size={12} />
                 Requirements Estimator
               </span>

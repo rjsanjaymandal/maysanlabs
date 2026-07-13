@@ -94,7 +94,7 @@ export default function TechNewsFeed({ initialNews }: { initialNews?: NewsItem[]
       <div className="container-main relative z-10">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
+            <span className="badge-section mb-4">
               <Newspaper size={12} />
               <span className="relative flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-primary animate-pulse" />

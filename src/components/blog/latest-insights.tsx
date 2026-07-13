@@ -13,7 +13,7 @@ export default function LatestInsights() {
       <div className="container-main relative z-10">
         <div className="flex items-end justify-between mb-10">
           <div>
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-4">
+            <span className="badge-section mb-4">
               Latest Insights
             </span>
             <h2 className="text-2xl md:text-4xl font-bold text-foreground tracking-tight">

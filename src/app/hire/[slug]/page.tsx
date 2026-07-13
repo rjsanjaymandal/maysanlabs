@@ -97,7 +97,7 @@ export default async function ProgrammaticLandingPage({ params }: LandingPagePro
         <section className="pt-32 pb-16 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-brand-primary/[0.04] blur-[130px] rounded-full pointer-events-none" />
           <div className="container-main text-center relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+            <span className="badge-section mb-6">
               <Zap size={12} className="animate-pulse" />
               Gurgaon Elite Hiring
             </span>
@@ -216,7 +216,7 @@ export default async function ProgrammaticLandingPage({ params }: LandingPagePro
           <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 via-transparent to-transparent pointer-events-none" />
           <div className="container-main max-w-2xl mx-auto relative z-10 px-4 sm:px-6">
             <div className="text-center mb-12">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-semibold uppercase tracking-wider mb-6">
+              <span className="badge-section mb-6">
                 Start Project
               </span>
               <h2 className="text-3xl md:text-5xl font-black tracking-tight text-foreground mb-4">
