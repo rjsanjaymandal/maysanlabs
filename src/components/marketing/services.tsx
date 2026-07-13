@@ -58,11 +58,11 @@ const services = [
     features: ["Razorpay & UPI payment setup", "Medusa commerce API integration", "Tally & Zoho ledgers sync", "WhatsApp Business API links"],
   },
   {
-    title: "MaysanMails",
-    desc: "Scale your email marketing infinitely with MaysanMails, our powerful self-hosted bulk email product. Avoid expensive monthly SaaS subscriptions while maintaining top-tier deliverability.",
+    title: "Email Infrastructure — MaysanMails",
+    desc: "Scale your email marketing without monthly subscription fees. Our self-hosted bulk email platform gives you high-deliverability SMTP routing, campaign automation, and complete data privacy — all without per-subscriber charges.",
     icon: Mail,
-    href: "/services/web",
-    features: ["Zero recurring subscriber fees", "Complete data privacy & control", "High-deliverability SMTP routing", "Advanced campaign automation"],
+    href: "/products/maysanmails",
+    features: ["Zero recurring subscriber fees", "High-deliverability SMTP routing", "Advanced campaign automation", "Complete data privacy & control", "Custom sender reputation management"],
   },
 ];
 
@@ -116,32 +116,42 @@ export default function Services() {
                 transition={{ delay: index * 0.06 }}
                 className="group"
               >
-                <div className={`bg-white/70 dark:bg-white/[0.02] border ${isFeatured ? 'border-brand-primary/30 bg-gradient-to-br from-brand-primary/[0.03] to-transparent' : 'border-gray-100 dark:border-white/[0.06]'} rounded-2xl p-6 backdrop-blur-sm shadow-sm hover:-translate-y-1 transition-transform duration-300 h-full`}>
-                  <div className="w-10 h-10 bg-brand-primary/10 rounded-lg flex items-center justify-center text-brand-primary mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <service.icon size={18} />
+                <div className={`relative rounded-2xl border p-6 h-full hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ${
+                  isFeatured
+                    ? "border-brand-primary/30 bg-gradient-to-br from-brand-primary/[0.03] to-transparent dark:from-brand-primary/[0.06] dark:to-transparent shadow-sm"
+                    : "border-gray-100 dark:border-white/[0.06] bg-white dark:bg-white/[0.02]"
+                }`}>
+                  {isFeatured && (
+                    <span className="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider text-brand-primary/60 bg-brand-primary/10 px-2 py-0.5 rounded-full">
+                      Popular
+                    </span>
+                  )}
+
+                  <div className="w-11 h-11 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <service.icon size={19} />
                   </div>
-                  
-                  <h3 className="text-base font-medium text-foreground mb-2 group-hover:text-brand-primary transition-colors">
+
+                  <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-brand-primary transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-foreground/60 text-sm mb-4 leading-relaxed">
+                  <p className="text-sm text-foreground/60 mb-4 leading-relaxed">
                     {service.desc}
                   </p>
-                  
-                  <ul className="space-y-2 mb-5 border-t border-white/[0.06] pt-4">
+
+                  <ul className="space-y-2.5 mb-5 border-t border-gray-100 dark:border-white/[0.06] pt-4">
                     {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2.5 text-foreground/50 text-xs group-hover:text-foreground/70 transition-colors">
-                        <span className="w-1.5 h-1.5 rounded-full bg-brand-primary/20 group-hover:scale-125 transition-transform duration-300 shrink-0" />
+                      <li key={i} className="flex items-center gap-2.5 text-xs text-foreground/60">
+                        <span className="w-1.5 h-1.5 rounded-full bg-brand-primary/30 shrink-0" />
                         {feature}
                       </li>
                     ))}
                   </ul>
-                  
-                  <Link 
-                    href={service.href} 
-                    className="inline-flex items-center gap-1 text-brand-primary text-xs font-semibold group-hover:gap-2 transition-all duration-300"
+
+                  <Link
+                    href={service.href}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-primary group-hover:gap-2.5 transition-all"
                   >
-                    <span>Learn more</span> <ArrowUpRight size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                    Learn more <ArrowUpRight size={12} />
                   </Link>
                 </div>
               </motion.div>

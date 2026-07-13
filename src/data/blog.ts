@@ -802,4 +802,59 @@ The key is to start small and iterate. Focus on solving one problem well rather 
 
 As the ecosystem matures, we expect to see more standardized approaches emerge, making it easier for teams to adopt best practices without reinventing the wheel.`,
   },
+  {
+    title: "Why We Built Our Own Bulk Email System (And Why You Should Too)",
+    slug: "why-self-hosted-bulk-email",
+    excerpt: "Tired of paying per-subscriber fees? Here's why self-hosted email infrastructure beats SaaS platforms for businesses that send at scale.",
+    date: "2026-06-20",
+    author: "Sanjay Mandal",
+    category: "Infrastructure",
+    readTime: "6 min",
+    tags: ["Email", "Infrastructure", "Cost Savings", "Self-Hosted"],
+    content: `Every business eventually hits the email wall. You've grown your subscriber list to 10,000, then 50,000, then 100,000 — and suddenly your email platform bill has gone from reasonable to ridiculous.
+
+Mailchimp's Standard plan charges ₹2,800/month for 5,000 contacts. At 50,000 contacts, that jumps to ₹28,000/month — that's ₹3.36 lakhs per year just to send emails. ConvertKit, ActiveCampaign, and Klaviyo follow similar pricing models. The math doesn't scale.
+
+**The hidden cost of SaaS email platforms:**
+
+Every subscriber you add increases your monthly bill. Every campaign you send costs more. As your business grows, your email costs grow linearly — sometimes faster than your revenue.
+
+Beyond the cost, there's the data privacy concern. Your email list is one of your most valuable assets. Hosting it on a third-party platform means you don't truly own it. If the platform changes its pricing, goes down, or has a security breach, your business is affected.
+
+**What self-hosted email infrastructure gives you:**
+
+Full ownership of your subscriber data. Your email list lives on your own server. No third party ever touches it. For businesses in regulated industries — legal, finance, healthcare — this is non-negotiable.
+
+Zero recurring subscriber fees. You pay once for the infrastructure setup and configuration. After that, your only cost is the server (which is typically a fraction of SaaS platform fees).
+
+High-deliverability SMTP routing. With proper SPF, DKIM, and DMARC configuration, combined with intelligent IP warm-up and reputation management, your emails land in inboxes — not spam folders. You control your sender reputation directly, instead of sharing it with thousands of other businesses on a shared platform.
+
+Custom campaign automation. Trigger-based sequences, behavior-based segmentation, drip campaigns — set them up once and let them run. No limits on the number of automations or sequences you can create.
+
+**The numbers:**
+
+Let's compare: a business with 50,000 subscribers sending weekly campaigns.
+
+- Mailchimp Standard: ₹28,000/month = ₹3,36,000/year
+- ConvertKit Creator: ₹15,000/month = ₹1,80,000/year
+- MaysanMails (self-hosted): One-time ₹2,49,999 setup + ~₹12,000/year server cost
+
+Year 1 savings: ₹74,000+ vs ConvertKit. Year 2 savings: ₹1,68,000+. The gap only widens as your list grows.
+
+**Is self-hosted right for you?**
+
+Self-hosted email infrastructure is ideal if:
+- You have 10,000+ subscribers and are paying ₹5,000+/month for email
+- Data privacy and compliance are critical to your business
+- You need unlimited automations without per-feature pricing
+- You want complete control over your sender reputation
+
+It's not for everyone. If you're just starting out with a few hundred subscribers, a SaaS platform is simpler. But once you cross the threshold where email becomes a significant cost center, self-hosted infrastructure pays for itself within months.
+
+**What MaysanMails includes:**
+
+SMTP server setup with SPF, DKIM, and DMARC configuration. Custom sender reputation warm-up. Campaign automation workflows. Real-time delivery analytics dashboard. 30 days of post-launch support and monitoring.
+
+Want to learn more? [Check out MaysanMails](/products/maysanmails) or [book a scoping call](/contact) to discuss your email infrastructure needs.`,
+  },
 ];

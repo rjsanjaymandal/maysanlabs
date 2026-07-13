@@ -28,6 +28,25 @@ const liveProducts = [
     scrollPercentage: "80%"
   },
   {
+    name: "MaysanMails",
+    category: "Marketing Infrastructure",
+    tagline: "Scale email marketing without monthly fees",
+    description: "Self-hosted bulk email infrastructure with high-deliverability SMTP routing, campaign automation, and complete data privacy. Zero recurring subscriber fees — pay once, own forever.",
+    benefits: [
+      "Zero recurring subscriber fees — save ₹50,000+/yr",
+      "High-deliverability SMTP with custom reputation management",
+      "Advanced campaign automation and real-time analytics",
+      "Complete data privacy — your list, your server"
+    ],
+    imageUrl: "/og-image.webp",
+    iframeUrl: "",
+    ctaHref: "/contact",
+    ctaText: "Set Up Your Email Infrastructure",
+    secondaryCtaText: "",
+    secondaryCtaHref: "",
+    scrollPercentage: "50%"
+  },
+  {
     name: "Edu-Maysan",
     category: "EdTech & Analytics",
     tagline: "Intelligence for every classroom",

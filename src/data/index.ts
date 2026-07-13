@@ -4,3 +4,4 @@ export * from "./careers";
 export * from "./authors";
 export * from "./seo-landing";
 export * from "./seo-schema";
+export * from "./products";

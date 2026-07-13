@@ -1,133 +1,118 @@
 "use client";
 
-import { Check, Zap, Rocket, Shield, ArrowUpRight } from "lucide-react";
+import { Check, Zap, Rocket, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import BackgroundBeams from "@/components/ui/background-beams";
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import BorderBeam from "@/components/ui/border-beam";
 
 const plans = [
   {
     name: "Starter",
-    price: "49,999",
-    description: "Perfect for agile startups and department-level pilots.",
+    price: "₹49,999",
+    description: "Custom web apps, automation tools, and dashboards — perfect for startups and small teams.",
     features: [
       "Custom Web Development",
-      "Basic SEO Setup",
+      "Business Automation Tools",
       "Standard Support",
-      "Secure Hosting",
+      "Secure Cloud Hosting",
     ],
     icon: <Zap size={20} />,
+    cta: "Get Started",
   },
   {
     name: "Enterprise",
-    price: "1,49,999",
-    description: "Full-scale services for growing businesses with complex needs.",
+    price: "₹1,49,999",
+    description: "Full-scale engineering for growing businesses — CRM, AI tools, mobile apps, and more.",
     features: [
-      "Custom CRM/ERP",
-      "Advanced AI Tools",
+      "Custom CRM / ERP Systems",
+      "AI & Machine Learning",
+      "Mobile Apps (iOS + Android)",
       "24/7 Priority Support",
-      "Cloud Space Setup",
       "Dedicated Project Manager",
     ],
     icon: <Rocket size={20} />,
     featured: true,
-  },
-  {
-    name: "Secure Cloud",
-    price: "24,999",
-    description: "Specialized for CA, Legal firms, and data-sensitive entities.",
-    features: [
-      "Bank-level Encryption",
-      "Document Management",
-      "Automatic Backups",
-      "Client Sharing Portal",
-    ],
-    icon: <Shield size={20} />,
+    cta: "Book a Strategy Call",
   },
 ];
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="sec-xl bg-[var(--bg-dark)] relative overflow-hidden">
-      <BackgroundBeams />
-      
+    <section id="pricing" className="sec-xl relative overflow-hidden">
       <div className="container-main relative z-10">
-        <div className="mb-16 sm:mb-24 text-center">
-          <span className="label-mono mb-6 block">Transparent Pricing</span>
-          <h2 className="heading-lg mt-6">
-            Scalable <span className="text-brand-primary italic">Solutions.</span>
+        <div className="mb-16 sm:mb-20 text-center">
+          <span className="badge-section mb-6 inline-flex">Pricing</span>
+          <h2 className="heading-lg text-foreground mt-4">
+            Transparent,{" "}
+            <span className="text-gradient-brand">scalable</span> pricing
           </h2>
-          <p className="text-lg sm:text-xl text-body-dim max-w-2xl mx-auto mt-6 font-medium">
-            Transparent pricing models designed for enterprise precision and long-term stability.
+          <p className="text-foreground/60 text-sm md:text-base max-w-xl mx-auto mt-4 font-medium">
+            Enterprise-grade engineering. No hidden costs. All prices in INR.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-start lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.8, ease: "easeOut" }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
               className={`maysan-card group flex flex-col h-full relative overflow-hidden ${
-                plan.featured ? "border-brand-primary/40 bg-brand-primary/5 lg:-mt-8 shadow-2xl z-10" : ""
+                plan.featured ? "border-brand-primary/40 bg-brand-primary/5 shadow-xl z-10" : ""
               }`}
             >
               {plan.featured && (
                 <>
                   <BorderBeam size={250} duration={12} delay={9} />
                   <div className="absolute top-0 right-0 left-0 -mt-3.5 flex justify-center">
-                    <span className="bg-gradient-to-r from-brand-primary to-[#60A5FA] text-white text-[10px] font-extrabold px-4 py-1 rounded-[var(--radius-sm)] tracking-widest uppercase shadow-lg shadow-brand-primary/30 z-10">
-                      Highest_Priority
+                    <span className="bg-gradient-to-r from-brand-primary to-brand-light text-white text-xs font-bold px-4 py-1 rounded-lg tracking-wide uppercase shadow-lg shadow-brand-primary/30 z-10">
+                      Most Popular
                     </span>
                   </div>
                 </>
               )}
 
-              <div className="flex items-center gap-4 mb-8">
-                <div className={`w-12 h-12 rounded-[var(--radius-md)] flex items-center justify-center border transition-all duration-500 ${
-                  plan.featured 
-                  ? "bg-brand-primary text-white border-brand-primary/20 shadow-[0_0_20px_rgba(59,130,246,0.4)]" 
-                  : "bg-brand-primary/10 text-brand-primary border-brand-primary/20 group-hover:bg-brand-primary group-hover:text-black"
+              <div className="flex items-center gap-4 mb-6">
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center border transition-all duration-300 ${
+                  plan.featured
+                    ? "bg-brand-primary text-white border-brand-primary/20"
+                    : "bg-brand-primary/10 text-brand-primary border-brand-primary/20 group-hover:bg-brand-primary group-hover:text-white"
                 }`}>
                   {plan.icon}
                 </div>
-                <h3 className="text-2xl font-black tracking-tighter uppercase italic">{plan.name}</h3>
+                <h3 className="text-xl font-black tracking-tight">{plan.name}</h3>
               </div>
 
-              <div className="flex items-baseline gap-1 mb-8">
-                <span className="text-lg text-foreground/30 font-mono italic">₹</span>
-                <span className="text-5xl font-black tracking-tighter text-foreground">{plan.price}</span>
-                <span className="text-xs text-foreground/30 font-mono uppercase tracking-widest ml-2">/ start</span>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-4xl font-black tracking-tight text-foreground">{plan.price}</span>
+                <span className="text-xs text-foreground/40 font-medium uppercase tracking-wider ml-1">per project</span>
               </div>
 
-              <p className="text-sm text-body-dim mb-10 leading-relaxed font-medium">
+              <p className="text-sm text-foreground/60 mb-8 leading-relaxed font-medium">
                 {plan.description}
               </p>
 
-              <ul className="space-y-4 mb-12 flex-1">
+              <ul className="space-y-3 mb-10 flex-1">
                 {plan.features.map((f, i) => (
-                  <li key={i} className="flex items-center gap-3 text-sm font-medium text-foreground/80">
-                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center text-brand-primary">
-                      <Check size={12} />
-                    </div>
+                  <li key={i} className="flex items-center gap-3 text-sm font-medium text-foreground/70">
+                    <Check size={14} className="text-brand-primary shrink-0" />
                     {f}
                   </li>
                 ))}
               </ul>
 
-              <Link href="/start">
-                <HoverBorderGradient
-                  containerClassName="rounded-full w-full"
-                  as="div"
-                  className={`flex items-center justify-center gap-2 py-4 ${plan.featured ? "bg-gradient-to-r from-brand-primary to-[#60A5FA] text-white font-extrabold shadow-md hover:brightness-110" : "bg-black text-white"}`}
-                >
-                  <span className="font-bold uppercase tracking-tight text-xs">Book a Strategy Call</span>
-                  <ArrowUpRight size={16} />
-                </HoverBorderGradient>
+              <Link
+                href="/start"
+                className={`flex items-center justify-center gap-2 py-3.5 rounded-full font-bold text-sm transition-all ${
+                  plan.featured
+                    ? "bg-gradient-to-r from-brand-primary to-brand-light text-white hover:shadow-lg hover:shadow-brand-primary/25"
+                    : "bg-foreground text-background hover:bg-foreground/90"
+                }`}
+              >
+                {plan.cta}
+                <ArrowUpRight size={14} />
               </Link>
             </motion.div>
           ))}

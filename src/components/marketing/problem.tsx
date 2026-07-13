@@ -6,55 +6,61 @@ import Link from "next/link";
 
 const architectures = [
   {
-    id: "AUTOMATED_SYSTEMS",
-    title: "Manual Spreadsheets to Automated Systems",
-    text: "Stop copying details between Excel sheets. We replace manual tasks with custom software, linking automated WhatsApp alerts, email billing, and inventory tracking.",
+    id: "automation",
+    title: "Spreadsheets → Automated Systems",
+    text: "Stop copying data between Excel sheets. We build custom software that handles billing, WhatsApp alerts, email automation, and inventory — automatically.",
     icon: Cpu,
     href: "/services",
+    gradient: "from-blue-500/10 to-brand-primary/5",
+    iconBg: "from-blue-500 to-brand-primary",
   },
   {
-    id: "MODERN_WEB_APPS",
-    title: "Legacy Software to Modern Websites & Portals",
-    text: "Refactor old, slow legacy systems. We build lightning-fast, secure Next.js websites and web applications featuring role-based logins, custom dashboards, and encrypted cloud storage.",
+    id: "modern-web",
+    title: "Legacy Software → Modern Portals",
+    text: "Refactor slow, outdated systems. We build fast Next.js websites with role-based logins, custom dashboards, and encrypted cloud storage.",
     icon: ShieldCheck,
     href: "/services/web",
+    gradient: "from-emerald-500/10 to-teal-500/5",
+    iconBg: "from-emerald-500 to-teal-500",
   },
   {
-    id: "STARTUP_MVPS",
-    title: "Unfinished Ideas to Working MVPs & Sites",
-    text: "Launch your custom website or app in weeks, not months. We engineer lightweight, high-performance MVPs so you can gather real feedback and scale securely.",
+    id: "mvp",
+    title: "Idea → Working MVP",
+    text: "Launch your app in weeks, not months. Lightweight, high-performance MVPs so you can gather real feedback and start scaling.",
     icon: Rocket,
     href: "/start",
+    gradient: "from-purple-500/10 to-pink-500/5",
+    iconBg: "from-purple-500 to-pink-500",
   },
   {
-    id: "MOBILE_APPS",
-    title: "Websites to Cross-Platform Mobile Apps",
-    text: "Extend your web presence with native iOS and Android apps. We build cross-platform mobile apps that sync seamlessly with your website and backend systems.",
+    id: "mobile",
+    title: "Website → Mobile App",
+    text: "Extend your reach with native iOS and Android apps that sync with your website and backend — single codebase, zero compromises.",
     icon: Smartphone,
     href: "/services",
+    gradient: "from-orange-500/10 to-amber-500/5",
+    iconBg: "from-orange-500 to-amber-500",
   },
 ];
 
 export default function Problem() {
   return (
-    <section id="architecture" className="py-16 md:py-20 border-t border-gray-100 dark:border-white/[0.05] relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.01] to-transparent pointer-events-none" />
+    <section className="py-16 md:py-20 relative overflow-hidden">
       <div className="container-main relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mb-12"
+          className="max-w-3xl mb-14"
         >
-          <span className="badge-section mb-5">
-            What We Solve
-          </span>
-          <h2 className="text-3xl md:text-5xl font-semibold tracking-[-0.02em] text-foreground mb-4">
-            Outdated websites, spreadsheets & old code <span className="text-brand-primary">slow you down</span>
+          <span className="badge-section mb-5 inline-flex">What We Solve</span>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-[-0.02em] text-foreground mb-4">
+            Outdated websites, spreadsheets & old code{" "}
+            <span className="text-gradient-brand">slow you down</span>
           </h2>
-          <p className="text-foreground/50 text-base md:text-lg leading-relaxed max-w-2xl">
-            We design and build custom websites, internal tools, and full-scale applications that replace outdated systems and launch new ideas.
+          <p className="text-foreground/60 text-base md:text-lg leading-relaxed max-w-2xl">
+            We replace outdated systems with modern software — websites, tools, apps, and automations built for your business.
           </p>
         </motion.div>
 
@@ -67,26 +73,29 @@ export default function Problem() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+                transition={{ delay: index * 0.08, duration: 0.5 }}
               >
                 <Link
                   href={arch.href}
-                  className="group flex flex-col h-full bg-white dark:bg-white/[0.02] border border-gray-100 dark:border-white/[0.06] hover:border-brand-primary/30 rounded-xl p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-sm"
+                  className="group relative flex flex-col h-full rounded-2xl border border-gray-100 dark:border-white/[0.06] bg-white dark:bg-white/[0.02] p-6 hover:-translate-y-1 hover:shadow-lg hover:border-brand-primary/20 transition-all duration-300 overflow-hidden"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-5 group-hover:bg-brand-primary group-hover:text-white transition-all duration-300">
-                    <Icon size={20} />
+                  {/* Gradient wash on hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${arch.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
+
+                  <div className={`relative z-10 w-12 h-12 rounded-xl bg-gradient-to-br ${arch.iconBg} flex items-center justify-center mb-5`}>
+                    <Icon size={20} className="text-white" />
                   </div>
 
-                  <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-brand-primary transition-colors duration-300">
+                  <h3 className="relative z-10 text-base font-bold text-foreground mb-2 group-hover:text-brand-primary transition-colors">
                     {arch.title}
                   </h3>
-                  <p className="text-foreground/50 text-sm leading-relaxed flex-1 group-hover:text-foreground/70 transition-colors duration-300">
+                  <p className="relative z-10 text-sm text-foreground/60 leading-relaxed flex-1">
                     {arch.text}
                   </p>
 
-                  <div className="flex items-center gap-1.5 mt-6 text-sm font-semibold text-brand-primary/50 group-hover:text-brand-primary transition-colors duration-300">
+                  <div className="relative z-10 flex items-center gap-1.5 mt-5 text-xs font-semibold text-brand-primary/50 group-hover:text-brand-primary group-hover:gap-2.5 transition-all">
                     <span>Learn more</span>
-                    <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+                    <ArrowRight size={12} />
                   </div>
                 </Link>
               </motion.div>

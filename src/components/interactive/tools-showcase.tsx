@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ShieldAlert, FileImage, LayoutGrid, ArrowRight, Search, Sparkles, Wrench, BadgePercent, FileText, Share2 } from "lucide-react";
+import { ShieldAlert, FileImage, LayoutGrid, ArrowRight, Search, Sparkles, Wrench, BadgePercent, FileText, Share2, Mail } from "lucide-react";
 
 const tools = [
   {
@@ -54,6 +54,22 @@ const tools = [
     href: "/tools/og-generator",
     gradient: "from-cyan-500 to-blue-400",
     badge: "Link Preview",
+  },
+  {
+    icon: BadgePercent,
+    title: "Business ROI Calculator",
+    desc: "Estimate your software investment return — SaaS, e-commerce, enterprise scenarios.",
+    href: "/tools/headless-roi",
+    gradient: "from-blue-500 to-brand-primary",
+    badge: "ROI",
+  },
+  {
+    icon: Mail,
+    title: "Email Deliverability Check",
+    desc: "Test your domain's email health — SPF, DKIM, DMARC, and blacklist status.",
+    href: "/contact",
+    gradient: "from-purple-500 to-pink-400",
+    badge: "Email Health",
   },
 ];
 

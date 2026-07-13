@@ -88,6 +88,16 @@ export const productSchema = [
       price: "640000",
       availability: "https://schema.org/InStock"
     }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: "MaysanMails",
+    description: "Self-hosted bulk email infrastructure with high-deliverability SMTP routing, campaign automation, and zero recurring subscriber fees.",
+    brand: { "@type": "Brand", name: "Maysan Labs" },
+    provider: { "@type": "Organization", name: "Maysan Labs", url: SITE_URL },
+    url: `${SITE_URL}/products/maysanmails`,
+    offers: { "@type": "Offer", priceCurrency: "INR", price: "249999", availability: "https://schema.org/InStock" }
   }
 ];
 
