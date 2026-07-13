@@ -5,6 +5,7 @@ import { Outfit, JetBrains_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import GoogleAnalytics from "@/components/tracking/google-analytics";
 import ThemeProvider from "@/components/layout/theme-provider";
+import { Analytics } from "@vercel/analytics/next";
 
 const ScrollProgress = dynamic(() => import("@/components/tracking/scroll-progress"));
 const BackToTop = dynamic(() => import("@/components/layout/back-to-top"));
@@ -220,6 +221,7 @@ export default function RootLayout({
             <WhatsAppButton />
             <ExitIntentPopup />
             <CookieConsent />
+            <Analytics />
             <script
               dangerouslySetInnerHTML={{
                 __html: `
