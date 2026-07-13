@@ -66,7 +66,7 @@ export default function Hero() {
   const GoalIcon = currentGoal.icon;
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-24 pb-16 overflow-hidden bg-background">
+    <section className="relative min-h-[100dvh] flex flex-col items-center justify-center px-4 pt-24 pb-16 overflow-hidden bg-background">
       <div className="absolute inset-0 bg-grid-pattern pointer-events-none z-0" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[140px] pointer-events-none" />
       
@@ -91,7 +91,7 @@ export default function Hero() {
         >
           <h1 className="font-sans heading-xl text-foreground max-w-4xl tracking-tight leading-[1.1]">
             <span className="text-foreground/60 text-base sm:text-lg font-semibold block mb-2">Maysan Labs</span>
-            We build the <span className="bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(26,109,214,0.25)] dark:drop-shadow-[0_0_20px_rgba(26,109,214,0.4)]">custom apps, websites & dashboards</span> that run your business
+            We build the <span className="bg-gradient-to-r from-brand-primary to-brand-light bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(26,109,214,0.25)] dark:drop-shadow-[0_0_20px_rgba(26,109,214,0.4)]">custom apps, websites & dashboards</span> that run your business
           </h1>
         </motion.div>
 
@@ -121,10 +121,12 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.35 }}
           className="mb-8 w-full max-w-3xl bg-white/50 dark:bg-white/[0.01] border border-gray-100 dark:border-white/[0.06] rounded-2xl p-4 sm:p-6 backdrop-blur-md shadow-sm"
         >
-          <div className="inline-flex flex-wrap items-center justify-center gap-1.5 p-1.5 bg-gray-100/50 dark:bg-white/[0.02] border border-gray-200/50 dark:border-white/[0.05] rounded-xl mb-6">
+          <div role="tablist" aria-label="Goal categories" className="inline-flex flex-wrap items-center justify-center gap-1.5 p-1.5 bg-gray-100/50 dark:bg-white/[0.02] border border-gray-200/50 dark:border-white/[0.05] rounded-xl mb-6">
             {goals.map((g) => (
               <button
                 key={g.id}
+                role="tab"
+                aria-selected={activeGoal === g.id}
                 onClick={() => setActiveGoal(g.id)}
                 className={`px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 ${
                   activeGoal === g.id
@@ -138,7 +140,7 @@ export default function Hero() {
           </div>
 
           <div className="mt-6 text-left min-h-[170px] flex flex-col justify-between">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="sync">
               <motion.div
                 key={activeGoal}
                 initial={{ opacity: 0, x: -10 }}
@@ -177,9 +179,9 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.45 }}
           className="flex flex-wrap justify-center gap-2.5 mb-8"
         >
-          {benefits.map((benefit, i) => (
-            <div key={i} className="flex items-center gap-1.5 md:gap-2 text-foreground/60 text-[11px] sm:text-xs md:text-sm px-3.5 py-1.5 bg-white/70 dark:bg-white/[0.04] rounded-full shadow-sm border border-gray-100 dark:border-white/10 font-medium">
-              <CheckCircle2 size={12} className="text-brand-primary shrink-0" />
+          {benefits.map((benefit) => (
+            <div key={benefit} className="flex items-center gap-1.5 md:gap-2 text-foreground/60 text-[11px] sm:text-xs md:text-sm px-3.5 py-1.5 bg-white/70 dark:bg-white/[0.04] rounded-full shadow-sm border border-gray-100 dark:border-white/10 font-medium">
+              <CheckCircle2 size={12} className="text-brand-primary shrink-0" aria-hidden="true" />
               {benefit}
             </div>
           ))}
@@ -191,13 +193,13 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto px-4 sm:px-0"
         >
-          <Link href="/start" onClick={() => { if (typeof window !== "undefined") { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "hero_discovery_call" }); } }} className="w-full sm:w-auto bg-brand-primary text-white px-7 py-3 rounded-full font-bold hover:bg-brand-primary/90 hover:shadow-lg hover:shadow-brand-primary/20 transition-all flex items-center justify-center gap-2 text-sm">
+          <Link href="/start" className="w-full sm:w-auto bg-brand-primary text-white px-7 py-3 rounded-full font-bold hover:bg-brand-primary/90 hover:shadow-lg hover:shadow-brand-primary/20 transition-all flex items-center justify-center gap-2 text-sm">
             <span>Book a free 30-min discovery call</span>
-            <ArrowRight size={14} className="shrink-0" />
+            <ArrowRight size={14} className="shrink-0" aria-hidden="true" />
           </Link>
           
           <Link href="/case-studies" className="w-full sm:w-auto bg-white dark:bg-white/[0.03] border border-gray-200 dark:border-white/[0.08] text-foreground px-6 py-3 rounded-full font-bold hover:bg-gray-50 dark:hover:bg-white/[0.08] hover:border-brand-primary/30 dark:hover:border-brand-primary/30 hover:text-brand-primary hover:shadow-md transition-all duration-300 flex items-center justify-center gap-2 shadow-sm text-sm">
-            <Play size={10} fill="currentColor" className="shrink-0" />
+            <Play size={10} fill="currentColor" className="shrink-0" aria-hidden="true" />
             <span>View Our Work</span>
           </Link>
         </motion.div>

@@ -4,9 +4,7 @@ import tailwindAnimate from "tailwindcss-animate";
 const config: Config = {
   darkMode: "class",
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     container: {
@@ -23,7 +21,7 @@ const config: Config = {
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
-        ring: "var(--ring)",
+        ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
@@ -45,9 +43,10 @@ const config: Config = {
         },
         "protocol-orange": "#f97316",
         surface: {
-          elevated: "#0D1117",
-          base: "#0F1923",
-          subtle: "#1A2535",
+          DEFAULT: "hsl(var(--surface))",
+          elevated: "hsl(var(--surface-elevated))",
+          base: "hsl(var(--surface-base))",
+          subtle: "hsl(var(--surface-subtle))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -74,16 +73,16 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
         dim: {
-          DEFAULT: "rgba(255, 255, 255, 0.3)",
-          light: "rgba(255, 255, 255, 0.5)",
-          muted: "rgba(255, 255, 255, 0.2)",
+          DEFAULT: "hsl(var(--dim))",
+          light: "hsl(var(--dim-light))",
+          muted: "hsl(var(--dim-muted))",
         },
         emphasis: {
-          high: "#E2F0FF",
-          med: "#B0CCE8",
-          low: "#6B8FAB",
-          subtle: "rgba(255, 255, 255, 0.3)",
-          disabled: "rgba(255, 255, 255, 0.15)",
+          high: "hsl(var(--emphasis-high))",
+          med: "hsl(var(--emphasis-med))",
+          low: "hsl(var(--emphasis-low))",
+          subtle: "hsl(var(--emphasis-subtle))",
+          disabled: "hsl(var(--emphasis-disabled))",
         },
       },
       borderRadius: {

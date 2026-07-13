@@ -1,6 +1,6 @@
 "use client";
 
-import { SafeLink } from "@/components/ui/SafeLink";
+import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Mail, MapPin, Phone, Send } from "lucide-react";
 import { Twitter, Linkedin, Instagram, Facebook } from "@/components/ui/brand-icons";
@@ -48,15 +48,15 @@ export default function ContactFooter() {
               Let&apos;s build something great together. Our team is ready to help.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
-              <SafeLink href="/start" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "footer_book_a_call" }); }} className="group px-8 py-3.5 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-semibold text-sm text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(26,109,214,0.45)] hover:scale-[1.02] hover:brightness-110 flex items-center gap-2.5">
+              <Link href="/start" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "footer_book_a_call" }); }} className="group px-8 py-3.5 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-semibold text-sm text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(26,109,214,0.45)] hover:scale-[1.02] hover:brightness-110 flex items-center gap-2.5">
                 <span>Book a Call</span>
                 <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform duration-300" />
-              </SafeLink>
+              </Link>
               
-              <SafeLink href="tel:+919660641530" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "phone_call_click", label: "footer_call_us" }); }} className="px-8 py-3.5 rounded-full border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] text-foreground/70 font-semibold text-sm transition-all duration-300 hover:bg-white/[0.05] hover:text-foreground hover:border-white/20 flex items-center gap-2.5 shadow-md">
+              <Link href="tel:+919660641530" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "phone_call_click", label: "footer_call_us" }); }} className="px-8 py-3.5 rounded-full border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] text-foreground/70 font-semibold text-sm transition-all duration-300 hover:bg-white/[0.05] hover:text-foreground hover:border-white/20 flex items-center gap-2.5 shadow-md">
                   <Phone size={14} />
                   <span>Call Us</span>
-              </SafeLink>
+              </Link>
             </div>
           </div>
         </div>
@@ -69,11 +69,11 @@ export default function ContactFooter() {
         <div className="container-main">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
             <div className="md:col-span-2">
-              <SafeLink href="/" className="flex items-center gap-4 mb-5 group justify-center md:justify-start">
+              <Link href="/" className="flex items-center gap-4 mb-5 group justify-center md:justify-start">
                 <div className="relative h-14 w-14 transition-all duration-300 rounded-full overflow-hidden flex items-center justify-center">
                   <Image 
                     src="/logo-rounded-v2.webp" 
-                    alt="maysanlabs - Maysan Labs"
+                    alt="Maysan Labs"
                     width={56}
                     height={56}
                     sizes="56px"
@@ -82,14 +82,14 @@ export default function ContactFooter() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xl font-extrabold tracking-wider text-foreground uppercase group-hover:text-[#1A6DD6] transition-colors duration-200">
-                    Maysan <span className="text-[#1A6DD6]">Labs</span>
+                  <span className="text-xl font-extrabold tracking-wider text-foreground uppercase group-hover:text-brand-primary transition-colors duration-200">
+                    Maysan <span className="text-brand-primary">Labs</span>
                   </span>
                   <span className="text-[10px] text-foreground/40 tracking-widest uppercase font-semibold mt-0.5">
                     Build • Scale • Grow
                   </span>
                 </div>
-              </SafeLink>
+              </Link>
               <p className="text-foreground/70 text-sm mb-6 max-w-sm leading-relaxed text-center md:text-left">
                  Enterprise SaaS development studio building scalable applications for businesses that demand precision.
               </p>
@@ -100,31 +100,31 @@ export default function ContactFooter() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-11 h-11 rounded-xl border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] flex items-center justify-center text-foreground/40 hover:text-[#1A6DD6] hover:border-[#1A6DD6]/30 hover:bg-[#1A6DD6]/5 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-blue-500/10"
-                    aria-label={social.name}
+                     className="w-11 h-11 rounded-xl border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] flex items-center justify-center text-foreground/40 hover:text-brand-primary hover:border-brand-primary/30 hover:bg-brand-primary/5 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-blue-500/10"
+                    aria-label={`${social.name} (opens in new tab)`}
                   >
-                    <social.icon size={20} />
+                    <social.icon size={20} aria-hidden="true" />
                   </a>
                 ))}
               </div>
             </div>
 
-            <div className="flex flex-col">
+            <nav aria-label="Footer navigation" className="flex flex-col">
               <h3 className="text-xs font-semibold text-foreground/70 uppercase tracking-widest mb-5">Company</h3>
               <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
                 {links.map((link) => (
-                  <SafeLink
+                  <Link
                     key={link.name}
                     href={link.href}
                     className="text-foreground/60 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-x-1 w-fit"
                   >
                     {link.name}
-                  </SafeLink>
+                  </Link>
                 ))}
               </div>
-            </div>
+            </nav>
 
-            <div>
+            <address className="not-italic">
               <h3 className="text-xs font-semibold text-foreground/70 uppercase tracking-widest mb-5">Contact</h3>
               <div className="flex flex-col gap-4">
                 <div className="flex items-center gap-3 text-foreground/60 text-sm group">
@@ -141,14 +141,14 @@ export default function ContactFooter() {
                   <span className="group-hover:text-foreground transition-colors duration-300">+91 96606 41530</span>
                 </a>
 
-                <SafeLink href="/contact" className="flex items-center gap-3 text-foreground/60 text-sm group">
+                <Link href="/contact" className="flex items-center gap-3 text-foreground/60 text-sm group">
                   <div className="w-9 h-9 rounded-lg bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] flex items-center justify-center text-foreground/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300 shrink-0">
                     <Mail size={15} />
                   </div>
                   <span className="text-brand-primary group-hover:text-foreground transition-colors duration-300">business@maysanlabs.com</span>
-                </SafeLink>
+                </Link>
               </div>
-            </div>
+            </address>
           </div>
 
           <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
@@ -156,8 +156,8 @@ export default function ContactFooter() {
                 © {new Date().getFullYear()} maysanlabs. All rights reserved.
               </p>
             <div className="flex gap-6">
-              <SafeLink href="/privacy" className="text-foreground/65 hover:text-brand-primary text-xs sm:text-sm transition-all duration-300 py-2">Privacy Policy</SafeLink>
-              <SafeLink href="/terms" className="text-foreground/65 hover:text-brand-primary text-xs sm:text-sm transition-all duration-300 py-2">Terms of Service</SafeLink>
+              <Link href="/privacy" className="text-foreground/65 hover:text-brand-primary text-xs sm:text-sm transition-all duration-300 py-2">Privacy Policy</Link>
+              <Link href="/terms" className="text-foreground/65 hover:text-brand-primary text-xs sm:text-sm transition-all duration-300 py-2">Terms of Service</Link>
             </div>
           </div>
         </div>

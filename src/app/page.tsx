@@ -48,7 +48,7 @@ export default async function Home() {
   }));
 
   return (
-    <main id="main-content" aria-label="Maysan Labs Homepage" className="min-h-screen relative overflow-hidden text-foreground">
+    <main id="main-content" tabIndex={-1} aria-label="Maysan Labs Homepage" className="min-h-screen relative overflow-hidden text-foreground">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -64,7 +64,7 @@ export default async function Home() {
                 dateModified: today,
                 speakable: {
                   "@type": "SpeakableSpecification",
-                  cssSelector: [".hero-title-text", ".geo-summary"],
+                  cssSelector: [".heading-xl", ".hero-subtitle"],
                 },
                 about: { "@type": "Organization", name: "Maysan Labs" },
               },
@@ -123,9 +123,9 @@ export default async function Home() {
             </span>
           </div>
           <h2 className="heading-lg sm:heading-xl tracking-[-0.02em] text-foreground text-center">
-            <span className="bg-gradient-to-r from-[#1A6DD6] to-[#00d2ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(26,109,214,0.2)] dark:drop-shadow-[0_0_20px_rgba(26,109,214,0.4)]">Build</span>.{" "}
-            <span className="bg-gradient-to-r from-[#10b981] to-[#14b8a6] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(16,185,129,0.2)] dark:drop-shadow-[0_0_20px_rgba(16,185,129,0.4)]">Scale</span>.{" "}
-            <span className="bg-gradient-to-r from-[#f97316] to-[#facc15] bg-clip-text text-transparent italic drop-shadow-[0_0_15px_rgba(249,115,22,0.2)] dark:drop-shadow-[0_0_20px_rgba(249,115,22,0.4)]">Grow.</span>
+            <span className="bg-gradient-to-r from-brand-primary to-brand-light bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(26,109,214,0.2)] dark:drop-shadow-[0_0_20px_rgba(26,109,214,0.4)]">Build</span>.{" "}
+            <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(16,185,129,0.2)] dark:drop-shadow-[0_0_20px_rgba(16,185,129,0.4)]">Scale</span>.{" "}
+            <span className="bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent italic drop-shadow-[0_0_15px_rgba(249,115,22,0.2)] dark:drop-shadow-[0_0_20px_rgba(249,115,22,0.4)]">Grow.</span>
           </h2>
           <p className="text-foreground/60 text-sm md:text-base max-w-2xl mx-auto mt-6 leading-relaxed font-medium text-center">
             Three simple steps to take your business from idea to launch to growth.

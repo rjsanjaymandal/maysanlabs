@@ -3,10 +3,12 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Outfit, JetBrains_Mono } from "next/font/google";
 import "@/styles/globals.css";
-import GoogleAnalytics from "@/components/tracking/google-analytics";
 import ThemeProvider from "@/components/layout/theme-provider";
 
-const ScrollProgress = dynamic(() => import("@/components/tracking/scroll-progress"));
+const GoogleAnalytics = dynamic(() => import("@/components/tracking/google-analytics"));
+const ScrollProgress = dynamic(() => import("@/components/tracking/scroll-progress"), {
+  loading: () => <div className="fixed top-0 left-0 w-full h-[3px] z-[9999]" />,
+});
 const BackToTop = dynamic(() => import("@/components/layout/back-to-top"));
 
 import {
@@ -155,7 +157,10 @@ import type { Viewport } from "next";
 import { cn } from "@/utils/cn";
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#0A0D14" },
+  ],
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -173,14 +178,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={cn("antialiased", outfit.variable, jetbrainsMono.variable)}>
 <head>
-        {/* Preconnect to critical third-party origins for faster connection */}
+        {/* Preconnect to critical third-party origins */}
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-
-        {/* Preload critical above-the-fold assets */}
-        <link rel="preload" as="image" href="/logo-rounded-v2.webp" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 
         {/* Combined JSON-LD structured data — single @graph for fewer script tags */}
         <script
@@ -203,10 +204,7 @@ export default function RootLayout({
           }}
         />
       </head>
-        <body
-          className="bg-[var(--bg-base)] text-foreground font-sans"
-          suppressHydrationWarning
-        >
+        <body className="bg-[var(--bg-base)] text-foreground font-sans">
           <a href="#main-content" className="skip-link">
             Skip to content
           </a>
@@ -220,21 +218,11 @@ export default function RootLayout({
             <WhatsAppButton />
             <ExitIntentPopup />
             <CookieConsent />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-(function() {
-  if ('serviceWorker' in navigator && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/sw.js').catch(function(e) {
-        console.warn('SW registration failed:', e);
-      });
-    });
-  }
-})();
-`,
-              }}
-            />
+            <noscript>
+              <div className="bg-amber-600 text-white text-center py-2 px-4 text-sm">
+                JavaScript is required for interactive features on this site.
+              </div>
+            </noscript>
           </ThemeProvider>
         </body>
     </html>

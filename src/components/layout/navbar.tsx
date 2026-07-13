@@ -70,12 +70,18 @@ export default function Navbar() {
 
   useEffect(() => {
     if (isOpen) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = "hidden";
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
     } else {
       document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
     }
     return () => {
       document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
     };
   }, [isOpen]);
 
@@ -99,18 +105,18 @@ export default function Navbar() {
   const isActive = (href: string) => pathname === href;
 
   return (
-    <>
-      <nav aria-label="Main navigation" className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+    <header>
+      <nav aria-label="Main navigation" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         mounted && scrolled
           ? "bg-[var(--bg-dark)]/80 backdrop-blur-xl py-3 shadow-[0_1px_0_rgba(255,255,255,0.05)]"
           : "bg-transparent py-4 md:py-5"
       }`}>
         <div className="container-main flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+          <Link href="/" className="flex items-center gap-2.5 group shrink-0" aria-current={isActive("/") ? "page" : undefined}>
             <div className="relative h-8 w-8 md:h-9 md:w-9 rounded-[2px] overflow-hidden flex items-center justify-center border border-white/10 bg-white/5 transition-all duration-300 group-hover:border-brand-primary/30 group-hover:shadow-[0_0_15px_rgba(26,109,214,0.2)]">
               <Image 
                 src="/logo-rounded-v2.webp" 
-                alt="maysanlabs - Maysan Labs Logo"
+                alt="Maysan Labs"
                 width={36}
                 height={36}
                 priority
@@ -146,7 +152,7 @@ export default function Navbar() {
               type="button"
               onClick={() => setIsSearchOpen(true)}
               aria-label="Open search (Cmd+K)"
-              aria-keyshortcuts="Control+K Meta+K"
+              aria-keyshortcuts="Control+K, Meta+K"
               className="w-9 h-9 flex items-center justify-center text-foreground/40 hover:text-foreground rounded-[2px] hover:bg-white/[0.04] transition-all duration-200 focus-ring"
             >
               <Search size={16} aria-hidden="true" />
@@ -168,6 +174,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
+            aria-haspopup="true"
             aria-controls="mobile-navigation-menu"
           >
             {isOpen ? <X size={18} /> : <Menu size={18} />}
@@ -252,6 +259,6 @@ export default function Navbar() {
         )}
 
       {isSearchOpen && <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />}
-    </>
+    </header>
   );
 }
