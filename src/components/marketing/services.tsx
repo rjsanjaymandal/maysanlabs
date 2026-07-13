@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const services = [
   {
@@ -116,44 +118,36 @@ export default function Services() {
                 transition={{ delay: index * 0.06 }}
                 className="group"
               >
-                <div className={`relative rounded-2xl border p-6 h-full hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ${
-                  isFeatured
-                    ? "border-brand-primary/30 bg-gradient-to-br from-brand-primary/[0.03] to-transparent dark:from-brand-primary/[0.06] dark:to-transparent shadow-sm"
-                    : "border-gray-100 dark:border-white/[0.06] bg-white dark:bg-white/[0.02]"
+                <Card className={`h-full group hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ${
+                  isFeatured ? "border-brand-primary/30 shadow-sm" : ""
                 }`}>
                   {isFeatured && (
-                    <span className="absolute top-4 right-4 text-xs font-bold uppercase tracking-wider text-brand-primary/60 bg-brand-primary/10 px-2 py-0.5 rounded-full">
+                    <Badge variant="outline" className="absolute top-4 right-4 bg-brand-primary/10 text-brand-primary border-brand-primary/20 hover:bg-brand-primary/15">
                       Popular
-                    </span>
+                    </Badge>
                   )}
-
-                  <div className="w-11 h-11 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <service.icon size={19} />
+                  <div className="p-6 pt-6">
+                    <div className="w-11 h-11 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <service.icon size={19} />
+                    </div>
+                    <h3 className="text-base font-bold text-foreground mb-2">{service.title}</h3>
+                    <p className="text-sm text-foreground/60 mb-4 leading-relaxed">{service.desc}</p>
+                    <ul className="space-y-2.5 mb-5 border-t border-gray-100 dark:border-white/[0.06] pt-4">
+                      {service.features.map((feature, i) => (
+                        <li key={i} className="flex items-center gap-2.5 text-xs text-foreground/60">
+                          <span className="w-1.5 h-1.5 rounded-full bg-brand-primary/30 shrink-0" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      href={service.href}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-primary hover:gap-2.5 transition-all"
+                    >
+                      Learn more <ArrowUpRight size={12} />
+                    </Link>
                   </div>
-
-                  <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-brand-primary transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-foreground/60 mb-4 leading-relaxed">
-                    {service.desc}
-                  </p>
-
-                  <ul className="space-y-2.5 mb-5 border-t border-gray-100 dark:border-white/[0.06] pt-4">
-                    {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2.5 text-xs text-foreground/60">
-                        <span className="w-1.5 h-1.5 rounded-full bg-brand-primary/30 shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Link
-                    href={service.href}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-primary group-hover:gap-2.5 transition-all"
-                  >
-                    Learn more <ArrowUpRight size={12} />
-                  </Link>
-                </div>
+                </Card>
               </motion.div>
             );
           })}

@@ -16,3 +16,15 @@ export { SparklesCore } from "./sparkles";
 export { default as ThemeToggle } from "./ThemeToggle";
 export { default as WhatsAppButton } from "./WhatsAppButton";
 export { default as WordPullUp } from "./word-pull-up";
+
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from "./card";
+export { Badge, badgeVariants } from "./badge";
+export { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "./dialog";
+export { Tabs, TabsList, TabsTrigger, TabsContent } from "./tabs";
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./accordion";
+export { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "./dropdown-menu";
+export { ShimmerButton } from "./shimmer-button";
+export { NumberTicker } from "./number-ticker";
+export { Ripple } from "./ripple";
+export { NeonGradientCard } from "./neon-gradient-card";
+export { AnimatedList } from "./animated-list";

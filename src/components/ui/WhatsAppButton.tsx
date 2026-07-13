@@ -18,7 +18,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
-      className="fixed bottom-24 right-6 z-[100] flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#25D366] to-[#20BD5A] shadow-[0_0_25px_rgba(37,211,102,0.35)] transition-transform duration-200 hover:scale-105 hover:shadow-[0_0_35px_rgba(37,211,102,0.5)] focus-ring active:scale-95 group md:bottom-8 md:right-8"
+      className="fixed bottom-24 right-6 z-[100] flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#25D366] to-[#20BD5A] shadow-[0_0_25px_rgba(37,211,102,0.35)] transition-transform duration-200 hover:scale-105 hover:shadow-[0_0_35px_rgba(37,211,102,0.5)] focus-ring active:scale-95 group md:bottom-8 md:right-8 lg:bottom-6 lg:right-6"
       aria-label="Contact on WhatsApp"
     >
       <MessageCircle size={26} className="text-white" />

@@ -2,7 +2,7 @@ name: Autonomous Content Scheduler
 
 on:
   schedule:
-    # Generate new content 3x per week: Mon, Wed, Fri at 6 AM UTC
+    # Generate fresh content 3x per week: Mon, Wed, Fri at 6 AM UTC
     - cron: '0 6 * * 1,3,5'
   workflow_dispatch:
     inputs:
@@ -38,7 +38,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate AI Content
+      - name: Generate AI Blog Posts
+        if: ${{ !github.event.inputs.skip_blog }}
         run: node scripts/content-generator.mjs ${{ github.event.inputs.blog_count || '1' }}
         env:
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
@@ -54,18 +55,18 @@ jobs:
       - name: Check for Changes
         id: git-check
         run: |
-          git diff --quiet src/lib/ || echo "changed=true" >> $GITHUB_OUTPUT
+          git diff --quiet src/data/ || echo "changed=true" >> $GITHUB_OUTPUT
 
       - name: Commit and Push Changes
         if: steps.git-check.outputs.changed == 'true'
         run: |
           git config user.name "Maysan Content Bot"
           git config user.email "content-bot@maysanlabs.com"
-          git add src/lib/ scripts/
+          git add src/data/
           git commit -m "auto: generate fresh content [skip ci]"
           git push
 
-      - name: Build and Deploy (Vercel)
+      - name: Build and Deploy
         if: steps.git-check.outputs.changed == 'true'
         run: npm run build
         env:
