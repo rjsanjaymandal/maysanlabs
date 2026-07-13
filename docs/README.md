@@ -71,15 +71,36 @@ src/
 │   ├── manifest.ts         # PWA manifest
 │   ├── robots.ts           # Robots.txt config
 │   └── sitemap.ts          # Auto-generated sitemap
-├── components/             # React components
-│   ├── dynamic/            # Client-side dynamic imports with SSR disabled
-│   ├── ui/                 # Primitive UI components (shadcn-style)
-│   └── ...                 # ~50 feature components
-├── lib/                    # Utilities & data
-│   ├── seo/                # Schema generation, metadata helpers, brand strategy
-│   ├── security/           # Sanitization, SSRF protection
-│   └── *.ts                # Data files, utility functions
-└── hooks/                  # Custom React hooks
+├── components/             # React components (organized by domain)
+│   ├── layout/             # Shell: Navbar, Footer, PageHeader, CommandDock
+│   ├── home/               # Landing page sections
+│   ├── blog/               # Blog listing, search, share, news feed
+│   ├── marketing/          # Services, Pricing, Problem, Team, Newsletter
+│   ├── interactive/        # ROI Calculator, Tools Showcase, MultiStepForm
+│   ├── effects/            # Scroll reveals, glitch, parallax, spotlight
+│   ├── error/              # Error boundaries, 404
+│   ├── tracking/           # Analytics, cookie consent, progress bars
+│   ├── search/             # Full-site fuzzy search
+│   ├── visuals/            # Architecture diagrams, blueprint grid
+│   ├── ui/                 # Base primitives (button, skeleton, beams, etc.)
+│   └── dynamic/            # Client-only lazy import hub
+├── data/                   # Static content datasets
+│   ├── blog.ts, case-studies.ts, careers.ts, authors.ts
+│   ├── seo-landing.ts, seo-schema.ts
+│   └── index.ts
+├── services/               # Business logic & external APIs
+│   ├── devto.ts, news-fetcher.ts
+│   └── seo-audit/          # SEO audit pipeline (parser, scoring, security, etc.)
+├── core/                   # Infrastructure
+│   ├── security/           # SSRF protection, XSS sanitization, file validation
+│   ├── analytics/          # GTM/dataLayer helpers
+│   ├── ppt/                # PowerPoint generation
+│   └── rate-limit.ts
+├── seo/                    # SEO metadata helpers & brand strategy
+├── hooks/                  # Custom React hooks
+├── utils/                  # Pure utilities (cn.ts, motion-variants.ts)
+├── types/                  # Shared TypeScript interfaces
+└── styles/                 # Global CSS
 ```
 
 ## Routes
@@ -140,13 +161,13 @@ All monetary values use the Indian Rupee symbol **₹** (U+20B9). Pricing, ROI c
 
 **Reference files:**
 - `src/app/pricing/PricingClient.tsx` — Pricing plans
-- `src/components/ROICalculator.tsx` — ROI calculations
+- `src/components/interactive/roi-calculator.tsx` — ROI calculations
 - `src/app/tools/scope-estimator/ScopeEstimatorClient.tsx` — Cost estimates
 - `src/app/tools/headless-roi/HeadlessRoiClient.tsx` — Headless commerce calculator
-- `src/components/MultiStepForm.tsx` — Budget selection
-- `src/components/PortfolioShowcase.tsx` — Portfolio pricing
-- `src/components/Testimonials.tsx` — Client metrics
-- `src/lib/blog-data.ts` & `src/lib/case-studies-data.ts` — Content references
+- `src/components/interactive/multi-step-form.tsx` — Budget selection
+- `src/components/home/portfolio-showcase.tsx` — Portfolio pricing
+- `src/components/home/testimonials.tsx` — Client metrics
+- `src/data/blog.ts` & `src/data/case-studies.ts` — Content references
 
 ### Components
 
@@ -157,23 +178,23 @@ All monetary values use the Indian Rupee symbol **₹** (U+20B9). Pricing, ROI c
 
 ### SEO
 
-- Structured data (JSON-LD) is generated in `src/lib/seo/schema.ts`
-- Metadata helpers in `src/lib/seo/helpers.ts`
-- Brand/GEO strategy in `src/lib/seo/brand-strategy.ts`
+- Structured data (JSON-LD) is generated in `src/data/seo-schema.ts`
+- Metadata helpers in `src/seo/helpers.ts`
+- Brand/GEO strategy in `src/seo/brand-strategy.ts`
 - Each page exports `generateMetadata` or `metadata` object
 
 ## Key Components
 
 | Component | Description |
 |-----------|-------------|
-| `Hero.tsx` | Main hero with interactive goal tabs (Build a SaaS, Automate Workflows, Launch Mobile App, Build Website) and horizontally scrollable dashboard mockup (mobile) |
-| `Navbar.tsx` | Fixed nav with blur, search (Cmd+K), theme toggle, mobile hamburger |
-| `ROICalculator.tsx` | Interactive calculator with scenario presets, sliders, cost comparison |
-| `MultiStepForm.tsx` | 4-step project intake form with budget, timeline, description |
-| `Pricing.tsx` | Pricing card display |
-| `FAQ.tsx` | Accordion FAQ |
-| `Testimonials.tsx` | Client testimonial cards |
-| `ContactFooter.tsx` | Global footer with CTA, links, contact, social |
+| `Hero` | `src/components/home/hero.tsx` — Main hero with goal tabs |
+| `Navbar` | `src/components/layout/navbar.tsx` — Fixed nav with blur, search, theme toggle |
+| `ROICalculator` | `src/components/interactive/roi-calculator.tsx` — Interactive calculator |
+| `MultiStepForm` | `src/components/interactive/multi-step-form.tsx` — Project intake form |
+| `Pricing` | `src/components/marketing/pricing.tsx` — Pricing card display |
+| `FAQ` | `src/components/home/faq.tsx` — Accordion FAQ |
+| `Testimonials` | `src/components/home/testimonials.tsx` — Client testimonial cards |
+| `Footer` | `src/components/layout/footer.tsx` — Global footer with CTA
 
 ## Environment Variables
 

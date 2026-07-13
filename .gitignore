@@ -29,9 +29,8 @@
 .agent/scripts/**/__pycache__/
 .agent/mcp_config.json
 
-# AI tool configs (personal / workspace-specific)
-.commandcode/
-.obsidian/
+# obsidian vault (commit config, ignore personal workspace)
+.obsidian/workspace.json
 
 # debug
 npm-debug.log*
