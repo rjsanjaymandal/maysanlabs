@@ -18,7 +18,7 @@ export default function StatsSection() {
               <p className="text-xs md:text-sm font-semibold text-foreground/80 mb-0.5">
                 {stat.label}
               </p>
-              <p className="text-xs text-foreground/40 leading-relaxed max-w-[140px]">
+              <p className="text-xs text-foreground/50 leading-relaxed max-w-[140px]">
                 {stat.subtitle}
               </p>
             </div>

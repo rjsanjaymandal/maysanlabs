@@ -1,24 +1,37 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { Twitter, Linkedin, Instagram, Facebook } from "@/components/ui/brand-icons";
-import Newsletter from "@/components/marketing/newsletter";
 
-const links = [
-  { name: "Services", href: "/services" },
-  { name: "Products", href: "/products" },
-  { name: "Tools", href: "/tools" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "Case Studies", href: "/case-studies" },
-  { name: "Blog", href: "/blog" },
-  { name: "Insights", href: "/insights" },
-  { name: "About", href: "/about" },
-  { name: "Careers", href: "/careers" },
-  { name: "Architecture", href: "/architecture" },
-  { name: "Contact", href: "/contact" },
-  { name: "Start", href: "/start" },
+const linkGroups = [
+  {
+    title: "Services",
+    links: [
+      { name: "Web Development", href: "/services/web" },
+      { name: "Mobile Apps", href: "/services" },
+      { name: "Cloud Infrastructure", href: "/services/cloud" },
+      { name: "AI & Automation", href: "/services/ai" },
+      { name: "MaysanMails", href: "/products/maysanmails" },
+    ],
+  },
+  {
+    title: "Products",
+    links: [
+      { name: "Maysan Shop", href: "/products" },
+      { name: "Edu-Maysan", href: "/products/edu-maysan" },
+      { name: "MaysanMails", href: "/products/maysanmails" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { name: "Case Studies", href: "/case-studies" },
+      { name: "Blog", href: "/blog" },
+      { name: "Free Tools", href: "/tools" },
+      { name: "Pricing", href: "/pricing" },
+      { name: "About", href: "/about" },
+    ],
+  },
 ];
 
 const socialLinks = [
@@ -30,151 +43,141 @@ const socialLinks = [
 
 export default function ContactFooter() {
   return (
-    <footer className="bg-[var(--bg-dark)] border-t border-white/5 pb-20 md:pb-0">
-      {/* CTA Section */}
-      <section className="py-16 md:py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/[0.10] via-brand-primary/[0.03] to-transparent" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-brand-primary/8 blur-[60px] sm:blur-[100px] rounded-full pointer-events-none" />
-        <div className="container-main relative z-10">
-          <div className="text-center">
-            <span className="badge-section mb-6">
-              <Send size={12} />
-              Get Started
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-5">
-              Ready to <span className="bg-gradient-to-r from-brand-primary to-brand-light bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(26,109,214,0.2)]">scale</span>?
-            </h2>
-            <p className="text-foreground/60 text-base leading-relaxed mb-8 max-w-lg mx-auto font-medium">
-              Let&apos;s build something great together. Our team is ready to help.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
-              <Link href="/start" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "cta_click", label: "footer_book_a_call" }); }} className="group px-8 py-3.5 bg-gradient-to-r from-brand-primary to-brand-light rounded-full font-semibold text-sm text-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(26,109,214,0.45)] hover:scale-[1.02] hover:brightness-110 flex items-center gap-2.5">
-                <span>Book a Call</span>
-                <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform duration-300" />
-              </Link>
-              
-              <Link href="tel:+919660641530" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "phone_call_click", label: "footer_call_us" }); }} className="px-8 py-3.5 rounded-full border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] text-foreground/70 font-semibold text-sm transition-all duration-300 hover:bg-white/[0.05] hover:text-foreground hover:border-white/20 flex items-center gap-2.5 shadow-md">
-                  <Phone size={14} />
-                  <span>Call Us</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Newsletter />
-
-      {/* Links Section */}
-      <section className="py-16 border-t border-white/5">
+    <footer className="bg-background border-t border-gray-100 dark:border-white/[0.06] pb-20 md:pb-0">
+      {/* Links + Brand + Contact */}
+      <section className="py-16">
         <div className="container-main">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-10">
+            {/* Brand column — spans 2 */}
             <div className="md:col-span-2">
-              <Link href="/" className="flex items-center gap-4 mb-5 group justify-center md:justify-start">
-                <div className="relative h-14 w-14 transition-all duration-300 rounded-full overflow-hidden flex items-center justify-center">
-                  <Image 
-                    src="/logo-rounded-v2.webp" 
+              <Link href="/" className="flex items-center gap-3 mb-5 group">
+                <div className="h-12 w-12 rounded-full overflow-hidden flex items-center justify-center border border-gray-200 dark:border-white/[0.08]">
+                  <Image
+                    src="/logo-rounded-v2.webp"
                     alt="Maysan Labs"
-                    width={56}
-                    height={56}
-                    sizes="56px"
-                    loading="lazy"
-                    className="h-full w-full object-contain transition-transform group-hover:scale-105" 
+                    width={48}
+                    height={48}
+                    className="h-full w-full object-contain"
                   />
                 </div>
-                <div className="flex flex-col">
-                  <span className="text-xl font-extrabold tracking-wider text-foreground uppercase group-hover:text-brand-primary transition-colors duration-200">
+                <div>
+                  <span className="text-lg font-extrabold tracking-wider text-foreground uppercase">
                     Maysan <span className="text-brand-primary">Labs</span>
                   </span>
-                  <span className="text-[10px] text-foreground/40 tracking-widest uppercase font-semibold mt-0.5">
+                  <span className="text-xs text-foreground/50 tracking-wider uppercase font-semibold block">
                     Build • Scale • Grow
                   </span>
                 </div>
               </Link>
-              <p className="text-foreground/70 text-sm mb-6 max-w-sm leading-relaxed text-center md:text-left">
-                 Enterprise SaaS development studio building scalable applications for businesses that demand precision.
+              <p className="text-sm text-foreground/60 leading-relaxed max-w-sm mb-6">
+                Enterprise SaaS development studio building scalable applications for businesses worldwide.
               </p>
-              <div className="flex gap-3.5 justify-center md:justify-start">
+              <div className="flex gap-3">
                 {socialLinks.map((social) => (
                   <a
                     key={social.name}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                     className="w-11 h-11 rounded-xl border border-[var(--glass-chip-border)] bg-[var(--glass-chip-bg)] flex items-center justify-center text-foreground/40 hover:text-brand-primary hover:border-brand-primary/30 hover:bg-brand-primary/5 hover:-translate-y-0.5 active:scale-95 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-blue-500/10"
+                    className="w-10 h-10 rounded-lg border border-gray-200 dark:border-white/[0.06] bg-white dark:bg-white/[0.02] flex items-center justify-center text-foreground/50 hover:text-brand-primary hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all"
                     aria-label={`${social.name} (opens in new tab)`}
                   >
-                    <social.icon size={20} aria-hidden="true" />
+                    <social.icon size={18} aria-hidden="true" />
                   </a>
                 ))}
               </div>
             </div>
 
-            <nav aria-label="Footer navigation" className="flex flex-col">
-              <h3 className="text-xs font-semibold text-foreground/70 uppercase tracking-widest mb-5">Company</h3>
-              <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
-                {links.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    className="text-foreground/60 hover:text-brand-primary text-sm transition-all duration-300 hover:translate-x-1 w-fit"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
-            </nav>
+            {/* Link groups — spans 2 */}
+            <div className="md:col-span-2 grid grid-cols-2 gap-8">
+              {linkGroups.slice(0, 2).map((group) => (
+                <nav key={group.title} aria-label={group.title}>
+                  <h3 className="text-xs font-semibold text-foreground/70 uppercase tracking-widest mb-4">
+                    {group.title}
+                  </h3>
+                  <ul className="space-y-2.5">
+                    {group.links.map((link) => (
+                      <li key={link.name}>
+                        <Link
+                          href={link.href}
+                          className="text-sm text-foreground/60 hover:text-brand-primary transition-colors"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              ))}
+            </div>
 
-            <address className="not-italic">
-              <h3 className="text-xs font-semibold text-foreground/70 uppercase tracking-widest mb-5">Contact</h3>
-              <div className="flex flex-col gap-4">
-                <div className="flex items-center gap-3 text-foreground/60 text-sm group">
-                  <div className="w-9 h-9 rounded-lg bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] flex items-center justify-center text-foreground/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300 shrink-0">
-                    <MapPin size={15} />
-                  </div>
-                  <div className="flex flex-col">
-                    <span>Gurgaon, India</span>
-                    <span className="text-xs text-foreground/40">Sector 44, Haryana</span>
-                  </div>
-                </div>
+            {/* Resources + Contact — spans 2 */}
+            <div className="md:col-span-2 grid grid-cols-2 gap-8">
+              <nav aria-label="Resources">
+                <h3 className="text-xs font-semibold text-foreground/70 uppercase tracking-widest mb-4">Resources</h3>
+                <ul className="space-y-2.5">
+                  {linkGroups[2].links.map((link) => (
+                    <li key={link.name}>
+                      <Link href={link.href} className="text-sm text-foreground/60 hover:text-brand-primary transition-colors">
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
 
-                <div className="flex items-center gap-3 text-foreground/60 text-sm group">
-                  <div className="w-9 h-9 rounded-lg bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] flex items-center justify-center text-foreground/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300 shrink-0">
-                    <MapPin size={15} />
-                  </div>
-                  <div className="flex flex-col">
-                    <span>Cardiff, UK</span>
-                    <span className="text-xs text-foreground/40">94 Neville Street, Wales</span>
-                  </div>
-                </div>
-                
-                <a href="tel:+919660641530" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "phone_call_click", label: "footer_phone_contact" }); }} className="flex items-center gap-3 text-foreground/60 text-sm group">
-                  <div className="w-9 h-9 rounded-lg bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] flex items-center justify-center text-foreground/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300 shrink-0">
-                    <Phone size={15} />
-                  </div>
-                  <span className="group-hover:text-foreground transition-colors duration-300">+91 96606 41530</span>
-                </a>
-
-                <Link href="/contact" className="flex items-center gap-3 text-foreground/60 text-sm group">
-                  <div className="w-9 h-9 rounded-lg bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] flex items-center justify-center text-foreground/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300 shrink-0">
-                    <Mail size={15} />
-                  </div>
-                  <span className="text-brand-primary group-hover:text-foreground transition-colors duration-300">business@maysanlabs.com</span>
-                </Link>
-              </div>
-            </address>
-          </div>
-
-          <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-foreground/60 text-xs sm:text-sm text-center md:text-left">
-                © {new Date().getFullYear()} maysanlabs. All rights reserved.
-              </p>
-            <div className="flex gap-6">
-              <Link href="/privacy" className="text-foreground/65 hover:text-brand-primary text-xs sm:text-sm transition-all duration-300 py-2">Privacy Policy</Link>
-              <Link href="/terms" className="text-foreground/65 hover:text-brand-primary text-xs sm:text-sm transition-all duration-300 py-2">Terms of Service</Link>
+              <address className="not-italic">
+                <h3 className="text-xs font-semibold text-foreground/70 uppercase tracking-widest mb-4">Contact</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2.5 text-sm text-foreground/60">
+                    <MapPin size={14} className="text-brand-primary shrink-0 mt-0.5" />
+                    <div>
+                      <span className="block">Gurgaon, India</span>
+                      <span className="text-xs text-foreground/50">Sector 44, Haryana</span>
+                    </div>
+                  </li>
+                  <li className="flex items-start gap-2.5 text-sm text-foreground/60">
+                    <MapPin size={14} className="text-brand-primary shrink-0 mt-0.5" />
+                    <div>
+                      <span className="block">Cardiff, UK</span>
+                      <span className="text-xs text-foreground/50">94 Neville Street, Wales</span>
+                    </div>
+                  </li>
+                  <li>
+                    <a href="tel:+919660641530" className="flex items-start gap-2.5 text-sm text-foreground/60 hover:text-brand-primary transition-colors">
+                      <Phone size={14} className="text-brand-primary shrink-0 mt-0.5" />
+                      +91 96606 41530
+                    </a>
+                  </li>
+                  <li>
+                    <Link href="/contact" className="flex items-start gap-2.5 text-sm text-brand-primary hover:text-brand-light transition-colors">
+                      <Mail size={14} className="shrink-0 mt-0.5" />
+                      business@maysanlabs.com
+                    </Link>
+                  </li>
+                </ul>
+              </address>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Bottom bar */}
+      <div className="border-t border-gray-100 dark:border-white/[0.06] py-6">
+        <div className="container-main flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-foreground/50">
+            &copy; {new Date().getFullYear()} maysanlabs. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6">
+            <Link href="/privacy" className="text-xs text-foreground/50 hover:text-brand-primary transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="text-xs text-foreground/50 hover:text-brand-primary transition-colors">
+              Terms of Service
+            </Link>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }

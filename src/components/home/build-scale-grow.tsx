@@ -57,7 +57,7 @@ export default function BuildScaleGrow() {
             {step.desc}
           </p>
 
-          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-foreground/40 group-hover:text-foreground/80 group-hover:gap-2.5 transition-all mt-auto">
+          <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-foreground/50 group-hover:text-foreground/80 group-hover:gap-2.5 transition-all mt-auto">
             {step.cta}
             <ArrowRight size={12} />
           </span>

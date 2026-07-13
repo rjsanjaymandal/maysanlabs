@@ -29,13 +29,12 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-8"
         >
-          <h1 className="font-sans text-[36px] sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-[-0.03em] leading-[1.05] text-foreground max-w-4xl">
+          <h1 className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-[-0.02em] leading-[1.05] text-foreground max-w-4xl">
             Custom software that{" "}
             <span className="text-gradient-brand">runs your business</span>
           </h1>
           <p className="text-foreground/60 text-base sm:text-lg mt-6 max-w-xl mx-auto font-medium">
-            SaaS platforms, automation tools, mobile apps, and websites — built by expert engineers.
-            No templates. No coding required from you.
+            SaaS platforms, automation tools, mobile apps, and websites — built by expert engineers for your specific needs.
           </p>
         </motion.div>
 

@@ -47,7 +47,7 @@ html:not(.dark) .input-std::placeholder { color: #8D9CAC !important; }
 /* announcement-bar intentionally uses var(--brand-light) — keep its brand color */
 
 /* ─── Readable Font Size Minimums ─── */
-.label-mono { @apply text-[11px] font-black uppercase tracking-[0.4em] text-brand-primary/80; }
+.label-mono { @apply text-xs font-black uppercase tracking-[0.4em] text-brand-primary/80; }
 
 
 /* ─── Desktop Touch Target Size Minimums ─── */
@@ -288,11 +288,6 @@ html:not(.dark) .text-white\/\[0\.02\] {
   .card-glass-mid { @apply bg-white/50 dark:bg-white/[0.03] backdrop-blur-xl shadow-sm; }
   .card-glass-accent { @apply bg-white/60 dark:bg-white/[0.04] border border-gray-200 dark:border-white/[0.1] backdrop-blur-xl shadow-sm; }
   .card-hover { @apply hover:border-brand-primary/40 dark:hover:border-brand-primary/30 hover:shadow-lg transition-all duration-300; }
-
-  /* ─── Section Badge ─── */
-  .badge-section {
-    @apply inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.06] text-brand-primary text-xs font-semibold uppercase tracking-wider;
-  }
 
   /* ─── Standardized Input ─── */
   .input-std {

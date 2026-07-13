@@ -135,7 +135,7 @@ export default async function Home() {
           <div className="container-narrow relative z-10">
             <div className="text-center mb-12">
               <span className="badge-section mb-6 inline-flex">Start Your Project</span>
-              <h2 className="text-3xl md:text-5xl font-black tracking-[-0.02em] text-foreground mb-4">
+              <h2 className="heading-lg text-foreground mb-4">
                 Tell us what you need
               </h2>
               <p className="text-foreground/60 text-sm md:text-base max-w-lg mx-auto font-medium">

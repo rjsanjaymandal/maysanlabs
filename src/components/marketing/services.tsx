@@ -17,7 +17,7 @@ import Link from "next/link";
 const services = [
   {
     title: "Custom Software & Web Apps",
-    desc: "Beautiful, customized software built exactly for your business. Includes headless commerce (Medusa) stores, customer portals, and daily operations dashboards.",
+    desc: "Purpose-built software designed exactly for your business. Includes headless commerce (Medusa) stores, customer portals, and daily operations dashboards.",
     icon: Cloud,
     href: "/services/web",
     features: ["Custom design (no templates)", "Headless commerce with Medusa", "Simple customer/staff logins", "Highly secure database"],
@@ -122,7 +122,7 @@ export default function Services() {
                     : "border-gray-100 dark:border-white/[0.06] bg-white dark:bg-white/[0.02]"
                 }`}>
                   {isFeatured && (
-                    <span className="absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider text-brand-primary/60 bg-brand-primary/10 px-2 py-0.5 rounded-full">
+                    <span className="absolute top-4 right-4 text-xs font-bold uppercase tracking-wider text-brand-primary/60 bg-brand-primary/10 px-2 py-0.5 rounded-full">
                       Popular
                     </span>
                   )}

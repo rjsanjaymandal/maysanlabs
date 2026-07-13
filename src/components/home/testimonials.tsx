@@ -129,14 +129,14 @@ export default function Testimonials() {
                     </div>
                     <div>
                       <p className="text-foreground font-semibold text-sm">{t.name}</p>
-                      <p className="text-foreground/40 text-xs">{t.role}</p>
+                      <p className="text-foreground/50 text-xs">{t.role}</p>
                     </div>
                   </div>
                   <div className="text-right">
                     <p className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-blue-400 font-extrabold text-lg drop-shadow-[0_0_10px_rgba(59,130,246,0.15)]">
                       {t.metric}
                     </p>
-                    <p className="text-foreground/35 text-[10px] uppercase tracking-wider font-semibold">
+                    <p className="text-foreground/35 text-xs uppercase tracking-wider font-semibold">
                       {t.metricLabel}
                     </p>
                   </div>
@@ -149,7 +149,7 @@ export default function Testimonials() {
             <button
               onClick={prev}
               aria-label="Previous testimonial"
-              className="w-9 h-9 rounded-full bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-foreground/40 hover:text-foreground hover:border-white/20 hover:bg-white/[0.06] transition-all"
+              className="w-9 h-9 rounded-full bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-foreground/50 hover:text-foreground hover:border-white/20 hover:bg-white/[0.06] transition-all"
             >
               <ChevronLeft size={16} />
             </button>
@@ -172,7 +172,7 @@ export default function Testimonials() {
             <button
               onClick={next}
               aria-label="Next testimonial"
-              className="w-9 h-9 rounded-full bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-foreground/40 hover:text-foreground hover:border-white/20 hover:bg-white/[0.06] transition-all"
+              className="w-9 h-9 rounded-full bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-foreground/50 hover:text-foreground hover:border-white/20 hover:bg-white/[0.06] transition-all"
             >
               <ChevronRight size={16} />
             </button>

@@ -55,7 +55,7 @@ export default function Problem() {
           className="max-w-3xl mb-14"
         >
           <span className="badge-section mb-5 inline-flex">What We Solve</span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-[-0.02em] text-foreground mb-4">
+          <h2 className="heading-lg text-foreground mb-4">
             Outdated websites, spreadsheets & old code{" "}
             <span className="text-gradient-brand">slow you down</span>
           </h2>
@@ -93,7 +93,7 @@ export default function Problem() {
                     {arch.text}
                   </p>
 
-                  <div className="relative z-10 flex items-center gap-1.5 mt-5 text-xs font-semibold text-brand-primary/50 group-hover:text-brand-primary group-hover:gap-2.5 transition-all">
+                  <div className="relative z-10 flex items-center gap-1.5 mt-5 text-xs font-semibold text-brand-primary group-hover:gap-2.5 transition-all">
                     <span>Learn more</span>
                     <ArrowRight size={12} />
                   </div>

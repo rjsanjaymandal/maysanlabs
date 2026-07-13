@@ -87,7 +87,7 @@ export default function Pricing() {
 
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-4xl font-black tracking-tight text-foreground">{plan.price}</span>
-                <span className="text-xs text-foreground/40 font-medium uppercase tracking-wider ml-1">per project</span>
+                <span className="text-xs text-foreground/50 font-medium uppercase tracking-wider ml-1">per project</span>
               </div>
 
               <p className="text-sm text-foreground/60 mb-8 leading-relaxed font-medium">

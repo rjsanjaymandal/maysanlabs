@@ -61,7 +61,7 @@ export default function AboutClient() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="text-foreground/40 text-sm">What drives us</span>
+            <span className="text-foreground/50 text-sm">What drives us</span>
             <h2 className="heading-md text-foreground mt-2">Our Values</h2>
           </motion.div>
           
@@ -86,15 +86,15 @@ export default function AboutClient() {
         </div>
       </section>
 
-      <section className="py-16 bg-black/20 border-y border-white/5">
+      <section className="py-16 bg-gray-50 dark:bg-white/[0.02] border-y border-gray-100 dark:border-white/[0.06]">
         <div className="container-main">
           <div className="max-w-3xl">
-            <span className="text-foreground/40 text-sm mb-4 block">Our Story</span>
+            <span className="text-foreground/50 text-sm mb-4 block">Our Story</span>
             <h2 className="heading-md text-foreground mb-6">Built on <span className="text-brand-primary">trust</span></h2>
             <div className="space-y-4 text-foreground/50 text-base leading-relaxed">
               <p>
                 We started Maysan Labs to help businesses transform their ideas into scalable software. 
-                We saw too many companies struggle with slow development, poor code quality, and lack of technical expertise.
+                We saw too many companies struggle with slow development timelines, poor code quality, and vendors who lacked real engineering depth.
               </p>
               <p>
                 Today, we work with enterprises and startups alike, building software that drives real business results. 
