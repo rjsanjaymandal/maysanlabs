@@ -1,4 +1,4 @@
-import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
+import { generateBreadcrumbSchema, generatePageSEO } from "@/seo/helpers";
 import type { Metadata } from "next";
 import HeadlessRoiClient from "./HeadlessRoiClient";
 

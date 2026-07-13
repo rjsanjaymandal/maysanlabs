@@ -1,14 +1,14 @@
 import dynamic from "next/dynamic";
-import Navbar from "@/components/Navbar";
-import Newsletter from "@/components/Newsletter";
-import ContactFooter from "@/components/ContactFooter";
-import BlogPageClient from "@/components/BlogPageClient";
-import { blogPosts } from "@/lib/blog-data";
-import { fetchExternalTechBlogs } from "@/lib/devto";
+import Navbar from "@/components/layout/navbar";
+import Newsletter from "@/components/marketing/newsletter";
+import ContactFooter from "@/components/layout/footer";
+import BlogPageClient from "@/components/blog/blog-page-client";
+import { blogPosts } from "@/data/blog";
+import { fetchExternalTechBlogs } from "@/services/devto";
 import { Metadata } from "next";
-import { generateBreadcrumbSchema } from "@/lib/seo/helpers";
+import { generateBreadcrumbSchema } from "@/seo/helpers";
 
-const TrendingTopics = dynamic(() => import("@/components/TrendingTopics"));
+const TrendingTopics = dynamic(() => import("@/components/blog/trending-topics"));
 
 export const revalidate = 3600;
 

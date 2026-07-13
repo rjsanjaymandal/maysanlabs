@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
 import { ShoppingBag, Package, CreditCard, Users, BarChart3, ArrowRight, ArrowUpRight, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";

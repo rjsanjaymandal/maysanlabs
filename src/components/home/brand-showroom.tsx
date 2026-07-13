@@ -6,7 +6,7 @@ import { Zap } from "lucide-react";
 import dynamic from "next/dynamic";
 import BorderBeam from "@/components/ui/border-beam";
 
-const ParallaxBackground = dynamic(() => import("@/components/ParallaxSection").then(m => m.ParallaxBackground));
+const ParallaxBackground = dynamic(() => import("@/components/effects/parallax-section").then(m => m.ParallaxBackground));
 
 export default function BrandShowroom() {
   const [activeTab, setActiveTab] = useState<"identity" | "pillars">("identity");

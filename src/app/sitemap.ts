@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
-import { blogPosts } from '@/lib/blog-data'
-import { caseStudies } from '@/lib/case-studies-data'
-import { seoLandingPages } from '@/lib/seo-landing-data'
+import { blogPosts } from '@/data/blog'
+import { caseStudies } from '@/data/case-studies'
+import { seoLandingPages } from '@/data/seo-landing'
 
 const BASE_URL = 'https://maysanlabs.com'
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import EduMaysanClient from "./EduMaysanClient";
-import { generateBreadcrumbSchema, generateProductSEO } from "@/lib/seo/helpers";
+import { generateBreadcrumbSchema, generateProductSEO } from "@/seo/helpers";
 
 const productData = {
   name: "Edu-Maysan",

@@ -1,6 +1,6 @@
 import CaseStudiesClient from "./CaseStudiesClient";
 import { Metadata } from "next";
-import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
+import { generateBreadcrumbSchema, generatePageSEO } from "@/seo/helpers";
 
 export const metadata: Metadata = generatePageSEO({
   title: "Case Studies | Enterprise Software Success Stories",

@@ -1,9 +1,9 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
-import PageHeader from "@/components/PageHeader";
-import TeamSection from "@/components/TeamSection";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
+import PageHeader from "@/components/layout/page-header";
+import TeamSection from "@/components/marketing/team-section";
 import { Cpu, Shield, Globe, Target, Zap, Users } from "lucide-react";
 import { motion } from "framer-motion";
 

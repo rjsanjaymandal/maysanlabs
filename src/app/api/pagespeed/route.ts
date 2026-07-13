@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { checkRateLimit } from "@/lib/rate-limit";
-import type { WebVitalResult } from "@/lib/pagespeed-types";
+import { checkRateLimit } from "@/core/rate-limit";
+import type { WebVitalResult } from "@/types/pagespeed";
 
 const cacheMap = new Map<string, { data: unknown; expiry: number }>();
 const CACHE_TTL_MS = 5 * 60 * 1000;

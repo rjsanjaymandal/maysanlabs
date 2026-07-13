@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ShieldAlert, BadgePercent, LayoutGrid, ArrowRight, Search, FileText, Share2, FileImage, Presentation } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
 
 const categories = ["All", "Site Checks", "Business Calculators", "Quick Tools"];
 

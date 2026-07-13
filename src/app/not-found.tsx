@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
-import NotFoundContent from "@/components/NotFoundContent";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
+import NotFoundContent from "@/components/error/not-found-content";
 
 export const metadata: Metadata = {
   title: "404 - Page Not Found",

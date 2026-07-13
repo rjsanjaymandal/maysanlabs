@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { generatePageSEO } from "@/lib/seo/helpers";
+import { generatePageSEO } from "@/seo/helpers";
 import StartClient from "./StartClient";
 
 export const metadata: Metadata = generatePageSEO({

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ServicesClient from "./ServicesClient";
-import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
-import { serviceSchema } from "@/lib/seo/schema";
+import { generateBreadcrumbSchema, generatePageSEO } from "@/seo/helpers";
+import { serviceSchema } from "@/data/seo-schema";
 
 export const metadata: Metadata = generatePageSEO({
   title: "SaaS Development Services | Custom Software Development",

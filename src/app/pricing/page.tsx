@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
+import { generateBreadcrumbSchema, generatePageSEO } from "@/seo/helpers";
 import PricingClient from "./PricingClient";
 
 export const metadata: Metadata = generatePageSEO({

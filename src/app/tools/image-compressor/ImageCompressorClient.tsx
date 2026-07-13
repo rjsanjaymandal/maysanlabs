@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -21,8 +21,8 @@ import {
   ArrowLeft
 } from "lucide-react";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
 
 interface CompressedFile {
   id: string;

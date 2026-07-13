@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 
 import { useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2, Copy, Shield, FileSignature, Download, Sparkles, Loader2, ClipboardCheck } from "lucide-react";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
 
 export default function PrivacyGeneratorClient() {
   const [companyName, setCompanyName] = useState("Acme Inc.");

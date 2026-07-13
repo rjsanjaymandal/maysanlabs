@@ -2,8 +2,8 @@
 
 import React, { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
 import {
   User,
   Mail,
@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { applyJob } from "@/app/actions/applyJob";
-import { jobPositions } from "@/lib/careers-data";
+import { jobPositions } from "@/data/careers";
 
 function ApplyForm() {
   const searchParams = useSearchParams();

@@ -1,0 +1,1 @@
+export { useScramble } from "./useScramble";

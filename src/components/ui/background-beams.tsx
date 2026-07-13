@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 
 class Beam {
   x: number;

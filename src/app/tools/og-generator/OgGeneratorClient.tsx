@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Share2, Image as ImageIcon, Download, Mail, Loader2, ArrowLeft } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
 
 const themes = [
   { name: "Cyber Royal Blue", from: "#1A6DD6", to: "#00d2ff" },

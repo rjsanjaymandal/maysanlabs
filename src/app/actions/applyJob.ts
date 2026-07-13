@@ -2,9 +2,9 @@
 
 import nodemailer from "nodemailer";
 import { headers } from "next/headers";
-import { checkRateLimit } from "@/lib/rate-limit";
-import { escapeHtml, safeHref, textForEmail, multilineHtml } from "@/lib/security/escape";
-import { validateResume, ResumeValidationError } from "@/lib/security/resume";
+import { checkRateLimit } from "@/core/rate-limit";
+import { escapeHtml, safeHref, textForEmail, multilineHtml } from "@/core/security/escape";
+import { validateResume, ResumeValidationError } from "@/core/security/resume";
 
 export async function applyJob(formData: FormData) {
   // Honeypot check: if the hidden field is filled, it's likely a bot

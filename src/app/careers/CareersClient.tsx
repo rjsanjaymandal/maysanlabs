@@ -1,8 +1,8 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
-import { jobPositions } from "@/lib/careers-data";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
+import { jobPositions } from "@/data/careers";
 import { Users, Target, Rocket, MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
 

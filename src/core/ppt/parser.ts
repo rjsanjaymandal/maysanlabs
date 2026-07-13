@@ -1,4 +1,4 @@
-import type { AdvancedDeck, AdvancedSlide } from "./maysanPptEngine";
+import type { AdvancedDeck, AdvancedSlide } from "./engine";
 
 export type ParseMode = "json" | "csv" | "markdown" | "kv";
 

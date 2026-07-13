@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 // aria-label: skeleton loader accessibility tag
 
 

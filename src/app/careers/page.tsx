@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import CareersClient from "./CareersClient";
-import { generateBreadcrumbSchema, generateJobPostingSchema, generatePageSEO } from "@/lib/seo/helpers";
+import { generateBreadcrumbSchema, generateJobPostingSchema, generatePageSEO } from "@/seo/helpers";
 
 export const metadata: Metadata = generatePageSEO({
   title: "Careers | Join the Engineering Team at Maysan Labs",

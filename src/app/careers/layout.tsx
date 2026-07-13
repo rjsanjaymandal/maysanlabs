@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { jobPositions } from "@/lib/careers-data";
+import { jobPositions } from "@/data/careers";
 
 export const metadata: Metadata = {
   title: "Careers",

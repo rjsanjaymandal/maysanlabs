@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 
 import { useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Calculator, CheckCircle2, TrendingUp, Clock, Download, Sparkles, Loader2 } from "lucide-react";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
 
 const platforms = [
   { name: "Shopify Basic", feePct: 2.0, baseCost: 3300 }, // Approx ₹3,300/mo

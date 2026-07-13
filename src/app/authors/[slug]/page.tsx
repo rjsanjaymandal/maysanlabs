@@ -1,7 +1,7 @@
-import { authors } from "@/lib/authors-data";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
-import { blogPosts } from "@/lib/blog-data";
+import { authors } from "@/data/authors";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
+import { blogPosts } from "@/data/blog";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";

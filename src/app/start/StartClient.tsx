@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
-import FAQ from "@/components/FAQ";
-import MultiStepForm from "@/components/MultiStepForm";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
+import FAQ from "@/components/home/faq";
+import MultiStepForm from "@/components/interactive/multi-step-form";
 import { Send, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 

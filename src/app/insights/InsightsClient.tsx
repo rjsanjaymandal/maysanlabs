@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import { Activity, Database, TrendingUp, Shield, BarChart3, ArrowRight, BookOpen, Briefcase, Code2, LineChart, Clock, User, Tag, Layers, Zap, Cpu } from "lucide-react";
 import { SafeLink } from "@/components/ui/SafeLink";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
-import { blogPosts } from "@/lib/blog-data";
-import { caseStudies } from "@/lib/case-studies-data";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
+import { blogPosts } from "@/data/blog";
+import { caseStudies } from "@/data/case-studies";
 
 const insights = [
   {

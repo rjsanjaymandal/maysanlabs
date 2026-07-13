@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Fuse from "fuse.js";
 import Link from "next/link";
 import { Search, X, ArrowRight } from "lucide-react";
-import { blogPosts } from "@/lib/blog-data";
-import { caseStudies } from "@/lib/case-studies-data";
+import { blogPosts } from "@/data/blog";
+import { caseStudies } from "@/data/case-studies";
 
 interface SearchItem {
   title: string;

@@ -1,30 +1,30 @@
 import dynamic from "next/dynamic";
-import { generateIndividualReviewSchemas } from "@/lib/seo/schema";
-import { blogPosts } from "@/lib/blog-data";
+import { generateIndividualReviewSchemas } from "@/data/seo-schema";
+import { blogPosts } from "@/data/blog";
 import { Send } from "lucide-react";
 
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import ScrollReveal from "@/components/ScrollReveal";
-import LatestInsights from "@/components/LatestInsights";
-import { fetchTechNewsServer } from "@/lib/news-fetcher";
-import Newsletter from "@/components/Newsletter";
-const LogoMarquee = dynamic(() => import("@/components/LogoMarquee"));
-const Problem = dynamic(() => import("@/components/Problem"));
-const BuildScaleGrow = dynamic(() => import("@/components/BuildScaleGrow"));
-const StatsSection = dynamic(() => import("@/components/StatsSection"));
+import Navbar from "@/components/layout/navbar";
+import Hero from "@/components/home/hero";
+import ScrollReveal from "@/components/effects/scroll-reveal";
+import LatestInsights from "@/components/blog/latest-insights";
+import { fetchTechNewsServer } from "@/services/news-fetcher";
+import Newsletter from "@/components/marketing/newsletter";
+const LogoMarquee = dynamic(() => import("@/components/home/logo-marquee"));
+const Problem = dynamic(() => import("@/components/marketing/problem"));
+const BuildScaleGrow = dynamic(() => import("@/components/home/build-scale-grow"));
+const StatsSection = dynamic(() => import("@/components/home/stats-section"));
 
 const ArchitectureVisualizer = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.ArchitectureVisualizer));
 const ROICalculator = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.ROICalculator));
 const MultiStepForm = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.MultiStepForm));
 const ScrollTimeline = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.ScrollTimeline));
 const Testimonials = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.Testimonials));
-const Services = dynamic(() => import("@/components/Services"));
-const ToolsShowcase = dynamic(() => import("@/components/ToolsShowcase"));
+const Services = dynamic(() => import("@/components/marketing/services"));
+const ToolsShowcase = dynamic(() => import("@/components/interactive/tools-showcase"));
 const FAQ = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.FAQ));
 const ContactFooter = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.ContactFooter));
-const TechNewsFeed = dynamic(() => import("@/components/TechNewsFeed"));
-const TrendingTopics = dynamic(() => import("@/components/TrendingTopics"));
+const TechNewsFeed = dynamic(() => import("@/components/blog/tech-news-feed"));
+const TrendingTopics = dynamic(() => import("@/components/blog/trending-topics"));
 
 export const revalidate = 3600;
 

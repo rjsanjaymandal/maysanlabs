@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Menu, X, Phone, Search, ChevronRight } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import dynamic from "next/dynamic";
-const SearchModal = dynamic(() => import("@/components/SearchModal"), {
+const SearchModal = dynamic(() => import("@/components/search/search-modal"), {
   loading: () => null,
 });
 

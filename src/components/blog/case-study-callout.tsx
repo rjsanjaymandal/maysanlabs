@@ -1,4 +1,4 @@
-import { caseStudies } from "@/lib/case-studies-data";
+import { caseStudies } from "@/data/case-studies";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 

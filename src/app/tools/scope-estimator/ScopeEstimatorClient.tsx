@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 
 import { useState, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Calculator, CheckCircle2, ChevronRight, ChevronLeft, Calendar, Mail, Download, Sparkles, Loader2 } from "lucide-react";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
 
 const appTypes = [
   { id: "saas", name: "Multi-Tenant B2B SaaS", baseCost: 1200000, timelineWeeks: 12, desc: "Sub-organizations, subscription models, scalable backends." },

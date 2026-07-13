@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
-import FAQ from "@/components/FAQ";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
+import FAQ from "@/components/home/faq";
 import {
   Code2,
   Smartphone,

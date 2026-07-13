@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { ChevronRight, ExternalLink, Clock, ArrowUpRight, Search } from "lucide-react";
 import Link from "next/link";
-import { BlogPost } from "@/lib/blog-data";
+import { BlogPost } from "@/data/blog";
 
 const POSTS_PER_PAGE = 9;
 

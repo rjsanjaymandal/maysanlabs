@@ -5,8 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, ArrowRight, CheckCircle, Send } from "lucide-react";
 import { sendEmail } from "@/app/actions/sendEmail";
-import { generateBreadcrumbSchema } from "@/lib/seo/helpers";
-import Navbar from "@/components/Navbar";
+import { generateBreadcrumbSchema } from "@/seo/helpers";
+import Navbar from "@/components/layout/navbar";
 
 const contactSchema = {
   "@context": "https://schema.org",

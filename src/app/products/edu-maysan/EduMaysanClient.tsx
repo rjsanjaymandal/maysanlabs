@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { 
@@ -11,8 +11,8 @@ import {
   ArrowLeft
 } from "lucide-react";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
 
 export default function EduMaysanClient() {
   const features = [

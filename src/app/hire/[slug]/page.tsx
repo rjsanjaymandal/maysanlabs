@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
-import { seoLandingPages } from "@/lib/seo-landing-data";
-import Navbar from "@/components/Navbar";
+import { seoLandingPages } from "@/data/seo-landing";
+import Navbar from "@/components/layout/navbar";
 import { ContactFooter, Testimonials, MultiStepForm } from "@/components/dynamic/ClientImports";
-import StatsSection from "@/components/StatsSection";
-import { generatePageSEO } from "@/lib/seo/helpers";
+import StatsSection from "@/components/home/stats-section";
+import { generatePageSEO } from "@/seo/helpers";
 import { Metadata } from "next";
 import { Zap, CheckCircle2, Star, ArrowRight, ShieldCheck, Cpu } from "lucide-react";
 import Link from "next/link";

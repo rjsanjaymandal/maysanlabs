@@ -9,11 +9,11 @@ import {
   FileText, Shield, ArrowLeft, ArrowRight, User, Check
 } from "lucide-react";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
 import { analyzeSitemap } from "@/app/actions/analyzeSitemap";
 import type { SeoAuditResult } from "@/app/actions/analyzeSitemap";
-import type { WebVitalResult } from "@/lib/pagespeed-types";
+import type { WebVitalResult } from "@/types/pagespeed";
 
 import {
   ActionItemCard, RadarChart, SpeedSimulator, OverallScoreCircle, MetricBadge, MiniScoreCard,

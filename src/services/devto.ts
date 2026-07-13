@@ -1,4 +1,4 @@
-import { BlogPost } from "./blog-data";
+import { BlogPost } from "@/data/blog";
 
 interface DevToArticle {
   id: number;

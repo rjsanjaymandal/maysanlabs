@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
-import { caseStudies, CaseStudy } from "@/lib/case-studies-data";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
+import { caseStudies, CaseStudy } from "@/data/case-studies";
 import { ArrowLeft, CheckCircle2, Zap, Target, Cpu, ArrowRight, Quote, Clock, Share2, Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
-import CaseStudyPerformanceToggle from "@/components/CaseStudyPerformanceToggle";
-import ScrollRevealImage from "@/components/ScrollRevealImage";
+import CaseStudyPerformanceToggle from "@/components/blog/case-study-performance-toggle";
+import ScrollRevealImage from "@/components/effects/scroll-reveal-image";
 
 const beforeAfterData: Record<string, {
   before: { label: string; items: string[] };
@@ -124,7 +124,7 @@ const beforeAfterData: Record<string, {
   },
 };
 
-import { fadeUp, staggerContainer as stagger } from "@/lib/motion-variants";
+import { fadeUp, staggerContainer as stagger } from "@/utils/motion-variants";
 
 function SocialShare({ url, title }: { url: string; title: string }) {
   const encoded = encodeURIComponent(url);

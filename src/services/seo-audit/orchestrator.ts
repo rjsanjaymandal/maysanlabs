@@ -1,6 +1,6 @@
 "use server";
 
-import { assertSafeFetchUrl, SsrfError } from "@/lib/security/ssrf";
+import { assertSafeFetchUrl, SsrfError } from "@/core/security/ssrf";
 import { safeFetchWithRetry, tryFetchSitemap, parsePage } from "./parser";
 import { calculateSecurityAudit, checkSslCertificate } from "./security";
 import { analyzeIndiaTelemetry } from "./telemetry";

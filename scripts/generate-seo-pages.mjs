@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SEO_DATA_PATH = path.join(__dirname, '..', 'src', 'lib', 'seo-landing-data.ts');
+const SEO_DATA_PATH = path.join(__dirname, '..', 'src', 'data', 'seo-landing.ts');
 
 
 const LOCATIONS = [

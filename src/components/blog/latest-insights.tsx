@@ -1,4 +1,4 @@
-import { blogPosts } from "@/lib/blog-data";
+import { blogPosts } from "@/data/blog";
 import Link from "next/link";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 

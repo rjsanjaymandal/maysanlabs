@@ -1,4 +1,4 @@
-import { safeFetch, type SafeFetchInit } from "@/lib/security/ssrf";
+import { safeFetch, type SafeFetchInit } from "@/core/security/ssrf";
 
 export async function safeFetchWithRetry(url: string, init: SafeFetchInit, retries = 1): Promise<Response> {
   for (let attempt = 0; attempt <= retries; attempt++) {

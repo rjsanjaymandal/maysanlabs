@@ -15,14 +15,14 @@ import {
   Sparkles,
   ScanSearch,
 } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
 import {
   compileAdvancedPresentation,
   type AdvancedDeck,
   type AdvancedSlide,
-} from "@/utils/maysanPptEngine";
-import { parseStructuredData } from "@/utils/clientParser";
+} from "@/core/ppt/engine";
+import { parseStructuredData } from "@/core/ppt/parser";
 
 class AiNotConfiguredError extends Error {
   constructor() {

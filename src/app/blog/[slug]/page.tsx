@@ -1,15 +1,15 @@
 import { notFound } from "next/navigation";
-import { blogPosts } from "@/lib/blog-data";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
-import ReadingProgress from "@/components/ReadingProgress";
-import ShareArticle from "@/components/ShareArticle";
+import { blogPosts } from "@/data/blog";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
+import ReadingProgress from "@/components/tracking/reading-progress";
+import ShareArticle from "@/components/blog/share-article";
 import { Clock, ArrowLeft, ArrowRight } from "lucide-react";
 import { SafeLink } from "@/components/ui/SafeLink";
 import { Metadata } from "next";
-import { generateBlogPostSEO, generateBlogPostJSONLD } from "@/lib/seo/helpers";
-import CaseStudyCallout from "@/components/CaseStudyCallout";
-import Newsletter from "@/components/Newsletter";
+import { generateBlogPostSEO, generateBlogPostJSONLD } from "@/seo/helpers";
+import CaseStudyCallout from "@/components/blog/case-study-callout";
+import Newsletter from "@/components/marketing/newsletter";
 
 export const revalidate = 3600;
 export const dynamicParams = true;

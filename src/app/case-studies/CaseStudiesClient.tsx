@@ -2,12 +2,12 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
-import { caseStudies, aggregateStats, categories } from "@/lib/case-studies-data";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
+import { caseStudies, aggregateStats, categories } from "@/data/case-studies";
 import { ArrowRight, Briefcase, Search, X, Shield, Zap, Building2, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { staggerContainer, fadeUpHeavy as cardVariants, fadeUp } from "@/lib/motion-variants";
+import { staggerContainer, fadeUpHeavy as cardVariants, fadeUp } from "@/utils/motion-variants";
 
 const stats = [
   { icon: Briefcase, label: "Projects Delivered", value: aggregateStats.totalProjects.toString() },

@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { Shield, Globe, Cpu, Zap, ArrowUpRight } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
 import Link from "next/link";
 
 export default function ArchitectureClient() {

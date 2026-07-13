@@ -1,8 +1,8 @@
-"use client";
+﻿"use client";
 
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
-import PortfolioShowcase from "@/components/PortfolioShowcase";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
+import PortfolioShowcase from "@/components/home/portfolio-showcase";
 import { ArrowRight, ArrowUpRight, Layers } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";

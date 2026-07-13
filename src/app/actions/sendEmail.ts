@@ -2,8 +2,8 @@
 
 import nodemailer from "nodemailer";
 import { headers } from "next/headers";
-import { checkRateLimit } from "@/lib/rate-limit";
-import { escapeHtml, textForEmail, multilineHtml } from "@/lib/security/escape";
+import { checkRateLimit } from "@/core/rate-limit";
+import { escapeHtml, textForEmail, multilineHtml } from "@/core/security/escape";
 
 export async function sendEmail(formData: FormData) {
   const honeypot = formData.get("website") as string;

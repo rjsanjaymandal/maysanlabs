@@ -1,7 +1,7 @@
 "use server";
 
-import { analyzeSitemap as analyzeSitemapImpl } from "@/lib/seo-audit/orchestrator";
-import type { SeoAuditResult } from "@/lib/seo-audit/types";
+import { analyzeSitemap as analyzeSitemapImpl } from "@/services/seo-audit/orchestrator";
+import type { SeoAuditResult } from "@/services/seo-audit/types";
 
 export async function analyzeSitemap(sitemapUrl: string): Promise<SeoAuditResult> {
   return analyzeSitemapImpl(sitemapUrl);
@@ -13,4 +13,4 @@ export type {
   SslCertInfo,
   SecurityAudit,
   SeoAuditResult,
-} from "@/lib/seo-audit/types";
+} from "@/services/seo-audit/types";

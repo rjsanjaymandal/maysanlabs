@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import SaaSNodeVisual from "@/components/SaaSNodeVisual";
+import SaaSNodeVisual from "@/components/visuals/saas-node-visual";
 import { 
   ArrowRight, 
   Play, 

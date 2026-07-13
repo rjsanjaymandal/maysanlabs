@@ -4,7 +4,7 @@
 
 import { ArrowRightIcon } from "lucide-react";
 import { ReactNode, useRef } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 import { motion, useMotionValue, useMotionTemplate, useTransform, useSpring } from "framer-motion";
 import Link from "next/link";
 

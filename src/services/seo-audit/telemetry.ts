@@ -1,5 +1,5 @@
 import dns from "dns";
-import { isDeniedIp } from "@/lib/security/ssrf";
+import { isDeniedIp } from "@/core/security/ssrf";
 import type { IndiaTelemetry } from "./types";
 
 async function resolveGeoLocation(ip: string): Promise<{ country: string; city: string; isp: string } | null> {

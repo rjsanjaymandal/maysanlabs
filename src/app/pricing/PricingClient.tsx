@@ -1,9 +1,9 @@
 "use client";
 
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
-import RoiCalculator from "@/components/ROICalculator";
-import FAQ from "@/components/FAQ";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
+import RoiCalculator from "@/components/interactive/roi-calculator";
+import FAQ from "@/components/home/faq";
 import { Check, Zap, Rocket, Shield, ArrowRight, IndianRupee } from "lucide-react";
 import Link from "next/link";
 

@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const BLOG_DATA_PATH = path.join(__dirname, '..', 'src', 'lib', 'blog-data.ts');
+const BLOG_DATA_PATH = path.join(__dirname, '..', 'src', 'data', 'blog.ts');
 
 
 const API_KEY = process.env.AI_API_KEY || process.env.OPENAI_API_KEY || '';

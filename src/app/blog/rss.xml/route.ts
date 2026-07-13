@@ -1,4 +1,4 @@
-import { blogPosts } from '@/lib/blog-data';
+import { blogPosts } from '@/data/blog';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://maysanlabs.com';
 

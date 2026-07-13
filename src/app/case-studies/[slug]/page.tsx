@@ -1,8 +1,8 @@
 import CaseStudyDetailClient from "./CaseStudyDetailClient";
-import { caseStudies } from "@/lib/case-studies-data";
+import { caseStudies } from "@/data/case-studies";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { generateCaseStudyJSONLD } from "@/lib/seo/helpers";
+import { generateCaseStudyJSONLD } from "@/seo/helpers";
 
 export const revalidate = 3600;
 export const dynamicParams = true;

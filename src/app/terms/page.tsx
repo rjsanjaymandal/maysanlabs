@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { generateBreadcrumbSchema } from "@/lib/seo/helpers";
-import Navbar from "@/components/Navbar";
+import { generateBreadcrumbSchema } from "@/seo/helpers";
+import Navbar from "@/components/layout/navbar";
 
 const ogImage = (t: string, d?: string) =>
   `/api/og?title=${encodeURIComponent(t.slice(0, 100))}${d ? `&description=${encodeURIComponent(d.slice(0, 160))}` : ""}`;

@@ -4,7 +4,7 @@ import { SafeLink } from "@/components/ui/SafeLink";
 import Image from "next/image";
 import { ArrowRight, Mail, MapPin, Phone, Send } from "lucide-react";
 import { Twitter, Linkedin, Instagram, Facebook } from "@/components/ui/brand-icons";
-import Newsletter from "@/components/Newsletter";
+import Newsletter from "@/components/marketing/newsletter";
 
 const links = [
   { name: "Services", href: "/services" },

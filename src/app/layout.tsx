@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 
 import dynamic from "next/dynamic";
 import { Outfit, JetBrains_Mono } from "next/font/google";
-import "./globals.css";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
-import ThemeProvider from "@/components/ThemeProvider";
+import "@/styles/globals.css";
+import GoogleAnalytics from "@/components/tracking/google-analytics";
+import ThemeProvider from "@/components/layout/theme-provider";
 
-const ScrollProgress = dynamic(() => import("@/components/ScrollProgress"));
-const BackToTop = dynamic(() => import("@/components/BackToTop"));
+const ScrollProgress = dynamic(() => import("@/components/tracking/scroll-progress"));
+const BackToTop = dynamic(() => import("@/components/layout/back-to-top"));
 
 import {
   organizationSchema,
@@ -19,7 +19,7 @@ import {
   speakableSchema,
   howToContactSchema,
   personSchema,
-} from "@/lib/seo/schema";
+} from "@/data/seo-schema";
 const outfit = Outfit({
   variable: "--font-sans",
   subsets: ["latin"],
@@ -152,7 +152,7 @@ export const metadata: Metadata = {
 };
 
 import type { Viewport } from "next";
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/cn";
 
 export const viewport: Viewport = {
   themeColor: "#000000",
@@ -163,7 +163,7 @@ export const viewport: Viewport = {
 
 const WhatsAppButton = dynamic(() => import("@/components/ui/WhatsAppButton"));
 const ExitIntentPopup = dynamic(() => import("@/components/ui/ExitIntentPopup"));
-const CookieConsent = dynamic(() => import("@/components/CookieConsent"));
+const CookieConsent = dynamic(() => import("@/components/tracking/cookie-consent"));
 
 export default function RootLayout({
   children,

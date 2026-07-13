@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ProductsClient from "./ProductsClient";
-import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
+import { generateBreadcrumbSchema, generatePageSEO } from "@/seo/helpers";
 
 export const metadata: Metadata = generatePageSEO({
   title: "Products | Enterprise SaaS Solutions",

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { generateBreadcrumbSchema, generatePageSEO } from "@/lib/seo/helpers";
-import Navbar from "@/components/Navbar";
-import ContactFooter from "@/components/ContactFooter";
+import { generateBreadcrumbSchema, generatePageSEO } from "@/seo/helpers";
+import Navbar from "@/components/layout/navbar";
+import ContactFooter from "@/components/layout/footer";
 import Link from "next/link";
 import { ArrowRight, Cloud, Shield, Server, GitBranch } from "lucide-react";
 
