@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 import { Outfit, JetBrains_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import ThemeProvider from "@/components/layout/theme-provider";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const GoogleAnalytics = dynamic(() => import("@/components/tracking/google-analytics"));
 const ScrollProgress = dynamic(() => import("@/components/tracking/scroll-progress"), {
@@ -223,6 +225,8 @@ export default function RootLayout({
                 JavaScript is required for interactive features on this site.
               </div>
             </noscript>
+            <Analytics />
+            <SpeedInsights />
           </ThemeProvider>
         </body>
     </html>
