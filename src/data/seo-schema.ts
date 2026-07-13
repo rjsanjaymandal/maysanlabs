@@ -6,14 +6,24 @@ export const localBusinessSchema = {
   "@id": `${SITE_URL}/#business`,
   name: "Maysan Labs",
   image: `${SITE_URL}/logo.webp`,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Sector 44",
-    addressLocality: "Gurgaon",
-    addressRegion: "Haryana",
-    postalCode: "122001",
-    addressCountry: "IN"
-  },
+  address: [
+    {
+      "@type": "PostalAddress",
+      streetAddress: "Sector 44",
+      addressLocality: "Gurgaon",
+      addressRegion: "Haryana",
+      postalCode: "122001",
+      addressCountry: "IN"
+    },
+    {
+      "@type": "PostalAddress",
+      streetAddress: "94 Neville Street",
+      addressLocality: "Cardiff",
+      addressRegion: "Wales",
+      postalCode: "CF11 6LS",
+      addressCountry: "GB"
+    }
+  ],
   geo: {
     "@type": "GeoCoordinates",
     latitude: "28.4647",
@@ -226,14 +236,24 @@ export const organizationSchema = {
     "contactType": "sales",
     "availableLanguage": ["English", "Arabic", "Hindi"]
   },
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Sector 44",
-    "addressLocality": process.env.NEXT_PUBLIC_ADDRESS_LOCALITY || "Gurgaon",
-    "addressRegion": process.env.NEXT_PUBLIC_ADDRESS_REGION || "Haryana",
-    "postalCode": process.env.NEXT_PUBLIC_ADDRESS_POSTAL_CODE || "122001",
-    "addressCountry": process.env.NEXT_PUBLIC_ADDRESS_COUNTRY || "IN"
-  },
+  "address": [
+    {
+      "@type": "PostalAddress",
+      "streetAddress": process.env.NEXT_PUBLIC_ADDRESS_STREET || "Sector 44",
+      "addressLocality": process.env.NEXT_PUBLIC_ADDRESS_LOCALITY || "Gurgaon",
+      "addressRegion": process.env.NEXT_PUBLIC_ADDRESS_REGION || "Haryana",
+      "postalCode": process.env.NEXT_PUBLIC_ADDRESS_POSTAL_CODE || "122001",
+      "addressCountry": process.env.NEXT_PUBLIC_ADDRESS_COUNTRY || "IN"
+    },
+    {
+      "@type": "PostalAddress",
+      "streetAddress": "94 Neville Street",
+      "addressLocality": "Cardiff",
+      "addressRegion": "Wales",
+      "postalCode": "CF11 6LS",
+      "addressCountry": "GB"
+    }
+  ],
   "sameAs": [
     "https://www.facebook.com/maysanlabs",
     "https://www.instagram.com/maysanlabs",

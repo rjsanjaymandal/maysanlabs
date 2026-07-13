@@ -6,7 +6,7 @@
 
 - **URL:** https://maysanlabs.com
 - **Version:** 0.1.0 (private)
-- **Location:** Gurgaon, Sector 44, Haryana, India
+- **Location:** Gurgaon, Sector 44, Haryana, India & Cardiff, Wales, UK
 
 ## Tech Stack
 

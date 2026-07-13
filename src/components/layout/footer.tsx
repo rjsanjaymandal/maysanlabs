@@ -131,7 +131,20 @@ export default function ContactFooter() {
                   <div className="w-9 h-9 rounded-lg bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] flex items-center justify-center text-foreground/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300 shrink-0">
                     <MapPin size={15} />
                   </div>
-                  <span>Gurgaon, India</span>
+                  <div className="flex flex-col">
+                    <span>Gurgaon, India</span>
+                    <span className="text-xs text-foreground/40">Sector 44, Haryana</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 text-foreground/60 text-sm group">
+                  <div className="w-9 h-9 rounded-lg bg-[var(--glass-chip-bg)] border border-[var(--glass-chip-border)] flex items-center justify-center text-foreground/40 group-hover:text-brand-primary group-hover:border-brand-primary/30 group-hover:bg-brand-primary/5 transition-all duration-300 shrink-0">
+                    <MapPin size={15} />
+                  </div>
+                  <div className="flex flex-col">
+                    <span>Cardiff, UK</span>
+                    <span className="text-xs text-foreground/40">94 Neville Street, Wales</span>
+                  </div>
                 </div>
                 
                 <a href="tel:+919660641530" onClick={() => { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: "phone_call_click", label: "footer_phone_contact" }); }} className="flex items-center gap-3 text-foreground/60 text-sm group">
