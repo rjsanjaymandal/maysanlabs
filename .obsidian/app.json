@@ -15,7 +15,9 @@
   "foldHeading": true,
   "foldIndent": true,
   "spellcheck": true,
-  "spellcheckLanguages": ["en-US"],
+  "spellcheckLanguages": [
+    "en-US"
+  ],
   "strictLineBreaks": false,
   "userIgnoreFilters": [
     "node_modules/",
