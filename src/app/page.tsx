@@ -13,6 +13,7 @@ const Problem = dynamic(() => import("@/components/marketing/problem"));
 const BuildScaleGrow = dynamic(() => import("@/components/home/build-scale-grow"));
 const StatsSection = dynamic(() => import("@/components/home/stats-section"));
 const Services = dynamic(() => import("@/components/marketing/services"));
+const Products = dynamic(() => import("@/components/marketing/products"));
 const Testimonials = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.Testimonials));
 const FAQ = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.FAQ));
 const MultiStepForm = dynamic(() => import("@/components/dynamic/ClientImports").then(m => m.MultiStepForm));
@@ -94,6 +95,10 @@ export default async function Home() {
 
       <ScrollReveal className="content-auto-wide">
         <Services />
+      </ScrollReveal>
+
+      <ScrollReveal className="content-auto-wide">
+        <Products />
       </ScrollReveal>
 
       {/* How We Work */}

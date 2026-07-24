@@ -59,13 +59,6 @@ const services = [
     href: "/services/web",
     features: ["Razorpay & UPI payment setup", "Medusa commerce API integration", "Tally & Zoho ledgers sync", "WhatsApp Business API links"],
   },
-  {
-    title: "Email Infrastructure — MaysanMails",
-    desc: "Scale your email marketing without monthly subscription fees. Our self-hosted bulk email platform gives you high-deliverability SMTP routing, campaign automation, and complete data privacy — all without per-subscriber charges.",
-    icon: Mail,
-    href: "/products/maysanmails",
-    features: ["Zero recurring subscriber fees", "High-deliverability SMTP routing", "Advanced campaign automation", "Complete data privacy & control", "Custom sender reputation management"],
-  },
 ];
 
 export default function Services() {
