@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import EduMaysanClient from "./EduMaysanClient";
 import { generateBreadcrumbSchema, generateProductSEO } from "@/seo/helpers";
+import { products } from "@/data/products";
 
-const productData = {
-  name: "Edu-Maysan",
-  description: "Next-generation intelligence platform for educational institutions. Unifying finance, logistics, and academics.",
+const product = products.find(p => p.id === "edu-maysan")!;
+
+export const metadata: Metadata = generateProductSEO({
+  name: product.name,
+  description: product.description,
   price: 640000,
   currency: "INR",
   url: "https://maysanlabs.com/products/edu-maysan"
-};
-
-export const metadata: Metadata = generateProductSEO(productData);
+});
 
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: "Home", url: "/" },
@@ -21,10 +22,17 @@ const breadcrumbSchema = generateBreadcrumbSchema([
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "Edu-Maysan",
-  description: productData.description,
+  name: product.name,
+  description: product.description,
   brand: { "@type": "Brand", name: "Maysan Labs" },
-  offers: { "@type": "Offer", price: productData.price, priceCurrency: productData.currency, availability: "https://schema.org/InStock" }
+  ...(product.ratingValue && product.reviewCount ? {
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: product.ratingValue,
+      reviewCount: product.reviewCount
+    }
+  } : {}),
+  offers: { "@type": "Offer", price: 640000, priceCurrency: "INR", availability: "https://schema.org/InStock" }
 };
 
 export default function EduMaysanPage() {

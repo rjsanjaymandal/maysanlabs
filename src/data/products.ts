@@ -10,6 +10,8 @@ export interface Product {
   href: string;
   cta: string;
   live: boolean;
+  ratingValue?: string;
+  reviewCount?: string;
 }
 
 export const products: Product[] = [
@@ -38,6 +40,8 @@ export const products: Product[] = [
     href: "/products/edu-maysan",
     cta: "Explore Edu-Maysan",
     live: true,
+    ratingValue: "4.8",
+    reviewCount: "12",
   },
   {
     id: "maysanmails",
